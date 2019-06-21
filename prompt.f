@@ -1,1396 +1,935 @@
-c
+C*********************************************************************
+C*    NAME         :  prompt.f
+C*       CONTAINS:
+C*    COPYRIGHT 1993 (c) NCCS.  All Rights Reserved.
+C*     MODULE NAME AND RELEASE LEVEL
+C*        prompt.f , 25.3
+C*    DATE AND TIME OF LAST  MODIFICATION
+C*        10/19/15 , 10:01:51
+C********************************************************************/
+C
+c*********************************************************************
+c*
+c*    subroutine prompt
+c*
+c*    The purpose of this routine to read the "prompt" statement and to
+c*    fill up the appropriate places in the macro definition table if it
+c*    is necesury.
+c*
 c***********************************************************************
-c
-c   FILE NAME:  prompt.for
-c   CONTAINS:
-c               prmaxs  prmcod  prmint  prmrel  prmstr  prmvoc  prompt
-c               prscrl
-c
-c     COPYRIGHT 1997 (c) Numerical Control Computer Sciences.
-c           All Rights Reserved
-c      MODULE NAME AND RELEASE LEVEL
-c        prompt.f , 24.1
-c     DATE AND TIME OF LAST  MODIFICATION
-c        09/11/13 , 12:58:58
-c
-c***********************************************************************
-c
-c***********************************************************************
-c
-c   SUBROUTINE:  prmaxs (kaxs,knc,kmax,ksgn,kfl,klod,kwrn,cmsg,kerr)
-c
-c   FUNCTION:  This routine prompts for an array of axis descriptors and
-c              checks the users' input for valid descriptors and values.
-c              The axis descriptors have the following format:
-c
-c                        X1 X2 Y1 Y2 Z1 Z2 A1 A2 A3 A4
-c
-c   INPUT:  kaxs    I*4  Dn  -  Array of integers that define which
-c                               axis.
-c
-c           knc     I*4  D1  -  Number of descriptors in array.
-c
-c           kmax    I*4  D1  -  Maximum number of descriptors that can be
-c                               defined.
-c
-c           ksgn    I*4  D1  -  1 = An End-of-block '$' is valid input.
-c                               2 = No.
-c
-c           kfl     I*4  D1  -  The user requested a specific prompt
-c                               when 'kfl' = 'NLEVL'.  In this case the
-c                               prompt will be displayed on the Menu
-c                               Selection line instead of in the Menu/
-c                               Prompt text area.
-c
-c           klod    I*4  D1  -  0 = This section's prompt text is cur-
-c                               rently loaded in memory.  1 = Load the
-c                               current section's prompt text into mem-
-c                               ory and display the current section and
-c                               level.
-c
-c           kwrn    I*4  D1  -  1 = The user's input to the previous
-c                               prompt was not valid.  Reissue that
-c                               prompt again.
-c
-c   OUTPUT: kaxs    I*4  Dn  -  See input.
-c
-c           knc     I*4  D1  -  See input.
-c
-c           kwrn    I*4  D1  -  1 = The user interrupted input with a
-c                               ^C.  2 = Up arrow was entered.
-c
-c           cmsg    C*n  D1  -  Text of error message.
-c
-c           kerr    I*4  D1  -  Returns non-zero when an error occurred.
-c
-c***********************************************************************
-c
-      subroutine prmaxs (kaxs,knc,kmax,ksgn,kfl,klod,kwrn,cmsg,kerr)
-c
-      include 'menu.inc'
-c
-      integer*4 kaxs(20),knc,ksgn,kfl,klod,kwrn,kerr,kmax
-c
-      character*(*) cmsg
-c
-      character*2 laxs(10)
-      character*80 sbuf
-c
-      integer*4 nc,i,j,inc,index,iary(20),iaxs(20),nca
-c
-      data laxs /'X1','X2','Y1','Y2','Z1','Z2','A1','A2','A3','A4'/
-c
-c...Set up default string
-c
-      if (IMSCAN .eq. 2) go to 200
-      nc     = 0
-      do 100 i=1,knc,1
-          if (kaxs(i) .eq. 0) go to 100
-          if (i .ne. 1) then
-              nc     = nc     + 1
-              sbuf(nc:nc) = ','
-          endif
-          if (kaxs(i) .eq. -1) then
-              sbuf(nc+1:nc+2) = '$'
-              nc     = nc     + 1
-          else
-              sbuf(nc+1:80) = laxs(kaxs(i))
-              nc     = nc     + 2
-          endif
-  100 continue
-c
-c...Prompt the user
-c
-  200 call prompt (sbuf,nc,kfl,klod,kwrn,cmsg,kerr)
-      if (kerr .ne. 0) go to 8000
-      if (MOTIF .eq. 1 .and. IMSCAN .eq. 1) go to 8000
-      if (nc .eq. -1) go to 9100
-      if (nc .eq. -2) go to 9200
-c
-c...Parse the users response
-c
-      i      = 1
-      inc    = 0
-      call remspc (sbuf,sbuf,nc)
-      if (nc .eq. 0) then
-          kaxs(1) = 0
-          knc    = 0
-          kwrn   = 0
-          go to 8000
-      endif
-      call touppr (sbuf,sbuf)
-      do 300 j=1,20,1
-          iary(j) = 0
-  300 continue
-c
-c......Find the next register
-c
-  400 if (i .gt. nc) go to 800
-      nca    = index(sbuf(i:nc),',')
-      if (nca .eq. 0) then
-          nca    = nc     + 1
-      else
-          nca    = i      + nca    - 1
-      endif
-c
-c.........Next register is End-of-block
-c
-      if (nca .eq. i+1 .and. ksgn .eq. 1 .and. sbuf(i:i) .eq. '$') then
-          inc    = inc    + 1
-          iaxs(inc) = -1
-          i      = nca    + 1
-          go to 400
-      endif
-c
-c.........Search for register in array
-c
-      if (nca .ne. i+2) go to 9000
-      do 500 j=1,10,1
-          if (sbuf(i:nca-1) .eq. laxs(j)) go to 600
-  500 continue
-c
-c......Invalid input
-c
-      go to 9000
-c
-c......Register match
-c
-  600 if (iary(j) .eq. 1) go to 9000
-      if (inc .eq. kmax) go to 9000
-      inc    = inc    + 1
-      iaxs(inc) = j
-      iary(j) = 1
-      i      = nca    + 1
-      go to 400
-c
-c......End of parse
-c
-  800 knc    = inc
-      do 900 i=1,knc,1
-          kaxs(i) = iaxs(i)
-  900 continue
-      kwrn   = 0
-c
-c...End of routine
-c
- 8000 return
-c
-c...Invalid users response
-c
- 9000 kwrn   = 1
-      call errmsg ('INVRSP',1,2)
-      if (MOTIF .eq. 1) go to 8000
-      go to 200
-c
-c...End of input from user
-c
- 9100 kwrn   = 1
-      go to 8000
-c
-c...Up arrow
-c
- 9200 kwrn   = 2
-      go to 8000
-      end
-c
-c***********************************************************************
-c
-c   SUBROUTINE:  prmcod (kreg,gval,kcnt,kwds,ksw,kfl,klod,kwrn,cmsg,
-c                        kerr)
-c
-c   FUNCTION:  This routine prompts for an array of registers and checks
-c              the users' input for valid registers and values.
-c
-c   INPUT:  kreg    I*4  Dn  -  Array of integers that define which
-c                               register.
-c
-c           gval    R*8  Dn  -  Array of values for each register.
-c
-c           kcnt    I*4  D1  -  Current number of registers defined.
-c
-c           kwds    I*4  D1  -  Maximum number of registers that can be
-c                               defined.
-c
-c           ksw     I*4  D1  -  1 = Registers can have a value.  2 = No,
-c                               also a logical register (less than 0) can
-c                               not be specified.
-c
-c           kfl     I*4  D1  -  The user requested a specific prompt
-c                               when 'kfl' = 'NLEVL'.  In this case the
-c                               prompt will be displayed on the Menu
-c                               Selection line instead of in the Menu/
-c                               Prompt text area.
-c
-c           klod    I*4  D1  -  0 = This section's prompt text is cur-
-c                               rently loaded in memory.  1 = Load the
-c                               current section's prompt text into mem-
-c                               ory and display the current section and
-c                               level.
-c
-c           kwrn    I*4  D1  -  1 = The user's input to the previous
-c                               prompt was not valid.  Reissue that
-c                               prompt again.
-c
-c   OUTPUT: kreg    I*4  Dn  -  See input.
-c
-c           gval    R*8  Dn  -  See input.
-c
-c           kcnt    I*4  D1  -  Number of registers the user input.
-c
-c           kwrn    I*4  D1  -  1 = The user interrupted input with a
-c                               ^C.  2 = Up arrow was entered.
-c
-c           cmsg    C*n  D1  -  Text of error message.
-c
-c           kerr    I*4  D1  -  Returns non-zero when an error occurred.
-c
-c***********************************************************************
-c
-      subroutine prmcod (kreg,gval,kcnt,kwds,ksw,kfl,klod,kwrn,cmsg,
-     1                   kerr)
-c
-      include 'menu.inc'
-      include 'post.inc'
-c
-      equivalence (DUMMY ,POSMAP(0003))
-c
-      real*8 DUMMY
-c
-      integer*4 kreg(2),kcnt,kwds,ksw,kfl,klod,kwrn,kerr
-c
-      real*8 gval(2)
-c
-      character*(*) cmsg
-c
-      integer*4 i,nc,nca,inc,inum,iary(20)
-c
-      real*8 rnum,rary(20)
-c
-      character*80 sbuf
-c
-c...Set up default answer
-c
-      if (IMSCAN .eq. 2) go to 200
-      nc     = 0
-      do 100 i=1,kcnt,1
-          inum   = kreg(i)
-          rnum   = gval(i)
-          call cdtoc (inum,rnum,sbuf(nc+1:80),nca)
-          nc     = nc     + nca
-          if (i .ne. kcnt) then
-              nc     = nc     + 1
-              sbuf(nc:nc) = ','
-          endif
-  100 continue
-c
-c...Get user's input
-c
-  200 call prompt (sbuf,nc,kfl,klod,kwrn,cmsg,kerr)
-      if (kerr .ne. 0) go to 8000
-      if (MOTIF .eq. 1 .and. IMSCAN .eq. 1) go to 8000
-      if (nc .eq. -1) go to 9000
-      if (nc .eq. -2) go to 9200
-c
-c...Check validity of answer
-c
-      if (nc .eq. 0) then
-          inc    = 0
-          kreg(1) = 0
-          gval(1) = DUMMY
-      else
-          i      = 1
-          inc    = 0
-  500     nca    = index(sbuf(i:nc),',')
-          if (nca .eq. 0) then
-              nca    = nc     + 1
-          else
-              nca    = i      + nca    - 1
-          endif
-          kwrn   = 0
-          call ctocd (sbuf(i:nca-1),nca-i,inum,rnum,kwrn)
-c
-          if (kwrn .eq. 1) go to 9100
-          if (inc .eq. kwds) go to 9100
-          if (rnum .ne. DUMMY .and. ksw .eq. 2) go to 9100
-          if (inum .lt. 0 .and. ksw .eq. 2) go to 9100
-c
-          inc    = inc    + 1
-          iary(inc) = inum
-          rary(inc) = rnum
-          i      = nca    + 1
-          if (i .le. nc) go to 500
-      endif
-c
-c...Store answer
-c
-      kcnt   = inc
-      do 600 i=1,kcnt,1
-          kreg(i) = iary(i)
-          gval(i) = rary(i)
-  600 continue
-      kwrn   = 0
-c
-c...End of routine
-c
- 8000 return
-c
-c...End of input from user
-c
- 9000 kwrn   = 1
-      go to 8000
-c
-c...Invalid response
-c
- 9100 call errmsg ('INVRSP',1,2)
-      kwrn   = 1
-      if (IMSCAN .eq. 2) go to 8000
-      go to 200
-c
-c...Up arrow
-c
- 9200 kwrn   = 2
-      go to 8000
-      end
-c
-c***********************************************************************
-c
-c   SUBROUTINE:  prmint (knum,kcnt,kwds,kmin,kmax,kfl,klod,kwrn,cmsg,
-c                        kerr)
-c
-c   FUNCTION:  This routine prompts for an array of integers and checks
-c              the users' input against minimum and maximum values.
-c
-c   INPUT:  knum    I*4  Dn  -  Array of integers to set up as default
-c                               answer.
-c
-c           kcnt    I*4  D1  -  Current number of values in 'knum'.  A
-c                               negative number shows that this is a
-c                               dynamic prompt.
-c
-c           kwds    I*4  D1  -  Maximum size of 'knum'.
-c
-c           kmin    I*4  Dn  -  Array of minimum values for 'knum'.
-c
-c           kmax    I*4  Dn  -  Array of maximum values for 'knum'.
-c
-c           kfl     I*4  D1  -  The user requested a specific prompt
-c                               when 'kfl' = 'NLEVL'.  In this case the
-c                               prompt will be displayed on the Menu
-c                               Selection line instead of in the Menu/
-c                               Prompt text area.
-c
-c           klod    I*4  D1  -  0 = This section's prompt text is cur-
-c                               rently loaded in memory.  1 = Load the
-c                               current section's prompt text into mem-
-c                               ory and display the current section and
-c                               level.
-c
-c           kwrn    I*4  D1  -  1 = The user's input to the previous
-c                               prompt was not valid.  Reissue that
-c                               prompt again.
-c
-c   OUTPUT: knum    I*4  Dn  -  Array of integers from user input.
-c
-c           kcnt    I*4  D1  -  Number of values in 'knum'.
-c
-c           kwrn    I*4  D1  -  1 = The user interrupted input with a
-c                               ^C.  2 = Up arrow.
-c
-c           cmsg    C*n  D1  -  Text of error message.
-c
-c           kerr    I*4  D1  -  Returns non-zero when an error occurred.
-c
-c***********************************************************************
-c
-      subroutine prmint (knum,kcnt,kwds,kmin,kmax,kfl,klod,kwrn,cmsg,
-     1                   kerr)
-c
-      include 'menu.inc'
-c
-      integer*4 knum(2),kcnt,kwds,kmin(2),kmax(2),kfl,klod,kwrn,kerr
-c
-      character*(*) cmsg
-c
-      integer*4 i,nc,iary(20),nwds,inc,ist,nchc,ipt,ibtyp
-c
-      character*80 sbuf
-c
-c...Set up default answer
-c
-      ibtyp  = 2
-      if (kcnt .lt. 0) then
-          ibtyp  = 5
-          kcnt  = abs(kcnt)
-      endif
-      if (IMSCAN .ne. 2) call geti4s (knum,kcnt,sbuf,nc)
-c
-c...Motif interface
-c...Set default answer
-c
-      if (IMSCAN .eq. 1 .and. kwds .eq. 1 .and. kmax(1)-kmin(1) .lt. 10)
-     1        then
-          inc    = MLEVL(NLEVL)
-          ist    = kmin(1) - 1
-          nchc   = kmax(1) - kmin(1) + 1
-          ipt    = 0
-          do 100 i=1,nchc,1
-cc              if (ist+i .eq. knum(1)) then
-cc                  call itoc (ist+i,SBCDEF(1,inc),nc,0)
-cc              else
-                  ipt    = ipt    + 1
-                  call itoc (ist+i,SBCDEF(ipt,inc),nc,0)
-cc              endif
-  100     continue
-          JBDCHC(inc) = knum(1) - kmin(1)
-          JBNCHC(inc) = nchc
-          JBTYPE(inc) = ibtyp
-      endif
-c
-c...Get user's input
-c
-  200 call prompt (sbuf,nc,kfl,klod,kwrn,cmsg,kerr)
-      if (kerr .ne. 0) go to 8000
-      if (MOTIF .eq. 1 .and. IMSCAN .eq. 1) go to 8000
-      if (nc .eq. -1) go to 9000
-      if (nc .eq. -2) go to 9200
-c
-c...Check validity of answer
-c
-      call geti4n (sbuf,nc,iary,nwds,kwrn)
-      if (kwrn .eq. 1) go to 9100
-      if (nwds .eq. 0) then
-          kcnt   = 0
-          knum(1) = 0
-      else
-          if (nwds .gt. kwds) go to 9100
-          do 400 i=1,nwds,1
-              if (iary(i) .lt. kmin(i) .or. iary(i) .gt. kmax(i))
-     1                go to 9100
-              knum(i) = iary(i)
-  400     continue
-          kcnt   = nwds
-      endif
-      kwrn   = 0
-c
-c...End of routine
-c
- 8000 return
-c
-c...End of input from user
-c
- 9000 kwrn   = 1
-      go to 8000
-c
-c...Invalid response
-c
- 9100 call errmsg ('INVRSP',1,2)
-      kwrn   = 1
-      if (IMSCAN .eq. 2) go to 8000
-      go to 200
-c
-c...Up arrow
-c
- 9200 kwrn   = 2
-      go to 8000
-      end
-c
-c***********************************************************************
-c
-c   SUBROUTINE:  prmrel (gnum,kcnt,kwds,gmin,gmax,kfl,klod,kwrn,cmsg,
-c                        kerr)
-c
-c   FUNCTION:  This routine prompts for an array of integers and checks
-c              the users' input against minimum and maximum values.
-c
-c   INPUT:  gnum    R*8  Dn  -  Array of reals to set up as default
-c                               answer.
-c
-c           kcnt    I*4  D1  -  Current number of values in 'gnum'.
-c
-c           kwds    I*4  D1  -  Maximum size of 'gnum'.
-c
-c           gmin    R*8  Dn  -  Array of minimum values for 'gnum'.
-c
-c           gmax    R*8  Dn  -  Array of maximum values for 'gnum'.
-c
-c           kfl     I*4  D1  -  The user requested a specific prompt
-c                               when 'kfl' = 'NLEVL'.  In this case the
-c                               prompt will be displayed on the Menu
-c                               Selection line instead of in the Menu/
-c                               Prompt text area.
-c
-c           klod    I*4  D1  -  0 = This section's prompt text is cur-
-c                               rently loaded in memory.  1 = Load the
-c                               current section's prompt text into mem-
-c                               ory and display the current section and
-c                               level.
-c
-c           kwrn    I*4  D1  -  1 = The user's input to the previous
-c                               prompt was not valid.  Reissue that
-c                               prompt again.
-c
-c   OUTPUT: gnum    R*8  Dn  -  Array of reals from user input.
-c
-c           kcnt    I*4  D1  -  Number of values in 'gnum'.
-c
-c           kwrn    I*4  D1  -  1 = The user interrupted input with a
-c                               ^C.  2 = Up arrow.
-c
-c           cmsg    C*n  D1  -  Text of error message.
-c
-c           kerr    I*4  D1  -  Returns non-zero when an error occurred.
-c
-c***********************************************************************
-c
-      subroutine prmrel (gnum,kcnt,kwds,gmin,gmax,kfl,klod,kwrn,cmsg,
-     1                   kerr)
-c
-      include 'menu.inc'
-c
-      integer*4 kcnt,kwds,kfl,klod,kwrn,kerr
-c
-      real*8 gnum(2),gmin(2),gmax(2)
-c
-      character*(*) cmsg
-c
-      integer*4 i,nc,nwds
-c
-      real*8 rary(20)
-c
-      character*80 sbuf
-c
-c...Set up default answer
-c
-      if (IMSCAN .ne. 2) call getr8s (gnum,kcnt,sbuf,nc)
-c
-c...Get user's input
-c
-  200 call prompt (sbuf,nc,kfl,klod,kwrn,cmsg,kerr)
-      if (kerr .ne. 0) go to 8000
-      if (MOTIF .eq. 1 .and. IMSCAN .eq. 1) go to 8000
-      if (nc .eq. -1) go to 9000
-      if (nc .eq. -2) go to 9200
-c
-c...Check validity of answer
-c
-      call getr8n (sbuf,nc,rary,nwds,kwrn)
-      if (kwrn .eq. 1) go to 9100
-      if (nwds .eq. 0) then
-          kcnt   = 0
-          gnum(1) = 0
-      else
-          if (nwds .gt. kwds) go to 9100
-          do 400 i=1,nwds,1
-              if (rary(i) .lt. gmin(i) .or. rary(i) .gt. gmax(i))
-     1                go to 9100
-              gnum(i) = rary(i)
-  400     continue
-          kcnt   = nwds
-      endif
-      kwrn   = 0
-c
-c...End of routine
-c
- 8000 return
-c
-c...End of input from user
-c
- 9000 kwrn   = 1
-      go to 8000
-c
-c...Invalid response
-c
- 9100 call errmsg ('INVRSP',1,2)
-      kwrn   = 1
-      if (IMSCAN .eq. 2) go to 8000
-      go to 200
-c
-c...Up arrow
-c
- 9200 kwrn   = 2
-      go to 8000
-      end
-c
-c***********************************************************************
-c
-c   SUBROUTINE:  prmstr (knum,cdat,kwds,kfl,klod,kwrn,cmsg,kerr)
-c
-c   FUNCTION:  This routine prompts for a character string and checks
-c              the users' input against an array of acceptable strings.
-c
-c   INPUT:  knum    I*4  D1  -  Position within array of default answer.
-c
-c           cdat    C*n  Dn  -  Array of acceptable strings.
-c
-c           kwds    I*4  D1  -  Number of acceptable character strings.
-c                               A negative number specifies a dynamic
-c                               prompt.  A value of 0 means not to check
-c                               against array and return actual text string
-c                               entered.
-c
-c           kfl     I*4  D1  -  The user requested a specific prompt
-c                               when 'kfl' = 'NLEVL'.  In this case the
-c                               prompt will be displayed on the Menu
-c                               Selection line instead of in the Menu/
-c                               Prompt text area.
-c
-c           klod    I*4  D1  -  0 = This section's prompt text is cur-
-c                               rently loaded in memory.  1 = Load the
-c                               current section's prompt text into mem-
-c                               ory and display the current section and
-c                               level.
-c
-c           kwrn    I*4  D1  -  1 = The user's input to the previous
-c                               prompt was not valid.  Reissue that
-c                               prompt again.
-c
-c   OUTPUT: cdat    C*n  D1  -  Updated text string when kwds = 0.
-c
-c           knum    I*4  Dn  -  Position within array of users' answer or
-c                               Number of chars in 'cdat' when kwds = 0.
-c
-c           kwrn    I*4  D1  -  1 = The user interrupted input with a
-c                               ^C.
-c
-c           cmsg    C*n  D1  -  Text of error message.
-c
-c           kerr    I*4  D1  -  Returns non-zero when an error occurred.
-c
-c***********************************************************************
-c
-      subroutine prmstr (knum,cdat,kwds,kfl,klod,kwrn,cmsg,kerr)
-c
-      include 'menu.inc'
-c
-      integer*4 knum,kwds,kfl,klod,kwrn,kerr
-c
-      character*(*) cdat(2),cmsg
-c
-      integer*4 nc,strlen1,i,inc,ipt,ibut,inum
-c
-      character*80 sbuf
-c
-c...Dynamic prompt
-c
-      ibut   = 2
-      if (kwds .lt. 0) then
-          kwds   = abs(kwds)
-          ibut   = 5
-      endif
-c
-c...Motif interface
-c...Set default answer
-c
-      inum   = 1
-      if (MOTIF .eq. 1 .and. IMSCAN .eq. 1 .and. kwds .gt. 0) then
-          inc    = MLEVL(NLEVL)
-          ipt    = 0
-          inum   = knum
-          do 100 i=1,kwds,1
-cc              if (i .eq. knum) then
-cc                  SBCDEF(1,inc) = cdat(i)
-cc              else
-                  ipt    = ipt    + 1
-                  SBCDEF(ipt,inc) = cdat(i)
-cc              endif
-  100     continue
-          JBNCHC(inc) = kwds
-          JBDCHC(inc) = knum - 1
-          JBTYPE(inc) = ibut
-      endif
-c
-c...Set up default answer
-c
-      sbuf   = cdat(inum)
-      nc     = strlen1(sbuf)
-c
-c...Get user's input
-c
-  200 call prompt (sbuf,nc,kfl,klod,kwrn,cmsg,kerr)
-      if (kerr .ne. 0) go to 8000
-      if (MOTIF .eq. 1 .and. IMSCAN .eq. 1) go to 8000
-      if (nc .eq. -1) go to 9000
-      if (nc .eq. -2) go to 9200
-c
-c...Calling routine wants string returned only
-c
-      if (kwds .eq. 0) then
-          cdat(1) = sbuf
-          knum   = nc
-          kwrn   = 0
-c
-c...Check validity of answer
-c
-      else
-          if (nc .eq. 0) go to 9100
-          call touppr (sbuf,sbuf)
-          do 400 i=1,kwds,1
-              if (sbuf .eq. cdat(i)) go to 450
-  400     continue
-          go to 9100
-  450     knum   = i
-          kwrn   = 0
-      endif
-c
-c...End of routine
-c
- 8000 return
-c
-c...End of input from user
-c
- 9000 kwrn   = 1
-      go to 8000
-c
-c...Invalid response
-c
- 9100 call errmsg ('INVRSP',1,2)
-      kwrn   = 1
-      if (IMSCAN .eq. 2) go to 8000
-      go to 200
-c
-c...Up arrow
-c
- 9200 kwrn   = 2
-      go to 8000
-      end
-c
-c***********************************************************************
-c
-c   SUBROUTINE:  prmvoc (knum,kvoc,kwds,kfl,klod,kwrn,cmsg,kerr)
-c
-c   FUNCTION:  This routine prompts for a vocabulary word and checks the
-c              the users' input against an array of accepted words.
-c
-c   INPUT:  knum    I*4  D1  -  Position within array of default answer.
-c
-c           kvoc    I*4  Dn  -  Array of acceptable vocabulary word
-c                               values.
-c
-c           kwds    I*4  D1  -  Number of acceptable vocabulary words.
-c                               A negative number specifies a dynamic
-c                               prompt.
-c
-c           kfl     I*4  D1  -  The user requested a specific prompt
-c                               when 'kfl' = 'NLEVL'.  In this case the
-c                               prompt will be displayed on the Menu
-c                               Selection line instead of in the Menu/
-c                               Prompt text area.
-c
-c           klod    I*4  D1  -  0 = This section's prompt text is cur-
-c                               rently loaded in memory.  1 = Load the
-c                               current section's prompt text into mem-
-c                               ory and display the current section and
-c                               level.
-c
-c           kwrn    I*4  D1  -  1 = The user's input to the previous
-c                               prompt was not valid.  Reissue that
-c                               prompt again.
-c
-c   OUTPUT: knum    I*4  Dn  -  Position within array of users' answer.
-c
-c           kwrn    I*4  D1  -  1 = The user interrupted input with a
-c                               ^C.  2 = Up arrow.
-c
-c           cmsg    C*n  D1  -  Text of error message.
-c
-c           kerr    I*4  D1  -  Returns non-zero when an error occurred.
-c
-c***********************************************************************
-c
-      subroutine prmvoc (knum,kvoc,kwds,kfl,klod,kwrn,cmsg,kerr)
-c
-      include 'menu.inc'
-c
-      integer*4 knum,kvoc(2),kwds,kfl,klod,kwrn,kerr
-c
-      character*(*) cmsg
-c
-      integer*4 nc,inum,i,inc,ipt,ibut
-c
-      character*80 sbuf
-c
-c...Dynamic prompt
-c
-      ibut   = 2
-      if (kwds .lt. 0) then
-          kwds   = abs(kwds)
-          ibut   = 5
-      endif
-c
-c...Motif interface
-c...Set default answer
-c
-      if (MOTIF .eq. 1 .and. IMSCAN .eq. 1) then
-          inc    = MLEVL(NLEVL)
-          ipt    = 0
-          do 100 i=1,kwds,1
-cc              if (i .eq. knum) then
-cc                  call getvwd (kvoc(i),SBCDEF(1,inc),nc,0,
-cc     1                         MENWRD,MENWVL,NMENWD)
-cc              else
-                  ipt    = ipt    + 1
-                  call getvwd (kvoc(i),SBCDEF(ipt,inc),nc,0,
-     1                         MENWRD,MENWVL,NMENWD)
-cc              endif
-  100     continue
-          JBNCHC(inc) = kwds
-          JBDCHC(inc) = knum - 1
-          JBTYPE(inc) = ibut
-      endif
-c
-c...Set up default answer
-c
-      if (IMSCAN .ne. 2)
-     1    call getvwd (kvoc(knum),sbuf,nc,0,MENWRD,MENWVL,NMENWD)
-c
-c...Get user's input
-c
-  200 call prompt (sbuf,nc,kfl,klod,kwrn,cmsg,kerr)
-      if (kerr .ne. 0) go to 8000
-      if (MOTIF .eq. 1 .and. IMSCAN .eq. 1) go to 8000
-      if (nc .eq. -1) go to 9000
-      if (nc .eq. -2) go to 9200
-c
-c...Check validity of answer
-c
-      call getvnr (sbuf,kvoc,kwds,inum,MENWRD,MENWVL,NMENWD)
-      if (inum .eq. 0) go to 9100
-      knum   = inum
-      kwrn   = 0
-c
-c...End of routine
-c
- 8000 return
-c
-c...End of input from user
-c
- 9000 kwrn   = 1
-      go to 8000
-c
-c...Invalid response
-c
- 9100 call errmsg ('INVRSP',1,2)
-      kwrn   = 1
-      if (IMSCAN .eq. 2) go to 8000
-      go to 200
-c
-c...Up arrow
-c
- 9200 kwrn   = 2
-      go to 8000
-      end
-c
-c***********************************************************************
-c
-c   SUBROUTINE:  prompt (cbuf,knc,kfl,klod,kwrn,cmsg,kerr)
-c
-c   FUNCTION:  This is the prompt handling routine.  It displays a sin-
-c              gle prompt and gets the user's input from the keyboard.
-c              It also displays the current section and level when it
-c              changes.  The HELP feature is controlled by this routine.
-c              'prompt' must be called a separate time for each prompt,
-c              regardless if it is in the same level or not.
-c
-c   INPUT:  kfl     I*4  D1  -  The user requested a specific prompt
-c                               when 'kfl' = 'NLEVL'.  In this case the
-c                               prompt will be displayed on the Menu
-c                               Selection line instead of in the Menu/
-c                               Prompt text area.
-c
-c           klod    I*4  D1  -  0 = This section's prompt text is cur-
-c                               rently loaded in memory.  1 = Load the
-c                               current section's prompt text into mem-
-c                               ory and display the current section and
-c                               level.
-c
-c           kwrn    I*4  D1  -  1 = The user's input to the previous
-c                               prompt was not valid.  Reissue that
-c                               prompt again.
-c
-c   OUTPUT: cbuf    C*n  D1  -  Character string that contains the
-c                               user's input.  If 'knc' is greater than
-c                               0 when 'prompt' is called, then 'cbuf'
-c                               also contains the default input.
-c
-c           knc     I*4  D1  -  Number of characters in 'cbuf'.  -1 =
-c                               input was interrupted with a ^C.  -2 =
-c                               Up arrow.
-c
-c           cmsg    C*n  D1  -  Text of error message.
-c
-c           kerr    I*4  D1  -  Returns non-zero when an error occurred.
-c
-c***********************************************************************
-c
-      subroutine prompt (cbuf,knc,kfl,klod,kwrn,cmsg,kerr)
-c
-      include 'menu.inc'
-c
-      integer*4 knc,kfl,kwrn,klod,kerr
-c
-      character*(*) cbuf,cmsg
-c
-      integer*4 ipt,itxt,nc,ntxt,i,ilev,ilod,strlen1,ierr,nca,inc
-c
-      character*80 sbuf,abuf
-c
-c...Initialize routine
-c
-      if (knc .eq. 0) cbuf = ' '
-      abuf   = cbuf
-      ilev   = MLEVL(NLEVL) + 1
-c
-c...Motif interface
-c
-      if (MOTIF .eq. 1) then
-c
-c......Set default answer
-c
-          if (IMSCAN .eq. 1) then
-              if (klod .eq. 1) then
-                  call lodmen (MLEVL,NLEVL,cmsg,kerr)
-                  if (kerr .ne. 0) go to 8000
-                  PRMSP  = 0
-              endif
-              inc    = MLEVL(NLEVL)
-              IMTYP = 2
-              JBTACT(inc) = 1
-              if (JBTYPE(inc) .eq. 0) JBTYPE(inc) = 4
-              SBDEF(inc) = cbuf
-c
-c......Return answer from user
-c
-          else
-              abuf   = MFANS
-              knc    = MFKNC
-              kerr   = 0
-              kwrn   = 0
-          endif
-          go to 8000
-      endif
-c
-c...Error on last prompt input
-c...Get input again
-c
-      if (kwrn .eq. 1) then
-          ipt    = IPRDAT(2,ilev)
-          itxt   = (ipt-1) * 4 + 5
-          nc     = IPRTXT(ipt)
-  100     nca    = knc
-          call getlin (abuf,knc,len(cbuf),IPRLIN,nc+2)
-c
-c......Up arrow
-c......Go to previous prompt
-c
-          if (knc .eq. -2) then
-              if (PRMSP .ne. 0) go to 8000
-              knc    = nca
-              go to 100
-c
-c......^W
-c......Redisplay page
-c
-          else if (knc .eq. -3) then
-              call disban
-              call dissec
-              ipt    = IPRDAT(2,ilev)
-              itxt   = (ipt-1) * 4 + 5
-              nc     = IPRTXT(ipt)
-              call plott (IPRLIN,1)
-              call dmpbuf (LPRTXT(itxt:itxt+nc-1),nc)
-              knc    = nca
-              go to 100
-          endif
-c
-c......Erase error messages
-c
-          call errmsg (' ',2,1)
-          call errmsg (' ',2,2)
-c
-c......? Entered
-c......Display help text
-c
-          if (knc .eq. 1 .and. abuf(1:1) .eq. '?') then
-              abuf   = cbuf
-              knc    = strlen1(abuf)
-              call levasc (MLEVL,NLEVL,sbuf)
-              call helpi (sbuf,MLEVL(1),ierr)
+      subroutine prompt
+
+      include 'com8a.com'
+
+      character*24  vword(20)
+      character*80  varname
+      character*41  prmpt,defstr,prmpt0, tmpprmt
+      character*65  scal, descript, tempdesp
+      character*21  classname, classtr_sav
+      character*80  label
+      character*481 wrdlist, wrdlist0
+      character*256 clrstr
+
+      integer*4     outflag, dispflag, substr, pflag, substr0, pflag0
+      integer*4     k,counter,counter0,strlen1,n,iend,llen,psel0, psel
+      logical       minmax,defv,defs,defp,lgeo,clasdefs,prsflag
+
+      integer*2     j,found1,imc, jv
+
+      real*8        rdata(36),min,max,min0,max0
+      integer*2     prsvalue,lenvalue,prsvalue0,lenvalue0,ietype,
+     1              len1, len2, len3, geomflag, geomflag0
+      integer*2     idata(144),nwds,sub(4),n2,len,clas
+      character*288 cdata
+      equivalence   (rdata,idata,cdata), (idata(2),nwds)
+      equivalence   (rest,sub)
+   
+      character*(MAX_LEN) tmpcin,ucin,tmpcn
+      integer*2     tmpinx
+      character*200 tmpout
+
+      integer*4     klin, kcol, knc, kmxc, geotype,nclkey
+      integer*4     clr, isub, pclr0
+
+      character*8   fmt(14)
+      data fmt /' ','SHAPE/','POINT/','VECTOR/','LINE/','PLANE/',
+     *              'CIRCLE/','CURVE/','SURF/','MATRIX/','PNTVEC/',
+     *              'PATERN/','SOLID/',' '/
+
+      character*64   macname
+      equivalence    (sc165,macname)
+ 
+      logical leq5
+      integer*2 ktv(4),numprm,head(12),mode
+      integer*4 maclin,termln,next,jhead(4)
+      equivalence (head,leq5),(jhead,leq5)
+      equivalence (maclin,jhead(1)),(next,jhead(2))
+      equivalence (termln,jhead(3)),(mode,head(7))
+      equivalence (ktv,tv)
 
 c
-c......No help text
-c......Go get input again
+c...Initiation block
 c
-              if (ierr .eq. 1) go to 100
+      varname = ' '
+      scal = ' '
+      tempdesp = ' '
+      descript = ' '
+      min =      0
+      max =      0
+      prmpt =    ' '
+      counter =  0
+      prsvalue = 4
+      lenvalue = 9
+      geotype  = 1
+      defstr   = ' '
+      minmax =   .false.
+      defv   =   .false.
+      defs   =   .false.
+      defp   =   .false.
+      clasdefs = .false.
+      prsflag = .false.
+      substr = -1
+      pflag = -1
+      psel = -1
+      imc    = 0
+      geomflag = 0
+      clr = -2
 c
-c......Help text was displayed
-c......Display prompt at Selection line
+c...If we are executing a macro now - not to do anything.
+c...Or if we are in the batch mode - use defaults only.
 c
-              IPRLIN = ISELIN
-              SNLEVL = 0
-              call plott (IPRLIN,1)
-              call dmpbuf (LPRTXT(itxt:itxt+nc-1),nc)
-              go to 100
-          endif
+      if (ifl(38) .eq. 2 ) return
 c
-          PRMSP  = PRMSP  + 1
-          PRMSTK(PRMSP) = MLEVL(NLEVL)
-          go to 8000
+c...Not /
+c
+      if (nextyp .ne. 5) then
+         call error(22)
+         return
+      endif
+ 
+      ldtext = .true.
+      ifl(44) = 9
+      call parsit
+c
+c...Have got something else instead of identifier at the "NAME" place.
+c
+      if ((ityp .eq. 1) .and. (ist .eq. 601)) then
+c
+c...SCALAR
+c...prompt/SCALAR, name [,class], desp_text
+c
+         call parsit
+c
+c...if it is not a scalar name, then wrong
+c
+         if ((ityp .ne. 2) .or. (ist.ne.2)) then
+             call error(87)
+             goto 99999
+         endif         
+c
+c...Get full variable name from the token
+c
+         call expnm2(token2, ivxsub, jv,scal)
+c
+c...',' expected.
+c
+         if(nextyp .ne. 9) then
+            ityp = 1
+            call error(57)
+            goto 99999
+         endif
+         call parsit
+         len1 = 0
+         len2 = 0
+         len3 = 0
+   60    if(ityp .eq. 9) then
+            if ((.not.clasdefs).and.(.not.defp)) then
+c
+c....text string, it could be class name
+c
+                 classname = token2
+                 tempdesp = token2
+                 clasdefs = .true.
+                 len2 = strlen1 (classname)
+            else if (.not.defp) then
+                 descript = token2
+                 defp  = .true.
+                 len3 = strlen1 (descript)
+            else
+                 call error(4)
+                 goto 99999
+            endif
+            call parsit
+            goto 60
+         else if (ityp .eq. 2 .and. ist.eq.TEXTVAR) then
+            if ((.not.clasdefs).and.(.not.defp)) then
+c
+c....text variable, it could be class name
+c
+                len = 20
+                call gtdesc(tv,nclkey,nwds,ietype)
+                call ncl_gttext(nclkey,classname,len)
+                do 250 j=len+1,20,1
+                    classname(j:j) = ' '
+  250           continue 
+                tempdesp(1:20) = classname(1:20)
+                len2 = strlen1 (classname)
+                clasdefs = .true.
+            else if (.not.defp) then
+                defp  = .true.
+                len   = 40
+                call gtdesc(tv,nclkey,nwds,ietype)
+                call ncl_gttext(nclkey,descript,len)
+                len3 = strlen1 (descript)
+            else
+                call error(4)
+                goto 99999
+            endif
+            call parsit
+            goto 60
+         endif
+c
+c...If next elmt is not "End Of Input" and not ','
+c
+         if(nextyp .ne. 11 .and. nextyp .ne. 9) then
+              ityp = 1
+              call error(57)
+              goto 99999
+         endif
+c
+c...If the next elmt is EOI and clasdefs = .false.
+c
+         if ((nextyp .eq. 11) .and. (.not.clasdefs) 
+     1                        .and. (.not.defp) ) then
+             call error(440)
+             goto 99999
+         endif
+
+         if(clasdefs .and. (.not.defp) ) then
+              descript = tempdesp
+              defp  = .true.
+              clasdefs  = .false.
+              len2 = 0
+              len3 = strlen1 (descript)
+         endif
+
+         len1 = strlen1(scal)
+         call ncl_savscalar(scal, len1, classname, len2,
+     1           descript, len3)
+         goto 99999
+      else if (ityp .ne. 2) then
+         call error(87)
+         goto 99999
       endif
 c
-c...No error on last prompt
-c...Load the levels of menu items
+c...Not macro mode: Any type of identifier allowed.
+c      
+      if(ifl(38) .eq. 0) then
+         if (ityp .ne. 2) then
+            call error(282)
+            goto 99999
+         endif
+      else 
 c
-      if (klod .eq. 1) then
-          call lodmen (MLEVL,NLEVL,cmsg,kerr)
-          if (kerr .ne. 0) go to 8000
-          PRMSP  = 0
+c...Defining macro mode: macro parameter only allowed.
+c...Allow for the Macro name to have a description
+c...Bobby  -  10/2/97
+c
+         if (ityp .ne. 2 .or. (ist .ne. 11 .and. ist .ne. 12)) then
+            call error(70)
+            goto 99999
+         endif
+         if (ist .eq. 11 .and. token2 .ne. macname) then
+            call error(70)
+            goto 99999
+         endif
+         if (ist .eq. 11) imc = 1
       endif
-      ilod   = klod
-      klod   = 0
 c
-c......User requested direct access to prompt
-c......Display this prompt only
+c...Get full variable name from the token
 c
-  500 if (kfl .eq. NLEVL) then
-          IPRLIN = ISELIN
-          call plott (IPRLIN,1)
+      call expnm2(token2,ivxsub,jv,varname)
 c
-c......First prompt in this section
-c......Erase screen & initialize screen pointers
+c...',' expected.
+c
+      if(nextyp .ne. 9) then
+         ityp = 1
+         call error(57)
+         goto 99999
+      endif
+c
+c...This part of the command is going to be different for
+c...the macro definition mode and the command mode.
+c
+c...Macro Definition mode.
+c...PROMPT/NAME[,len,pres],"PROMPT_STR"[,min,max]
+c...           ^                       [,vocword list]
+c...           |
+c
+      if (ifl(38) .eq. 1) then
+         call ncl_getmac_parms0(classname, outflag, dispflag,
+     1               prmpt)
+         classtr_sav = classname
+         call parsit
+         if(.not.scalar) goto 80
+c
+         if (imc.eq.1) then
+            call error(440)
+            goto 99999
+         endif
+
+         lenvalue = tv
+         call parsit
+         if(.not.scalar) then
+            call error(282)
+            goto 99999
+         endif
+         prsvalue = tv
+         prsflag = .true.
+c     
+         call parsit
+c
+c...Prompt string expected
+c
+   80    if (imc.eq.1) then
+             if (ityp .eq. 9) then
+                 if ((.not.clasdefs).and.(.not.defp)) then
+c
+c....text string, it could be class name
+c
+                     classname = token2
+                     tmpprmt = token2
+                     clasdefs = .true.
+                 else if (.not.defp) then
+                     prmpt = token2
+                     defp  = .true.
+                 else
+                     call error(4)
+                     goto 99999
+                 endif
+                 call parsit
+                 goto 80
+             else if (ityp .eq. 2 .and. ist.eq.TEXTVAR) then
+                 if ((.not.clasdefs).and.(.not.defp)) then
+c
+c....text variable, it could be class name
+c
+                     len = 20
+                     call gtdesc(tv,nclkey,nwds,ietype)
+                     call ncl_gttext(nclkey,classname,len)
+                     do 150 j=len+1,20,1
+                         classname(j:j) = ' '
+  150                continue 
+                     tmpprmt(1:20) = classname(1:20)
+                     clasdefs = .true.
+                 else if (.not.defp) then
+                     defp  = .true.
+                     len   = 40
+                     call gtdesc(tv,nclkey,nwds,ietype)
+                     call ncl_gttext(nclkey,prmpt,len)
+                 else
+                     call error(4)
+                     goto 99999
+                 endif
+                 call parsit
+                 goto 80
+             endif
+
+             if (ityp .eq. 1 .and. ist.eq.172) then
+c...OMIT
+                 outflag = 0
+                 call parsit
+                 goto 80
+             else if (ityp .eq. 1 .and. ist.eq.653) then
+c...OUT
+                 outflag = 1
+                 call parsit
+                 goto 80
+             endif
+             if (ityp .eq. 1 .and. ist.eq.329) then
+c...RETAIN
+                 dispflag = 1
+                 call parsit
+                 goto 80
+             else if (ityp .eq. 1 .and. ist.eq.903) then
+c...DEFALT
+                 dispflag = 0
+                 call parsit
+                 goto 80
+             endif
+c
+c...If next elmt is not "End Of Input" and not ','
+c
+             if(nextyp .ne. 11 .and. nextyp .ne. 9) then
+                 ityp = 1
+                 call error(57)
+                 goto 99999
+             endif
+c
+c...If the next elmt is EOI and clasdefs = .false.
+c
+             if ((nextyp .eq. 11) .and. (.not.clasdefs) 
+     1                        .and. (.not.defp) ) then
+                 call error(440)
+                 goto 99999
+             endif
+
+             if(clasdefs .and. (.not.defp) ) then
+                 prmpt = tmpprmt
+                 defp  = .true.
+                 classname= classtr_sav
+                 clasdefs  = .false.
+             endif
+         endif
+         if (imc.eq.0) then
+            if (ityp .eq. 9) then
+               prmpt = token2
+               call parsit
+            else if (ityp .eq. 2 .and. ist.eq.TEXTVAR) then
+               prmpt = ' '
+               len = 40
+               call gtdesc(tv,nclkey,nwds,ietype)
+               call ncl_gttext(nclkey,prmpt,len)
+               call parsit
+            else
+               call error(440)
+               goto 99999
+            endif
+         endif
+      else
+c
+c...Command mode.
+c...PROMPT/NAME[,defvalue],"PROMPT_STR"[,min,max]
+c...           [,"defstr"]             [,geotype]
+c...           ^
+c...           |
+c
+         call parsit
+         if(scalar) then
+            defval = tv
+            defv   = .true.
+         else if(ityp .eq. 9) then
+            defstr = token2
+            defs   = .true.
+         else if (ityp .eq. 2 .and. ist.eq.TEXTVAR) then
+            defstr = ' '
+            len = 40
+            call gtdesc(tv,nclkey,nwds,ietype)
+            call ncl_gttext(nclkey,defstr,len)
+            defs   = .true.
+         else
+            call error(440)
+            goto 99999
+         endif
+c
+c...If next elmt is not "End Of Input" and not ','
+c
+         if(nextyp .ne. 11 .and. nextyp .ne. 9) then
+            ityp = 1
+            call error(57)
+            goto 99999
+         endif
+c
+c...If the next elmt is EOI and defs = .false.
+c
+         if (nextyp .eq. 11 .and. (.not.defs)) then
+            call error(440)
+            goto 99999
+         endif
+         call parsit
+         if(ityp .eq. 9) then
+            prmpt = token2
+            defp  = .true.
+            call parsit
+         else if (ityp .eq. 2 .and. ist.eq.TEXTVAR) then
+            prmpt = ' '
+            defp  = .true.
+            len   = 40
+            call gtdesc(tv,nclkey,nwds,ietype)
+            call ncl_gttext(nclkey,prmpt,len)
+            call parsit
+         endif
+      endif
+c
+c...Simple case. No limits. 
+c
+      if (ityp .eq. 7) goto 1000
+c...
+c...MIN / MAX
+c...
+      if (imc.eq.1) goto 1000
+      if (scalar) then
+         if (defs .and. defp) then
+            call error(446)
+            goto 99999
+         endif
+         if (nextyp .ne. 9) then
+            call error(57)
+            goto 99999
+         endif
+         min = tv
+         call parsit
+         if(.not. scalar) then
+            call error(282)
+            goto 99999
+         endif
+         max = tv
+         minmax = .true.
+c
+c...MIN/MAX is the end of the statement
+c
+         call parsit
+	   if (ityp .eq. 7) goto 1000
+         call error(4)
+         goto 99999
+      else if(ityp .eq. 1) then
+c...
+c... A LIST OF VOCABULARY WORDS
+c...
+c
+c... Vocabulary words are not allowed in the command mode.
+c... geometry types are only allowed in this mode. They are:
+c... SCALER-601, SHAPE-602, POINT-603, VECTOR-604, LINE-605, PLANE-606, 
+c... CIRCLE-607, CURVE-608, SURF-609,  MATRIX-610, PV-613,   PATERN-636
+c
+         if(ifl(38) .ne. 1) then 
+            if(ist .lt. 601 .or.  
+     *        (ist.gt.610 .and. ist.ne.613 .and. ist.ne.636))then 
+               call error(1) 
+               goto 99999 
+            endif 
+            if(defv .and. ist .ne. 601) then
+               call error(448)
+               goto 99999
+            endif
+            iend = 1
+            if(ist .le. 610) geotype = ist - 600
+            if(ist .eq. 613) geotype = 11
+            if(ist .eq. 636) geotype = 12
+            if(ist .eq. 123) geotype = 13
+         else
+c
+c...added SUBSTR, RETAIN    and NOW
+c...              LABEL         NEXT
+c...              NUM
+            if (ityp .eq. 1 .and. ist.eq.580) then
+c...SUBSTR
+                call parsit
+                if (ityp .eq. 1 .and. ist.eq.329) then
+c...RETAIN
+                    substr = 0
+                    call parsit
+                else if (ityp .eq. 1 .and. ist.eq.936) then
+c...LABEL
+                    substr = 1
+                    call parsit
+                else if (ityp .eq. 1 .and. ist.eq.563) then
+c...NUM
+                    substr = 2
+                    call parsit
+                else 
+                    call error(232)
+	              goto 99999
+                endif
+            endif
+
+            if (ityp .eq. 7) goto 1000
+
+            if (ityp .eq. 1 .and. ist.eq.161) then
+c...NOW
+                pflag = 0
+                call parsit
+            else if (ityp .eq. 1 .and. ist.eq.162) then
+c...NEXT
+                pflag = 1
+                call parsit
+            endif
+            if (ityp .eq. 7) goto 1000
+           
+            if (ityp .eq. 1 .and. ist.eq.1074) then
+c....SELECT                
+                psel = 1
+                call parsit
+                if (ityp .eq. 7) goto 1000
+c
+c...if SELECT, need followed a color
+c
+                 if (ITYP .eq. 1) then
+                    clrstr = token2
+                    j = strlen1(token2)
+                    isub = 0
+                    call ncl_getclr_inx(clrstr, j, isub, clr)
+                 else if ((ITYP .eq. 2 .and. ist.eq.1 ).or.
+     x              (ITYP .eq. 2 .and. ist.eq.24 ).or.
+     x              (ityp.eq.9)) then
+                    if ((ityp.eq.9).or.(ITYP.eq.2 .and. ist.eq.1)) then
+                      clrstr = token2
+                      j = strlen1(token2)
+                      isub = ivxsub
+                    endif
+                    if (ityp.eq.2.and.ist.eq.24) then
+                       j = 0
+                       call gttext(clrstr,j)
+                       isub = 0
+                    endif
+                    call ncl_getclr_inx(clrstr, j, isub, clr)
+                 else if (.not.( (ityp.eq.3).or.(ityp.eq.4).or.
+     x              ((ityp.eq.2).and.(ist.eq.2)) )) then
+                    ifl(2)=53
+                    go to 99999
+                 else
+                    clr = tv
+                 endif
+                 call parsit
+            else if (ityp .eq. 1 .and. ist.eq.325) then
+c....ONCE          
+                psel = 0
+                call parsit
+            endif
+c...MIN/MAX
+c
+            if (ityp .eq. 7) goto 1000
+            if (scalar) then
+                if (defs .and. defp) then
+                   call error(446)
+                   goto 99999
+                endif
+                if (nextyp .ne. 9) then
+                   call error(57)
+                   goto 99999
+                endif
+                min = tv
+                call parsit
+                if(.not. scalar) then
+                   call error(282)
+                   goto 99999
+                endif
+                max = tv
+                minmax = .true.
+c
+c...MIN/MAX is the end of the statement
+c
+                call parsit
+                if (ityp .eq. 7) goto 1000
+                call error(4)
+                goto 99999
+            else
+                iend = 20
+                geomflag = 1
+                do 300 i=1,iend,1 
+c
+c....if the word is not geometry types, set geom-list flag = 0
+c... if the wordlist include all word area geometry types, then geomflag=1
+c... SCALER-601, SHAPE-602, POINT-603, VECTOR-604, LINE-605, PLANE-606, 
+c... CIRCLE-607, CURVE-608, SURF-609,  MATRIX-610, PV-613,   PATERN-636
+C... SOLID-123
+c
+                   if ((ist .lt. 601 .and. ist.ne.123) .or.  
+     *             (ist.gt.610 .and. ist.ne.613 .and. ist.ne.636)) then
+                       geomflag = 0
+                   endif
+                   vword(i) = token2(1:24)
+                   counter  = i
+                   if (nextyp .eq. 11) goto 1000
+                   if (nextyp .ne. 9) then
+                       call error(57)
+                       goto 99999
+                   endif
+c
+c...'thru' claud not allow, return word set idtype=-1 to avoid error
+c...message from parser thru claud  
+c...yurong
+c
+                   idtype = -1
+                   call parsit
+                   if (ityp .ne. 1) then
+                       call error(282)
+                       goto 99999
+                  endif
+  300          continue
+            endif
+	   endif
+      else
+         call error(442)
+         goto 99999
+      endif
+
+ 1000 continue
+c...
+c...All syntax is ok. Now if we are in the "macro definition" mode
+c...save this information in the ranfil, othewise interrupt the execution,
+c...print out the prompt and wait for an answer.
+c...
+      if(ifl(38) .eq. 0) then
+c
+c...Running (running step) mode
+c
+         tmpcin = cin
+         tmpinx = inx
+         if(defs .and. (.not.defp) ) then
+            prmpt = defstr
+            defp  = .true.
+            defstr= ' '
+            defs  = .false.
+         endif
+         call putw2(nline)
+         cout = ' '
+         if(minmax) then
+            write(tmpout,20) min,max
+   20       format(' [Range: ',f20.4,'-',f20.4,']')
+            call delsp(tmpout,strlen1(tmpout))
+            cout = tmpout
+         endif
+c
+c...Get the defstr 
+c
+         if(defs) then
+            n = strlen1(cout)
+            if (n .gt. 0) then
+               write(tmpout,30)cout(1:n),defstr  
+   30          format(A,'[Default: ',A,']')
+            else
+               write(tmpout,35)defstr
+   35          format('[def:',A,']')
+            endif
+            call delsp(tmpout,strlen1(tmpout))
+            cout = tmpout
+         endif
+c
+c...Get the defval 
+c
+         if(defv) then
+            n = strlen1(cout)
+            if (n .gt. 0) then
+               write(tmpout,31)cout(1:n),defval
+   31          format(A,'[def:',f20.4,']')
+            else    
+               write(tmpout,36)defval
+   36          format('[def:',f20.4,']')
+            endif   
+            call delsp(tmpout,strlen1(tmpout))
+            cout = tmpout
+         endif
+c
+c...Get the prompt 
+c
+         n = strlen1(cout)
+         if(n .lt. 1) n = 1
+         write(tmpout,40)prmpt,cout(1:n)
+   40    format(A,A)
+         cout = tmpout
+         inx = 1
+         if (ifl(35) .eq. 2) then
+c
+c...NCL-VT output style
+c
+            n = strlen1(cout)
+            n2 = n
+            call putmsg(cout,n2,2,3)
+            nccin = 0
+            kmxc =5
+            kcol = 9
+            klin = 1
+            call gvtlin(cin,nccin,kmxc,klin,kcol)
+            klin = 3
+            kcol = 1
+            call plot(klin,kcol)
+            call clreol
+            call wflush
+         else if(ifl(35) .eq. 0) then
+c
+c...Regular NCL output style
+c
+            nccout = strlen1(cout)
+            call nclpmt (cout, nccout, cin, nccin)
+         else if(ifl(35) .eq. 1) then
+c
+c...Batch mode. No output, use defaults only.
+c
+            cin = ' '
+            nccin = 0
+         endif
+         call convrt(cin,ucin,nccin)
+         cin = ucin(1:nccin)
+         call clswin()
+         call parsit
+c
+c...Handle the answer
+c
+         if(ityp .ne. 7) then
+             if(scalar .and. geotype .eq. 1 .and. minmax) then
+                if (tv .gt. max .or. tv .lt. min) then
+                   call error(445)
+                   goto 99999
+                endif
+             endif
+c
+             tmpcn= cin(1:nccin)
+c
+             write(cin,601) varname(1:jv),fmt(geotype)
+             nccin = strlen1(cin)
+             call delsp(cin,nccin)
+             write(cin(n+1:),602)tmpcn(1:255-n)
+  601        format(A,'=',A,A)
+  602        format(A)
+         else
+            if (defs) then
+               write(cin,601) varname(1:jv),fmt(geotype),defstr
+            else if (defv) then
+               write(cin,110) varname(1:jv),defval
+  110          format(A,'=',f20.10) 
+            else
+               call error(447)
+               goto 99999 
+            endif
+         endif
+         nccin = strlen1(cin)
+         call delsp(cin,nccin)
+c
+         ifl(124) = 0
+         do 111 j=1,nccin,1
+            if(cin(j:j) .eq. '('.and. cin(j+1:j+1).eq.'*') then
+                  ifl(124) = j 
+                  go to 112
+            endif
+  111    continue
+c
+  112    if (ifl(124) .ne. 0) then
+            inx = 1
+            ifl(111)=1
+            found1=0
+            ifl(2) = 0
+            err = .false.
+            ifl(44)=5
+            call chknst(found1)
+         endif
+c
+         inx = 1
+         ifl(111)=0
+         ifl(2) = 0 
+         err = .false. 
+         ifl(44)=5
+c
+         call parsit
+         err = .false.
+         call assgn
+         if (err)  goto 99999
+         if (ifl(262) .eq. 0) then
+            if (idst.gt.6.and.idst.lt.10.or.idst.eq.18.or.
+     *      isc10(1).eq.575) then
+                if (isc10(1).eq.575) then
+                    call mocntl
+                else
+                    call geogn2
+                endif
+            else if ((idst.gt.2.and.idst.lt.7).or.idst.eq.10) then
+                call geogn1
+            endif
+         else
+            ifl(262) = 0
+         endif
+         if (ifl(35) .eq. 0) then
+           call gtdesc(rest,nclkey,nwds,ietype)
+           call ifidge (ietype,lgeo)
+           if (lgeo) call dspent(nclkey,ietype)
+         endif
+         call vstore
+         cin = tmpcin
+         nccin = strlen1(cin)
+         inx = tmpinx
+         goto 99999
+c
+c...Macro Definition Mode
 c
       else
-          SMLEVL(NLEVL-1) = MLEVL(NLEVL-1)
-          SNLEVL = 0
-          if (ilod .eq. 1 .or. IPRLIN .lt. IMENBL .or.
-     1        IPRLIN .gt. IMENEL) then
-              IPRLIN = IMENBL
-              call plott (IPRLIN,1)
-              call clreos
+         token2  = macname
+         call vstchk
+         numprm = ktv(3)
+         next   = jhead(3)
+         if (imc .eq. 1) then
+             len1 = strlen1(classname)
+             len2 = strlen1(prmpt)
+             call ncl_putmac_parms0(classname, len1, outflag, dispflag,
+     1               prmpt, len2)
+             goto 99999
+         endif                
+         do 1500 k=1,numprm,1
 c
-c.........Display active sections
+c...get the macro parameters
 c
-              if (ilod .eq. 1) call dissec
+c...reset label
+c...it will have error if not
 c
-c......nth prompt in this section
-c......Position cursor at prompt line
-c
-          else
-              call prscrl (1)
-          endif
+            label = '        '
+            call ncl_getmac_parms(k, label, clas,
+     1               prmpt0, counter0, wrdlist0, geomflag0,
+     2               min0, max0, prsvalue0, 
+     3               lenvalue0,substr0, pflag0, psel0, pclr0)
+            llen = strlen1(label)
+            if (jv .gt. llen) llen = jv
+            if (label(1:llen).eq.varname(1:llen)) then
+                do 350 i = 1,counter,1
+                     wrdlist((i-1)*24+1:i*24) = vword(i)
+  350           continue
+                if (.not.minmax) then
+                    min = min0
+                    max = max0
+                endif
+                if (.not.prsflag) then
+                    prsvalue = prsvalue0
+                    lenvalue = lenvalue0
+                endif
+                if ((counter.eq.0).and.(.not.minmax)) then
+                    counter0 = counter0
+                    wrdlist = wrdlist0
+                endif
+                if (substr.eq.-1) substr = substr0
+                if (pflag.eq.-1) pflag = pflag0
+                if (psel.eq.-1) psel = psel0
+                if (clr.eq.-2) clr = pclr0
+                len1 = strlen1(prmpt)
+                len2 = strlen1(wrdlist)
+                if (counter .eq.0.and.(.not.minmax)) clas = 0
+                if (minmax)                          clas = -1
+                if (counter .ne. 0)                  clas = counter
+                call ncl_putmac_parms(k, clas,
+     1               prmpt, len1, counter, wrdlist, len2, geomflag, 
+     2               min, max, prsvalue, 
+     3               lenvalue,substr, pflag, psel, clr)
+                goto 99999
+            endif                
+ 1500    continue
       endif
-c
-c......Display extra text messages
-c
-      ntxt   = IPRDAT(1,ilev)
-      if (ntxt .gt. 1 .and. IPRLIN .ne. ISELIN) then
-          call prscrl (1)
-          ipt    = IPRDAT(2,ilev)
-          nc     = IPRTXT(ipt)
-          do 1000 i=2,ntxt,1
-              ipt    = ipt    + (nc-1) / 4 + 2
-              itxt   = (ipt-1) * 4 + 5
-              nc     = IPRTXT(ipt)
-              sbuf   = '       ' // LPRTXT(itxt:itxt+nc-1)
-              call dmpbuf (sbuf,nc+7)
-              call prscrl (1)
- 1000     continue
-          call prscrl (1)
-      endif
-c
-c......Display prompt & get user's input
-c
-      ipt    = IPRDAT(2,ilev)
-      itxt   = (ipt-1) * 4 + 5
-      nc     = IPRTXT(ipt)
- 1100 call plott (IPRLIN,1)
-      call dmpbuf (LPRTXT(itxt:itxt+nc-1),nc)
- 1150 nca    = knc
-      call getlin (abuf,knc,len(cbuf),IPRLIN,nc+2)
-c
-c......Up arrow
-c......Go to previous prompt
-c
-      if (knc .eq. -2) then
-          if (PRMSP .ne. 0) go to 8000
-          knc    = nca
-          go to 1150
-c
-c......^W
-c......Redisplay page
-c
-      else if (knc .eq. -3) then
-          knc    = nca
-          call disban
-          if (kfl .eq. NLEVL) then
-              call dissec
-              SNLEVL = 0
-          else
-              ilod   = 1
-          endif
-          go to 500
-      endif
-c
-c......Erase error messages
-c
-      call errmsg (' ',2,1)
-      call errmsg (' ',2,2)
-c
-c......? Entered
-c......Display help text
-c
-      if (knc .eq. 1 .and. abuf(1:1) .eq. '?') then
-          abuf   = cbuf
-          knc    = strlen1(abuf)
-          call levasc (MLEVL,NLEVL,sbuf)
-          call helpi (sbuf,MLEVL(1),ierr)
-c
-c.........No help text
-c.........Go get input again
-c
-          if (ierr .eq. 1) go to 1150
-c
-c.........Help text was displayed
-c.........Display prompt at Selection line
-c
-          IPRLIN = ISELIN
-          SNLEVL = 0
-          go to 1100
-      endif
-      PRMSP  = PRMSP  + 1
-      PRMSTK(PRMSP) = MLEVL(NLEVL)
-c
-c...End of routine
-c
- 8000 cbuf   = abuf
+99999 continue
+      ldtext = .false.
       return
+c
       end
-c
+c*********************************************************************
+c*
+c*    subroutine delsp
+c*
 c***********************************************************************
+
+      subroutine delsp(str,len)
+
+      character*(*)str
+      integer*4 i, k, len
+
+      do 800 i=len,1,-1
+         if (str(i:i) .gt. ' ') goto 700
+  800 continue
+  700 len = i
 c
-c   SUBROUTINE:  prscrl (klin)
-c
-c   FUNCTION:  This routine advances the cursor 'klin's and scrolls the
-c              prompt area if necessary.  'IPRLIN' is used as the cur-
-c              rent cursor line.
-c
-c   INPUT:  klin    I*4  D1  -  Number of lines to advance.
-c
-c   OUTPUT: none.
-c
-c***********************************************************************
-c
-      subroutine prscrl (klin)
-c
-      include 'menu.inc'
-c
-      integer*4 klin
-c
-      integer*4 i
-c
-c...Move the current prompt location line
-c
-      do 100 i=1,klin,1
-c
-c......At the bottom of the page
-c......Scroll the display
-c
-          if (IPRLIN .eq. IMENEL) then
-              call scrol (IMENBL,IMENEL,1,1)
-              call plott (IPRLIN,1)
-              call clreol
-c
-c......Within the page
-c......Move prompt location down 1 line
-c
-          else
-              IPRLIN = IPRLIN + 1
-          endif
   100 continue
-      call plott (IPRLIN,1)
-      return
-      end
-c***********************************************************************
-c
-c   SUBROUTINE:  prmvcs (kvoc,knc,kmax,ksgn,kfl,klod,kwrn,cmsg,kerr)
-c
-c   FUNCTION:  This routine prompts for an array of vocabulary words and
-c              checks the users' input for valid words.
-c
-c   INPUT:  kvoc    I*4  Dn  -  Array of integers that define default
-c                               vocabulary words.
-c
-c           knc     I*4  D1  -  Number of words in array 'kvoc'.
-c
-c           nvoc    I*4  Dn  -  Array of integers that define vocabulary
-c                               dictionary.
-c
-c           kmax    I*4  D1  -  Maximum number of words that can be
-c                               defined ('nvoc' size).
-c
-c           ksgn    I*4  D1  -  1 = An End-of-block '$' is valid input.
-c                               2 = No.
-c
-c           kfl     I*4  D1  -  The user requested a specific prompt
-c                               when 'kfl' = 'NLEVL'.  In this case the
-c                               prompt will be displayed on the Menu
-c                               Selection line instead of in the Menu/
-c                               Prompt text area.
-c
-c           klod    I*4  D1  -  0 = This section's prompt text is cur-
-c                               rently loaded in memory.  1 = Load the
-c                               current section's prompt text into mem-
-c                               ory and display the current section and
-c                               level.
-c
-c           kwrn    I*4  D1  -  1 = The user's input to the previous
-c                               prompt was not valid.  Reissue that
-c                               prompt again.
-c
-c   OUTPUT: kaxs    I*4  Dn  -  See input.
-c
-c           knc     I*4  D1  -  See input.
-c
-c           kwrn    I*4  D1  -  1 = The user interrupted input with a
-c                               ^C.  2 = Up arrow was entered.
-c
-c           cmsg    C*n  D1  -  Text of error message.
-c
-c           kerr    I*4  D1  -  Returns non-zero when an error occurred.
-c
-c***********************************************************************
-c
-      subroutine prmvcs (kvoc,knc,nvoc,kmax,ksgn,kfl,klod,kwrn,
-     -                   cmsg,kerr)
-c
-      include 'menu.inc'
-c
-      integer*4 kvoc(20),knc,nvoc(20),ksgn,kfl,klod,kwrn,kerr,kmax
-c
-      character*(*) cmsg
-c
-      character*80 sbuf,lbuf
-      character*24 lvoc(20)
-c
-      integer*4 nc,i,j,inc,index,iary(20),ivoc(20),nca,jindex,strlen1
-c
-c...Set up default string
-c
-c     if (IMSCAN .eq. 2) go to 200
-      do 105 i=1,kmax,1
-          call getvwd (nvoc(i),lbuf,nca,0,MENWRD,MENWVL,NMENWD)
-          lvoc(i) = lbuf(1:nca)
-  105 continue
-      if (IMSCAN .eq. 2) go to 200
-      nc     = 0
-      inc    = 0
-      do 115 i=1,knc,1
-          if (kvoc(i) .eq. 0) go to 115
-          j   = jindex (nvoc,kvoc(i),kmax)
-          if (j .eq. 0) go to 115
-          inc = inc + 1
-          if (inc .gt. 1) then
-              nc     = nc     + 1
-              sbuf(nc:nc) = ','
-          endif
-          if (kvoc(i) .eq. -1) then
-              nc     = nc     + 1
-              sbuf(nc:nc+1) = '$'
-          else
-              nca = strlen1 (lvoc(j))
-              sbuf(nc+1:80) = lvoc(j)(1:nca)
-              nc     = nc     + nca
-          endif
-  115 continue
-c
-c...Prompt the user
-c
-  200 call prompt (sbuf,nc,kfl,klod,kwrn,cmsg,kerr)
-      if (kerr .ne. 0) go to 8000
-      if (MOTIF .eq. 1 .and. IMSCAN .eq. 1) go to 8000
-      if (nc .eq. -1) go to 9100
-      if (nc .eq. -2) go to 9200
-c
-c...Parse the users response
-c
-      i      = 1
-      inc    = 0
-      call remspc (sbuf,sbuf,nc)
-      if (nc .eq. 0) then
-          kvoc(1) = 0
-          knc    = 0
-          kwrn   = 0
-          go to 8000
-      endif
-      call touppr (sbuf,sbuf)
-      do 300 j=1,20,1
-          iary(j) = 0
-  300 continue
-c
-c......Find the next register
-c
-  400 if (i .gt. nc) go to 800
-      nca    = index(sbuf(i:nc),',')
-      if (nca .eq. 0) then
-          nca    = nc     + 1
-      else
-          nca    = i      + nca    - 1
-      endif
-c
-c.........Next register is End-of-block
-c
-      if (nca .eq. i+1 .and. ksgn .eq. 1 .and. sbuf(i:i) .eq. '$') then
-          inc    = inc    + 1
-          ivoc(inc) = -1
-          i      = nca    + 1
-          go to 400
-      endif
-c
-c.........Search for word in array
-c
-      do 500 j=1,kmax,1
-          if (sbuf(i:nca-1) .eq. lvoc(j)) go to 600
+      do 500 i=1,len-1,1
+         if(str(i:i) .eq. ' ') then
+            do 600 k=i,len-1,1
+  600          str(k:k)=str(k+1:k+1)
+            str(len:len) = ' '
+            len = len-1
+            goto 100
+         endif
   500 continue
-c
-c......Invalid input
-c
-      go to 9000
-c
-c......Register match
-c
-  600 if (iary(j) .eq. 1) go to 9000
-      if (inc .eq. kmax) go to 9000
-      inc    = inc    + 1
-      ivoc(inc) = nvoc(j)
-      iary(j) = 1
-      i      = nca    + 1
-      go to 400
-c
-c......End of parse
-c
-  800 knc    = inc
-      do 900 i=1,knc,1
-          kvoc(i) = ivoc(i)
-  900 continue
-      kwrn   = 0
-c
-c...End of routine
-c
- 8000 return
-c
-c...Invalid users response
-c
- 9000 kwrn   = 1
-      call errmsg ('INVRSP',1,2)
-      if (MOTIF .eq. 1) go to 8000
-      go to 200
-c
-c...End of input from user
-c
- 9100 kwrn   = 1
-      go to 8000
-c
-c...Up arrow
-c
- 9200 kwrn   = 2
-      go to 8000
+      return
       end

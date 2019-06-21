@@ -543,7 +543,7 @@ revers.for rsttrm.for runvt.for spwn.for statln.for unsol.for urest.for \
 voyagr.for acibci.f acibln.f alnbci.f altcom.f angcal.f aptcl.f \
 ascrub.f assgn.f atan2f.f barseg.f basesf.f beginp.f begpas.f \
 bentst.f berr.f bscrub.f bsfpre.f buildn.f callit.f calrst.f \
-canf.f cctrn.f chkent.f chkinp.f chklab.f chkpts.f \
+canf.f cctrn.f cdraw4.f chkent.f chkinp.f chklab.f chkpts.f \
 chkvoc.f chkzsf.f chr2int.f chr2real.f cidist.f cintck.f cirapt.f \
 cirbld.f circpt.f circpv.f cirdef.f cirpnt.f cirpre.f cirprg.f \
 cirprh.f cirpri.f cirprj.f cirrec.f clcept.f clnssf.f clone.f \
@@ -560,7 +560,7 @@ revers.ts rsttrm.ts runvt.ts spwn.ts statln.ts unsol.ts urest.ts \
 voyagr.ts acibci.ts acibln.ts alnbci.ts altcom.ts angcal.ts aptcl.ts \
 ascrub.ts assgn.ts atan2f.ts barseg.ts basesf.ts beginp.ts begpas.ts \
 bentst.ts berr.ts bscrub.ts bsfpre.ts buildn.ts callit.ts calrst.ts \
-canf.ts cctrn.ts chkent.ts chkinp.ts chklab.ts chkpts.ts \
+canf.ts cctrn.ts cdraw4.ts chkent.ts chkinp.ts chklab.ts chkpts.ts \
 chkvoc.ts chkzsf.ts chr2int.ts chr2real.ts cidist.ts cintck.ts cirapt.ts \
 cirbld.ts circpt.ts circpv.ts cirdef.ts cirpnt.ts cirpre.ts cirprg.ts \
 cirprh.ts cirpri.ts cirprj.ts cirrec.ts clcept.ts clnssf.ts clone.ts \
@@ -577,7 +577,7 @@ revers.nts rsttrm.nts runvt.nts spwn.nts statln.nts unsol.nts urest.nts \
 voyagr.nts acibci.nts acibln.nts alnbci.nts altcom.nts angcal.nts aptcl.nts \
 ascrub.nts assgn.nts atan2f.nts barseg.nts basesf.nts beginp.nts begpas.nts \
 bentst.nts berr.nts bscrub.nts bsfpre.nts buildn.nts callit.nts calrst.nts \
-canf.nts cctrn.nts chkent.nts chkinp.nts chklab.nts chkpts.nts \
+canf.nts cctrn.nts cdraw4.nts chkent.nts chkinp.nts chklab.nts chkpts.nts \
 chkvoc.nts chkzsf.nts chr2int.nts chr2real.nts cidist.nts cintck.nts cirapt.nts \
 cirbld.nts circpt.nts circpv.nts cirdef.nts cirpnt.nts cirpre.nts cirprg.nts \
 cirprh.nts cirpri.nts cirprj.nts cirrec.nts clcept.nts clnssf.nts clone.nts \
@@ -594,7 +594,7 @@ revers.t32 rsttrm.t32 runvt.t32 spwn.t32 statln.t32 unsol.t32 urest.t32 \
 voyagr.t32 acibci.t32 acibln.t32 alnbci.t32 altcom.t32 angcal.t32 aptcl.t32 \
 ascrub.t32 assgn.t32 atan2f.t32 barseg.t32 basesf.t32 beginp.t32 begpas.t32 \
 bentst.t32 berr.t32 bscrub.t32 bsfpre.t32 buildn.t32 callit.t32 calrst.t32 \
-canf.t32 cctrn.t32 chkent.t32 chkinp.t32 chklab.t32 chkpts.t32 \
+canf.t32 cctrn.t32 cdraw4.t32 chkent.t32 chkinp.t32 chklab.t32 chkpts.t32 \
 chkvoc.t32 chkzsf.t32 chr2int.t32 chr2real.t32 cidist.t32 cintck.t32 cirapt.t32 \
 cirbld.t32 circpt.t32 circpv.t32 cirdef.t32 cirpnt.t32 cirpre.t32 cirprg.t32 \
 cirprh.t32 cirpri.t32 cirprj.t32 cirrec.t32 clcept.t32 clnssf.t32 clone.t32 \
@@ -611,7 +611,7 @@ revers.nt32 rsttrm.nt32 runvt.nt32 spwn.nt32 statln.nt32 unsol.nt32 urest.nt32 \
 voyagr.nt32 acibci.nt32 acibln.nt32 alnbci.nt32 altcom.nt32 angcal.nt32 aptcl.nt32 \
 ascrub.nt32 assgn.nt32 atan2f.nt32 barseg.nt32 basesf.nt32 beginp.nt32 begpas.nt32 \
 bentst.nt32 berr.nt32 bscrub.nt32 bsfpre.nt32 buildn.nt32 callit.nt32 calrst.nt32 \
-canf.nt32 cctrn.nt32 chkent.nt32 chkinp.nt32 chklab.nt32 chkpts.nt32 \
+canf.nt32 cctrn.nt32 cdraw4.nt32 chkent.nt32 chkinp.nt32 chklab.nt32 chkpts.nt32 \
 chkvoc.nt32 chkzsf.nt32 chr2int.nt32 chr2real.nt32 cidist.nt32 cintck.nt32 cirapt.nt32 \
 cirbld.nt32 circpt.nt32 circpv.nt32 cirdef.nt32 cirpnt.nt32 cirpre.nt32 cirprg.nt32 \
 cirprh.nt32 cirpri.nt32 cirprj.nt32 cirrec.nt32 clcept.nt32 clnssf.nt32 clone.nt32 \
