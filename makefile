@@ -329,55 +329,50 @@ NCRELIB322=$(AR) /OUT:$(NNCLLIB32)\$(NNCLLIBRARY) *.obj
 #--------------------------- make.list --------------------------
 #
 SRCS1= \
-auxfun.f bldang.f break.f bsplin.f circul.f cirmsc.f clrbuf.f \
-cmpprt.f codout.f cutcom.f cutctl.f cycle.f cycmsc.f cylaut.f \
-cylman.f cylmsc.f cymaut.f cymman.f fedmsc.f fedrat.f gencrv.f \
-genmsc.f getang.f loadtl.f lodsup.f mchlin.f mchlin1.f mchlin2.f \
-mocntl.f motadj.f motion.f motmsc.f motout.f output.f pchhdr.f \
-positn.f posmsc.f postp.f psterr.f pstwah.f pstwip.f pstwqz.f \
-ptadj.f pworks.f pworks_nt.f rtmset.f simul.f smdmot.f smdmsc.f \
-spnfed.f tablin.f tlaxis.f tlperp.f trans.f zigmov.f PWorksOptDlg.cpp \
-PWorksView.cpp Pworksctl.cpp
+badstat.f cirted.f clatocl.f clfile.f cltocla.f cycted.f fmtcod.f \
+mottap.f motted.f pstcmd.f ptdffunc.f ptdstubs.f regfmt.f settool.f \
+spcblk.f tapblk.f tedapt.f tedmch.f PtdGlobal.c PtdcFunc.c clload.c \
+PtedBatch.cpp PtedChildWindow.cpp PtedCom.cpp PtedFileDialog.cpp PtedFindReplaceDialog.cpp PtedIncFileDialog.cpp PtedMainWindow.cpp \
+PtedPWOptDialog.cpp PtedProcessDlg.cpp PtedRangeBox.cpp PtedReseqDialog.cpp PtedSetDialog.cpp PtedSetupPageDialog.cpp PtedStatusDlg.cpp \
+PtedTextBuffer.cpp PtedTextBuffer2.cpp PtedTextBuffer3.cpp PtedTextView.cpp PtedTextView2.cpp PtedTextView3.cpp PtedTextView4.cpp \
+PtedTextView5.cpp PtedWindow.cpp PtedWindow2.cpp PtedWindow3.cpp PtedWindow4.cpp PtedWindow5.cpp Ptedctl.cpp \
+StdAfx.cpp
 OBJS1= \
-auxfun.ts bldang.ts break.ts bsplin.ts circul.ts cirmsc.ts clrbuf.ts \
-cmpprt.ts codout.ts cutcom.ts cutctl.ts cycle.ts cycmsc.ts cylaut.ts \
-cylman.ts cylmsc.ts cymaut.ts cymman.ts fedmsc.ts fedrat.ts gencrv.ts \
-genmsc.ts getang.ts loadtl.ts lodsup.ts mchlin.ts mchlin1.ts mchlin2.ts \
-mocntl.ts motadj.ts motion.ts motmsc.ts motout.ts output.ts pchhdr.ts \
-positn.ts posmsc.ts postp.ts psterr.ts pstwah.ts pstwip.ts pstwqz.ts \
-ptadj.ts pworks.ts pworks_nt.ts rtmset.ts simul.ts smdmot.ts smdmsc.ts \
-spnfed.ts tablin.ts tlaxis.ts tlperp.ts trans.ts zigmov.ts PWorksOptDlg.ts \
-PWorksView.ts Pworksctl.ts
+badstat.ts cirted.ts clatocl.ts clfile.ts cltocla.ts cycted.ts fmtcod.ts \
+mottap.ts motted.ts pstcmd.ts ptdffunc.ts ptdstubs.ts regfmt.ts settool.ts \
+spcblk.ts tapblk.ts tedapt.ts tedmch.ts PtdGlobal.ts PtdcFunc.ts clload.ts \
+PtedBatch.ts PtedChildWindow.ts PtedCom.ts PtedFileDialog.ts PtedFindReplaceDialog.ts PtedIncFileDialog.ts PtedMainWindow.ts \
+PtedPWOptDialog.ts PtedProcessDlg.ts PtedRangeBox.ts PtedReseqDialog.ts PtedSetDialog.ts PtedSetupPageDialog.ts PtedStatusDlg.ts \
+PtedTextBuffer.ts PtedTextBuffer2.ts PtedTextBuffer3.ts PtedTextView.ts PtedTextView2.ts PtedTextView3.ts PtedTextView4.ts \
+PtedTextView5.ts PtedWindow.ts PtedWindow2.ts PtedWindow3.ts PtedWindow4.ts PtedWindow5.ts Ptedctl.ts \
+StdAfx.ts
 NOBJS1= \
-auxfun.nts bldang.nts break.nts bsplin.nts circul.nts cirmsc.nts clrbuf.nts \
-cmpprt.nts codout.nts cutcom.nts cutctl.nts cycle.nts cycmsc.nts cylaut.nts \
-cylman.nts cylmsc.nts cymaut.nts cymman.nts fedmsc.nts fedrat.nts gencrv.nts \
-genmsc.nts getang.nts loadtl.nts lodsup.nts mchlin.nts mchlin1.nts mchlin2.nts \
-mocntl.nts motadj.nts motion.nts motmsc.nts motout.nts output.nts pchhdr.nts \
-positn.nts posmsc.nts postp.nts psterr.nts pstwah.nts pstwip.nts pstwqz.nts \
-ptadj.nts pworks.nts pworks_nt.nts rtmset.nts simul.nts smdmot.nts smdmsc.nts \
-spnfed.nts tablin.nts tlaxis.nts tlperp.nts trans.nts zigmov.nts PWorksOptDlg.nts \
-PWorksView.nts Pworksctl.nts
+badstat.nts cirted.nts clatocl.nts clfile.nts cltocla.nts cycted.nts fmtcod.nts \
+mottap.nts motted.nts pstcmd.nts ptdffunc.nts ptdstubs.nts regfmt.nts settool.nts \
+spcblk.nts tapblk.nts tedapt.nts tedmch.nts PtdGlobal.nts PtdcFunc.nts clload.nts \
+PtedBatch.nts PtedChildWindow.nts PtedCom.nts PtedFileDialog.nts PtedFindReplaceDialog.nts PtedIncFileDialog.nts PtedMainWindow.nts \
+PtedPWOptDialog.nts PtedProcessDlg.nts PtedRangeBox.nts PtedReseqDialog.nts PtedSetDialog.nts PtedSetupPageDialog.nts PtedStatusDlg.nts \
+PtedTextBuffer.nts PtedTextBuffer2.nts PtedTextBuffer3.nts PtedTextView.nts PtedTextView2.nts PtedTextView3.nts PtedTextView4.nts \
+PtedTextView5.nts PtedWindow.nts PtedWindow2.nts PtedWindow3.nts PtedWindow4.nts PtedWindow5.nts Ptedctl.nts \
+StdAfx.nts
 OBJS321= \
-auxfun.t32 bldang.t32 break.t32 bsplin.t32 circul.t32 cirmsc.t32 clrbuf.t32 \
-cmpprt.t32 codout.t32 cutcom.t32 cutctl.t32 cycle.t32 cycmsc.t32 cylaut.t32 \
-cylman.t32 cylmsc.t32 cymaut.t32 cymman.t32 fedmsc.t32 fedrat.t32 gencrv.t32 \
-genmsc.t32 getang.t32 loadtl.t32 lodsup.t32 mchlin.t32 mchlin1.t32 mchlin2.t32 \
-mocntl.t32 motadj.t32 motion.t32 motmsc.t32 motout.t32 output.t32 pchhdr.t32 \
-positn.t32 posmsc.t32 postp.t32 psterr.t32 pstwah.t32 pstwip.t32 pstwqz.t32 \
-ptadj.t32 pworks.t32 pworks_nt.t32 rtmset.t32 simul.t32 smdmot.t32 smdmsc.t32 \
-spnfed.t32 tablin.t32 tlaxis.t32 tlperp.t32 trans.t32 zigmov.t32 PWorksOptDlg.t32 \
-PWorksView.t32 Pworksctl.t32
+badstat.t32 cirted.t32 clatocl.t32 clfile.t32 cltocla.t32 cycted.t32 fmtcod.t32 \
+mottap.t32 motted.t32 pstcmd.t32 ptdffunc.t32 ptdstubs.t32 regfmt.t32 settool.t32 \
+spcblk.t32 tapblk.t32 tedapt.t32 tedmch.t32 PtdGlobal.t32 PtdcFunc.t32 clload.t32 \
+PtedBatch.t32 PtedChildWindow.t32 PtedCom.t32 PtedFileDialog.t32 PtedFindReplaceDialog.t32 PtedIncFileDialog.t32 PtedMainWindow.t32 \
+PtedPWOptDialog.t32 PtedProcessDlg.t32 PtedRangeBox.t32 PtedReseqDialog.t32 PtedSetDialog.t32 PtedSetupPageDialog.t32 PtedStatusDlg.t32 \
+PtedTextBuffer.t32 PtedTextBuffer2.t32 PtedTextBuffer3.t32 PtedTextView.t32 PtedTextView2.t32 PtedTextView3.t32 PtedTextView4.t32 \
+PtedTextView5.t32 PtedWindow.t32 PtedWindow2.t32 PtedWindow3.t32 PtedWindow4.t32 PtedWindow5.t32 Ptedctl.t32 \
+StdAfx.t32
 NOBJS321= \
-auxfun.nt32 bldang.nt32 break.nt32 bsplin.nt32 circul.nt32 cirmsc.nt32 clrbuf.nt32 \
-cmpprt.nt32 codout.nt32 cutcom.nt32 cutctl.nt32 cycle.nt32 cycmsc.nt32 cylaut.nt32 \
-cylman.nt32 cylmsc.nt32 cymaut.nt32 cymman.nt32 fedmsc.nt32 fedrat.nt32 gencrv.nt32 \
-genmsc.nt32 getang.nt32 loadtl.nt32 lodsup.nt32 mchlin.nt32 mchlin1.nt32 mchlin2.nt32 \
-mocntl.nt32 motadj.nt32 motion.nt32 motmsc.nt32 motout.nt32 output.nt32 pchhdr.nt32 \
-positn.nt32 posmsc.nt32 postp.nt32 psterr.nt32 pstwah.nt32 pstwip.nt32 pstwqz.nt32 \
-ptadj.nt32 pworks.nt32 pworks_nt.nt32 rtmset.nt32 simul.nt32 smdmot.nt32 smdmsc.nt32 \
-spnfed.nt32 tablin.nt32 tlaxis.nt32 tlperp.nt32 trans.nt32 zigmov.nt32 PWorksOptDlg.nt32 \
-PWorksView.nt32 Pworksctl.nt32
+badstat.nt32 cirted.nt32 clatocl.nt32 clfile.nt32 cltocla.nt32 cycted.nt32 fmtcod.nt32 \
+mottap.nt32 motted.nt32 pstcmd.nt32 ptdffunc.nt32 ptdstubs.nt32 regfmt.nt32 settool.nt32 \
+spcblk.nt32 tapblk.nt32 tedapt.nt32 tedmch.nt32 PtdGlobal.nt32 PtdcFunc.nt32 clload.nt32 \
+PtedBatch.nt32 PtedChildWindow.nt32 PtedCom.nt32 PtedFileDialog.nt32 PtedFindReplaceDialog.nt32 PtedIncFileDialog.nt32 PtedMainWindow.nt32 \
+PtedPWOptDialog.nt32 PtedProcessDlg.nt32 PtedRangeBox.nt32 PtedReseqDialog.nt32 PtedSetDialog.nt32 PtedSetupPageDialog.nt32 PtedStatusDlg.nt32 \
+PtedTextBuffer.nt32 PtedTextBuffer2.nt32 PtedTextBuffer3.nt32 PtedTextView.nt32 PtedTextView2.nt32 PtedTextView3.nt32 PtedTextView4.nt32 \
+PtedTextView5.nt32 PtedWindow.nt32 PtedWindow2.nt32 PtedWindow3.nt32 PtedWindow4.nt32 PtedWindow5.nt32 Ptedctl.nt32 \
+StdAfx.nt32
 SRCS2= \
 
 OBJS2= \
@@ -472,11 +467,11 @@ NOBJS32=$(NOBJS321) $(NOBJS322) $(NOBJS323) $(NOBJS324) $(NOBJS325) \
 # Define the NCL directory this makefile should run in.
 #
 DIR=postworks
-SRCDIR=pworks
-NCLLIBRARY=pworks.lib
-NNCLLIBRARY=npworks.lib
-NCLLIBRARY32=pworks32.lib
-NNCLLIBRARY32=npworks32.lib
+SRCDIR=pwted
+NCLLIBRARY=pwted.lib
+NNCLLIBRARY=npwted.lib
+NCLLIBRARY32=pwted32.lib
+NNCLLIBRARY32=npwted32.lib
 
 #
 #---------------------------EOF make.list --------------------------
