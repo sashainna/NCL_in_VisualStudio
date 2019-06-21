@@ -1,763 +1,215 @@
+c
 c***********************************************************************
 c
-c   FILE NAME:  motadj.for
+c   FILE NAME:  motadj
 c   CONTAINS:
-c               motadj  mtamsc  mtalin  mtalka  mtaslw  mtamxd  mtaacc
-c               mtaxfm  mtaxfo
+c               excaxs  maxaxc  smodep  maxdep  rapmot  rapsim  rposck
+c               mchslw  slwang  slwfed
 c
 c     COPYRIGHT 1997 (c) Numerical Control Computer Sciences.
 c           All Rights Reserved
 c      MODULE NAME AND RELEASE LEVEL
-c        motadj.f , 25.4
+c        %M% , %I%
 c     DATE AND TIME OF LAST  MODIFICATION
-c        10/06/15 , 08:38:24
+c        %G% , %U%
 c
 c***********************************************************************
 c
 c***********************************************************************
 c
-c   SUBROUTINE:  motadj (kfl,cmsg,kerr)
+c   SUBROUTINE:  excaxs (kaxsw,kcnt,kfl,kax,kary,klft,kpt)
 c
-c   FUNCTION:  Motion Adjustment Parameters menu handling routine.
+c   FUNCTION:  This routine checks that no mutually exclusive axes are
+c              output on the same block.  If there are, this routine
+c              will break the motion block into multiple motion blocks.
 c
-c   INPUT:  kfl     I*4  D1  -  The number of levels that the user en-
-c                               tered.  If kfl is greater than or equal
-c                               to the current level, then the user re-
-c                               quested direct access to a menu/prompt.
+c   INPUT:  kaxsw   I*4  D10 -  Array of switches that show which axes
+c                               are waiting to be output.  A value of 1
+c                               signifies this axis needs to be output.
 c
-c   OUTPUT: cmsg    C*n  D1  -  Text of error message.
+c           kcnt    I*4  D1  -  Number of axes waiting to be output.
 c
-c           kerr    I*4  D1  -  Returns non-zero when an error occurred.
+c           kfl     I*4  D1  -  Should be set to 0 on initial call.
+c                               'kfl' is also returned with a value of
+c                               0 and 1.  1 = the motion block was
+c                               broken up, this routine should be called
+c                               again immediately after the returned
+c                               motion block is output.
+c
+c           kax     I*4  D10 -  Internal array of switches that show
+c                               which axes are queued for output.  This
+c                               array should not be referenced outside
+c                               of this routine.
+c
+c           kary    I*4  D12 -  Internal array containing the priority
+c                               in which to output the axes when
+c                               mutually exclusive axes are in the same
+c                               block.  This array should not be refer-
+c                               enced outside of this routine.
+c
+c           klft    I*4  D1  -  Contains the number of remaining axes
+c                               awaiting output and should not be refer-
+c                               enced outside of this routine.
+c
+c           kpt     I*4  D1  -  Contains the pointer within the priority
+c                               block and should not be referenced outside
+c                               of this routine.
+c
+
+c   OUTPUT: kaxsw   I*4  D10 -  See INPUT.
+c
+c           kcnt    I*4  D1  -  See INPUT.
+c
+c           kfl     I*4  D1  -  See INPUT.
 c
 c***********************************************************************
 c
-      subroutine motadj (kfl,cmsg,kerr)
+      subroutine excaxs (kaxsw,kcnt,kfl,kax,kary,klft,kpt)
 c
       include 'menu.inc'
       include 'post.inc'
 c
-      equivalence (IRTNUM,KPOSMP(1243)), (MACHTP,KPOSMP(1201))
-      equivalence (IJKROT,KPOSMP(1739))
-c
-      integer*4 MACHTP,IRTNUM,IJKROT
-c
-      integer*4 kfl,kerr
-c
-      character*(*) cmsg
-c
-      integer*4 ifl,igo,iwlk
-c
-c...Specific level was requested
-c...Go directly to that level
-c
-      ifl    = kfl
-      iwlk   = IWALK
-      if (kfl .ge. NLEVL) go to 200
-      if (IWALK .eq. 1) then
-          NLEVL  = NLEVL  + 1
-          go to 1000
-      endif
-c
-c...Display Motion Adjustments menu
-c
-      SMLEVL(NLEVL) = -1
-      PRESEL(NLEVL) = -1
-  100 MLEVL(NLEVL) = 0
-      call menu (kfl,cmsg,kerr)
-      if (kerr .ne. 0) go to 8000
-      if (MOTIF .eq. 1) go to 8000
-c
-c...Go to appropriate section
-c
-  200 igo    = MLEVL(NLEVL) + 1
-      NLEVL  = NLEVL  + 1
-      if (kfl .lt. NLEVL) MLEVL(NLEVL) = 0
-      go to (1000,1100,1200,1300,1400,1500,1600,1700,1800,8000), igo
-c
-c...Walk through Motion Adjustments
-c
- 1000 IWALK  = 1
-c
-c...Miscellaneous Adjustments
-c
- 1100 MLEVL(NLEVL-1) = 1
-      call mtamsc (kfl,cmsg,kerr)
-      if (kerr .ne. 0) go to 8000
-      if (IWALK .eq. 0) go to 7000
-c
-c...Linearization
-c
- 1200 if (IRTNUM .eq. 0 .and. IJKROT .ne. 1) then
-          if (IWALK .eq. 1) go to 1300
-          if (MOTIF .eq. 1) IMENDT(1,NLEVL-1) = 1
-          call errmsg ('NOTAPPLY',1,2)
-          go to 7000
-      endif
-      MLEVL(NLEVL-1) = 2
-      call mtalin (kfl,cmsg,kerr)
-      if (kerr .ne. 0) go to 8000
-      if (IWALK .eq. 0) go to 7000
-c
-c...Look Ahead
-c
- 1300 if (IRTNUM .lt. 2 .or. IJKROT .eq. 1) then
-          if (IWALK .eq. 1) go to 1400
-          if (MOTIF .eq. 1) IMENDT(1,NLEVL-1) = 1
-          call errmsg ('NOTAPPLY',1,2)
-          go to 7000
-      endif
-      MLEVL(NLEVL-1) = 3
-      call mtalka (kfl,cmsg,kerr)
-      if (kerr .ne. 0) go to 8000
-      if (IWALK .eq. 0) go to 7000
-c
-c...Slowdowns
-c
- 1400 MLEVL(NLEVL-1) = 4
-      call mtaslw (kfl,cmsg,kerr)
-      if (kerr .ne. 0) go to 8000
-      if (IWALK .eq. 0) go to 7000
-c
-c...Maximum axes departures
-c
- 1500 MLEVL(NLEVL-1) = 5
-      call mtamxd (kfl,cmsg,kerr)
-      if (kerr .ne. 0) go to 8000
-      if (IWALK .eq. 0) go to 7000
-c
-c...Acceleration blocks
-c
- 1600 MLEVL(NLEVL-1) = 6
-      call mtaacc (kfl,cmsg,kerr)
-      if (kerr .ne. 0) go to 8000
-      if (IWALK .eq. 0) go to 7000
-c
-c...Transformation blocks
-c
- 1700 MLEVL(NLEVL-1) = 7
-      call mtaxfm (kfl,cmsg,kerr)
-      if (kerr .ne. 0) go to 8000
-      if (IWALK .eq. 0) go to 7000
-c
-c...Transformation block output
-c
- 1800 MLEVL(NLEVL-1) = 8
-      call mtaxfo (kfl,cmsg,kerr)
-      if (kerr .ne. 0) go to 8000
-      if (IWALK .eq. 0) go to 7000
-c
-c...End of sub-section
-c...Reset Level structure
-c
- 7000 NLEVL  = NLEVL  - 1
-      if (ifl .ge. NLEVL .or. iwlk .eq. 1) go to 8000
-      go to 100
-c
-c...End of routine
-c
- 8000 return
-      end
-c
-c***********************************************************************
-c
-c   SUBROUTINE:  mtamsc (kfl,cmsg,kerr)
-c
-c   FUNCTION:  Miscellaneous motion adjustments.
-c
-c   INPUT:  kfl     I*4  D1  -  The number of levels that the user en-
-c                               tered.
-c
-c   OUTPUT: cmsg    C*n  D1  -  Text of error message.
-c
-c           kerr    I*4  D1  -  Returns non-zero when an error occurred.
-c
-c***********************************************************************
-c
-      subroutine mtamsc (kfl,cmsg,kerr)
-c
-      include 'menu.inc'
-      include 'post.inc'
-c
-      equivalence (IDUMMY,KPOSMP(0088)), (MACHTP,KPOSMP(1201))
-      equivalence (NUMLIN,KPOSMP(1202)), (MAXAXS,KPOSMP(1212))
-      equivalence (AXSPRI,KPOSMP(1213)), (HLDBCK,KPOSMP(1223))
-      equivalence (IRTNUM,KPOSMP(1243)), (EXCLAX,KPOSMP(3401))
+      equivalence (IDUMMY,KPOSMP(0088)), (MOTREG,KPOSMP(0381))
+      equivalence (REGBNC,KPOSMP(2001)), (EXCLAX,KPOSMP(3401))
       equivalence (EXCLCO,KPOSMP(3417)), (EXCLPS,KPOSMP(3421))
       equivalence (EXCLNE,KPOSMP(3469)), (NUMEXC,KPOSMP(3517))
       equivalence (EXCLNM,KPOSMP(3518))
 c
-      integer*4 IDUMMY,MACHTP,NUMLIN(3),MAXAXS,AXSPRI(10),HLDBCK,
-     1          IRTNUM,EXCLAX(4,4),EXCLCO(4),EXCLPS(12,4),EXCLNE(12,4),
-     2          NUMEXC,EXCLNM(4)
+      integer*4 IDUMMY,EXCLAX(4,4),EXCLCO(4),EXCLPS(12,4),EXCLNE(12,4),
+     1          MOTREG(24),REGBNC(MAXFMT),EXCLNM(4),NUMEXC
 c
-      integer*4 kfl,kerr
+      equivalence (MCHNUM,POSMAP(1287)), (LINAXS,POSMAP(1299))
+      equivalence (AXSOUT,POSMAP(1340)), (TLVEC ,POSMAP(1369))
+      equivalence (AXSSTO,POSMAP(1425)), (ROTANG,POSMAP(5173))
 c
-      character*(*) cmsg
+      real*8 MCHNUM(3,4),LINAXS(6),AXSOUT(10),ROTANG(20,2),AXSSTO(10),
+     1       TLVEC(3)
 c
-      integer*4 nc,iwrn,inum,ilod,ist,inc,iyesno(2),mea1(4),mea2(4),
-     1          mea3(4),mea4(4),jindex
+      equivalence (REGST ,CPOSMP(7011))
 c
-      character*2 laxs(10)
+      character*24 REGST(MAXFMT)
 c
-      data iyesno /13,12/
-      data mea1 /4,8,12,16/, mea2 /5,9,13,17/, mea3 /6,10,14,18/
-      data mea4 /7,11,15,19/
-      data laxs /'X1','X2','Y1','Y2','Z1','Z2','A1','A2','A3','A4'/
+      integer*4 kaxsw(10),kcnt,kfl,kax(10),kary(12),kpt,klft
 c
-c...Specific level was requested
-c...Go directly to that level
+      integer*4 i,inc,idid,isgn,iax(10),ipt,j
 c
-      ilod   = 1
-      if (kfl .lt. NLEVL) go to 100
-   50 ist    = MLEVL(NLEVL)
-      goto (100,200,300,410,510,610,710,410,510,610,710,410,510,610,710,
-     1      410,510,610,710,2000), MLEVL(NLEVL)
+      real*8 raxs(10)
 c
-c...Maximum # of axis in single block
+      character*1 lax(10)
+      character*20 lbuf
+      character*80 msg
 c
-  100 MLEVL(NLEVL) = 1
-      if (MACHTP .eq. 2) then
-          if (kfl .lt. NLEVL) go to 200
-          call errmsg ('NOTAPPLY',1,2)
-          go to 8000
-      endif
-      iwrn   = 0
-      inum   = MAXAXS
-      nc     = -1
-      call prmint (inum,nc,1,1,10,kfl,ilod,iwrn,cmsg,kerr)
-      if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-          if (iwrn .eq. 2) go to 7000
-          if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-          MAXAXS = inum
-          if (kfl .ge. NLEVL) go to 8000
+      data iax /1,3,5,7,9,11,13,16,19,22/
+      data lax /'X','U','Y','V','Z','W','A','B','C','D'/
+c
+c...Second time here
+c...Pop axes off of stack
+c
+      if (kfl .eq. 1) then
+          kfl    = 0
+          call popaxs (MCHNUM,LINAXS,ROTANG,AXSOUT,TLVEC,kaxsw,kcnt)
+          go to 400
       endif
 c
-c...Priority for too many axis moves in a single block
-c
-  200 MLEVL(NLEVL) = 2
-      iwrn   = 0
-      if (MAXAXS .ge. NUMLIN(1)+NUMLIN(2)+NUMLIN(3)+IRTNUM) then
-          if (kfl .lt. NLEVL) go to 300
-          call errmsg ('NOTAPPLY',1,2)
-          go to 8000
-      endif
-c
-      nc     = jindex(AXSPRI,IDUMMY,10) - 1
-      if (nc .eq. -1) nc = 10
-      call prmaxs (AXSPRI,nc,10,2,kfl,ilod,iwrn,cmsg,kerr)
-      if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-          if (kerr .ne. 0) go to 8000
-          if (iwrn .eq. 2) go to 7000
-          if (iwrn .eq. 1) go to 8000
-          if (nc .ne. 10) AXSPRI(nc+1) = IDUMMY
-          if (kfl .ge. NLEVL) go to 8000
-      endif
-c
-c...Number of MEA sets
-c
-  300 MLEVL(NLEVL) = 3
-      if (MACHTP .eq. 2) then
-          if (kfl .lt. NLEVL) go to 390
-          call errmsg ('NOTAPPLY',1,2)
-          go to 8000
-      endif
-      iwrn   = 0
-      inum   = NUMEXC
-      nc     = -1
-      call prmint (inum,nc,1,0,4,kfl,ilod,iwrn,cmsg,kerr)
-      if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-          if (iwrn .eq. 2) go to 7000
-          if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-          NUMEXC = inum
-          if (kfl .ge. NLEVL) go to 8000
-      endif
-  390 continue
-c
-c...Mutually exclusive axes parameters
-c
-  400 ist    = 4
-c
-c......Mutually exclusive axes
-c
-  410 MLEVL(NLEVL) = ist
-      inc    = jindex(mea1,ist,4)
-      iwrn   = 0
-      if (inc .gt. NUMEXC) then
-          if (kfl .lt. NLEVL) go to 790
-          call errmsg ('NOTAPPLY',1,2)
-          go to 8000
-      endif
-c
-      call prmaxs (EXCLAX(1,inc),EXCLNM(inc),4,2,kfl,ilod,iwrn,cmsg,
-     1             kerr)
-      if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-          if (kerr .ne. 0) go to 8000
-          if (iwrn .eq. 2) go to 7000
-          if (iwrn .eq. 1) go to 8000
-          if (kfl .ge. NLEVL) go to 8000
-      endif
-c
-c......Controlling axis for MEA
-c
-      ist    = ist    + 1
-  510 MLEVL(NLEVL) = ist
-      inc    = jindex(mea2,ist,4)
-      iwrn   = 0
-      if (inc .gt. NUMEXC) then
-          if (kfl .lt. NLEVL) go to 790
-          call errmsg ('NOTAPPLY',1,2)
-          go to 8000
-      endif
-c
-      nc     = 1
-      call prmaxs (EXCLCO(inc),nc,1,2,kfl,ilod,iwrn,cmsg,kerr)
-      if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-          if (kerr .ne. 0) go to 8000
-          if (iwrn .eq. 2) go to 7000
-          if (iwrn .eq. 1) go to 8000
-          if (kfl .ge. NLEVL) go to 8000
-      endif
-c
-c......Positive move axes priority for MEA
-c
-      ist    = ist    + 1
-  610 MLEVL(NLEVL) = ist
-      inc    = jindex(mea3,ist,4)
-      iwrn   = 0
-      if (inc .gt. NUMEXC) then
-          if (kfl .lt. NLEVL) go to 790
-          call errmsg ('NOTAPPLY',1,2)
-          go to 8000
-      endif
-c
-      nc     = jindex(EXCLPS(1,inc),IDUMMY,12) - 1
-      if (nc .eq. -1) nc = 12
-      call prmaxs (EXCLPS(1,inc),nc,12,1,kfl,ilod,iwrn,cmsg,kerr)
-      if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-          if (kerr .ne. 0) go to 8000
-          if (iwrn .eq. 2) go to 7000
-          if (iwrn .eq. 1) go to 8000
-          if (nc .ne. 12) EXCLPS(nc+1,inc) = IDUMMY
-          if (kfl .ge. NLEVL) go to 8000
-      endif
-c
-c......Negative move axes priority for MEA
-c
-      ist    = ist    + 1
-  710 MLEVL(NLEVL) = ist
-      inc    = jindex(mea4,ist,4)
-      iwrn   = 0
-      if (inc .gt. NUMEXC) then
-          if (kfl .lt. NLEVL) go to 790
-          call errmsg ('NOTAPPLY',1,2)
-          go to 8000
-      endif
-c
-      nc     = jindex(EXCLNE(1,inc),IDUMMY,12) - 1
-      if (nc .eq. -1) nc = 12
-      call prmaxs (EXCLNE(1,inc),nc,12,1,kfl,ilod,iwrn,cmsg,kerr)
-      if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-          if (kerr .ne. 0) go to 8000
-          if (iwrn .eq. 2) go to 7000
-          if (iwrn .eq. 1) go to 8000
-          if (nc .ne. 12) EXCLNE(nc+1,inc) = IDUMMY
-          if (kfl .ge. NLEVL) go to 8000
-      endif
-      ist    = ist    + 1
-      if (inc .lt. NUMEXC) go to 410
-  790 continue
-c
-c...Hold back motion
-c
- 2000 MLEVL(NLEVL) = 20
-      iwrn   = 0
-      inum   = HLDBCK
-      call prmvoc (inum,iyesno,2,kfl,ilod,iwrn,cmsg,kerr)
-      if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-          if (iwrn .eq. 2) go to 7000
-          if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-          HLDBCK = inum
-          if (kfl .ge. NLEVL) go to 8000
-      endif
-c
-c...Up arrow
-c...Go to previous prompt
-c
-      go to 8000
- 7000 MLEVL(NLEVL) = PRMSTK(PRMSP)
-      PRMSP  = PRMSP  - 1
-      go to 50
-c
-c...End of routine
-c
- 8000 return
-      end
-c
-c***********************************************************************
-c
-c   SUBROUTINE:  mtalin (kfl,cmsg,kerr)
-c
-c   FUNCTION:  Rotary axes linearization prompt handling routine.
-c
-c   INPUT:  kfl     I*4  D1  -  The number of levels that the user en-
-c                               tered.
-c
-c   OUTPUT: cmsg    C*n  D1  -  Text of error message.
-c
-c           kerr    I*4  D1  -  Returns non-zero when an error occurred.
-c
-c***********************************************************************
-c
-      subroutine mtalin (kfl,cmsg,kerr)
-c
-      include 'menu.inc'
-      include 'post.inc'
-c
-      equivalence (MACHTP,KPOSMP(1201)), (IRTNUM,KPOSMP(1243))
-      equivalence (LNRADJ,KPOSMP(1277)), (LRTRCT,KPOSMP(1278))
-      equivalence (LRTTAD,KPOSMP(1335)), (IRTRTE,KPOSMP(1343))
-      equivalence (LRTRFL,KPOSMP(1348))
-      equivalence (IRTSHF,KPOSMP(1374)), (IJKROT,KPOSMP(1739))
-c
-      integer*4 LRTRCT,LRTTAD,MACHTP,IRTNUM,IRTRTE(2),IJKROT,
-     1          IRTSHF,LNRADJ,LRTRFL
-c
-      equivalence (LNRTOL,POSMAP(2251)), (LNRATL,POSMAP(2286))
-      equivalence (RETFED,POSMAP(2254)), (RETPL ,POSMAP(2258))
-      equivalence (TAXTOL,POSMAP(2262))
-      equivalence (RETDIS,POSMAP(2279)), (RTSHFD,POSMAP(4947))
-c
-      real*8 LNRTOL(2),RETDIS,RETFED(4),RTSHFD,LNRATL(5),RETPL(4),
-     1       TAXTOL
-c
-      integer*4 kfl,kerr
-c
-      character*(*) cmsg
-c
-      integer*4 nc,iwrn,ilod,ist,i,iyesno(2),inum,inc,idir(3),idipln(3)
-c
-      real*8 rnum(4),rmn,rmx,rmn4(4),rmx4(4),rdis
-c
-      data iyesno /13,12/, idir /12,81,82/, idipln /12,521,522/
-c
-      data rmn /-99999999.d0/, rmx /99999999.d0/
-      data rmn4 /-1.,-1.,-1.,-99999999./, rmx4 /1.,1.,1.,99999999./
-c
-      ilod   = 1
-      if (kfl .lt. NLEVL) go to 100
-   50 ist    = MLEVL(NLEVL)
-      goto (110,110,300,410,410,410,410,800,900,1000,1100,1200,1300,
-     1      1400,1500,1610,1610,1610,1610,2000,2100), MLEVL(NLEVL)
-c
-c...Default linearization tolerance
-c
-  100 ist    = 1
-  110 inc    = ist    - 1
-      do 190 i=ist,2,1
-          MLEVL(NLEVL) = i
-          inc    = inc    + 1
-          iwrn   = 0
-          rnum(1) = LNRTOL(inc)
-          nc     = 1
-          call prmrel (rnum(1),nc,1,0.d0,rmx,kfl,ilod,iwrn,cmsg,kerr)
-          if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-              if (iwrn .eq. 2) go to 7000
-              if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-              LNRTOL(inc) = rnum(1)
-              if (kfl .ge. NLEVL) go to 8000
-          endif
-  190 continue
-  195 continue
-c
-c...Adjust tool axis to minimize rotary movement
-c
-  300 MLEVL(NLEVL) = 3
-      iwrn   = 0
-      inum   = LNRADJ
-      nc     = -2
-      call prmvoc (inum,iyesno,nc,kfl,ilod,iwrn,cmsg,kerr)
-      if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-          if (iwrn .eq. 2) go to 7000
-          if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-          LNRADJ = inum
-          if (kfl .ge. NLEVL) go to 8000
-      endif
-c
-c...Tool axis adjustment tolerances
-c
-  400 ist    = 4
-  410 inc    = ist    - 4
-      if (LNRADJ .eq. 2) then
-          if (kfl .ge. NLEVL) then
-              call errmsg ('NOTAPPLY',1,2)
-          endif
-          if (IMSCAN .eq. 2) go to 8000
-          go to 495
-      endif
-      do 490 i=ist,7,1
-          MLEVL(NLEVL) = i
-          inc    = inc    + 1
-          iwrn   = 0
-          rnum(1) = LNRATL(inc)
-          nc     = 1
-          call prmrel (rnum(1),nc,1,0.d0,rmx,kfl,ilod,iwrn,cmsg,kerr)
-          if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-              if (iwrn .eq. 2) go to 7000
-              if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-              LNRATL(inc) = rnum(1)
-              if (kfl .ge. NLEVL) go to 8000
-          endif
-  490 continue
-  495 continue
-c
-c...Tool axis component tolerance
-c
-  800 MLEVL(NLEVL) = 8
-      iwrn   = 0
-      rnum(1) = TAXTOL
-      nc     = 1
-      call prmrel (rnum(1),nc,1,rmn,rmx,kfl,ilod,iwrn,cmsg,kerr)
-      if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-          if (iwrn .eq. 2) go to 7000
-          if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-          TAXTOL = rnum(1)
-          if (kfl .ge. NLEVL) go to 8000
-      endif
-c
-c...Automatic retract on longest route
-c
-  900 MLEVL(NLEVL) = 9
-      iwrn   = 0
-      inum   = LRTRCT + 1
-      nc     = -3
-      call prmvoc (inum,idipln,nc,kfl,ilod,iwrn,cmsg,kerr)
-      if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-          if (iwrn .eq. 2) go to 7000
-          if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-          LRTRCT = inum - 1
-          if (kfl .ge. NLEVL) go to 8000
-      endif
-c
-c...Automatic retract on longest route
-c...When lintol is off
-c
- 1000 MLEVL(NLEVL) = 10
-      iwrn   = 0
-      inum   = LRTRFL
-      nc     = 2
-      call prmvoc (inum,iyesno,nc,kfl,ilod,iwrn,cmsg,kerr)
-      if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-          if (iwrn .eq. 2) go to 7000
-          if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-          LRTRFL = inum
-          if (kfl .ge. NLEVL) go to 8000
-      endif
-c
-c...Retract adding tool length to retract distance
-c
- 1100 MLEVL(NLEVL) = 11
-      if (LRTRCT .ne. 1) then
-          if (kfl .lt. NLEVL) go to 1195
-          call errmsg ('NOTAPPLY',1,2)
-          go to 8000
-      endif
-      iwrn   = 0
-      inum   = LRTTAD
-      call prmvoc (inum,iyesno,2,kfl,ilod,iwrn,cmsg,kerr)
-      if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-          if (iwrn .eq. 2) go to 7000
-          if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-          LRTTAD = inum
-          if (kfl .ge. NLEVL) go to 8000
-      endif
- 1195 continue
-c
-c...Retract distance
-c
- 1200 MLEVL(NLEVL) = 12
-      if (LRTRCT .ne. 1) then
-          if (kfl .lt. NLEVL) go to 1295
-          call errmsg ('NOTAPPLY',1,2)
-          go to 8000
-      endif
-      iwrn   = 0
-      rnum(1) = RETDIS
-      nc     = 1
-      call prmrel (rnum(1),nc,1,rmn,rmx,kfl,ilod,iwrn,cmsg,kerr)
-      if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-          if (iwrn .eq. 2) go to 7000
-          if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-          RETDIS = rnum(1)
-          if (kfl .ge. NLEVL) go to 8000
-      endif
- 1295 continue
-c
-c...Get clearance plane
-c
- 1300 MLEVL(NLEVL) = 13
-      if (LRTRCT .ne. 2) then
-          if (kfl .lt. NLEVL) go to 1395
-          call errmsg ('NOTAPPLY',1,2)
-          go to 8000
-      endif
-      iwrn   = 0
-      rnum(1) = RETPL(1)
-      rnum(2) = RETPL(2)
-      rnum(3) = RETPL(3)
-      rnum(4) = RETPL(4)
- 1320 nc     = 4
-      call prmrel (rnum,nc,4,rmn4,rmx4,kfl,ilod,iwrn,cmsg,kerr)
-      if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-          if (iwrn .eq. 2) go to 7000
-          if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-          if (nc .eq. 1) then
-              nc    = 4
-              rnum(4) = rnum(1)
-              rnum(1) = 0.
-              rnum(2) = 0.
-              rnum(3) = 1.
-          endif
-          rdis   = dsqrt(rnum(1)**2 + rnum(2)**2 + rnum(3)**2)
-          if (nc .ne. 4 .or. rdis .eq. 0.) then
-              call errmsg ('INVRESP',1,2)
-              iwrn   = 1
-              if (IMSCAN .eq. 2) go to 8000
-              go to 1320
-          endif
-          do 1370 i=1,3,1
-              RETPL(i) = rnum(i) / rdis
- 1370     continue
-          RETPL(4) = rnum(4)
-          if (kfl .ge. NLEVL) go to 8000
-      endif
- 1395 continue
-c
-c...Offset tool prior to retract
-c
- 1400 MLEVL(NLEVL) = 14
-      if (LRTRCT .eq. 0 .or. MACHTP .eq. 3) then
-          if (kfl .ge. NLEVL) then
-              call errmsg ('NOTAPPLY',1,2)
-          endif
-          if (IMSCAN .eq. 2) go to 8000
-          go to 1495
-      endif
-      iwrn   = 0
-      inum   = IRTSHF
-      nc     = -3
-      call prmvoc (inum,idir,nc,kfl,ilod,iwrn,cmsg,kerr)
-      if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-          if (iwrn .eq. 2) go to 7000
-          if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-          IRTSHF = inum
-          if (kfl .ge. NLEVL) go to 8000
-      endif
- 1495 continue
-c
-c...Offset distance
-c
- 1500 MLEVL(NLEVL) = 15
-      if (LRTRCT .eq. 0 .or. IRTSHF .eq. 1) then
-          if (kfl .ge. NLEVL) then
-              call errmsg ('NOTAPPLY',1,2)
-          endif
-          if (IMSCAN .eq. 2) go to 8000
-          go to 1595
-      endif
-      iwrn   = 0
-      rnum(1) = RTSHFD
-      nc     = 1
-      call prmrel (rnum(1),nc,1,rmn,rmx,kfl,ilod,iwrn,cmsg,kerr)
-      if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-          if (iwrn .eq. 2) go to 7000
-          if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-          RTSHFD = rnum(1)
-          if (kfl .ge. NLEVL) go to 8000
-      endif
- 1595 continue
-c
-c...Retract feeds
-c
- 1600 ist    = 16
- 1610 inc    = ist    - 16
-      if (LRTRCT .eq. 0) then
-          if (kfl .ge. NLEVL) then
-              call errmsg ('NOTAPPLY',1,2)
-          endif
-          if (IMSCAN .eq. 2) go to 8000
-          go to 1695
-      endif
-      do 1690 i=ist,19,1
-          MLEVL(NLEVL) = i
-          inc    = inc    + 1
-          iwrn   = 0
-          rnum(1) = RETFED(inc)
-          nc     = 1
-          if ((inc .eq. 3 .and. MACHTP .ne. 3) .or.
-     1        (inc .eq. 4 .and. IRTSHF .eq. 1)) then
-              if (kfl .ge. NLEVL) then
-                  call errmsg ('NOTAPPLY',1,2)
+c...Determine if there are any mutually
+c...exclusive axes in this block
+c
+      do 200 inc=1,NUMEXC,1
+          idid   = 0
+          do 100 j=1,EXCLNM(inc),1
+              if (kaxsw(EXCLAX(j,inc)) .eq. 1) then
+                  if (idid .ne. 0) go to 300
+                  idid   = j
               endif
-              if (IMSCAN .eq. 2) go to 8000
-              go to 1690
-          endif
-          call prmrel (rnum(1),nc,1,0.d0,rmx,kfl,ilod,iwrn,cmsg,kerr)
-          if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-              if (iwrn .eq. 2) go to 7000
-              if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-              RETFED(inc) = rnum(1)
-              if (kfl .ge. NLEVL) go to 8000
-          endif
- 1690 continue
- 1695 continue
-c
-c...Shortest route determination
-c
- 2000 MLEVL(NLEVL) = 20
-      if (IRTNUM .lt. 2) then
-          if (kfl .ge. NLEVL) call errmsg ('NOTAPPLY',1,2)
-          if (IMSCAN .eq. 2) go to 8000
-          go to 2095
-      endif
-      iwrn   = 0
-      inum   = IRTRTE(1)
-      nc     = -1
-      call prmint (inum,nc,1,1,4,kfl,ilod,iwrn,cmsg,kerr)
-      if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-          if (iwrn .eq. 2) go to 7000
-          if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-          IRTRTE(1) = inum
-          if (kfl .ge. NLEVL) go to 8000
-      endif
- 2095 continue
-c
-c...Shortest route controlling axis
-c
- 2100 MLEVL(NLEVL) = 21
-      if (IRTNUM .lt. 2 .or. IRTRTE(1) .ne. 4) then
-          if (kfl .ge. NLEVL) call errmsg ('NOTAPPLY',1,2)
-          if (IMSCAN .eq. 2) go to 8000
-          go to 2195
-      endif
-      iwrn   = 0
-      inum   = IRTRTE(2)
-      nc     = 1
-      call prmint (inum,nc,1,1,IRTNUM,kfl,ilod,iwrn,cmsg,kerr)
-      if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-          if (iwrn .eq. 2) go to 7000
-          if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-          IRTRTE(2) = inum
-          if (kfl .ge. NLEVL) go to 8000
-      endif
- 2195 continue
-c
-c...Up arrow
-c...Go to previous prompt
-c
+  100     continue
+  200 continue
       go to 8000
- 7000 MLEVL(NLEVL) = PRMSTK(PRMSP)
-      PRMSP  = PRMSP  - 1
-      go to 50
+c
+c......Mutually exclusive axes are in this block
+c......Break it up into 2 or more blocks
+c
+  300 kpt    = 0
+      klft   = kcnt
+      do 320 i=1,10,1
+          kax(i) = kaxsw(i)
+  320 continue
+c
+c.........Output error message
+c
+      ipt    = iax(EXCLAX(idid,inc))
+      lbuf   = REGST(MOTREG(ipt))
+      if (REGBNC(MOTREG(ipt)) .eq. 0) lbuf = lax(EXCLAX(idid,inc))
+      call perrst ('EXCLAXS',1,msg,0,0.d0,lbuf,3)
+c
+      ipt    = iax(EXCLAX(j,inc))
+      lbuf   = REGST(MOTREG(ipt))
+      if (REGBNC(MOTREG(ipt)) .eq. 0) lbuf = lax(EXCLAX(j,inc))
+      call perrst (msg,2,msg,0,0.d0,lbuf,3)
+      call psterr (2,msg,'MULTBLK',-1)
+c
+c.........Determine which way the
+c.........controlling axis moves
+c
+      isgn   = 1
+      if (EXCLCO(inc) .ne. 0 .and. kaxsw(EXCLCO(inc)) .eq. 1 .and.
+     1    AXSOUT(EXCLCO(inc)) .lt. AXSSTO(EXCLCO(inc))) isgn = 2
+c
+      if (isgn .eq. 1) then
+          do 360 i=1,12,1
+              kary(i) = EXCLPS(i,inc)
+  360     continue
+      else
+          do 370 i=1,12,1
+              kary(i) = EXCLNE(i,inc)
+  370     continue
+      endif
+c
+c.........Determine which axes to output
+c.........From priority
+c
+  400 kcnt   = 0
+      do 450 i=1,10,1
+          raxs(i) = AXSOUT(i)
+          kaxsw(i) = 0
+  450 continue
+      if (kpt .ge. 12) go to 600
+      do 500 kpt=kpt+1,12,1
+          if (kary(kpt) .eq. IDUMMY) go to 600
+c
+c............End-of-Block
+c............Set current axes position
+c
+          if (kary(kpt) .eq. -1) then
+              if (klft .eq. 0) go to 1000
+              do 480 i=1,10,1
+                  if (kax(i) .eq. 1) AXSOUT(i) = AXSSTO(i)
+  480         continue
+              kfl    = 1
+              go to 1000
+          else if (kax(kary(kpt)) .eq. 1) then
+              kaxsw(kary(kpt)) = 1
+              kax(kary(kpt)) = 0
+              kcnt   = kcnt   + 1
+              klft   = klft   - 1
+          endif
+  500 continue
+c
+c.........End of user specified order
+c.........Select rest of axes based on
+c.........order of appearance
+c
+  600 if (klft .eq. 0) go to 8000
+      do 650 i=1,10,1
+          if (kax(i) .eq. 1) then
+              kaxsw(i) = 1
+              kcnt   = kcnt   + 1
+          endif
+  650 continue
+c
+c.........Adjust axes for output
+c
+ 1000 if (kfl .ne. 0) call pshaxs (raxs,TLVEC)
+      call alladr (AXSOUT,LINAXS,MCHNUM,ROTANG,TLVEC,5,1)
 c
 c...End of routine
 c
@@ -766,139 +218,116 @@ c
 c
 c***********************************************************************
 c
-c   SUBROUTINE:  mtalka (kfl,cmsg,kerr)
+c   SUBROUTINE:  maxaxc (kaxsw,kcnt,kfl)
 c
-c   FUNCTION:  AC-Style head prompt handling routine.
+c   FUNCTION:  This routine checks that the number of axes to be output
+c              in the current motion block does not exceed the maximum
+c              number of axes allowed.  If it does, this routine will
+c              break the motion block into multiple motion blocks.
 c
-c   INPUT:  kfl     I*4  D1  -  The number of levels that the user en-
-c                               tered.
+c   INPUT:  kaxsw   I*4  D10 -  Array of switches that show which axes
+c                               are waiting to be output.  A value of 1
+c                               signifies this axis needs to be output.
 c
-c   OUTPUT: cmsg    C*n  D1  -  Text of error message.
+c           kcnt    I*4  D1  -  Number of axes waiting to be output.
 c
-c           kerr    I*4  D1  -  Returns non-zero when an error occurred.
+c           kfl     I*4  D1  -  Should be set to 0 on initial call.
+c                               'kfl' is also returned with a value of
+c                               0 and 1.  1 = the motion block was
+c                               broken up, this routine should be called
+c                               again immediately after the returne*************
 c
-c***********************************************************************
+      subroutine maxaxc (kaxsw,kcnt,kfl)
 c
-      subroutine mtalka (kfl,cmsg,kerr)
-c
-      include 'menu.inc'
       include 'post.inc'
 c
-      equivalence (ACHEAD,KPOSMP(1645)), (IACFLG,KPOSMP(1648))
+      equivalence (IDUMMY,KPOSMP(0088)), (MAXAXS,KPOSMP(1212))
+      equivalence (AXSPRI,KPOSMP(1213))
 c
-      integer*4 ACHEAD,IACFLG(5)
+      integer*4 IDUMMY,MAXAXS,AXSPRI(10)
 c
-      equivalence (TLATOL,POSMAP(0057))
+      equivalence (MCHNUM,POSMAP(1287)), (LINAXS,POSMAP(1299))
+      equivalence (AXSOUT,POSMAP(1340)), (TLVEC ,POSMAP(1369))
+      equivalence (AXSSTO,POSMAP(1425)), (ROTANG,POSMAP(5173))
 c
-      real*8 TLATOL
+      real*8 MCHNUM(3,4),LINAXS(6),AXSOUT(10),ROTANG(20,2),AXSSTO(10),
+     1       TLVEC(3)
 c
-      integer*4 kfl,kerr
+      integer*4 kaxsw(10),kcnt,kfl
 c
-      character*(*) cmsg
+      integer*4 icnt,i,iax(10),ist,iaxin(10)
 c
-      integer*4 nc,iwrn,inum,ilod,ist,inoyes(2),i,inc,iynaut(3),
-     1          inyrap(3)
+c...Output all axes in this block
 c
-      real*8 rnum,rmn,rmx
+      if (kcnt .le. MAXAXS .and. kfl .eq. 0) go to 8000
+      if (kfl .eq. 0) call psterr (2,'MANYAXIS','MULTBLK',-1)
 c
-      data inoyes /12,13/, iynaut /13,12,67/, inyrap /48,67,79/
+c...Second time here
+c...Pop previous position from stack
 c
-      data rmn /.0/, rmx /1./
+      if (kfl .eq. 1) then
+          kfl    = 0
+          call popaxs (MCHNUM,LINAXS,ROTANG,AXSOUT,TLVEC,kaxsw,kcnt)
+          if (kcnt .le. MAXAXS) go to 8000
+          icnt   = kcnt
+          do 100 i=1,10,1
+              iax(i) = kaxsw(i)
+              iaxin(i) = kaxsw(i)
+              kaxsw(i) = 0
+  100     continue
 c
-c...Specific level was requested
-c...Go directly to that level
+c...First time here
+c...Initialize routine
 c
-      ilod   = 1
-      if (kfl .lt. NLEVL) go to 100
-   50 ist    = MLEVL(NLEVL)
-      goto (100,200,300,410,410,410), MLEVL(NLEVL)
-c
-c...Does this machine have an AC-style head
-c
-  100 MLEVL(NLEVL) = 1
-      iwrn   = 0
-      inum   = ACHEAD
-      nc     = -3
-      call prmvoc (inum,iynaut,nc,kfl,ilod,iwrn,cmsg,kerr)
-      if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-          if (iwrn .eq. 2) go to 7000
-          if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-          ACHEAD = inum
-          if (kfl .ge. NLEVL) go to 8000
+      else
+          icnt   = kcnt
+          do 200 i=1,10,1
+              iax(i) = kaxsw(i)
+              iaxin(i) = kaxsw(i)
+              kaxsw(i) = 0
+  200     continue
       endif
 c
-c...Look ahead mode
+c...Determine which axes to output
+c...from priority
 c
-  200 MLEVL(NLEVL) = 2
-      if (ACHEAD .eq. 2) then
-          if (kfl .lt. NLEVL) go to 295
-          call errmsg ('NOTAPPLY',1,2)
-          go to 8000
+      ist    = 0
+      kcnt   = 0
+  300 ist    = ist    + 1
+      if (AXSPRI(ist) .eq. IDUMMY) go to 500
+      if (iaxin(AXSPRI(ist)) .eq. 1) then
+          kaxsw(AXSPRI(ist)) = 1
+          iax(AXSPRI(ist)) = 0
+          kcnt   = kcnt   + 1
+          if (kcnt .eq. MAXAXS) go to 800
       endif
-      iwrn   = 0
-      inum   = IACFLG(1)
-      nc     = -3
-      call prmvoc (inum,inyrap,nc,kfl,ilod,iwrn,cmsg,kerr)
-      if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-          if (iwrn .eq. 2) go to 7000
-          if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-          IACFLG(1) = inum
-          if (kfl .ge. NLEVL) go to 8000
-      endif
-  295 continue
+      go to 300
 c
-c...Vector component deviation
+c......Did not fill up motion block
+c......Select rest of axes based on
+c......order of appearance
 c
-  300 MLEVL(NLEVL) = 3
-      if (ACHEAD .eq. 2 .or. IACFLG(1) .eq. 1) then
-          if (kfl .lt. NLEVL) go to 395
-          call errmsg ('NOTAPPLY',1,2)
-          go to 8000
-      endif
-      iwrn   = 0
-      nc     = 1
-      rnum   = TLATOL
-      call prmrel (rnum,nc,1,rmn,rmx,kfl,ilod,iwrn,cmsg,kerr)
-      if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-          if (iwrn .eq. 2) go to 7000
-          if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-          TLATOL = rnum
-          if (kfl .ge. NLEVL) go to 8000
-      endif
-  395 continue
-c
-c...Machine slowdown support
-c
-  400 ist    = 4
-  410 inc    = ist    - 3
-      if (ACHEAD .eq. 2 .or. IACFLG(1) .eq. 1) then
-          if (kfl .lt. NLEVL) go to 495
-          call errmsg ('NOTAPPLY',1,2)
-          go to 8000
-      endif
-      do 490 i=ist,6,1
-          inc    = inc    + 1
-          MLEVL(NLEVL) = i
-          iwrn   = 0
-          inum   = IACFLG(inc)
-          nc     = 2
-          call prmvoc (inum,inoyes,nc,kfl,ilod,iwrn,cmsg,kerr)
-          if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-              if (iwrn .eq. 2) go to 7000
-              if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-              IACFLG(inc) = inum
-              if (kfl .ge. NLEVL) go to 8000
+  500 do 600 i=1,10,1
+          if (iaxin(i) .eq. 1 .and. kaxsw(i) .eq. 0) then
+              kaxsw(i) = 1
+              kcnt   = kcnt   + 1
+              if (kcnt .eq. MAXAXS) go to 800
           endif
-  490 continue
-  495 continue
+  600 continue
 c
-c...Up arrow
-c...Go to previous prompt
+c......Push left over axes
+c......onto stack
 c
-      go to 8000
- 7000 MLEVL(NLEVL) = PRMSTK(PRMSP)
-      PRMSP  = PRMSP  - 1
-      go to 50
+  800 kfl    = 1
+      icnt   = icnt   - kcnt
+      call pshaxs (AXSOUT,TLVEC)
+c
+c......Set up current position arrays
+c
+      do 900 i=1,10,1
+          if (kaxsw(i) .eq. 0) AXSOUT(i) = AXSSTO(i)
+  900 continue
+      call alladr (AXSOUT,LINAXS,MCHNUM,ROTANG,TLVEC,5,1)
 c
 c...End of routine
 c
@@ -907,214 +336,131 @@ c
 c
 c***********************************************************************
 c
-c   SUBROUTINE:  mtaslw (kfl,cmsg,kerr)
+c   SUBROUTINE:  maxdep (kaxsw,kcnt,kfl)
 c
-c   FUNCTION:  Slowdown parmaeters prompt handling routine.
+c   FUNCTION:  This routine checks that any given axis does not move
+c              more than the maximum departure for that axis allows.
+c              If one does, this routine will break the move into mul-
+c              tiple moves.
 c
-c   INPUT:  kfl     I*4  D1  -  The number of levels that the user en-
-c                               tered.
+c   INPUT:  kaxsw   I*4  D10 -  Array of switches that show which axes
+c                               are waiting to be output.  A value of 1
+c                               signifies this axis needs to be output.
 c
-c   OUTPUT: cmsg    C*n  D1  -  Text of error message.
+c           kcnt    I*4  D1  -  Number of axes waiting to be output.
 c
-c           kerr    I*4  D1  -  Returns non-zero when an error occurred.
+c           kfl     I*4  D1  -  Should be set to 0 on initial call.
+c                               'kfl' is also returned with a value of
+c                               0 and 1.  1 = the motion block was
+c                               broken up, this routine should be called
+c                               again immediately after the returned
+c                               motion block is output.
+c
+c   OUTPUT: kaxsw   I*4  D10 -  See INPUT.
+c
+c           kcnt    I*4  D1  -  See INPUT.
+c
+c           kfl     I*4  D1  -  See INPUT.
 c
 c***********************************************************************
 c
-      subroutine mtaslw (kfl,cmsg,kerr)
+      subroutine maxdep (kaxsw,kcnt,kfl)
 c
       include 'menu.inc'
       include 'post.inc'
 c
-      equivalence (IUNIT ,KPOSMP(0087))
-      equivalence (SLWFL ,KPOSMP(1701)), (SLWCD ,KPOSMP(1706))
-      equivalence (ISLWDN,KPOSMP(1721))
+      equivalence (MOTREG,KPOSMP(0381)), (REGBNC,KPOSMP(2001))
+      equivalence (IACHFL,KPOSMP(1646)), (IMXDRP,KPOSMP(1743))
+      equivalence (IRAP  ,KPOSMP(3199))
 c
-      integer*4 SLWFL(5),SLWCD(10),ISLWDN,IUNIT
+      integer*4 MOTREG(24),REGBNC(MAXFMT),IACHFL,IMXDRP,IRAP
 c
-      equivalence (SLWVR ,POSMAP(2451)), (SLWVL ,POSMAP(2456))
+      equivalence (MCHNUM,POSMAP(1287)), (LINAXS,POSMAP(1299))
+      equivalence (AXSOUT,POSMAP(1340)), (TLVEC ,POSMAP(1369))
+      equivalence (PPMAXD,POSMAP(1584)), (ROTANG,POSMAP(5173))
 c
-      real*8 SLWVR(5),SLWVL(10)
+      real*8 MCHNUM(3,4),LINAXS(6),AXSOUT(10),ROTANG(20,2),PPMAXD(10),
+     1       TLVEC(3)
 c
-      integer*4 kfl,kerr
+      equivalence (REGST ,CPOSMP(7011))
 c
-      character*(*) cmsg
+      character*24 REGST(MAXFMT)
 c
-      integer*4 nc,iwrn,inum,ilod,ist,iyesno(2),i,inc,ionoff(2),cd(12)
+      integer*4 kaxsw(10),kcnt,kfl
 c
-      real*8 rnum,ssover(2,13)
+      integer*4 i,isw,isub(10),iax(10)
 c
-      data iyesno /13,12/, ionoff /47,48/
-      data cd /1,2,3,4, 1,1,2,2,3,3,4,4/
+      real*8 rnum(10),rdlt,rmax,ratio,rdif
 c
-      data ssover /.0001,  1.000,   .0004,  3.000,   .0006,  5.000,
-     1             .0009,  7.000,   .0017, 10.000,   .0028, 15.000,
-     2             .0038, 20.000,   .0053, 25.000,   .0073, 30.000,
-     3             .0093, 40.000,   .0126, 50.000,   .0186, 75.000,
-     4             .0272,100.000  /
+      character*1 lax(10)
+      character*20 lbuf
+      character*80 msg1,msg2
 c
-c...Specific level was requested
-c...Go directly to that level
+      data isub /1,3,5,7,9,11,13,16,19,22/
+      data iax /1,3,5,7,9,11,13,16,19,22/
+      data lax /'X','U','Y','V','Z','W','A','B','C','D'/
 c
-      ilod   = 1
-      if (kfl .lt. NLEVL) go to 100
-   50 ist    = MLEVL(NLEVL)
-      goto (110,110,110,400,500,610,610,610,610,610,610,610,610,610,
-     1      610,610,610,610,1900,2000), MLEVL(NLEVL)
+c...Don't do anything with RAPID moves
+c...if requested
 c
-c...Machine slowdown support
+      if (IMXDRP .eq. 2 .and. IRAP .gt. 0) go to 8000
 c
-  100 ist    = 1
-  110 inc    = ist    - 1
-      do 190 i=ist,3,1
-          inc    = inc    + 1
-          if (inc .ge. 2 .and. SLWFL(1) .ne. 1) then
-              if (kfl .lt. NLEVL) go to 195
-              call errmsg ('NOTAPPLY',1,2)
-              go to 8000
+c...Second time here
+c...Pop previous position from stack
+c
+      if (kfl .eq. 1) then
+          kfl    = 0
+          call popaxs (MCHNUM,LINAXS,ROTANG,AXSOUT,TLVEC,kaxsw,kcnt)
+      endif
+c
+c...Determine if any axis moves more
+c...than the maximum departure allowed
+c
+      isw   = 0
+      rmax  = 0.
+      do 100 i=1,10,1
+          call increg (MOTREG(isub(i)),AXSOUT(i),rnum(i))
+          rdlt   = dabs(rnum(i))
+          if (rdlt .gt. dabs(PPMAXD(i))+.000001) then
+c
+c......Departure is negative
+c......Output warning message
+c
+              if (PPMAXD(i) .le. 0.) then
+                  if (IACHFL .eq. 0) then
+                      lbuf = REGST(MOTREG(iax(i)))
+                      if (REGBNC(MOTREG(iax(i))) .eq. 0) lbuf = lax(i)
+                      call perrst ('DEPMAX',1,msg1,0,rdlt,lbuf,3)
+                      call perrst ('DEPLMT',1,msg2,0,rdlt,lbuf,2)
+                      call perrst (msg2,2,msg2,0,dabs(PPMAXD(i)),lbuf,2)
+                      call psterr (1,msg1,msg2,-1)
+                      IACHFL = 0
+                  endif
+c
+c.....Break up move logic
+c
+              else if (rdlt-PPMAXD(i) .gt. rmax) then
+                  isw    = i
+                  rdif   = rdlt
+                  rmax   = rdlt   - PPMAXD(i)
+              endif
           endif
-          MLEVL(NLEVL) = i
-          iwrn   = 0
-          inum   = SLWFL(inc)
-          nc     = 2
-          if (i .eq. 1) nc = -2
-          call prmvoc (inum,iyesno,nc,kfl,ilod,iwrn,cmsg,kerr)
-          if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-              if (iwrn .eq. 2) go to 7000
-              if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-              SLWFL(inc) = inum
-              if (kfl .ge. NLEVL) go to 8000
-          endif
-  190 continue
-  195 continue
+  100 continue
+      if (isw .eq. 0) go to 8000
 c
-c...Number of slowdown spans supported
+c......Break up move into smaller moves
 c
-  400 MLEVL(NLEVL) = 4
-      if (SLWFL(1) .ne. 1) then
-          if (kfl .lt. NLEVL) go to 495
-          call errmsg ('NOTAPPLY',1,2)
-          go to 8000
-      endif
-      iwrn   = 0
-      inum   = SLWFL(4)
-      nc     = -1
-      call prmint (inum,nc,1,1,4,kfl,ilod,iwrn,cmsg,kerr)
-      if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-          if (iwrn .eq. 2) go to 7000
-          if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-          SLWFL(4) = inum
-          if (kfl .ge. NLEVL) go to 8000
-      endif
-  495 continue
+      kfl    = 1
+      ratio  = 1.0d0 - (PPMAXD(isw) / rdif)
+      call pshaxs (AXSOUT,TLVEC)
+      do 200 i=1,10,1
+          AXSOUT(i) = AXSOUT(i) - rnum(i) * ratio
+  200 continue
 c
-c...Min angular change for slowdowns
+c.........Set up current position arrays
 c
-  500 MLEVL(NLEVL) = 5
-      if (SLWFL(1) .ne. 1) then
-          if (kfl .lt. NLEVL) go to 595
-          call errmsg ('NOTAPPLY',1,2)
-          go to 8000
-      endif
-      iwrn   = 0
-      rnum   = SLWVR(1)
-      nc     = 1
-      call prmrel (rnum,nc,1,0.d0,360.d0,kfl,ilod,iwrn,cmsg,kerr)
-      if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-          if (iwrn .eq. 2) go to 7000
-          if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-          SLWVR(1) = rnum
-          if (kfl .ge. NLEVL) go to 8000
-      endif
-  595 continue
-c
-c...Slowdown codes
-c
-  600 ist    = 6
-  610 inc    = ist    - 6
-      if (SLWFL(1) .ne. 1) then
-          if (kfl .lt. NLEVL) go to 695
-          call errmsg ('NOTAPPLY',1,2)
-          go to 8000
-      endif
-      do 690 i=ist,18,1
-          inc    = inc    + 1
-          if (inc .ne. 13 .and. cd(inc) .gt. SLWFL(4)) then
-              if (kfl .lt. NLEVL) go to 690
-              call errmsg ('NOTAPPLY',1,2)
-              go to 8000
-          endif
-          MLEVL(NLEVL) = i
-          iwrn   = 0
-          inum   = SLWCD(inc)
-          rnum   = SLWVL(inc)
-          nc     = 1
-          call prmcod (inum,rnum,nc,1,1,kfl,ilod,iwrn,cmsg,kerr)
-          if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-              if (iwrn .eq. 2) go to 7000
-              if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-              SLWCD(inc) = inum
-              SLWVL(inc) = rnum
-              if (kfl .ge. NLEVL) go to 8000
-          endif
-  690 continue
-  695 continue
-c
-c...Default slowdown tolerance
-c
- 1900 MLEVL(NLEVL) = 19
-      if (SLWFL(1) .eq. 1) then
-          if (kfl .lt. NLEVL) go to 1995
-          call errmsg ('NOTAPPLY',1,2)
-          go to 8000
-      endif
-      iwrn   = 0
-      rnum   = SLWVR(2)
-      nc     = 1
-      call prmrel (rnum,nc,1,.0001d0,9999.d0,kfl,ilod,iwrn,cmsg,kerr)
-      if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-          if (iwrn .eq. 2) go to 7000
-          if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-          SLWVR(2) = rnum
-c
-c......Calculate maximum feed for slowdowns
-c......when angular change = 90 degrees
-c
-          do 1980 i=2,13,1
-               if (SLWVR(2) .ge. ssover(1,i-1) .and.
-     1             SLWVR(2) .lt. ssover(1,i)) go to 1990
- 1980     continue
- 1990     SLWVR(3) = ssover(2,i-1)
-          if (IUNIT .eq.  2) SLWVR(3) = SLWVR(3) * 25.4
-          if (kfl .ge. NLEVL) go to 8000
-      endif
- 1995 continue
-c
-c...Default slowdown mode
-c
- 2000 MLEVL(NLEVL) = 20
-      if (SLWFL(1) .eq. 1) then
-          if (kfl .lt. NLEVL) go to 2095
-          call errmsg ('NOTAPPLY',1,2)
-          go to 8000
-      endif
-      iwrn   = 0
-      inum   = ISLWDN
-      call prmvoc (inum,ionoff,2,kfl,ilod,iwrn,cmsg,kerr)
-      if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-          if (iwrn .eq. 2) go to 7000
-          if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-          ISLWDN = inum
-          if (kfl .ge. NLEVL) go to 8000
-      endif
- 2095 continue
-c
-c...Up arrow
-c...Go to previous prompt
-c
-      go to 8000
- 7000 MLEVL(NLEVL) = PRMSTK(PRMSP)
-      PRMSP  = PRMSP  - 1
-      go to 50
+      call alladr (AXSOUT,LINAXS,MCHNUM,ROTANG,TLVEC,5,1)
+      call whchax (AXSOUT,kaxsw,kcnt)
 c
 c...End of routine
 c
@@ -1123,103 +469,427 @@ c
 c
 c***********************************************************************
 c
-c   SUBROUTINE:  mtamxd (kfl,cmsg,kerr)
+c   SUBROUTINE:  smodep (kfl)
 c
-c   FUNCTION:  Maximum axis departures prompt handling routine.
+c   FUNCTION:  This routine checks that any given motion does not move
+c              more than the user requested while spline interpolation
+c              mode (SMOOTH) for an Ultrasonic Cutter is active.
 c
-c   INPUT:  kfl     I*4  D1  -  The number of levels that the user en-
-c                               tered.
+c   INPUT:  kfl     I*4  D1  -  Should be set to 0 on initial call.
+c                               'kfl' is also returned with a value of
+c                               0 or greater.  1+ = the motion block was
+c                               broken up, this routine should be called
+c                               again immediately after the returned
+c                               motion block is output.
 c
-c   OUTPUT: cmsg    C*n  D1  -  Text of error message.
-c
-c           kerr    I*4  D1  -  Returns non-zero when an error occurred.
+c   OUTPUT: kfl     I*4  D1  -  See INPUT.
 c
 c***********************************************************************
 c
-      subroutine mtamxd (kfl,cmsg,kerr)
+      subroutine smodep (kfl)
 c
-      include 'menu.inc'
       include 'post.inc'
 c
-      equivalence (NUMLIN,KPOSMP(1202)), (IRTNUM,KPOSMP(1243))
-      equivalence (IMXDRP,KPOSMP(1743)), (IJKROT,KPOSMP(1739))
+      equivalence (SMONPT,KPOSMP(4095))
 c
-      integer*4 NUMLIN(3),IRTNUM,IJKROT,IMXDRP
+      integer*4 SMONPT
 c
-      equivalence (PPMAXD,POSMAP(1584))
+      equivalence (MCHNUM,POSMAP(1287)), (LINAXS,POSMAP(1299))
+      equivalence (AXSOUT,POSMAP(1340)), (TLVEC ,POSMAP(1369))
+      equivalence (STONUM,POSMAP(1387)), (SMOSTP,POSMAP(4466))
+      equivalence (ROTANG,POSMAP(5173)), (ROTSTO,POSMAP(5213))
 c
-      real*8 PPMAXD(10)
+      real*8 MCHNUM(3,4),LINAXS(6),AXSOUT(10),ROTANG(20,2),SMOSTP,
+     1       TLVEC(3),STONUM(3,4),ROTSTO(20,2)
 c
-      integer*4 kfl,kerr
+      integer*4 kfl
 c
-      character*(*) cmsg
+      integer*4 icnt,iaxsw(10)
 c
-      integer*4 nc,iwrn,ilod,ist,i,iyesno(2),inum,inc,ipt(6),ilin(6)
+      real*8 rnum,dvec(4),nvec(3),rvec(2),span
 c
-      real*8 rnum,rmn,rmx
+c...Second time here
+c...Pop previous position from stack
 c
-      data ipt /1,2,1,2,1,2/, ilin /1,1,2,2,3,3/
-c
-      data iyesno /13,12/
-c
-      data rmn /-99999999.d0/, rmx /99999999.d0/
-c
-      ilod   = 1
-      if (kfl .lt. NLEVL) go to 100
-   50 ist    = MLEVL(NLEVL)
-      goto (100,210,210,210,210,210,210,210,210,210,210), MLEVL(NLEVL)
-c
-c...Maximum departure moves apply with RAPID
-c
-  100 MLEVL(NLEVL) = 1
-      iwrn   = 0
-      inum   = IMXDRP
-      call prmvoc (inum,iyesno,2,kfl,ilod,iwrn,cmsg,kerr)
-      if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-          if (iwrn .eq. 2) go to 7000
-          if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-          IMXDRP = inum
-          if (kfl .ge. NLEVL) go to 8000
+      if (kfl .ne. 0) then
+          call popaxs (MCHNUM,LINAXS,ROTANG,AXSOUT,TLVEC,iaxsw,icnt)
       endif
 c
-c...Maximum departure distances
+c...Calculate length of move
 c
-  200 ist    = 2
-  210 inc    = ist    - 2
-      do 290 i=ist,11,1
-          inc    = inc    + 1
-          iwrn   = 0
-          if (inc .le. 6) then
-              if (NUMLIN(ilin(inc)) .lt. ipt(inc)) iwrn = 1
+      dvec(1) = MCHNUM(1,4) - STONUM(1,4)
+      dvec(2) = MCHNUM(2,4) - STONUM(2,4)
+      dvec(3) = MCHNUM(3,4) - STONUM(3,4)
+      dvec(4) = dsqrt (dvec(1)**2 + dvec(2)**2 + dvec(3)**2)
+      nvec(1) = dvec(1) / dvec(4)
+      nvec(2) = dvec(2) / dvec(4)
+      nvec(3) = dvec(3) / dvec(4)
+      rvec(1) = ROTANG(1,2) - ROTSTO(1,2)
+      rvec(2) = ROTANG(2,2) - ROTSTO(2,2)
+c
+c...Determine if any axis moves more
+c...than the maximum departure allowed
+c
+  300 if (dvec(4) .le. SMOSTP .or. kfl .ge. SMONPT*2) then
+          kfl    = 0
+          go to 8000
+c
+c...Break up into multiple moves
+c......Beginning of move
+c
+      else if (kfl .lt. SMONPT) then
+          kfl    = kfl    + 1
+          call pshaxs (AXSOUT,TLVEC)
+          MCHNUM(1,4) = STONUM(1,4) + nvec(1)*SMOSTP
+          MCHNUM(2,4) = STONUM(2,4) + nvec(2)*SMOSTP
+          MCHNUM(3,4) = STONUM(3,4) + nvec(3)*SMOSTP
+          span   = SMOSTP / dvec(4)
+          ROTANG(1,2) = ROTSTO(1,2) + span*rvec(1)
+          ROTANG(2,2) = ROTSTO(2,2) + span*rvec(2)
+c
+c......End of move
+c
+      else
+          kfl    = kfl    + 1
+          rnum   = SMOSTP * (SMONPT*2-kfl+1)
+          if (rnum .ge. dvec(4)) go to 300
+          call pshaxs (AXSOUT,TLVEC)
+          MCHNUM(1,4) = MCHNUM(1,4) - nvec(1)*rnum
+          MCHNUM(2,4) = MCHNUM(2,4) - nvec(2)*rnum
+          MCHNUM(3,4) = MCHNUM(3,4) - nvec(3)*rnum
+          span   = rnum   / dvec(4)
+          ROTANG(1,2) = ROTANG(1,2) - span*rvec(1)
+          ROTANG(2,2) = ROTANG(2,2) - span*rvec(2)
+      endif
+c
+c.........Set up current position arrays
+c
+      call alladj (MCHNUM,LINAXS,AXSOUT,ROTANG,4,5)
+      call alladr (AXSOUT,LINAXS,MCHNUM,ROTANG,TLVEC,5,1)
+c
+c...End of routine
+c
+ 8000 return
+      end
+c
+c***********************************************************************
+c
+c   SUBROUTINE:  rapmot (kaxsw,kcnt,kfl)
+c
+c   FUNCTION:  This routine alters motion for rapid logic.  It may break
+c              up the move into multiple blocks.
+c
+c   INPUT:  kaxsw   I*4  D10 -  Array of switches that show which axes
+c                               are waiting to be output.  A value of 1
+c                               signifies this axis needs to be output.
+c
+c           kcnt    I*4  D1  -  Number of axes waiting to be output.
+c
+c           kfl     I*4  D1  -  Should be set to 0 on initial call.
+c                               'kfl' is also returned with a value of
+c                               0 and 1.  1-2 = the motion block was
+c                               broken up, this routine should be called
+c                               again immediately after the returned
+c                               motion block is output.
+c
+c   OUTPUT: kaxsw   I*4  D10 -  See INPUT.
+c
+c           kcnt    I*4  D1  -  See INPUT.
+c
+c           kfl     I*4  D1  -  See INPUT.
+c
+c***********************************************************************
+c
+      subroutine rapmot (kaxsw,kcnt,kfl)
+c
+      include 'post.inc'
+c
+      equivalence (SIMACT,KPOSMP(0174)), (XFMFL ,KPOSMP(0969))
+      equivalence (IRETFL,KPOSMP(1345)), (IJKROT,KPOSMP(1739))
+      equivalence (IRAP  ,KPOSMP(3199)), (ILINPT,KPOSMP(3200))
+      equivalence (IRAPDO,KPOSMP(3220)), (IRPDSV,KPOSMP(3230))
+c
+      integer*4 IRAP,IRAPDO(8),IRPDSV(9),IRETFL,ILINPT,IJKROT,SIMACT,
+     1          XFMFL(20)
+c
+      equivalence (MCHNUM,POSMAP(1287)), (LINAXS,POSMAP(1299))
+      equivalence (AXSOUT,POSMAP(1340)), (TLVEC ,POSMAP(1369))
+      equivalence (VECSAV,POSMAP(1372)), (STONUM,POSMAP(1387))
+      equivalence (AXSSTO,POSMAP(1425)), (RAPDIS,POSMAP(3582))
+      equivalence (XFMMAT,POSMAP(4025))
+      equivalence (ROTANG,POSMAP(5173)), (ROTSTO,POSMAP(5213))
+c
+      real*8 MCHNUM(3,4),LINAXS(6),AXSOUT(10),ROTANG(20,2),TLVEC(3),
+     1       VECSAV(3),STONUM(3,4),ROTSTO(20,2),RAPDIS,AXSSTO(10),
+     2       XFMMAT(12)
+c
+      integer*4 kaxsw(10),kcnt,kfl
+c
+      integer*4 i,inc,ierr,is3,is1,is2,ispv(3),isav
+c
+      logical isidmx
+c
+      real*8 ratio,rdis,pl(4),mdis(10),mdlt,tvec(3),rmch(3),rsto(3),
+     1       rval1,rval2
+c
+      data ispv /3,2,1/
+c
+c...Re-entry after RETRCT move
+c
+      if (kfl .eq. 2) then
+          kfl    = 0
+          call popaxs (MCHNUM,LINAXS,ROTANG,AXSOUT,TLVEC,kaxsw,kcnt)
+          call retrst
+          do 20 i=1,8,1
+              IRAPDO(i) = IRPDSV(i)
+   20     continue
+          IRAP   = IRPDSV(9)
+c
+c...Second time here
+c...Pop previous position from stack
+c
+      else if (kfl .eq. 1) then
+          kfl    = 0
+          call popaxs (MCHNUM,LINAXS,ROTANG,AXSOUT,TLVEC,kaxsw,kcnt)
+          if (IRAPDO(1) .eq. 1) call raprst
+          go to 8000
+c
+c...Retract required with rapid move
+c
+      else if (IRAPDO(5) .eq. 1 .and. kfl .eq. 0 .and. IRETFL .eq. 0)
+     1     then
+          kfl    = 2
+          call pshaxs (AXSOUT,TLVEC)
+          do 60 i=1,8,1
+              IRPDSV(i) = IRAPDO(i)
+   60     continue
+          IRPDSV(9) = IRAP
+          call retrct (2)
+          call alladr (AXSOUT,LINAXS,MCHNUM,ROTANG,TLVEC,5,1)
+          call whchax (AXSOUT,kaxsw,kcnt)
+          go to 8000
+      endif
+c
+c...Rapid not active
+c
+      if (IRAP .eq. 0 .or. ILINPT .eq. 1) go to 8000
+c
+c...Don't break rapid into multiple blocks
+c
+      if (IRAPDO(1) .eq. 1) then
+          if (RAPDIS .eq. 0 .or. (IRAPDO(4) .eq. 2 .and.
+     1        RAPDIS .eq. 1.)) go to 8000
+c
+c......Output partial move at rapid rate
+c......and rest of move at programmed feed rate
+c
+          do 100 i=1,10,1
+              mdis(i) = AXSOUT(i) - AXSSTO(i)
+  100     continue
+          mdlt   = dsqrt (mdis(1)**2 + mdis(2)**2 + mdis(3)**2 +
+     1                    mdis(4)**2 + mdis(5)**2 + mdis(6)**2)
+          rdis   = RAPDIS
+          if (IRAPDO(4) .eq. 2) rdis = mdlt * RAPDIS
+c
+c.........Move is too short
+c.........Output entire move at feed rate
+c
+          if (rdis .ge. mdlt) then
+              IRAP   = 3
+              call raprst
+c
+c.........Output rapid portion of move
+c
           else
-              if (inc-6 .gt. IRTNUM .or. IJKROT .eq. 1) iwrn = 1
+              kfl    = 1
+              ratio  = rdis   / mdlt
+              call pshaxs (AXSOUT,TLVEC)
+              do 200 i=1,10,1
+                  AXSOUT(i) = AXSOUT(i) - mdis(i) * ratio
+  200         continue
+c
+c............Set up current position arrays
+c
+              call alladr (AXSOUT,LINAXS,MCHNUM,ROTANG,TLVEC,5,1)
+              call whchax (AXSOUT,kaxsw,kcnt)
           endif
 c
-          if (iwrn .eq. 1) then
-              if (kfl .lt. NLEVL) go to 290
-              call errmsg ('NOTAPPLY',1,2)
-              go to 8000
+c...Rapid up tool axis vector
+c
+      else if (IRAPDO(1) .eq. 5 .and. IRAPDO(2) .eq. 1) then
+c
+c......Get major part of tool axis
+c
+          if (IJKROT .eq. 1) then
+              call copyn (VECSAV,tvec,3)
+          else
+              call pivvec (ROTSTO,tvec)
+          endif
+          if (XFMFL(15) .eq. 1) call ptxfm (tvec,tvec,2)
+          is3    = 3
+          if (abs(tvec(1)) .gt. abs(tvec(is3))) is3 = 1
+          if (abs(tvec(2)) .gt. abs(tvec(is3))) is3 = 2
+c
+          pl(1) = 0.
+          pl(2) = 0.
+          pl(3) = 0.
+          pl(is3) = 1.
+c
+c......Move all axis at same time
+c
+          if (XFMFL(15) .eq. 1) then
+              call ptxfm (MCHNUM(1,4),rmch,1)
+              call ptxfm (STONUM(1,4),rsto,1)
+          else
+              call copyn (MCHNUM(1,4),rmch,3)
+              call copyn (STONUM(1,4),rsto,3)
+          endif
+          call dpoint (rmch(is3),rval1,5)
+          call dpoint (rsto(is3),rval2,5)
+          if (rval1 .eq. rval2) go to 8000
+c
+c......Retract to plane first
+c
+          if ((tvec(is3) .ge. 0. .and. rmch(is3) .gt. rsto(is3)) .or.
+     1        (tvec(is3) .lt. 0. .and. rmch(is3) .lt. rsto(is3))) then
+              pl(4) = rmch(is3)
+              call plnint (rsto,tvec,pl,rmch,ierr)
+              if (ierr .eq. 1) go to 8000
+              call pshaxs (AXSOUT,TLVEC)
+              TLVEC(1) = VECSAV(1)
+              TLVEC(2) = VECSAV(2)
+              TLVEC(3) = VECSAV(3)
+              call cpyrot (ROTSTO,ROTANG)
+c
+c......Position secondary axes first
+c
+          else
+              pl(4) = rsto(is3)
+              if (IJKROT .eq. 1) then
+                  call copyn (TLVEC,tvec,3)
+              else
+                  call pivvec (ROTANG,tvec)
+              endif
+              if (XFMFL(15) .eq. 1) call ptxfm (tvec,tvec,2)
+              call plnint (rmch,tvec,pl,rmch,ierr)
+              if (ierr .eq. 1) go to 8000
+              call pshaxs (AXSOUT,tvec)
           endif
 c
-          MLEVL(NLEVL) = i
-          rnum   = PPMAXD(inc)
-          nc     = 1
-          call prmrel (rnum,nc,1,rmn,rmx,kfl,ilod,iwrn,cmsg,kerr)
-          if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-              if (iwrn .eq. 2) go to 7000
-              if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-              PPMAXD(inc) = rnum
-              if (kfl .ge. NLEVL) go to 8000
+c......Calculate actual position
+c
+          if (XFMFL(15) .eq. 1) then
+              call ptxfr (rmch,MCHNUM(1,4),1)
+          else
+              call copyn (rmch,MCHNUM(1,4),3)
           endif
-  290 continue
+          call alladr (AXSOUT,LINAXS,MCHNUM,ROTANG,TLVEC,3,1)
+          call alladj (MCHNUM,LINAXS,AXSOUT,ROTANG,4,5)
+          call whchax (AXSOUT,kaxsw,kcnt)
+          kfl    = 1
 c
-c...Up arrow
-c...Go to previous prompt
+c...Position along major axis
 c
-      go to 8000
- 7000 MLEVL(NLEVL) = PRMSTK(PRMSP)
-      PRMSP  = PRMSP  - 1
-      go to 50
+      else
+          isav   = XFMFL(4)
+          if (SIMACT .eq. 1 .and. XFMFL(15) .eq. 1 .and.
+     1        .not. isidmx(XFMMAT)) XFMFL(4) = 1
+          inc    = IRAPDO(1)
+          if (IJKROT .eq. 1) then
+              call copyn (VECSAV,tvec,3)
+          else
+              call pivvec (ROTSTO,tvec)
+          endif
+          call pivvec (ROTSTO,tvec)
+          if (XFMFL(15) .eq. 1) call ptxfm (tvec,tvec,2)
+c
+c......TOOL
+c......Determine major axis
+c
+          if (inc .eq. 5) then
+              inc    = 4
+              if (abs(tvec(1)) .gt. abs(tvec(inc-1))) inc = 2
+              if (abs(tvec(2)) .gt. abs(tvec(inc-1))) inc = 3
+          endif
+c
+c......XAXIS
+c
+          if (inc .eq. 2) then
+              is1    = 2
+              is2    = 3
+              is3    = 1
+c
+c......YAXIS
+c
+          else if (inc .eq. 3) then
+              is1    = 3
+              is2    = 1
+              is3    = 2
+c
+c......ZAXIS
+c
+          else
+              is1    = 1
+              is2    = 2
+              is3    = 3
+          endif
+c
+c......Move all axis at same time
+c
+          if (XFMFL(15) .eq. 1) then
+              call ptxfm (MCHNUM(1,4),rmch,1)
+              call ptxfm (STONUM(1,4),rsto,1)
+          else
+              call copyn (MCHNUM(1,4),rmch,3)
+              call copyn (STONUM(1,4),rsto,3)
+          endif
+          do 700 i=1,3,1
+              call dpoint (rmch(i),rmch(i),5)
+              call dpoint (rsto(i),rsto(i),5)
+  700     continue
+          if (rmch(is3) .eq. rsto(is3) .or.
+     1       (rmch(is1) .eq. rsto(is1) .and.
+     2        rmch(is2) .eq. rsto(is2))) go to 8000
+c
+c......Retract tool first
+c
+          kfl    = 1
+          call pshaxs (AXSOUT,tvec)
+          call dpoint (tvec(is3),tvec(is3),6)
+          if ((tvec(is3) .ge. 0. .and.
+     1        rmch(is3) .gt. rsto(is3)) .or.
+     2        (tvec(is3) .lt. 0. .and.
+     3        rmch(is3) .lt. rsto(is3))) then
+              rmch(is1) = rsto(is1)
+              rmch(is2) = rsto(is2)
+              if (XFMFL(15) .eq. 1) then
+                  call ptxfr (rmch,MCHNUM(1,4),1)
+              else
+                  call copyn (rmch,MCHNUM(1,4),3)
+              endif
+              TLVEC(1) = VECSAV(1)
+              TLVEC(2) = VECSAV(2)
+              TLVEC(3) = VECSAV(3)
+              call cpyrot (ROTSTO,ROTANG)
+c
+c......Position secondary axes first
+c
+          else
+              rmch(is3) = rsto(is3)
+              if (XFMFL(15) .eq. 1) then
+                  call ptxfr (rmch,MCHNUM(1,4),1)
+              else
+                  call copyn (rmch,MCHNUM(1,4),3)
+              endif
+          endif
+c
+c......Calculate actual position
+c
+          call alladr (AXSOUT,LINAXS,MCHNUM,ROTANG,TLVEC,3,1)
+          call alladj (MCHNUM,LINAXS,AXSOUT,ROTANG,4,5)
+          call whchax (AXSOUT,kaxsw,kcnt)
+          XFMFL(4) = isav
+      endif
 c
 c...End of routine
 c
@@ -1228,583 +898,748 @@ c
 c
 c***********************************************************************
 c
-c   SUBROUTINE:  mtaacc (kfl,cmsg,kerr)
+c   SUBROUTINE:  rapsim (kaxsw,kcnt,kfl)
 c
-c   FUNCTION:  Acceleration block parameters prompt handling routine.
+c   FUNCTION:  This routine alters motion for rapid positioning moves
+c              when simulation is in effect.
 c
-c   INPUT:  kfl     I*4  D1  -  The number of levels that the user en-
-c                               tered.
+c   INPUT:  kaxsw   I*4  D10 -  Array of switches that show which axes
+c                               are waiting to be output.  A value of 1
+c                               signifies this axis needs to be output.
 c
-c   OUTPUT: cmsg    C*n  D1  -  Text of error message.
+c           kcnt    I*4  D1  -  Number of axes waiting to be output.
 c
-c           kerr    I*4  D1  -  Returns non-zero when an error occurred.
+c           kfl     I*4  D1  -  Should be set to 0 on initial call.
+c                               'kfl' is also returned with a value of
+c                               0 and 1.  1 = This routine was called
+c                               before and move has been altered at least
+c                               once.
+c
+c   OUTPUT: kaxsw   I*4  D10 -  See INPUT.
+c
+c           kcnt    I*4  D1  -  See INPUT.
+c
+c           kfl     I*4  D1  -  See INPUT.
 c
 c***********************************************************************
 c
-      subroutine mtaacc (kfl,cmsg,kerr)
+      subroutine rapsim (kaxsw,kcnt,kfl)
 c
-      include 'menu.inc'
       include 'post.inc'
 c
-      equivalence (IACCFL,KPOSMP(1745))
+      equivalence (IRAP  ,KPOSMP(3199)), (IRTDEF,KPOSMP(1485))
 c
-      integer*4 IACCFL(2)
+      integer*4 IRAP,IRTDEF
 c
+      equivalence (MCHNUM,POSMAP(1287)), (LINAXS,POSMAP(1299))
+      equivalence (AXSOUT,POSMAP(1340)), (TLVEC ,POSMAP(1369))
+      equivalence (AXSSTO,POSMAP(1425))
+      equivalence (AXSDIS,POSMAP(1574)), (RAPLMT,POSMAP(3567))
+      equivalence (ROTANG,POSMAP(5173))
+c
+      real*8 MCHNUM(3,4),LINAXS(6),AXSOUT(10),ROTANG(20,2),TLVEC(3),
+     1       AXSSTO(10),RAPLMT(10),AXSDIS(10)
+c
+      integer*4 kaxsw(10),kcnt,kfl
+c
+      integer*4 i,ifl
+c
+      real*8 rdis(10),rtim(10),mintim
+c
+c...Second time here
+c...Pop previous position from stack
+c
+      if (kfl .eq. 1) then
+          kfl    = 0
+          call popaxs (MCHNUM,LINAXS,ROTANG,AXSOUT,TLVEC,kaxsw,kcnt)
+      endif
+      if (kcnt .le. 1 .or. IRAP .ne. 1) go to 8000
+c
+c...Calculate machining time for each axes
+c
+      mintim = 10000.
+      do 100 i=1,6+IRTDEF,1
+          rdis(i) = AXSOUT(i) - AXSSTO(i)
+          rtim(i) = dabs(rdis(i)) / RAPLMT(i)
+          if (rtim(i) .ne. 0. .and. rtim(i) .lt. mintim)
+     1        mintim = rtim(i)
+  100 continue
+      if (mintim .eq. 0. .or. mintim .eq. 10000.) go to 8000
+c
+c...Determine if the move needs to
+c...be broken up
+c
+      ifl    = 0
+      do 200 i=1,6+IRTDEF,1
+          if (rtim(i) .gt. mintim) ifl = 1
+  200 continue
+      if (ifl .eq. 0) go to 8000
+c
+c...Break up move
+c
+      call pshaxs (AXSOUT,TLVEC)
+      do 300 i=1,6+IRTDEF,1
+          if (rtim(i) .ne. 0)
+     1        AXSOUT(i) = AXSSTO(i) + rdis(i)*(mintim/rtim(i))
+  300 continue
+      call alladr (AXSOUT,LINAXS,MCHNUM,ROTANG,TLVEC,5,1)
+      call whchax (AXSOUT,kaxsw,kcnt)
+      kfl    = 1
+c
+c...End of routine
+c
+ 8000 return
+      end
+c
+c***********************************************************************
+c
+c   SUBROUTINE:  rposck (kaxsw,kcnt,kfl)
+c
+c   FUNCTION:  This routine checks that a positioning table is not out-
+c              put with linear motion.
+c
+c              *WARNING* 'rposck' may set the variable 'POSFED' to 2,
+c                        disabling feed rate output, and will not reset
+c                        it to 1.  It is the calling program's responsi-
+c                        bility to reset 'POSFED'.
+c
+c   INPUT:  kaxsw   I*4  D10 -  Array of switches that show which axes
+c                               are waiting to be output.  A value of 1
+c                               signifies this axis needs to be output.
+c
+c           kcnt    I*4  D1  -  Number of axes waiting to be output.
+c
+c           kfl     I*4  D1  -  Should be set to 0 on initial call.
+c                               'kfl' is also returned with a value of
+c                               0 and 1.  1 = the motion block was
+c                               broken up, this routine should be called
+c                               again immediately after the returned
+c                               motion block is output.
+c
+c   OUTPUT: kaxsw   I*4  D10 -  See INPUT.
+c
+c           kcnt    I*4  D1  -  See INPUT.
+c
+c           kfl     I*4  D1  -  See INPUT.
+c
+c***********************************************************************
+c
+      subroutine rposck (kaxsw,kcnt,kfl)
+c
+      include 'post.inc'
+c
+      equivalence (IRTMOD,KPOSMP(1284)), (IRTDEF,KPOSMP(1485))
+      equivalence (POSFDF,KPOSMP(3208)), (POSFED,KPOSMP(3209))
+c
+      integer*4 IRTDEF,IRTMOD(4),POSFDF,POSFED
+c
+      equivalence (MCHNUM,POSMAP(1287)), (LINAXS,POSMAP(1299))
+      equivalence (AXSOUT,POSMAP(1340)), (TLVEC ,POSMAP(1369))
+      equivalence (AXSSTO,POSMAP(1425)), (ROTANG,POSMAP(5173))
+c
+      real*8 MCHNUM(3,4),LINAXS(6),AXSOUT(10),ROTANG(20,2),AXSSTO(10),
+     1       TLVEC(3)
+c
+      integer*4 kaxsw(10),kcnt,kfl
+c
+      integer*4 icnt,i,iax(10),inc,iout(4)
+c
+c...First time here
+c...Determine if we need to break out
+c...positioning table
+c
+      if (kfl .eq. 0) then
+          inc    = 0
+          do 100 i=1,IRTDEF,1
+              if (IRTMOD(i) .eq. 2 .and. kaxsw(i+6) .eq. 1) then
+                  inc    = inc    + 1
+                  iout(inc) = i      + 6
+              endif
+  100     continue
+          if (inc .ne. 0) POSFED = POSFDF
+          if (inc .eq. 0 .or. inc .eq. kcnt) go to 8000
+c
+c......Break out all positioning axes
+c
+          call psterr (2,'POSITROT','MULTBLK',-1)
+          icnt   = kcnt
+          do 200 i=1,10,1
+              iax(i) = kaxsw(i)
+              kaxsw(i) = 0
+  200     continue
+          do 300 i=1,inc,1
+              kaxsw(iout(i)) = 1
+              iax(iout(i)) = 0
+  300     continue
+          kcnt   = inc
+c
+c......Push left over axes
+c......onto stack
+c
+          kfl    = 1
+          icnt   = icnt   - kcnt
+          call pshaxs (AXSOUT,TLVEC)
+c
+c......Set up current position arrays
+c
+          do 900 i=1,10,1
+              if (kaxsw(i) .eq. 0) AXSOUT(i) = AXSSTO(i)
+  900     continue
+          call alladr (AXSOUT,LINAXS,MCHNUM,ROTANG,TLVEC,5,1)
+c
+c...Second time here
+c...Pop previous position from stack
+c
+      else
+          kfl    = 0
+          call popaxs (MCHNUM,LINAXS,ROTANG,AXSOUT,TLVEC,kaxsw,kcnt)
+      endif
+c
+c...End of routine
+c
+ 8000 return
+      end
+c
+c***********************************************************************
+c
+c   SUBROUTINE:  mchslw (kaxsw,kcnt,kfl)
+c
+c   FUNCTION:  This routine outputs post generated slowdown spans or
+c              decides whether or not to output a slowdown code.
+c
+c   INPUT:  kaxsw   I*4  D10 -  Array of switches that show which axes
+c                               are waiting to be output.  A value of 1
+c                               signifies this axis needs to be output.
+c
+c           kcnt    I*4  D1  -  Number of axes waiting to be output.
+c
+c           kfl     I*4  D1  -  Should be set to 0 on initial call.
+c                               'kfl' is also returned with a value of
+c                               0 and 1.  1 = the motion block was
+c                               broken up, this routine should be called
+c                               again immediately after the returned
+c                               motion block is output.
+c
+c   OUTPUT: kaxsw   I*4  D10 -  See INPUT.
+c
+c           kcnt    I*4  D1  -  See INPUT.
+c
+c           kfl     I*4  D1  -  See INPUT.
+c
+c***********************************************************************
+c
+      subroutine mchslw (kaxsw,kcnt,kfl)
+c
+      include 'post.inc'
+c
+      equivalence (SLWFL ,KPOSMP(1701)), (ISLWDN,KPOSMP(1721))
+      equivalence (ISLWFD,KPOSMP(1723)), (ICUTDO,KPOSMP(3301))
+c
+      integer*4 SLWFL(5),ISLWDN,ISLWFD,ICUTDO(15)
+c
+      equivalence (RAD   ,POSMAP(0002))
+      equivalence (MCHNUM,POSMAP(1287)), (LINAXS,POSMAP(1299))
+      equivalence (AXSOUT,POSMAP(1340)), (TLVEC ,POSMAP(1369))
+      equivalence (AXSSTO,POSMAP(1425))
+      equivalence (SLWVR ,POSMAP(2451)), (SLWFD ,POSMAP(2471))
+      equivalence (ROTANG,POSMAP(5173))
+c
+      real*8 MCHNUM(3,4),LINAXS(6),AXSOUT(10),ROTANG(20,2),AXSSTO(10),
+     1       TLVEC(3),SLWVR(5),SLWFD,RAD
+c
+      integer*4 kaxsw(10),kcnt,kfl
+c
+      integer*4 ip(3),icir,dstp(5),nstp
+c
+      real*8 rmch(3,3),rvec(3,4),rang,rdif,span,rfed
+c
+      data nstp /5/, dstp /1,2,3,1054,1055/
+c
+c...Machine supported slowdowns
+c
+      if (SLWFL(1) .eq. 1) then
+c
+c......Determine if we should output a slowdown code
+c......Based on angular change
+c
+          if (ISLWDN .ne. 3 .and. SLWVR(1) .ne. 0.) then
+c
+c.........Get from, current & to points
+c
+              call cutpos (ip,rmch,icir,dstp,nstp,-1,1)
+c
+c.........Calculate angular change
+c
+              call slwang (rmch,rvec,rang)
+              rdif   = dacos(rang) * RAD
+c
+c.........Determine if we should output slowdown code
+c
+              if (rdif .lt. SLWVR(1)) then
+                  ISLWDN = 4
+              else
+                  ISLWDN = 1
+              endif
+          endif
+c
+c...Post generated slowdown
+c
+      else
+c
+c......Generate slowdown span
+c
+          if (kfl .eq. 0) then
+c
+c.........Get from, current & to points
+c
+              call cutpos (ip,rmch,icir,dstp,nstp,-1,1)
+c
+c.........Calculate angular change
+c
+              call slwang (rmch,rvec,rang)
+c
+c.........Calculate slowdown feedrate
+c
+              call slwfed (rmch,kaxsw,rfed)
+              if (rang .eq. 1.) go to 8000
+              SLWFD  = SLWVR(3) / (1.0 - rang)
+              if (rfed .le. SLWFD) then
+                  if (ISLWDN .eq. 3) ISLWDN = 2
+                  go to 8000
+              endif
+c
+c.........Calculate slowdown span
+c
+              span   = ((rfed**2 - SLWFD**2) /
+     1                 (2.0 * SLWVR(4) * 60.**2)) + SLWVR(5)
+c
+c.........Span is longer than original move
+c.........Output entire span at slowdown feedrate
+c
+              if (span .ge. rvec(1,4)) then
+                  call psterr (1,'SLWSHORT',' ',-1)
+                  ISLWFD = 1
+                  if (ISLWDN .eq. 3) ISLWDN = 2
+c
+c.........Output calculated span at original feedrate
+c
+              else
+                  kfl    = 1
+                  call pshaxs (AXSOUT,TLVEC)
+                  span   = span   / dsqrt(rvec(1,1)**2 + rvec(2,1)**2 +
+     1                                    rvec(3,1)**2)
+                  MCHNUM(1,3) = MCHNUM(1,3) - rvec(1,1) * span
+                  MCHNUM(2,3) = MCHNUM(2,3) - rvec(2,1) * span
+                  MCHNUM(3,3) = MCHNUM(3,3) - rvec(3,1) * span
+c
+c.........Set up current position arrays
+c
+                  call alladr (AXSOUT,LINAXS,MCHNUM,ROTANG,TLVEC,2,1)
+                  call alladj (MCHNUM,LINAXS,AXSOUT,ROTANG,3,5)
+                  call whchax (AXSOUT,kaxsw,kcnt)
+              endif
+c
+c......Second time here
+c......Pop previous position from stack
+c......Output final point at slowdown feedrate
+c
+          else
+              kfl    = 0
+              ISLWFD = 1
+              call popaxs (MCHNUM,LINAXS,ROTANG,AXSOUT,TLVEC,kaxsw,kcnt)
+              if (ISLWDN .eq. 3) ISLWDN = 2
+c
+c.........Output cutcom codes
+c
+              if (ICUTDO(2) .eq. 1) call cutout (kaxsw)
+          endif
+      endif
+c
+c...End of routine
+c
+ 8000 return
+      end
+c
+c***********************************************************************
+c
+c   SUBROUTINE:  slwang (gmch,gvec,gang)
+c
+c   FUNCTION:  This routine calculates the delta moves and angular
+c              changes as required to generate a slowdown block.
+c
+c   INPUT:  gmch    R*8  D3.3 -  (n,1) = Point coming from, (n,2) = Cur-
+c                                rent point, (n,3) = Next point.
+c
+c   OUTPUT: gvec    R*8  D3.4 -  (n,1) = Delta distance of From/Current,
+c                                (n,2) = Current/Next, (n,3) = Next/FROM
+c                                (n,4) = Length of above moves.
+c
+c           gang    R*8  D1   -  Cosine of angular change of next move
+c                                compared to current move.
+c
+c***********************************************************************
+c
+      subroutine slwang (gmch,gvec,gang)
+c
+      include 'post.inc'
+c
+      real*8 gmch(3,3),gvec(3,4),gang
+c
+      integer*4 is(3),ip(3),i
+c
+      real*8 dx(3),dy(3),dz(3),dang
+c
+      data is /2,3,1/, ip /1,2,3/
+c
+c...Calculate axis deltas
+c...FROM to CURRENT
+c...CURRENT to NEXT
+c...NEXT to FROM
+c
+      do 100 i=1,3,1
+          gvec(1,i) = gmch(1,is(i)) - gmch(1,ip(i))
+          gvec(2,i) = gmch(2,is(i)) - gmch(2,ip(i))
+          gvec(3,i) = gmch(3,is(i)) - gmch(3,ip(i))
+  100 continue
+c
+c......Calculate total linear deltas &
+c......Unitize individual deltas
+c
+      do 200 i=1,3,1
+          gvec(i,4) = dsqrt (gvec(1,i)**2 + gvec(2,i)**2 + gvec(3,i)**2)
+          if (gvec(i,4) .eq. 0.) then
+              dx(i) = 0.
+              dy(i) = 0.
+              dz(i) = 0.
+          else
+              dx(i) = gvec(1,i) / gvec(i,4)
+              dy(i) = gvec(2,i) / gvec(i,4)
+              dz(i) = gvec(3,i) / gvec(i,4)
+          endif
+  200 continue
+c
+c...Calculate angular change
+c
+c     if (gvec(1,4) .eq. 0.) then
+c         gang   = 1.
+c     else if (gvec(2,4) .eq. 0. .or. gvec(3,4) .eq. 0.) then
+c         gang   = -1.
+c     else
+c         gang   = (dx(1)*dx(3)) + (dy(1)*dy(3)) + (dz(1)*dz(3))
+c         call dpoint (gang,gang,5)
+c         if (dabs(gang) .ne. 1.d0) then
+c             gang   = (gvec(1,4)**2 + gvec(2,4)**2 - gvec(3,4)**2) /
+c    1                 (2. * gvec(1,4) * gvec(2,4))
+c             gang   = gang   * (-1.)
+c         endif
+c     endif
+      if (gvec(1,4) .eq. 0.) then
+          gang   = 1.
+      else if (gvec(2,4) .eq. 0. .or. gvec(3,4) .eq. 0.) then
+          gang   = -1.
+      else
+          gang   = dx(1)*dx(2) + dy(1)*dy(2) + dz(1)*dz(2)
+          call dpoint (gang,dang,5)
+          if (dabs(dang) .eq. 1.d0) gang = dang
+      end if
+c
+c...End of routine
+c
+ 8000 return
+      end
+c
+c***********************************************************************
+c
+c   SUBROUTINE:  slwfed (gmch,kfl,gfed)
+c
+c   FUNCTION:  This routine calculates the programmed feed rate to be
+c              used in calculating post generated slowdown blocks.
+c
+c   INPUT:  gmch    R*8  D3.3 -  (n,1) = Point coming from, (n,2) = Cur-
+c                                rent point, (n,3) = Next point.
+c
+c           kaxsw   I*4  D10  -  Array of switches that show which axes
+c                                are waiting to be output.  A value of 1
+c                                signifies this axis needs to be output.
+c
+c   OUTPUT: gfed    I*4  D1   -  Programmed feedrate.
+c
+c***********************************************************************
+c
+      subroutine slwfed (gmch,kfl,gfed)
+c
+      include 'post.inc'
+c
+      equivalence (MCHNUM,POSMAP(1287)), (STONUM,POSMAP(1387))
+      equivalence (FEED  ,POSMAP(3547))
+c
+      real*8 MCHNUM(3,4),STONUM(3,4),FEED(4)
+c
+      integer*4 kfl(10)
+c
+      real*8 gmch(3,3),gfed
+c
+      real*8 rdis,rtim
+c
+c...Get programmed feedrate
+c
+      call fedctl (kfl)
+c
+c...Calculate machining time
+c
+      rdis   = dsqrt((MCHNUM(1,2)-STONUM(1,2))**2 +
+     1               (MCHNUM(2,2)-STONUM(2,2))**2 +
+     2               (MCHNUM(3,2)-STONUM(3,2))**2)
+      rtim   = rdis   / FEED(1)
+c
+c...Calculate actual feed rate
+c...for rotary adjusted point
+c
+      rdis   = dsqrt((gmch(1,2)-gmch(1,1))**2 +
+     1               (gmch(2,2)-gmch(2,1))**2 +
+     2               (gmch(3,2)-gmch(3,1))**2)
+      gfed   = rdis   / rtim
+c
+c...End of routine
+c
+ 8000 return
+      end
+c
+c***********************************************************************
+c
+c   SUBROUTINE:  thrzer (kfl)
+c
+c   FUNCTION:  This routine restores feed mode for held back move
+c
+c   INPUT:  kfed    I*4  D6  -  Saved feed rate prameters (integer)
+c
+c           gfed    I*4  D6  -  Saved feed rate prameters (real)
+c
+c   OUTPUT: none.
+c
+c***********************************************************************
+c
+      subroutine thrzer (kaxsw,kcnt,kfl)
+c
+      include 'post.inc'
+c
+      integer*4 kaxsw(10),kcnt,kfl
+c
+      equivalence (MOTREG,KPOSMP(0381))
+c
+      integer*4 MOTREG(24)
+c
+      equivalence (RAD   ,POSMAP(0002))
+      equivalence (MCHNUM,POSMAP(1287)), (LINAXS,POSMAP(1299))
+      equivalence (AXSOUT,POSMAP(1340)), (TLVEC ,POSMAP(1369))
+      equivalence (AXSSTO,POSMAP(1425)), (ROTANG,POSMAP(5173))
+c
+      real*8 MCHNUM(3,4),LINAXS(6),AXSOUT(10),ROTANG(20,2),AXSSTO(10),
+     1       TLVEC(3),RAD
+c
+      real*8 rnum,vec(3),delt,unv(3),pt(3),rd(3),planes(12),ptin(9),
+     -       ndist,ndot
+c
+      integer*4 i,n,isw(3),isub(3),is(3),ix,ier,inm1,inm2,ismt(3)
+c
+      data isub /1,3,5/, ismt /1,5,9/
+      data planes /1.,.0,.0,.0, .0,1.,.0,.0, .0,.0,1.,.0/
+c
+      if (kfl .ne. 0) then
+          kfl = kfl - 1
+          call popaxs (MCHNUM,LINAXS,ROTANG,AXSOUT,TLVEC,kaxsw,kcnt)
+          go to 8000
+      endif
+c
+c...Check if any linear axis crosses zero boundry
+c
+      do 110 i=1,3,1
+         isw(i) = 0
+         if (AXSOUT(isub(i))*AXSSTO(isub(i)) .lt. 0.d0) then
+            call codint (MOTREG(ismt(i)),AXSOUT(isub(i)),rnum,inm1)
+            call codint (MOTREG(ismt(i)),AXSSTO(isub(i)),rnum,inm2)
+            if (inm1*inm2 .lt. 0) isw(i) = 1
+         end if
+         vec(i) = AXSOUT(isub(i)) - AXSSTO(isub(i))
+         pt(i)  = AXSSTO(isub(i))
+  110 continue
+      if (isw(1)+isw(2)+isw(3) .eq. 0) go to 8000
+c
+c...Get intersection points with all coordinate planes
+c
+      call unitvc (vec,unv)
+      delt  = dsqrt(ndot(vec,vec))
+      do 210 i=1,3,1
+         if (isw(i) .eq. 1) then
+            call plnint (pt,unv,planes(i*4-3),ptin(i*3-2),ier)
+            if (ier .eq. 1) then
+               isw(i) = 0
+            else
+               rd(i) = ndist(ptin(i*3-2),pt)
+               if (rd(i) .ge. delt) isw(i) = 0
+            end if
+         end if
+  210 continue
+c
+c...sort points by distance from start point
+c
+      ix    = 1
+  300 rnum  = 1.d8
+      n     = 0
+      do 310 i=1,3,1
+         if (isw(i) .eq. 1) then
+            if (rd(i) .lt. rnum) then
+               is(ix) = i
+               rnum = rd(i)
+               n    = i
+            end if
+         end if
+  310 continue
+      if (n .gt. 0) isw(n) = 0
+      if (isw(1)+isw(2)+isw(3) .ne. 0) then
+         ix = ix + 1
+         go to 300
+      end if
+c
+c...output points on boundaries
+c
+      if (ix .gt. 0) call pshaxs (AXSOUT,TLVEC)
+      do 410 i=ix,1,-1
+         n = is(i)*3-2
+         AXSOUT(isub(1)) = ptin(n)
+         AXSOUT(isub(2)) = ptin(n+1)
+         AXSOUT(isub(3)) = ptin(n+2)
+         if (i .ne. ix) call pshaxs (AXSOUT,TLVEC)
+  410 continue
+      call alladr (AXSOUT,LINAXS,MCHNUM,ROTANG,TLVEC,5,1)
+      call whchax (AXSOUT,kaxsw,kcnt)
+      kfl   = ix
+c
+ 8000 return
+      end
+c
+c***********************************************************************
+c
+c   SUBROUTINE:  maccel (kaxsw,kcnt,kfl)
+c
+c   FUNCTION:  This routine outputs post generated acceleration spans.
+c
+c   INPUT:  kaxsw   I*4  D10 -  Array of switches that show which axes
+c                               are waiting to be output.  A value of 1
+c                               signifies this axis needs to be output.
+c
+c           kcnt    I*4  D1  -  Number of axes waiting to be output.
+c
+c           kfl     I*4  D1  -  Should be set to 0 on initial call.
+c                               'kfl' is also returned with a value of
+c                               0 and 1.  1 = the motion block was
+c                               broken up, this routine should be called
+c                               again immediately after the returned
+c                               motion block is output.
+c
+c   OUTPUT: kaxsw   I*4  D10 -  See INPUT.
+c
+c           kcnt    I*4  D1  -  See INPUT.
+c
+c           kfl     I*4  D1  -  See INPUT.
+c
+c***********************************************************************
+c
+      subroutine maccel (kaxsw,kcnt,kfl)
+c
+      include 'post.inc'
+c
+      equivalence (ICYCSW,KPOSMP(0271)), (ISCIRC,KPOSMP(1238))
+      equivalence (SLWFL ,KPOSMP(1701)), (ISLWDN,KPOSMP(1721))
+      equivalence (ISLWFD,KPOSMP(1723)), (IACCFD,KPOSMP(1744))
+      equivalence (IACCFL,KPOSMP(1745)), (IRAP  ,KPOSMP(3199))
+      equivalence (ISBSPL,KPOSMP(4085))
+c
+      integer*4 SLWFL(5),ISLWDN,ISLWFD,ISCIRC,ICYCSW(5),
+     1          ISBSPL,IRAP,IACCFL(2),IACCFD
+c
+      equivalence (MCHNUM,POSMAP(1287)), (LINAXS,POSMAP(1299))
+      equivalence (AXSOUT,POSMAP(1340)), (TLVEC ,POSMAP(1369))
+      equivalence (AXSSTO,POSMAP(1425)), (MOVDIS,POSMAP(1570))
+      equivalence (AXSDIS,POSMAP(1574)), (SLWFD ,POSMAP(2471))
+      equivalence (FMVTIM,POSMAP(3553)), (OFEED ,POSMAP(3560))
+      equivalence (ACCFED,POSMAP(4291)), (ACCFD ,POSMAP(4292))
       equivalence (MAXVEL,POSMAP(4293)), (AXSVEL,POSMAP(4294))
-      equivalence (ACCSTP,POSMAP(4295))
+      equivalence (ACCSTP,POSMAP(4295)), (ROTANG,POSMAP(5173))
 c
-      real*8 MAXVEL,AXSVEL,ACCSTP(2)
+      real*8 MCHNUM(3,4),LINAXS(6),AXSOUT(10),ROTANG(20,2),AXSSTO(10),
+     1       TLVEC(3),SLWFD,ACCFED,AXSDIS(10),FMVTIM,MOVDIS(4),
+     2       OFEED(6),MAXVEL,AXSVEL,ACCSTP(2),ACCFD
 c
-      integer*4 kfl,kerr
+      integer*4 kaxsw(10),kcnt,kfl
 c
-      character*(*) cmsg
+      integer*4 i
 c
-      integer*4 nc,iwrn,inum,ilod,ist,iyesno(2),i,inc,ionoff(2)
+      real*8 fdif,vtim,ratio,rvec,step
 c
-      real*8 rnum
+c...Are acceleration blocks supported
 c
-      data iyesno /13,12/, ionoff /47,48/
+      if (IACCFL(1) .ne. 1) go to 8000
 c
-c...Specific level was requested
-c...Go directly to that level
+c...Second time here
+c...Pop previous position from stack
 c
-      ilod   = 1
-      if (kfl .lt. NLEVL) go to 100
-   50 ist    = MLEVL(NLEVL)
-      goto (110,110,300,400,510,510), MLEVL(NLEVL)
+      if (kfl .eq. 1) then
+          kfl    = 0
+          call popaxs (MCHNUM,LINAXS,ROTANG,AXSOUT,TLVEC,kaxsw,kcnt)
+      endif
 c
-c...Machine acceleration support
+c...Calculate machining speeds
 c
-  100 ist    = 1
-  110 inc    = ist    - 1
-      do 190 i=ist,2,1
-          inc    = inc    + 1
-          if (inc .eq. 2 .and. IACCFL(1) .ne. 1) then
-              if (kfl .lt. NLEVL) go to 195
-              call errmsg ('NOTAPPLY',1,2)
-              go to 8000
+      call fedctl (kaxsw)
+      call mchdis (0)
+      call mchtim (AXSOUT,kaxsw,kcnt,0)
+c
+c...Are acceleration blocks active
+c
+      if (IACCFL(2) .eq. 1 .and. ISCIRC .eq. 0 .and.
+     1    ICYCSW(1) .eq. 0 .and. ISBSPL .ne. 1 .and. IRAP .eq. 0) then
+c
+c...Calculate difference in feedrates
+c...If feedrate is the same, then do nothing
+c
+          fdif   = OFEED(2) - ACCFED
+          if (fdif .le. ACCSTP(1)) go to 8000
+c
+c...Calculate time it will take
+c...to get to acceleration limit
+c
+          vtim   = AXSVEL / MAXVEL / 60.
+cc          if (FMVTIM .lt. vtim) go to 8000
+          ratio  = vtim / FMVTIM
+c
+c...Calculate new feed rate
+c
+          ACCFD  = ACCFED + fdif * vtim*60.
+          if (ACCFD .lt. ACCFED+ACCSTP(1)) ACCFD = ACCFED + ACCSTP(1)
+          if (ACCFD .gt. ACCFED+ACCSTP(2)) ACCFD = ACCFED + ACCSTP(2)
+          step   = vtim * ACCFD
+          ratio  = step   / MOVDIS(2)
+          IACCFD = 1
+c
+c...Output calculated span at acceleration feed rate
+c
+          if (ratio .lt. .95) then
+              kfl    = 1
+              call pshaxs (AXSOUT,TLVEC)
+              do 500 i=1,10,1
+                  if (kaxsw(i) .eq. 1) then
+                      rvec   = AXSOUT(i) - AXSSTO(i)
+                      AXSOUT(i) = AXSSTO(i) + rvec * ratio
+                  endif
+  500         continue
+c
+c......Set up current position arrays
+c
+              call alladr (AXSOUT,LINAXS,MCHNUM,ROTANG,TLVEC,5,1)
+              call whchax (AXSOUT,kaxsw,kcnt)
           endif
-          MLEVL(NLEVL) = i
-          iwrn   = 0
-          inum   = IACCFL(inc)
-          nc     = 2
-          if (inc .eq. 1) nc = -2
-          if (inc .eq. 1) then
-              call prmvoc (inum,iyesno,nc,kfl,ilod,iwrn,cmsg,kerr)
-          else
-              call prmvoc (inum,ionoff,nc,kfl,ilod,iwrn,cmsg,kerr)
-          endif
-          if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-              if (iwrn .eq. 2) go to 7000
-              if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-              IACCFL(inc) = inum
-              if (kfl .ge. NLEVL) go to 8000
-          endif
-  190 continue
-  195 continue
-c
-c...Maximum vectorial velocity
-c
-  300 MLEVL(NLEVL) = 3
-      if (IACCFL(1) .ne. 1) then
-          if (kfl .lt. NLEVL) go to 395
-          call errmsg ('NOTAPPLY',1,2)
-          go to 8000
       endif
-      iwrn   = 0
-      rnum   = MAXVEL
-      nc     = 1
-      call prmrel (rnum,nc,1,.001d0,4000.d0,kfl,ilod,iwrn,cmsg,kerr)
-      if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-          if (iwrn .eq. 2) go to 7000
-          if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-          MAXVEL = rnum
-          if (kfl .ge. NLEVL) go to 8000
-      endif
-  395 continue
-c
-c...Capped vectorial velocity
-c
-  400 MLEVL(NLEVL) = 4
-      if (IACCFL(1) .ne. 1) then
-          if (kfl .lt. NLEVL) go to 495
-          call errmsg ('NOTAPPLY',1,2)
-          go to 8000
-      endif
-      iwrn   = 0
-      rnum   = AXSVEL
-      nc     = 1
-      call prmrel (rnum,nc,1,.001d0,4000.d0,kfl,ilod,iwrn,cmsg,kerr)
-      if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-          if (iwrn .eq. 2) go to 7000
-          if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-          AXSVEL = rnum
-          if (kfl .ge. NLEVL) go to 8000
-      endif
-  495 continue
-c
-c...Feed rate steps
-c
-  500 ist    = 5
-  510 inc    = ist    - 5
-      if (IACCFL(1) .ne. 1) then
-          if (kfl .lt. NLEVL) go to 595
-          call errmsg ('NOTAPPLY',1,2)
-          go to 8000
-      endif
-      do 590 i=ist,6,1
-          inc    = inc    + 1
-          MLEVL(NLEVL) = i
-          iwrn   = 0
-          rnum   = ACCSTP(inc)
-          nc     = 1
-          call prmrel (rnum,nc,1,.001d0,4000.d0,kfl,ilod,iwrn,cmsg,kerr)
-          if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-              if (iwrn .eq. 2) go to 7000
-              if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-              ACCSTP(inc) = rnum
-              if (kfl .ge. NLEVL) go to 8000
-          endif
-  590 continue
-  595 continue
-c
-c...Up arrow
-c...Go to previous prompt
-c
-      go to 8000
- 7000 MLEVL(NLEVL) = PRMSTK(PRMSP)
-      PRMSP  = PRMSP  - 1
-      go to 50
-c
-c...End of routine
-c
- 8000 return
-      end
-c
-c***********************************************************************
-c
-c   SUBROUTINE:  mtaxfm (kfl,cmsg,kerr)
-c
-c   FUNCTION:  Transformation parameters prompt handling routine.
-c
-c   INPUT:  kfl     I*4  D1  -  The number of levels that the user en-
-c                               tered.
-c
-c   OUTPUT: cmsg    C*n  D1  -  Text of error message.
-c
-c           kerr    I*4  D1  -  Returns non-zero when an error occurred.
-c
-c***********************************************************************
-c
-      subroutine mtaxfm (kfl,cmsg,kerr)
-c
-      include 'menu.inc'
-      include 'post.inc'
-c
-      equivalence (XFMFL ,KPOSMP(0969)), (IRTNUM,KPOSMP(1243))
-      equivalence (IRTYPE,KPOSMP(1486))
-c
-      integer*4 XFMFL(20),IRTYPE(20),IRTNUM
-c
-      integer*4 kfl,kerr
-c
-      character*(*) cmsg
-c
-      integer*4 nc,iwrn,inum,ilod,ist,iyesno(2),i,inc,ixyz(2)
-c
-      data iyesno /13,12/, ixyz /523,524/
-c
-c...Specific level was requested
-c...Go directly to that level
-c
-      ilod   = 1
-      if (kfl .lt. NLEVL) go to 100
-   50 ist    = MLEVL(NLEVL)
-      goto (110,110,300,400,500,600,700,810,810,1000,1100), MLEVL(NLEVL)
-c
-c...Machine transformation support
-c
-  100 ist    = 1
-  110 inc    = ist    - 1
-      do 190 i=ist,2,1
-          inc    = inc    + 1
-          if (inc .ge. 2 .and. XFMFL(1) .ne. 1) then
-              if (kfl .lt. NLEVL) go to 195
-              call errmsg ('NOTAPPLY',1,2)
-              go to 8000
-          endif
-          MLEVL(NLEVL) = i
-          iwrn   = 0
-          inum   = XFMFL(inc)
-          nc     = 2
-          if (i .eq. 1 .or. i .eq. 3) nc = -2
-          call prmvoc (inum,iyesno,nc,kfl,ilod,iwrn,cmsg,kerr)
-          if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-              if (iwrn .eq. 2) go to 7000
-              if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-              XFMFL(inc) = inum
-              if (kfl .ge. NLEVL) go to 8000
-          endif
-  190 continue
-  195 continue
-c
-c...Rotation calculation
-c
-  300 MLEVL(NLEVL) = 3
-      if (XFMFL(1) .ne. 1) then
-          if (kfl .lt. NLEVL) go to 395
-          call errmsg ('NOTAPPLY',1,2)
-          go to 8000
-      endif
-      iwrn   = 0
-      inum   = XFMFL(3)
-      nc     = -1
-      call prmint (inum,nc,1,1,5,kfl,ilod,iwrn,cmsg,kerr)
-      if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-          if (iwrn .eq. 2) go to 7000
-          if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-          XFMFL(3) = inum
-          if (kfl .ge. NLEVL) go to 8000
-      endif
-  395 continue
-c
-c...Rotation order
-c
-  400 MLEVL(NLEVL) = 4
-      if (XFMFL(1) .ne. 1 .or. (XFMFL(3) .ne. 2 .and. XFMFL(3) .ne. 3))
-     1        then
-          if (kfl .lt. NLEVL) go to 495
-          call errmsg ('NOTAPPLY',1,2)
-          go to 8000
-      endif
-      iwrn   = 0
-      inum   = XFMFL(16)
-      nc     = 1
-      call prmvoc (inum,ixyz,2,kfl,ilod,iwrn,cmsg,kerr)
-      if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-          if (iwrn .eq. 2) go to 7000
-          if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-          XFMFL(16) = inum
-          if (kfl .ge. NLEVL) go to 8000
-      endif
-  495 continue
-c
-c...Rotation direction
-c
-  500 MLEVL(NLEVL) = 5
-      if (XFMFL(1) .ne. 1) then
-          if (kfl .lt. NLEVL) go to 595
-          call errmsg ('NOTAPPLY',1,2)
-          go to 8000
-      endif
-      iwrn   = 0
-      inum   = XFMFL(17)
-      nc     = 1
-      call prmvoc (inum,iyesno,2,kfl,ilod,iwrn,cmsg,kerr)
-      if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-          if (iwrn .eq. 2) go to 7000
-          if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-          XFMFL(17) = inum
-          if (kfl .ge. NLEVL) go to 8000
-      endif
-  595 continue
-c
-c...Use table rotations in xform
-c
-  600 do 620 i=1,IRTNUM,1
-          if (IRTYPE(i) .eq. 1 .and. XFMFL(1) .eq. 1) go to 640
-  620 continue
-      if (kfl .lt. NLEVL) go to 695
-      call errmsg ('NOTAPPLY',1,2)
-      go to 8000
-c
-  640 MLEVL(NLEVL) = 6
-      iwrn   = 0
-      inum   = XFMFL(11)
-      nc     = 1
-      call prmvoc (inum,iyesno,2,kfl,ilod,iwrn,cmsg,kerr)
-      if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-          if (iwrn .eq. 2) go to 7000
-          if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-          XFMFL(11) = inum
-          if (kfl .ge. NLEVL) go to 8000
-      endif
-  695 continue
-c
-c...Coordinate transformations
-c
-  700 MLEVL(NLEVL) = 7
-      if (XFMFL(1) .ne. 1 .or. (XFMFL(3) .ne. 5 .and. XFMFL(3) .ne. 6))
-     1        then
-          if (kfl .lt. NLEVL) go to 795
-          call errmsg ('NOTAPPLY',1,2)
-          go to 8000
-      endif
-      iwrn   = 0
-      inum   = XFMFL(12)
-      nc     = 1
-      call prmvoc (inum,iyesno,2,kfl,ilod,iwrn,cmsg,kerr)
-      if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-          if (iwrn .eq. 2) go to 7000
-          if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-          XFMFL(12) = inum
-          if (kfl .ge. NLEVL) go to 8000
-      endif
-  795 continue
-c
-c...AUTO block handling
-c
-  800 ist    = 8
-  810 inc    = ist    - 1
-      do 890 i=ist,9,1
-          inc    = inc    + 1
-          if (XFMFL(1) .ne. 1) then
-              if (kfl .lt. NLEVL) go to 895
-              call errmsg ('NOTAPPLY',1,2)
-              go to 8000
-          endif
-          MLEVL(NLEVL) = i
-          iwrn   = 0
-          inum   = XFMFL(inc)
-          call prmvoc (inum,iyesno,2,kfl,ilod,iwrn,cmsg,kerr)
-          if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-              if (iwrn .eq. 2) go to 7000
-              if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-              XFMFL(inc) = inum
-              if (kfl .ge. NLEVL) go to 8000
-          endif
-  890 continue
-  895 continue
-c
-c...Turn off xform prior to outputting point
-c
- 1000 MLEVL(NLEVL) = 10
-      if (XFMFL(1) .ne. 1) then
-          if (kfl .lt. NLEVL) go to 1095
-          call errmsg ('NOTAPPLY',1,2)
-          go to 8000
-      endif
-      iwrn   = 0
-      inum   = XFMFL(13)
-      call prmvoc (inum,iyesno,2,kfl,ilod,iwrn,cmsg,kerr)
-      if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-          if (iwrn .eq. 2) go to 7000
-          if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-          XFMFL(13) = inum
-          if (kfl .ge. NLEVL) go to 8000
-      endif
- 1095 continue
-c
-c...Rapid adjustments respect transformation
-c
- 1100 MLEVL(NLEVL) = 11
-      if (XFMFL(1) .ne. 1) then
-          if (kfl .lt. NLEVL) go to 1195
-          call errmsg ('NOTAPPLY',1,2)
-          go to 8000
-      endif
-      iwrn   = 0
-      inum   = XFMFL(15)
-      if (inum .eq. 0) inum = 2
-      call prmvoc (inum,iyesno,2,kfl,ilod,iwrn,cmsg,kerr)
-      if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-          if (iwrn .eq. 2) go to 7000
-          if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-          XFMFL(15) = inum
-          if (kfl .ge. NLEVL) go to 8000
-      endif
- 1195 continue
-c
-c...Up arrow
-c...Go to previous prompt
-c
-      go to 8000
- 7000 MLEVL(NLEVL) = PRMSTK(PRMSP)
-      PRMSP  = PRMSP  - 1
-      go to 50
-c
-c...End of routine
-c
- 8000 return
-      end
-c
-c***********************************************************************
-c
-c   SUBROUTINE:  mtaxfo (kfl,cmsg,kerr)
-c
-c   FUNCTION:  Transformation output prompt handling routine.
-c
-c   INPUT:  kfl     I*4  D1  -  The number of levels that the user en-
-c                               tered.
-c
-c   OUTPUT: cmsg    C*n  D1  -  Text of error message.
-c
-c           kerr    I*4  D1  -  Returns non-zero when an error occurred.
-c
-c***********************************************************************
-c
-      subroutine mtaxfo (kfl,cmsg,kerr)
-c
-      include 'menu.inc'
-      include 'post.inc'
-c
-      equivalence (XFMREG,KPOSMP(0931)), (XFMCD ,KPOSMP(0946))
-      equivalence (XFMFL ,KPOSMP(0969))
-c
-      integer*4 XFMFL(20),XFMCD(5),XFMREG(10)
-c
-      equivalence (DUMMY ,POSMAP(0003)), (XFMVL ,POSMAP(1189))
-c
-      real*8 DUMMY,XFMVL(5)
-c
-      integer*4 kfl,kerr
-c
-      character*(*) cmsg
-c
-      integer*4 nc,iwrn,inum,ilod,ist,iyesno(2),i,inc
-c
-      real*8 rnum
-c
-      data iyesno /13,12/
-c
-c...Specific level was requested
-c...Go directly to that level
-c
-      ilod   = 1
-      if (kfl .lt. NLEVL) go to 100
-   50 ist    = MLEVL(NLEVL)
-      goto (110,110,110,110,510,510,510,510,510,510,510,
-     1      510,510,510,1500,1600,1700), MLEVL(NLEVL)
-c
-c...Transformation codes
-c
-  100 ist    = 1
-  110 inc    = ist    - 1
-      if (XFMFL(1) .ne. 1) then
-          if (kfl .lt. NLEVL) go to 195
-          call errmsg ('NOTAPPLY',1,2)
-          go to 8000
-      endif
-      do 190 i=ist,4,1
-          inc    = inc    + 1
-          MLEVL(NLEVL) = i
-          iwrn   = 0
-          inum   = XFMCD(inc)
-          rnum   = XFMVL(inc)
-          nc     = 1
-          call prmcod (inum,rnum,nc,1,1,kfl,ilod,iwrn,cmsg,kerr)
-          if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-              if (iwrn .eq. 2) go to 7000
-              if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-              XFMCD(inc) = inum
-              XFMVL(inc) = rnum
-              if (kfl .ge. NLEVL) go to 8000
-          endif
-  190 continue
-  195 continue
-c
-c...Transformation registers
-c
-  500 ist    = 5
-  510 inc    = ist    - 5
-      if (XFMFL(1) .ne. 1) then
-          if (kfl .lt. NLEVL) go to 595
-          call errmsg ('NOTAPPLY',1,2)
-          go to 8000
-      endif
-      do 590 i=ist,14,1
-          inc    = inc    + 1
-          if ((XFMFL(3) .eq. 1 .and. (i .ge. 8 .and. i .le. 10)) .or.
-     1        (XFMFL(3) .ne. 1 .and. i .ge. 11)) then
-              if (kfl .lt. NLEVL) go to 590
-              call errmsg ('NOTAPPLY',1,2)
-              go to 8000
-          endif
-          MLEVL(NLEVL) = i
-          iwrn   = 0
-          inum   = XFMREG(inc)
-          rnum   = DUMMY
-          nc     = 1
-          call prmcod (inum,rnum,nc,1,1,kfl,ilod,iwrn,cmsg,kerr)
-          if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-              if (iwrn .eq. 2) go to 7000
-              if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-              XFMREG(inc) = inum
-              if (kfl .ge. NLEVL) go to 8000
-          endif
-  590 continue
-  595 continue
-c
-c...Non-Positioning code
-c
- 1500 MLEVL(NLEVL) = 15
-      if (XFMFL(1) .ne. 1) then
-          if (kfl .lt. NLEVL) go to 1595
-          call errmsg ('NOTAPPLY',1,2)
-          go to 8000
-      endif
-      iwrn   = 0
-      inum   = XFMCD(5)
-      rnum   = XFMVL(5)
-      nc     = 1
-      call prmcod (inum,rnum,nc,1,1,kfl,ilod,iwrn,cmsg,kerr)
-      if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-          if (iwrn .eq. 2) go to 7000
-          if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-          XFMCD(5) = inum
-          XFMVL(5) = rnum
-          if (kfl .ge. NLEVL) go to 8000
-      endif
- 1595 continue
-c
-c...Output XYZ when cancelling translations
-c...Output Xform block after motion
-c
- 1600 MLEVL(NLEVL) = 16
-      if (XFMFL(1) .ne. 1) then
-          if (kfl .lt. NLEVL) go to 1695
-          call errmsg ('NOTAPPLY',1,2)
-          go to 8000
-      endif
-      iwrn   = 0
-      inum   = XFMFL(6)
-      call prmvoc (inum,iyesno,2,kfl,ilod,iwrn,cmsg,kerr)
-      if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-          if (iwrn .eq. 2) go to 7000
-          if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-          XFMFL(6) = inum
-          if (kfl .ge. NLEVL) go to 8000
-      endif
- 1695 continue
-c
-c...Output XYZ when cancelling translations
-c...Output Xform block after motion
-c
- 1700 MLEVL(NLEVL) = 17
-      if (XFMFL(1) .ne. 1) then
-          if (kfl .lt. NLEVL) go to 1795
-          call errmsg ('NOTAPPLY',1,2)
-          go to 8000
-      endif
-      iwrn   = 0
-      inum   = XFMFL(7)
-      nc     = 1
-      call prmint (inum,nc,1,1,3,kfl,ilod,iwrn,cmsg,kerr)
-      if (MOTIF .ne. 1 .or. IMSCAN .ne. 1) then
-          if (iwrn .eq. 2) go to 7000
-          if (iwrn .eq. 1 .or. kerr .ne. 0) go to 8000
-          XFMFL(7) = inum
-          if (kfl .ge. NLEVL) go to 8000
-      endif
- 1795 continue
-c
-c...Up arrow
-c...Go to previous prompt
-c
-      go to 8000
- 7000 MLEVL(NLEVL) = PRMSTK(PRMSP)
-      PRMSP  = PRMSP  - 1
-      go to 50
 c
 c...End of routine
 c
