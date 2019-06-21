@@ -3,63 +3,66 @@ c***********************************************************************
 c
 c   FILE NAME:  cylman
 c   CONTAINS:
-c               cylman  cylmdo  cylpek  popcyl  pshcyl
+c               cylman  cylmdo  cylpek
 c
 c     COPYRIGHT 1997 (c) Numerical Control Computer Sciences.
 c           All Rights Reserved
 c      MODULE NAME AND RELEASE LEVEL
-c        cylman.f , 24.1
+c        cylman.f , 25.1
 c     DATE AND TIME OF LAST  MODIFICATION
-c        09/11/13 , 12:59:06
+c        04/29/15 , 15:09:49
 c
 c***********************************************************************
 c
 c***********************************************************************
 c
-c   SUBROUTINE: cylman
+c   SUBROUTINE: cylman (spt,gpt,kcyc,gcyc,kret,gout,knout)
 c
 c   FUNCTION:  This is the controlling routine for post generated Lathe
 c              cycles.
 c
-c   INPUT:  none.
+c   INPUT:  spt     R*8  D6  -  Point coming from.
 c
-c   OUTPUT: none.
+c           gpt     R*8  D6  -  Point to perform cycle at.
+c
+c           kcyc    I*2  D10 -  Integer cycle parameters.
+c
+c           gcyc    R*8  D10 -  Real cycle parameters.
+c
+c           kret    I*2  D1  -  1 = Retract to rapto plane.  2 = Retract
+c                               to clearance plane.
+c
+c   OUTPUT: gout    R*8  D4,500 - Array of points and feed rates created
+c                                for cycle motion.
+c
+c           knout   I*2  D1    - Number of points in 'gout'.
 c
 c***********************************************************************
 c
-      subroutine cylman
+      subroutine cylman (spt,gpt,kcyc,gcyc,kret,gout,knout)
 c
-      include 'post.inc'
+      include 'com.com'
 c
-      equivalence (ICYCDO,KPOSMP(0276)), (ICYLFL,KPOSMP(1901))
+      integer*2 kcyc(10),kret,knout
 c
-      integer*4 ICYCDO(15),ICYLFL(20)
-c
-      equivalence (MCHNUM,POSMAP(1287)), (STONUM,POSMAP(1387))
-      equivalence (RCYCDO,POSMAP(2931))
-c
-      real*8 MCHNUM(3,4),STONUM(3,4),RCYCDO(20)
+      real*8 spt(6),gpt(6),gcyc(10),gout(4,500)
 c
       real*8 rfin(3),rclr(3)
 c
 c...Assign cycle positions
 c...Current & final position
 c
-      rclr(1) = STONUM(1,2)
-      rclr(2) = STONUM(2,2)
-      rclr(3) = STONUM(3,2)
+      rclr(1) = spt(1)
+      rclr(2) = spt(2)
+      rclr(3) = spt(3)
 c
-      rfin(1) = MCHNUM(1,2)
-      rfin(2) = MCHNUM(2,2)
-      rfin(3) = MCHNUM(3,2)
+      rfin(1) = gpt(1)
+      rfin(2) = gpt(2)
+      rfin(3) = gpt(3)
 c
 c...Perform cycle
 c
-      call cylmdo (rfin,rclr)
-c
-c...Cancel cycle
-c
-      if (ICYLFL(11) .eq. 1) call cyloff
+      call cylmdo (rfin,rclr,kcyc,gcyc,gout,knout)
 c
 c...End of routine
 c
@@ -68,309 +71,314 @@ c
 c
 c***********************************************************************
 c
-c   SUBROUTINE: cylmdo (gfin,gpos,gclr)
+c   SUBROUTINE: cylmdo (gfin,gclr,kcyc,gcyc,gout,knout)
 c
 c   FUNCTION:  This routine performs all post-generated Lathe cycles.
 c
 c   INPUT:  gfin    R*8  D3  -  The linear axes position at the end of
 c                               the cycle.
 c
-c           gpos    R*8  D3  -  The rapto linear axes position.
-c
 c           gclr    R*8  D3  -  The current linear axes position.
+c
+c           kcyc    I*2  D10 -  Integer cycle parameters.
+c
+c           gcyc    R*8  D10 -  Real cycle parameters.
+c
+c   OUTPUT: gout    R*8  D4,500 - Array of points and feed rates created
+c                                 for cycle motion.
+c
+c           knout   I*2  D1    - Number of points in 'gout'.
 c
 c   OUTPUT: none.
 c
 c***********************************************************************
 c
-      subroutine cylmdo (gfin,gclr)
+      subroutine cylmdo (gfin,gclr,kcyc,gcyc,gout,knout)
 c
-      include 'post.inc'
+      include 'com.com'
+      include 'const.com'
 c
-      equivalence (ICYCDO,KPOSMP(0276))
+      integer*2 knout,kcyc(10),rcnt
 c
-      integer*4 ICYCDO(15)
+      real*8 gfin(3),gclr(3),gout(4,500),gcyc(10)
 c
-      equivalence (RAD   ,POSMAP(0002)), (RCYCDO,POSMAP(2931))
+      integer*4 ipt,istk(5),iflg,is1,is2,is3
 c
-      real*8 RCYCDO(20),RAD
-c
-      real*8 gfin(3),gclr(3)
-c
-      integer*4 ipt,istk(5),ifl
-c
-      real*8 rmch(3),rpck,rdep,rdep1,fdep,rprm(6),rcnt,rpos(3),
-     1       rdis,tvec(3),rvec(2),rnum,angl,bangl,rstrt(3)
+      real*8 rmch(3),rpck,rdep,rdep1,fdep,rprm(6),rpos(3),rstrt(3),
+     1       rdis,tvec(3),rvec(2),rnum,angl,bangl
 c
 c...Initialize routine
 c
       ipt    = 0
+      knout  = 0
+      is1    = 2
+      is2    = 3
+      is3    = 1
 c
 c...CYCLE/DEEP
 c...      DRILL
 c...      THRU
 c
-      if (ICYCDO(1) .eq. 1 .or. ICYCDO(1) .eq. 2 .or.
-     1    ICYCDO(1) .eq. 3 .or. ICYCDO(1) .eq. 4 .or.
-     2    ICYCDO(1) .eq. 11 .or. ICYCDO(1) .eq. 12) then
+      if (kcyc(2) .eq. 1 .or. kcyc(2) .eq. 2 .or.
+     1    kcyc(2) .eq. 3) then
 c
 c......Calculate rapto position
 c
-          tvec(1) = gfin(1) - gclr(1)
-          tvec(2) = gfin(3) - gclr(3)
+          tvec(1) = gfin(is1) - gclr(is1)
+          tvec(2) = gfin(is3) - gclr(is3)
           rdis   = dsqrt(tvec(1)**2 + tvec(2)**2)
           tvec(1) = tvec(1) / rdis
           tvec(2) = tvec(2) / rdis
-          rpos(1) = gclr(1) + RCYCDO(8) * tvec(1)
-          rpos(2) = gclr(2)
-          rpos(3) = gclr(3) + RCYCDO(8) * tvec(2)
+          rpos(is1) = gclr(is1) + gcyc(2) * tvec(1)
+          rpos(is2) = gclr(is2)
+          rpos(is3) = gclr(is3) + gcyc(2) * tvec(2)
 c
 c......Calculate final depth
 c
-          rdep   = dsqrt((gfin(1)-rpos(1))**2 + (gfin(3)-rpos(3))**2)
+          rdep   = dsqrt((gfin(is1)-rpos(is1))**2 +
+     1                 (gfin(is3)-rpos(is3))**2)
           rpck   = 0.
 c
 c......Position to Rapto plane
 c
-         if (ICYCDO(7) .eq. 1) call pshcyl (istk,ipt,1,rpos)
+          if (gcyc(2) .ne. 0.) call pshcyc (gout,knout,gcyc(7),rpos)
 c
 c......Calculate current depth
 c
-  100    call cylpek (rdep,rpck,rprm,ifl)
+  100     call cylpek (rdep,rpck,rprm,iflg,kcyc,gcyc)
 c
 c......Plunge tool
 c
-          rmch(1) = rpos(1) + rprm(5) * tvec(1)
-          rmch(2) = rpos(2)
-          rmch(3) = rpos(3) + rprm(5) * tvec(2)
-          call pshcyl (istk,ipt,3,rmch)
+          rmch(is1) = rpos(is1) + rprm(5) * tvec(1)
+          rmch(is2) = rpos(is2)
+          rmch(is3) = rpos(is3) + rprm(5) * tvec(2)
+          call pshcyc (gout,knout,gcyc(6),rmch)
 c
 c......Retract tool (relief)
 c
-          if (ICYCDO(10) .ne. 0 .and. RCYCDO(13) .ne. 0. .and.
-     1        ifl .eq. 0) then
-              rmch(1) = rmch(1) - RCYCDO(13) * tvec(1)
-              rmch(2) = rmch(2)
-              rmch(3) = rmch(3) - RCYCDO(13) * tvec(2)
-              call pshcyl (istk,ipt,2,rmch)
+          if (gcyc(5) .ne. 0 .and.  iflg .eq. 0) then
+              rmch(is1) = rmch(is1) - gcyc(5) * tvec(1)
+              rmch(is2) = rmch(is2)
+              rmch(is3) = rmch(is3) - gcyc(5) * tvec(2)
+              call pshcyc (gout,knout,gcyc(6),rmch)
           endif
-          if (ifl .eq. 0) go to 100
+          if (iflg .eq. 0) go to 100
 c
 c......Position to original point
 c
-          call pshcyl (istk,ipt,2,gclr)
+          call pshcyc (gout,knout,gcyc(7),gclr)
 c
 c...CYCLE/FACE
 c
-      else if (ICYCDO(1) .eq. 5 .or. ICYCDO(1) .eq. 6) then
+      else if (kcyc(2) .eq. 4) then
 c
 c......Calculate rapto position
 c
-          rdis   = gfin(3) - gclr(3)
+          rdis   = gfin(is3) - gclr(is3)
           tvec(1) = rdis   / dabs(rdis)
-          rpos(1) = gclr(1)
-          rpos(2) = gclr(2)
-          rpos(3) = gclr(3) + RCYCDO(8) * tvec(1)
+          rpos(is1) = gclr(is1)
+          rpos(is2) = gclr(is2)
+          rpos(is3) = gclr(is3) + gcyc(2) * tvec(1)
 c
 c......Calculate final depths
 c
-          rdep   = gfin(3) - rpos(3)
+          rdep   = gfin(is3) - rpos(is3)
           fdep   = dabs(rdep)
-          if (ICYCDO(4) .eq. 0) then
+          if (gcyc(1) .eq. 0.) then
               rdep1  = rdep
           else
-              rdep1  = rdep   + RCYCDO(3)
+              rdep1  = rdep   + gcyc(1)
               if (dabs(rdep1) .gt. fdep) fdep = dabs(rdep1)
           endif
           rpck   = 0.
 c
 c......Calculate current depth
 c
-  200    call cylpek (fdep,rpck,rprm,ifl)
+  200    call cylpek (fdep,rpck,rprm,iflg,kcyc,gcyc)
          rcnt   = 0
 c
 c......Position to Rapto plane
 c
-  220     if (ICYCDO(7) .eq. 1) call pshcyl (istk,ipt,1,rpos)
+  220     if (gcyc(2) .ne. 0.) call pshcyc (gout,knout,gcyc(7),rpos)
 c
 c......Plunge tool
 c
-          rmch(1) = rpos(1)
-          rmch(2) = rpos(2)
+          rmch(is1) = rpos(is1)
+          rmch(is2) = rpos(is2)
           if (fdep .ne. 0.) then
-              rmch(3) = rpos(3) + rprm(5) * (rdep1/fdep)
+              rmch(is3) = rpos(is3) + rprm(5) * (rdep1/fdep)
           else
-              rmch(3) = rpos(3)
+              rmch(is3) = rpos(is3)
           endif
-          call pshcyl (istk,ipt,3,rmch)
+          call pshcyc (gout,knout,gcyc(6),rmch)
 c
 c......Feed across part
 c
-          rmch(1) = gfin(1)
-          rmch(2) = rpos(2)
+          rmch(is1) = gfin(is1)
+          rmch(is2) = rpos(is2)
           if (fdep .ne. 0.) then
-              rmch(3) = rpos(3) + rprm(5) * (rdep/fdep)
+              rmch(is3) = rpos(is3) + rprm(5) * (rdep/fdep)
           else
-              rmch(3) = rpos(3)
+              rmch(is3) = rpos(is3)
           endif
-          call pshcyl (istk,ipt,3,rmch)
+          call pshcyc (gout,knout,gcyc(6),rmch)
 c
 c......Retract tool
 c
-          rmch(1) = gfin(1)
-          rmch(2) = gclr(2)
-          rmch(3) = gclr(3)
-          call pshcyl (istk,ipt,2,rmch)
+          rmch(is1) = gfin(is1)
+          rmch(is2) = gclr(is2)
+          rmch(is3) = gclr(is3)
+          call pshcyc (gout,knout,gcyc(7),rmch)
 c
 c......Position to original point
 c
-          call pshcyl (istk,ipt,1,gclr)
-          if (ifl .eq. 0) go to 200
+          call pshcyc (gout,knout,gcyc(7),gclr)
+          if (iflg .eq. 0) go to 200
           rcnt   = rcnt   + 1
-          if (ICYCDO(12) .ne. 0 .and. rcnt .lt. RCYCDO(17)) go to 220
+          if (rcnt .lt. kcyc(5)) go to 220
 c
 c...CYCLE/ROUGH
 c...      TURN
 c
-      else if (ICYCDO(1) .eq. 7 .or. ICYCDO(1) .eq. 8 .or.
-     1         ICYCDO(1) .eq. 13 .or. ICYCDO(1) .eq. 14) then
+      else if (kcyc(2) .eq. 5) then
 c
 c......Calculate rapto position
 c
-          rdis   = gfin(1) - gclr(1)
+          rdis   = gfin(is1) - gclr(is1)
           tvec(1) = rdis   / dabs(rdis)
-          rpos(1) = gclr(1) + RCYCDO(8) * tvec(1)
-          rpos(2) = gclr(2)
-          rpos(3) = gclr(3)
+          rpos(is1) = gclr(is1) + gcyc(2) * tvec(1)
+          rpos(is2) = gclr(is2)
+          rpos(is3) = gclr(is3)
 c
 c......Calculate final depths
 c
-          rdep   = gfin(1) - rpos(1)
+          rdep   = gfin(is1) - rpos(is1)
           fdep   = dabs(rdep)
-          if (ICYCDO(4) .eq. 0) then
+          if (gcyc(1) .ne. 0.) then
               rdep1  = rdep
           else
-              rdep1  = rdep   + RCYCDO(3)
+              rdep1  = rdep   + gcyc(1)
               if (dabs(rdep1) .gt. fdep) fdep = dabs(rdep1)
           endif
           rpck   = 0.
 c
 c......Calculate current depth
 c
-  300    call cylpek (fdep,rpck,rprm,ifl)
+  300    call cylpek (fdep,rpck,rprm,iflg,kcyc,gcyc)
          rcnt   = 0
 c
 c......Position to Rapto plane
 c
-  320     if (ICYCDO(7) .eq. 1) call pshcyl (istk,ipt,1,rpos)
+  320     if (gcyc(2) .ne. 0.) call pshcyc (gout,knout,gcyc(7),rpos)
 c
 c......Plunge tool
 c
           if (fdep .ne. 0.) then
-              rmch(1) = rpos(1) + rprm(5) * (rdep1/fdep)
+              rmch(is1) = rpos(is1) + rprm(5) * (rdep1/fdep)
           else
-              rmch(1) = rpos(1)
+              rmch(is1) = rpos(is1)
           endif
-          rmch(2) = rpos(2)
-          rmch(3) = rpos(3)
-          call pshcyl (istk,ipt,3,rmch)
+          rmch(is2) = rpos(is2)
+          rmch(is3) = rpos(is3)
+          call pshcyc (gout,knout,gcyc(6),rmch)
 c
 c......Feed across part
 c
           if (fdep .ne. 0.) then
-              rmch(1) = rpos(1) + rprm(5) * (rdep/fdep)
+              rmch(is1) = rpos(is1) + rprm(5) * (rdep/fdep)
           else
-              rmch(1) = rpos(1)
+              rmch(is1) = rpos(is1)
           endif
-          rmch(2) = rpos(2)
-          rmch(3) = gfin(3)
-          call pshcyl (istk,ipt,3,rmch)
+          rmch(is2) = rpos(is2)
+          rmch(is3) = gfin(is3)
+          call pshcyc (gout,knout,gcyc(6),rmch)
 c
 c......Retract tool
 c
-          rmch(1) = gclr(1)
-          rmch(2) = gclr(2)
-          rmch(3) = gfin(3)
-          call pshcyl (istk,ipt,2,rmch)
+          rmch(is1) = gclr(is1)
+          rmch(is2) = gclr(is2)
+          rmch(is3) = gfin(is3)
+          call pshcyc (gout,knout,gcyc(7),rmch)
 c
 c......Position to original point
 c
-          call pshcyl (istk,ipt,1,gclr)
-          if (ifl .eq. 0) go to 300
+          call pshcyc (gout,knout,gcyc(7),gclr)
+          if (iflg .eq. 0) go to 300
           rcnt   = rcnt   + 1
-          if (ICYCDO(12) .ne. 0 .and. rcnt .lt. RCYCDO(17)) go to 320
+          if (rcnt .lt. kcyc(5)) go to 320
 c
 c...CYCLE/THREAD
 c
-      else if (ICYCDO(1) .eq. 9 .or. ICYCDO(1) .eq. 10) then
+      else if (kcyc(2) .eq. 6) then
 c
 c......Calculate final depth
 c
-          rdep   = gfin(1) - gclr(1)
+          rdep   = gfin(is1) - gclr(is1)
           fdep   = dabs(rdep)
           tvec(1) = rdep   / fdep
-          if (ICYCDO(9) .ne. 0) then
-              rdep   = dabs(RCYCDO(11)) * tvec(1)
+          if (gcyc(2) .ne. 0.) then
+              rdep   = dabs(gcyc(2)) * tvec(1)
               fdep   = dabs(rdep)
           endif
-          rdep1  = gfin(3) - gclr(3)
+          rdep1  = gfin(is3) - gclr(is3)
           tvec(2) = rdep1  / dabs(rdep1)
 c
 c......Calculate top of part
 c
-          rpos(2) = gfin(1) - rdep
-          if (ICYCDO(4) .eq. 0) then
-              rpos(1) = rpos(2)
+          rpos(is2) = gfin(is1) - rdep
+          if (gcyc(1) .eq. 0.) then
+              rpos(is1) = rpos(is2)
           else
-              rpos(1) = rpos(2) + RCYCDO(3)
+              rpos(is1) = rpos(is2) + gcyc(1)
           endif
 c
 c......Calculate current depth
 c
           rpck   = 0.
-  400     call cylpek (fdep,rpck,rprm,ifl)
+  400     call cylpek (fdep,rpck,rprm,iflg,kcyc,gcyc)
           rcnt   = 0
 c
 c......Position along tool angle
 c
-  420     rmch(2) = gclr(2)
-          rmch(3) = gclr(3)
-          if (ICYCDO(11) .ne. 0 .and. RCYCDO(15) .ne. 0. .and.
-     1        fdep .ne. 0.) then
-              rmch(1) = gclr(1) + rprm(5) * tvec(1)
-              rmch(2) = gclr(2)
-              rmch(3) = gclr(3) + (dtan(RCYCDO(15)/RAD/2.) *
+  420     rmch(is2) = gclr(is2)
+          rmch(is3) = gclr(is3)
+          if (gcyc(5) .ne. 0. .and. fdep .ne. 0.) then
+              rmch(is1) = gclr(is1) + rprm(5) * tvec(1)
+              rmch(is2) = gclr(is2)
+              rmch(is3) = gclr(is3) + (dtan(gcyc(5)/RADIAN/2.) *
      1                            (rprm(5) * tvec(2)))
-              call pshcyl (istk,ipt,2,rmch)
+              call pshcyc (gout,knout,gcyc(7),rmch)
           endif
 c
 c...Position to final depth
 c
-          rmch(1) = rpos(1) + rprm(5) * tvec(1)
-          rdep1   = rmch(1)
-          rmch(2) = rmch(2)
-          rmch(3) = rmch(3)
-          call pshcyl (istk,ipt,2,rmch)
+          rmch(is1) = rpos(is1) + rprm(5) * tvec(1)
+          rdep1   = rmch(is1)
+          rmch(is2) = rmch(is2)
+          rmch(is3) = rmch(is3)
+          call pshcyc (gout,knout,gcyc(7),rmch)
           rstrt(1) = rmch(1)
           rstrt(2) = rmch(2)
           rstrt(3) = rmch(3)
 c
 c......Feed across part
 c
-          rmch(1) = rpos(2) + rprm(5) * tvec(1)
+          rmch(is1) = rpos(is2) + rprm(5) * tvec(1)
 c
 c.........No chamfer
 c
-          if (ICYCDO(13) .ne. 1 .or. fdep .eq. 0.) then
-              rmch(2) = gfin(2)
-              rmch(3) = gfin(3)
-              call pshcyl (istk,ipt,4,rmch)
+          if (kcyc(6) .ne. 1 .or. fdep .eq. 0.) then
+              rmch(is2) = gfin(is2)
+              rmch(is3) = gfin(is3)
+              call pshcyc (gout,knout,gcyc(6),rmch)
 c
 c.........Chamfer
 c
           else
-              rvec(1) = rmch(1) - rstrt(1)
-              rvec(2) = gfin(3) - rstrt(3)
+              rvec(1) = rmch(is1) - rstrt(is1)
+              rvec(2) = gfin(is3) - rstrt(is3)
+cc              rvec(1) = rmch(is1) - rdep1
+cc              rvec(2) = gfin(is3) - gfin(is3)
               rdis   = dsqrt(rvec(1)**2 + rvec(2)**2)
               rvec(1) = rvec(1) / rdis
               rvec(2) = rvec(2) / rdis
@@ -379,55 +387,61 @@ c............Not enough room for chamfer
 c............Feed across part
 c
               if (dabs(rvec(1)) .gt. dabs(rvec(2))) then
-                  rmch(2) = gfin(2)
-                  rmch(3) = gfin(3)
-                  call pshcyl (istk,ipt,4,rmch)
+                  rmch(is2) = gfin(is2)
+                  rmch(is3) = gfin(is3)
+                  call pshcyc (gout,knout,gcyc(6),rmch)
 c
 c............Cut to beginning of chamfer
 c
               else
                   bangl  = dacos(rvec(1))
-                  angl   = 45./RAD - (90./RAD - bangl)
+                  angl   = 45./RADIAN - (90./RADIAN - bangl)
                   rnum   = rprm(5) * dsin(bangl)
                   rnum   = rnum / dsin(angl)
-                  rmch(1) = rpos(2) + rnum * dcos(45.d0/RAD) * tvec(1)
-                  rmch(2) = gfin(2)
-                  rmch(3) = gfin(3) - rnum * dcos(45.d0/RAD) * tvec(2)
-                  call pshcyl (istk,ipt,4,rmch)
+                  rmch(is1) = rpos(is2) + rnum * dcos(45.d0/RADIAN) *
+     1                tvec(1)
+                  rmch(is2) = gfin(is2)
+                  rmch(is3) = gfin(is3) - rnum * dcos(45.d0/RADIAN) *
+     1                tvec(2)
+                  call pshcyc (gout,knout,gcyc(6),rmch)
 c
 c............Cut chamfer
 c
-                  rmch(1) = rpos(2)
-                  rmch(2) = gfin(2)
-                  rmch(3) = gfin(3)
-                  call pshcyl (istk,ipt,5,rmch)
+                  rmch(is1) = rpos(is2)
+                  rmch(is2) = gfin(is2)
+                  rmch(is3) = gfin(is3)
+                  call pshcyc (gout,knout,gcyc(6)/10.,rmch)
               endif
           endif
 c
 c......Retract tool
 c
-          rmch(1) = gclr(1)
-          rmch(2) = gclr(2)
-          rmch(3) = gfin(3)
-          call pshcyl (istk,ipt,2,rmch)
+          rmch(is1) = gclr(is1)
+          rmch(is2) = gclr(is2)
+          rmch(is3) = gfin(is3)
+          call pshcyc (gout,knout,gcyc(7),rmch)
 c
 c......Position to original point
 c
-          call pshcyl (istk,ipt,1,gclr)
-          if (ifl .eq. 0) go to 400
+          call pshcyc (gout,knout,gcyc(7),gclr)
+          if (iflg .eq. 0) go to 400
           rcnt   = rcnt   + 1
-          if (ICYCDO(12) .ne. 0 .and. rcnt .lt. RCYCDO(17)) go to 420
+          if (rcnt .lt. kcyc(5)) go to 420
+c
+c...THREAD/lead
+c
+      else if (kcyc(2) .eq. 7) then
+          call pshcyc (gout,knout,gcyc(6),gfin)
       endif
 c
 c...End of routine
 c
- 8000 call popcyl (istk,ipt)
-      return
+ 8000 return
       end
 c
 c***********************************************************************
 c
-c   SUBROUTINE: cylpek (gdep,gpck,gprm,kfl)
+c   SUBROUTINE: cylpek (gdep,gpck,gprm,kfl,kcyc,gcyc)
 c
 c   FUNCTION:  This routine calculates the pecking depths for Lathe
 c              cycles.
@@ -436,6 +450,10 @@ c   INPUT:  gdep    R*8  D1  -  Final depth of cycle.
 c
 c           gpck    R*8  D1  -  Should be set to 0. on first call and
 c                               will be modified by this routine.
+c
+c           kcyc    I*2  D10 -  Integer cycle parameters.
+c
+c           gcyc    R*8  D10 -  Real cycle parameters.
 c
 c   OUTPUT: gpck    R*8  D1  -  Returns the depth of the current cut.
 c
@@ -454,21 +472,13 @@ c                               reached.
 c
 c***********************************************************************
 c
-      subroutine cylpek (gdep,gpck,gprm,kfl)
+      subroutine cylpek (gdep,gpck,gprm,kfl,kcyc,gcyc)
 c
-      include 'post.inc'
+      include 'com.com'
 c
-      equivalence (ICYCDO,KPOSMP(0276))
+      integer*4 kfl,kcyc(10)
 c
-      integer*4 ICYCDO(15)
-c
-      equivalence (RCYCDO,POSMAP(2931))
-c
-      real*8 RCYCDO(20)
-c
-      integer*4 kfl
-c
-      real*8 gdep,gpck,gprm(6)
+      real*8 gdep,gpck,gprm(6),gcyc(10)
 c
 c...First time here
 c
@@ -479,13 +489,13 @@ c
 c
 c......No pecking required
 c
-          if (ICYCDO(8) .eq. 0 .or. RCYCDO(9) .eq. 0.) go to 7000
+          if (gcyc(3) .eq. 0.) go to 7000
 c
 c......Define pecking depths
 c
-          gprm(1) = dabs(RCYCDO(9))
-          gprm(2) = dabs(RCYCDO(10))
-          if (ICYCDO(8) .eq. 1 .or. gprm(2) .eq. 0.) then
+          gprm(1) = dabs(gcyc(3))
+          gprm(2) = dabs(gcyc(4))
+          if (gprm(2) .eq. 0.) then
               gprm(2) = gprm(1)
               gprm(3) = 0.
               gprm(4) = 0.
@@ -508,210 +518,6 @@ c
  7000 gpck   = gprm(6) - gprm(5)
       gprm(5) = gprm(6)
       kfl    = 1
-c
-c...End of routine
-c
- 8000 return
-      end
-c
-c***********************************************************************
-c
-c   SUBROUTINE: popcyl (kstk,kpt)
-c
-c   FUNCTION:  This routine clears out the Lathe manual cycle stack.
-c
-c   INPUT:  kstk    I*4  D5  -  Local cycle stack.
-c
-c           kpt     I*4  D1  -  Pointer to 'kstk'.
-c
-c   OUTPUT: none.
-c
-c***********************************************************************
-c
-      subroutine popcyl (kstk,kpt)
-c
-      integer*4 kstk(5),kpt
-c
-      real*8 rnum(3)
-c
-c...Clean up manual cycle stack
-c
-      call pshcyl (kstk,kpt,-1,rnum)
-c
-c...End of routine
-c
- 8000 return
-      end
-c
-c***********************************************************************
-c
-c   SUBROUTINE: pshcyl (kstk,kpt,kfl,gpos)
-c
-c   FUNCTION:  This routine controls the actual output of all blocks
-c              generated by a Lathe post genterated cycle.  It puts
-c              blocks on the stack to satisfy lookahead routines and
-c              takes them off the stack to output them.
-c
-c   INPUT:  kstk    I*4  D5  -  Local cycle stack that stores the type
-c                               of block to output.  Currenty only 1
-c                               block is stored on the stack at a time.
-c
-c           kpt     I*4  D1  -  Pointer to 'kstk'.  Should be set to 0
-c                               for initial call.
-c
-c           kfl     I*4  D1  -  Type of block to output and can have the
-c                               following values:
-c
-c                                  -1 = An input block is not given.
-c                                       Output the next stack block
-c                                       only.
-c
-c                                   1 = Position in rapid mode.
-c                                   2 = Position using rapid feedrate.
-c                                   3 = Position using cycle feedrate.
-c                                   4 = Threadcutting positioning move.
-c
-c           gpos    R*8  D3  -  Tool end point position to output when
-c                               'kfl' is less than 6.
-c   OUTPUT: none.
-c
-c***********************************************************************
-c
-      subroutine pshcyl (kstk,kpt,kfl,gpos)
-c
-      include 'post.inc'
-c
-      equivalence (ITYPE ,KPOSMP(0003)), (ISUBT ,KPOSMP(0004))
-      equivalence (MXCL  ,KPOSMP(0005)), (ICYCSW,KPOSMP(0271))
-      equivalence (IFITYP,KPOSMP(3150)), (POSFED,KPOSMP(3209))
-c
-      integer*4 IFITYP,ITYPE,ISUBT,MXCL,POSFED,ICYCSW(5)
-c
-      equivalence (MCHNUM,POSMAP(1287)), (LINAXS,POSMAP(1299))
-      equivalence (AXSOUT,POSMAP(1340)), (TLVEC ,POSMAP(1369))
-      equivalence (RCYCDO,POSMAP(2931)), (PFEED ,POSMAP(3540))
-      equivalence (ROTANG,POSMAP(5173))
-c
-      real*8 MCHNUM(3,4),LINAXS(6),ROTANG(20,2),TLVEC(3),RCYCDO(20),
-     1       PFEED(4),AXSOUT(10)
-c
-      integer*4 kstk(5),kpt,kfl
-c
-      real*8 gpos(3)
-c
-      integer*4 ifl(10),icnt,its,ims,iss,ifsv,isv
-c
-      real*8 rmch(3,4),rlin(6),raxs(10),rfsv
-c
-      if (kpt .eq. 0 .and. kfl .eq. -1) go to 8000
-c
-c...Remove previous position
-c...from stack
-c
-      if (kpt .ne. 0) then
-          if (kstk(kpt) .le. 5) then
-              call popaxs (MCHNUM,LINAXS,ROTANG,AXSOUT,TLVEC,ifl,icnt)
-          else
-              its    = ITYPE
-              iss    = ISUBT
-              ims    = MXCL
-              call popcmd
-              ITYPE  = its
-              ISUBT  = iss
-              MXCL   = ims
-          endif
-      endif
-c
-c...Push current position
-c...onto lookahead stack
-c
-      if (kfl .eq. -1) go to 500
-      if (kfl .le. 5) then
-          rmch(1,2) = gpos(1)
-          rmch(2,2) = gpos(2)
-          rmch(3,2) = gpos(3)
-          call alladj (rmch,rlin,raxs,ROTANG,1,5)
-          call pshaxs (raxs,TLVEC)
-c
-c...Push the post command
-c...onto lookahead stack
-c...(Actually place the STOP command
-c... onto the lookahead stack)
-c
-      else
-          its    = ITYPE
-          iss    = ISUBT
-          ims    = MXCL
-          ITYPE  = 2000
-          ISUBT  = 2
-          MXCL   = 0
-          call pshcmd
-          ITYPE  = its
-          ISUBT  = iss
-          MXCL   = ims
-      endif
-c
-c...First time here
-c...Don't output previous cycle block
-c
-      if (kpt .eq. 0) then
-          kpt    = 1
-          kstk(kpt) = kfl
-          go to 8000
-      endif
-c
-c...Output previous cycle block
-c......Previous position
-c
-  500 if (kstk(kpt) .le. 5) then
-          if (icnt .ne. 0) then
-              ifsv   = IFITYP
-              rfsv   = PFEED(1)
-c
-c........Move in rapid mode
-c
-              if (kstk(kpt) .eq. 1) then
-                  call rapset (5,1)
-c
-c........Move at cycle rapid rate
-c
-              else if (kstk(kpt) .eq. 2) then
-                  IFITYP = 1
-                  PFEED(1) = RCYCDO(5)
-              endif
-c
-c........Perform cycle move
-c...........Threadcutting move
-c
-              if (kstk(kpt) .eq. 4) then
-                  isv   = ICYCSW(1)
-                  call thrmot (RCYCDO(6),RCYCDO(7),0,0.d0,1)
-                  ICYCSW(1) = isv
-                  ICYCSW(2) = 3
-                  POSFED = 1
-c
-c...........Feed controlled move
-c
-              else
-                  call motion (ifl,icnt)
-                  if (kstk(kpt) .eq. 1) call raprst
-              endif
-              IFITYP = ifsv
-              PFEED(1) = rfsv
-          endif
-c
-c......Post commands go here
-c
-      endif
-c
-c...Push current cycle block
-c...onto local stack
-c
-      if (kfl .eq. -1) then
-          kpt   = kpt   - 1
-      else
-          kstk(kpt) = kfl
-      endif
 c
 c...End of routine
 c
