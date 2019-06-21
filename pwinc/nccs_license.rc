@@ -1,0 +1,283 @@
+//
+//     MODULE NAME AND RELEASE LEVEL
+//       nccs_license.rc , 24.1
+//    DATE AND TIME OF LAST  MODIFICATION
+//       09/11/13 , 12:58:43
+//
+//Microsoft Developer Studio generated resource script.
+//
+#include "licres.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "licres.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "nccs_license.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 235, 55
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About nccs_license"
+FONT 8, "MS Sans Serif"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "nccs_license Version 1.0",IDC_STATIC,40,10,119,8,
+                    SS_NOPREFIX
+    LTEXT           "Copyright (C) 2001",IDC_STATIC,40,25,119,8
+    DEFPUSHBUTTON   "OK",IDOK,178,7,50,14,WS_GROUP
+END
+
+IDD_NCCS_LICENSE_DIALOG DIALOGEX 0, 0, 233, 211
+STYLE DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "NCCS Licensing Facility"
+MENU IDD_MAINMENU
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "NCCS Licensing Facility",ID_BOX,7,7,213,180
+    LTEXT           "Company",ID_COMPANY_LBL,35,23,38,15
+    EDITTEXT        ID_EDIT1,80,23,120,15,ES_UPPERCASE | ES_AUTOHSCROLL
+    LTEXT           "Hardware:",ID_HARDWARE_LBL,35,42,37,15
+    EDITTEXT        ID_EDIT2,80,42,120,15,ES_UPPERCASE | ES_AUTOHSCROLL
+    LTEXT           "Software:",ID_SOFTWARE_LBL,35,60,36,15
+    EDITTEXT        ID_EDIT3,80,60,120,15,ES_UPPERCASE | ES_AUTOHSCROLL
+    LTEXT           "Options:",ID_OPTION_LBL,35,76,37,15
+    EDITTEXT        ID_EDIT4,80,77,120,15,ES_UPPERCASE | ES_AUTOHSCROLL
+    LTEXT           "Users:",ID_USER_LABEL,35,95,25,15
+    EDITTEXT        ID_EDIT5,80,95,120,15,ES_UPPERCASE | ES_AUTOHSCROLL
+    LTEXT           "Termination:",ID_LICTERM_LBL,35,113,40,15
+    EDITTEXT        ID_EDIT6,80,113,120,15,ES_UPPERCASE | ES_AUTOHSCROLL
+    LTEXT           "Version:",ID_VERSION_LBL,35,132,33,15
+    EDITTEXT        ID_EDIT7,80,132,120,15,ES_UPPERCASE | ES_AUTOHSCROLL
+    LTEXT           "System:",ID_SYSTEM_LBL,35,151,32,15
+    EDITTEXT        ID_EDIT8,80,151,120,15,ES_UPPERCASE | ES_AUTOHSCROLL
+    LTEXT           "Password:",ID_PASSWD_LBL,35,167,35,15
+    EDITTEXT        ID_EDIT9,80,167,120,15,ES_AUTOHSCROLL
+    CONTROL         "",IDC_CHECK1,"Button",BS_AUTOCHECKBOX,20,23,10,10
+    CONTROL         "",IDC_CHECK2,"Button",BS_AUTOCHECKBOX,20,42,11,8
+    CONTROL         "",IDC_CHECK3,"Button",BS_AUTOCHECKBOX,20,60,8,8
+    CONTROL         "",IDC_CHECK4,"Button",BS_AUTOCHECKBOX,20,77,8,8
+    CONTROL         "",IDC_CHECK5,"Button",BS_AUTOCHECKBOX,20,95,8,8
+    CONTROL         "",IDC_CHECK6,"Button",BS_AUTOCHECKBOX,20,113,8,8
+    CONTROL         "",IDC_CHECK7,"Button",BS_AUTOCHECKBOX,20,132,8,8
+    CONTROL         "",IDC_CHECK8,"Button",BS_AUTOCHECKBOX,20,151,8,8
+    CONTROL         "",IDC_CHECK9,"Button",BS_AUTOCHECKBOX,20,167,8,8
+    PUSHBUTTON      "&Add",ID_ADD,94,192,30,12,NOT WS_TABSTOP
+    PUSHBUTTON      "&Delete",ID_DELETE,128,192,30,12,NOT WS_TABSTOP
+    PUSHBUTTON      "&Clear",ID_CLEAR,162,192,30,12,NOT WS_TABSTOP
+    PUSHBUTTON      "&Search",ID_SEARCH,196,192,30,12,NOT WS_TABSTOP
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"
+        BEGIN
+            VALUE "CompanyName", "\0"
+            VALUE "FileDescription", "nccs_license MFC Application\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "nccs_license\0"
+            VALUE "LegalCopyright", "Copyright (C) 2001\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "nccs_license.EXE\0"
+            VALUE "ProductName", "nccs_license Application\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_NCCS_LICENSE_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 226
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 204
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDD_MAINMENU MENU DISCARDABLE 
+BEGIN
+    POPUP "F&ile"
+    BEGIN
+        MENUITEM "L&oad License\tAlt o",        ID_FILE_LOADLICENSE
+        MENUITEM "E&xit\tAlt x",                ID_EXIT
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Add\tAlt a",                 ID_ADD
+        MENUITEM "&Delete\tAlt d",              ID_DELETE
+        MENUITEM "Clear Form\tAlt u",           ID_CLEAR
+        MENUITEM "Search\tAlt f",               ID_SEARCH
+        MENUITEM "Toggle Search\tAlt t",        ID_TSEARCH
+        MENUITEM "&Show Search\tAlt s",         ID_SHOW_SEARCH
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_ACCEL ACCELERATORS DISCARDABLE 
+BEGIN
+    "A",            ID_ADD,                 VIRTKEY, ALT, NOINVERT
+    "D",            ID_DELETE,              VIRTKEY, ALT, NOINVERT
+    "F",            ID_SEARCH,              VIRTKEY, ALT, NOINVERT
+    "O",            ID_FILE_LOADLICENSE,    VIRTKEY, ALT, NOINVERT
+    "S",            ID_SHOW_SEARCH,         VIRTKEY, ALT, NOINVERT
+    "T",            ID_TSEARCH,             VIRTKEY, ALT, NOINVERT
+    "U",            ID_CLEAR,               VIRTKEY, ALT, NOINVERT
+    "X",            ID_EXIT,                VIRTKEY, ALT, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ABOUTBOX            "&About nccs_license..."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif //_WIN32
+#include "afxres.rc"         // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

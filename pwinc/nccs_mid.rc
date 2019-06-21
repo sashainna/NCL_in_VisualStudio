@@ -1,0 +1,124 @@
+//Microsoft Developer Studio generated resource script.
+//
+//************************************************************************
+//
+//   FILE NAME: nccs_mid.rc
+//
+//	 CONTAINS: defined for interface
+//
+//     COPYRIGHT 2001 (c) Numerical Control Computer Sciences.
+//           All Rights Reserved
+//      MODULE NAME AND RELEASE LEVEL
+//        nccs_mid.rc , 24.1
+//     DATE AND TIME OF LAST  MODIFICATION
+//        09/11/13 , 12:58:43 
+//
+//**********************************************************************
+//
+#include "nccs_mid.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#define APSTUDIO_HIDDEN_SYMBOLS
+#include "windows.h"
+#undef APSTUDIO_HIDDEN_SYMBOLS
+#include "nccs_mid.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+MID_DIALOG DIALOG DISCARDABLE  20, 20, 200, 87
+STYLE DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "NCCS MAKE KEY"
+FONT 10, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "",-1,5,5,190,62
+    LTEXT           "Customer Name:",-1,11,21,50,12
+    EDITTEXT        ID_EDIT1,65,19,110,12,ES_AUTOHSCROLL
+    LTEXT           "Customer Number (max 7 digits):",-1,11,35,98,12
+    EDITTEXT        ID_EDIT2,112,34,40,12
+    LTEXT           "Computer Number (max 2 digits):",-1,11,50,100,12
+    EDITTEXT        ID_EDIT3,112,48,40,12
+    PUSHBUTTON      "&Write",ID_WRITE,96,71,30,12
+    PUSHBUTTON      "&Verify",ID_READ,130,71,30,12
+    PUSHBUTTON      "E&xit",IDCANCEL,164,71,30,12
+END
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "nccs_mid.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""windows.h""\r\n"
+    "#undef APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""nccs_mid.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    MID_DIALOG, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 84
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

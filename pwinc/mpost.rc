@@ -1,0 +1,225 @@
+//
+//     MODULE NAME AND RELEASE LEVEL
+//       mpost.rc , 24.1
+//    DATE AND TIME OF LAST  MODIFICATION
+//       09/11/13 , 12:58:43
+//
+// Microsoft Visual C++ generated resource script.
+//
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#define APSTUDIO_HIDDEN_SYMBOLS
+#include "windows.h"
+#undef APSTUDIO_HIDDEN_SYMBOLS
+#include "mpostres.h"
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+MAINFRAME_MENU MENU 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "Load MDF File",               ID_LOAD
+        MENUITEM SEPARATOR
+        MENUITEM "Save MDF File",               ID_FSAVE
+        MENUITEM "Save MDF File As ...",        ID_FSAVE_AS
+        MENUITEM SEPARATOR
+        MENUITEM "Create Machine...",           ID_CMACH
+        MENUITEM "Create Documentation...",     ID_CDOC
+        MENUITEM SEPARATOR
+        MENUITEM "Exit",                        IDCANCEL
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "View Document...",            ID_VDOC
+        MENUITEM "View Machine...",             ID_VMACH
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "Contents",                    ID_HELP_CONTENTS
+        MENUITEM "&About",                      ID_HELP_ABOUT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG  0, 0, 250, 60
+STYLE DS_LOCALEDIT | DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About Mpost"
+FONT 8, "MS Sans Serif"
+BEGIN
+    ICON            IDI_DLGICON,IDC_STATIC,11,16,21,20
+    LTEXT           "NCL Version 1.0",IDC_ABOUTLABLE1,40,10,190,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 1900",IDC_ABOUTLABLE2,39,25,190,8
+    DEFPUSHBUTTON   "OK",IDOK,190,40,50,14,WS_GROUP
+END
+
+IDD_PROMPTDIALOG DIALOGEX 0, 0, 306, 166
+STYLE DS_SETFONT | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "Dialog"
+FONT 8, "Arial", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,82,145,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,137,145,50,14
+    GROUPBOX        "",IDC_SCROLL_FRAME,7,0,292,142,0,WS_EX_CLIENTEDGE
+    PUSHBUTTON      "Apply",ID_APPLY,192,145,50,14
+    PUSHBUTTON      "Help",ID_LHELP,249,145,50,14
+END
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+2 TEXTINCLUDE 
+BEGIN
+    "#define APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""windows.h""\r\n"
+    "#undef APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""mpostres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "CompanyName", "NCCS"
+            VALUE "FileDescription", "MPost"
+            VALUE "FileVersion", "1, 0, 0, 1"
+            VALUE "InternalName", "MPost"
+            VALUE "LegalCopyright", "Copyright 1998"
+            VALUE "OriginalFilename", "MPost.exe"
+            VALUE "ProductName", "NCCS MPost"
+            VALUE "ProductVersion", "1, 0, 0, 1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 212
+        VERTGUIDE, 140
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_PROMPTDIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 299
+        BOTTOMMARGIN, 159
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_DLGICON             ICON                    "mpost.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    CBN_VIEWSELCHANGE       "CBN_VIEWSELCHANGE"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
