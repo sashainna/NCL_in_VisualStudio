@@ -1,0 +1,23 @@
+create spart
+0.180 0.126
+10 72
+0 0 0 0
+1
+9 24 CREATE SPART
+3
+7 1 Stpart Name:
+7 20 1 UD_DASSTRING 1 1
+0
+10 10
+0
+6 1 Stpart Library:
+6 20 1 UD_DASSTRING 0 1
+0
+40 40
+0
+5 1 Stpart Origin:
+5 20 1 UD_DASCART 0 1
+1
+0.0 0.0 0.0
+2 6
+0
