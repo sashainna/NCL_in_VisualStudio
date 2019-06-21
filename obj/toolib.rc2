@@ -1,0 +1,19 @@
+//
+//     MODULE NAME AND RELEASE LEVEL
+//       toolib.rc2 , 15.1
+//    DATE AND TIME OF LAST  MODIFICATION
+//       5/9/1 , 10:31:59
+//
+//
+// TOOLIB.RC2 - resources Microsoft Visual C++ does not edit directly
+//
+
+#ifdef APSTUDIO_INVOKED
+	#error this file is not editable by Microsoft Visual C++
+#endif //APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+// Add manually edited resources here...
+
+/////////////////////////////////////////////////////////////////////////////

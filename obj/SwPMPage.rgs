@@ -1,0 +1,23 @@
+HKCR
+{
+	SwUnibase.PMPage.1 = s 'PMPage Class'
+	{
+		CLSID = s '{46A48BB7-9093-11D7-87E7-0800691362A7}'
+	}
+	SwUnibase.PMPage = s 'PMPage Class'
+	{
+		CLSID = s '{46A48BB7-9093-11D7-87E7-0800691362A7}'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {46A48BB7-9093-11D7-87E7-0800691362A7} = s 'PMPage Class'
+		{
+			ProgID = s SwUnibase.PMPage.1
+			VersionIndependentProgID = s SwUnibase.PMPage
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+		}
+	}
+}

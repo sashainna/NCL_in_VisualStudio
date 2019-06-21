@@ -1,0 +1,43 @@
+HKCR
+{
+	SwUnibase.SwUnibaseObj.1 = s 'SwUnibaseObj Class'
+	{
+		CLSID = s '{46A48BB9-9093-11D7-87E7-0800691362A7}'
+	}
+	SwUnibase.SwUnibaseObj = s 'SwUnibaseObj Class'
+	{
+		CLSID = s '{46A48BB9-9093-11D7-87E7-0800691362A7}'
+		CurVer = s 'SwUnibase.SwUnibaseObj.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {46A48BB9-9093-11D7-87E7-0800691362A7} = s 'SwUnibaseObj Class'
+		{
+			ProgID = s 'SwUnibase.SwUnibaseObj.1'
+			VersionIndependentProgID = s 'SwUnibase.SwUnibaseObj'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{46A48BA1-9093-11D7-87E7-0800691362A7}'
+		}
+	}
+}
+HKLM
+{
+	NoRemove SOFTWARE
+	{
+		NoRemove SolidWorks
+		{
+			NoRemove AddIns
+			{
+				ForceRemove {46A48BB9-9093-11D7-87E7-0800691362A7} = d '0'
+				{
+					val Description = s 'SwUnibase AddIn'
+					val Title = s 'SwUnibase'
+				}
+			}
+		}
+	}
+}
