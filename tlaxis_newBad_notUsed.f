@@ -3,9 +3,9 @@ C*    NAME         :  tlaxis.f
 C*       CONTAINS:
 C*    COPYRIGHT 1984 (c) MILLS DATA SYSTEM Inc.  All Rights Reserved.
 C*     MODULE NAME AND RELEASE LEVEL 
-C*       tlaxis.f , 26.14
+C*       tlaxis.f , 25.1
 C*    DATE AND TIME OF LAST  MODIFICATION
-C*       06/17/19 , 14:07:44
+C*       04/29/15 , 15:10:47
 C*********************************************************************
 C
 C*********************************************************************
@@ -106,41 +106,31 @@ C
       parameter (SMOOTH = 1085)
       parameter (LAST   = 52)
       
-      !spshld   = sc(195)
-      !ktlock  = ifl(365)
-      !tlkhld1 = sc(196) 
-      !tlkhld2 = sc(197) 
-      !tlkhld1 = sc(198)
-      !ktmod = ifl(364) 
-      !ktrad = ifl(366)
-
-c                                                        ********** tlaxis
-      !lgide  = .false.
-      !lchk   = .false.
-      !ltsec  = .false.
-      !prpfl  = .false.
-      !ktlock = -1
-      !ifl(289) = 0
-      
+      spshld   = sc(195)
+      ktlock  = ifl(365)
+      tlkhld1 = sc(196) 
+      tlkhld2 = sc(197) 
+      tlkhld1 = sc(198)
+      ktmod = ifl(364) 
+      ktrad = ifl(366)
 c                                                        ********** tlaxis
 c...we should not initial to false, but the current value, initial here will reset value we set before
 c...Yurong
-      lgide  = .false.
-      lchk   = .false.
-      !ltsec  = .false.
-      !prpfl  = .false.
-      !lgide = lcvgid
-      !lchk = ldschk
-!c...for secondary-ps, need reset to false. Yurong
-!c...ltsec = lsecps
+c      lgide  = .false.
+c      lchk   = .false.
+c      ltsec  = .false.
+c      prpfl  = .false.
+      lgide = lcvgid
+      lchk = ldschk
+c...for secondary-ps, need reset to false. Yurong
+c...ltsec = lsecps
       ltsec  = .false.
       prpfl = prplst
 c...flag value should not initial here, initial here will reset value we set before
 c...yurong
-      !ktlock = -1
-      !ifl(289) = 0
-      
-      sc(10) = 0.0d0
+c      ktlock = -1
+c      ifl(289) = 0
+      sc(10) = 0.0d0      
       isc10(1)=ist
       ifl(44)=9
       idtype = -1
@@ -569,7 +559,7 @@ c
                else 
                   goto 9021
                endif
-           endif           
+           endif
            if (ityp.ne.2.or.ist.ne.lINE.and.ist.ne.CIRCLE.and.
      1         ist.ne.CURVE) goto 9021
            gidasw = tv
@@ -721,6 +711,10 @@ c
              call parsit
              if (.not.scalar) goto 9200
              if (tv.lt.0.0001 .or. tv.gt.1) tv = 1
+c
+c...consistance with other smooth value
+c...Yurong
+c             if (ifl(295).lt.1) then
              if (ifl(295).lt.2) then
                ifl(295) = 0
                asc(280) = 0
@@ -751,8 +745,7 @@ c
           if ((sc(15).eq.0.0).and.(sc(16).eq.0.0).and.(sc(17).eq.0.0)
      x        .and.(sc(18).eq.0.0).and.(sc(19).eq.0.0)) then
               ifl(104) = 0
-          endif           
-
+          endif
       if (nextyp.eq.11) goto 99999
       goto 9004
 c                      Error - end of statement expected
@@ -802,3 +795,19 @@ c                      Error - modify or end of statement expected
        endif
        return
        end
+
+       subroutine tlaxis_guide_off
+
+      include 'com8a.com'
+      include 'gidcom.com'
+           
+      gidasw = 0.0
+      gidh = 0.0
+      gidsid = 0
+      gidthk = 0.0d0
+      gthkon = 0
+      lgide  = .true.
+      ltltct = .false.
+
+      return
+      end
