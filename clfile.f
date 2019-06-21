@@ -1,259 +1,517 @@
+C***********************************************************************
+C*    NAME         :  clfile.f
+C*       CONTAINS:
+C*					clinit  getcln  setclf  setas  clsave  clfile  clwrit 
+C*					clwr    clload  clrev
+C*    COPYRIGHT 1993 (c) NCCS Inc.  All Rights Reserved.
+C*     MODULE NAME AND RELEASE LEVEL 
+C*        clfile.for , 26.2
+C*    DATE AND TIME OF LAST  MODIFICATION
+C*        09/26/18 , 12:49:56
+C***********************************************************************
+C
+c***********************************************************************
+c
+c   SUBROUTINE:  clinit
+c
+c   FUNCTION:  FORTRAN routine for opening the internal clfile.  The
+c              record pointer for this clfile is stored in I4STAT(2).
+c
+c   INPUT:  none.
+c
+c   OUTPUT: none.
 c
 c***********************************************************************
 c
-c   FILE NAME:  clfile
-c   CONTAINS:
-c               clread  clwrit  cldwrt  clrew   clmark  clumrk  nclrd
-c               nclwr   catlod  rdcatc  gethdr  cl4sto  clpt52
+      subroutine clinit
 c
-c     COPYRIGHT 1997 (c) Numerical Control Computer Sciences.
-c           All Rights Reserved
-c      MODULE NAME AND RELEASE LEVEL
-c        clfile.f , 25.3
-c     DATE AND TIME OF LAST  MODIFICATION
-c        08/11/16 , 10:03:57
+      include 'com8a.com'
+      include 'mocom.com'
 c
-c***********************************************************************
+      integer*2 iclf
 c
-c***********************************************************************
+c...Initialize the clfile storage
 c
-c   SUBROUTINE:  clread (krec,kpt,cmsg,kerr)
-c
-c   FUNCTION:  This routine reads a neutral format clfile record and
-c              sets up global arrays depending on the type of record.
-c
-c   INPUT:  krec    I*4  D1  Next clfile physical record to read.
-c
-c           kpt     I*4  D1  Pointer to next logical clfile record
-c                            within physical record.
-c
-c   OUTPUT: cmsg    C*n  D1  Text of error message.
-c
-c           kerr    I*4  D1  Returns 1 when an error occurred.
+      iclf = 0
+      call clopen(iclf,imotp)
+      return
+      end
 c
 c***********************************************************************
 c
-      subroutine clread (krec,kpt,cmsg,kerr)
+c   SUBROUTINE:  getcln (fname,nc)
 c
-      include 'menu.inc'
-      include 'post.inc'
+c   FUNCTION:  Interface to C routines for retrieving the clfile name.
+c              flag (IFL(69)) and for saving the cl disk file name in
+c              CLFNAM.
 c
-      equivalence (ISN   ,KPOSMP(0001)), (ICLREC,KPOSMP(0002))
-      equivalence (ITYPE ,KPOSMP(0003)), (ISUBT ,KPOSMP(0004))
-      equivalence (MXCL  ,KPOSMP(0005)), (IPSTWD,KPOSMP(0006))
-      equivalence (MULTAX,KPOSMP(0056)), (NPT   ,KPOSMP(0059))
-      equivalence (NCUT  ,KPOSMP(0062)), (NCUTDS,KPOSMP(0063))
-      equivalence (MXFLAG,KPOSMP(4002))
-      equivalence (MXTRAN,KPOSMP(4003)), (MOTEXP,KPOSMP(4211))
+c   INPUT:  none
 c
-      integer*4 ISN,ICLREC,ITYPE,ISUBT,MXCL,IPSTWD(50),MULTAX,
-     -          NPT,MXFLAG,MXTRAN,NCUT,NCUTDS,MOTEXP
+c   OUTPUT: fname   C*1024 D1  -  CL disk file name.
 c
-      equivalence (METCNV,POSMAP(0004)), (CLPOS ,POSMAP(0222))
-      equivalence (PSTWD ,POSMAP(0441)), (TLATOL,POSMAP(0057))
-      equivalence (CLPT  ,POSMAP(0491)), (CIRBUF,POSMAP(0731))
-      equivalence (CLSAV ,POSMAP(0201)), (CUTTER,POSMAP(0744))
-      equivalence (CUDISP,POSMAP(0759)), (CUTOFS,POSMAP(0758))
-      equivalence (REFMAT,POSMAP(4001)), (TRAMAT,POSMAP(4013))
-      equivalence (CLPTPP,POSMAP(4605)), (CIRBPP,POSMAP(4845))
+c           nc      I*4  D1  -  Number of chars in 'fname'.
 c
-      real*8 METCNV,PSTWD(50),CLPT(240),CIRBUF(7),CLSAV(21),
-     1       CUTTER(7),REFMAT(12),TRAMAT(12),CUDISP(7),
-     2       CUTOFS,CLPTPP(240),CIRBPP(7),CLPOS(21),TLATOL
+c***********************************************************************
 c
-      integer*2 ICLDAT(200)
-      integer*4 JCLDAT(200)
-      character*8 lclt,lclnm,lclrv
-      character*11 lcld
-      character*66 LCLDAT
-      character*80 lclf
+      subroutine getcln (fname,nc)
 c
-      equivalence (RCLDAT,ICLDAT,JCLDAT,LCLDAT)
-      equivalence (RCLDAT(1),lclf), (RCLDAT(11),lcld)
-      equivalence (RCLDAT(13),lclt), (RCLDAT(14),lclnm)
-      equivalence (RCLDAT(15),lclrv)
+      include 'com8a.com'
 c
-      equivalence (LPSTWD,CPOSMP(0001))
+      integer*4 nc,strlen1
+      character*(MAX_PATH) fname
 c
-      character*66 LPSTWD
+c...Return clfile name
 c
-      integer*4 krec,kpt,kerr,is1,is4
+      fname = clfnam
+      nc = strlen1(clfnam)
+      return
+      end
 c
-      character*(*) cmsg
+c***********************************************************************
 c
-      integer*4 i,j,inc,inbuf(4),nwds,ix1,ix4,mxm
+c   SUBROUTINE:  setclf (fname,ncf,kfl)
 c
-C VAX-SUN-SGI-IBM-HPX-START
-C      data is1 /0/, is4 /3/
-C VAX-SUN-SGI-IBM-HPX-END
-C WNT-DOS-DEC-START
-      data is1 /3/, is4 /0/
-C WNT-DOS-DEC-END
+c   FUNCTION:  Interface to C routines for setting the "Save clfile"
+c              flag (IFL(69)) and for saving the cl disk file name in
+c              CLFNAM.
 c
-c...Read logical clfile record
+c   INPUT:  fname   C*1024 D1  -  CL disk file name.
 c
-      if (ICLF .eq. 2) then
-          call srcrd (krec,kpt,inbuf,RCLDAT,nwds,cmsg,kerr)
-      else if (ICLF .eq. 1) then
-          call nclrd (krec,kpt,inbuf,RCLDAT,nwds,cmsg,kerr)
-      else if (ICLF .eq. 3) then
-          call srcrd (krec,kpt,inbuf,RCLDAT,nwds,cmsg,kerr)
+c           ncf     I*4  D1  -  Number of chars in 'fname'.
+c
+c           kfl     I*2  D1  -  Save clfile flag.  1 = Yes.
+c
+c   OUTPUT: none.
+c
+c***********************************************************************
+c
+      subroutine setclf (fname,ncf,kfl)
+c
+      include 'com8a.com'
+c
+      integer*2 kfl
+      integer*4 ncf
+      character*(MAX_PATH) fname
+c
+c...Save clfile name
+c
+      if (ncf .le. 0) then
+          clfnam = " "
+      else
+          clfnam = fname(1:ncf)
       endif
+      ifl(69) = kfl
+      return
+      end
+c
+c***********************************************************************
+c
+c   SUBROUTINE:  getapn (fname,nc)
+c
+c   FUNCTION:  Interface to C routines for retrieving the APT source name.
+c
+c   INPUT:  none.
+c
+c   OUTPUT: fname   C*1024 D1  -  APT source disk file name.
+c
+c           nc      I*4  D1  -  Number of characters in 'fname'.
+c
+c***********************************************************************
+c
+      subroutine getapn (fname,nc)
+c
+      include 'com8a.com'
+c
+      integer*4 nc,strlen1
+      character*(MAX_PATH) fname
+c
+c...Get Apt Source file name
+c
+      fname = asfnam
+      nc = strlen1(asfnam)
+      return
+      end
+c
+c***********************************************************************
+c
+c   SUBROUTINE:  setas (fname,ncf,kfl)
+c
+c   FUNCTION:  Interface to C routines for setting the "Save APT source
+c              file" flag (IFL(88)) and for saving the APT source disk
+c              file name in ASFNAM.
+c
+c   INPUT:  fname   C*1024 D1  -  APT source disk file name.
+c
+c           ncf     I*4  D1  -  Number of chars in 'fname'.
+c
+c           kfl     I*2  D1  -  Save APT source file flag.  1 = Yes.
+c
+c   OUTPUT: none.
+c
+c***********************************************************************
+c
+      subroutine setas (fname,ncf,kfl)
+c
+      include 'com8a.com'
+c
+      integer*2 kfl
+      integer*4 ncf
+      character*(MAX_PATH) fname
+c
+c...Save Apt Source file name
+c
+      if (ncf .le. 0) then
+          asfnam = " "
+      else
+          asfnam = fname(1:ncf)
+      endif
+      ifl(88) = kfl
+      return
+      end
+c
+c***********************************************************************
+c
+c   SUBROUTINE:  clsave (cfil,kst,ken,kerr)
+c
+c   FUNCTION:  This routine opens a cl disk file and saves the internal
+c              clfile to it.
+c
+c   INPUT:  cfil    C*1024 D1  -  Name of disk file to create.
+c
+c           kst     I*4  D1  -  Beginning clfile record for clfile
+c                               creation.
+c
+c           ken     I*4  D1  -  Ending clfile record.
+c
+c   OUTPUT: kerr    I*2  D1  -  Returns 1 if an error occurred.
+c
+c***********************************************************************
+c
+      subroutine clsave (cfil,kst,ken,kerr)
+c
+      include 'com8a.com'
+c
+      character*(MAX_PATH) cfil
+      integer*4 kst(2),ken(2)
+      integer*2 kerr
+c
+      integer*2 iclf
+      character*(MAX_PATH) tfil
+c
+      call flname (6,cfil,tfil)
+      call flopnw (cllun,tfil,'DIRECT','UNFORMATTED',288,'NULL',
+     1             kerr)
       if (kerr .ne. 0) go to 8000
 c
-c...Store integer values
+      iclf = 0
+      call clwrit (iclf,tfil,kst,ken)
+      close (unit=cllun)
 c
-      ISN    = inbuf(1)
-      ICLREC = inbuf(2)
-      ITYPE  = inbuf(3)
-      ISUBT  = inbuf(4)
-      MXCL   = nwds
+c...End of routine
 c
-c... Fix overflow of integer*2 ISN in the clfiles.
+ 8000 return
+      end
 c
-      if (ICLF .eq. 2) then
-          if (ISN .lt. 0) ISN = 32768 + (32768 + ISN)
-      else
-          if (ISN .lt. 0) ISN = 65536 + (32768 + ISN)
+c***********************************************************************
+c
+c   SUBROUTINE:  clfile
+c
+c   FUNCTION:  This routine saves both the clfile and APT source files
+c              to disk.  It should be called upon exiting NCLCAM.
+c
+c   INPUT:  none.
+c
+c   OUTPUT: none.
+c
+c***********************************************************************
+c
+      subroutine clfile
+c
+      include 'com8a.com'
+c
+      integer*2 iclf
+      integer*4 irst(2),iren(2)
+c
+      character*(MAX_PATH) clnam
+c
+      iclf   = 0
+      call ncl_zroptr(irst)
+      call ncl_zroptr(iren)
+c
+c...Reverse clfile if necessary
+c
+      if (ifl(367) .eq. 1) call clrev (iclf,irst,iren)
+      if (ifl(69) .eq. 0) go to 1000
+c
+c...Open clfile
+c
+      call aptcl (clnam)
+      call getclf (clnam)
+c
+c...Save clfile
+c
+      call ncl_zroptr(irst)
+      call ncl_zroptr(iren)
+      call clwrit (iclf,clnam,irst,iren)
+c
+c...Output Apt Source File
+c
+ 1000 call ncl_zroptr(irst)
+      call ncl_zroptr(iren)
+      call aptsrc (1,asfnam,iclf,irst,iren)
+c
+c...End of routine
+c
+ 8000 close (unit=cllun)
+      call clclos (iclf)
+      return
+      end
+c
+c***********************************************************************
+c
+c   SUBROUTINE:  clwrit (iclf,clnam,kst,ken)
+c
+c   FUNCTION:  This routine writes out an internal clfile to a disk
+c              file.  The disk file must already be open using the
+c              CLLUN logical unit number.
+c
+c   INPUT:  iclf    I*2  D1  -  Specifies which internal clfile to write
+c                               out.  1 = Primary clfile (usually
+c                               created by the current part program).
+c                               2 = Secondary clfile (usually loaded
+c                               from an external clfile for back plot-
+c                               ting).
+c
+c           clnam   C*1024 D1  -  Output clfile name.
+c
+c           kst     I*4  D1  -  Beginning clfile record for clfile
+c                               creation.
+c
+c           ken     I*4  D1  -  Ending clfile record.
+c
+c   OUTPUT: none.
+c
+c***********************************************************************
+c
+      subroutine clwrit (iclf,clnam,kst,ken)
+c
+      include 'com8a.com'
+      include 'cutter.com'
+      include 'mocom.com'
+c
+      integer*2 iclf
+      integer*4 kst(2),ken(2)
+c
+      character*(MAX_PATH) clnam
+c
+      integer*2 ibuf(4),iclbuf(144),idata(480),npts
+      integer*2 ipt,icnt,iflg,iflg1
+      integer*4 irec,inc,icpt(2),i,j,k,n,iclw(6),jclbuf(72),nc,strlen1
+c
+      real*8 rdata(420),dclbuf(36)
+c
+      character*8 lclt,lclnm,lclrv
+      character*11 lcld
+      character*48 cclbuf
+      character*80 lclf
+c
+      equivalence (dclbuf,iclbuf,jclbuf)
+      equivalence (dclbuf(2),cclbuf)
+      equivalence (rdata,ibuf), (rdata,idata)
+      equivalence (rdata(2),lclf), (rdata(12),lcld), (rdata(14),lclt)
+      equivalence (rdata(15),lclnm), (rdata(16),lclrv)
+c
+c...Initialize routine
+c
+c      icpt   = kst
+      call ncl_setptr(kst,icpt)
+      inc    = 0
+      irec   = 0
+      npts   = 3
+c
+c...Store Clfile name and Date record
+c
+      lclf   = clnam
+      call ncdate (lcld)
+      call nctime (lclt)
+      lclnm  = 'NCLCAM'
+      write (lclrv,10) sc(119)
+   10 format (f8.2)
+      ibuf(1) = 17
+      ibuf(2) = 7400
+      ibuf(3) = 0
+      ibuf(4) = 0
+      n      = 0
+      call clwr (rdata,ibuf(1),clbuff,irec,inc,n)
+c
+c...Not starting from the beginning
+c...Store previous MULTAX,CUTTER,FEDRAT & GOTO
+c
+c      if (kst .ne. 0) then
+      call ncl_tstptr (kst,iflg)
+      if (iflg .ne. 0) then
+          call clread (iclf,icpt,iclw,rdata(2),jerr)
+          if (jerr .eq. 1) go to 100
+          if (iclw(3) .ne. 7200) then
+              call gclinf (rdata(5),rdata(11),rdata(33),npts)
+c              icpt   = kst
+              call ncl_setptr(kst,icpt)
+              idata(113) = 0
+              idata(126) = 0
+              if (npts .eq. 6) idata(126) = 1
+          else
+              ibuf(1) = iclw(5) + 1
+              ibuf(2) = iclw(3)
+              ibuf(3) = iclw(4)
+              ibuf(4) = iclw(1)
+              call clwr (rdata,ibuf(1),clbuff,irec,inc,iclw(1))
+          endif
+c
+          iclbuf(2) = 2000
+          iclbuf(3) = 1015
+          iclbuf(4) = 0
+          n      = 0
+          nc     = strlen1(CPSTNM)
+          if (nc .gt. 8) then
+              iclbuf(1) = (nc+7) / 8 + 2
+              jclbuf(3) = -1
+              jclbuf(4) = nc
+              cclbuf(9:nc+8) = CPSTNM(1:nc)
+          else
+              iclbuf(1) = 2
+              cclbuf(1:nc) = CPSTNM(1:nc)
+              if (CPSTNM .eq. 'PWORKS') then
+                  dclbuf(3) = PSTNUM
+                  iclbuf(1) = 3
+              endif
+          endif
+          call clwr (dclbuf,iclbuf(1),clbuff,irec,inc,n)
+c
+          iclbuf(1) = 1
+          iclbuf(2) = 9000
+          iclbuf(3) = 1
+          npts   = 3
+          if (idata(126) .eq. 1) then
+              iclbuf(3) = 0
+              npts   = 6
+          endif
+          iclbuf(4) = 0
+          call clwr (dclbuf,iclbuf(1),clbuff,irec,inc,n)
+c
+          if (iclbuf(113) .eq. 0 .or. iclbuf(113) .eq. 2 .or.
+     1        iclbuf(113) .eq. 3) then
+              ipt    = 11
+          else
+              ipt    = 17
+          endif
+          do 20 i=ipt+5,ipt,-1
+              if (rdata(i) .ne. 0) go to 25
+   20     continue
+          i      = ipt
+   25     icnt   = i - ipt + 1
+          iclbuf(1) = icnt   + 1
+          iclbuf(2) = 6000
+          iclbuf(3) = 0
+          iclbuf(4) = 0
+          do 26 i=1,icnt,1
+              dclbuf(i+1) = rdata(ipt+i-1)
+   26     continue
+          call clwr (dclbuf,iclbuf(1),clbuff,irec,inc,n)
+c
+          if (rdata(33) .gt. 0.) then
+              iclbuf(1) = 2
+              iclbuf(2) = 2000
+              iclbuf(3) = 1009
+              iclbuf(4) = 0
+              dclbuf(2) = rdata(33)
+              call clwr (dclbuf,iclbuf(1),clbuff,irec,inc)
+          endif
+c
+          iclbuf(1) = npts   + 1
+          iclbuf(2) = 5000
+          iclbuf(3) = 3
+          iclbuf(4) = 0
+          dclbuf(2) = rdata(5)
+          dclbuf(3) = rdata(6)
+          dclbuf(4) = rdata(7)
+          dclbuf(5) = rdata(8)
+          dclbuf(6) = rdata(9)
+          dclbuf(7) = rdata(10)
+          call clwr (dclbuf,iclbuf(1),clbuff,irec,inc,n)
       endif
 c
-c...Post word
+c...Save clfile
 c
-      if (ITYPE .eq. 2000) then
+  100 call clread (iclf,icpt,iclw,rdata(2),jerr)
+      if (jerr .eq. 1) go to 7000
+      if (iclw(3) .eq. 5100 .or. iclw(3) .eq. 5300) go to 200
+      if (iclw(3) .eq. 2000 .and. iclw(4) .eq. 1091) go to 200
+      if (.not. lexpcl .and. iclw(3) .eq. 1000) go to 200
 c
-c......LETTER, PARTNO, INSERT and PPRINT
+c...Output expanded motion record (5200) as 5000 record if flag is not set
 c
-          if (ISUBT .ge. 1043 .and. ISUBT .le. 1046) then
-              LPSTWD = LCLDAT(1:66)
-c
-c......Major/Minor word
-c
-          else
-c
-c......Support MACHIN names over 6 characters
-c
-              mxm    = 0
-              if (ISUBT .eq. 1015) then
-                  if (JCLDAT(1) .eq. -1 .and. JCLDAT(2) .gt. 8 .and.
-     1                    JCLDAT(2) .le. 40) then
-                      mxm    = (JCLDAT(2)+7) / 8 + 1
-                  else
-                      mxm    = 1
-                  endif
-              endif
-              do 300 i=1,nwds,1
-                  if (ICLDAT(i*4-is4) .eq. 0 .and.
-     1                ICLDAT(i*4-is1) .ne. 0 .and. i .gt. mxm) then
-                      IPSTWD(i) = ICLDAT(i*4-is1)
-                      PSTWD(i) = 0.
-                  else
-                      IPSTWD(i) = 0
-                      PSTWD(i) = RCLDAT(i)
-                  endif
-  300         continue
+      if (.not. lexpcl .and. iclw(3) .eq. 5200) then
+        iclw(3) = 5000
+        if (iclw(4) .ne. 3 .and. iclw(4) .ne. 5 .and. iclw(4) .ne. 6)
+     1          iclw(4) = 5
+        j = 1
+        k = 1
+        n = iclw(5) / 21
+        iclw(5) = n * npts
+        do 120 i=2,n
+          j=j+npts
+          k=k+21
+          rdata(j+1) = rdata(k+1)
+          rdata(j+2) = rdata(k+2)
+          rdata(j+3) = rdata(k+3)
+          if (npts.gt.3) then
+            rdata(j+4) = rdata(k+4)
+            rdata(j+5) = rdata(k+5)
+            rdata(j+6) = rdata(k+6)
           endif
-c
-c...Circle record
-c
-      else if (ITYPE .eq. 3000) then
-          do 500 i=1,7,1
-              if (i .ge. 4 .and. i .le. 6) then
-                  CIRBUF(i) = RCLDAT(i)
-              else
-                  CIRBUF(i) = RCLDAT(i) * METCNV
-              endif
-  500     continue
-          call copyn (CIRBUF,CIRBPP,7)
-          call preadj (CIRBUF(1),CIRBUF(1),CIRBUF(4),CIRBUF(4))
-          if (MXTRAN .eq. 1) call matpta (CIRBUF(4),CIRBUF(4),TRAMAT,3)
-          if (MXFLAG .eq. 1) call matpta (CIRBUF(4),CIRBUF(4),REFMAT,3)
-c
-c...Motion record
-c
-      else if (ITYPE .eq. 5000) then
-          MOTEXP = 0
-          inc    = 0
-          do 800 i=0,nwds-1,NPT
-              do 700 j=1,NPT,1
-                  if (j .gt. 3) then
-                      CLPT(inc+j) = RCLDAT(i+j)
-                  else
-                      CLPT(inc+j) = RCLDAT(i+j) * METCNV
-                  endif
-  700         continue
-              call copyn (CLPT(inc+1),CLPTPP(inc+1),NPT)
-              ix1  = inc + 1
-              ix4  = inc + 4
-              call preadj (CLPT(inc+1),CLPT(inc+1),CLPT(ix4),CLPT(ix4))
-              if (NPT .eq. 6) then
-                  if (MXTRAN .eq. 1)
-     -                call matpta (CLPT(ix4),CLPT(ix4),TRAMAT,3)
-                  if (MXFLAG .eq. 1)
-     -                call matpta (CLPT(ix4),CLPT(ix4),REFMAT,3)
-              end if
-              inc    = inc    + NPT
-  800     continue
-          MXCL   = inc    / NPT
-c
-c...Expanded motion record (5200)
-c
-      else if (ITYPE .eq. 5200) then
-          call clpt52 (nwds,CLPT,CLFWD,CLPTE1,CLPTE2,CLPTE3,CLPTE4)
-cc          ITYPE  = 5000
-cc          NPT    = 6
-c
-c...Direction record (5210)
-c
-      else if (ITYPE .eq. 5210) then
-          call clpt52 (nwds,CLPOS,CLPOS(7),CLPOS(10),CLPOS(13),
-     -                      CLPOS(16),CLPOS(19))
-c
-c...Cutter
-c
-      else if (ITYPE .eq. 6000) then
-          NCUT   = MXCL
-          if (NCUT .gt. 7) NCUT = 7
-          NCUTDS = NCUT
-c
-c...Updated Aug-04-2016, KC
-c...Cutter angles not modified by unit conversion
-c
-          do 900 i=1,NCUT,1
-              if (i .le. 4 .or. i .eq. 7) then
-                  CUTTER(i) = RCLDAT(i) * METCNV
-              else
-                  CUTTER(i) = RCLDAT(i)
-              endif
-              CUDISP(i) = RCLDAT(i)
-  900     continue
-c
-c...Displayed Cutter
-c
-      else if (ITYPE .eq. 7100) then
-          if (ISUBT .eq. 1) then
-              NCUTDS = MXCL
-              if (NCUTDS .gt. 7) NCUTDS = 7
-              do 950 i=1,NCUTDS,1
-                  CUDISP(i) = RCLDAT(i)
-  950         continue
-          endif
-c
-c...Clfile Header
-c
-      else if (ITYPE .eq. 7400) then
-          CLNAME = lclf
-          CLDATE = lcld
-          CLTIME = lclt
-          CAMNAM = lclnm
-          CAMREV = lclrv
+  120   continue
+      endif
 c
 c...Multax
 c
-      else if (ITYPE .eq. 9000) then
-          MULTAX = 1 - ISUBT
-          NPT    = 3
-          if (MULTAX .eq. 1) NPT = 6
+      if (iclw(3) .eq. 9000) then
+        if (iclw(4).eq.0) then
+          npts = 6
+        else
+          npts = 3
+        endif
       endif
+c
+c...Ignore 5210/5220
+c...If not expanded clfile
+c
+      if (lexpcl .or. iclw(3) .lt. 5200 .or. iclw(3) .ge. 5300) then
+c
+c...Write out clfile record
+c
+          ibuf(1) = iclw(5) + 1
+          ibuf(2) = iclw(3)
+          ibuf(3) = iclw(4)
+          ibuf(4) = iclw(1)
+          call clwr (rdata,ibuf(1),clbuff,irec,inc,iclw(1))
+      endif
+c
+c...End of loop
+c
+c  200 if (icpt .ne. 0 .and. icpt .ne. ken) go to 100
+  200 call ncl_tstptr (icpt,iflg)
+      call ncl_eqlptr (icpt,ken,iflg1)
+      if (iflg .ne. 0 .and. iflg1 .ne. 1) go to 100
+c
+c...Add FINI card
+c
+ 7000 ibuf(1) = 1
+      ibuf(2) = 14000
+      ibuf(3) = 0
+      call isn4i2 (nline,ibuf(4))
+      inc    = inc    + 1
+      clbuff(inc) = rdata(1)
+      call clput (irec,clbuff)
 c
 c...End of routine
 c
@@ -262,157 +520,69 @@ c
 c
 c***********************************************************************
 c
-c   SUBROUTINE:  clwrit (krec,kpt,cmsg,kerr)
+c   SUBROUTINE:  clwr (gdata,knc,gbuff,krec,kinc,kisn)
 c
-c   FUNCTION:  This routine takes the global arrays and creates a neu-
-c              tral clfile logical record.
+c   FUNCTION:  This routine buffers logical clfile records and outputs
+c              the physical record when full.
 c
-c   INPUT:  krec    I*4  D1  Next clfile physical record to write.
+c   INPUT:  gdata   R*8  Dn  -  Logical clfile record to buffer.
 c
-c           kpt     I*4  D1  Pointer to next logical clfile record
-c                            within physical record.
+c           knc     I*2  D1  -  Size of 'gdata'.
 c
-c   OUTPUT: cmsg    C*n  D1  Text of error message.
+c           gbuff   R*8  Dn  -  Physical buffer used to store logical
+c                               records.
 c
-c           kerr    I*4  D1  Returns 1 when an error occurred.
+c           krec    I*4  D1  -  Current clfile record.
+c
+c           kinc    I*4  D1  -  Pointer inside 'gbuff'.
+c
+c           kisn    I*4  D1  -  I*4 version of ISN for type 1000 record.
+c
+c   OUTPUT: none.
 c
 c***********************************************************************
 c
-      subroutine clwrit (krec,kpt,cmsg,kerr)
+      subroutine clwr (gdata,knc,gbuff,krec,kinc,kisn)
 c
-      include 'menu.inc'
-      include 'pregen.inc'
-      include 'post.inc'
+      integer*2 knc
+      integer*4 krec,kinc,kisn
 c
-      equivalence (ISN   ,KPOSMP(0001)), (ICLREC,KPOSMP(0002))
-      equivalence (ITYPE ,KPOSMP(0003)), (ISUBT ,KPOSMP(0004))
-      equivalence (MXCL  ,KPOSMP(0005)), (IPSTWD,KPOSMP(0006))
-      equivalence (MULTAX,KPOSMP(0056)), (NPT   ,KPOSMP(0059))
-      equivalence (ICLOUT,KPOSMP(0084))
+      real*8 gdata(36),gbuff(36)
 c
-      integer*4 ISN,ICLREC,ITYPE,ISUBT,MXCL,IPSTWD(50),MULTAX,ICLOUT,NPT
+      integer*2 i,idata(4)
+      integer*4 jdata(2)
 c
-      equivalence (PSTWD ,POSMAP(0441))
-      equivalence (CLPT  ,POSMAP(0491)), (CIRBUF,POSMAP(0731))
-      equivalence (CLSAV ,POSMAP(0201))
+      real*8 rdata
 c
-      real*8 PSTWD(50),CLPT(240),CIRBUF(7),CLSAV(21)
+      equivalence (idata,jdata,rdata)
 c
-      integer*2 ICLDAT(200)
-      integer*4 JCLDAT(200)
-      character*66 LCLDAT
-      equivalence (RCLDAT,ICLDAT,JCLDAT,LCLDAT)
+c...Store ISN record
 c
-      equivalence (LPSTWD,CPOSMP(0001))
-c
-      character*66 LPSTWD
-c
-      integer*4 krec,kpt,kerr
-c
-      character*(*) cmsg
-c
-      integer*4 inbuf(4),nwds,i,inc,nopt,imult,j,is1
-c
-C VAX-SUN-SGI-IBM-HPX-START
-C      data is1 /0/
-C VAX-SUN-SGI-IBM-HPX-END
-C WNT-DOS-DEC-START
-      data is1 /3/
-C WNT-DOS-DEC-END
-c
-c...Store integer values
-c
-      if (PGMNAM .eq. 'PostMacro') ICLOUT  = ICLOUT + 1
-      inbuf(1) = ISN
-      inbuf(2) = ICLOUT
-      inbuf(3) = ITYPE
-      inbuf(4) = ISUBT
-      nwds     = MXCL
-c
-c...Post word
-c
-      if (ITYPE .eq. 2000) then
-c
-c......LETTER, PARTNO, INSERT and PPRINT
-c
-          if (ISUBT .ge. 1043 .and. ISUBT .le. 1046 .or.
-     -        ISUBT .eq. 1199) then
-              LCLDAT(1:66) = LPSTWD
-c
-c......Major/Minor word
-c
-          else
-              do 300 i=1,nwds,1
-                  if (IPSTWD(i) .ne. 0) then
-                      ICLDAT(i*4-3) = 0
-                      ICLDAT(i*4-2) = 0
-                      ICLDAT(i*4-1) = 0
-                      ICLDAT(i*4) = 0
-                      ICLDAT(i*4-is1) = IPSTWD(i)
-                  else
-                      RCLDAT(i) = PSTWD(i)
-                  endif
-  300         continue
+      rdata = gdata(1)
+      if (kisn .gt. 32767) then
+          idata(1) = 1
+          idata(2) = 1001
+          jdata(2) = kisn
+          kinc   = kinc   + 1
+          gbuff(kinc) = rdata
+          if (kinc .eq. 35) then
+              call clput (krec,gbuff)
+              krec   = krec   + 1
+              kinc   = 0
           endif
-c
-c...Circle record
-c
-      else if (ITYPE .eq. 3000) then
-          do 500 i=1,7,1
-              RCLDAT(i) = CIRBUF(i)
-  500     continue
-c
-c...Motion record
-c
-      else if (ITYPE .eq. 5000) then
-          imult  = MULTAX
-          if (IMULTO .ne. -1) imult = IMULTO
-          inc    = 0
-          nopt   = 3
-          if (imult .eq. 1) nopt = 6
-          do 800 i=0,nwds*NPT-1,NPT
-              do 700 j=1,nopt,1
-                  RCLDAT(inc+j) = CLPT(i+j)
-  700         continue
-              inc    = inc    + nopt
-  800     continue
-          nwds   = inc
       endif
 c
-c...Write clfile record &
-c...Listing record
+c...Store clfile record
 c
-      call lstdat (inbuf,RCLDAT,nwds,cmsg,kerr)
-      if (kerr .ne. 0) go to 8000
-c
-      if (IOPFL(4) .eq. 1)
-     1        call nclwr (krec,kpt,inbuf,RCLDAT,nwds,cmsg,kerr)
-c
-c...End of routine
-c
- 8000 return
-      end
-c
-c***********************************************************************
-c
-c   SUBROUTINE:  cldwrt (krec,kpt,cmsg,kerr)
-c
-c   FUNCTION:  This routine writes out a neutral clfile record from the
-c              %CLDATA array.
-c
-c   INPUT:  krec    I*4  D1  Next clfile physical record to write.
-c
-c           kpt     I*4  D1  Pointer to next logical clfile record
-c                            within physical record.
-c
-c   OUTPUT: cmsg    C*n  D1  Text of error message.
-c
-c           kerr    I*4  D1  Returns 1 when an error occurred.
-c
-c***********************************************************************
-c
-      subroutine cldwrt (krec,kpt,cmsg,kerr)
-c
+      do 200 i=1,knc,1
+          kinc   = kinc   + 1
+          gbuff(kinc) = gdata(i)
+          if (kinc .eq. 35) then
+              call clput (krec,gbuff)
+              krec   = krec   + 1
+              kinc   = 0
+          endif
+  200 continue
 c
 c...End of routine
 c
@@ -421,1305 +591,604 @@ c
 c
 c***********************************************************************
 c
-c   SUBROUTINE:  clrew
-c
-c   FUNCTION:  This routine rewinds the input clfile.
-c
-c   INPUT:  none.
-c
-c   OUTPUT: none.
-c
-c***********************************************************************
-c
-      subroutine clrew
-c
-      include 'post.inc'
-      include 'clnrd.inc'
-c
-      equivalence (IFIREC,KPOSMP(0057)), (IFIPT ,KPOSMP(0058))
-c
-      integer*4 IFIREC,IFIPT
-c
-c...Rewind input clfile
-c
-      IFIREC = 0
-      IFIPT  = 10000
-      LSTPTC = 0
-c
-c...End of routine
-c
- 8000 return
-      end
-c
-c***********************************************************************
-c
-c   SUBROUTINE:  clmark
-c
-c   FUNCTION:  This routine saves the current position in the clfile/
-c              Macro when looking ahead.  It also saves certain varia-
-c              bles, but not the entire clfile record (PSTWD,CLPT,etc).
-c
-c   INPUT:  none.
-c
-c   OUTPUT: none.
-c
-c***********************************************************************
-c
-c...added level params
-c...Yurong 5/28/98
-c
-      subroutine clmark(kst)
-c
-      include 'pregen.inc'
-      include 'post.inc'
-c
-      equivalence (ISN   ,KPOSMP(0001)), (ICLREC,KPOSMP(0002))
-      equivalence (ITYPE ,KPOSMP(0003))
-      equivalence (ISUBT ,KPOSMP(0004)), (MXCL  ,KPOSMP(0005))
-      equivalence (IFIREC,KPOSMP(0057)), (IFIPT ,KPOSMP(0058))
-      equivalence (NPT   ,KPOSMP(0059))
-      equivalence (LSTPC ,KPOSMP(0083)), (ICLOUT,KPOSMP(0084))
-      equivalence (ICLMSV,KPOSMP(0151)), (PICLMSV,KPOSMP(0328))
-      integer*4 kst
-c
-      integer*4 ISN,ITYPE,ISUBT,MXCL,IFIREC,IFIPT,LSTPC,ICLOUT,
-     1          ICLMSV(20),PICLMSV(20),NPT,ICLREC
-c
-      equivalence (LCLMSV,CPOSMP(0001)), (LMACRO,CPOSMP(0861))
-c
-      character*24 LCLMSV(2),LMACRO
-c
-      integer*4 i
-c
-c...Save clfile and Macro pointers
-c
-      if (kst.eq.1) then
-         ICLMSV(1) = IFIREC
-         ICLMSV(2) = IFIPT
-         ICLMSV(3) = ISN
-         ICLMSV(4) = ICLOUT
-         ICLMSV(5) = ITYPE
-         ICLMSV(6) = ISUBT
-         ICLMSV(7) = MXCL
-         ICLMSV(8) = NPT
-         ICLMSV(17) = ICLREC
-         if (IMACPT .ne. 0) then
-            ICLMSV(9) = LSTPC
-            ICLMSV(10) = IPC
-            ICLMSV(11) = IMACPT
-            do 100 i=1,5,1
-               ICLMSV(i+11) = IMACHD(i,IMACPT)
-  100       continue
-            LCLMSV(1) = LMACRO
-         endif
-       else
-         PICLMSV(1) = IFIREC
-         PICLMSV(2) = IFIPT
-         PICLMSV(3) = ISN
-         PICLMSV(4) = ICLOUT
-         PICLMSV(5) = ITYPE
-         PICLMSV(6) = ISUBT
-         PICLMSV(7) = MXCL
-         PICLMSV(8) = NPT
-         PICLMSV(17) = ICLREC
-         if (IMACPT .ne. 0) then
-            PICLMSV(9) = LSTPC
-            PICLMSV(10) = IPC
-            PICLMSV(11) = IMACPT
-            do 400 i=1,5,1
-               PICLMSV(i+11) = IMACHD(i,IMACPT)
-  400       continue
-            LCLMSV(1) = LMACRO
-         endif
-      endif
-c
-c...End of routine
-c
- 8000 return
-      end
-c
-c***********************************************************************
-c
-c   SUBROUTINE:  clumrk
-c
-c   FUNCTION:  This routine restores the current position in the clfile/
-c              Macro after looking ahead.  It also restores certain
-c              variables, but not the entire clfile record (PSTWD,CLPT
-c              ,etc).
-c
-c   INPUT:  none.
-c
-c   OUTPUT: none.
-c
-c***********************************************************************
-c
-c...added level params
-c...Yurong 5/28/98
-c
-      subroutine clumrk(kst)
-c
-      include 'pregen.inc'
-      include 'post.inc'
-c
-      equivalence (ISN   ,KPOSMP(0001)), (ICLREC,KPOSMP(0002))
-      equivalence (ITYPE ,KPOSMP(0003))
-      equivalence (ISUBT ,KPOSMP(0004)), (MXCL  ,KPOSMP(0005))
-      equivalence (IFIREC,KPOSMP(0057)), (IFIPT ,KPOSMP(0058))
-      equivalence (NPT   ,KPOSMP(0059))
-      equivalence (LSTPC ,KPOSMP(0083)), (ICLOUT,KPOSMP(0084))
-      equivalence (ICLMSV,KPOSMP(0093))
-      equivalence (PICLMSV,KPOSMP(0115))
-      integer*4 kst
-c
-      integer*4 ISN,ITYPE,ISUBT,MXCL,IFIREC,IFIPT,LSTPC,ICLOUT,
-     1          ICLMSV(16), PICLMSV(16), NPT,ICLREC
-c
-      equivalence (LCLMSV,CPOSMP(0001)), (LMACRO,CPOSMP(0861))
-c
-      character*24 LCLMSV(2),LMACRO
-c
-      integer*4 i
-c
-c...Restore clfile and Macro pointers
-c
-      if (kst.eq.1) then
-         if (ICLMSV(1) .eq. -1) go to 8000
-         IFIREC = ICLMSV(1)
-         IFIPT  = ICLMSV(2)
-         ISN    = ICLMSV(3)
-         ICLOUT = ICLMSV(4)
-         ITYPE  = ICLMSV(5)
-         ISUBT  = ICLMSV(6)
-         MXCL   = ICLMSV(7)
-         NPT    = ICLMSV(8)
-         ICLREC = ICLMSV(17)
-         ICLMSV(1) = -1
-         if (ICLMSV(10) .ne. 0) then
-             LSTPC  = ICLMSV(9)
-             IPC    = ICLMSV(10)
-             IMACPT = ICLMSV(11)
-             do 100 i=1,5,1
-                IMACHD(i,IMACPT) = ICLMSV(i+11)
-  100        continue
-         endif
-         ICLMSV(10) = 0
-       else
-         if (PICLMSV(1) .eq. -1) go to 8000
-         IFIREC = PICLMSV(1)
-         IFIPT  = PICLMSV(2)
-         ISN    = PICLMSV(3)
-         ICLOUT = PICLMSV(4)
-         ITYPE  = PICLMSV(5)
-         ISUBT  = PICLMSV(6)
-         MXCL   = PICLMSV(7)
-         NPT    = PICLMSV(8)
-         ICLREC = PICLMSV(17)
-         PICLMSV(1) = -1
-         if (PICLMSV(10) .ne. 0) then
-             LSTPC  = PICLMSV(9)
-             IPC    = PICLMSV(10)
-             IMACPT = PICLMSV(11)
-             do 400 i=1,5,1
-                IMACHD(i,IMACPT) = PICLMSV(i+11)
-  400        continue
-         endif
-         PICLMSV(10) = 0
-      endif
-         LMACRO = LCLMSV(1)
-c
-c...End of routine
-c
- 8000 return
-      end
-c
-c***********************************************************************
-c
-c   SUBROUTINE:  nclrd (krec,kpt,kbuf,gbuf,kmxcl,cmsg,kerr)
+c   SUBROUTINE:  clload (iclf,clnam,jfl,ierr)
 c
 c   FUNCTION:  This routine reads an NCL clfile record and converts it
 c              to a neutral format.
 c
-c   INPUT:  krec    I*4  D1  Next clfile physical record to read.
+c   INPUT:  iclf    I*2  D1  Specifies which internal clfile to load.
+c                            1 = Primary, 2 = Secondary.
 c
-c           kpt     I*4  D1  Pointer of to next logical clfile record
-c                            within physical record.
+c           clnam   C*1024 D1  Name of disk clfile to load.
 c
-c   OUTPUT: kbuf    I*4  D4  Array to receive integer clfile data.  1 =
-c                            ISN, 2 = CL record #, 3 = Record type, 4 =
-c                            Record sub-type.
+c           nci     I*4  D1  Number of chars in 'clnam'.
 c
-c           gbuf    R*8  Dn  Array to receive real clfile data.
+c           jfl     I*2  D1  0 = Load a clfile for back plotting.  1 =
+c                            Load a clfile after interactively editing
+c                            it (removes the FINI card and deletes the
+c                            disk clfile).
 c
-c           kmxcl   I*4  D1  Number of reals in 'gbuf'.
-c
-c           cmsg    C*n  D1  Text of error message.
-c
-c           kerr    I*4  D1  Returns 1 when an error occurred.
+c   OUTPUT: ierr    I*4  D1  Returns 1 when an error occurred.
 c
 c***********************************************************************
 c
-      subroutine nclrd (krec,kpt,kbuf,gbuf,kmxcl,cmsg,kerr)
+      subroutine clload (iclf,clnam,nci,jfl,ierr)
 c
-      include 'menu.inc'
-      include 'clnrd.inc'
-      include 'post.inc'
+      include 'com8a.com'
 c
-      equivalence (ICLREC,KPOSMP(0002))
+      integer*2 iclf,jfl,ierr
+      integer*4 nci
+      character*(MAX_PATH) clnam
+      character*(MAX_PATH) cln
 c
-      integer*4 ICLREC
+      integer*2 ibuf(144),nc
+      integer*4 krec,kpt,ipt,i,iclpt(2),iclw(6),jisn,jbuf(72)
 c
-      integer*4 krec,kpt,kbuf(4),kmxcl,kerr
+      real*8 rbuf(36),rclw(420)
 c
-      real*8 gbuf(10)
+      character*20 lclw
 c
-      character*(*) cmsg
-c
-      integer*2 ibuf(4)
-      integer*4 i,ipt,nwds,inc,jindex,inum,is1,is4,jisn
-c
-      real*8 rbuf
-c
-      equivalence (rbuf,ibuf)
+      equivalence (rbuf,ibuf,jbuf)
+      equivalence (rclw,lclw)
 c
 c...Initialze routine
 c
-C VAX-SUN-SGI-IBM-HPX-START
-C      data is1 / 1/, is4 / 4/
-C VAX-SUN-SGI-IBM-HPX-END
-C WNT-DOS-DEC-START
-      data is1 / 4/, is4 / 1/
-C WNT-DOS-DEC-END
-      kerr   = 0
-      ICLREC = ICLREC + 1
-      jisn   = 0
+      ierr   = 0
+      krec   = 0
+      kpt    = 100
+c
+c...Open external clfile
+c
+      call flname (6,clnam(1:nci),cln)
+      call flopen (cllun,cln,'OLD','DIRECT','UNFORMATTED',288,'NULL',
+     1             ierr)
+      if (ierr .ne. 0) go to 8000
+c
+c...Allocate internal clfile storage
+c
+      call clopen (iclf,iclpt)
 c
 c...Read cl record if necessary
 c
-   50 kpt    = kpt    + 1
-      if (kpt .ge. 36 .or. krec .ne. LSTIRC) then
-          if (kpt .ge. 36) then
-              krec   = krec   + 1
-              kpt    = 1
-          endif
-          call rdncl (LUNSC1,krec,JCLBUF,cmsg,kerr)
-          if (kerr .ne. 0) go to 8000
+  100 kpt    = kpt    + 1
+      if (kpt .ge. 36) then
+          krec   = krec   + 1
+          kpt    = 1
+          read (cllun,rec=krec,err=9000) rbuf
       endif
 c
 c...Store ISN
 c
       ipt    = (kpt*4) - 3
-      if (ICLBUF(ipt+1) .eq. 1001) then
-          jisn   = JCLBUF(kpt*2)
-          go to 50
+      if (ibuf(ipt+1) .eq. 1001) then
+          jisn   = jbuf(kpt*2)
+          go to 100
       endif
 c
 c...Store integer values
 c
-      kbuf(1) = ICLBUF(ipt+3)
-      if (jisn .ne. 0) kbuf(1) = jisn
-      kbuf(2) = ICLREC
-      kbuf(3) = ICLBUF(ipt+1)
-      kbuf(4) = ICLBUF(ipt+2)
-      nwds    = ICLBUF(ipt) - 1
-      if (kbuf(3) .ne. 1000) jisn    = 0
+      iclw(1) = ibuf(ipt+3)
+      if (jisn .ne. 0) iclw(1) = jisn
+      iclw(2) = iclw(1)
+      iclw(3) = ibuf(ipt+1)
+      iclw(4) = ibuf(ipt+2)
+      iclw(5) = ibuf(ipt) - 1
+      if (iclw(5) .gt. 420 .or. iclw(5) .lt. 0) go to 9000
+      if (iclw(3) .ne. 1000) jisn    = 0
 c
-c...Post word
+c...Store real values
 c
-      if (kbuf(3) .eq. 2000) then
-          inc    = jindex (VNMAJ,kbuf(4),NNMAJ)
-          if (inc .ne. 0) kbuf(4) = VAMAJ(inc)
-          do 100 i=1,nwds,1
-c
-              kpt    = kpt    + 1
-              if (kpt .ge. 36) then
-                  krec   = krec   + 1
-                  kpt    = 1
-                  call rdncl (LUNSC1,krec,JCLBUF,cmsg,kerr)
-                  if (kerr .ne. 0) go to 8000
-              endif
-c
-              gbuf(i) = RCLBUF(kpt)
-  100     continue
-          if (kbuf(4) .lt. 1043 .or. kbuf(4) .gt. 1046) then
-              ipt    = 1
-              if (kbuf(4) .eq. 1015) ipt = 2
-              do 200 i=ipt,nwds,1
-                  rbuf   = gbuf(i)
-                  if (ibuf(is1) .eq. 0) then
-                      inum   = ibuf(is4)
-                      inc    = jindex (VNMIN,inum,NNMIN)
-                      if (inc .ne. 0) then
-                          ibuf(is4) = VAMIN(inc)
-                          gbuf(i) = rbuf
-                      endif
-                  endif
-  200         continue
-          endif
-c
-          kmxcl  = nwds
-c
-c...Circular record
-c
-      else if (kbuf(3) .eq. 3000) then
-          kpt    = kpt    + 5
-          do 500 i=1,7,1
-c
-              kpt    = kpt    + 1
-              if (kpt .ge. 36) then
-                  krec   = krec   + 1
-                  kpt    = kpt    - 35
-                  call rdncl (LUNSC1,krec,JCLBUF,cmsg,kerr)
-                  if (kerr .ne. 0) go to 8000
-              endif
-c
-              gbuf(i) = RCLBUF(kpt)
-  500     continue
-          kmxcl  = 7
-c
-c...Motion record
-c
-      else if (kbuf(3) .eq. 5000 .or. kbuf(3) .eq. 5200) then
-c          kpt    = kpt    + 2
-          do 800 i=1,nwds,1
-c
-              kpt    = kpt    + 1
-              if (kpt .ge. 36) then
-                  krec   = krec   + 1
-                  kpt    = kpt    - 35
-                  call rdncl (LUNSC1,krec,JCLBUF,cmsg,kerr)
-                  if (kerr .ne. 0) go to 8000
-              endif
-c
-              gbuf(i) = RCLBUF(kpt)
-  800     continue
-c          kmxcl  = nwds   - 2
-          kmxcl  = nwds
-c
-c...Multax record
-c
-      else if (kbuf(3) .eq. 9000) then
-c          kbuf(4)   = 1 - kbuf(4)
-          kmxcl  = 0
-c
-c...Unsupported record type
-c...Store cldata as is
-c
-      else
-          do 1000 i=1,nwds,1
-c
-              kpt    = kpt    + 1
-              if (kpt .ge. 36) then
-                  krec   = krec   + 1
-                  kpt    = 1
-                  call rdncl (LUNSC1,krec,JCLBUF,cmsg,kerr)
-                  if (kerr .ne. 0) go to 8000
-              endif
-c
-              gbuf(i) = RCLBUF(kpt)
- 1000     continue
-          kmxcl  = nwds
-      endif
-c
-c...End of routine
-c
- 8000 LSTIRC = krec
-      return
-      end
-c
-c***********************************************************************
-c
-c   SUBROUTINE:  nclwr (krec,kpt,kbuf,gbuf,kmxcl,cmsg,kerr)
-c
-c   FUNCTION:  This routine converts a neutral format clfile record to
-c              an NCL clfile record and writes it.
-c
-c   INPUT:  krec    I*4  D1  Next clfile physical record to read.
-c
-c           kpt     I*4  D1  Pointer of to next logical clfile record
-c                            within physical record.
-c
-c   OUTPUT: kbuf    I*4  D4  Array to receive integer clfile data.  1 =
-c                            ISN, 2 = CL record #, 3 = Record type, 4 =
-c                            Record sub-type.
-c
-c           gbuf    R*8  Dn  Array to receive real clfile data.
-c
-c           kmxcl   I*4  D1  Number of reals in 'gbuf'.
-c
-c           cmsg    C*n  D1  Text of error message.
-c
-c           kerr    I*4  D1  Returns 1 when an error occurred.
-c
-c***********************************************************************
-c
-      subroutine nclwr (krec,kpt,kbuf,gbuf,kmxcl,cmsg,kerr)
-c
-      include 'menu.inc'
-      include 'clnrd.inc'
-      include 'pregen.inc'
-c
-      integer*4 krec,kpt,kbuf(4),kmxcl,kerr
-c
-      real*8 gbuf(10)
-c
-      character*(*) cmsg
-c
-      integer*2 ibuf(4),idata(4)
-      integer*4 i,ipt,inc,jindex,inum,jdata(2)
-c
-      real*8 rcirc(5),rbuf,rdata
-c
-      equivalence (rbuf,ibuf)
-      equivalence (idata,jdata,rdata)
-c
-      data rcirc /5.,0.,0.,0.,0./
-c
-c
-c...Initialze routine
-c
-      kerr   = 0
-c
-c...Write cl record if necessary
-c
-      kpt    = kpt    + 1
-      if (kpt .ge. 36) then
-          call wrncl (LUNSC3,krec,JCOBUF,cmsg,kerr)
-          if (kerr .ne. 0) go to 8000
-          krec   = krec   + 1
-          kpt    = 1
-      endif
-c
-c...Store ISN record
-c
-      if (kbuf(1) .gt. 32767) then
-          idata(1) = 1
-          idata(2) = 1001
-          jdata(2) = kbuf(1)
-          RCOBUF(kpt) = rdata
+      do 200 i=1,iclw(5),1
           kpt    = kpt    + 1
           if (kpt .ge. 36) then
-              call wrncl (LUNSC3,krec,JCOBUF,cmsg,kerr)
-              if (kerr .ne. 0) go to 8000
               krec   = krec   + 1
               kpt    = 1
+              read (cllun,rec=krec,err=9000) rbuf
           endif
+          rclw(i) = rbuf(kpt)
+  200 continue
+c
+c...SEQUNC record
+c...Save pointer to it
+c
+      if (iclw(3) .eq. 7200 .and. iclw(4) .eq. 1) then
+          do 300 i=1,20,1
+              if (lclw(i:i) .eq. char(0) .or. lclw(i:i) .eq. ' ')
+     1            go to 320
+  300     continue
+          i = 21
+  320     nc = i - 1
+          call seqsto (iclf,lclw,nc)
       endif
 c
-c...Store integer values
+c...Ignore FINI records on reload after edit
+c...and when restoring a session
 c
-      ipt    = (kpt*4) - 3
-      ICOBUF(ipt)   = kmxcl   + 1
-      ICOBUF(ipt+1) = kbuf(3)
-      ICOBUF(ipt+2) = kbuf(4)
-      ICOBUF(ipt+3) = kbuf(1)
+      if (iclw(3) .eq. 14000 .and. jfl .eq. 1) go to 8000
+      if (iclw(3) .eq. 14001) go to 8000
 c
-c...Post word
+c...Save cl record
 c
-      if (kbuf(3) .eq. 2000) then
-          inc    = jindex (VAMAJ,kbuf(4),NNMAJ)
-          if (inc .ne. 0) ICOBUF(ipt+2) = VNMAJ(inc)
-c
-          if (kbuf(4) .lt. 1043 .or. kbuf(4) .gt. 1046) then
-              ipt    = 1
-              if (kbuf(4) .eq. 1015) ipt = 2
-              do 100 i=ipt,kmxcl,1
-                  rbuf   = gbuf(i)
-                  if (ibuf(1) .eq. 0) then
-                      inum   = ibuf(4)
-                      inc    = jindex (VAMIN,inum,NNMIN)
-                      if (inc .ne. 0) then
-                          ibuf(1) = 0
-                          ibuf(2) = 0
-                          ibuf(3) = 0
-                          ibuf(4) = VNMIN(inc)
-                          gbuf(i) = rbuf
-                      endif
-                  endif
-  100         continue
-          endif
-c
-          do 200 i=1,kmxcl,1
-              kpt    = kpt    + 1
-              if (kpt .ge. 36) then
-                  call wrncl (LUNSC3,krec,JCOBUF,cmsg,kerr)
-                  if (kerr .ne. 0) go to 8000
-                  krec   = krec   + 1
-                  kpt    = 1
-              endif
-              RCOBUF(kpt) = gbuf(i)
-  200     continue
-c
-c...Circular record
-c
-      else if (kbuf(3) .eq. 3000) then
-          ICOBUF(ipt) = ICOBUF(ipt) + 5
-          do 400 i=1,5,1
-c
-              kpt    = kpt    + 1
-              if (kpt .ge. 36) then
-                  call wrncl (LUNSC3,krec,JCOBUF,cmsg,kerr)
-                  if (kerr .ne. 0) go to 8000
-                  krec   = krec   + 1
-                  kpt    = 1
-              endif
-              RCOBUF(kpt) = rcirc(i)
-  400     continue
-c
-          do 500 i=1,7,1
-c
-              kpt    = kpt    + 1
-              if (kpt .ge. 36) then
-                  call wrncl (LUNSC3,krec,JCOBUF,cmsg,kerr)
-                  if (kerr .ne. 0) go to 8000
-                  krec   = krec   + 1
-                  kpt    = 1
-              endif
-c
-              RCOBUF(kpt) = gbuf(i)
-  500     continue
-c
-c...Motion record
-c
-c      else if (kbuf(3) .eq. 5000) then
-c          ICOBUF(ipt) = ICOBUF(ipt) + 2
-c          do 700 i=1,2,1
-c
-c              kpt    = kpt    + 1
-c              if (kpt .ge. 36) then
-c                  call wrncl (LUNSC3,krec,JCOBUF,cmsg,kerr)
-c                  if (kerr .ne. 0) go to 8000
-c                  krec   = krec   + 1
-c                  kpt    = 1
-c              endif
-c              RCOBUF(kpt) = 0.
-c  700     continue
-c
-c          do 800 i=1,kmxcl,1
-c
-c              kpt    = kpt    + 1
-c              if (kpt .ge. 36) then
-c                  call wrncl (LUNSC3,krec,JCOBUF,cmsg,kerr)
-c                  if (kerr .ne. 0) go to 8000
-c                  krec   = krec   + 1
-c                  kpt    = 0
-c              endif
-c
-c              RCOBUF(kpt) = gbuf(i)
-c  800     continue
-c
-c...Multax record
-c
-      else if (kbuf(3) .eq. 9000) then
-          ICOBUF(ipt+2) = 1 - ICOBUF(ipt+2)
-c
-c...Unsupported record type
-c...Store cldata as is
-c
-      else
-          do 1000 i=1,kmxcl,1
-c
-              kpt    = kpt    + 1
-              if (kpt .ge. 36) then
-                  call wrncl (LUNSC3,krec,JCOBUF,cmsg,kerr)
-                  if (kerr .ne. 0) go to 8000
-                  krec   = krec   + 1
-                  kpt    = 1
-              endif
-c
-              RCOBUF(kpt) = gbuf(i)
- 1000     continue
-      endif
+      call clstor (iclf,iclpt,iclw,rclw)
+      if (iclw(3) .ne. 14000) go to 100
 c
 c...End of routine
 c
- 8000 return
-      end
-c
-c***********************************************************************
-c
-c   SUBROUTINE:  catlod (cfnam,cmsg,kerr)
-c
-c   FUNCTION:  This routine reads an CATIA clfile record and converts it
-c              to a neutral format stored in the binary scratch file.
-c
-c   INPUT:  cfnsm   C*n  D1  Input Catia clfile name.
-c
-c   OUTPUT: cmsg    C*n  D1  Text of error message.
-c
-c           kerr    I*4  D1  Returns 1 when an error occurred.
-c
-c***********************************************************************
-c
-      subroutine catlod (cfnam,cmsg,kerr)
-c
-      include 'menu.inc'
-      include 'clnrd.inc'
-      include 'post.inc'
-c
-      integer*4 kerr
-c
-      character*(*) cfnam,cmsg
-c
-      equivalence (ISN   ,KPOSMP(0001))
-      integer*4 ISN
-
-      character*8 cdum
-      character*20 att(4)
-c
-      integer*2 inum(4),ibuf(1024),inbuf(1028),mxc
-      integer*4 i,j,n,m,ipt,jindex,klen,lcon,last2,inc,nwds,
-     -          nvl,irecl,jbuf(512),jnum(2),is1,is2,is4,irec,
-     -          ipt2,icr,icpt,imlt,jbfo(512),jtmp(512),ifini
-c
-      real*8 rbuf(256),rbfo(256),rnum,dumm,gts(6)
-c
-      equivalence (rbuf,jbuf,ibuf), (inbuf(1),mxc,jbfo)
-      equivalence (inbuf(5),rbfo)
-      equivalence (dumm,cdum), (rnum,inum,jnum)
-c
-      data cdum /' '/
-C VAX-SUN-SGI-IBM-HPX-START
-C      data is1 / 1/, is2 / 2/, is4 / 4/
-C VAX-SUN-SGI-IBM-HPX-END
-C WNT-DOS-DEC-START
-      data is1 / 4/, is2 / 2/, is4 / 1/
-C WNT-DOS-DEC-END
-c
-c...Initialze routine
-c
-      kerr   = 0
-      irec   = 0
-      ipt    = 0
-      ifini  = 0
-      LSTPTC = 0
-      icpt   = 0
-      icr    = 0
-      gts(4) = 0.
-      gts(5) = 0.
-      gts(6) = 1.
-      imlt   = 0
-c
-c...Open Catia clfile
-c
-      att(1) = 'direct'
-      att(2) = 'none'
-      att(3) = 'unformatted'
-      att(4) = 'old'
-      irecl  = 3228
-      call opnfil (LUNSC2,cfnam,att,irecl,cmsg,kerr)
-      if (kerr .ne. 0) go to 8000
-      call getfnm (LUNSC2,LCMPFI,NCCMPF,MAX_PATH)
-c
-c...Open scratch clfile
-c
-      att(1) = 'direct'
-      att(2) = 'none'
-      att(3) = 'unformatted'
-      att(4) = 'scratch'
-      irecl  = 512
-      call opnfil (LUNSC1,'clfile.tmp',att,irecl,cmsg,kerr)
-      if (kerr .ne. 0) go to 8000
-c
-c...Read cl record if necessary
-c
-  100 ipt    = ipt    + 1
-      if (ipt*2 .ge. LSTPTC) then
-          if (ipt*2 .ge. LSTPTC) then
-              irec   = irec   + 1
-              ipt    = 2
-          endif
-          call rdcatc (irec,n,m,cmsg,kerr)
-          if (kerr .ne. 0) go to 8000
-          if (irec .eq. 1 .and. ipt .eq. 2) ipt = n / 2 + 2
-      endif
-c
-c...Store integer values
-c
-      call gethdr (irec,ipt,inbuf,klen,lcon,cmsg,kerr)
-      if (kerr .ne. 0) go to 8000
-      ipt2   = ipt*2 - 1
-      last2  = (ipt + klen - 1) * 2
-      i      = 0
-c
-c...Post word
-c
-      if (inbuf(3) .eq. 2000) then
-          nvl    = inbuf(4)
-          inc    = jindex (CNMAJ,nvl,CNNMAJ)
-          if (inc .ne. 0) inbuf(4) = CAMAJ(inc)
-c
-          if (ipt2 .gt. last2 .and. lcon .eq. 0) go to 300
-          call cl4sto (ipt,last2,irec,lcon,klen,jbuf,j,cmsg,kerr)
-          if (kerr .ne. 0) go to 8000
-          if (inbuf(4) .lt. 1043 .or. inbuf(4) .gt. 1046) then
-c
-c...Store real/integer values
-c...replacing minor words when necessary
-c
-              i     = j / 2
-              m     = 1
-              if (inbuf(4) .eq. 1015) then
-                  rbfo(1) = rbuf(1)
-                  m = 2
-              end if
-              do 210 n=m,i,1
-                  rnum   = rbuf(n)
-                  if (jnum(1) .eq. 0) then
-                      inc    = jindex (CNMIN,jnum(2),CNNMIN)
-                      if (inc .ne. 0) then
-                          jnum(2) = 0
-                          inum(4) = CAMIN(inc)
-                      endif
-                  endif
-                  rbfo(n) = rnum
-  210         continue
-c
-c...Store text (PPRINT, PARTNO, INSERT & LETTER)
-c
-          else
-              n     = 1
-              m     = 0
-  250         if (n .gt. j*2) go to 260
-c
-c......Get first 3 times I*2
-c
-              if (mod(n,4) .ne. 0) then
-                  m    = m + 1
-                  inum(m) = ibuf(n)
-                  n    = n + 1
-                  if (m .eq. 4) then
-                      i    = i + 1
-                      rbfo(i) = rnum
-                      rnum = dumm
-                      m    = 0
-                  end if
-              else
-c
-c......Skip the forth I*2 in word
-c
-                  n    = n + 1
-              end if
-              go to 250
-  260         if (m .ne. 0) then
-                  i = i + 1
-                  rbfo(i) = rnum
-              end if
-              do 290 n=i+1,9
-                  rbfo(n) = dumm
-  290         continue
-              i   = 9
-          end if
-  300     nwds   = i
-          go to 2000
-c
-c...Circular record
-c
-      else if (inbuf(3) .eq. 3000) then
-          call cl4sto (ipt,last2,irec,lcon,klen,jbuf,j,cmsg,kerr)
-          if (kerr .ne. 0) go to 8000
-          i     = j / 2
-          do 550 n=6,i
-              rbfo(n-5) = rbuf(n)
-  550     continue
-          nwds  = 7
-c
-c...Motion record
-c
-      else if (inbuf(3) .eq. 5000) then
-          call cl4sto (ipt,last2,irec,lcon,klen,jbuf,j,cmsg,kerr)
-          if (kerr .ne. 0) go to 8000
-          i     = j / 2
-          do 850 n=3,i
-              rbfo(n-2) = rbuf(n)
-  850     continue
-          nwds  = i - 2
-          if (inbuf(4) .eq. 4) then
-              call godlta (nwds,rbfo,imlt,gts)
-              inbuf(4) = 5
-          end if
-          j     = imlt * 3 + 3
-          do 855 i=1,j,1
-              gts(i) = rbfo(nwds-j+i)
-  855     continue
-c
-c...Multax record
-c
-      else if (inbuf(3) .eq. 9000 .and. inbuf(4) .eq. 2) then
-          call cl4sto (ipt,last2,irec,lcon,klen,jbuf,j,cmsg,kerr)
-          if (kerr .ne. 0) go to 8000
-          i     = j / 2
-          do 950 n=1,i
-              rbfo(n) = rbuf(n)
-  950     continue
-          nwds  = 0
-          inbuf(4) = ibuf(4)
-          imlt  = ibuf(4)
-c
-c...FINI record
-c
-      else if (inbuf(3) .eq. 14000) then
-          ifini  = 1
-          nwds   = 0
-c
-c...Unsupported record type
-c...Store cldata as is
-c
+ 8000 if (jfl .eq. 1) then
+          close (unit=cllun,status='delete')
       else
-          call cl4sto (ipt,last2,irec,lcon,klen,jbuf,j,cmsg,kerr)
-          if (kerr .ne. 0) go to 8000
-          nwds   = j / 2
-          do 1050 n=1,nwds
-              rbfo(n) = rbuf(n)
- 1050     continue
+          close (unit=cllun)
       endif
- 2000 ISN    = inbuf(1)
-      inbuf(2) = ISN
-      mxc    = nwds
-      do 2100 i=1,(nwds+1)*2,1
-          if (icpt .eq. 128) then
-              icr = icr + 1
-              call wrprm (LUNSC1,icr,jtmp,cmsg,kerr)
-              if (kerr .ne. 0) go to 8000
-              icpt  = 0
-          end if
-          icpt  = icpt + 1
-          jtmp(icpt) = jbfo(i)
- 2100 continue
-c
-      ipt    = ipt - 1
-      if (ifini .eq. 0) go to 100
-      if (icpt .ne. 0) then
-          icr = icr + 1
-          call wrprm (LUNSC1,icr,jtmp,cmsg,kerr)
-      end if
-c
-c...End of routine
-c
- 8000 call clsfil (LUNSC2)
       return
+c
+c...Error loading clfile
+c
+ 9000 ierr   = 1
+      go to 8000
       end
 c
 c***********************************************************************
 c
-c   SUBROUTINE:  rdcatc (krec,klen,kcon,cmsg,kerr)
+c   SUBROUTINE:  clrev (kclf,kst,ken)
 c
-c   FUNCTION:  This routine reads a CATIA clfile phisical record with
-c              its attributes.
+c   FUNCTION:  This routine reverses the order of user specified sections
+c              of the clfile using the REVERS/ON and REVERS/OFF commands.
 c
-c   INPUT:  krec    I*4  D1  Next clfile physical record to read.
+c   INPUT:  kclf    I*2  D1  Specifies which internal clfile to load.
+c                            Should be set to 0 = Primary.
 c
-c   OUTPUT: klen    I*4  D1  Length of the first logical record in I*2.
+c           kst     I*4  D1  Beginning record of clfile to process.
 c
-c           kcon    I*1  D1  Continuation mark: 0 - logical record is
-c                            complete, 2 - this logical record is
-c                            continued from the previous phisical record.
+c           ken     I*4  D1  Ending record of clfile to process.
 c
-c           cmsg    C*n  D1  Text of error message.
-c
-c           kerr    I*4  D1  Returns 1 when an error occurred.
+c   OUTPUT: kclf    I*2  D1  Returns 1 = Secondary clfile, when there
+c                            were reversed clfile records.
 c
 c***********************************************************************
 c
-      subroutine rdcatc (krec,klen,kcon,cmsg,kerr)
+      subroutine clrev (kclf,kst,ken)
 c
-      integer*4 klen,krec,kcon,kerr
-      character*(*) cmsg
+      include 'com8a.com'
 c
-      include 'menu.inc'
-      include 'clnrd.inc'
+      integer*2 kclf
+      integer*4 kst(2),ken(2)
 c
-c...Read in phisical cl record
+      integer*2 NSTK
 c
-      call rdcat (LUNSC2,krec,JCLBUF,cmsg,kerr)
-      if (kerr .ne. 0) go to 8000
-      LSTPTC = ICLBUF(1) / 2
-      klen   = ICLBUF(3) / 2
-      kcon   = ICLBUF(4) / 256
+      parameter (NSTK=4)
 c
- 8000 return
-      end
+      integer*4 inc,i,j,icir,nent(10),i1,i2,ifed,ismod(10),icut,
+     1          irec(2),modrec(2,10),lstrec(2),irvst(2),iclw(6),
+     2          irven(2),icpt(2),endrec(2,10),strec(2,10),iorec(2),
+     3          tmpclw(6),irap
+      integer*2 idata(480),npts,icont,tdata(480),
+     1          ioclf,irev,idid,is1,is4,iend,nc,iflg,iflg1,
+     2          iwrd(10)
 c
-c***********************************************************************
+    
 c
-c   SUBROUTINE:  gethdr (krec,kpnt,ibuf,klen,kcon,cmsg,kerr)
+      real*8 rdata(420),tmpdat(420)
 c
-c   FUNCTION:  This routine parses a CATIA clfile 1000 type record and
-c              the header of the following logical record.
+      character*20 lclw
 c
-c   INPUT:  krec    I*4  D1  Current clfile physical record number.
+      equivalence (rdata,idata), (tmpdat,tdata)
+      equivalence (rdata(2),lclw)
 c
-c           kpnt    I*4  D1  Starting pointer of the 1000 logical
-c                            record in I*4 (from the start of phisical rec)
+      data iwrd /0, 1009, 1007, 5, 0,0,0,0,0,0/
 c
-c   OUTPUT: ibuf    I*2  D4  Array to receive integer clfile data:  1 =
-c                            ISN, 2 = CL record #, 3 = Record type, 4 =
-c                            Record sub-type.
-c
-c           kpnt    I*4  D1  Starting pointer of the data in the logical
-c                            record in I*4 (from the start of phisical rec)
-c
-c
-c           klen    I*4  D1  Number of I*4 data words in logical record to
-c                            process after the record header.
-c
-c           kcon    I*1  D1  Continuation mark: 0 - logical record is
-c                            complete, 1 - this logical record is not
-c                            complete and will be continued in the next
-c                            phisical record, 2 - this logical record is
-c                            continued from the previous phisical record.
-c
-c           cmsg    C*n  D1  Text of error message.
-c
-c           kerr    I*4  D1  Returns 1 when an error occurred.
-c
-c***********************************************************************
-c
-      subroutine gethdr (krec,kpnt,ibuf,klen,kcon,cmsg,kerr)
-c
-      integer*4 krec,klen,kpnt,kcon,kerr
-      integer*2 ibuf(4)
-      character*(*) cmsg
-c
-      include 'clnrd.inc'
-      include 'post.inc'
-c
-      equivalence (ISN   ,KPOSMP(0001))
-      integer*4 ISN
-c
-      integer*2 i1000(40)
-      integer*4 i,ipt,ipt1,nwds2,nc4,ilen,lcon,nc40,j1000(20)
-c
-      equivalence (i1000,j1000)
+!=IRS,HPX,SUN,IBM,VMS
+!      data is1 /1/, is4 /4/
+!=WNT,W2K
+      data is1 /4/, is4 /1/
+!=ALL
 c
 c...Initialize routine
 c
-      nc4    = kpnt
-      lcon   = 0
-      i      = 0
+      i1     = 1
+      i2     = 2
+      call ncl_setptr(kst,icpt)
+      idid   = 0
+      irev   = 0
+      call ncl_zroptr(irec)
+      npts   = 3
 c
-c...Get I*2 pointer and logical record length
+c...Initialize stacks
 c
-  100 ipt1   = nc4*2 - 1
-      nc40   = nc4
-      ipt    = ipt1
-      if (ipt .lt. LSTPTC) then
-          nwds2  = ICLBUF(ipt) / 2
-          lcon   = ICLBUF(ipt+1) / 256
-      end if
-      ipt    = ipt + 2
-      nc4    = nc4 + 1
+      icir   = 1
+      ifed   = 2
+      icut   = 3
+      irap   = 4
+      do 20 i=1,NSTK,1
+          nent(i) = 0
+          ismod(i) = 0
+          call ncl_zroptr(strec(1,i))
+          call ncl_zroptr(endrec(1,i))
+          call ncl_zroptr(modrec(1,i))
+   20 continue
+      call inirvl
 c
-c...See if next record is required
+c...Initialize secondary clfile
 c
-  200 if (ipt .gt. LSTPTC) then
-          krec  = krec + 1
-          call rdcatc (krec,ilen,kcon,cmsg,kerr)
-          if (kerr .ne. 0) go to 8000
-          if (lcon .eq. 1 .and. kcon .ne. 2 .or.
-     -        lcon .ne. 1 .and. kcon .eq. 2) go to 7800
-          nwds2  = ilen
+      ioclf  = 1
+      call clopen (ioclf,iorec)
 c
-c...Skip "N/CDATA..." record
+c...Reverse clfile
 c
-          if (krec .eq. 1) then
-              nc4   = ilen / 2 + 2
-          else
-              nc4   = 2
-          end if
-          go to 100
+  100 if (irev .ne. 2) then
+          call ncl_setptr(icpt,lstrec)
+          call clread (kclf,icpt,iclw,rdata(2),jerr)
+          if (jerr .eq. 1) go to 8000
       else
+          call ncl_setptr (irec,lstrec)
+          call clprev (kclf,irec,iclw,rdata(2),jerr)
+          if (jerr .eq. 1) go to 8000
+      endif
 c
-c...Store integers for 1000 record
-c...and next logical record
+c...SEQUNC record
+c...Save pointer to it
 c
-          i    = i + 1
-          j1000(i) = JCLBUF(nc4)
-          ipt    = ipt + 2
-          nc4    = nc4 + 1
-          if (i .eq. 3) then
-              if (j1000(2) .eq. 5000) go to 500
-          else if (i .eq. 7) then
+      if (iclw(3) .eq. 7200 .and. iclw(4) .eq. 1) then
+          do 200 i=1,20,1
+              if (lclw(i:i) .eq. char(0) .or. lclw(i:i) .eq. ' ')
+     1            go to 220
+  200     continue
+          i = 21
+  220     nc = i - 1
+          call seqsto (ioclf,lclw,nc)
+      endif
+c
+c...Multax
+c
+      if (iclw(3) .eq. 9000) then
+        if (iclw(4).eq.0) then
+          npts = 6
+        else
+          npts = 3
+        endif
+      endif
+c
+c...REVERS/ON
+c
+      if (ifl(351) .eq. 1 .and. iclw(3) .eq. 2000 .and.
+     1    iclw(4) .eq. 1008) then
+          if (iclw(5) .eq. 1 .and. idata(is4+4) .eq. 71) then
+              if (irev .ne. 0) go to 100
+              irev   = 1
+              call ncl_setptr (icpt,irven)
+              do 240 i=1,NSTK,1
+                  ismod(i) = 0
+  240         continue
+              call ncl_tstptr(modrec(1,ifed),iflg)
+              if (iflg .ne. 0)
+     1            call pshrvl (modrec(1,ifed),ifed,nent(ifed),i1)
+              call ncl_tstptr(modrec(1,icut),iflg)
+              if (iflg .ne. 0)
+     1            call pshrvl (modrec(1,icut),icut,nent(icut),i1)
               go to 100
-          else if (i .eq. 10) then
-              go to 600
-          end if
-      end if
-      go to 200
-c
-c...type 5000, subt = 6 does not have
-c...1000 type description record.
-c
-  500 ibuf(1) = ISN
-      ibuf(2) = j1000(1)
-      ibuf(3) = j1000(2)
-      ibuf(4) = j1000(3)
-      go to 900
-c
-c...Get logical record description
-c
-  600 ibuf(1) = j1000(3)
-      ibuf(2) = j1000(8)
-      ibuf(3) = j1000(9)
-      ibuf(4) = j1000(10)
-c
-c...Save pointer and record length
-c
-  900 if (nc4 .gt. kpnt) kcon = lcon
-      kpnt   = nc4
-      klen   = nc40 + nwds2 / 2 - nc4
-      return
-c
-c...Error
-c
- 7800 cmsg   = '*FATAL* Clfile record has unknown structure.'
- 8000 kerr    = 1
-      return
-      end
-c
-c***********************************************************************
-c
-c   SUBROUTINE:  cl4sto (kpt,kls2,krec,kcon,klen,jbuf,knum,cmsg,kerr)
-c
-c   FUNCTION:  This routine extracts a CATIA clfile logical record data
-c              from the phisical record.
-c
-c   INPUT:  kpt     I*4  D1  Current pointer of data (I*4 words) in the
-c                            phisical record.
-c
-c           kls2    I*4  D1  the last I*2 word pointer in logical record.
-c
-c           krec    I*4  D1  Current clfile physical record number.
-c
-c           kcon    I*4  D1  Continuation mark: 0 - logical record is
-c                            complete, 1 - logical record is not complet
-c                            and will be continued.
-c
-c           klen    I*4  D1  Number of I*4 data words in logical record to
-c                            process after the record header.
-c
-c   OUTPUT: kls2    I*4  D1  The last I*2 word pointer in logical record
-c                            when it is a continuation of record.
-c
-c           krec    I*4  D1  Current clfile physical record number.
-c
-c           kcon    I*4  D1  Continuation mark: 0 - logical record is
-c                            complete, 2 - this logical record is
-c                            continued from the previous phisical record.
-c
-c           klen    I*4  D1  Number of I*4 data words in logical record to
-c                            process when it is a continuation of record.
-c
-c           jbuf    I*4  Dn  Data array (I*4 words).
-c
-c           knum    I*4  D1  Number of words in jbuf.
-c
-c           cmsg    C*n  D1  Text of error message.
-c
-c           kerr    I*4  D1  Returns 1 when an error occurred.
-c
-c***********************************************************************
-c
-      subroutine cl4sto (kpt,kls2,krec,kcon,klen,jbuf,knum,cmsg,kerr)
-c
-      integer*4 kpt,knum,krec,kcon,klen,kls2,kerr,jbuf(*)
-      character*(*) cmsg
-c
-      include 'clnrd.inc'
-      include 'post.inc'
-c
-      integer*4 j,lcon,ipt,ilen
-c
-      j      = 0
-c
-c...Get I*2 pointer of data
-c
-      ipt    = kpt*2 - 1
-c
-c...Store I*4 words
-c
-  800 if (ipt .lt. kls2) then
-          j     = j + 1
-          jbuf(j) = JCLBUF(kpt)
-          ipt   = ipt + 2
-          kpt   = kpt + 1
-      else
-c
-c...Read next record if end reached
-c...and continuation mark is set
-c
-          if (kpt*2 .ge. LSTPTC .and. kcon .eq. 1) then
-              krec   = krec   + 1
-              call rdcatc (krec,ilen,lcon,cmsg,kerr)
-              if (kerr .ne. 0) go to 8000
-              kpt    = 3
-              ipt    = 5
-              kls2   = ilen + 2
-              klen   = ilen * 2
-              kcon   = lcon
-          else
-              go to 8000
           endif
-      end if
-      go to 800
 c
- 8000 knum   = j
-      return
-      end
+c...REVERS/OFF
 c
-c***********************************************************************
+          if (iclw(5) .eq. 1 .and. idata(is4+4) .eq. 72) then
+              if (irev .ne. 1) go to 100
+              irev   = 2
+              call ncl_setptr (icpt,irvst)
+              call ncl_setptr (irvst,irec)
+              idid   = 1
+              icont  = 0
+              call clprev (kclf,irec,iclw,rdata(2),jerr)
+              if (jerr .eq. 1) go to 8000
 c
-c   SUBROUTINE:  godlta (kwds,gbuf)
+c......Get the special record stack pointers
 c
-c   FUNCTION:  This routine replaces GODLTA record by GOTO record.
+              do 250 i=1,NSTK,1
+                  ismod(i) = 0
+                  call poprvl (i,nent(i),strec(1,i),endrec(1,i))
+                  if (i .eq. ifed .or. i .eq. icut) then
+                      call ncl_tstptr(strec(1,i),iflg)
+                      if (iflg .ne. 0) then
+                          call clread (kclf,strec(1,i),tmpclw,tmpdat(2),
+     1                        jerr)
+                          call clstor (ioclf,iorec,tmpclw,tmpdat(2))
+                          call poprvl (i,nent(i),strec(1,i),endrec(1,i))
+                      endif
+                  endif
+  250         continue
+              go to 100
+          endif
+      endif
 c
-c   INPUT:  kwds    I*4  D1  Number of words in GODLTA record.
+c...Reverse pass in effect
 c
-c           gbuf    R*8  Dn  GODLTA record contens.
+      if (irev .eq. 2) then
 c
-c   OUTPUT: kwds    I*4  D1  Number of words in GOTO record.
+c......Check for FEDRAT, CUTCOM, and RAPID output
 c
-c           gbuf    R*8  Dn  GOTO record.
+          do 260 i=2,NSTK,1
+              call ncl_eqlptr(irec,endrec(1,i),iflg)
+              if (iflg .eq. 1) then
+                  call ncl_setptr(irec,modrec(1,i))
+                  ismod(i) = 1
+                  if (i .ne. irap) go to 2000
+              else if (iclw(3) .eq. 2000 .and. iclw(4) .eq. iwrd(i))
+     1                then
 c
-c***********************************************************************
+c......No previous CUTCOM record
+c......Assume CUTCOM/OFF
 c
-      subroutine godlta (kwds,gbuf,kmul,gpts)
+                  if (i .eq. icut) then
+                      if (idata(is4+4) .eq. 8 .or. idata(is4+4) .eq. 24)
+     1                        then
+                          idata(is4+4) = 72
+                          iclw(5) = 1
+                          call clstor (ioclf,iorec,iclw,rdata(2))
+                      endif
+                  endif
+                  go to 2000
+              endif
+  260     continue
 c
-      integer*4 kwds,kmul
-      real*8 gbuf(*),gpts(6)
+c......Circular record
 c
-      include 'clnrd.inc'
+          if (iclw(3) .eq. 3000) then
+              call ncl_eqlptr(lstrec,strec(1,icir),iflg)
+              if (iflg .eq. 1) then
+                  ismod(icir) = 1
+                  call poprvl (icir,nent(icir),strec(1,icir),
+     x                                        endrec(1,icir))
+              endif
+              go to 2000
+          endif
 c
-      integer*4 nwds,i
-
-      real*8 delt(6),ddl
+c......Motion record
 c
-c...get GODLTA data
+          if (iclw(3) .eq. 5000 .or. iclw(3) .eq. 5200) then
+              np    = npts
+              if (iclw(3) .ge. 5200) np = 21
 c
-      nwds   = kwds
-      do 110 i=1,nwds
-          delt(i) = gbuf(i)
-  110 continue
-      if (nwds .lt. 4) then
-          delt(4) = gpts(4)
-          delt(5) = gpts(5)
-          delt(6) = gpts(6)
-      end if
+c.........Check for special records on stack
+c............Circular
+c............Feedrate (motion prior to)
 c
-c...Create GOTO using last point data
-c......GODLTA/z along tool vector
+              call ncl_eqlptr(irec,endrec(1,icir),iflg)
+              if (iflg .eq. 1 .or. ismod(ifed) .eq. 1 .or.
+     1            ismod(icut) .eq. 1 .or. ismod(irap) .eq. 1) then
 c
-      if (nwds .eq. 1) then
-          ddl = delt(1) / dsqrt(gpts(4)**2+gpts(5)**2+gpts(6)**2)
-          gbuf(1) = gpts(1) + gpts(4) * ddl
-          gbuf(2) = gpts(2) + gpts(5) * ddl
-          gbuf(3) = gpts(3) + gpts(6) * ddl
+c...............Use last point on circle as starting point
+c
+                  if (iclw(5) .gt. np) then
+c
+c...............Output appropriate mode record
+c
+                      do 330 i=2,NSTK,1
+                          if (ismod(i) .eq. 1) then
+                              call clread (kclf,strec(1,i),tmpclw,
+     1                                     tmpdat(2),jerr)
+c
+c.................Reverse CUTCOM direction
+c
+cc                              if (i .eq. icut) then
+cc                                  if (tdata(is4+4) .eq. 8) then
+cc                                      tdata(is4+4) = 24
+cc                                  else if(tdata(is4+4) .eq. 24) then
+cc                                      tdata(is4+4) = 8
+cc                                  endif
+cc                              endif
+c
+                              call clstor (ioclf,iorec,tmpclw,tmpdat(2))
+                              call poprvl (i,nent(i),strec(1,i),
+     1                                     endrec(1,i))
+                              ismod(i) = 0
+                          endif
+  330                 continue
+c
+c..............Output motion record
+c
+                      do 340 i=1,6,1
+                          tmpclw(i) = iclw(i)
+  340                 continue
+                      tmpclw(4) = 5
+                      tmpclw(5) = np
+                      do 310 i=1,np,1
+                          tmpdat(i+1) = rdata(iclw(5)-np+i+1)
+  310                 continue
+                      call clstor (ioclf,iorec,tmpclw,tmpdat(2))
+                      iclw(5) = iclw(5) - np
+c
+c...............Output circle record
+c
+                      call ncl_eqlptr(irec,endrec(1,icir),iflg)
+                      if (iflg .eq. 1) then
+                          call clread (kclf,strec(1,icir),tmpclw,
+     1                                 tmpdat(2),jerr)
+                          call clstor (ioclf,iorec,tmpclw,tmpdat(2))
+                          ismod(icir) = 0
+                      endif
+                  endif
+              endif
+c
+c.........Reverse motion
+c
+              if (iclw(5) .gt. np) then
+                  iend   = iclw(5) - np
+                  inc    = iend   + 1
+                  do 500 i=1,iend/2,np
+                      do 400 j=1,np,1
+                          rnum   = rdata(i+j)
+                          rdata(i+j) = rdata(inc+j)
+                          rdata(inc+j) = rnum
+  400                 continue
+                      inc    = inc    - np
+  500             continue
+              endif
+c
+c.........Handle continuation records
+c
+              if (icont .eq. 0 .and. iclw(4) .eq. 6) then
+                  iclw(4) = 5
+                  icont = 1
+              else if (icont .eq. 1 .and. iclw(4) .ne. 6) then
+                  iclw(4) = 6
+                  icont = 0
+              endif
+c
+c.........Post-Circular
+c
+              if (ismod(icir) .eq. 1) then
+c
+c............Use last point as starting point of circle
+c
+                  if (iclw(5) .gt. np) then
+                      do 600 i=1,6,1
+                          tmpclw(i) = iclw(i)
+  600                 continue
+                      tmpclw(4) = 6
+                      tmpclw(5) = np
+                      do 610 i=1,np,1
+                          tmpdat(i+1) = rdata(iclw(5)-np+i+1)
+  610                 continue
+                      call clstor (ioclf,iorec,tmpclw,tmpdat(2))
+                      iclw(5) = iclw(5) - np
+c
+c............Single point record
+c
+                  else
+                      iclw(4) = 6
+                  endif
+                  ismod(icir) = 0
+              endif
+c
+c.........Output buffered mode records
+c
+              do 630 i=2,NSTK,1
+                  if (ismod(i) .eq. 1) then
+                      call clread (kclf,strec(1,i),tmpclw,tmpdat(2),
+     1                             jerr)
+c
+c.................Reverse CUTCOM direction
+c
+cc                      if (i .eq. icut) then
+cc                          if (tdata(is4+4) .eq. 8) then
+cc                              tdata(is4+4) = 24
+cc                          else if(tdata(is4+4) .eq. 24) then
+cc                              tdata(is4+4) = 8
+cc                          endif
+cc                      endif
+c
+                      call clstor (ioclf,iorec,tmpclw,tmpdat(2))
+                      call poprvl (i,nent(i),strec(1,i),endrec(1,i))
+                      ismod(i) = 0
+                  endif
+  630         continue
+c
+c.........Output motion record
+c
+              call clstor (ioclf,iorec,iclw,rdata(2))
+c
+c......Other than motion
+c
+          else
+              ismod(icir) = 0
+              call clstor (ioclf,iorec,iclw,rdata(2))
+          endif
+c
+c...Forward pass through reversed records
+c...Mark the following special records
+c
+      else if (irev .eq. 1) then
+c
+c......Post command
+c
+          if (iclw(3) .eq. 2000) then
+              if (ismod(icir) .eq. 1)
+     1            call poprvl (icir,nent(icir),strec(1,icir),
+     2                                        endrec(1,icir))
+              ismod(icir) = 0
+c
+c.........Recognized mode setting command
+c
+              do 700 i=2,NSTK,1
+                  if (iclw(4) .eq. iwrd(i)) then
+                      if (i .ne. irap) then
+                          if (ismod(i) .eq. 1)
+     1                        call poprvl (i,nent(i),strec(1,i),
+     2                            endrec(1,i))
+                          if (nent(i) .ne. 0)
+     1                        call pshrvl (lstrec,i,nent(i),i2)
+                      endif
+                      call pshrvl (lstrec,i,nent(i),i1)
+                      ismod(i) = 1
+                  endif
+  700         continue
+c
+c......Circular
+c
+          else if (iclw(3) .eq. 3000) then
+              if (ismod(icir) .eq. 1)
+     1            call poprvl (icir,nent(icir),strec(1,icir),
+     2                                        endrec(1,icir))
+              call pshrvl (lstrec,icir,nent(icir),i1)
+              ismod(icir)  = 1
+c
+c......Motion record
+c
+          else if (iclw(3) .eq. 5000 .or. iclw(3) .eq. 5200) then
+              if (ismod(icir) .eq. 1) then
+                  call pshrvl (lstrec,icir,nent(icir),i2)
+                  ismod(icir)  = 2
+              else if (ismod(icir) .eq. 2) then
+                  if (iclw(4) .eq. 6) then
+                      call pshrvl (lstrec,icir,nent(icir),i2)
+                  else
+                      ismod(icir) = 0
+                  endif
+              endif
+c
+c...Set rapid mode
+c
+              if (ismod(irap) .eq. 1) then
+                  call pshrvl (lstrec,irap,nent(irap),i2)
+              endif
+c
+              do 720 i=2,NSTK,1
+                  ismod(i) = 0
+  720         continue
+c
+c......Other record type
+c
+          else
+              if (ismod(icir) .eq. 1)
+     1            call poprvl (icir,nent(icir),strec(1,icir),
+     2                                        endrec(1,icir))
+              ismod(icir) = 0
+          endif
+c
+c...REVERS not in effect
+c...Write out clfile record
+c
       else
-c
-c......GODLTA/dx,dy,dz(,i,j,k)
-c
-          do 210 i=1,3
-              gbuf(i) = gpts(i) + delt(i)
-  210     continue
-      endif
-      kwds   = 3
-      if (kmul .eq. 1) then
-          kwds   = 6
-          do 220 i=4,kwds
-              gbuf(i) = delt(i)
-  220     continue
+          call clstor (ioclf,iorec,iclw,rdata(2))
+          do 800 i=2,NSTK,1
+              if (iclw(3) .eq. 2000 .and. iclw(4) .eq. iwrd(i) .and.
+     1            i .ne. irap) call ncl_setptr(lstrec,modrec(1,i))
+  800     continue
       endif
 c
-      return
-      end
-c***********************************************************************
+c...Check for end of range
 c
-c   SUBROUTINE:  clpt52 (kwds,gtpt,gtpf,gtp1,gtp2,gtp3,gtp4)
+ 2000 if (irev .eq. 2) then
+          call ncl_tstptr(irec,iflg)
+          call ncl_eqlptr(irec,irven,iflg1)
+          if (iflg .ne. 0 .and. iflg1 .ne. 1) go to 100
+          call inirvl
+          irev   = 0
+      endif
+      call ncl_tstptr(icpt,iflg)
+      call ncl_eqlptr(icpt,ken,iflg1)
+      if (iflg .ne. 0 .and. iflg1 .ne. 1) go to 100
 c
-c   FUNCTION:  This routine sets common arrays for expanded goto record
-c              (type 5200 and 5210).
+c...End of routine
 c
-c   INPUT:  kwds    I*4  D1  Number of words in RCLDAT for this record
-c
-c   OUTPUT: gtpt    R*8  D6  GOTO point and tool vector.
-c
-c           gtpf    R*8  D3  Forward vector at the point.
-c
-c           gtp1-4  R*8  D3  Additional data (for future use) at the
-c                            point.
-c
-c***********************************************************************
-c
-      subroutine clpt52 (kwds,gtpt,gtpf,gtp1,gtp2,gtp3,gtp4)
-c
-      include 'post.inc'
-      integer*4 kwds
-      real*8 gtpt(240),gtpf(60),gtp1(60),gtp2(60),gtp3(60),
-     -       gtp4(60)
-c
-      equivalence (MXCL  ,KPOSMP(0005))
-      equivalence (MULTAX,KPOSMP(0056))
-      equivalence (MXFLAG,KPOSMP(4002))
-      equivalence (MXTRAN,KPOSMP(4003)), (MOTEXP,KPOSMP(4211))
-c
-      integer*4 MXCL,MULTAX,MXFLAG,MXTRAN,MOTEXP
-c
-      equivalence (METCNV,POSMAP(0004))
-      equivalence (REFMAT,POSMAP(4001)), (TRAMAT,POSMAP(4013))
-      equivalence (CLPTPP,POSMAP(4605))
-c
-      real*8 METCNV,REFMAT(12),TRAMAT(12),CLPTPP(240)
-c
-      integer*4 inc,jnc,i,ix1,ix4
-c
-      MOTEXP = 1
-      inc    = 0
-      jnc    = 1
-      do 850 i=0,kwds-1,21
-          ix1  = inc + 1
-          ix4  = inc + 4
-c
-c...store GT points and tool vector data
-c
-          call vctmsc (RCLDAT(i+1),METCNV,gtpt(ix1))
-          call copyn (RCLDAT(i+4),gtpt(ix4),3)
-c
-c...store FWD vector and extra stuff in work arrays
-c
-          call copyn (RCLDAT(i+7),gtpf(jnc),3)
-          call copyn (RCLDAT(i+10),gtp1(jnc),3)
-          call copyn (RCLDAT(i+13),gtp2(jnc),3)
-          call copyn (RCLDAT(i+16),gtp3(jnc),3)
-          call copyn (RCLDAT(i+19),gtp4(jnc),3)
-c
-c...translate all data if any translation is active
-c
-          if (MXTRAN .eq. 1) then
-              call matpta (gtpf(jnc),gtpf(jnc),TRAMAT,3)
-              call matpta (gtp1(jnc),gtp1(jnc),TRAMAT,3)
-              call matpta (gtp2(jnc),gtp2(jnc),TRAMAT,3)
-              call matpta (gtp3(jnc),gtp3(jnc),TRAMAT,3)
-              call matpta (gtp4(jnc),gtp4(jnc),TRAMAT,3)
-          end if
-          if (MXFLAG .eq. 1) then
-              call matpta (gtpf(jnc),gtpf(jnc),REFMAT,3)
-              call matpta (gtp1(jnc),gtp1(jnc),REFMAT,3)
-              call matpta (gtp2(jnc),gtp2(jnc),REFMAT,3)
-              call matpta (gtp3(jnc),gtp3(jnc),REFMAT,3)
-              call matpta (gtp4(jnc),gtp4(jnc),REFMAT,3)
-          end if
-c
-          call copyn (gtpt(ix1),CLPTPP(ix1),6)
-          call preadj (gtpt(ix1),gtpt(ix1),gtpt(ix4),gtpt(ix4))
-          if (MULTAX .eq. 1) then
-              if (MXTRAN .eq. 1)
-     -            call matpta (gtpt(ix4),gtpt(ix4),TRAMAT,3)
-              if (MXFLAG .eq. 1)
-     -            call matpta (gtpt(ix4),gtpt(ix4),REFMAT,3)
-          end if
-          inc    = inc    + 6
-          jnc    = jnc    + 3
-  850 continue
-      MXCL   = inc    / 6
-c
+ 8000 if (idid .eq. 1 .and. irev .eq. 0) kclf = ioclf
       return
       end

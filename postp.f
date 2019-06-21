@@ -1,1246 +1,1218 @@
-c
-c***********************************************************************
-c
-c   FILE NAME:  postp
-c   CONTAINS:
-c               postp   ppword  pgword  machin
-c
-c     COPYRIGHT 1997 (c) Numerical Control Computer Sciences.
-c           All Rights Reserved
-c      MODULE NAME AND RELEASE LEVEL
-c        postp.f , 25.2
-c     DATE AND TIME OF LAST  MODIFICATION
-c        08/11/16 , 10:36:20
-c
-c***********************************************************************
-c
-c***********************************************************************
-c
-c   SUBROUTINE:  postp (cmsg,kerr)
-c
-c   FUNCTION:  This is the controlling routine for processing the cl-
-c              file.
-c
-c   INPUT:  none.
-c
-c   OUTPUT: cmsg    C*n  D1  Text of error message.
-c
-c           kerr    I*4  D1  Returns 1 when an error occurred.
-c
-c***********************************************************************
-c
-      subroutine postp (cmsg,kerr)
-c
-      include 'menu.inc'
-      include 'pregen.inc'
-      include 'post.inc'
-c
-      equivalence (ISN   ,KPOSMP(0001)), (ITYPE ,KPOSMP(0003))
-      equivalence (ISUBT ,KPOSMP(0004)), (MXCL  ,KPOSMP(0005))
-      equivalence (IPSTWD,KPOSMP(0006))
-      equivalence (MULTAX,KPOSMP(0056)), (IFIREC,KPOSMP(0057))
-      equivalence (IFIPT ,KPOSMP(0058)), (ICUCHG,KPOSMP(0068))
-      equivalence (NUMERR,KPOSMP(0082)), (LSTPC ,KPOSMP(0083))
-      equivalence (ICLOUT,KPOSMP(0084)), (IERRPC,KPOSMP(0085))
-      equivalence (NUMWRN,KPOSMP(0089)), (NUMFAT,KPOSMP(0090))
-      equivalence (IPVCON,KPOSMP(0176)), (IPVCTR,KPOSMP(0177))
-      equivalence (ICYCDO,KPOSMP(0276))
-      equivalence (IFWSFL,KPOSMP(0833)), (BRKOP ,KPOSMP(1137))
-      equivalence (MACHTP,KPOSMP(1201))
-      equivalence (ISCIRC,KPOSMP(1238)), (ISACIR,KPOSMP(1346))
-      equivalence (ICSPRE,KPOSMP(1386)), (ICIRSW,KPOSMP(1391))
-      equivalence (IHELIX,KPOSMP(1392)), (LOOKFL,KPOSMP(1628))
-      equivalence (TOOLFL,KPOSMP(1804)), (LOOKFL,KPOSMP(1628))
-      equivalence (BSPLSW,KPOSMP(4084)), (ICRHEL,KPOSMP(4250))
-c
-      integer*4 ISN,ITYPE,ISUBT,MXCL,MULTAX,IFIREC,IFIPT,LSTPC,IERRPC,
-     1          LOOKFL(12),ISCIRC,ICIRSW,IHELIX,ICLOUT,IPSTWD(50),
-     2          BRKOP(10),ISACIR,BSPLSW,IFWSFL,ICSPRE,NUMFAT,NUMWRN,
-     3          NUMERR,ICRHEL(10),TOOLFL(20),IPVCON,IPVCTR,ICUCHG,
-     4          MACHTP,ICYCDO(15)
-c
-      equivalence (CLPOS ,POSMAP(0222)), (FWDSAV,POSMAP(4591))
-c
-      real*8 CLPOS(21),FWDSAV(3)
-c
-      equivalence (ERRMAC,CPOSMP(0193)), (LPSTWD,CPOSMP(0217))
-      equivalence (LMACRO,CPOSMP(0861))
-c
-      character*24 LMACRO,ERRMAC
-      character*512 LPSTWD
-c
-      integer*4 kerr
-c
-      character*(*) cmsg
-c
-      integer*4 ifl,ifini,ilst,jdat(5),iopmac,isav,nhelx,helx(16)
-      integer*4 cwrn,icrmac,icrrec,icrpt
-c
-      logical ltlcmd
-c
-      character*8 aerr(7)
-c
-      data nhelx /16/
-      data helx /1022, 1030, 1049, 1007, 1010, 1021, 1009, 1046,
-     1           1013, 1012, 1048, 0005, 1019, 1031, 1005, 1037/
-      data aerr /' ','INVPSIS','INVCKPL','INVGOFWD','VECZERO','NOCRAD',
-     1           'CIRVEC'/
-c
-c...Get the current date & time
-c...at start of run
-c
-      call ncdate (LDATE)
-      call ftim (LTIME)
-c
-c...Initialize routine
-c
-      call genini
-      cwrn = 1
-      icrrec = 0
-      icrmac = 0
-c
-c...Initialize punch file
-c
-      call tapini
-c
-c...Check for OPTION Macro
-c
-      call lodmac (144,jdat)
-      iopmac = jdat(1)
-c
-c...Call G$MAIN Macro
-c
-      ISN    = 1
-      ITYPE  = 2000
-      ISUBT  = 3999
-      MXCL   = 0
-      call ppcall (ifl,cmsg,kerr)
-      if (kerr .ne. 0) go to 9000
-c
-c...Check for a tape break
-c
-      ifini  = 0
-  100 if (BRKOP(1) .ne. 0 .and. BRKOP(1) .ne. 1) then
-          call brkyet (cmsg,kerr)
-          if (kerr .ne. 0) go to 9000
-      endif
-c
-c...Get the next clfile record
-c...from a called Macro
-c
-      if (IMACPT .ne. 0) then
-          call precmp (cmsg,kerr)
-          if (kerr .ne. 0) go to 9000
-      endif
-c
-c...Read the clfile record
-c
-      if (IMACPT .eq. 0) then
-          if (ifini .eq. 1) then
-              ICLOUT = ICLOUT + 1
-              go to 7000
-          endif
-          call clread (IFIREC,IFIPT,1,cmsg,kerr)
-          if (kerr .ne. 0) go to 8000
-      endif
-c
-c...Increment cl record number
-c
-      ICLOUT = ICLOUT + 1
-      if (IPVCON .ne. 0) IPVCON = IPVCON + 1
-c
-c...Return to Look ahead caller
-c
-      if (LOOKFL(1) .ne. 0) then
-          call bsplin (LOOKFL(1))
-          go to 100
-      endif
-      if (LOOKFL(2) .ne. 0) then
-          call circul (LOOKFL(2), LOOKFL(3),icrmac)
-c
-c......Call CIRCLE Macro
-c
-          if (icrmac .eq. 1 .and. LOOKFL(2) .eq. 0) then
-              ITYPE = 2000
-              ISUBT = 4026
-              MXCL  = 0
-              call ppcall (ifl,cmsg,kerr)
-              if (kerr .ne. 0) go to 9000
-              if (ifl .eq. 0) ICLOUT = ICLOUT - 1
-              icrmac = 0
-              ISCIRC = 0
-c
-c.......Error processing CIRCLE Macro
-c
-          else if (icrmac .eq. -1) then
-              IFIREC = icrrec
-              IFIPT  = icrpt
-              icrmac = 0
-              ISCIRC = 0
-          endif
-          go to 100
-      endif
-c
-c...ISN record
-c
-      if (ITYPE .eq. 1000) then
-          call simisn (cmsg,kerr)
-c
-c...Post word
-c
-      else if (ITYPE .eq. 2000) then
-c
-c......PPRINT issued
-c......Check for following LOADTL statement
-c
-          if (ISUBT .eq. 1044 .and. TOOLFL(19) .eq. 1) then
-              call clsamp (0)
-              if (ltlcmd()) TOOLFL(19) = -1
-              call clsamp (-1)
-          else if (TOOLFL(19) .eq. -1 .and. ltlcmd()) then
-              TOOLFL(19) = 1
-          endif
-c
-c......Check for Macro call
-c
-          call ppcall (ifl,cmsg,kerr)
-          if (kerr .ne. 0) go to 9000
-          if (ifl .eq. 0) then
-              ICLOUT = ICLOUT - 1
-              go to 100
-c
-c.........No Post Macro for this command
-c.........Check for OPTION Macro
-c
-          else if (iopmac .ne. 0 .and. MXCL .ge. 1 .and.
-     1             IPSTWD(1) .eq. 144) then
-              isav   = ISUBT
-              ISUBT  = IPSTWD(1)
-              IPSTWD(1) = isav
-              call ppcall (ifl,cmsg,kerr)
-              if (kerr .ne. 0) go to 9000
-              if (ifl .eq. 0) then
-                  ICLOUT = ICLOUT - 1
-                  go to 100
+C*********************************************************************
+C*    NAME         :  postp.for
+C*       CONTAINS:
+C*         postp   pstwfr  gtfedp  stclix
+C*    COPYRIGHT 1984 (c) MILLS DATA SYSTEM Inc.  All Rights Reserved.
+C*     MODULE NAME AND RELEASE LEVEL
+C*        postp.for , 25.2
+C*    DATE AND TIME OF LAST  MODIFICATION
+C*        07/13/15 , 09:23:34
+C*********************************************************************
+C
+C*********************************************************************
+C*    E_SUBROUTINE     : subroutine postp
+c*       this routine parses post processor commands.  it puts
+c*       the parsed command in the sc(10) holding area for putcl.
+C*    PARAMETERS
+C*       INPUT  :
+C*          none
+C*       OUTPUT :
+C*          none
+C*    RETURNS      : none
+C*    SIDE EFFECTS : none
+C*    WARNINGS     : none
+C********************************************************************/
+C
+C
+      subroutine postp
+ 
+      include 'com8a.com'
+      include 'comgt.com'
+      include 'cutter.com'
+      include 'fillet.com'
+      include 'mocom.com'
+ 
+      real*4 tapnow,tapeq(2)
+      equivalence (tapeq(1),sc(55)),(tapeq(2),tapnow)
+      real*8 temp,rletx
+      integer*2 itemp(4),i2sc18(4),i2sc15(4),xsv125,ysv125,acnt
+      integer*4 jtemp(2)
+      equivalence (xsv125,ifl(132)),(ysv125,ifl(133))
+ 
+      integer*2 ktv(4)
+      equivalence (tv,ktv)
+      integer*4 i4sc17(2)
+      equivalence (temp,jtemp,itemp),(i2sc18,sc(108)),(i4sc17,sc(107))
+      equivalence (lastx,i2sc15,sc(115)),(lasty,i2sc15(2))
+      character*2 dt,lastpn
+      character*3 pu,pd
+      character*5 c5temp
+      character*(MAX_LEN) ctemp
+      character*1 ltemp(90),cletx(4),c5tmp1(5)
+      equivalence (c1temp,c5temp,c5tmp1)
+      logical leqpt1,leqpt4,first,letx(4),ldig(5),c1temp(5)
+      equivalence (letx(1),leqpt4),(leqpt4,rletx),(leqpt4,cletx)
+      equivalence (letx(1),dt), (letx(3),etx)
+      equivalence (ctemp,ltemp),(ldig,ltemp(3))
+      equivalence (leqpt1,i2sc18(3)),(leqpt1,lastpn)
+      real*8 a(10)
+      character*(MAX_LEN) ach
+      equivalence (a,ach)
+      character*1 aain(MAX_LEN)
+      equivalence (aain,cimage)
+      integer*2 icl,isubcl,numr8s,etx,lgth,savinx,savist,savitp
+      character*5 int1,int2
+      character*1 clesc,clgs,clus
+      CHARACTER*(MAX_LEN) TCIN
+      CHARACTER*30 CTMP
+      INTEGER*2 IX1,IX2,IX3
+ 
+      integer*2 ipb,maxipb
+      equivalence (ifl(185),ipb),(ifl(186),maxipb)
+      logical lsc122
+      character*1 lstplt(5)
+      character*5 lplt5
+      equivalence (sc(122),lsc122),(lsc122,lstplt,lplt5)
+      real*4 r4133(2)
+      integer*2 isc133(4)
+      equivalence (sc(133),isc133),(sc(133),r4133)
+ 
+      logical trflg
+      integer*4 nclkey,strlen1,nc
+      integer*2 nw, ietype, primtyp
+      logical leq1
+      real*8 req1(5),FEEDR
+      equivalence (token2,leq1),(leq1,req1),(FEEDR,MOTMAP(24))
+      character*64 pstnam
+      logical lv90, tflwrn, tlfed, tflcom, tflsam, lres
+ 
+      real*8 tflrad, tfltol, tmang
+      integer*2 numdec,len,is1,is4,iclf,iflg,jerr
+      integer*4 irec(2),svrec(2),iclw(6)
+      character*9 fltfmt
+      character*256 str
+ 
+      integer*2 WARN,NOWRN,FEDRAT,ARCSLP,FILLET
+      parameter (WARN=852,NOWRN=853,FEDRAT=1009,ARCSLP=1029,FILLET=402)
+ 
+      data int1/'w(i1)'/
+      data int2/'w(i2)'/
+!=IRS,SUN,HPX,IBM,VMS
+!      data is1/1/, is4/4/
+!=WNT,W2K
+!      data is1/4/, is4/1/
+!=ALL
+ 
+      lv90  = sc(169).lt.9.04999
+      trflg = .true.
+      temp=0
+      clesc = char(27)
+      clgs   = char(29)
+      clus   = char(31)
+      pu='pu;'
+      pd='pd;'
+      etx=xetx
+      dt='dt'
+      icl=2000
+      isubcl=ist
+      if (nextyp.ne.5.and.nextyp.ne.9) then
+          if (nextyp.ne.11.and.nextyp.ne.0) then
+              if (ityp.ne.1.or.ist.lt.1043.or.(ist.gt.1046 .and.
+     1            ist .ne. 1091)) then
+                  isvinx=inx-1
+                  call error(22)
+                  go to 99999
               endif
-              IPSTWD(1) = ISUBT
-              ISUBT   = isav
           endif
+      else
+          ifl(44)=9
+      endif
 c
-c......No Macro call
-c......Check for PREGEN command
+c    for rapid color and line type. kathy
 c
-          call pgword (ifl,ilst,cmsg,kerr)
-          if (kerr .ne. 0) go to 9000
-          if (ifl .eq. 0) then
-              if (ilst .eq. 1) go to 1000
-              go to 100
+      rpfron = .false.
+      if (ist.eq.5) then
+          rpfron=.true.
+          ifl(323) = 1
+      end if
+ 
+      if (ist.eq.16) tapnow=0
+ 
+      if (ist.lt.1043.or.(ist.gt.1046 .and. ist.ne.1091)) go to 3099
+c              handle partno, insert, letter, pprint commands
+c
+c       if INSERT or PPRINT do not start at column 1 give error exit. kathy
+          call convrt(cimage,cout,6)
+          if (.not.(cout(1:6).eq.'INSERT'.or.
+     x        cout(1:6).eq.'LETTER'.or.
+     x        cout(1:6).eq.'PPRINT'.or.
+     x        cout(1:6).eq.'PARTNO'.or.
+     x        cout(1:6).eq.'REMARK'))then
+                call error(405)
+                goto 99999
           endif
+ 
 c
-c......Post-processor command
-c.........Cancel helical interpolation
+c...IT'S A PPRINT, INSERT, REMARK. LOOK FOR SCALARS PRECEDED BY @
 c
-cc          inc    = jindex(helx,ISUBT,nhelx)
-cc          if (inc .eq. 0) IHELIX = 0
-cc          IHELIX = 0
-          call ppword (cmsg,kerr)
-          if (kerr .ne. 0) go to 9000
+          IF ((IST.GE.1044.AND.IST.LE.1046) .or. ist .eq. 1091) THEN
+              IX2 = 1
+              IX3 = 7
+              tcin=' '
+              cimage(nccimg+1:) = ' '
+              ldtext = .true.
+              mxc = ifl(387) - 1
+              if (mxc .le. 0) mxc = ifl(106)
+              DO 49,IX1=7,nccimg,1
 c
-c...Circle record
+c...Check for buffer overflow
+c...Bobby  -  6/5/92
 c
-      else if (ITYPE .eq. 3000) then
-          if (IOPFL(10) .eq. 3) call clrmot (0)
-          ISCIRC = ICIRSW
-          ISACIR = 1
-          if (IHELIX .eq. 2) ISCIRC = 1
-          cwrn = 1
-          if (ISUBT.eq.99) cwrn = 0
+                  if (ix2 .gt. mxc) go to 491
+                  TCIN(IX2:IX2)=AAIN(IX3)
+                  IF (AAIN(IX3).EQ.'@') THEN
+                      INX=IX3+1
+                      CALL PARSIT
+                      if (ifl(2).gt.0) then
+                        ldtext = .false.
+                        call error(ifl(2))
+                        goto 99999
+                      endif
+                      IX3=INX-1
+                      IF (ITYP.EQ.2.AND.IST.EQ.2) THEN
+C                                IT'S A SCALAR TO BE CONVERTED TO TEXT
+                          IF (IFL(294).EQ.0) THEN
+                              numdec=4
+                          ELSE
+                              numdec=6
+                          endif
+c                                create a variable length floating point format
+c                                then write the variable's value to the
+c                                temporary area.
+                          if (tv .lt. 10000000. .and.
+     x                        tv .gt. -10000000.) then
+                              call varfmt(tv,numdec,fltfmt,len)
+                              WRITE (CTMP,fltfmt)TV
 c
-c......Determine if CIRCLE Macro exists
+c...Check for buffer overflow
+c...Bobby  -  6/5/92
 c
-          call lodmac (4026,jdat)
-          if (jdat(1) .ne. 0)  then
-              icrmac = 1
-              icrrec = IFIREC
-              icrpt  = IFIPT
-              ISCIRC = 1
-              go to 100
+                              if (ix2+len .gt. mxc) 
+     x                             len = mxc - ix2 + 1
+                              TCIN(IX2:IX2+len-1)=CTMP
+                              IX2=IX2+len-1
+                          else
+                              ldtext = .false.
+                              call error(366)
+                              goto 99999
+                          endif
+c
+c... Substitute text variable
+c
+                      else if (lstrng) then
+                        len = 0
+                        call gttext(str,len)
+                        if (ifl(2).gt.0) then
+                          ldtext = .false.
+                          call error(ifl(2))
+                          goto 99999
+                        endif
+                        if (ix2+len .gt. mxc) 
+     x                      len = mxc - ix2 + 1
+                        TCIN(IX2:IX2+len-1)=str
+                        ix2 = ix2+len-1
+                        ix3 = inx-1
+                      ELSE
+                          IX3=ISVINX-1
+                      ENDIF
+                  ENDIF
+                  if (ix3 .ge. mxc) go to 491
+                  IX3=IX3+1
+                  IX2=IX2+1
+49            CONTINUE
+491           CIMAGE(7:) = TCIN(1:mxc-6)
+              nccimg = strlen1(cimage)
+              ldtext = .false.
+          else if (ist.eq.1043) then
+              j = 4
+              k=5
+ 
+c                  if plotting to tek allow 1 more space for delimiters
+              if (ifl(127).gt.2 .and. ifl(127).lt.7) k=4
+ 
+c                  if we are plotting to a tek term & no motion seg open,
+c                  open one
+              if(ifl(242).eq.0.and.ifl(127).ge.4.and.ifl(127).le.5)then
+                ltemp(1)='s'
+                ltemp(2)='o'
+c               call tkconv(ifl(169),ifl(169),ltemp(3),2)
+c               call pltout(3,ctemp,5)
+                ifl(242)=ifl(169)
+                ifl(169)=ifl(169)+1
+              endif
+              do 50 i=8,nccimg,1
+                  ltemp(i-k)=aain(i)
+50                if (aain(i).ne.' ') j = i-3
+c             if (ifl(189).eq.0) call pltout (2,pu,3)
+              if (ifl(127).eq.0) then
+c                 if (ifl(189).eq.0) call pltout (2,cletx,4)
+                  ltemp(1)='l'
+                  ltemp(2)='b'
+                  ltemp(j-1)=cletx(3)
+                  ltemp(j)=cletx(4)
+c                 if (ifl(189).eq.0) call pltout (2,ctemp,j)
+              else if (ifl(127).eq.1) then
+c                 if (ifl(189).eq.0) call pltout (3,int1,5)
+                  j=j-1
+                  ltemp(1)='t'
+                  ltemp(2)=''''
+ 
+c                      check for apostrophies or double quotes that require
+c                      special handling
+                  acnt=3
+54                if (acnt.ge.j) go to 56
+                  hi=j-1
+                  if (ltemp(acnt).eq.'''') then
+                      do 57 k=hi,acnt,-1
+57                        ltemp(k+1)=ltemp(k)
+                      j=j+1
+                      acnt=acnt+1
+                  endif
+55                acnt=acnt+1
+                  go to 54
+ 
+56                ltemp(j)=''''
+c                 if (ifl(189).eq.0) call pltout (3,ctemp,j)
+c                 if (ifl(189).eq.0) call pltout (3,int2,5)
+ 
+c                  tektronix
+              else if (ifl(127).gt.2 .and. ifl(127).lt.7) then
+                  letrng = .true.
+                  ltemp(1)='l'
+                  ltemp(2)='t'
+                  lgth=j-4
+                  c5temp = ' '
+c                 call tkconv (lgth,lgth,c5temp,2)
+                  if (lgth.lt.16) then
+                      j=j-1
+                      ldig(1)=c1temp(1)
+                  else
+ 
+c                        shift text string 1 place higher to make place
+c                        for 2 byte length code
+                      do 58 i=j,4,-1
+58                        ltemp(i)=ltemp(i-1)
+                      ldig(1)=c1temp(1)
+                      ldig(2)=c1temp(2)
+                  endif
+c                 if (ifl(189).eq.0) call pltout (3,ctemp,j)
+              else if (ifl(127).eq.2) then
+                  letrng = .true.
+                  ltemp(1) = clesc
+                  ltemp(2) = clus
+c                 if (ifl(189).eq.0) call pltout (3,ctemp,j-2)
+              endif
+              if (ifl(127).eq.0) then
+                  write (ctemp,1060) lastx,lasty,lastpn
+1060              format ('pa',i6,',',i6,';',a2,';')
+c                 if (ifl(189).eq.0) call pltout (2,ctemp,19)
+              else if (ifl(127).eq.1) then
+                  write (ctemp,1061) xsv125,ysv125
+1061              format ('p[',i6,',',i6,']')
+c                 if (ifl(189).eq.0) call pltout (3,ctemp,16)
+              else if (ifl(127).gt.1 .and. ifl(127).lt.7) then
+c                 call tkconv (lastx,lasty,lplt5,1)
+                  if (ifl(127).eq.2) then
+                    lstplt(2)=lstplt(3)
+                    lstplt(3)=lstplt(4)
+                    lstplt(4)=lstplt(5)
+                  endif
+                  lmpu=.true.
+              endif
+              if (lastpn.eq.'pd') ifl(128)=1
+              i2sc18(4)=0
+              ifl(189)=0
+          endif
+c               Don't use equivalence of 'a' to 'cimage' because of
+c               alignment problems on SGI.            ijd 31-jan-89
+c
+c...Don't allow for more than 66 chars for text statement
+c...due to PPRINTs in INCLUD files
+c...Bobby - 7/8/03
+c
+          ach(1:66)=cimage(7:nccimg)
+          ach(67:72) = ' '
+          call putcl (icl,isubcl,10,a(1))
+          if (ist.eq.1043) then
+              call putcl (2500,5,1,sc(1))
+              if (lastpn.eq.'pd') call putcl (2000,130,1,temp)
+              if (lastpn.eq.'pu') call putcl (2000,129,1,temp)
+          endif
+          go to 99999
+3099  if (.not.(ist.eq.1087)) go to 3199
+c                                                        *** set/mode
+          isv=inx
+          call parsit
+          if (ist.ne.1003) then
+c                                    it's not 'mode - go put it in the cl file
+              inx=isv
+              nextyp=9
+              go to 99
+          endif
+          call parsit
+          if (ist.eq.75.or.ist.eq.76) then
+              if (ist.eq.75) then
+                  itemp(1)=1
+              else
+                  itemp(1)=0
+              endif
           else
-              icrmac = 0
-              if (NCLVER .gt. 9.549) call simcir (cmsg,kerr)
+              inx=isv
+              nextyp=9
+              go to 99
           endif
+          if (nextyp.ne.11) then
+              call parsit
+              if (ityp.eq.2.and.ist.eq.2.or.ityp.eq.3.or.ityp.eq.4) then
+                  itemp(2)=1
+                  if (itv.ne.0.and.itv.ne.1) then
+                      call error(170)
+                      go to 99999
+                  endif
+              else
+                  call error(7)
+                  go to 99999
+              endif
+         else
+             itemp(2)=1
+         endif
+         ifl(144)=itemp(2)
+         ifl(94)=itemp(1)
 c
-c...Motion record
+c         Do not put the set/mode,.. command in the clfile. kathy
 c
-      else if (ITYPE .eq. 5000) then
-c
-c......Circular interpolation
-c
-          if (ISCIRC .eq. 1) then
-             call clrmot (0)
-             call circul (LOOKFL(2),cwrn,icrmac)
-             cwrn = 1
-c
-c.........Error processing CIRCLE Macro
-c
-             if (icrmac .eq. -1) then
-                IFIREC = icrrec
-                IFIPT  = icrpt
-                icrmac = 0
-                ISCIRC = 0
-                go to 100
-             else if (icrmac .eq. 1) then
-                go to 100
-             endif
-c
-c......Linear interpolation
-c......Check for Macro call
-c
+         if (ist.eq.75.or.ist.eq.76) goto 99999
+         temp=0
+         inx=isv
+         nextyp=9
+         go to 99
+ 
+c                                                    *** end
+3199  if (.not.(ist.eq.499)) go to 3299
+          call putcl(icl,1,1,sc(11))
+          go to 3899
+c                                                    *** at
+3299  if (.not.(ist.eq.189)) go to 3399
+          call error(13)
+          go to 3899
+c                                                    *** penup
+3399  if (.not.(ist.eq.129)) go to 3499
+          if (.not.(nextyp.eq.11)) go to 2099
+              call putcl (2000,129,1,temp)
+              ctemp='pu;'
+              lastpn='pu'
+              ifl(128)=0
+              i2sc18(2)=1
+300           continue
+              if (ifl(268).eq.1) call pltout (2,ctemp,3)
+              go to 2199
+2099      continue
+310           call error (4)
+              go to 99999
+2199      continue
+          go to 3899
+c                                                    *** pendwn
+3499  if (.not.(ist.eq.130)) go to 3599
+          if (nextyp.eq.11) then
+              call putcl(2000,130,1,temp)
+              ctemp='pd;'
+              lastpn='pd'
+              ifl(128)=1
+              i2sc18(2)=1
+              go to 300
           else
-             call ppcall (ifl,cmsg,kerr)
-             if (kerr .ne. 0) go to 9000
-             if (ifl .eq. 0) then
-                ICLOUT = ICLOUT - 1
-                go to 100
-             endif
-c
-             if (BSPLSW .eq. 1) call bsplin(LOOKFL(1))
-             if (LOOKFL(1) .eq. 0) then
-c
-c......Process motion record
-c
-                IHELIX = 0
-                if (ISACIR .ne. 0) then
-                   if (ISACIR .eq. 2 .and. ISUBT .ne. 6) ISACIR = 0
-                   if (ISACIR .eq. 1) ISACIR = 2
+              go to 310
+          endif
+          go to 3899
+c          scale, xyplan, yzplan, zxplan, xyzpln, nomore, xaxis, yaxis
+c          zaxis, xcoord, ycoord, zcoord, solid, dash, dotted, ctrlin,
+c          ditto, pen, penup, pendwn, lintyp, thru,  letsiz,
+c          letdir or letorg are invalid as standalone commands
+3599  if (.not.(ist.eq.25.or.(ist.ge.33.and.ist.le.45).or.ist.eq.53.or.
+     1        (ist.ge.84.and.ist.le.86).or.(ist.ge.116.and.ist.le.131)
+     2         .or.ist.eq.152.or.((ist.ge.1040.and.ist.le.1042).or.
+     3         ist .eq. 1091)))
+     3         go to 3699
+          call error (182)
+          go to 99999
+3699  if (.not.(ist.eq.1009)) go to 3749
+ 
+c                                        *****    feed rate
+          nextsv=nextyp
+          call parsit
+          if ((ityp.eq.2.and.ist.eq.2.or.ityp.eq.3.or.ityp.eq.4).or.
+     1         (ityp.eq.1.and.ist.eq.73.or.ist.eq.74)) then
+                if (ityp.eq.1) then
+                  itemp(is4)=ist
+                  d(51)=temp
+                  isc133(1)=2
+                  isc133(2)=ist
+                else
+                  d(51) = tv
+                  r4133(2) = tv
+                  isc133(1) = 0
+                  if (ifl(215).gt.0) isc133(1) = 1
                 endif
-                call mocntl
-             end if
+                numr8s = 2
+                if (nextyp.ne.11) then
+ 
+c                        check for ipr or ipm  (aii format)
+                    call parsit
+                    if (ityp .eq. 1 .and.isc133(1).ne.1.and.
+     x                 (ist .eq. 73 .or. ist .eq. 74)) then
+                        itemp(is4) = ist
+                        d(52) = temp
+                        numr8s = 3
+                        isc133(2) = ist
+                    else if ((ityp.eq.2.and.ist.eq.2.or.(ityp.eq.3.or.
+     1                      ityp.eq.4)).and.isc133(1).eq.2) then
+                        if (ifl(215) .eq. 0) isc133(1) = 0
+                        numr8s = 3
+                        d(52) = tv
+                        r4133(2) = tv
+                    else
+                        call error (4)
+                        go to 99999
+                    endif
+                else if (isc133(1).eq.1) then
+                    isc133(2) = 0
+                else if (isc133(1).eq.2) then
+                    call error(7)
+                    go to 99999
+                endif
+                if (ifl(215).eq.0) then
+c                       not an implied check surface range. out put fedrat
+                    call putcl (icl, isubcl, numr8s, d(51))
+ 
+c                       save fedrat as primary in sc(123)   epm 1-22-85
+                    sc(123) = r4133(2)
+                    call setfed (sc(123))
+                    FEEDR = sc(123)
+                endif
+          else if (ityp .eq. 1 .and. (ist .eq. 189 .or.
+     -             ist .eq. 9 .or. ist .eq. 653 .or. ist .eq. 325)) then
+c                           fedrat/at
+                call pstwfr (i)
+                if (i .ne. 0) then
+                   inx=isvinx
+                   nextyp=nextsv
+                   go to 99
+                endif
+c
+C               isc10(1)=1009
+C               call parsit
+C               if ((ityp.eq.2.and.ist.eq.2).or.ityp.eq.3.or.ityp.eq.4)
+C    1                then
+C                    sc(11)=tv
+C               else
+C                    call error (7)
+C                    go to 99999
+C               endif
+C               if (nextyp.ne.11) then
+C                   if (tv.le.0) then
+C                       call error(272)
+C                       go to 99999
+C                   endif
+C                   call parsit
+C                   if (ityp.eq.1.and.ist.eq.25) then
+C                       isc10(2)=1
+C                       call parsit
+C                   endif
+C                   if ((ityp.eq.2.and.ist.eq.2).or.ityp.eq.3.or.ityp
+C    1                  .eq.4) then
+C                       sc(12)=tv
+C                   else
+C                       call error(7)
+C                       go to 99999
+C                   endif
+C                   if (nextyp.ne.11) then
+C                       call parsit
+C                       if (ityp.eq.1.and.ist.eq.325) then
+C                           isc10(3)=1
+C                           if (nextyp.ne.11) then
+C                              call error (4)
+C                              go to 99999
+C                           endif
+C                       else
+C                           call error(4)
+C                           go to 99999
+C                       endif
+C                   endif
+C              else
+C                   if (sc(11).ne.0) then
+C                       call error(273)
+C                       go to 99999
+C                   endif
+C              endif
+          else
+               inx=isvinx
+               nextyp=nextsv
+               go to 99
           endif
-c
-c......Positioning record (do not process, set FWD vector)
-c......IFWSFL remains 2 until motion is processed
-c
-      else if (ITYPE .eq. 5210) then
-          call copyn (CLPOS(7),FWDSAV,3)
-          IFWSFL = 2
-c
-c......CUTTER record
-c
-      else if (ITYPE .eq. 6000 .or.  (ITYPE .eq. 7100 .and.
-     1         (ISUBT .eq. 1 .or. ISUBT .eq. 2 .or. ISUBT .eq. 4)))
-     2             then
-          if (NCLVER .lt. 9.549) then
-              call simsta (0,cmsg,kerr)
-          else if (IPVCTR .eq. 1 .and. MACHTP .ne. 5) then
-              ICUCHG = 0
-              call simcut (cmsg,kerr)
-          endif
-c
-c......STOCK/FIXTURE record
-c
-      else if (ITYPE .eq. 2600 .or. ITYPE.eq.2601) then
-          call simstk (0,cmsg,kerr)
-c
-c......Cutter Profile record
-c
-      else if (ITYPE .eq. 7110 .or. ITYPE .eq. 7120) then
-          call simprf (cmsg,kerr)
-c
-c......APT Source file error
-c
-      else if (ITYPE .eq. 8000) then
-          call psterr (4,'INVAPTSC',aerr(ISUBT+1),0)
-c
-c......FINI record
-c
-      else if (ITYPE .eq. 14000) then
-          IHELIX = 0
-          call clrmot (2)
-          ISUBT  = 4012
-          MXCL   = 0
-          ifini  = 1
-          call ppcall (ifl,cmsg,kerr)
-          if (kerr .ne. 0) go to 9000
-          if (ifl .eq. 0) then
-              ICLOUT = ICLOUT - 1
-              go to 100
-          endif
-          go to 7000
-      endif
-c
-c...Write listing record
-c
- 1000 call genlst (cmsg,kerr)
-      if (kerr .ne. 0) go to 8000
-      if ((NUMFAT .gt. MAXFAT) .or.
-     1    (NUMERR .gt. MAXPER).or.
-     2    (NUMWRN .gt. MAXWRN)) then
-         kerr = -10
-         go to 9000
-      endif
-      go to 100
-c
-c...FINI
-c...End of program
-c
- 7000 ITYPE  = 14000
-      MXCL   = 0
-      call genlst (cmsg,kerr)
-      if (kerr .ne. 0) go to 8000
-      call fini
-c
-c...End of routine
-c
- 8000 return
-c
-c...An error occurred processing clfile
-c
- 9000 IERRPC = LSTPC
-      ERRMAC = LMACRO
-      if (kerr .lt. 0) go to 8000
-      kerr   = 0
-c
-c......Check for ERROR macro
-c
-      ISUBT  = 1103
-      LPSTWD = ERRLAB
-      call ppcall (ifl,cmsg,kerr)
-      if (kerr .ne. 0) go to 8000
-      if (ifl .eq. 0) go to 100
-c
-c......Print out error message
-c
-      call lsterr (cmsg,cmsg,kerr)
-      if (kerr .ne. 0) go to 8000
-      go to 100
-      end
-c
-c***********************************************************************
-c
-c   SUBROUTINE:  ppword (cmsg,kerr)
-c
-c   FUNCTION:  This routine processes post processor commands.
-c
-c   INPUT:  none.
-c
-c   OUTPUT: cmsg    C*n  D1  Text of error message.
-c
-c           kerr    I*4  D1  Returns 1 when an error occurred.
-c
-c***********************************************************************
-c
-      subroutine ppword (cmsg,kerr)
-c
-      include 'menu.inc'
-      include 'pregen.inc'
-      include 'post.inc'
-c
-      equivalence (ISUBT ,KPOSMP(0004)), (MXCL  ,KPOSMP(0005))
-      equivalence (IPSTWD,KPOSMP(0006)), (TOOLFL,KPOSMP(1804))
-      equivalence (IRAP  ,KPOSMP(3199))
-c
-      integer*4 ISUBT,IRAP,IPSTWD(50),MXCL,TOOLFL(20)
-c
-      equivalence (LPARTN,CPOSMP(0067)), (LPSTWD,CPOSMP(0217))
-c
-      character*66 LPARTN
-      character*512 LPSTWD
-c
-      integer*4 kerr
-c
-      character*(*) cmsg
-c
-      integer*4 inc,ignor(12),nignor,jindex
-c
-      data nignor /12/
-      data ignor /128,129,130,1014,1038,1039,1040,1041,1043,1059,1064,
-     1            1080/
-c
-c...Ignored post commands
-c
-      inc    = jindex(ignor,ISUBT,nignor)
-      if (inc .ne. 0) go to 8000
-c
-c...Initialize routine
-c
-      call clrmot (2)
-      if (IRAP .ne. 0 .and. ISUBT .ne. 1106) call raprst
-c
-c...ARCSLP
-c
-      if (ISUBT .eq. 1029) then
-          call arcslp
-c
-c...ALIGN
-c
-      else if (ISUBT .eq. 1076) then
-          call align
-c
-c...APPEND
-c
-      else if (ISUBT .eq. 1199) then
-          call append
-c
-c...AUXFUN
-c
-      else if (ISUBT .eq. 1022) then
-          call auxfun
-c
-c...BREAK
-c
-      else if (ISUBT .eq. 16) then
-          call break (cmsg,kerr)
-c
-c...CHECK
-c
-      else if (ISUBT .eq. 1023) then
-          call check
-c
-c...CIRCLE
-c
-      else if (ISUBT .eq. 4026) then
-          call pcircl (cmsg,kerr)
-c
-c...CLAMP
-c
-      else if (ISUBT .eq. 1060) then
-          call clamp
-c
-c...CLRSRF
-c
-      else if (ISUBT .eq. 1057) then
-          call clrsrf
-c
-c...COOLNT
-c
-      else if (ISUBT .eq. 1030) then
-          call coolnt
-c
-c...COUPLE
-c
-      else if (ISUBT .eq. 1049) then
-          call couple
-c
-c...CUTCOM
-c
-      else if (ISUBT .eq. 1007) then
-          call cutcom
-c
-c...CYCLE
-c
-      else if (ISUBT .eq. 1054) then
-          call cycle
-c
-c...DELAY
-c
-      else if (ISUBT .eq. 1010) then
-          call delay
-c
-c...DISPLY
-c
-      else if (ISUBT .eq. 1021) then
-          call disply
-c
-c...END
-c
-      else if (ISUBT .eq. 1) then
-          call fini
-c
-c...FEDRAT
-c
-      else if (ISUBT .eq. 1009) then
-          call fedrat
-c
-c...FORCE
-c
-      else if (ISUBT .eq. 1106) then
-          call force
-c
-c...GOHOME
-c
-      else if (ISUBT .eq. 17) then
-          call gohome
-c
-c...HEAD
-c
-      else if (ISUBT .eq. 1002) then
-          call head
-c
-c...INSERT
-c
-      else if (ISUBT .eq. 1046) then
-          call insert
-c
-c...LEADER
-c
-      else if (ISUBT .eq. 1013) then
-          call leader
-c
-c...LINTOL
-c
-      else if (ISUBT .eq. 1067) then
-          call lintol
-c
-c...LOAD/TOOL
-c
-      else if (ISUBT .eq. 1075 .and. MXCL .gt. 1 .and.
-     1        TOOLFL(18) .eq. 1) then
-          call loadtl
-c
-c...LOADTL
-c
-      else if (ISUBT .eq. 1055) then
-          call loadtl
-c
-c...MACHIN
-c
-      else if (ISUBT .eq. 1015) then
-          go to 8000
-c
-c...MAXDPM
-c
-      else if (ISUBT .EQ. 1062) then
-          call maxdpx
-c
-c...MCHTOL
-c
-      else if (ISUBT .eq. 1016) then
-          call mchtol
-c
-c...MODE
-c
-      else if (ISUBT .eq. 1003) then
-          call mode
-c
-c...OPSKIP
-c
-      else if (ISUBT .eq. 1012) then
-          call opskip
-c
-c...OPSTOP
-c
-      else if (ISUBT .eq. 3) then
-          call opstop
-c
-c...ORIGIN
-c
-      else if (ISUBT .eq. 1027) then
-          call origin
-c
-c...PARTNO
-c
-      else if (ISUBT .eq. 1045) then
-          LPARTN = LPSTWD
-c
-c...PLUNGE
-c
-      else if (ISUBT .eq. 1001) then
-          call plunge
-c
-c...POD
-c
-      else if (ISUBT .eq. 1088) then
-          call pod
-c
-c...POSCAL
-c
-      else if (ISUBT .eq. 1109) then
-          call poscal
-c
-c...POSITN
-c
-      else if (ISUBT .eq. 1072) then
-          call positn
-c
-c...POSTN
-c
-      else if (ISUBT .eq. 1024) then
-          call postn
-c
-c...PPTOL
-c
-      else if (ISUBT .eq. 1068) then
-          call pptol
-c
-c...PREFUN
-c
-      else if (ISUBT .eq. 1048) then
-          call prefun
-c
-c...QAXIS
-c
-      else if (ISUBT .eq. 1089) then
-          call qaxis
-c
-c...RAPID
-c
-      else if (ISUBT .eq. 5) then
-          call rapid
-c
-c...REGORD
-c
-      else if (ISUBT .eq. 1110) then
-          call regodr
-c
-c...REWIND
-c
-      else if (ISUBT .eq. 1006) then
-          call rewind
-c
-c...RETRCT
-c
-      else if (ISUBT .eq. 7) then
-          call retrct (1)
-c
-c...ROTABL
-c...ROTHED
-c
-      else if (ISUBT .eq. 1026 .or. ISUBT .eq. 1035) then
-          call rotabl
-c
-c...SEQNO
-c
-      else if (ISUBT .eq. 1019) then
-          call seqno
-c
-c...SELCTL
-c
-      else if (ISUBT .eq. 1056) then
-          call selctl
-c
-c...SELECT/TOOL
-c
-      else if (ISUBT .eq. 1074 .and. MXCL .gt. 1 .and.
-     1        TOOLFL(18) .eq. 1) then
-          call selctl
-c
-c...SET
-c
-      else if (ISUBT .eq. 1087) then
-          call set
-c
-c...SLOWDN
-c
-      else if (ISUBT .eq. 1063) then
-          call slowdn
-c
-c...SMOOTH
-c
-      else if (ISUBT .eq. 1085) then
-          call smooth
-c
-c...SPINDL
-c
-      else if (ISUBT .eq. 1031) then
-          call spindl
-c
-c...STOP
-c
-      else if (ISUBT .eq. 2) then
-          call stop
-c
-c...THREAD
-c
-      else if (ISUBT .eq. 1036) then
-          call thread
-c
-c...TMARK
-c
-      else if (ISUBT .eq. 1005) then
-          call tmark
-c
-c...TOOLNO
-c
-      else if (ISUBT .eq. 1025) then
-          call toolno
+          go to 3899
 c
 c...TOOLPN
 c
-      else if (ISUBT .eq. 1053) then
-          call simpin (cmsg,kerr)
-c
-c...TRANS
-c
-      else if (ISUBT .eq. 1037) then
-          call trans
-c
-c...TURRET
-c
-      else if (ISUBT .eq. 1033) then
-          call turret
-c
-c...UNLOAD
-c
-      else if (ISUBT .eq. 10) then
-          call unload
-c
-c...Unrecognized Major word
-c
-      else
-          call psterr (2,'INVMAJOR',' ',0)
-      endif
-c
-c...End of routine
-c
- 8000 return
-      end
-c
-c***********************************************************************
-c
-c   SUBROUTINE:  psword (kfl,klst,cmsg,kerr)
-c
-c   FUNCTION:  This routine processes Register style post processor
-c              commands.
-c
-c   INPUT:  none.
-c
-c   OUTPUT: kfl     I*4  D1  0 = This record was processed in this rou-
-c                            tine.  1 = This record was not recognized
-c                            by this routine, process it somewhere else.
-c
-c           klst    I*4  D1  0 = Do not output this record to listing
-c                            file.  1 = Output it.
-c
-c           cmsg    C*n  D1  Text of error message.
-c
-c           kerr    I*4  D1  Returns 1 when an error occurred.
-c
-c***********************************************************************
-c
-      subroutine psword (kfl,klst,cmsg,kerr)
-c
-      include 'menu.inc'
-      include 'pregen.inc'
-      include 'post.inc'
-c
-      equivalence (ISUBT ,KPOSMP(0004))
-      equivalence (MXCL  ,KPOSMP(0005)), (IPSTWD,KPOSMP(0006))
-      equivalence (LSTPC ,KPOSMP(0083)), (IERRPC,KPOSMP(0085))
-      equivalence (IPRTOP,KPOSMP(1176)), (IPERRF,KPOSMP(1177))
-c
-      integer*4 ISUBT,MXCL,IPSTWD(50),LSTPC,IERRPC,IPRTOP,IPERRF
-c
-      equivalence (PSTWD ,POSMAP(0441))
-c
-      real*8 PSTWD(50)
-c
-      equivalence (ERRMAC,CPOSMP(0193)), (LPSTWD,CPOSMP(0217))
-      equivalence (LMACRO,CPOSMP(0861))
-c
-      character*24 LMACRO,ERRMAC
-      character*512 LPSTWD
-c
-      integer*4 kfl,kerr,klst
-c
-      character*(*) cmsg
-c
-c...Try PREGEN command first
-c
-      call pgword (kfl,klst,cmsg,kerr)
-      if (kfl .eq. 0) go to 8000
-      kfl    = 0
-      klst   = 0
-c
-c...APPEND
-c
-      if (ISUBT .eq. 1199) then
-          call append
-c
-c...AUXFUN
-c
-      else if (ISUBT .eq. 1022) then
-          call auxfun
-c
-c...FORCE
-c
-      else if (ISUBT .eq. 1106) then
-          call force
-c
-c...INSERT
-c
-      else if (ISUBT .eq. 1046) then
-          call insert
-c
-c...OPSKIP
-c
-      else if (ISUBT .eq. 1012) then
-          call opskip
-c
-c...PREFUN
-c
-      else if (ISUBT .eq. 1048) then
-          call prefun
-c
-c...REGORD
-c
-      else if (ISUBT .eq. 1110) then
-          call regodr
-c
-c...Unrecognized Major word
-c
-      else
-          kfl    = 1
-      endif
-c
-c...End of routine
-c
- 8000 return
-      end
-c
-c***********************************************************************
-c
-c   SUBROUTINE:  pgword (kfl,klst,cmsg,kerr)
-c
-c   FUNCTION:  This routine processes PREGEN post processor commands.
-c
-c   INPUT:  none.
-c
-c   OUTPUT: kfl     I*4  D1  0 = This record was processed in this rou-
-c                            tine.  1 = This record was not recognized
-c                            by this routine, process it somewhere else.
-c
-c           klst    I*4  D1  0 = Do not output this record to listing
-c                            file.  1 = Output it.
-c
-c           cmsg    C*n  D1  Text of error message.
-c
-c           kerr    I*4  D1  Returns 1 when an error occurred.
-c
-c***********************************************************************
-c
-      subroutine pgword (kfl,klst,cmsg,kerr)
-c
-      include 'menu.inc'
-      include 'pregen.inc'
-      include 'post.inc'
-c
-      equivalence (ISUBT ,KPOSMP(0004))
-      equivalence (MXCL  ,KPOSMP(0005)), (IPSTWD,KPOSMP(0006))
-      equivalence (LSTPC ,KPOSMP(0083)), (IERRPC,KPOSMP(0085))
-      equivalence (IPRTOP,KPOSMP(1176)), (IPERRF,KPOSMP(1177))
-c
-      integer*4 ISUBT,MXCL,IPSTWD(50),LSTPC,IERRPC,IPRTOP,IPERRF
-c
-      equivalence (PSTWD ,POSMAP(0441))
-c
-      real*8 PSTWD(50)
-c
-      equivalence (ERRMAC,CPOSMP(0193)), (LPSTWD,CPOSMP(0217))
-      equivalence (LMACRO,CPOSMP(0861))
-c
-      character*24 LMACRO,ERRMAC
-      character*512 LPSTWD
-c
-      integer*4 kfl,kerr,klst
-c
-      character*(*) cmsg
-c
-      integer*4 nc,strlen1,iary(2)
-c
-      character*80 ldat
-c
-c...Initialize routine
-c
-      kfl    = 1
-      klst   = 0
-c
-c...ERROR
-c
-      if (ISUBT .eq. 1103) then
-          kfl    = 0
-          if (IMACPT .ge. 1 .and. IMACHD(1,IMACPT) .ne. 1103) then
-              IERRPC = LSTPC
-              ERRMAC = LMACRO
-          endif
-          nc     = strlen1(LPSTWD)
-          call touppr (LPSTWD,ldat)
-c
-c...Output user message as warning instead of error if the first
-c   five characters are "WARN:"
-c
-          if (ldat(1:5) .eq. 'WARN:') then
-              call errtxt (LPSTWD(6:nc),ldat)
-              call psterr(1,ldat,'',-1)
-          else
-              call errtxt(LPSTWD(1:nc),ldat)
-              call psterr (2,ldat,'',-1)
-          endif
-c
-c...IFTOL
-c
-      else if (ISUBT .eq. 1108) then
-          kfl    = 0
-          if (MXCL .ne. 1 .or. IPSTWD(1) .ne. 0) go to 9000
-          IFTOL  = PSTWD(1)
-c
-c...LISTING
-c
-      else if (ISUBT .eq. 1101) then
-          kfl    = 0
-          if (MXCL .ne. 1) go to 9000
-c
-c......Listing/on
-c
-          if (IPSTWD(1) .eq. 71) then
-              ILSTOP = 1
-c
-c......Listing/off
-c
-          else if (IPSTWD(1) .eq. 72) then
-              ILSTOP = 0
-c
-c......Listing/page
-c
-          else if (IPSTWD(1) .eq. 5021) then
-              call lsthed (cmsg,kerr)
-c
-          else
-              go to 9000
-          endif
-c
-c...PPRINT
-c
-      else if (ISUBT .eq. 1044) then
-          call clrmot (2)
-          kfl    = 0
-          klst   = 1
-          call pprint
-c
-c...PRINT
-c
-      else if (ISUBT .eq. 1102) then
-          kfl    = 0
-          nc     = strlen1(LPSTWD)
-          call lstout (LPSTWD,nc,cmsg,kerr)
-c
-c...PRINTF
-c
-      else if (ISUBT .eq. 1104) then
-          kfl    = 0
-          if (MXCL .lt. 1) go to 9000
-c
-c......Printf/on
-c
-          if (IPSTWD(1) .eq. 71) then
-              IPRTOP = 1
-c
-c......Printf/off
-c
-          else if (IPSTWD(1) .eq. 72) then
-              call errtxt ('PRTOFF',ldat)
-              nc     = strlen1(ldat)
-              call prtout (' ',1)
-              call prtout (ldat,nc)
-              call prtout (' ',1)
-              IPRTOP = 0
-c
-c......Printf/page
-c
-          else if (IPSTWD(1) .eq. 5021) then
-              if (IPRTOP .eq. 1) call prthed (1)
-c
-c......Printf/record,n
-c
-          else if (IPSTWD(1) .eq. 5026) then
-              if (MXCL .ne. 2 .or. PSTWD(2) .lt. 1 .or.
-     1            PSTWD(2) .gt. 10) go to 9000
-              iary(1) = PSTWD(2)
-              iary(2) = 0
-              call prtrec (iary)
-c
-          else
-              go to 9000
-          endif
-c
-c......PSTERR
-c
-      else if (ISUBT .eq. 1107) then
-          kfl    = 0
-          IPERRF = 1
-          if (MXCL .ne. 0) go to 9000
-      endif
-c
-c...End of routine
-c
- 8000 return
-c
-c...Syntax error
-c
- 9000 call errtxt ('INVSYN',cmsg)
-      kerr   = 1
-      go to 8000
-      end
-c
-c***********************************************************************
-c
-c   SUBROUTINE:  machin (kopt,cmsg,kerr)
-c
-c   FUNCTION:  This routine searches the clfile for the MACHIN/pstnam
-c              card and stores its parameters.  It also searches for the
-c              first PARTNO card.
-c
-c   INPUT:  none.
-c
-c   OUTPUT: kopt    I*4  Dn  Options specified on MACHIN card.  These
-c                            will override any options stored in the
-c                            Machine descriptor file.
-c
-c           cmsg    C*n  D1  Text of error message.
-c
-c           kerr    I*4  D1  Returns 1 when an error occurred.
-c
-c***********************************************************************
-c
-      subroutine machin (kopt,cmsg,kerr)
-c
-      include 'menu.inc'
-      include 'pregen.inc'
-      include 'post.inc'
-c
-      equivalence (ITYPE ,KPOSMP(0003)), (ISUBT ,KPOSMP(0004))
-      equivalence (MXCL  ,KPOSMP(0005)), (IPSTWD,KPOSMP(0006))
-      equivalence (IFIREC,KPOSMP(0057)), (IFIPT ,KPOSMP(0058))
-      equivalence (NPT   ,KPOSMP(0059)), (NPARTN,KPOSMP(0075))
-c
-      integer*4 ITYPE,ISUBT,MXCL,IPSTWD(50),IFIREC,IFIPT,NPT,NPARTN
-c
-      equivalence (PSTWD ,POSMAP(0441))
-c
-      real*8 PSTWD(50)
-c
-      integer*4 IPSTNM(2)
-      character*40 LPSTNM
-      equivalence (PSTWD(1),LPSTNM,IPSTNM)
-c
-      equivalence (LPARTN,CPOSMP(0067)), (LPSTWD,CPOSMP(0217))
-c
-      character*66 LPARTN
-      character*512 LPSTWD
-c
-      integer*4 kopt(20),kerr
-c
-      character*(*) cmsg
-c
-      integer*4 i,imach,nop,inc,ierr,inum,ifl,nc,strlen1,iprept
-c
-      real*8 opmn(8),opmx(8)
-c
-      character*6 lpgm
-      character*80 msg
-c
-      data nop /8/, opmn /1,1,0,-9999999999.d0,10,1,0,0/
-      data opmx /2,2,9999999999.d0,9999999999.d0,512,3,3,1/
-      data lpgm /'PWORKS'/
-c
-c...Initialize routine
-c
-      imach  = PREPT
-      iprept = PREPT
-      NPARTN = 0
-      LPARTN = ' '
-      SFRMBUF(1) = ' '
-      NPT    = 3
-      do 50 i=1,20,1
-          kopt(i) = -999999
-   50 continue
-c
-c...Read clfile record
-c
-  100 call clread (IFIREC,IFIPT,1,cmsg,kerr)
-      if (kerr .ne. 0) go to 8000
-c
-c...Is this a MACHIN/PWORKS card
-c
-      if (ITYPE .eq. 2000 .and. ISUBT .eq. 1015 .and.
-     1        PREPT .lt. 10) then
-          ifl    = 0
-c
-c......Break out long post-processor name
-c
-          if (IPSTNM(1) .eq. -1 .and. IPSTNM(2) .gt. 8 .and.
-     1            IPSTNM(2) .le. 40) then
-              nc     = IPSTNM(2)
-              LPSTNM(1:nc) = LPSTNM(9:nc+8)
-              inc    = (nc+7) / 8 + 2
-          else
-              nc     = strlen1(LPSTNM(1:8))
-              if (LPSTNM(1:6) .eq. lpgm .and.
-     1            ichar(LPSTNM(7:7)) .le. 32) then
-                  LPSTNM(1:8) = lpgm
-                  nc = strlen1(lpgm)
+ 3749 if (ist .eq. 1053) then
+          call svpars
+          do 3750 i=1,9,1
+              call parsit
+              if (.not. scalar) then
+                  call error (7)
+                  go to 3899
               endif
-              inc    = 2
+ 3750     continue
+          if (nextyp .ne. 11) then
+              call parsit
+              call error (4)
+              go to 3899
           endif
-          if (LPSTNM(1:nc) .ne. lpgm) then
-              if (iprept .eq. 0) then
-                  call opnmch (LUNSC4,LPSTNM(1:nc),msg,ierr)
-                  if (ierr .eq. 0) then
-                      call clsfil (LUNSC4)
-                      ifl    = 1
-                      PREPT  = PREPT  + 1
-                      PSTNAM(PREPT) = LPSTNM(1:nc)
+          call rtpars
+          go to 3849
+      endif
+c             handle all other postprocessor commands
+3849  continue
+c                 if we are in an implied check surface range, post
+c                 commands are not allowed.   epm  1-29-86
+          if (ifl(215).ne.0) then
+               call error(302)
+c
+c...Added check for NCL-VT mode
+c...Paul  -  10/3/91
+c...Old version was:
+c   if (ifl(35).eq.0) then
+c
+               if (ifl(35).eq.0 .or. ifl(35) .eq. 2) then
+                   call nclf_src_rec_to_line (ifl4(13),nline)
+                   ifl(215) = 4
+               endif
+               go to 99999
+          endif
+          if (nextyp.eq.9) then
+              ncsfl(3)=1
+              inx=inx+1
+              call putcl (icl,isubcl,1,sc(11))
+              go to 99999
+          endif
+99        first=.true.
+ 
+c              this section was changed from using the sc table to using
+c              the dtbl in the common block mocom so that up to 100
+c              postprocessor minor words could be handled.
+c                  m. gump 8-8-83
+          numr8s = 1
+          pstnam = ' '
+          do 100,i=51,101
+              if (nextyp.eq.11) then
+                  call putcl (icl,isubcl,numr8s,d(51))
+                  if (isubcl.eq.1015.and.pstnam.ne.' ') then
+                      nc     = strlen1(pstnam)
+                      call lpstnm (pstnam,nc)
+                      if (pstnam .eq. 'PWORKS' .and. numr8s .ge. 3)
+     1                    pstnum = d(52)
                   endif
+                  go to 99999
               endif
-          else
-              if (PREPT .eq. 0) ifl    = 2
-          endif
+              if ((nextyp.ne.11).and. (i.eq.101)) then
+                  call error(237)
+                  go to 99999
+              endif
+ 
+c                  if there is a comma or
+c                  there is a slash and this is the first minor word
+              idtype = -1
+              if (nextyp.eq.9) then
+                  call parsit
+              else if (nextyp.eq.5 .and. first) then
+                  savinx=inx
+                  savitp = ityp
+                  savist = ist
+                  call parsit
+C
+C...If this is ARCSLP/FILLET we need to set a flag and
+C...set the fillet radius and the fillet tolerance.
+C...JLS 4/14/99
+C
+                  if (savitp.eq.1.and.savist.eq.ARCSLP.and.
+     x                ityp.eq.1.and.ist.eq.FILLET.and.
+!=IRS,HPX,SUN,IBM
+!     x                ifl(351).eq.1.and..not.lv90) then
+!=WNT,W2K
+     x                ifl(351).eq.1) then
+!=ALL
+                     call parsit
+                     lres = .false.
 c
-          if (ifl .ne. 0) then
-              if (MXCL .lt. ifl .or. MXCL .gt. inc+9) go to 9100
-              do 500 i=inc,MXCL,1
-                  if (IPSTWD(i) .eq. 144) go to 600
-                  if (IPSTWD(i) .ne. 0) go to 9100
-                  PREPT  = PREPT  + 1
-                  inum   = PSTWD(i)
-                  call itoc (inum,PSTNAM(PREPT),nc,0)
-  500         continue
-              go to 650
+c......ARCSLP/FILLET,SAVE
 c
-  600         if (i+1 .ge. MXCL) go to 9100
-              do 620 i=i+1,MXCL,2
-                  if (IPSTWD(i) .ne. 0) go to 9100
-                  if (PSTWD(i) .lt. 1 .or. PSTWD(i) .gt. nop) go to 9100
-                  inc    = PSTWD(i)
-                  if (PSTWD(i+1) .lt. opmn(inc) .or.
-     1                PSTWD(i+1) .gt. opmx(inc)) go to 9100
-                  kopt(inc) = PSTWD(i+1)
-  620         continue
-  650         imach  = 1
-          endif
+                     if (ityp .eq. 1 .and. ist .eq. 582) then
+                       sflrad = FILRAD
+                       sfltol = FILTOL
+                       sflwrn = LFLWRN
+                       sflcom = LFLCOM
+                       sflsam = LFLSAM
+                       sflang = FILANG
+                       sfldco = IFEDCO
+                       sfldhi = FEDHIG
+                       sfldlo = FEDLOW
+                       sfl347 = ifl(347)
+                       go to 99999
 c
-c...PARTNO card
+c......ARCSLP/FILLET,RESTOR
 c
-      else if (ITYPE .eq. 2000 .and. ISUBT .eq. 1045) then
-          if (NPARTN .eq. 100) then
-              if (imach .eq. 1) go to 8000
-          else
-              NPARTN = NPARTN + 1
-              if (NPARTN .eq. 1) LPARTN = LPSTWD
-              SFRMBUF(NPARTN) = LPSTWD
-          endif
+                     else if (ityp .eq. 1 .and. ist .eq. 583) then
+                       tflrad = sflrad
+                       tfltol = sfltol
+                       tflwrn = sflwrn
+                       tflcom = sflcom
+                       tflsam = sflsam
+                       tmang  = sflang
+                       IFEDCO = sfldco
+                       tlfed = .false.
+                       if (sfldco .ne. 0) tlfed = .true.
+                       FEDHIG = sfldhi
+                       FEDLOW = sfldlo
+                       if (sfl347 .eq. 0) then
+                           ifl(347) = 0
+                           ifl(348) = 0
+                           go to 99999
+                       endif
+                       lres = .true.
+                       scalar = .true.
+                       tv = sflrad
+                     endif
 c
-c...FINI card encountered
+c......ARCSLP/FILLET,rad
 c
-      else if (ITYPE .eq. 14000) then
-          if (imach .eq. 0) go to 9000
-          go to 8000
+                     if (.not.scalar) then
+                       call error(7)
+                       goto 99999
+                     endif
+                     if (tv.lt.0.0d0) then
+                       call error(112)
+                       goto 99999
+                     endif
+C
+C...if tv is not equal to 0 then there is a fillet radius
+C...and the flag should be set.
+C
+                     if(tv.gt.0.0) then
+cc                        motdfl = .false.
+                        if (.not. lres) then
+                          tflrad = tv
+                          tfltol = sc(27)
+                          tflwrn = lflwrn
+                          tlfed  = .false.
+                          tflcom = .false.
+                          tflsam = .false.
+                          tmang  = dcos(2.0d0/57.2957795d0)
+                        endif
+C
+C...Parse optional parameter portion of command
+C
+                        if (nextyp.ne.11 .and. .not. lres) then
+                           call filprs (tflrad,tfltol,tlfed,tflwrn,
+     1                       tflcom,tflsam,tmang)
+                           if (ifl(2) .ne. 0) then
+                               call error (ifl(2))
+                               go to 99999
+                           endif
+                        endif
+C
+c...No error, store final values.
+C...If we have already been making fillets and the fillet values are just
+C...being changed, leave the value in ifl(347) as is
+C
+                        if (ifl(347) .eq. 0) then
+                            ifl(347)=1
+c                            irec = i4stat(2)
+                            call ncl_setptr(imotp,irec)
+                            iclw(3) = 0
+                            iclf = 0
+                            call ncl_tstptr(irec,iflg)
+                            do while (iclw(3) .ne. 5000 .and.
+     1                                iclw(3) .ne. 5200 .and.
+     2                                iflg .ne. 0 .and. jerr .ne. 1)
+c                                svrec = irec
+                                call ncl_setptr(irec,svrec)
+                                call clprev (iclf,irec,iclw,dclbuf,jerr)
+                                call ncl_tstptr(irec,iflg)
+                            enddo
+c                            if (iclw(3) .eq. 5000 .or.
+c     1                          iclw(3) .eq. 5200) isrec = irec
+                            if (iclw(3) .eq. 5000 .or.
+     1                          iclw(3) .eq. 5200)
+     2                                   call ncl_setptr(irec,isrec)
+                        endif
+                        lcount = nline
+                        filrad = tflrad
+                        filtol = tfltol
+                        lflwrn = tflwrn
+                        lflcom = tflcom
+                        lflsam = tflsam
+                        filang = tmang
+                        FILFLG(1) = 0
+                        if (.not.tlfed) IFEDCO = 0
+                        goto 99999
+C
+C...The ARCSLP/FILLET command was found but the radius is zero, so
+C...set flag back to zero.
+C
+                     else
+cc                        if (ifl(347).ne.0) then
+cc                           call motend
+cc                        endif
+                        ifl(347)=0
+                        ifl(348)=0
+                        filrad = 0.
+                        FILFLG(1) = 0
+cc                        motdfl = .true.
+                     endif
+C
+C...Reset inx to finish processing the command.
+C...We don't want the actual command to go into the clfile so
+C...return back and start on the next entry.
+C
+                     goto 99999
+                  endif
+ 
+                  first=.false.
+                  if ((ityp.eq.1 .or. ityp.eq.2) .and.
+     1                 isubcl.eq.1015) then
+                      ityp=4
+                      pstnam=token2
+                      nc     = strlen1(pstnam)
+                      if (nc .gt. 8) then
+                          ie     = (nc+7)/8 - 1
+                          jtemp(1) = -1
+                          jtemp(2) = nc
+                          d(50+numr8s) = temp
+                          numr8s = numr8s + 1
+                          do 75 j=1,ie,1
+                              d(50+numr8s)=req1(j)
+                              numr8s = numr8s + 1
+   75                     continue
+                          tv = req1(ie+1)
+                      else
+                          tv=req1(1)
+                      endif
+                  endif
+              else
+                  isvinx=inx
+                  if (first) then
+                      call error (22)
+                  else
+                      call error (57)
+                  endif
+                  go to 99999
+              endif
+c                      its a vocab word. it needs to be stored in the
+c                      low order integer*2 for the post to be able to
+c                      distinguish it from a scalar value
+              if (ityp.eq.1) then
+                  itemp(is4)=ist
+                  d(50+numr8s)=temp
+              else if ((ityp.eq.2 .and. ist.eq.2) .or.
+     1                  ityp.eq.3 .or. ityp.eq.4) then
+                  d(50+numr8s)=tv
+c                     for "clrsrf/" commands:
+c                      expand a plane id to its 4 canonical parameters
+              else if (isubcl .eq. 1057 .and.
+     x                 ityp.eq.2 .and. (ist.eq.6 .or. ist.eq.9)) then
+                  if (ist.eq.SURF) then
+                    call gtdesc(tv,nclkey,nw,ietype)
+                    call ncl_get_sf_primtyp(nclkey,primtyp)
+                    if (primtyp.ne.3) then
+                      call error(19)
+                      go to 99999
+                    endif
+                  endif
+                  call gtplt (tv, ifl(72), d(50+numr8s))
+                  numr8s = numr8s + 3
+              else
+                  call error(7)
+                  go to 99999
+              endif
+              numr8s = numr8s + 1
+100       continue
+          call error(237)
+3899  continue
+88888 continue
+99999 continue
+ 
+      return
+      end
+c
+C*********************************************************************
+C*    E_SUBROUTINE     : subroutine pstwfr (ierr)
+c*       this routine parses feed rate command with AT and OUT
+C*       qualifiers.  These are not post processor commands.
+C*    PARAMETERS
+C*       INPUT  :
+C*          none
+C*       OUTPUT :
+C*          ierr  - 0 = ncl FR/AT command processed (OK or not is
+C*                  meaningless), 1 = assumed pp command.
+C*    RETURNS      : none
+C*    SIDE EFFECTS : none
+C*    WARNINGS     : none
+c**********************************************************************
+      subroutine pstwfr (ierr)
+c
+      include 'com8a.com'
+      include 'comgt.com'
+c
+      integer*4 nsw,iscal,idw(4),is,i,nss
+      integer*2 isv,i1,i2,ierr
+c
+      real*8 r(4)
+c
+      if (ityp .ne. 1) go to 8000
+      i1     = ifl(314)
+      i2     = ifl(315)
+      ierr   = 0
+c
+c...FEDRAT/AT...
+c
+      is     = -1
+      nsw    = 0
+      nss    = 0
+      do 55 i=1,4
+         idw(i) = 0
+   55 continue
+c
+c...Get key word of command
+c
+   90 if (is .ge. 0) call parsit
+      if (ityp .ne. 1) go to 9000
+      iscal  = 0
+      if (ist .eq. 189) then
+          nsw   = 1
+      else if (ist .eq. 653) then
+          nsw   = 2
+      else if (ist .eq. 325) then
+          nsw   = 3
+      else if (ist .eq. 9) then
+          nsw   = 4
+      else
+          go to 9000
+      end if
+      if (idw(nsw) .eq. 1) go to 9100
+      idw(nsw) = 1
+c
+c...AT or OUT must be the first minor word of the valid NCL command,
+c...otherwise it is postprocessor command
+c
+      if (is .lt. 0 .and. idw(1)+idw(2) .eq. 0) go to 9990
+      is     = 0
+c
+c...Get parameters
+c......for AT or OUT
+c
+      go to (100,100,300,400) nsw
+  100 if (nextyp .eq. 11) then
+          if (nsw .eq. 2) go to 190
+          go to 9300
       endif
-      go to 100
+  110 isv   = inx
+      call parsit
+      is    = is + 1
+c
+c......,distance
+c
+      if (scalar) then
+         r(is) = tv
+c
+c......,[SCALE],feed
+c
+      else if (is .eq. 2) then
+         if (ityp .eq. 1) then
+            is     = is - 1
+            if (ist .eq. 25) then
+               iscal  = 1
+            else
+               go to 190
+            end if
+         else if (scalar) then
+            r(is) = tv
+         else
+            go to 9200
+         end if
+      else if (ityp .eq. 1) then
+         is    = is - 1
+         if (nextyp .eq. 11) nextyp = 12
+         go to 190
+      end if
+      if (is .gt. 3) go to 9400
+      if (nextyp .ne. 11) go to 110
+c
+c......End of AT (or OUT) section,
+c......store parameters in common area
+c
+  190 if (is .lt. 1) then
+          if (nsw .eq. 2 .and. nss .eq. 1) then
+              FEDIS(2) = FEDIS(1)
+              lfl(85) = lfl(84)
+              ifl(315) = ifl(314)
+              FEEDC(2+3*iscal) = r(2)
+c
+              if (nss .eq. 1) nss = nsw
+              idw(3) = 0
+              is     = 0
+              if (nextyp .eq. 11) go to 7000
+              inx    = isv
+              go to 90
+          else
+              go to 9200
+          endif
+      endif
+c
+      if (is .eq. 1) then
+         if (r(is) .ne. 0.0) go to 9300
+         ifl(313+nsw) = 0
+      else
+         if (r(1) .lt. 0.0) go to 9500
+         FEDIS(nsw) = r(1)
+         if (r(2) .lt. 0.0) go to 9600
+         lfl(83+nsw) = iscal .eq. 1
+         ifl(313+nsw) = 1 + idw(3)
+c        if (r(1) .eq. 0.0) ifl(313+nsw) = 0
+         FEEDC(nsw+3*iscal) = r(2)
+         if (is .eq. 3) then
+             if (r(3) .lt. 0.0) go to 9600
+             sc(123) = r(3)
+             call fedmut (sc(123))
+         end if
+      end if
+c
+c......This part is for version < 8.209
+c
+      if (nsw .eq. 1) then
+         isc10(1) = 1009
+         sc(11) = r(1)
+         sc(12) = r(2)
+         if (iscal .eq. 1) isc10(2) = 1
+         if (idw(3) .eq. 1) isc10(3) = 1
+      end if
+c
+c......Prepare for tagged ONCE
+c
+      if (idw(3) .eq. 0) nss = nsw
+      idw(3) = 0
+c
+      is     = 0
+      if (nextyp .eq. 11) go to 7000
+      inx    = isv
+      go to 90
+c
+c......ONCE
+c......apply for parsed AT or OUT
+c
+  300 if (nss .eq. 1) then
+          isc10(3) = 1
+          ifl(314) = 2
+          idw(3) = 0
+      else if (nss .eq. 2) then
+          ifl(315) = 2
+          idw(3) = 0
+      end if
+c
+c......or save it for following AT or OUT
+c
+      nss    = 0
+      if (nextyp .eq. 11) go to 7000
+      go to 90
+c
+c......LENGTH,hig
+c
+  400 if (nextyp .eq. 11) go to 9300
+      call parsit
+      if (scalar) then
+         FHIGT = tv
+      else
+         go to 9200
+      end if
+      if (nextyp .eq. 11) go to 7000
+      go to 90
+c
+c...Set common values
+c
+ 7000 if (sclat) FEEDC(1) = FEEDC(4) * sc(123)
+      if (sclout) FEEDC(2) = FEEDC(5) * sc(123)
+      FEEDC(3) = sc(123)
+c
+c...Save parameters for after 'once'
+c
+      if (ifl(314) .eq. 1) then
+         FEEDS(1) = FEEDC(1)
+         FEEDS(4) = FEEDC(4)
+         FEDIS(3) = FEDIS(1)
+         sclats = sclat
+      else if (ifl(314) .eq. 2 .and. i1 .ne. 2) then
+         ifl(320) = i1
+      end if
+      if (ifl(315) .eq. 1) then
+         FEEDS(2) = FEEDC(2)
+         FEEDS(5) = FEEDC(5)
+         FEDIS(4) = FEDIS(2)
+         sclous = sclout
+      else if (ifl(315) .eq. 2 .and. i2 .ne. 2) then
+         ifl(321) = i2
+      end if
 c
 c...End of routine
 c
  8000 return
 c
-c...MACHIN card not found
+c...Errors
 c
- 9000 call errtxt ('NOMACHIN',cmsg)
-      kerr   = 1
+ 9000 ifl(2) = 61
+      go to 9900
+c
+ 9100 ifl(2) = 8
+      go to 9900
+c
+ 9200 ifl(2) =  7
+      go to 9900
+c
+ 9300 ifl(2) = 273
+      go to 9900
+c
+ 9400 ifl(2) = 4
+      go to 9900
+c
+ 9500 ifl(2) = 272
+      go to 9900
+c
+ 9600 ifl(2) = 112
+ 9900 call error (ifl(2))
       go to 8000
 c
-c...MACHIN card syntax error
+c...Output as pp command
 c
- 9100 call errtxt ('MACHSYN',cmsg)
-      kerr   = 1
+ 9990 ierr = 1
       go to 8000
+c
+      end
+C*********************************************************************
+C*    E_SUBROUTINE     : subroutine gtfedp (gfed,gdis,ghi,nfl,nscl)
+c*       this routine passes feed rate parameters to C routines.
+C*    PARAMETERS
+C*       INPUT  :
+C*          none
+C*       OUTPUT :
+C*          none
+C*    RETURNS      : none
+C*    SIDE EFFECTS : none
+C*    WARNINGS     : none
+c**********************************************************************
+      subroutine gtfedp (gfed,gdis,ghi,nfl,nscl)
+c
+      include 'com8a.com'
+      include 'comgt.com'
+c
+      real*8 gfed(6),gdis(2),ghi
+      integer*2 nfl(2),nscl(2)
+c
+      do 55 i=1,6
+         gfed(i) = FEEDC(i)
+  55  continue
+      gdis(1) = FEDIS(1)
+      gdis(2) = FEDIS(2)
+      nfl(1)  = ifl(314)
+      nfl(2)  = ifl(315)
+      nscl(1) = 0
+      nscl(2) = 0
+      if (sclat) nscl(1) = 1
+      if (sclout) nscl(2) = 1
+      ghi     = FHIGT
+c
+      return
+      end
+C*********************************************************************
+C*    E_SUBROUTINE     : subroutine stclix (is1,is4)
+c*       This routine sets the indices for clfile post word values.
+C*    PARAMETERS
+C*       INPUT  :
+C*          none
+C*       OUTPUT :
+C*          is1    - first index.
+C*          is4    - second index.
+C*    RETURNS      : none
+C*    SIDE EFFECTS : none
+C*    WARNINGS     : none
+c**********************************************************************
+      subroutine stclix (is1,is4)
+c
+      include 'com8a.com'
+c
+      integer*2 is1, is4
+c
+!=IRS,SUN,HPX,IBM,VMS
+!      is1=1
+!      is4=4
+!=WNT,W2K
+      is1=4
+      is4=1
+!=ALL
+c
+      return
+      end
+C
+C*********************************************************************
+C*    E_SUBROUTINE     : subroutine stclix (is1,is4)
+c*       Parses the REMARK statement and determines if it is a
+C*       REMARK/ON or REMARK/OFF command.
+C*    PARAMETERS
+C*       INPUT  :
+C*          cstr   - REMARK text string, including REMARK word (cin).
+C*       OUTPUT :
+C*          kfl    - 0 = Standard REMARK command, 1 = REMARK/ON,
+C*                   2 = REMARK/OFF.
+C*    RETURNS      : none
+C*    SIDE EFFECTS : none
+C*    WARNINGS     : none
+C**********************************************************************
+C
+      subroutine prsrem (cstr,kfl)
+c
+      include 'com8a.com'
+c
+      integer*2 kfl
+c
+      character*(*) cstr
+c
+      integer*4 nc,strlen1
+c
+      character*72 lstr
+c
+c...Remove spaces and convert to upper case
+c
+      call remspc (cstr(1:72),lstr)
+      call touppr (lstr,lstr)
+c
+c...Check for REMARK/ON,OFF
+c
+      nc = strlen1(lstr)
+      if (nc .eq. 9 .and. lstr(7:9) .eq. '/ON') then
+          kfl = 1
+      else if (nc .eq. 10 .and. lstr(7:10) .eq. '/OFF') then
+          kfl = 2
+      else
+          kfl = 0
+      endif
+c
+c...End of routine
+c
+ 8000 return
       end
