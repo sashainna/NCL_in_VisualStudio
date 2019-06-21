@@ -1,0 +1,131 @@
+// SwUnibase.idl : IDL source for SwUnibase.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (SwUnibase.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+	[
+		object,
+		uuid(46A48BAE-9093-11D7-87E7-0800691362A7),
+		dual,
+		helpstring("ISwUnibaseObj Interface"),
+		pointer_default(unique)
+	]
+	interface ISwUnibaseObj : IDispatch
+	{
+		[id(1), helpstring("Create Unibase")] HRESULT CreateUnibase();
+		[id(2), helpstring("Toolbar Update")] HRESULT ToolbarUpdate([out,retval] long* status);
+		[id(3), helpstring("Display PropertyManagerPage")] HRESULT DisplayPMP();
+	};
+	[
+		object,
+		uuid(46A48BB7-9093-11D7-87E7-0800691362A7),
+		dual,
+		helpstring("IPropertyManagerPage Interface"),
+		pointer_default(unique)
+	]
+	interface IPMPage : IDispatch
+	{
+	};
+	[
+		object,
+		uuid(46A48BAF-9093-11D7-87E7-0800691362A7),
+		dual,
+		helpstring("IDocument Interface"),
+		pointer_default(unique)
+	]
+	interface IPart : IDispatch
+	{
+	};
+	[
+		object,
+		uuid(46A48BB1-9093-11D7-87E7-0800691362A7),
+		dual,
+		helpstring("IDocument Interface"),
+		pointer_default(unique)
+	]
+	interface IAssembly : IDispatch
+	{
+	};
+	[
+		object,
+		uuid(46A48BB3-9093-11D7-87E7-0800691362A7),
+		dual,
+		helpstring("IDrawing Interface"),
+		pointer_default(unique)
+	]
+	interface IDrawing : IDispatch
+	{
+	};
+	[
+		object,
+		uuid(46A48BB5-9093-11D7-87E7-0800691362A7),
+		dual,
+		helpstring("IDocView Interface"),
+		pointer_default(unique)
+	]
+	interface IDocView : IDispatch
+	{
+	};
+
+[
+	uuid(46A48BA1-9093-11D7-87E7-0800691362A7),
+	version(1.0),
+	helpstring("SwUnibase 1.0 Type Library")
+]
+library SWUNIBASELib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(46A48BB9-9093-11D7-87E7-0800691362A7),
+		helpstring("SwUnibaseObj Class")
+	]
+	coclass SwUnibaseObj
+	{
+		[default] interface ISwUnibaseObj;
+	};
+	[
+		uuid(46A48BB8-9093-11D7-87E7-0800691362A7),
+		helpstring("PMPage Class")
+	]
+	coclass PMPage
+	{
+		[default] interface IPMPage;
+	};
+	[
+		uuid(46A48BB0-9093-11D7-87E7-0800691362A7),
+		helpstring("Part Class")
+	]
+	coclass Part
+	{
+		[default] interface IPart;
+	};
+	[
+		uuid(46A48BB2-9093-11D7-87E7-0800691362A7),
+		helpstring("Assembly Class")
+	]
+	coclass Assembly
+	{
+		[default] interface IAssembly;
+	};
+	[
+		uuid(46A48BB4-9093-11D7-87E7-0800691362A7),
+		helpstring("Drawing Class")
+	]
+	coclass Drawing
+	{
+		[default] interface IDrawing;
+	};
+	[
+		uuid(46A48BB6-9093-11D7-87E7-0800691362A7),
+		helpstring("DocView Class")
+	]
+	coclass DocView
+	{
+		[default] interface IDocView;
+	};
+};

@@ -1,0 +1,876 @@
+//
+//     MODULE NAME AND RELEASE LEVEL
+//       wsntncl.rc , 26.2
+//    DATE AND TIME OF LAST  MODIFICATION
+//       04/16/18 , 15:28:11
+//
+// Microsoft Visual C++ generated resource script.
+//
+#include "wsntres.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (United States) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "wsntres.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#endif\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_NCLICON             ICON                    "ncltitle.ico"
+IDI_NCLFORMICON         ICON                    "nclform.ico"
+IDI_ICON1               ICON                    "ppbutton.ico"
+IDI_ICON2               ICON                    "check.ico"
+IDI_ICON3               ICON                    "cbutton.ico"
+IDI_ICON4               ICON                    "combo.ico"
+IDI_ICON5               ICON                    "edit.ico"
+IDI_ICON6               ICON                    "frame.ico"
+IDI_ICON7               ICON                    "label.ico"
+IDI_ICON8               ICON                    "listbox.ico"
+IDI_ICON9               ICON                    "listctl.ico"
+IDI_ICON10              ICON                    "picture.ico"
+IDI_ICON11              ICON                    "process.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "E&xit",                       ID_APP_EXIT
+        MENUITEM "",                            ID_FILE
+    END
+END
+
+IDR_POPUPFRAME MENU
+BEGIN
+    POPUP "File"
+    BEGIN
+        MENUITEM "Close",                       IDCANCEL
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_STATUS_DLG DIALOGEX 0, 0, 280, 20
+STYLE DS_SETFONT | WS_CHILD
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    PUSHBUTTON      "Accept",IDC_CUSTOM1,47,4,50,14
+END
+
+IDD_TEXTWIN DIALOG 0, 0, 280, 158
+STYLE DS_SETFONT | WS_MINIMIZEBOX | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "Help Window"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_TEXTWINEDIT,7,7,266,147,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY | WS_VSCROLL | WS_HSCROLL
+END
+
+IDD_TEXTWIN2 DIALOG 0, 0, 100, 18
+STYLE DS_SETFONT | WS_POPUP | WS_BORDER
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Enter Text:",IDC_TEXTWINLABEL,2,2,35,15
+    EDITTEXT        IDC_TEXTWINEDIT,37,2,60,15,ES_AUTOVSCROLL
+END
+
+IDD_Form_HELPTEXT DIALOGEX 0, 0, 281, 189
+STYLE DS_SETFONT | WS_MINIMIZEBOX | WS_CAPTION | WS_THICKFRAME
+CAPTION "Help text"
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    EDITTEXT        IDC_TEXTWINEDIT,7,6,266,161,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_OEMCONVERT | ES_WANTRETURN | WS_VSCROLL | WS_HSCROLL
+    PUSHBUTTON      "Accept",IDOK,75,172,80,14
+    PUSHBUTTON      "Cancel",IDCANCEL,175,172,80,14
+END
+
+IDD_POCKET DIALOG 300, 200, 200, 200
+STYLE DS_SETFONT | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "NCLIPV"
+FONT 8, "MS Sans Serif"
+BEGIN
+END
+
+IDD_PICTURE DIALOGEX 200, 200, 300, 201
+STYLE DS_SETFONT | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_POPUP | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "NCL Graphic"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_PICTURE_BOX,"Static",SS_GRAYFRAME | SS_SUNKEN | WS_GROUP,10,10,480,176,WS_EX_STATICEDGE
+END
+
+IDD_DIROPEN_DLG DIALOGEX 36, 24, 214, 135
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | DS_CONTEXTHELP | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Open Directory"
+FONT 8, "Helv", 0, 0, 0x0
+BEGIN
+    LISTBOX         ID_DIREC_LIST,11,33,190,66,LBS_SORT | LBS_OWNERDRAWFIXED | LBS_HASSTRINGS | LBS_DISABLENOSCROLL | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Dri&ves:",1091,10,103,118,9
+    COMBOBOX        ID_DISK_LIST,11,114,113,68,CBS_DROPDOWNLIST | CBS_OWNERDRAWFIXED | CBS_AUTOHSCROLL | CBS_SORT | CBS_HASSTRINGS | WS_BORDER | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "OK",IDOK,155,102,50,14,WS_GROUP
+    PUSHBUTTON      "Cancel",IDCANCEL,155,118,50,14,WS_GROUP
+    LTEXT           "Folder:",IDC_STATIC,11,13,24,8
+    EDITTEXT        IDC_FOLDER_TEXT,40,12,161,14,ES_AUTOHSCROLL
+    LTEXT           "",1088,127,105,8,8,NOT WS_VISIBLE
+    LISTBOX         1120,126,116,8,10,LBS_SORT | LBS_OWNERDRAWFIXED | LBS_NOINTEGRALHEIGHT | LBS_DISABLENOSCROLL | NOT WS_VISIBLE | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        1136,136,122,16,30,CBS_DROPDOWNLIST | CBS_SORT | NOT WS_VISIBLE | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_FDLG_FNAME,141,107,6,12,ES_AUTOHSCROLL | NOT WS_VISIBLE
+END
+
+IDD_MENUAREA DIALOG 0, 0, 186, 111
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "Delete",IDC_DELETE,75,90,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,129,90,50,14
+    COMBOBOX        IDC_AREA_NAME,77,14,86,62,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Menu Area Name:",IDC_STATIC,14,15,60,8
+    LTEXT           "Direction:",IDC_STATIC,14,33,35,8
+    COMBOBOX        IDC_DIRECTION,52,30,48,64,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Rows:",IDC_STATIC,14,50,21,8
+    EDITTEXT        IDC_EDIT1,43,46,40,14,ES_AUTOHSCROLL
+    LTEXT           "Cols:",IDC_STATIC,99,48,16,8
+    EDITTEXT        IDC_EDIT2,129,46,40,14,ES_AUTOHSCROLL
+    LTEXT           "Width:",IDC_STATIC,14,66,22,8
+    EDITTEXT        IDC_EDIT3,43,63,40,14,ES_AUTOHSCROLL
+    LTEXT           "Height",IDC_STATIC,99,65,22,8
+    EDITTEXT        IDC_EDIT4,129,63,40,14,ES_AUTOHSCROLL
+    GROUPBOX        "",IDC_STATIC,7,7,172,78
+    PUSHBUTTON      "Add",IDC_ADD,20,90,50,14
+END
+
+IDD_SIGNON_DLG DIALOG 36, 24, 345, 135
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | DS_CONTEXTHELP | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "NCL Signon"
+FONT 8, "Helv"
+BEGIN
+    LTEXT           "File &name:",1090,6,6,76,9
+    EDITTEXT        IDC_FDLG_FNAME,6,16,142,12,ES_AUTOHSCROLL | ES_OEMCONVERT
+    LISTBOX         1120,6,32,142,68,LBS_SORT | LBS_OWNERDRAWFIXED | LBS_HASSTRINGS | LBS_DISABLENOSCROLL | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "&Folders:",-1,163,6,96,9
+    LTEXT           "",1088,163,18,113,9,SS_NOPREFIX
+    LISTBOX         ID_DIREC_LIST,163,32,113,50,LBS_SORT | LBS_OWNERDRAWFIXED | LBS_HASSTRINGS | LBS_DISABLENOSCROLL | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "List files of &type:",1089,6,104,90,9
+    COMBOBOX        1136,5,114,150,93,CBS_DROPDOWNLIST | CBS_AUTOHSCROLL | WS_BORDER | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Dri&ves:",1091,157,101,118,9
+    COMBOBOX        ID_DISK_LIST,163,114,113,68,CBS_DROPDOWNLIST | CBS_OWNERDRAWFIXED | CBS_AUTOHSCROLL | CBS_SORT | CBS_HASSTRINGS | WS_BORDER | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "OK",IDOK,287,95,50,14,WS_GROUP
+    PUSHBUTTON      "Cancel",IDCANCEL,287,113,50,14,WS_GROUP
+END
+
+IDD_FORMDIALOG DIALOG 0, 0, 306, 167
+STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "Form Dialog"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDC_FORMACCEPT,135,145,50,14
+    PUSHBUTTON      "CANCEL",IDC_FORMCANCEL,193,145,50,14
+    GROUPBOX        "",IDC_SCROLL_FRAME,7,0,292,142
+    PUSHBUTTON      "HELP",IDC_FORMHELP,249,145,50,14
+END
+
+IDD_COLORPICKER_DIALOG DIALOGEX 0, 0, 334, 221
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "Colors"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,8,202,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,65,202,50,14
+    LTEXT           "",IDC_NCL_COLORS,9,26,133,31,SS_SUNKEN | NOT WS_VISIBLE | NOT WS_GROUP
+    RTEXT           "&New:",IDC_STATIC,157,129,17,8
+    RTEXT           "C&urrent:",IDC_STATIC,147,151,27,8
+    CONTROL         "",IDC_NCL_BUTTON_PREVIEW,"Button",BS_OWNERDRAW | WS_TABSTOP,177,125,49,36
+    LTEXT           "",IDC_NCL_COLORS2,8,93,133,78,SS_SUNKEN | NOT WS_VISIBLE | NOT WS_GROUP
+    CONTROL         "Custom1",IDC_LUMCHOOSER,"NCLLumChooserWnd",WS_TABSTOP,305,7,17,108
+    EDITTEXT        IDC_EDIT1,255,155,22,15,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT2,253,139,22,15,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT3,253,121,22,15,ES_AUTOHSCROLL
+    CONTROL         "Custom1",IDC_HUESAT,"NCLHueSatChooserWnd",WS_TABSTOP,177,7,120,108
+    LTEXT           "Hu&e",IDC_STATIC3,235,123,14,8
+    LTEXT           "&Sat",IDC_STATIC2,237,140,12,8
+    LTEXT           "&Lum",IDC_STATIC1,237,156,14,8
+    EDITTEXT        IDC_BLUE,303,155,22,15,ES_AUTOHSCROLL
+    EDITTEXT        IDC_GREEN,303,139,22,15,ES_AUTOHSCROLL
+    EDITTEXT        IDC_RED,301,121,22,15,ES_AUTOHSCROLL
+    LTEXT           "&Red",IDC_STATIC4,281,125,14,8
+    LTEXT           "&Green",IDC_STATIC5,281,142,20,8
+    LTEXT           "Bl&ue",IDC_STATIC6,281,158,15,8
+    LTEXT           "Basic colors:",IDC_STATIC,8,14,41,8
+    LTEXT           "Custom colors:",IDC_STATIC,8,79,47,8
+    EDITTEXT        IDC_NCL_CLR_NAME,53,179,89,14,ES_AUTOHSCROLL
+    LTEXT           "Color name:",IDC_STATIC,9,181,38,8
+    PUSHBUTTON      "Add to Custom Colors",IDC_NCL_ADD_COLOR,176,179,147,14
+    CONTROL         "Default Color:",IDC_NCL_DEFAULT_CLR,"Button",BS_AUTOCHECKBOX | BS_LEFTTEXT | WS_TABSTOP,9,63,59,10
+END
+
+IDD_MENUDESIGN DIALOGEX 0, 0, 387, 289
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_MAXIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Menu Design"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_TABLE_LIST,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_SORTASCENDING | LVS_OWNERDRAWFIXED | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,17,93,341,121
+    LTEXT           "Button label:",IDC_LABEL1,20,17,42,9
+    EDITTEXT        IDC_EDIT1,66,15,100,14,ES_AUTOHSCROLL
+    LTEXT           "Status Name:",IDC_STATLABEL,20,39,47,8
+    LTEXT           "(status button only)",IDC_STATIC,163,39,64,8
+    COMBOBOX        IDC_COMBO1,70,38,88,100,CBS_DROPDOWNLIST | CBS_AUTOHSCROLL | WS_BORDER | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Button Size (cx,cy)",IDC_LABEL3,20,58,85,8
+    EDITTEXT        IDC_EDIT5,106,55,102,14,ES_AUTOHSCROLL
+    LTEXT           "Selected Button Function",IDC_LABEL,20,77,85,8
+    EDITTEXT        IDC_EDIT4,106,74,92,14,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Default Menu Choice (1-n):",IDC_LABEL2,20,17,95,8
+    EDITTEXT        IDC_EDIT6,116,15,69,14,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "Drag an Item to the graphics area to create a new menu or to an existing menu to add to it.",IDC_STATIC,241,15,119,26
+    LTEXT           "Double-click an item to execute it.",IDC_STATIC,240,46,126,8
+    LTEXT           "Parameter:",IDC_STATIC,20,228,37,8
+    EDITTEXT        IDC_EDIT2,66,225,188,14,ES_AUTOHSCROLL
+    LTEXT           "Description:",IDC_STATIC,20,247,39,8
+    EDITTEXT        IDC_EDIT3,65,245,189,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Ok",IDOK,252,266,50,14
+    DEFPUSHBUTTON   "Cancel",IDCANCEL,309,266,50,14
+END
+
+IDD_FORMDESIGN DIALOGEX 0, 0, 326, 309
+STYLE DS_SETFONT | DS_3DLOOK | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "Form Design"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+END
+
+IDD_FORMMAIN_VIEW DIALOGEX 0, 0, 285, 301
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+END
+
+IDD_FORMITEM_PRO DIALOGEX 0, 0, 153, 330
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        "Field Selection:",IDC_LEFT_FORM,6,0,145,325
+    LISTBOX         IDC_ICON_LISTBOX,13,22,134,122,LBS_OWNERDRAWVARIABLE | LBS_NOINTEGRALHEIGHT | LBS_WANTKEYBOARDINPUT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Form Title:",IDC_STATIC,10,245,50,8
+    EDITTEXT        IDC_EDIT1,10,256,137,14,ES_AUTOHSCROLL | ES_WANTRETURN
+    LTEXT           "Form Size:",IDC_STATIC,11,277,47,8
+    EDITTEXT        IDC_EDIT2,62,274,51,14,ES_AUTOHSCROLL | ES_WANTRETURN,WS_EX_ACCEPTFILES
+    COMBOBOX        IDC_COMBO1,56,292,60,120,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Dockable",IDC_STATIC,13,294,30,8
+    CONTROL         "Multiple Pages:",IDC_CHECK6,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,311,134,10
+    CONTROL         "Place in Source field",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,149,134,10
+    CONTROL         "Remember Input Values field",IDC_CHECK2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,163,134,10
+    CONTROL         "Output Default Values field",IDC_CHECK3,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,178,134,10
+    CONTROL         "View button",IDC_CHECK4,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,194,134,10
+    CONTROL         "Dynamic View button",IDC_CHECK5,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,211,134,10
+    CONTROL         "Video button",IDC_CHECK7,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,228,134,10
+END
+
+IDD_FORMITEM_PRO2 DIALOGEX 0, 0, 160, 424
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        "Field Properties:",IDC_FORMPROP,7,8,153,415
+    LTEXT           "Input item:",IDC_ITEM_NOLABLE,14,21,36,8
+    EDITTEXT        IDC_EDIT12,58,21,30,14,ES_AUTOHSCROLL
+    LTEXT           "Page:",IDC_PAGE_NOLABLE,94,21,36,8
+    EDITTEXT        IDC_EDIT13,125,21,30,14,ES_AUTOHSCROLL
+    LTEXT           "Label:",IDC_LABEL,14,40,20,8
+    EDITTEXT        IDC_EDIT1,40,39,114,14,ES_AUTOHSCROLL
+    LTEXT           "Position(x,y):",IDC_POSLABEL,14,58,41,8
+    EDITTEXT        IDC_EDIT2,60,56,59,14,ES_AUTOHSCROLL
+    LTEXT           "Size (cx,cy):",IDC_SIZELABLE,14,72,41,8
+    EDITTEXT        IDC_EDIT3,60,70,59,14,ES_AUTOHSCROLL
+    LTEXT           "Type:",IDC_COMLAB,14,89,22,8
+    COMBOBOX        IDC_COMBO1,46,87,90,120,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Input:",IDC_COMLAB2,14,106,23,8
+    COMBOBOX        IDC_COMBO2,46,105,90,120,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Limit:",IDC_LIMITLAB,14,125,18,8
+    EDITTEXT        IDC_EDIT4,44,124,108,14,ES_AUTOHSCROLL
+    LTEXT           "Choices: ""chc1"",""chc2"",""chc3""",IDC_CHOICELAB,16,144,134,8
+    PUSHBUTTON      "Browse..",IDC_BUTTON1,92,143,50,14
+    EDITTEXT        IDC_EDIT5,14,161,138,15,ES_AUTOHSCROLL
+    LTEXT           "Length:",IDC_LENLAB,14,185,26,8
+    EDITTEXT        IDC_EDIT6,44,185,38,14,ES_AUTOHSCROLL
+    LTEXT           "Precision:",IDC_PRELAB,14,202,32,8
+    EDITTEXT        IDC_EDIT7,50,202,38,14,ES_AUTOHSCROLL
+    LTEXT           "Range (min,max):",IDC_RANGELAB,14,221,58,8
+    EDITTEXT        IDC_EDIT8,74,221,58,14,ES_AUTOHSCROLL
+    LTEXT           "Field Color:",IDC_COLORLAB,14,239,41,8
+    CONTROL         "fg",IDC_FFG_CBUT,"Button",BS_OWNERDRAW | BS_CENTER | BS_NOTIFY | WS_TABSTOP,66,239,25,14
+    CONTROL         "bg",IDC_FBG_CBUT,"Button",BS_OWNERDRAW | BS_CENTER | BS_NOTIFY | WS_TABSTOP,102,239,21,14
+    LTEXT           "Prompt Color:",IDC_COLORLAB2,13,257,48,8
+    CONTROL         "fg",IDC_PFG_CBUT,"Button",BS_OWNERDRAW | BS_CENTER | BS_NOTIFY | WS_TABSTOP,66,255,25,14
+    CONTROL         "bg",IDC_PBG_CBUT,"Button",BS_OWNERDRAW | BS_CENTER | BS_NOTIFY | WS_TABSTOP,102,255,21,14
+    LTEXT           "Font Size:",IDC_FONTLAB,14,274,39,8
+    EDITTEXT        IDC_EDIT11,60,273,40,14,ES_AUTOHSCROLL
+    LTEXT           "Active:",IDC_COMLAB3,14,294,24,8
+    COMBOBOX        IDC_COMBO3,48,292,72,80,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Picture:",IDC_STATIC,10,310,145,110
+    LTEXT           "Index:",IDC_PIC_INDEX,17,326,29,8
+    EDITTEXT        IDC_EDIT18,51,324,94,14,ES_AUTOHSCROLL
+    LTEXT           "Name:",IDC_PIC_LNMLABLE,17,340,40,8
+    EDITTEXT        IDC_EDIT14,51,340,94,14,ES_AUTOHSCROLL
+    LTEXT           "Tooltip:",IDC_PIC_LTOOLTIP,17,357,40,8
+    EDITTEXT        IDC_EDIT15,51,357,94,14,ES_AUTOHSCROLL
+    LTEXT           "Position (minx, miny, maxx, maxy):",IDC_PIC_LPOS,17,372,122,8
+    EDITTEXT        IDC_EDIT16,36,386,109,14,ES_AUTOHSCROLL
+    LTEXT           "Parameter:",IDC_PIC_LPARMS,18,403,44,8
+    EDITTEXT        IDC_EDIT17,64,403,81,14,ES_AUTOHSCROLL
+END
+
+IDD_FORMSEC_PRO DIALOGEX 0, 0, 160, 80
+STYLE DS_SETFONT | WS_CAPTION | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        "Section Properties:",IDC_STATIC,10,8,140,55
+    LTEXT           "Section Label:",IDC_STATIC,18,25,45,8
+    EDITTEXT        IDC_EDIT1,65,25,70,14,ES_AUTOHSCROLL
+    LTEXT           "Text Color:",IDC_COLORLAB,18,42,45,8
+    CONTROL         "",IDC_FFG_CBUT,"Button",BS_OWNERDRAW | BS_CENTER | BS_NOTIFY | WS_TABSTOP,65,42,40,14
+    PUSHBUTTON      "Accept",IDOK,58,65,45,14
+    PUSHBUTTON      "Cancel",IDCANCEL,105,65,45,14
+END
+
+IDD_DIALOG1 DIALOGEX 0, 0, 145, 114
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | DS_FIXEDSYS | WS_CHILD | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_OVERLAPPEDWINDOW | WS_EX_TRANSPARENT | WS_EX_APPWINDOW
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "FileDescription", "NCL MFC Application"
+            VALUE "FileVersion", "1, 0, 0, 1"
+            VALUE "InternalName", "NCL"
+            VALUE "LegalCopyright", "Copyright (C) 1900"
+            VALUE "OriginalFilename", "NCL.EXE"
+            VALUE "ProductName", "NCL Application"
+            VALUE "ProductVersion", "1, 0, 0, 1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_STATUS_DLG, DIALOG
+    BEGIN
+    END
+
+    IDD_TEXTWIN, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 273
+        VERTGUIDE, 7
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 154
+    END
+
+    IDD_Form_HELPTEXT, DIALOG
+    BEGIN
+        RIGHTMARGIN, 280
+        BOTTOMMARGIN, 186
+    END
+
+    IDD_PICTURE, DIALOG
+    BEGIN
+        RIGHTMARGIN, 201
+    END
+
+    IDD_DIROPEN_DLG, DIALOG
+    BEGIN
+    END
+
+    IDD_MENUAREA, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 104
+    END
+
+    IDD_SIGNON_DLG, DIALOG
+    BEGIN
+        RIGHTMARGIN, 337
+    END
+
+    IDD_FORMDIALOG, DIALOG
+    BEGIN
+    END
+
+    IDD_COLORPICKER_DIALOG, DIALOG
+    BEGIN
+    END
+
+    IDD_MENUDESIGN, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 380
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 280
+    END
+
+    IDD_FORMDESIGN, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 279
+    END
+
+    IDD_FORMMAIN_VIEW, DIALOG
+    BEGIN
+    END
+
+    IDD_FORMITEM_PRO, DIALOG
+    BEGIN
+        LEFTMARGIN, 6
+        BOTTOMMARGIN, 325
+    END
+
+    IDD_FORMITEM_PRO2, DIALOG
+    BEGIN
+    END
+
+    IDD_DIALOG1, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 138
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 107
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+IDC_PANCUR              CURSOR                  "cursor1.cur"
+IDC_ROTCUR              CURSOR                  "cursor5.cur"
+IDC_ZOOMCUR             CURSOR                  "cursor3.cur"
+IDC_MOUSECUR            CURSOR                  "cursor4.cur"
+IDC_LOCCUR              CURSOR                  "cursor6.cur"
+IDC_PICKCUR             CURSOR                  "cursor2.cur"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_MENUAREA DLGINIT
+BEGIN
+    IDC_DIRECTION, 0x403, 4, 0
+0x4f54, 0x0050, 
+    IDC_DIRECTION, 0x403, 7, 0
+0x4f42, 0x5454, 0x4d4f, "\000" 
+    IDC_DIRECTION, 0x403, 5, 0
+0x454c, 0x5446, "\000" 
+    IDC_DIRECTION, 0x403, 6, 0
+0x4952, 0x4847, 0x0054, 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_NCLPIC              BITMAP                  "picture.bmp"
+IDR_POPUPFRAME          BITMAP                  "toolbar.bmp"
+IDB_BMP1                BITMAP                  "ppbutton.bmp"
+IDB_BMP2                BITMAP                  "check.bmp"
+IDB_BMP3                BITMAP                  "cbutton.bmp"
+IDB_BMP4                BITMAP                  "combo.bmp"
+IDB_BMP5                BITMAP                  "edit.bmp"
+IDB_BMP6                BITMAP                  "frame.bmp"
+IDB_BMP7                BITMAP                  "label.bmp"
+IDB_BMP8                BITMAP                  "listbox.bmp"
+IDB_BMP9                BITMAP                  "listctl.bmp"
+IDB_BMP10               BITMAP                  "picture.bmp"
+IDB_BMP11               BITMAP                  "process.bmp"
+IDB_BMP12               BITMAP                  "slider.bmp"
+IDB_BMP13               BITMAP                  "video.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_POPUPFRAME TOOLBAR 16, 15
+BEGIN
+    BUTTON      IDC_FORM_LOAD
+    BUTTON      IDC_FORM_SAVE
+    SEPARATOR
+    BUTTON      IDC_FORM_LMARGIN
+    BUTTON      IDC_FORM_RMARGIN
+    BUTTON      IDC_FORM_TMARGIN
+    BUTTON      IDC_FORM_BMARGIN
+    SEPARATOR
+    BUTTON      IDC_FORM_SAME_WID
+    BUTTON      IDC_FORM_SAME_HGT
+    BUTTON      IDC_FORM_SAME_SIZE
+    BUTTON      IDC_FORM_TOGGLE_GRID
+    BUTTON      IDC_FORM_TOGGLE_GUIDES
+    SEPARATOR
+    BUTTON      ID_FORMDSN_UNDO
+    BUTTON      ID_FORMDSN_REDO
+    SEPARATOR
+    BUTTON      ID_FORMDSN_HELP
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDR_MAINFRAME           "NCL\n\nNCL\n\n\nNCL.Document\nNCL Document"
+    IDR_POPUPFRAME          "Form Design\n\nNCL\n\n\nNCL.Document\nNCL Document"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_APP_TITLE       "NCL"
+    AFX_IDS_IDLEMESSAGE     "Ready"
+END
+
+STRINGTABLE
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+END
+
+STRINGTABLE
+BEGIN
+    INDICATOR_WIN1          "WIN1"
+    INDICATOR_WIN2          "WIN2"
+    INDICATOR_WIN3          "WIN3"
+    INDICATOR_WIN4          "WIN4"
+    INDICATOR_WIN5          "WIN5"
+    INDICATOR_WIN6          "WIN6"
+    INDICATOR_WIN7          "WIN7"
+    INDICATOR_WIN8          "WIN8"
+    INDICATOR_WIN9          "WIN9"
+    INDICATOR_WIN10         "WIN10"
+    INDICATOR_WIN11         "WIN11"
+    INDICATOR_WIN12         "WIN12"
+END
+
+STRINGTABLE
+BEGIN
+    INDICATOR_WIN13         "WIN13"
+    INDICATOR_WIN14         "WIN14"
+    INDICATOR_WIN15         "WIN15"
+    INDICATOR_WIN16         "WIN16"
+    INDICATOR_WIN17         "WIN17"
+    INDICATOR_WIN18         "WIN18"
+    INDICATOR_WIN19         "WIN19"
+    INDICATOR_WIN20         "WIN20"
+    INDICATOR_WIN21         "WIN21"
+    INDICATOR_WIN22         "WIN22"
+    INDICATOR_WIN23         "WIN23"
+    INDICATOR_WIN24         "WIN24"
+    INDICATOR_WIN25         "WIN25"
+    INDICATOR_WIN26         "WIN26"
+    INDICATOR_WIN27         "WIN27"
+    INDICATOR_WIN28         "WIN28"
+END
+
+STRINGTABLE
+BEGIN
+    INDICATOR_WIN29         "WIN29"
+    INDICATOR_WIN30         "WIN30"
+    INDICATOR_WIN31         "WIN31"
+    INDICATOR_WIN32         "WIN32"
+    INDICATOR_WIN33         "WIN33"
+    INDICATOR_WIN34         "WIN34"
+    INDICATOR_WIN35         "WIN35"
+    INDICATOR_WIN36         "WIN36"
+    INDICATOR_WIN37         "WIN37"
+    INDICATOR_WIN38         "WIN38"
+    INDICATOR_WIN39         "WIN39"
+    INDICATOR_WIN40         "WIN40"
+END
+
+STRINGTABLE
+BEGIN
+    ID_FILE_NEW             "Create a new document\nNew"
+    ID_FILE_OPEN            "Open an existing document\nOpen"
+    ID_FILE_CLOSE           "Close the active document\nClose"
+    ID_FILE_SAVE            "Save the active document\nSave"
+    ID_FILE_SAVE_AS         "Save the active document with a new name\nSave As"
+END
+
+STRINGTABLE
+BEGIN
+    ID_APP_EXIT             "Quit the application\nExit"
+END
+
+STRINGTABLE
+BEGIN
+    ID_FILE_MRU_FILE1       "Open this document"
+    ID_FILE_MRU_FILE2       "Open this document"
+    ID_FILE_MRU_FILE3       "Open this document"
+    ID_FILE_MRU_FILE4       "Open this document"
+    ID_FILE_MRU_FILE5       "Open this document"
+    ID_FILE_MRU_FILE6       "Open this document"
+    ID_FILE_MRU_FILE7       "Open this document"
+    ID_FILE_MRU_FILE8       "Open this document"
+    ID_FILE_MRU_FILE9       "Open this document"
+    ID_FILE_MRU_FILE10      "Open this document"
+    ID_FILE_MRU_FILE11      "Open this document"
+    ID_FILE_MRU_FILE12      "Open this document"
+    ID_FILE_MRU_FILE13      "Open this document"
+    ID_FILE_MRU_FILE14      "Open this document"
+    ID_FILE_MRU_FILE15      "Open this document"
+    ID_FILE_MRU_FILE16      "Open this document"
+END
+
+STRINGTABLE
+BEGIN
+    ID_NEXT_PANE            "Switch to the next window pane\nNext Pane"
+    ID_PREV_PANE            "Switch back to the previous window pane\nPrevious Pane"
+END
+
+STRINGTABLE
+BEGIN
+    ID_WINDOW_SPLIT         "Split the active window into panes\nSplit"
+END
+
+STRINGTABLE
+BEGIN
+    ID_EDIT_CLEAR           "Erase the selection\nErase"
+    ID_EDIT_CLEAR_ALL       "Erase everything\nErase All"
+    ID_EDIT_COPY            "Copy the selection and put it on the Clipboard\nCopy"
+    ID_EDIT_CUT             "Cut the selection and put it on the Clipboard\nCut"
+    ID_EDIT_FIND            "Find the specified text\nFind"
+    ID_EDIT_PASTE           "Insert Clipboard contents\nPaste"
+    ID_EDIT_REPEAT          "Repeat the last action\nRepeat"
+    ID_EDIT_REPLACE         "Replace specific text with different text\nReplace"
+    ID_EDIT_SELECT_ALL      "Select the entire document\nSelect All"
+    ID_EDIT_UNDO            "Undo the last action\nUndo"
+    ID_EDIT_REDO            "Redo the previously undone action\nRedo"
+END
+
+STRINGTABLE
+BEGIN
+    ID_VIEW_TOOLBAR         "Show or hide the toolbar\nToggle ToolBar"
+    ID_VIEW_STATUS_BAR      "Show or hide the status bar\nToggle StatusBar"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_SCSIZE          "Change the window size"
+    AFX_IDS_SCMOVE          "Change the window position"
+    AFX_IDS_SCMINIMIZE      "Reduce the window to an icon"
+    AFX_IDS_SCMAXIMIZE      "Enlarge the window to full size"
+    AFX_IDS_SCNEXTWINDOW    "Switch to the next document window"
+    AFX_IDS_SCPREVWINDOW    "Switch to the previous document window"
+    AFX_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_SCRESTORE       "Restore the window to normal size"
+    AFX_IDS_SCTASKLIST      "Activate Task List"
+    IDC_NCL_MENUBAR         "menubar"
+    IDC_LERROR              "ID for error label\nError display area"
+    IDC_LPROMPT             "ID for prompt label\nPrompt area"
+    IDD_ERRORBAR            "ID for error bar"
+END
+
+STRINGTABLE
+BEGIN
+    IDD_PROMPTBAR           "ID for prompt bar"
+    IDC_PCOMMAND            "ID for label in the command area"
+    IDC_ECOMMAND            "Hit return will execute command of this line\nExecute a command"
+    IDD_COMMANDBAR          "command bar"
+    IDC_FORMACCEPT          "accept ncl form"
+    IDC_FORMCANCEL          "Cancel ncl form"
+    IDC_FORMPICK            "pick button on ncl form"
+    IDC_FORMLOC             "locate button on ncl form"
+    IDC_FORMHELP            "help button for ncl form"
+END
+
+STRINGTABLE
+BEGIN
+    IDF_KEY_NOOP            "No operation\nNo operation"
+END
+
+STRINGTABLE
+BEGIN
+    30                      "reserved for later ncl function IDs"
+END
+
+STRINGTABLE
+BEGIN
+    IDC_FORMITEM1           "NCL form dialog item"
+END
+
+STRINGTABLE
+BEGIN
+    IDC_DRAGMENU            "Drag to change menu to float\nDrag to change menu to float\n"
+    IDF_FORM_RETURN         "Hit return in edit field on ""form"""
+    IDC_FDLG_DEFAULT        "Message for set default directory"
+    ID_NCL_USEREVENT        "NCL user event"
+    ID_REDISPLAY_FORM       "redisplay form"
+    ID_FORM_TABED           "Command ID for Tabbed form control"
+    ID_FORM_HIGHLIGHT       "Highlight the form text"
+    ID_WM_CLOSE2            "Close frame"
+END
+
+STRINGTABLE
+BEGIN
+    IDD_FORMBAR             "NCL formbar ID, reserve 50 IDs"
+END
+
+STRINGTABLE
+BEGIN
+    IDC_FORM_LOAD           "Load form file"
+    IDC_FORM_SAVE           "Save form file"
+    IDC_FORM_LMARGIN        "Align Left"
+    IDC_FORM_RMARGIN        "Align Right"
+    IDC_FORM_TMARGIN        "Align Top"
+    IDC_FORM_BMARGIN        "Align Bottom"
+    IDC_FORM_SAME_WID       "Make Same Width"
+    IDC_FORM_SAME_HGT       "Make Same Height"
+    IDC_FORM_SAME_SIZE      "Make Same Size"
+    IDC_FORM_TOGGLE_GRID    "Toggle Grid"
+    IDC_FORM_TOGGLE_GUIDES  "Toggle Guides"
+    ID_FORMDSN_UNDO         "Undo the last action"
+    ID_FORMDSN_HELP         "Edit form help Text"
+    ID_FORMDSN_REDO         "Redo the last action"
+END
+
+STRINGTABLE
+BEGIN
+    IDCANCEL                "Close Form"
+END
+
+#endif    // English (United States) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif
+#include "afxres.rc"         // Standard components
+#endif
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

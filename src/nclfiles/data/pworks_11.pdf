@@ -1,0 +1,122 @@
+#RECORD 1# [PAGE,AFTER]
+#LINE 1#
+/TEXT/ ~Fanuc 11M General 4-axis Post-Processor                      ~
+       ~                                                              Page~
+/VARS/ [%PAGENO,110,112,C1,RIGHT,*]
+
+#LINE 2#
+/VARS/ [PARTNO,1,66,C1,LEFT,>]
+
+#LINE 3#
+/TEXT/ ~RUNDATE:                            PUNCH FILE:~
+/VARS/ [DATE,10,20,C1,LEFT,>], [TIME,23,31,C1,LEFT,>]
+       [PCHFILE,49,132,C1,LEFT,>]
+
+#LINE 4# [BEFORE]
+/TEXT/ ~             CONTROL TAPE                                    INPUT   ~
+       ~ABS-X     ABS-Y     ABS-Z     ABS-B            IPM   TIME  RPM~
+
+
+#RECORD 2#
+#LINE 1#
+/VARS/ [TAPEBLK,1,58,C1,LEFT,~], [%ISN,61,65,C1,RIGHT,<]
+       [%XYZ(4),67,75,C2,RIGHT,>]
+       [%XYZ(5),77,85,C2,RIGHT,>], [%XYZ(6),87,95,C2,RIGHT,>]
+       [%AXIS(7),97,104,C3,RIGHT,>]                               
+       [%FEED(2),115,120,C4,RIGHT,>], [%MOVTIM,122,126,C5,RIGHT,>]
+       [%RPM,128,131,C1,RIGHT,>]
+
+
+#RECORD 3#
+#LINE 1#
+/VARS/ [TAPEBLK,1,58,C1,LEFT,~], [%ISN,61,65,C1,RIGHT,<]
+
+
+#RECORD 4#
+#LINE 1#
+/TEXT/ ~                                                            ~
+       ~                            --   I N S E R T   --~
+/VARS/ [TAPEBLK,1,58,C1,LEFT,~], [%ISN,61,65,C1,RIGHT,<]
+
+
+#RECORD 5# [BEFORE,AFTER]
+#LINE 1#
+
+/TEXT/ ~          TAPE LENGTH =                 TOTAL SEQUENCE TIME =~
+       ~                  TOTAL MACHINE TIME =~
+/VARS/ [%TAPLEN,25,34,C4,LEFT,>], [%SEQTIM,63,72,C5,LEFT,>]
+       [%MCHTIM,101,110,C5,LEFT,>]
+
+#LINE 2# [BEFORE]
+/TEXT/
+~             DELTA X =                                                 ~
+~DELTA X =                          ~
+/VARS/ [%AXSDLS(1),24,33,C2,RIGHT,>]
+       [%XYZDLS(4),82,91,C2,RIGHT,>]
+
+#LINE 3#
+/TEXT/
+~             DELTA Y =                 DELTA B =                       ~
+~DELTA Y =                 DELTA B =~
+/VARS/ [%AXSDLS(3),24,33,C2,RIGHT,>], [%AXSDLS(7),50,59,C2,RIGHT,>]
+       [%XYZDLS(5),82,91,C2,RIGHT,>], [%AXSDLS(7),108,117,C2,RIGHT,>]
+
+#LINE 4#
+/TEXT/
+~             DELTA Z =                                                 ~
+~DELTA Z =~
+/VARS/ [%AXSDLS(5),24,33,C2,RIGHT,>], [%XYZDLS(6),82,91,C2,RIGHT,>]
+
+
+#RECORD 6# [PAGE,BEFORE]
+#LINE 1# [BEFORE,AFTER]
+/TEXT/ ~         FT OF TAPE       PP FATALS       PP ERRORS       PP WARNINGS~
+       ~      MACHINE TIME =~
+/VARS/ [%TAPLEN,1,7,C4,RIGHT,>], [%NUMFAT,21,25,C1,RIGHT,>]
+       [%NUMERR,37,41,C1,RIGHT,>], [%NUMWRN,53,57,C1,RIGHT,>]
+       [%MCHTIM,91,100,C5,LEFT,>]
+
+#LINE 2# [BEFORE]
+/TEXT/ ~                                                               ~
+       ~SLIDE MOTION RECAP~
+
+#LINE 3# [BEFORE,AFTER]
+/TEXT/ ~                   MIN          MAX       TRAVEL       DELTA       ~
+       ~                   MIN          MAX       TRAVEL       DELTA~
+
+#LINE 4#
+/TEXT/ ~    X-PART                                                             ~
+       ~X-PART~
+/VARS/ [RECAP(23),13,63,C2,LEFT,>], [RECAP(4),80,130,C2,LEFT,>]
+
+#LINE 5#
+/TEXT/ ~    Y-PART                                                             ~
+       ~Y-PART~
+/VARS/ [RECAP(25),13,63,C2,LEFT,>], [RECAP(5),80,130,C2,LEFT,>]
+
+#LINE 6#
+/TEXT/ ~    Z-PART                                                             ~
+       ~Z-PART~
+/VARS/ [RECAP(27),13,63,C2,LEFT,>], [RECAP(6),80,130,C2,LEFT,>]
+
+
+#RECORD 7#
+
+#LINE 2# [AFTER]
+/TEXT/ ~    B-PART                                                             ~
+       ~B-PART~
+/VARS/ [RECAP(29),13,63,C2,LEFT,>], [RECAP(19),80,130,C2,LEFT,>]
+
+#LINE 3# [BEFORE,AFTER]
+/TEXT/ ~                                                  TOOL       LENGTH~
+       ~          TIME~
+
+#LINE 4# [%NTOOL]
+/VARS/ [%TLNO(*),47,54,C1,RIGHT,>], [%TLEN(*),57,68,C2,RIGHT,>]
+       [%TLTIM(*),71,82,C5,RIGHT,>]
+
+
+#RECORD 8#
+#LINE 1#
+/TEXT/ ~PPRINT~
+/VARS/ [PPRINT,7,72,C1,LEFT,>]

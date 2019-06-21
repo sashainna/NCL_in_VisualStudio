@@ -1,0 +1,4 @@
+NCL_IGES_HELP = start %acroread% %NCL_DOC%\NCLIGES.pdf
+UL_IGES_MODALS = NCL_INIT_FILES\ncliges.mod
+MAX_PARA_REC = 1000000
+UX_HOMEDIR = .

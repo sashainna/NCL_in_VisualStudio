@@ -1,0 +1,92 @@
+Units = MM
+
+MillingFormMM
+Cutters
+	point (0,0)
+	arc (0,9.525,cclw)
+	point (9.525,9.525)
+	point (9.525,25.4)
+	arc (34.925,25.4,clw)
+	point (34.925,50.8)
+	arc (34.925,69.85,cclw)
+	point (53.975,69.85)
+	arc (34.925,69.85,cclw)
+	point (34.925,88.9)
+	point (19.05,88.9)
+	point (19.05,88.9)
+	point (19.05,152.4)
+	point (0,152.4)
+
+Units = Inch
+
+MillingFormTool1
+Cutters
+	point (0,0)
+	arc (0,.375,cclw)
+	point .375 .375
+	point (.375,1)
+	arc (1.375,1,clw)
+	point (1.375,2)
+	arc (1.375,2.75,cclw)
+	point (2.125,2.75)
+	arc (1.375,2.75,cclw)
+	point (1.375,3.5)
+	point (.75,3.5)
+	point (.75,6)
+	point (0,6)
+
+FaceMill1
+Cutters
+	point (0,0)
+	point (2,0)
+	arc (2,.25,cclw)
+	point (2.25,.25)
+	arc (2,.25,cclw)
+	point (2,.5)
+	point (0,.5)
+
+Shank1
+Holders
+	point (0,0)
+	point (1,0)
+	point (1,2)
+
+LatheBit1
+Cutters
+	point (0,0)
+	arc (0,.1,cclw)
+	point (.1,.1)
+	point (.3,.5)
+	point (0,.35)
+	point (-.3,.5)
+	point (-.1,.1)
+	arc (0,.1,cclw)
+	point (0,0)
+
+LatheTurret1
+Holders
+	point (0,0)
+	point (.5,0)
+	point (1.207,.707)
+	point (1.207,1.414)
+	point (.5,2.121)
+	point (-.5,2.121)
+	point (-1.207,1.414)
+	point (-1.207,.707)
+	point (-.5,0)
+	point (0,0)
+
+BladeCutter1
+Cutters
+	point (0,0)
+	point (.375,.5)
+	arc (.625,.5,clw)
+	point (.625,.75)
+	point (.625,.90)
+	point (.05,.90)
+	point (.05,1.4)
+	arc	(0,1.4,cclw)
+	point (-.05,1.4)
+	point (-.05,.90)
+	point (-.1,.90)
+	point (0,0)

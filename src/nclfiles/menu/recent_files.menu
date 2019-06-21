@@ -1,0 +1,11 @@
+#Descriptor#
+/NAME/ Recent Files
+/POSITION/ 0,0
+/SIZE/ 1,1
+/ROWS/ 12
+/COLS/ 1
+/TYPE/ Pulldown
+/FORMAT/ TEXT
+
+#MENUS#
+/None/ KEY_NOOP

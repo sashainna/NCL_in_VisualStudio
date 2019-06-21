@@ -1,0 +1,22 @@
+#Descriptor#
+/NAME/ Symbol Management
+/POSITION/ 0.1,.15
+/SIZE/ 0.354492,0.115885
+/ROWS/ 3
+/COLS/ 4
+/TYPE/ Menu
+/FORMAT/ TEXT
+
+#Menus#
+/Save/ CAD_SYM_SAVMASTER
+/Delete/ CAD_SYM_DELMASTER
+/Load Lib/ CAD_SYM_LOADLIB
+/Rename Lib/ CAD_SYM_RENLIB
+/Load/ CAD_SYM_LOADMASTER
+/Rename/ CAD_SYM_RENMASTER
+/Create Lib/ CAD_SYM_CRELIB
+/ / KEY_NOOP
+/Unload/ CAD_SYM_UNLOADMAS
+/Int Rename/ CAD_SYM_RENAME
+/Delete Lib/ CAD_SYM_DELLIB
+/ / KEY_NOOP

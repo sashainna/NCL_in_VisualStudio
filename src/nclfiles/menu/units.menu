@@ -1,0 +1,12 @@
+#Descriptor#
+/NAME/ Units
+/POSITION/ 0.6,.6
+/SIZE/ 0.351562,0.117188
+/ROWS/ 1
+/COLS/ 2
+/TYPE/ Pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Inches/ NCL_SET_INCH
+/Millimeters/ NCL_SET_MM

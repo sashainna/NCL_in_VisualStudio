@@ -1,0 +1,13 @@
+#Descriptor#
+/Name/ Insert-Overwrite Menu
+/Rows/ 1
+/Cols/ 2
+/Type/ Icon
+/Position/ 0.582031,0.879883
+/Area/ Top
+/FORMAT/ ICON
+
+#Menus#
+/ / CAM_CONSOL_MODE
+/ / CAM_INSERT_MODE
+

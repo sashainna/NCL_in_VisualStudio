@@ -1,0 +1,14 @@
+#Descriptor#
+/NAME/ Autosave Options
+/POSITION/ 0.125000,0.013021
+/SIZE/ 0.113281,0.447917
+/ROWS/ 4
+/COLS/ 1
+/TYPE/ Pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Autosave On/ CAD_AUTOSAVE_ON
+/Autosave off/ CAD_AUTOSAVE_OFF
+/Snapsave/ CAD_SNAPSAVE_U
+/Restore/ CAD_RESTORE_U

@@ -1,0 +1,20 @@
+#Descriptor#
+/NAME/ Edit Surfaces
+/POSITION/ 0.000781,0.639648
+/SIZE/ 0.158594,0.093750
+/ROWS/ 4
+/COLS/ 1
+/TYPE/ Pulldown
+/FORMAT/ BOTH
+
+#Menus#
+/Shade Sf/ NCL_SHADE_ENTITY
+/Unshade Sf/ NCL_UNSHADE_ENTITY
+#Bar#
+/Analyze Sf/ NCL_ANALYZE_SURF
+/Analyze Thru/ NCL_ANALYZE_SURF_THRU
+#Bar#
+/Mod Attrib/ CAM_GEO_SF_ATTRIB
+/Modals/ CAM_GEO_SF_MODALS
+#Bar#
+/Parameters/ NCL_REDEF_SF

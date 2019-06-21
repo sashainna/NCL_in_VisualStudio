@@ -1,0 +1,23 @@
+#Descriptor#
+/NAME/ Draft Edit
+/POSITION/ 0.0,0.0
+/SIZE/ 0.083,0.381
+/ROWS/ 13
+/COLS/ 1
+/TYPE/ Pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Reposition/ CAD_DRAFT_REPOSIT
+/Regenerate/ CAD_DRAFT_REGEN
+/Edit Text/ CAD_DRAFT_ETEXT
+/Mod Toler/ CAD_DRAFT_MTOLER
+/Note Text/ CAD_DRAFT_MNTEXT
+/Dim Text/ CAD_DRAFT_MDTEXT
+/Dim Attrib/ CAD_DRAFT_MDATT
+/Arrowhead/ CAD_DRAFT_MARROW
+/Dim Line/ CAD_DRAFT_MDLINE
+/Ext Line/ CAD_DRAFT_MELINE
+/Leader/ CAD_DRAFT_MLEADER
+/Crosshatch/ CAD_DRAFT_MHATCH
+/Centerline/ CAD_DRAFT_MCLINE

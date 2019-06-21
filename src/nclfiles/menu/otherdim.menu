@@ -1,0 +1,16 @@
+#Descriptor#
+/NAME/ Other Dim
+/POSITION/ 0.619531,0.320312
+/SIZE/ 0.084375,0.229492
+/ROWS/ 6
+/COLS/ 1
+/TYPE/ Pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Angular/ CAD_DRAFT_DANG
+/Arc Len/ CAD_DRAFT_DARCL
+/Radius/ CAD_DRAFT_DRAD
+/Diameter/ CAD_DRAFT_DDIA
+/Centerline/ CAD_DRAFT_DCL
+/Polar/ CAD_DRAFT_DPOL

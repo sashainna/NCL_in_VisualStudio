@@ -1,0 +1,130 @@
+#RECORD 1# [PAGE,AFTER]
+#LINE 1#
+/TEXT/ ~Cincinnati 5-axis 20V Profiler with Model 950 Controller     ~
+       ~                                                              Page~
+/VARS/ [%PAGENO,129,132,C1,RIGHT,*]
+
+#LINE 2#
+/TEXT/ ~PARTNO~
+/VARS/ [PARTNO,7,72,C1,LEFT,>]
+
+#LINE 3#
+/TEXT/ ~Rundate:                            Punch File:~
+/VARS/ [DATE,10,20,C1,LEFT,>], [TIME,23,31,C1,LEFT,>]
+       [PCHFILE,49,132,C1,LEFT,>]
+
+#LINE 4# [BEFORE]
+/TEXT/ ~              Control Tape                           Input  Clrec    ~
+       ~X-axis     Y-axis     Z-axis    A-axis   B-axis  IPM  Time  RPM~
+
+
+#RECORD 2#
+#LINE 1#
+/VARS/ [TAPEBLK,1,51,C1,LEFT,~], [%ISN,54,58,C1,RIGHT,<]
+       [%CLREC,61,65,C1,RIGHT,<], [%XYZ(4),67,76,C2,RIGHT,>]
+       [%XYZ(5),78,87,C2,RIGHT,>], [%XYZ(6),89,98,C2,RIGHT,>]
+       [%AXIS(8),100,107,C3,RIGHT,>], [%AXIS(7),109,116,C3,RIGHT,>]
+       [%FEED(2),118,122,C4,RIGHT,>], [%MOVTIM,124,127,C5,RIGHT,>]
+       [%RPM,129,132,C1,RIGHT,>]
+
+
+#RECORD 3#
+#LINE 1#
+/VARS/ [TAPEBLK,1,51,C1,LEFT,~], [%ISN,54,58,C1,RIGHT,<]
+       [%CLREC,61,65,C1,RIGHT,<]
+
+
+#RECORD 4#
+#LINE 1#
+/TEXT/ ~                                                            ~
+       ~               --   I N S E R T   --~
+/VARS/ [TAPEBLK,1,51,C1,LEFT,~], [%ISN,54,58,C1,RIGHT,<]
+       [%CLREC,61,65,C1,RIGHT,<]
+
+
+#RECORD 5# [BEFORE,AFTER]
+#LINE 1#
+
+/TEXT/ ~          Tape Length =                 Total Sequence Time =~
+       ~                  Total Machine Time =~
+/VARS/ [%TAPLEN,26,35,C4,LEFT,>], [%SEQTIM,64,73,C5,LEFT,>]
+       [%MCHTIM,102,111,C5,LEFT,>]
+
+#LINE 2# [BEFORE]
+/TEXT/
+~              Delta X =                 Delta A =                        ~
+~Delta X =                 Delta A =~
+/VARS/ [%AXSDLS(1),25,34,C2,RIGHT,>], [%AXSDLS(8),51,60,C3,RIGHT,>]
+       [%XYZDLS(4),83,92,C2,RIGHT,>], [%AXSDLS(8),109,118,C3,RIGHT,>]
+
+#LINE 3#
+/TEXT/
+~              Delta Y =                 Delta B =                        ~
+~Delta Y =                 Delta B =~
+/VARS/ [%AXSDLS(3),25,34,C2,RIGHT,>], [%AXSDLS(7),51,60,C3,RIGHT,>]
+       [%XYZDLS(5),83,92,C2,RIGHT,>], [%AXSDLS(7),109,118,C3,RIGHT,>]
+
+#LINE 4#
+/TEXT/
+~              Delta Z =                                                  ~
+~Delta Z =~
+/VARS/ [%AXSDLS(5),25,34,C2,RIGHT,>], [%XYZDLS(6),83,92,C2,RIGHT,>]
+
+
+#RECORD 6# [PAGE,BEFORE]
+#LINE 1# [BEFORE,AFTER]
+/TEXT/ ~         Ft of Tape       PP Fatals       PP Errors       PP Warnings~
+       ~      Machine Time =~
+/VARS/ [%TAPLEN,1,7,C4,RIGHT,>], [%NUMFAT,21,25,C1,RIGHT,>]
+       [%NUMERR,37,41,C1,RIGHT,>], [%NUMWRN,53,57,C1,RIGHT,>]
+       [%MCHTIM,91,100,C5,LEFT,>]
+
+#LINE 2# [BEFORE]
+/TEXT/ ~                                                              ~
+       ~Slide Motion Recap~
+
+#LINE 3# [BEFORE,AFTER]
+/TEXT/ ~                  Min          Max       Travel       Delta        ~
+       ~                  Min          Max       Travel       Delta        ~
+
+#LINE 4#
+/TEXT/ ~     X-Part                                                            ~
+       ~  X-Part~
+/VARS/ [RECAP(23),13,63,C2,LEFT,>], [RECAP(4),80,130,C2,LEFT,>]
+
+#LINE 5#
+/TEXT/ ~     Y-Part                                                            ~
+       ~  Y-Part~
+/VARS/ [RECAP(25),13,63,C2,LEFT,>], [RECAP(5),80,130,C2,LEFT,>]
+
+#LINE 6#
+/TEXT/ ~     Z-Part                                                            ~
+       ~  Z-Part~
+/VARS/ [RECAP(27),13,63,C2,LEFT,>], [RECAP(6),80,130,C2,LEFT,>]
+
+
+#RECORD 7#
+#LINE 1#
+/TEXT/ ~     A-Part                                                            ~
+       ~  A-Part~
+/VARS/ [RECAP(30),13,63,C3,LEFT,>], [RECAP(20),80,130,C3,LEFT,>]
+
+#LINE 2# [AFTER]
+/TEXT/ ~     B-Part                                                            ~
+       ~  B-Part~
+/VARS/ [RECAP(29),13,63,C3,LEFT,>], [RECAP(19),80,130,C3,LEFT,>]
+
+#LINE 3# [BEFORE,AFTER]
+/TEXT/ ~                                                   TOOL       LENGTH~
+       ~          TIME~
+
+#LINE 4# [%NTOOL]
+/VARS/ [%TLNO(*),48,55,C1,RIGHT,>], [%TLEN(*),58,69,C2,RIGHT,>]
+       [%TLTIM(*),72,83,C5,RIGHT,>]
+
+
+#RECORD 8#
+#LINE 1#
+/TEXT/ ~PPRINT~
+/VARS/ [PPRINT,7,72,C1,LEFT,>]
+

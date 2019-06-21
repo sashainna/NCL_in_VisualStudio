@@ -1,0 +1,11 @@
+#Descriptor#
+/NAME/ Simulate
+/POSITION/ 0.125000,0.013021
+/SIZE/ 0.113281,0.447917
+/ROWS/ 1
+/COLS/ 1
+/TYPE/ pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Simulate/ MSL_SIMULATION

@@ -1,0 +1,14 @@
+#Descriptor#
+/NAME/ Macros
+/POSITION/ 0.6,.6
+/SIZE/ 0.351562,0.117188
+/ROWS/ 1
+/COLS/ 1
+/TYPE/ Pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Macro Call/ CAM_MACRO_CALL
+/Reset Calls/ CAM_RESET_CALL
+/Reset n Calls/ CAM_RESET_CALL, <Reset 'n' Macro/Loop Calls>, "PROMPT"
+/Form Design/ CAM_MACRO_FORM

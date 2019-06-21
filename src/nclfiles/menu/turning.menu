@@ -1,0 +1,23 @@
+#Descriptor#
+/NAME/ Turning
+/POSITION/ 0.000000,0.541016
+/SIZE/ 0.081250,0.159180
+/ROWS/ 6
+/COLS/ 1
+/TYPE/ Icon
+/Area/ Right
+/FORMAT/ TEXT
+
+#Menus#
+/Shape/ CAM_GEO_SHAPE
+#Color# Light Sea Green
+/Sh Pp Words/ CAM_GEO_SH_PPWORDS
+#Color# Light Sea Green
+/Modals/ CAM_GEO_SH_MODALS
+#Color# Light Sea Green
+/Mod Attrib/ CAM_GEO_SH_ATTRIB
+#Color# Light Sea Green
+/Lathe Rough/ CAM_LATHE_ROUGH
+#Color# Light Sea Green
+/Lathe Finish/ CAM_LATHE_FINISH
+#Color# Light Sea Green

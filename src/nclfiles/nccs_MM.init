@@ -1,0 +1,13 @@
+NCLDIR=ncl102
+NCLPATH=%NCLDISK\%NCLDIR
+UU_USER_SETTINGS=%NCLDISK\%HOMEPATH\%NCLDIR
+UU_UNIVARS=%NCLPATH\nclfiles\ncl_MM.init
+UU_USERVARS=user.init
+UU_IGESVARS=%NCLPATH\nclfiles\ncliges.init
+UU_IGESUSERVARS=igesuser.init
+UU_PLOTVARS=%NCLPATH\nclfiles\nclplot.init
+UU_STEPVARS=%NCLPATH\nclfiles\nclstep.init
+UU_STEPUSERVARS=stepuser.init
+UU_TOOLVARS=%NCLPATH\nclfiles\ncl_MM.init
+UU_MSLVARS=%NCLPATH\nclfiles\mslite.init
+UU_IPVVARS=%NCLPATH\nclfiles\nclipv_MM.init

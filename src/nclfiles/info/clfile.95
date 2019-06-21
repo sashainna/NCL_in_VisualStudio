@@ -1,0 +1,84 @@
+Note:  (#) - numbers in parenthesis represent # of I2 in element that is
+             referenced.
+
+CUTTER/DISPLY
+-------------
+Type = 6000
+Subtype = 6
+Mxcl    = Variable
+
+ Bytes    I*2s      I*4s       Reals      Data
+-------   -----    ------      -----      ----
+1:8       1:4      1:2         1          Diameter, 191(-10000) = Blade,
+                                          700 = Lathe cutter
+9:n       5:n      3:n         2:n        Remaining cutter parameters.
+
+
+CUTTER/DISPLY Record
+--------------------
+Type = 7100
+Subtype = 1
+Mxcl    = Variable
+
+ Bytes    I*2s      I*4s       Reals      Data
+-------   -----    ------      -----      ----
+1:n       1:n      1:n         1:n        Cutter parameters
+
+Subtype = 2 = CUTTER/DISPLY,SYMBOL
+Mxcl    = 8
+
+ Bytes    I*2s      I*4s       Reals      Data
+-------   -----    ------      -----      ----
+1-20      1:10     1:5         1:3(2)     Symbol
+25:32     16       7:8         4          2 = Symbol Cutter
+                                          3 = Symbol Holder w-CUTTER
+                                          4 = Symbol Holder w-CUTTER/DISPLY
+33:40     17:20    9:10        5          Attach-Z, Lathe X-offset
+41:48     21:24    11:12       6          Lathe Y-offset
+49:56     25:28    13:14       7          Lathe Z-attach
+57:64     29:32    15:16       8          Lathe Z-depth
+
+Subtype = 3 = CUTTER/DISPLY,PART
+Mxcl    = 1
+
+ Bytes    I*2s      I*4s       Reals      Data
+-------   -----    ------      -----      ----
+1-8       4        1(2)        1(4)       0 = PART, 1 = ALL
+
+Subtype = 4 = CUTTER/DISPLY,SHANK
+Mxcl    = Variable
+
+ Bytes    I*2s      I*4s       Reals      Data
+-------   -----    ------      -----      ----
+1-8       1:4      1:2         1          Diameter/Width
+9-16      5:8      3:4         2          Height/Length
+17-24     9:12     5:6         3          Lathe depth
+25-32     13:16    7:8         4          Lathe Y-offset
+33-40     17:20    9:10        5          716(-10000) = CUTTER, 157 = HOLDER
+
+
+SEQUNC Record
+-------------
+
+Type = 7200
+Subtype = 1 = SEQUNC/label, 2 = SEQUNC/END
+
+ Bytes    I*2s      I*4s       Reals      Data
+-------   -----    ------      -----      ----
+1-20      1-10     1-5         1-3(2)     Sequnc Label
+25-72     13-36    7-18        4-9        Tool EndPoint (XYZIJK)
+73-120    37-60    19-30       10-15      Cutter Parameters
+121-200   61-100   31-50       16-25      Cutter Display Parameters (Part 1)
+201-210   101-105  51-53(2)    26-27(2)   Cutter Symbol
+211-230   107-116  54-58       28-30(2)   Cutter Integer Parameters
+241-242   121      61(1)       31(1)      Rapid
+243-244   122      61(2)       31(2)      Multax
+245-246   123      61(3)       31(3)      Feedrate type
+247-248   124      61(4)       31(4)      Spindle Direction
+249-256   125-128  63-64       32         IPM Feedrate
+257-352   129-176  65-88       33-44      Tracut Matrix
+353-360   177-180  89-90       45         IPR Feedrate
+361-368   181-184  91-92       46         Spindle RPM
+369-392   185-196  93-98       47-49      Cycle Integer Parameters
+393-472   197-236  99-118      50-59      Cycle Real Parameters
+473-552   237-276  119-138     60-69      Cutter Display Parameters (Part 2)

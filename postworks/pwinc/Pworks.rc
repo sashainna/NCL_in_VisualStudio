@@ -1,0 +1,441 @@
+//
+//     MODULE NAME AND RELEASE LEVEL
+//       Pworks.rc , 25.3
+//    DATE AND TIME OF LAST  MODIFICATION
+//       05/20/16 , 16:40:29
+//
+// Microsoft Visual C++ generated resource script.
+//
+#include "pworksres.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (United States) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "pworksres.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "PWorks.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MAINFRAME           BITMAP                  "pworksbar.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAINFRAME TOOLBAR 24, 24
+BEGIN
+    BUTTON      ID_FILE_OPEN
+    BUTTON      ID_OPTION_OPTIONS
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&Open",                       ID_FILE_OPEN
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_FILE_EXIT
+    END
+    POPUP "&Options"
+    BEGIN
+        MENUITEM "&Options",                    ID_OPTION_OPTIONS
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "Contents",                    ID_HELP_CONTENTS
+        MENUITEM "&About",                      ID_HELP_ABOUT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS
+BEGIN
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL
+    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY 
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG 0, 0, 250, 60
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About PWorks"
+FONT 8, "MS Sans Serif"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,16,21,20
+    LTEXT           "PWorks Version 1.0",IDC_ABOUTLABLE1,40,10,190,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2002",IDC_ABOUTLABLE2,39,25,190,8
+    DEFPUSHBUTTON   "OK",IDOK,190,40,50,14,WS_GROUP
+END
+
+IDD_PWORKS_DIALOG DIALOG 0, 0, 320, 200
+STYLE DS_SETFONT | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "Run",ID_PWORKS_RUN,233,20,50,14
+    LTEXT           "File Name:",IDC_STATIC,15,23,37,12
+    GROUPBOX        "",IDC_STATIC,7,7,288,184
+    EDITTEXT        IDC_PWORKS_NAME,55,20,174,14,ES_AUTOHSCROLL
+    LTEXT           "Message:",IDC_STATIC,15,44,32,8
+    EDITTEXT        IDC_POSTWORKS_MESSAGE,15,55,266,132,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY | WS_VSCROLL | WS_HSCROLL
+END
+
+IDD_BATCH_MESSAGE DIALOG 0, 0, 276, 130
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Batch Message Display"
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "CLOSE",IDCANCEL,219,109,50,14
+    EDITTEXT        IDC_BATCH_MESSAGE,7,7,262,95,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL
+END
+
+IDD_PWORKS_OPTIONS DIALOGEX 0, 0, 254, 342
+STYLE DS_SETFONT | DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Pworks Options"
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    EDITTEXT        ID_OPTION_EDIT1,62,20,120,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "&Browse...",ID_OPTION_BROWSE1,192,22,40,12
+    COMBOBOX        ID_CLFILE,63,39,119,72,CBS_DROPDOWNLIST | WS_TABSTOP
+    EDITTEXT        ID_OPTION_EDIT2,192,39,40,12,ES_AUTOHSCROLL
+    CONTROL         "APT Source Fill Variable",ID_FILL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,22,58,92,10
+    EDITTEXT        ID_OPTION_EDIT13,129,58,103,12,ES_AUTOHSCROLL
+    CONTROL         "End Processing On",ID_WARN,"Button",BS_AUTOCHECKBOX | BS_LEFT | WS_TABSTOP,41,91,77,10
+    EDITTEXT        ID_OPTION_EDIT3,121,91,40,12,ES_AUTOHSCROLL
+    CONTROL         "End Processing On",ID_ERROR,"Button",BS_AUTOCHECKBOX | BS_LEFT | WS_TABSTOP,41,104,77,10
+    EDITTEXT        ID_OPTION_EDIT4,121,102,40,12,ES_AUTOHSCROLL
+    CONTROL         "End Processing On",ID_FINAL,"Button",BS_AUTOCHECKBOX | BS_LEFT | WS_TABSTOP,41,117,77,10
+    EDITTEXT        ID_OPTION_EDIT5,121,115,40,12,ES_AUTOHSCROLL
+    CONTROL         "Output APT Source Errors",ID_APTERR,"Button",BS_AUTOCHECKBOX | BS_LEFT | WS_TABSTOP,41,132,99,10
+    CONTROL         "Add Machine Name to Output Filenames",ID_IDENT,"Button",BS_AUTOCHECKBOX | BS_LEFT | WS_TABSTOP,17,153,144,12
+    EDITTEXT        ID_OPTION_EDIT7,129,171,103,12,ES_AUTOHSCROLL
+    EDITTEXT        ID_OPTION_EDIT8,129,187,103,12,ES_AUTOHSCROLL
+    EDITTEXT        ID_OPTION_EDIT14,129,203,103,12,ES_AUTOHSCROLL
+    CONTROL         "Create Listing File (Extension)",ID_LIST,"Button",BS_AUTOCHECKBOX | BS_LEFT | WS_TABSTOP,17,222,107,12
+    EDITTEXT        ID_OPTION_EDIT6,129,222,103,12,ES_AUTOHSCROLL
+    CONTROL         "Create Print File (Extension)",ID_PRINT,"Button",BS_AUTOCHECKBOX | BS_LEFT | WS_TABSTOP,17,240,102,10
+    EDITTEXT        ID_OPTION_EDIT10,129,239,103,12,ES_AUTOHSCROLL
+    CONTROL         "Create MCD File (Extension)",ID_PUNCH,"Button",BS_AUTOCHECKBOX | BS_LEFT | WS_TABSTOP,17,256,99,10
+    EDITTEXT        ID_OPTION_EDIT11,129,255,103,12,ES_AUTOHSCROLL
+    CONTROL         "Create Sim File (Extension)",ID_SIMUL,"Button",BS_AUTOCHECKBOX | BS_LEFT | WS_TABSTOP,17,273,112,10
+    EDITTEXT        ID_OPTION_EDIT12,129,273,103,12,ES_AUTOHSCROLL
+    EDITTEXT        ID_OPTION_EDIT9,129,289,103,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,138,321,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,198,321,50,14
+    GROUPBOX        "",IDC_STATIC,7,7,240,302
+    LTEXT           "Adjust File:",IDC_STATIC,22,22,38,12
+    LTEXT           "Clfile Type:",IDC_STATIC,22,39,38,12
+    LTEXT           "Error Messages",IDC_STATIC,21,77,100,12
+    LTEXT           "Override Machine Name",IDC_STATIC,17,171,106,10
+    LTEXT           "Override Machine Options",IDC_STATIC,17,188,94,10
+    LTEXT           "Print File Page Length",IDC_STATIC,17,292,96,10
+    LTEXT           "Override User Variables",IDC_STATIC,17,207,75,8
+    LTEXT           "Warnings",IDC_STATIC,171,95,31,8
+    LTEXT           "Fatals",IDC_STATIC,171,119,20,8
+    LTEXT           "Errors",IDC_STATIC,171,106,19,8
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"
+        BEGIN
+            VALUE "FileDescription", "PWorks MFC Application"
+            VALUE "FileVersion", "1, 0, 0, 1"
+            VALUE "InternalName", "PWorks"
+            VALUE "LegalCopyright", "Copyright (C) 2002"
+            VALUE "OriginalFilename", "PWorks.EXE"
+            VALUE "ProductName", "PWorks Application"
+            VALUE "ProductVersion", "1, 0, 0, 1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_PWORKS_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 312
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 193
+    END
+
+    IDD_BATCH_MESSAGE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 269
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 123
+    END
+
+    IDD_PWORKS_OPTIONS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 247
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 335
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDR_MAINFRAME           "PWorks\n\nPWorks\n\n\nPWorks.Document\nPWorks Document"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_APP_TITLE       "PWorks"
+    AFX_IDS_IDLEMESSAGE     "Ready"
+END
+
+STRINGTABLE
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+END
+
+STRINGTABLE
+BEGIN
+    ID_APP_ABOUT            "Display program information, version number and copyright\nAbout"
+    ID_APP_EXIT             "Quit the application; prompts to save documents\nExit"
+END
+
+STRINGTABLE
+BEGIN
+    ID_FILE_MRU_FILE1       "Open this document"
+    ID_FILE_MRU_FILE2       "Open this document"
+    ID_FILE_MRU_FILE3       "Open this document"
+    ID_FILE_MRU_FILE4       "Open this document"
+    ID_FILE_MRU_FILE5       "Open this document"
+    ID_FILE_MRU_FILE6       "Open this document"
+    ID_FILE_MRU_FILE7       "Open this document"
+    ID_FILE_MRU_FILE8       "Open this document"
+    ID_FILE_MRU_FILE9       "Open this document"
+    ID_FILE_MRU_FILE10      "Open this document"
+    ID_FILE_MRU_FILE11      "Open this document"
+    ID_FILE_MRU_FILE12      "Open this document"
+    ID_FILE_MRU_FILE13      "Open this document"
+    ID_FILE_MRU_FILE14      "Open this document"
+    ID_FILE_MRU_FILE15      "Open this document"
+    ID_FILE_MRU_FILE16      "Open this document"
+END
+
+STRINGTABLE
+BEGIN
+    ID_NEXT_PANE            "Switch to the next window pane\nNext Pane"
+    ID_PREV_PANE            "Switch back to the previous window pane\nPrevious Pane"
+END
+
+STRINGTABLE
+BEGIN
+    ID_WINDOW_SPLIT         "Split the active window into panes\nSplit"
+END
+
+STRINGTABLE
+BEGIN
+    ID_EDIT_CLEAR           "Erase the selection\nErase"
+    ID_EDIT_CLEAR_ALL       "Erase everything\nErase All"
+    ID_EDIT_COPY            "Copy the selection and put it on the Clipboard\nCopy"
+    ID_EDIT_CUT             "Cut the selection and put it on the Clipboard\nCut"
+    ID_EDIT_FIND            "Find the specified text\nFind"
+    ID_EDIT_PASTE           "Insert Clipboard contents\nPaste"
+    ID_EDIT_REPEAT          "Repeat the last action\nRepeat"
+    ID_EDIT_REPLACE         "Replace specific text with different text\nReplace"
+    ID_EDIT_SELECT_ALL      "Select the entire document\nSelect All"
+    ID_EDIT_UNDO            "Undo the last action\nUndo"
+    ID_EDIT_REDO            "Redo the previously undone action\nRedo"
+END
+
+STRINGTABLE
+BEGIN
+    ID_VIEW_TOOLBAR         "Show or hide the toolbar\nToggle ToolBar"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_SCSIZE          "Change the window size"
+    AFX_IDS_SCMOVE          "Change the window position"
+    AFX_IDS_SCMINIMIZE      "Reduce the window to an icon"
+    AFX_IDS_SCMAXIMIZE      "Enlarge the window to full size"
+    AFX_IDS_SCNEXTWINDOW    "Switch to the next document window"
+    AFX_IDS_SCPREVWINDOW    "Switch to the previous document window"
+    AFX_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_SCRESTORE       "Restore the window to normal size"
+    AFX_IDS_SCTASKLIST      "Activate Task List"
+END
+
+STRINGTABLE
+BEGIN
+    ID_FILE_OPEN            "Open an existing file\nOpen an existing file"
+END
+
+STRINGTABLE
+BEGIN
+    ID_OPTION_OPTIONS       "Open an option dialog\nOpen an option dialog"
+END
+
+#endif    // English (United States) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif //_WIN32
+#include "afxres.rc"         // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

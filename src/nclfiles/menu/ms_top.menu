@@ -1,0 +1,16 @@
+#Descriptor#
+/NAME/ TOP_ROW
+/POSITION/ 0.150000,0.000000
+/SIZE/ 0.849219,0.063477
+/ROWS/ 1
+/COLS/ 5
+/TYPE/ Menubar
+/FORMAT/ TEXT
+
+#Menus#
+/&File/ ms_file.menu
+/&View/ ms_view.menu
+/&Machine/ ms_machine.menu
+/&Clashes/ ms_clashes.menu
+/&Simulate/ ms_simulate.menu
+/&Help/ ms_help.menu

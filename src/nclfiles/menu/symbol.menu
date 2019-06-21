@@ -1,0 +1,17 @@
+#Descriptor#
+/NAME/ Symbols
+/POSITION/ 0.461719,0.056641
+/SIZE/ 0.081250,0.221680
+/ROWS/ 7
+/COLS/ 1
+/TYPE/ Pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Place Sym/ CAD_PLACE_SYM
+/Create/ CAD_SYM_CREMASTER
+/Decompose/ CAD_DECOMP_SYM
+/Attributes/ CAD_SYM_ATTRIB
+/Text Attribs/ CAD_SYM_TEXTATT
+/Txt-Snp Vis/ CAD_SYM_TEXTVIS
+/Symbol Mgt/ symbol_mgt.menu

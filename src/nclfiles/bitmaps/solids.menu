@@ -1,0 +1,29 @@
+#Descriptor#
+/NAME/ Solids
+/POSITION/ 0.552344,0.287891
+/SIZE/ 0.082813,0.453125
+/ROWS/ 9
+/COLS/ 2
+/TYPE/ Popup
+
+#Menus#
+/Box Pt-Pt/ CAM_SOLID_BXPT, So_box_ptpt.bmp
+/Box Ce-Len/ CAM_SOLID_BXLEN, So_box_ce.bmp
+/Box Bound/ CAM_SOLID_BOUND, So_box_bound.bmp
+/Cone Pt-Pt/ CAM_SOLID_CONPT, So_cone_ptpt.bmp
+/Cone Ce-Hgt/ CAM_SOLID_CONCE, So_cone_cehgt.bmp
+/Cyl Ci/ CAM_SOLID_CYLCI, So_cyl_ci.bmp
+/Cyl Pt-Pt/ CAM_SOLID_CYLPT, So_cyl_ptpt.bmp
+/Cyl Ce-Hgt/ CAM_SOLID_CYLCE, So_cyl_cehgt.bmp
+/Sphere Ci/ CAM_SOLID_SPHCI, So_sphere_ci.bmp
+/Sphere Ce/ CAM_SOLID_SPHCE, So_sphere_cera.bmp
+/Torus Ci-Ci/ CAM_SOLID_TORCI, So_torus_cici.bmp
+/Torus Ci-Ra/ CAM_SOLID_TORRA, So_torus_cira.bmp
+/Torus Ci-Ce/ CAM_SOLID_TORCE, So_torus_cera.bmp
+#BAR#
+/Extruded/ CAM_SOLID_SWEEP, So_extrude.bmp
+/Contour/ CAM_SOLID_CONTOUR, So_contour.bmp
+/Revolved/ CAM_SOLID_REVOLVE, So_revolve.bmp
+#BAR#
+/Load/ CAM_SOLID_LOAD, So_load.bmp
+/Save/ CAM_SOLID_SAVE, So_save.bmp

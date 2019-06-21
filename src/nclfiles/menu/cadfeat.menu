@@ -1,0 +1,12 @@
+#Descriptor#
+/NAME/ Features
+/POSITION/ 0.000,0.0
+/SIZE/ 0.083,0.147
+/ROWS/ 2
+/COLS/ 1
+/TYPE/ Popup
+/FORMAT/ TEXT
+
+#Menus#
+/Create Feat/ CAD_CREATE_FEATURE
+/Delete Feat/ CAD_DELETE_FEATURE

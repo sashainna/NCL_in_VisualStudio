@@ -1,0 +1,12 @@
+#Descriptor#
+/NAME/ Defaults
+/POSITION/ 0.125000,0.013021
+/SIZE/ 0.113281,0.447917
+/ROWS/ 1
+/COLS/ 2
+/TYPE/ pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Tool List/ IPV_TOOL_LIST
+/Tool Modals/ IPV_TOOL_MODALS

@@ -1,0 +1,19 @@
+#Descriptor#
+/NAME/ S-Splines
+/POSITION/ 0.178125,0.225586
+/SIZE/ 0.082813,0.141602
+/ROWS/ 5
+/COLS/ 2
+/TYPE/ Pulldown
+/FORMAT/ BOTH
+
+#Menus#
+/Offset/ CAM_GEO_SS_OFFSET
+/Project/ CAM_GEO_SS_PROJECT
+/Io-Sf-Sf/ CAM_GEO_SS_IOSF
+/Sf-Edge/ CAM_GEO_SS_EDGE
+/Trim Loop/ CAM_GEO_SS_OUT
+/Trim Edge/ CAM_GEO_SS_EDGE_OUT
+/Trim Edges/ CAM_GEO_SS_EDGES_OUT
+/Revsf-Edge/ CAM_GEO_SS_REVSF
+/Composite/ CAM_GEO_SS_COMPOS

@@ -1,0 +1,183 @@
+! IBMAPT CLFILE ATTRIBUTES
+
+#VOCAB#
+'apt140.wrd'
+
+#FILE#        ! GENERAL FILE DISCRIPTION SECTION
+
+/ACCESS/ SEQUENTIAL
+/RECL/ 488/I4/
+/SYNC/ YES        ! NOT Every logical record begins with phisical record
+/CROSS/ NO   ! logical record can cross phisical record; minimum 12 i*2
+/FILL/ NO       ! fill up phisical if logical is complet
+/HOST/ WINDOW 
+
+#FLOAT#
+
+/EXPONT/ 11,1
+/BIAS/ 1023 
+
+! PHISICAL RECORD DESCRIPTION SECTION
+
+#PREC#     
+
+/NWDP/ /C1/-2
+/LREC/ 2/I4/,488/I4/   ! Count in I*4 
+/I4/ NWDP
+
+! LOGICAL RECORDS DISCRIPTION SECTION
+
+#LREC#         
+
+/RECL/ 240 /R8/         ! Max logical record size 246 R8 data items
+/NWDL/ NWDP
+
+#NUMBER#        
+
+1/I4/0,/I4/      
+
+#MINOR# 
+
+1/I4/0,/I4/         ! 
+
+#NAME#              ! NAME format
+
+8/C1/ ' '
+
+#MACH#              ! MACHIN format
+
+1{6/C1/,2/C1/' '}
+
+#TEXT#
+
+/CODE/ ASCII 
+11{6/C1/,2/C1/' '}
+
+#COMMON#
+
+/I4/ CLREC
+/I4/ TYPE
+/I4/ SUBT
+
+#1000#
+
+/I4/ CLREC
+/I4/ TYPE
+/I4/ ISN
+/C8/ NAME 
+/C8/ NAME
+
+#2000#          ! PARTNO, PPRINT and INSERT 
+
+/SUBT/ 1043,1044,1045,1046
+/HDRC/ YES      ! all records follows header record
+/R8/ TEXT
+
+
+
+#2000#          ! MACHIN record
+
+/SUBT/ 1015
+/HDRC/ YES
+/R8/ MACH
+/R8/ MINOR      
+
+#2000# 
+
+/SUBT/ ALL
+/HDRC/ YES
+/R8/ MINOR        
+
+
+#3000#
+
+/SUBT/ 2
+/HDRC/ YES
+/R8/ 0.
+/I8/ SRFTYP
+/I8/ NUMPAR
+/C8/ NAME       
+/I8/ INDEX
+/R8/ XVAL
+/R8/ YVAL
+/R8/ ZVAL
+/R8/ IVEC
+/R8/ JVEC
+/R8/ KVEC
+/R8/ RDUS
+
+#5000#
+
+/SUBT/ 3,4,5
+/HDRC/ YES         
+/C8/ NAME
+/I8/ INDEX
+/R8/ POINT         ! max 243 R*8's... 41 points if MULTAX/ON, 81 if MULTAX/OFF
+
+
+#5000#
+
+/SUBT/ 6
+/HDRC/ NO          ! SUBT=6 do not need header record
+/C8/ NAME
+/I8/ INDEX
+/R8/ POINT         ! max 243 R*8's... 41 points if MULTAX/ON, 81 if MULTAX/OFF
+
+#6000#
+
+/SUBT/ 4,5
+/HDRC/ YES
+/R8/ TOLER
+
+#6000#
+
+/SUBT/ 6
+/HDRC/ YES
+/R8/ CDIAM
+/R8/ CORRAD
+/R8/ HDIST
+/R8/ VDIST
+/R8/ ANGLA
+/R8/ ANGLB
+/R8/ CHIGHT
+
+#6000#
+
+/SUBT/ ALL
+/HDRC/ YES
+/R8/ INDEX
+/R8/ CDIAM
+
+#9000#
+
+/SUBT/ 2
+/HDRC/ YES
+/I8/ STATUS        ! status (1,0)
+
+#9000#
+
+/SUBT/ 9
+/HDRC/ YES
+/R8/ SCALE 
+
+#9000#
+
+/SUBT/ 5
+/HDRC/ YES
+/R8/ PARAM1
+/R8/ PARAM2
+/R8/ PARAM3
+/R8/ PARAM4
+/R8/ PARAM5
+
+#9000#
+
+/SUBT/ 12
+/HDRC/ YES
+/I8/ INDEX
+
+#14000#
+
+/SUBT/ 0
+/HDRC/ YES
+/NFINI/ 1

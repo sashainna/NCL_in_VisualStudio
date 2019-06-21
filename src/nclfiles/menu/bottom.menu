@@ -1,0 +1,23 @@
+#Descriptor#
+/Name/ botton tool bar
+/Rows/ 1
+/Cols/ 10
+/Type/ Icon
+/Position/ 0.582031,0.879883
+/Area/ Top
+/FORMAT/ ICON
+/JUSTIFY/ RIGHT
+
+#Menus#
+/ / NCL_OPEN_FILE
+/ / CAM_SAVE_PP
+#Bar#
+/ / nclcam.menu
+/ / motion.menu
+/ / cutrtn.menu
+/ / nclipv.menu
+#Bar#
+/ / NCL_DYNAMIC_MOUSE
+/ / NCL_FIT_VIEW
+/ / NCL_WINDOW_ZOOM
+/ / NCL_PREVIOUS_VIEW

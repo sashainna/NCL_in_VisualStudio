@@ -1,0 +1,1033 @@
+//
+//     MODULE NAME AND RELEASE LEVEL
+//       Pted.rc , 24.1
+//    DATE AND TIME OF LAST  MODIFICATION
+//       09/11/13 , 12:58:42
+//Microsoft Developer Studio generated resource script.
+//
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#define APSTUDIO_HIDDEN_SYMBOLS
+#include "windows.h"
+#undef APSTUDIO_HIDDEN_SYMBOLS
+#include "ptedres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+MAINFRAME_MENU MENU DISCARDABLE 
+BEGIN
+    POPUP "File"
+    BEGIN
+        MENUITEM "New\tCtl+n",                  ID_FNEW
+        MENUITEM "Open\tCtl+o",                 ID_FOPEN
+        MENUITEM "Include...",                  ID_FILE_INCLUDE
+        MENUITEM "Open Cutter File",            ID_FILE_OPENCUTTERFILE
+        MENUITEM SEPARATOR
+        MENUITEM "Save\tCtl+s",                 ID_FSAVE
+        MENUITEM "Save As",                     ID_FSAVEAS
+        MENUITEM SEPARATOR
+        MENUITEM "Run Mpost...",                ID_FILE_RUNMPOST
+        MENUITEM SEPARATOR
+        MENUITEM "Load MDF",                    ID_FILE_LOADMDF
+        MENUITEM "Load Input MDF",              ID_FILE_LOADINPUTMDF
+        MENUITEM "Load Output MDF",             ID_FILE_LOADOUTPUTMDF
+        MENUITEM SEPARATOR
+        MENUITEM "Print",                       ID_FILE_FPRINT
+        MENUITEM "Page Setup...",               ID_FILE_FPAGE_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "Close",                       IDP_FILE_CLOSE
+        MENUITEM "Quit\tCtl+q",                 ID_FCANCEL
+    END
+    POPUP "Edit"
+    BEGIN
+        MENUITEM "Cut\tCtl+x",                  ID_ECUT
+        MENUITEM "Copy\tCtl+c",                 ID_ECOPY
+        MENUITEM "Paste\tCtl+v",                ID_EPASTE
+        MENUITEM "Delete\tBackSpace",           ID_EDELETE
+        MENUITEM "Insert Line\tCtl+i",          ID_EINSERTL
+        MENUITEM "Delete Line\tCtl+d",          ID_EDELETEL
+        MENUITEM SEPARATOR
+        MENUITEM "Reverse",                     ID_EDIT_REVERSE
+        MENUITEM SEPARATOR
+        MENUITEM "Edit Input MDF",              ID_EDIT_EDITINPUT
+        MENUITEM "Edit Output MDF",             ID_EDIT_EDITOUTPUT
+        MENUITEM SEPARATOR
+        POPUP "Bookmarks"
+        BEGIN
+            MENUITEM "Clear All bookmarks",         ID_EDIT_CLEAR_BOOKMARKS
+            MENUITEM SEPARATOR
+            MENUITEM "Bookmark 0",                  ID_EDIT_TOGGLE_BOOKMARK0
+            MENUITEM "Bookmark 1",                  ID_EDIT_TOGGLE_BOOKMARK1
+            MENUITEM "Bookmark 2",                  ID_EDIT_TOGGLE_BOOKMARK2
+            MENUITEM "Bookmark 3",                  ID_EDIT_TOGGLE_BOOKMARK3
+            MENUITEM "Bookmark 4",                  ID_EDIT_TOGGLE_BOOKMARK4
+            MENUITEM "Bookmark 5",                  ID_EDIT_TOGGLE_BOOKMARK5
+            MENUITEM "Bookmark 6",                  ID_EDIT_TOGGLE_BOOKMARK6
+            MENUITEM "Bookmark 7",                  ID_EDIT_TOGGLE_BOOKMARK7
+            MENUITEM "Bookmark 8",                  ID_EDIT_TOGGLE_BOOKMARK8
+            MENUITEM "Bookmark 9",                  ID_EDIT_TOGGLE_BOOKMARK9
+        END
+        POPUP "Goto Bookmark"
+        BEGIN
+            MENUITEM "Bookmark 0",                  ID_EDIT_GO_BOOKMARK0
+            MENUITEM "Bookmark 1",                  ID_EDIT_GO_BOOKMARK1
+            MENUITEM "Bookmark 2",                  ID_EDIT_GO_BOOKMARK2
+            MENUITEM "Bookmark 3",                  ID_EDIT_GO_BOOKMARK3
+            MENUITEM "Bookmark 4",                  ID_EDIT_GO_BOOKMARK4
+            MENUITEM "Bookmark 5",                  ID_EDIT_GO_BOOKMARK5
+            MENUITEM "Bookmark 6",                  ID_EDIT_GO_BOOKMARK6
+            MENUITEM "Bookmark 7",                  ID_EDIT_GO_BOOKMARK7
+            MENUITEM "Bookmark 8",                  ID_EDIT_GO_BOOKMARK8
+            MENUITEM "Bookmark 9",                  ID_EDIT_GO_BOOKMARK9
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "Active Undo/Redo",            ID_CUNDO_ENABLED
+    END
+    POPUP "View"
+    BEGIN
+        MENUITEM "Top of file\tCtl+t",          ID_VTOP
+        MENUITEM "Bottom of file\tCtl+g",       ID_VBOTTOM
+        MENUITEM "Status",                      ID_VIEW_STATUS
+    END
+    POPUP "Search"
+    BEGIN
+        MENUITEM "Find\tCtl+f",                 ID_FFIND
+        MENUITEM "Find Next\tF3",               ID_FFINDNEXT
+        MENUITEM "Find Prev\tShift+F3",         ID_FFINDPREV
+        MENUITEM "Find All\tCtl+a",             ID_FFINDALL
+        MENUITEM SEPARATOR
+        MENUITEM "Replace...",                  ID_SEARCH_REPLACE
+    END
+    POPUP "Window"
+    BEGIN
+        POPUP "File Type"
+        BEGIN
+            MENUITEM "Text File",                   ID_WINDOW_FILETYPE_TEXTFILE
+
+            MENUITEM "Control Data",                ID_WINDOW_FILETYPE_CONTROLDATA
+
+            MENUITEM "Binary CL File",              ID_WCLTYP
+            MENUITEM "APT Source",                  ID_WINDOW_FILETYPE_APTSOURCE
+
+            MENUITEM "Simulate File",               ID_WINDOW_FILETYPE_SIMULATE
+
+            MENUITEM "Cutter File",                 ID_WINDOW_FILETYPE_CUTTERFILE
+
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "To Control Data",             ID_CONVERT_APTTONC
+        MENUITEM "To APT Source",               ID_CONVERT_NCTOAPT
+        MENUITEM "To Sim File",                 ID_CONVERT_NCTOSIM
+        MENUITEM "Load Cutter Data",            ID_WINDOW_LOADCUTTERDATA
+        MENUITEM SEPARATOR
+        MENUITEM "Command Line On",             ID_WINDOW_COMMANDLINEON
+        MENUITEM SEPARATOR
+        MENUITEM "Bookmark Window",             ID_WINDOW_MARK
+        MENUITEM SEPARATOR
+        MENUITEM "Color Coding",                ID_WINDOW_SYNTAXCLR
+    END
+    POPUP "Convert"
+    BEGIN
+        POPUP "Convert"
+        BEGIN
+            MENUITEM "Convert",                     ID_CONVERT_CONVERT
+            MENUITEM "Convert Range...",            ID_CONVERT_CONVERT2
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "Resequence",                  ID_CONVERT_RESEQUENCE
+        MENUITEM SEPARATOR
+        POPUP "Format"
+        BEGIN
+            MENUITEM "Format",                      ID_CONVERT_FORMAT
+            MENUITEM "Format Range...",             ID_CONVERT_FORMAT2
+        END
+        POPUP "Unformat"
+        BEGIN
+            MENUITEM "Unformat",                    ID_CONVERT_UNFORMAT
+            MENUITEM "Unformat Range...",           ID_CONVERT_UNFORMAT2
+        END
+        POPUP "Bad Blocks"
+        BEGIN
+            MENUITEM "Bad Blocks",                  ID_CONVERT_BADBLOCKS
+            MENUITEM "Bad Blocks Range...",         ID_CONVERT_BADBLOCKS2
+        END
+        POPUP "Length"
+        BEGIN
+            MENUITEM "Length",                      ID_CONVERT_LENGTH
+            MENUITEM "Length Range...",             ID_CONVERT_LENGTH2
+        END
+        MENUITEM "Set Register",                ID_CONVERT_SETREGISTER
+    END
+    POPUP "Option"
+    BEGIN
+        MENUITEM "Pworks Options",              ID_OPTION_PWORKSOPTION
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "Contents",                    ID_HELP_CONTENTS
+        MENUITEM "&About",                      ID_HELP_ABOUT
+    END
+END
+
+CHILDFRAME_MENU MENU DISCARDABLE 
+BEGIN
+    POPUP "File"
+    BEGIN
+        MENUITEM "Open\tCtl+o",                 ID_FOPEN
+        MENUITEM "Include...",                  ID_FILE_INCLUDE
+        MENUITEM "Open Cutter File",            ID_FILE_OPENCUTTERFILE
+        MENUITEM SEPARATOR
+        MENUITEM "Save\tCtl+s",                 ID_FSAVE
+        MENUITEM "Save As",                     ID_FSAVEAS
+        MENUITEM SEPARATOR
+        MENUITEM "Print",                       ID_FILE_FPRINT
+        MENUITEM "Page Setup...",               ID_FILE_FPAGE_SETUP
+        MENUITEM SEPARATOR
+        MENUITEM "Close\tCtl+q",                ID_FCANCEL
+    END
+    POPUP "Edit"
+    BEGIN
+        MENUITEM "Cut\tCtl+x",                  ID_ECUT
+        MENUITEM "Copy\tCtl+c",                 ID_ECOPY
+        MENUITEM "Paste\tCtl+v",                ID_EPASTE
+        MENUITEM "Delete\tBackSpace",           ID_EDELETE
+        MENUITEM "Insert Line\tCtl+i",          ID_EINSERTL
+        MENUITEM "Delete Line\tCtl+d",          ID_EDELETEL
+        MENUITEM SEPARATOR
+        MENUITEM "Reverse",                     ID_EDIT_REVERSE
+        MENUITEM SEPARATOR
+        MENUITEM "Active Undo/Redo",            ID_CUNDO_ENABLED
+    END
+    POPUP "View"
+    BEGIN
+        MENUITEM "Top of file\tCtl+t",          ID_VTOP
+        MENUITEM "Bottom of file\tCtl+g",       ID_VBOTTOM
+        MENUITEM "Status",                      ID_VIEW_STATUS
+    END
+    POPUP "Search"
+    BEGIN
+        MENUITEM "Find\tCtl+f",                 ID_FFIND
+        MENUITEM "Find Next\tF3",               ID_FFINDNEXT
+        MENUITEM "Find Prev\tShift F3",         ID_FFINDPREV
+        MENUITEM "Find All\tCtl+a",             ID_FFINDALL
+        MENUITEM SEPARATOR
+        MENUITEM "Replace...",                  ID_SEARCH_REPLACE
+    END
+    POPUP "Window"
+    BEGIN
+        POPUP "File Type"
+        BEGIN
+            MENUITEM "Text File",                   ID_WINDOW_FILETYPE_TEXTFILE
+
+            MENUITEM "Control Data",                ID_WINDOW_FILETYPE_CONTROLDATA
+
+            MENUITEM "Binary CL File",              ID_WCLTYP
+            MENUITEM "APT Source",                  ID_WINDOW_FILETYPE_APTSOURCE
+
+            MENUITEM "Simulate File",               ID_WINDOW_FILETYPE_SIMULATE
+
+            MENUITEM "Cutter File",                 ID_WINDOW_FILETYPE_CUTTERFILE
+
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "To Control Data",             ID_CONVERT_APTTONC
+        MENUITEM "To APT Source",               ID_CONVERT_NCTOAPT
+        MENUITEM "To Sim File",                 ID_CONVERT_NCTOSIM
+        MENUITEM "Load Cutter Data",            ID_WINDOW_LOADCUTTERDATA
+        MENUITEM SEPARATOR
+        MENUITEM "Command Line On",             ID_WINDOW_COMMANDLINEON
+        MENUITEM SEPARATOR
+        MENUITEM "Bookmark Window",             ID_WINDOW_MARK
+        MENUITEM SEPARATOR
+        MENUITEM "Color Coding",                ID_WINDOW_SYNTAXCLR
+    END
+    POPUP "Convert"
+    BEGIN
+        POPUP "Convert"
+        BEGIN
+            MENUITEM "Convert",                     ID_CONVERT_CONVERT
+            MENUITEM "Convert Range...",            ID_CONVERT_CONVERT2
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "Resequence",                  ID_CONVERT_RESEQUENCE
+        MENUITEM SEPARATOR
+        POPUP "Format"
+        BEGIN
+            MENUITEM "Format",                      ID_CONVERT_FORMAT
+            MENUITEM "Format Range...",             ID_CONVERT_FORMAT2
+        END
+        POPUP "Unformat"
+        BEGIN
+            MENUITEM "Unformat",                    ID_CONVERT_UNFORMAT
+            MENUITEM "Unformat Range...",           ID_CONVERT_UNFORMAT2
+        END
+        POPUP "Bad Blocks"
+        BEGIN
+            MENUITEM "Bad Blocks",                  ID_CONVERT_BADBLOCKS
+            MENUITEM "Bad Blocks Range...",         ID_CONVERT_BADBLOCKS2
+        END
+        POPUP "Length"
+        BEGIN
+            MENUITEM "Length",                      ID_CONVERT_LENGTH
+            MENUITEM "Length Range...",             ID_CONVERT_LENGTH2
+        END
+        MENUITEM "Set Register",                ID_CONVERT_SETREGISTER
+    END
+END
+
+BACKUPFRAME_MENU MENU DISCARDABLE 
+BEGIN
+    POPUP "File"
+    BEGIN
+        MENUITEM "Include",                     ID_FILE_INCLUDE
+        MENUITEM SEPARATOR
+        MENUITEM "Save\tCtl+s",                 ID_FSAVE
+        MENUITEM "Save As",                     ID_FSAVEAS
+        MENUITEM SEPARATOR
+        MENUITEM "Close\tCtl+q",                ID_FCANCEL
+    END
+    POPUP "Edit"
+    BEGIN
+        MENUITEM "Cut\tCtl+x",                  ID_ECUT
+        MENUITEM "Copy\tCtl+c",                 ID_ECOPY
+        MENUITEM "Paste\tCtl+v",                ID_EPASTE
+        MENUITEM "Delete\tBackSpace",           ID_EDELETE
+        MENUITEM "Insert Line\tCtl+i",          ID_EINSERTL
+        MENUITEM "Delete Line\tCtl+d",          ID_EDELETEL
+    END
+    POPUP "View"
+    BEGIN
+        MENUITEM "Top of file\tCtl+t",          ID_VTOP
+        MENUITEM "Bottom of file\tCtl+g",       ID_VBOTTOM
+    END
+    POPUP "Search"
+    BEGIN
+        MENUITEM "Find\tCtl+f",                 ID_FFIND
+        MENUITEM "Find Next\tF3",               ID_FFINDNEXT
+        MENUITEM "Find All\tCtl+a",             ID_FFINDALL
+        MENUITEM SEPARATOR
+        MENUITEM "Replace...",                  ID_SEARCH_REPLACE
+    END
+END
+
+TEXTFRAME_MENU MENU DISCARDABLE 
+BEGIN
+    POPUP "File"
+    BEGIN
+        MENUITEM "Close\tCtl+q",                ID_FCANCEL
+    END
+END
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""windows.h""\r\n"
+    "#undef APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""ptedres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "CompanyName", "NCCS\0"
+            VALUE "FileDescription", "Pted\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "PTED\0"
+            VALUE "LegalCopyright", "Copyright 2001\0"
+            VALUE "OriginalFilename", "Pted.exe\0"
+            VALUE "ProductName", "NCCS Pted\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+MAINFRAME_MENU ACCELERATORS DISCARDABLE 
+BEGIN
+    "A",            ID_FFINDALL,            VIRTKEY, CONTROL, NOINVERT
+    "B",            ID_WBACKUP,             VIRTKEY, CONTROL, NOINVERT
+    "C",            ID_ECOPY,               VIRTKEY, CONTROL, NOINVERT
+    "D",            ID_EDELETEL,            VIRTKEY, CONTROL, NOINVERT
+    "F",            ID_FFIND,               VIRTKEY, CONTROL, NOINVERT
+    "G",            ID_VBOTTOM,             VIRTKEY, CONTROL, NOINVERT
+    "I",            ID_EINSERTL,            VIRTKEY, CONTROL, NOINVERT
+    "N",            ID_FNEW,                VIRTKEY, CONTROL, NOINVERT
+    "O",            ID_FOPEN,               VIRTKEY, CONTROL, NOINVERT
+    "Q",            ID_FCANCEL,             VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_FSAVE,               VIRTKEY, CONTROL, NOINVERT
+    "T",            ID_VTOP,                VIRTKEY, CONTROL, NOINVERT
+    "V",            ID_EPASTE,              VIRTKEY, CONTROL, NOINVERT
+    VK_F3,          ID_FFINDNEXT,           VIRTKEY, NOINVERT
+    VK_F3,          ID_FFINDPREV,           VIRTKEY, SHIFT, NOINVERT
+    "X",            ID_ECUT,                VIRTKEY, CONTROL, NOINVERT
+END
+
+CHILDFRAME_MENU ACCELERATORS DISCARDABLE 
+BEGIN
+    "A",            ID_FFINDALL,            VIRTKEY, CONTROL, NOINVERT
+    "B",            ID_WBACKUP,             VIRTKEY, CONTROL, NOINVERT
+    "C",            ID_ECOPY,               VIRTKEY, CONTROL, NOINVERT
+    "D",            ID_EDELETEL,            VIRTKEY, CONTROL, NOINVERT
+    "G",            ID_VBOTTOM,             VIRTKEY, CONTROL, NOINVERT
+    "I",            ID_EINSERTL,            VIRTKEY, CONTROL, NOINVERT
+    "O",            ID_FOPEN,               VIRTKEY, CONTROL, NOINVERT
+    "Q",            ID_FCANCEL,             VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_FSAVE,               VIRTKEY, CONTROL, NOINVERT
+    "T",            ID_VTOP,                VIRTKEY, CONTROL, NOINVERT
+    "V",            ID_EPASTE,              VIRTKEY, CONTROL, NOINVERT
+    VK_F3,          ID_FFINDNEXT,           VIRTKEY, NOINVERT
+    VK_F3,          ID_FFINDPREV,           VIRTKEY, SHIFT, NOINVERT
+    "X",            ID_ECUT,                VIRTKEY, CONTROL, NOINVERT
+END
+
+BACKUPFRAME_MENU ACCELERATORS DISCARDABLE 
+BEGIN
+    "B",            ID_WBACKUP,             VIRTKEY, CONTROL, NOINVERT
+    "C",            ID_ECOPY,               VIRTKEY, CONTROL, NOINVERT
+    "D",            ID_EDELETEL,            VIRTKEY, CONTROL, NOINVERT
+    "F",            ID_FFIND,               VIRTKEY, CONTROL, NOINVERT
+    "G",            ID_VBOTTOM,             VIRTKEY, CONTROL, NOINVERT
+    "I",            ID_EINSERTL,            VIRTKEY, CONTROL, NOINVERT
+    "O",            ID_FOPEN,               VIRTKEY, CONTROL, NOINVERT
+    "Q",            ID_FCANCEL,             VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_FSAVE,               VIRTKEY, CONTROL, NOINVERT
+    "T",            ID_VTOP,                VIRTKEY, CONTROL, NOINVERT
+    "V",            ID_EPASTE,              VIRTKEY, CONTROL, NOINVERT
+    VK_F3,          ID_FFINDNEXT,           VIRTKEY, NOINVERT
+    "X",            ID_ECUT,                VIRTKEY, CONTROL, NOINVERT
+END
+
+TEXTFRAME_MENU ACCELERATORS DISCARDABLE 
+BEGIN
+    "Q",            ID_FCANCEL,             VIRTKEY, CONTROL, NOINVERT
+END
+
+IDR_DEFAULT_TEXTACCEL ACCELERATORS DISCARDABLE 
+BEGIN
+    VK_BACK,        ID_EDIT_DELETE_BACK,    VIRTKEY, NOINVERT
+    VK_BACK,        ID_EDIT_DELETE_WORD_BACK, VIRTKEY, CONTROL, NOINVERT
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, CONTROL, NOINVERT
+    VK_DELETE,      ID_EDIT_DELETE,         VIRTKEY, NOINVERT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT, NOINVERT
+    VK_DOWN,        ID_EDIT_LINE_DOWN,      VIRTKEY, NOINVERT
+    VK_DOWN,        ID_EDIT_SCROLL_DOWN,    VIRTKEY, CONTROL, NOINVERT
+    VK_DOWN,        ID_EDIT_EXT_LINE_DOWN,  VIRTKEY, SHIFT, NOINVERT
+    VK_END,         ID_EDIT_LINE_END,       VIRTKEY, NOINVERT
+    VK_END,         ID_EDIT_TEXT_END,       VIRTKEY, CONTROL, NOINVERT
+    VK_END,         ID_EDIT_EXT_LINE_END,   VIRTKEY, SHIFT, NOINVERT
+    VK_END,         ID_EDIT_EXT_TEXT_END,   VIRTKEY, SHIFT, CONTROL, 
+                                                    NOINVERT
+    VK_F2,          ID_EDIT_GOTO_NEXT_BOOKMARK, VIRTKEY, NOINVERT
+    VK_F2,          ID_EDIT_TOGGLE_BOOKMARK, VIRTKEY, CONTROL, NOINVERT
+    VK_F2,          ID_EDIT_GOTO_PREV_BOOKMARK, VIRTKEY, SHIFT, NOINVERT
+    VK_F2,          ID_EDIT_CLEAR_ALL_BOOKMARKS, VIRTKEY, SHIFT, CONTROL, 
+                                                    NOINVERT
+    VK_F3,          ID_EDIT_FIND_PREVIOUS,  VIRTKEY, SHIFT, NOINVERT
+    VK_HOME,        ID_EDIT_HOME,           VIRTKEY, NOINVERT
+    VK_HOME,        ID_EDIT_TEXT_BEGIN,     VIRTKEY, CONTROL, NOINVERT
+    VK_HOME,        ID_EDIT_EXT_HOME,       VIRTKEY, SHIFT, NOINVERT
+    VK_HOME,        ID_EDIT_EXT_TEXT_BEGIN, VIRTKEY, SHIFT, CONTROL, 
+                                                    NOINVERT
+    VK_INSERT,      ID_EDIT_SWITCH_OVRMODE, VIRTKEY, NOINVERT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT, NOINVERT
+    VK_LEFT,        ID_EDIT_CHAR_LEFT,      VIRTKEY, NOINVERT
+    VK_LEFT,        ID_EDIT_WORD_LEFT,      VIRTKEY, CONTROL, NOINVERT
+    VK_LEFT,        ID_EDIT_EXT_CHAR_LEFT,  VIRTKEY, SHIFT, NOINVERT
+    VK_LEFT,        ID_EDIT_EXT_WORD_LEFT,  VIRTKEY, SHIFT, CONTROL, 
+                                                    NOINVERT
+    VK_NEXT,        ID_EDIT_PAGE_DOWN,      VIRTKEY, NOINVERT
+    VK_NEXT,        ID_EDIT_EXT_PAGE_DOWN,  VIRTKEY, SHIFT, NOINVERT
+    VK_PRIOR,       ID_EDIT_PAGE_UP,        VIRTKEY, NOINVERT
+    VK_PRIOR,       ID_EDIT_EXT_PAGE_UP,    VIRTKEY, SHIFT, NOINVERT
+    VK_RIGHT,       ID_EDIT_CHAR_RIGHT,     VIRTKEY, NOINVERT
+    VK_RIGHT,       ID_EDIT_WORD_RIGHT,     VIRTKEY, CONTROL, NOINVERT
+    VK_RIGHT,       ID_EDIT_EXT_CHAR_RIGHT, VIRTKEY, SHIFT, NOINVERT
+    VK_RIGHT,       ID_EDIT_EXT_WORD_RIGHT, VIRTKEY, SHIFT, CONTROL, 
+                                                    NOINVERT
+    VK_TAB,         ID_EDIT_TAB,            VIRTKEY, NOINVERT
+    VK_TAB,         ID_EDIT_UNTAB,          VIRTKEY, SHIFT, NOINVERT
+    VK_UP,          ID_EDIT_LINE_UP,        VIRTKEY, NOINVERT
+    VK_UP,          ID_EDIT_SCROLL_UP,      VIRTKEY, CONTROL, NOINVERT
+    VK_UP,          ID_EDIT_EXT_LINE_UP,    VIRTKEY, SHIFT, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 250, 60
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About Pted"
+FONT 8, "Helv"
+BEGIN
+    ICON            IDI_PTED_ICON,-1,11,16,21,20
+    LTEXT           "Pted Version 4.0",IDC_ABOUTLABLE1,40,10,190,8,
+                    SS_NOPREFIX
+    LTEXT           "Numerical Control Computer Sciences",IDC_ABOUTLABLE2,39,
+                    25,190,8
+    DEFPUSHBUTTON   "OK",IDOK,190,40,50,14,WS_GROUP
+END
+
+IDD_RANGE_DIALOG DIALOG DISCARDABLE  0, 0, 263, 263
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Range Specifier Dialog"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,206,217,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,206,234,50,14
+    GROUPBOX        " Beginning Line: ",-1,22,17,169,124
+    CONTROL         "Entire File",IDC_RADIO1,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP | WS_TABSTOP,41,31,47,10
+    CONTROL         "Selected Range",IDC_RADIO2,"Button",BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP,41,44,67,10
+    CONTROL         "Current Line",IDC_RADIO3,"Button",BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP,41,57,54,10
+    CONTROL         "Start of File",IDC_RADIO4,"Button",BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP,41,71,51,10
+    CONTROL         "Letter Address:",IDC_RADIO5,"Button",BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP,42,87,63,10
+    CONTROL         "Text String:",IDC_RADIO6,"Button",BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP,42,105,52,10
+    CONTROL         "Bookmark# (0-9):",IDC_RADIO7,"Button",
+                    BS_AUTORADIOBUTTON | WS_TABSTOP,42,125,71,10
+    EDITTEXT        IDC_EDIT1,111,84,40,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT2,102,102,40,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT7,115,122,40,14,ES_AUTOHSCROLL | ES_NUMBER
+    GROUPBOX        " Ending Line: ",-1,21,151,170,101
+    CONTROL         "Number of  Lines:",IDC_RADIO8,"Button",
+                    BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,41,166,71,10
+    CONTROL         "End of File",IDC_RADIO9,"Button",BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP,41,180,49,10
+    CONTROL         "Letter Address:",IDC_RADIO10,"Button",
+                    BS_AUTORADIOBUTTON | WS_TABSTOP,42,196,63,10
+    CONTROL         "Text String:",IDC_RADIO11,"Button",BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP,42,214,52,10
+    CONTROL         "Bookmark# (0-9):",IDC_RADIO12,"Button",
+                    BS_AUTORADIOBUTTON | WS_TABSTOP,42,234,71,10
+    EDITTEXT        IDC_EDIT3,107,196,40,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT4,101,212,40,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT5,115,164,40,14,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT9,115,231,40,14,ES_AUTOHSCROLL | ES_NUMBER
+END
+
+IDD_FIND_DIALOG DIALOG DISCARDABLE  30, 73, 236, 87
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Find"
+FONT 8, "Helv"
+BEGIN
+    LTEXT           "Fi&nd what:",-1,4,8,42,8,NOT WS_GROUP
+    EDITTEXT        1152,47,7,128,12,ES_AUTOHSCROLL | WS_GROUP
+    CONTROL         "Match &case",1041,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    4,42,64,12
+    GROUPBOX        "Direction",1072,103,25,73,28
+    CONTROL         "&Up",1056,"Button",BS_AUTORADIOBUTTON | WS_GROUP | 
+                    WS_TABSTOP,111,38,25,12
+    CONTROL         "&Down",1057,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,
+                    140,37,36,15
+    DEFPUSHBUTTON   "&Find Next",IDOK,182,5,50,14,WS_GROUP
+    PUSHBUTTON      "Cancel",IDCANCEL,182,23,50,14,WS_GROUP
+    PUSHBUTTON      "Range...",ID_RANGE,182,42,50,14,WS_GROUP
+    CONTROL         "Match &register",ID_LETTER,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,4,61,61,10
+END
+
+IDD_REPLACE_DIALOG DIALOG DISCARDABLE  36, 44, 285, 103
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Replace"
+FONT 8, "Helv"
+BEGIN
+    LTEXT           "Fi&nd what:",-1,4,9,48,8,NOT WS_GROUP
+    EDITTEXT        1152,54,7,114,12,ES_AUTOHSCROLL | WS_GROUP
+    LTEXT           "Re&place with:",-1,4,26,48,8,NOT WS_GROUP
+    EDITTEXT        1153,54,24,114,12,ES_AUTOHSCROLL | WS_GROUP
+    CONTROL         "Match &case",1041,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    5,62,59,12
+    GROUPBOX        "Direction",1072,87,57,73,28
+    CONTROL         "&Up",1056,"Button",BS_AUTORADIOBUTTON | WS_GROUP | 
+                    WS_TABSTOP,92,67,25,12
+    CONTROL         "&Down",1057,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,
+                    119,66,36,15
+    DEFPUSHBUTTON   "&Find Next",IDOK,174,4,50,14,WS_GROUP
+    PUSHBUTTON      "&Replace",1024,174,21,50,14,WS_GROUP
+    PUSHBUTTON      "Replace &All",1025,174,38,50,14,WS_GROUP
+    PUSHBUTTON      "Cancel",IDCANCEL,174,55,50,14,WS_GROUP
+    PUSHBUTTON      "Range...",ID_RANGE,174,75,50,14,WS_GROUP
+    CONTROL         "Match &register",ID_LETTER,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,5,77,61,17
+END
+
+IDD_RESEQ_DIALOG DIALOG DISCARDABLE  0, 0, 248, 119
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Renumber Sequence Numbers"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,19,97,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,163,97,50,14
+    LTEXT           "Beginning sequence number:",-1,19,21,100,12
+    EDITTEXT        IDC_BSEQ,123,18,40,14,ES_AUTOHSCROLL
+    LTEXT           "Sequence number increment:",-1,19,40,98,13
+    EDITTEXT        IDC_SEQINC,123,36,40,14,ES_AUTOHSCROLL
+    LTEXT           "Output sequence numbers every nth block:",-1,19,57,140,
+                    13
+    EDITTEXT        IDC_SEQN,164,54,40,14,ES_AUTOHSCROLL
+    GROUPBOX        "",-1,13,7,212,85
+    PUSHBUTTON      "Range...",IDC_REQ_RANGE,89,97,50,14
+    CONTROL         "Sequence numbered blocks only",IDC_NONLY,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,19,74,119,10
+END
+
+IDD_PROMPT DIALOG DISCARDABLE  0, 0, 212, 87
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Set Register Value"
+FONT 10, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,103,66,41,14
+    PUSHBUTTON      "Cancel",IDCANCEL,154,66,40,14
+    LTEXT           "Input registers and their value:",-1,17,19,151,11
+    EDITTEXT        IDC_SETTEXT,17,32,159,12,ES_AUTOHSCROLL
+    LTEXT           "Register format sample: G1(01), X1(0.5), A2(90.0), etc.",
+                    -1,16,48,161,8
+    GROUPBOX        "",-1,7,7,187,54
+END
+
+IDD_PWOPT_DIALOG DIALOG DISCARDABLE  0, 0, 257, 199
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Pworks Options"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,133,176,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,196,176,50,14
+    LTEXT           "ADJUST",-1,20,150,36,11
+    EDITTEXT        IDC_EDIT1,59,148,130,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Browse...",IDC_BROWSE,195,148,46,14
+    LTEXT           "ERROR MESSAGE",-1,19,18,85,13
+    CONTROL         "Warning",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,35,34,43,10
+    CONTROL         "Error",IDC_CHECK2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    35,49,31,10
+    CONTROL         "Fatal",IDC_CHECK3,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    35,65,31,10
+    EDITTEXT        IDC_EDIT3,83,32,40,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT4,83,47,40,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT5,83,62,40,12,ES_AUTOHSCROLL
+    LTEXT           "MACHINE",-1,20,84,44,11
+    LTEXT           "OPTIONS",-1,19,97,35,12
+    EDITTEXT        IDC_EDIT7,69,80,40,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT8,69,94,144,12,ES_AUTOHSCROLL
+    LTEXT           "PAGE_LEN",-1,20,114,49,12
+    EDITTEXT        IDC_EDIT9,69,112,54,12,ES_AUTOHSCROLL
+    CONTROL         "PRINT",IDC_CHECK6,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    20,130,42,14
+    EDITTEXT        IDC_EDIT10,68,129,40,12,ES_AUTOHSCROLL
+    GROUPBOX        "",-1,6,7,244,165
+END
+
+1536 DIALOG DISCARDABLE  36, 24, 264, 134
+STYLE DS_MODALFRAME | DS_3DLOOK | DS_CONTEXTHELP | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Open"
+FONT 8, "Helv"
+BEGIN
+    LTEXT           "File &name:",1090,6,6,76,9
+    EDITTEXT        1152,6,16,90,12,ES_AUTOHSCROLL | ES_OEMCONVERT
+    LISTBOX         1120,6,32,90,68,LBS_SORT | LBS_OWNERDRAWFIXED | 
+                    LBS_HASSTRINGS | LBS_DISABLENOSCROLL | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "&Folders:",-1,110,6,96,9
+    LTEXT           "",1088,110,18,96,9,SS_NOPREFIX
+    LISTBOX         1121,110,32,92,68,LBS_SORT | LBS_OWNERDRAWFIXED | 
+                    LBS_HASSTRINGS | LBS_DISABLENOSCROLL | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "List files of &type:",1089,6,104,90,9
+    COMBOBOX        1136,6,114,90,36,CBS_DROPDOWNLIST | CBS_AUTOHSCROLL | 
+                    WS_BORDER | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Dri&ves:",1091,110,104,92,9
+    COMBOBOX        1137,110,114,92,68,CBS_DROPDOWNLIST | CBS_OWNERDRAWFIXED | 
+                    CBS_AUTOHSCROLL | CBS_SORT | CBS_HASSTRINGS | WS_BORDER | 
+                    WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "OK",IDOK,208,6,50,14,WS_GROUP
+    PUSHBUTTON      "Cancel",IDCANCEL,208,24,50,14,WS_GROUP
+    PUSHBUTTON      "&Help",1038,208,46,50,14,WS_GROUP
+    CHECKBOX        "&Read only",1040,208,68,50,12,WS_GROUP
+    PUSHBUTTON      "Net&work...",1037,208,114,50,14,WS_GROUP
+END
+
+IDD_PTD_FILEDLG DIALOGEX 36, 24, 269, 18
+STYLE DS_3DLOOK | DS_CONTROL | WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS
+FONT 8, "Helv", 0, 0, 0x1
+BEGIN
+    CONTROL         "Verify Format",IDD_VERIFY,"Button",BS_AUTOCHECKBOX | 
+                    BS_NOTIFY | WS_GROUP | WS_TABSTOP,6,0,69,12
+END
+
+IDD_BATCH_MESSAGE DIALOG DISCARDABLE  0, 0, 276, 130
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Batch Message Display"
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "CLOSE",IDCANCEL,219,109,50,14
+    EDITTEXT        IDC_BATCH_MESSAGE,7,7,262,95,ES_MULTILINE | 
+                    ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY |
+                    WS_VSCROLL | WS_HSCROLL
+END
+
+IDD_PROCESSDIALOG DIALOG DISCARDABLE  0, 0, 218, 66
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Pted Conversion"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "Progress1",IDC_PROGRESS1,"msctls_progress32",WS_BORDER,
+                    13,19,191,14
+    LTEXT           "1% Completed ...",IDC_PROCESS_LABEL,37,42,161,8
+END
+
+IDD_STATUS_DIALOG DIALOG DISCARDABLE  0, 0, 261, 199
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Pted Status"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,204,178,50,14
+    LTEXT           "filename",IDC_MAIN_LABEL2,45,15,193,8
+    LTEXT           "File_Type",IDC_MAIN_LABEL3,45,25,190,8
+    LTEXT           "Child1: ",IDC_CHILD1_LABEL1,13,35,24,8
+    LTEXT           "filename",IDC_CHILD1_LABEL2,45,35,196,8
+    LTEXT           "File_Type",IDC_CHILD1_LABEL3,45,45,197,8
+    LTEXT           "Child2: ",IDC_CHILD2_LABEL1,13,55,24,8
+    LTEXT           "filename",IDC_CHILD2_LABEL2,45,55,195,8
+    LTEXT           "File_Type",IDC_CHILD2_LABEL3,45,65,196,8
+    LTEXT           "Child3: ",IDC_CHILD3_LABEL1,13,55,24,8
+    LTEXT           "filename",IDC_CHILD3_LABEL2,45,55,209,8
+    LTEXT           "File_Type",IDC_CHILD3_LABEL3,45,65,209,8
+    LTEXT           "Child4: ",IDC_CHILD4_LABEL1,13,55,24,8
+    LTEXT           "filename",IDC_CHILD4_LABEL2,45,55,209,8
+    LTEXT           "File_Type",IDC_CHILD4_LABEL3,45,65,209,8
+    LTEXT           "Child5: ",IDC_CHILD5_LABEL1,13,55,24,8
+    LTEXT           "filename",IDC_CHILD5_LABEL2,45,55,209,8
+    LTEXT           "File_Type",IDC_CHILD5_LABEL3,45,65,209,8
+    LTEXT           "Child6: ",IDC_CHILD6_LABEL1,13,55,24,8
+    LTEXT           "filename",IDC_CHILD6_LABEL2,45,55,209,8
+    LTEXT           "File_Type",IDC_CHILD6_LABEL3,45,65,209,8
+    LTEXT           "Child7: ",IDC_CHILD7_LABEL1,13,55,24,8
+    LTEXT           "filename",IDC_CHILD7_LABEL2,45,55,209,8
+    LTEXT           "File_Type",IDC_CHILD7_LABEL3,45,65,209,8
+    LTEXT           "Child8: ",IDC_CHILD8_LABEL1,13,55,24,8
+    LTEXT           "filename",IDC_CHILD8_LABEL2,45,55,209,8
+    LTEXT           "File_Type",IDC_CHILD8_LABEL3,45,65,209,8
+    LTEXT           "Child9: ",IDC_CHILD9_LABEL1,13,55,24,8
+    LTEXT           "filename",IDC_CHILD9_LABEL2,45,55,209,8
+    LTEXT           "File_Type",IDC_CHILD9_LABEL3,45,65,209,8
+    LTEXT           "Child10: ",IDC_CHILD10_LABEL1,13,55,24,8
+    LTEXT           "filename",IDC_CHILD10_LABEL2,45,55,209,8
+    LTEXT           "File_Type",IDC_CHILD10_LABEL3,45,65,209,8
+    LTEXT           "Child11: ",IDC_CHILD11_LABEL1,13,55,24,8
+    LTEXT           "filename",IDC_CHILD11_LABEL2,45,55,209,8
+    LTEXT           "File_Type",IDC_CHILD11_LABEL3,45,65,209,8
+    LTEXT           "Child12: ",IDC_CHILD12_LABEL1,13,55,24,8
+    LTEXT           "filename",IDC_CHILD12_LABEL2,45,55,209,8
+    LTEXT           "File_Type",IDC_CHILD12_LABEL3,45,65,209,8
+    LTEXT           "Child13: ",IDC_CHILD13_LABEL1,13,55,24,8
+    LTEXT           "filename",IDC_CHILD13_LABEL2,45,55,209,8
+    LTEXT           "File_Type",IDC_CHILD13_LABEL3,45,65,209,8
+    LTEXT           "Child14: ",IDC_CHILD14_LABEL1,13,55,24,8
+    LTEXT           "filename",IDC_CHILD14_LABEL2,45,55,209,8
+    LTEXT           "File_Type",IDC_CHILD14_LABEL3,45,65,209,8
+    LTEXT           "Child15: ",IDC_CHILD15_LABEL1,13,55,24,8
+    LTEXT           "filename",IDC_CHILD15_LABEL2,45,55,209,8
+    LTEXT           "File_Type",IDC_CHILD15_LABEL3,45,65,209,8
+    LTEXT           "Child16: ",IDC_CHILD16_LABEL1,13,55,24,8
+    LTEXT           "filename",IDC_CHILD16_LABEL2,45,55,209,8
+    LTEXT           "File_Type",IDC_CHILD16_LABEL3,45,65,209,8
+    LTEXT           "Child17: ",IDC_CHILD17_LABEL1,13,55,24,8
+    LTEXT           "filename",IDC_CHILD17_LABEL2,45,55,209,8
+    LTEXT           "File_Type",IDC_CHILD17_LABEL3,45,65,209,8
+    LTEXT           "Child18: ",IDC_CHILD18_LABEL1,13,55,24,8
+    LTEXT           "filename",IDC_CHILD18_LABEL2,45,55,209,8
+    LTEXT           "File_Type",IDC_CHILD18_LABEL3,45,65,209,8
+    LTEXT           "Input MDF: ",IDC_INPUTMDF_LABEL,13,123,215,8
+    LTEXT           "Output MDF:",IDC_OUTPUTMDF_LABEL,13,137,215,8
+    LTEXT           "Main:",IDC_MAIN_LABEL1,15,15,18,8
+    GROUPBOX        "Descriptor Files",IDC_FRAME2,7,111,247,40
+    GROUPBOX        "Windows",IDC_FRAME1,7,5,247,82
+END
+
+IDD_WINDOWDIALOG DIALOG DISCARDABLE  0, 0, 420, 261
+STYLE WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "Dialog"
+FONT 8, "Arial"
+BEGIN
+    LTEXT           "Command% ",ID_LCOMMAND,6,229,42,14
+    EDITTEXT        ID_ECOMMAND,60,229,360,14,ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_AUTOHSCROLL | ES_WANTRETURN
+    EDITTEXT        ID_EMESSAGE,6,175,412,49,ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_AUTOHSCROLL | ES_READONLY | WS_VSCROLL
+    CONTROL         "Progress1",IDC_PROGRESS1,"msctls_progress32",WS_BORDER,
+                    101,248,155,8
+    LTEXT           "Pted NCtoAPT Conversion",ID_LPROCESSOR1,5,246,87,14
+    LTEXT           "1% Completed...",ID_LPROCESSOR2,265,246,92,14
+END
+
+IDD_FINDALL_DIALOG DIALOG DISCARDABLE  30, 73, 236, 87
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Find All"
+FONT 8, "Helv"
+BEGIN
+    LTEXT           "Fi&nd what:",-1,4,8,42,8,NOT WS_GROUP
+    EDITTEXT        1152,47,7,128,12,ES_AUTOHSCROLL | WS_GROUP
+    CONTROL         "Match &case",1041,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    4,42,64,12
+    GROUPBOX        "Direction",1072,103,25,73,28
+    CONTROL         "&Up",1056,"Button",BS_AUTORADIOBUTTON | WS_GROUP | 
+                    WS_TABSTOP,111,38,25,12
+    CONTROL         "&Down",1057,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,
+                    140,37,36,15
+    DEFPUSHBUTTON   "Find All",IDOK,182,5,50,14,WS_GROUP
+    PUSHBUTTON      "Cancel",IDCANCEL,182,23,50,14,WS_GROUP
+    PUSHBUTTON      "Range...",ID_RANGE,182,42,50,14,WS_GROUP
+    CONTROL         "Match &register",ID_LETTER,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,4,61,61,10
+END
+
+IDD_PAGEDIALOG DIALOG DISCARDABLE  0, 0, 261, 134
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Page Setup"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,139,113,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,204,113,50,14
+    EDITTEXT        IDC_HEADERTEXT,50,13,202,15,ES_AUTOHSCROLL
+    CONTROL         "Header:",IDC_HEADER,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,7,14,41,10
+    EDITTEXT        IDC_FOOTERTEXT,50,31,201,15,ES_AUTOHSCROLL
+    CONTROL         "Footer:",IDC_FOOTER,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,7,32,38,10
+    LTEXT           "Left:",IDC_STATIC,13,68,23,12
+    EDITTEXT        IDC_MARGIN_LEFT,44,67,40,14,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "Right:",IDC_STATIC,120,68,26,13
+    EDITTEXT        IDC_MARGIN_RIGHT,150,67,40,14,ES_AUTOHSCROLL | ES_NUMBER
+    GROUPBOX        "Margins(mm)",IDC_PAGEUNIT,7,52,212,56
+    LTEXT           "Top:",IDC_STATIC,13,87,23,12
+    EDITTEXT        IDC_MARGIN_TOP,45,86,40,14,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "Bottom:",IDC_STATIC,120,87,26,13
+    EDITTEXT        IDC_MARGIN_BOTTOM,150,86,40,14,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_RANGE_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 256
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 256
+    END
+
+    IDD_FIND_DIALOG, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 84
+    END
+
+    IDD_REPLACE_DIALOG, DIALOG
+    BEGIN
+        RIGHTMARGIN, 244
+    END
+
+    IDD_RESEQ_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 241
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 111
+    END
+
+    IDD_PROMPT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 205
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 80
+    END
+
+    IDD_PWOPT_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 6
+        RIGHTMARGIN, 250
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 190
+    END
+
+    IDD_BATCH_MESSAGE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 269
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 123
+    END
+
+    IDD_PROCESSDIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 211
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 59
+    END
+
+    IDD_STATUS_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 254
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 192
+    END
+
+    IDD_FINDALL_DIALOG, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 84
+    END
+
+    IDD_PAGEDIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 254
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 127
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_PTED_ICON           ICON    DISCARDABLE     "pted.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MARGIN_ICONS        BITMAP  DISCARDABLE     "mark_icons.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+IDR_MARGIN_CURSOR       CURSOR  DISCARDABLE     "view_cur.cur"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FFINDNEXT            "Find next ocurrence of current search string"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FFINDPREV            "Find previous occurrence of current search string"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

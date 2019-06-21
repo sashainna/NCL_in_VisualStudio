@@ -1,0 +1,14 @@
+#Descriptor#
+/NAME/ Viewport Shading
+/POSITION/ 0.568750,0.100586
+/SIZE/ 0.087500,0.375000
+/ROWS/ 4
+/COLS/ 1
+/TYPE/ Pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Wireframe/ NCL_VIEW_WIREFRAME
+/Shaded/ NCL_VIEW_SHADED
+/Hidden Line/ NCL_VIEW_HIDDEN
+/Shaded Only/ NCL_VIEW_SHADED_ONLY

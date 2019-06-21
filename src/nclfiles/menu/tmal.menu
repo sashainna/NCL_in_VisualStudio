@@ -1,0 +1,35 @@
+#Descriptor#
+/NAME/ TMAL Engraved
+/POSITION/ 0.000000,0.542969
+/SIZE/ 0.081055,0.140625
+/ROWS/ 20
+/COLS/ 1
+/TYPE/ Icon
+/Area/ Left
+/FORMAT/ TEXT
+
+#Menus#
+/Help/ NIS_SYSTEM_ONCE, <TMAL Reference>, "%acroread% %NCL_DOC%\tmal.pdf&,NO"
+/Macro Call/ CAM_MACRO_CALL
+#Bar#
+/Cornr/ CAM_MACRO_CALL, "cornr,ONCE"
+/Cutsf/ CAM_MACRO_CALL, "cutsf,ONCE"
+/Groov5/ CAM_MACRO_CALL, "groov5,ONCE"
+/Pokmac/ CAM_MACRO_CALL, "pokmac,ONCE"
+/Pos/ CAM_MACRO_CALL, "pos,ONCE"
+/Ret/ CAM_MACRO_CALL, "Ret,ONCE"
+/Rgroov/ CAM_MACRO_CALL, "rgroov,ONCE"
+#bar#
+/Dntcut/ CAD_PLAYBACK, "Dntcut.rp"
+/Dcut Nm/ CAD_PLAYBACK, "Dntcut-Nm.rp"
+/Gpts rbpt/ CAD_PLAYBACK, "Genpts-rbpt.rp"
+/Gpts lbpt/ CAD_PLAYBACK, "Genpts-lbpt.rp"
+/Gpts pkpts/ CAD_PLAYBACK, "Genpts-pkpts.rp"
+/Gpts Nm/ CAD_PLAYBACK, "Genpts-Nm.rp"
+#bar#
+/Rset/ CAD_PLAYBACK, "rset.rp"
+/Tramac/ CAM_MACRO_CALL, "tramac,ONCE"
+/Assemb/ CAM_MACRO_CALL,"Assemb,ONCE"
+#bar#
+/Modeling/ modeling.menu
+/Motion/ motion.menu

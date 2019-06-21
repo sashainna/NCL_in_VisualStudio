@@ -1,0 +1,13 @@
+#Descriptor#
+/NAME/ Motion Status
+/POSITION/ 0,0
+/SIZE/ .200,.035
+/ROWS/ 1
+/COLS/ 5
+/TYPE/ Icon
+/Area/ Status3
+/FORMAT/ TEXT
+
+#Buttons#
+/Proc Mode = / PROCESS_MODE,CAM_COMMAND
+

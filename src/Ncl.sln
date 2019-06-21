@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Ncl", "Ncl.vcxproj", "{A9902D41-413E-4DCF-8C99-85604D534609}"
+	ProjectSection(ProjectDependencies) = postProject
+		{295163AF-531F-4D6D-970F-F67B970F3002} = {295163AF-531F-4D6D-970F-F67B970F3002}
+	EndProjectSection
+EndProject
+Project("{6989167D-11E4-40FE-8C1A-2192A86A7E90}") = "Ncl_lib_", "Ncl_lib_.vfproj", "{295163AF-531F-4D6D-970F-F67B970F3002}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A9902D41-413E-4DCF-8C99-85604D534609}.Debug|x64.ActiveCfg = Debug|x64
+		{A9902D41-413E-4DCF-8C99-85604D534609}.Debug|x64.Build.0 = Debug|x64
+		{A9902D41-413E-4DCF-8C99-85604D534609}.Release|x64.ActiveCfg = Release|x64
+		{A9902D41-413E-4DCF-8C99-85604D534609}.Release|x64.Build.0 = Release|x64
+		{295163AF-531F-4D6D-970F-F67B970F3002}.Debug|x64.ActiveCfg = Debug|x64
+		{295163AF-531F-4D6D-970F-F67B970F3002}.Debug|x64.Build.0 = Debug|x64
+		{295163AF-531F-4D6D-970F-F67B970F3002}.Release|x64.ActiveCfg = Release|x64
+		{295163AF-531F-4D6D-970F-F67B970F3002}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,14 @@
+#Descriptor#
+/NAME/ Labels
+/POSITION/ 0.000781,0.639648
+/SIZE/ 0.158594,0.093750
+/ROWS/ 4
+/COLS/ 1
+/TYPE/ Pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Labels On/ NCL_LABEL_ON
+/Labels Off/ NCL_LABEL_OFF
+/Alter/ NCL_LABEL_ALTER
+/Rename/ CAD_RENAME_GEO

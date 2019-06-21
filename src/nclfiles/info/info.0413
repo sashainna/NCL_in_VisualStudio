@@ -1,0 +1,2498 @@
+                             * * *   U R G E N T   * * *
+
+     The 'docreg.f' routine contains hard coded numbers to the KPOSMP and
+     POSMAP arrays.  If you change any variable's position within these
+     arrays, be sure to change the hard coded values in 'docreg.f' if
+     applicable.
+
+                            * * *   U R G E N T   * * *
+
+
+KPOSMP
+------
+
+1-80  =  Clfile integer variables.
+
+1          - ISN        =  Input record number.
+
+2          - ICLREC     =  Input cl record number.
+
+3          - ITYPE      =  Cl record type.
+
+4          - ISUBT      =  Cl record subtype.
+
+5          - MXCL       =  Number of R*8's in Cl record.
+
+6-55       - IPSTWD     =  Post word minor word values.
+
+56         - MULTAX     =  Multax flag.
+
+57         - IFIREC     =  Record pointer within input clfile.
+
+58         - IFIPT      =  Pointer within input clfile record.
+
+59         - NPT        =  3 = Multax is off.  6 = Multax is on.
+
+60         - MXPT       =  Number of points in GOTO record.
+
+61         - LOOKPT     =  Pointer within multiple point GOTO record when look-
+                           ing ahead.
+
+62         - NCUT       =  Number of parameters in current CUTTER statement.
+
+63         - NCUTDS     =  Number of parameters in current Displayed CUTTER
+                           statement.
+
+64-66      - ICUTYP     =  Cutter display flag for use in creating Machine
+                           Simulation file. (1) = Cutter flag, (2) = Shank,
+                           (3) = Holder.
+
+67         - NSHANK     =  Number of CUTTER/SHANK parameters active
+                           (Pre NCL V9.6), 0 = CUTTER, 1 = HOLDER (NCL V9.6+).
+
+68         - ICUCHG     =  1 = Cutter parameters have changed.
+
+69-74      - ICUSAV     =  Saved cutter parameters for clfile look ahead.
+
+75         - NPARTN     =  Number of PARTNO cards defined in clfile.
+
+76         - NCLD       =  Number of values in CLDATA array.
+
+77         - ICLSMP     =  1 = Clfile is being sampled.  0 = Normal processing
+                           of the clfile.
+
+81-180  =  Miscellaneous integer variables.
+
+81         - IERROR     =  Error flag for SYNTAX command.
+
+82         - NUMERR     =  Number of errors occurring in current clfile.
+
+83         - LSTPC      =  PC of current instruction.
+
+84         - ICLOUT     =  Output cl record number.
+
+85         - IERRPC     =  PC of instruction that generated error.
+
+86         - MACH       =  Current machine number.
+
+87         - IUNIT      =  Units that stored common is in.  1 = Inch.  2 = MM.
+
+88         - IDUMMY     =  Dummy value to show this variable has not been set.
+
+89         - NUMWRN     =  Number of warnings encountered during post-processor
+                           portion of program.
+
+90         - NUMFAT     =  Number of fatal errors encountered during post-
+                           processor portion of program.
+
+91         - IDSPLY     =  1 = Output PPRINT's as messages.  2 = no.
+
+92         - IOPSKP     =  1 = OPSKIP/ON, 2 = OFF.
+
+93-96      - RTRMCD     =  Register to reset rotary axes when maximum
+                           register value reached.
+
+97         - NUMAER     =  Number of APT Source errors encountered during
+                           post-processor portion of program.
+
+109        - KERRSV     =  Saved error # from TLAXIS call in MOCNTL.
+ 
+110        - LIMERR     =  Limit error status used when machine has rotary table
+                           and it is possible to use table rotation to avoid
+                           limit violation.  Set to 0 - point in limits, 7 -
+                           point out of limits. 
+
+111        - NRLTAB     =  Rotary axis (table) number which rotation may convert
+                           motion from limit error zone to error free motion by
+                           rotation of this axis.
+
+112        - ICLIPS     =  Clip planes command status: 0 - CLRSRF has no planes
+                           defined (default), 1 - active (START), 2 - suspended
+                           with predefined planes (STOP).
+
+113        - NPLANE     =  Number of clip planes defined for CLRSRF command. 
+
+114        - LINTSW     =  Prepst LINTOL mode: 0 - no prepst mode active,
+                           1 - /LINEAR,d mode, 2 - TOLER,t mode, 
+
+115        - CPLNTR     =  1 = Apply trans to clipping planes, 2 = Don't.
+
+116-118    - CLRTFL     =  1 = Clipping plane retract plane is specfied,
+                           2 = Rapto plane, 3 = Plunge plane.
+
+131-150    - CLISAV     =  Look ahead array for saving integer parameters.
+
+151-170    - ICLMSV     =  Saves required clfile and Macro variables when look-
+                           ing ahead in the clfile.
+
+171        - NKPOSM     =  Number of records in KPOSMP array (1 rec = 2000
+                           integer*4 numbers).
+
+172        - NPOSMA     =  Number of records in POSMAP array (1 rec = 1000
+                           real*8 numbers).
+
+173        - NCPOSM     =  Number of records in CPOSMP array (1 rec = 8000
+                           characters).
+
+174        - SIMACT     =  1 = Simulation file is active.  0 = No.
+
+175        - PPRIPV     =  1 = Process PPRINT IPV statements normally.
+                           2 = Ignore PPRINT IPV statements.
+
+176        - IPVCON     =  1 = Look for PPRINT continuation record.
+
+177        - IPVCTR     =  1 = PPRINT IPV CUTTER type statmement found,
+                           do not buffer CUTTER statements.
+
+181-300  =  Cycle parameters.
+
+181-210    - ICYCFL     =  1 = Canned cycle support, 2 = Unidirectional move,
+                           3 = 1 canned cycles supported in all 3 planes,  
+                           4 = Final depth mode, 5 = Force out feedrate,
+                           6 = Final depth relative plane, 7 = Final depth 
+                           location, 8 = Rapto plane mode, 9 = Retract logic,
+                           10 = Retract block, 11 = Retract block format, 
+                           12 = Peck output format, 13 = Force out linear axes,
+                           14 = Output feedrate, 15 = Full cycle output with
+                           final depth, 16 = Feedrate lock with CYCLE/TAP,
+                           17 = Use STEP-1 in time calc, 18 = Use STEP-2 in time
+                           calc, 19 = Output XY offset codes for all planes,
+                           20 = Force cycle code on initial block, 
+                           21 = 1 - Automatic cycles are in effect, 2 - Manual
+                           cycles, 22 = Force linear code after CYCLE/OFF,
+                           23 = Output input parms on every cycle block, 
+                           24 = Position tool prior to CYCLE/DEEP,
+                           25 = Retract tool after each level of CYCLE/THRU,
+                           26 = RTRCTO overrides normal retract plane, 27 =
+                           Retract plane mode, 28 = Output RTRCTO code with
+                           RETRCT/ON, 29 = Output linear axes on every cycle
+                           block.  30 = 1 - Ouput cycles as Macro Call, 31 =
+
+211-230    - CYCCOD     =  Cycle definition codes. 1 = OFF, 2 = BORE, 3 = BORE7,
+                           4 = BORE8, 5 = BORE9, 6 = DEEP, 7 = DRILL, 8 = FACE,
+                           9 = MILL, 10 = REAM, 11 = REVERS, 12 = SHIFT, 13 =
+                           TAP, 14 = THRU, 15 = Rapid interrupt, 19 = RETRCT/ON,
+                           20 = RETRCT/OFF.
+
+231-250    - CYCREG     =  Cycle parameter codes. 1 = FEDTO, 2 = RAPTO, 3 = TPI,
+                           4 = DWELL-1, 5 = DWELL-2, 6 = STEP-1, 7 = STEP-2, 8 =
+                           OFFSET, 9 = OFFSET-X, 10 = OFFSET-Y, 11 = OFFSET-Z,
+                           12 = RTRCTO-1, 13 = RTRCTO-2, 14 = REPEAT, 15 = 
+                           Top-of-Part.
+
+251-270    - ICYTIM     =  Cycle time calculations.  1 = BORE, 2 = BORE7, 3 =
+                           BORE8, 4 = BORE9, 5 = CUTANG, 6 = CUTANG/DWELL, 7 =
+                           DEEP, 8 = DEEP, 9 = DRILL, 10 = FACE, 11 = MILL, 12 =
+                           REAM, 13 = REVERS, 14 = SHIFT, 15 = TAP, 16 = THRU.
+
+271-275    - ICYCSW     =  (1) = 0 - CYCLE/OFF, 1 - CYCLE/ON,AUTO, 2 - CYCLE/ON,
+                           MANUAL, 3 - CYCLE/AUTO selected but forced CYCLE/
+                           MANUAL. 4 - Thread cutting in effect.  (2) = 1 - 1st
+                           block following CYCLE/ON, 2 - 1st block following
+                           CYCLE/OFF, (3) = 1 - RETRCT/ON, 2 - RETRCT/OFF,
+                           (4) = 1 - Cycle was interrupted by RAPID.
+
+276-290    - ICYCDO     =  CYCLE command parameter flags.
+
+291-295    - ICYCSV     =  Saved cycle parameters.  (1) = Previous feedrate
+                           mode, (2) = Previous feedrate mode when cycle is
+                           cancelled from automatic cycle for positioning move.
+                           (3) = Previous cycle mode (ICYCSW(1)).
+
+296-298    - PLCYCD     =  Plane selection registers.
+
+299        - CYCPAX     =  Cycle plane axis.
+
+301-380  =  Options.
+
+301        - MSGSEQ     =  1 = Add sequence numbers to Message Blocks.  2 = No.
+
+302        - MSGEOB     =  1 = Add an EOB to a Message Block.  2 = No.
+
+303        - MSGTAB     =  1 = Convert Message spaces to tabs.  2 = No.
+
+304        - INSSEQ     =  1 = Add sequence numbers to INSERT Blocks.  2 = No.
+
+305        - INSEOB     =  1 = Add an EOB to an INSERT Block.  2 = No.
+
+306        - OPSSEQ     =  1 = OPSTOP is an End-of-Sequence.  2 = No.
+
+307        - STPSEQ     =  1 = STOP is an End-of-Sequence.  2 = No.
+
+308-327    - MCHOPT     =  1 = Input units.  2 = Output units.  3 = Print file
+                           descriptor file, 4 = Program number, 5 = MCD block
+                           length.  6 = 1 - Output linearized points during
+                           simulation.  7 = 0 - Don't suppress output of MCD
+                           file, 1 - On Warning, 2 - On Error, 3 - On Fatal.
+
+328-347    - PICLMSV    =  Saves required clfile and Macro variables when look-
+                           ing ahead in the clfile (2nd level).
+
+369        - IPHFLO     =  Flag that determines if Punch Header file is being
+                           created.
+
+370        - IZIGON     =  Zigzag options:  0 = No zigzag in effect, 1 = Zigzag
+                           active,  2 = Zigzag off (next motion will switch it
+                           to 0).
+
+371        - IZIGAD     =  1 - Adjust point for zigzag (in ptrtad), 2 - do not
+                           adjust point for zigzag. 
+
+372-378    - PODACD     =  Registers for POD commands refering to all pods.
+                           1 - address for AIR,LOW; 2 - address for AIR,HIGH;
+                           3 - address for AIR,LOCK,ON; 4 - address for ALL,
+                           DOWN; 5 - address for AIR,ON; 6 - address for AIR,OFF
+                           7 - address for AIR,LOCK,OFF.
+
+379-380    - PODCCD     =  Registers for selected POD row and column codes.
+                           1 - row address register, 2 - column address register
+
+381-1100 =  Output register variables.
+
+381-404    - MOTREG     =  Registers for linear and rotary axes (Absolute & 
+                           incremental modes).
+
+405-496    - REGSW      =  1 = Register is setup for output.
+
+497-588    - IREGST     =  Stored integer value of registers.
+
+603-694    - REGFRC     =  Register force output flag.  -1 = Do not output on
+                           next block.  -2 = Modal non-output.  0 = Do not
+                           force.  1 = Force on next block only.  2 = Modal
+                           force.  3 = Force on next motion block only.  4 =
+                           Output on block only if block contains other codes.
+
+695-786    - IRGOUT     =  1 = This register was output (used in print file
+                           output routine).
+
+801-805    - MACCOD     =  1 = Macro Call register.
+
+807-809    - MBLREG     =  Registers for Blade rotary axis.
+
+811        - IRTMAX     =  Maximum number of Rotary axes used for spindle axis
+                           vector positioning.
+
+812        - ISIDBL     =  Blade side used in previous motion (1 or 2).
+
+813-816    - IRTOUT     =  Flags (set to 1) for rotary axes used in post
+                           for tool vector and/or Blade position.
+
+817        - IRETBL     =  Blade retract procedure flag.
+
+818-823    - PODSCD     =  Registers for POD commands refering to selected pods.
+                           1 - address for selected pod block (default G140);
+                           2 - address for r,c,UP; 3 - address for r,c,UP,CLAMP;
+                           4 - address for r,c,CLAMP,ON; 5 - address for r,c,
+                           CLAMP,OFF; 6 - address for r,c,AIR,OFF.
+
+827-829    - IJKREG     =  Registers for tool axis vector output.
+
+830-831    - IBPOST     =  Blade side for post generated motion.
+
+832        - IFWDFL     =  1 - FWD direction set when linearization is active,
+                           0 - FWD vector undefined.
+
+833        - IFWSFL     =  FWD direction of the old move.
+
+834        - IBLDIR     =  User forced direction of blade to certain side.
+                           1 = Forward side, 2 = Backward side, 3 = Either side.
+
+837        - NRGORD     =  Number of registers in REGORD.
+
+838        - MULTGC     =  Multiple G-codes in a block flag.
+
+839        - MULTMC     =  Multiple M-codes in a block flag.
+
+840        - MGCD       =  G-codes and M-codes in a single block flag.
+
+841        - NEOB       =  Number of chars in End-of-Block string.
+
+842        - TABSEQ     =  Word Address/Tab Sequential format flag.
+
+843        - NCBMSG     =  Number of chars in beginning of message string.
+
+844        - NCEMSG     =  Number of chars in end of message string.
+
+845        - ISEQSW     =  1 = Output sequence numbers.  2 = don't.
+
+846        - SEQFRQ     =  Output sequence numbers every nth block.
+
+847        - SEQCOD     =  Register for sequence numbers.
+
+848        - ALNCOD     =  Register for alignment blocks.
+
+849        - AL1BLK     =  User defined non-motion alignment block.
+
+850        - AL2BLK     =  User defined motion alignment block.
+
+851        - IHDID      =  1 = This block is an alignment block.
+
+852        - ISEQBK     =  Output sequenced block counter for SEQFRQ.
+
+853        - ISQBKV     =  Previous ISEQBK.
+
+854        - AL3BLK     =  User defined automatic cycle alignment block.
+
+855        - ALNFLG     =  1 = Output alignment block using current sequence
+                           number, 2 = using specified number, 3 = using CYCLE
+                           block number.
+
+856        - NCAPPN     =  Number of characters in Append string.
+
+857        - LSTREG     =  Last register output in CODOUT.  Used to mark
+                           position of Macro Parameters in output block.
+
+858        - MACPRG     =  Macro Parameters will be output after this register.
+
+859-888    - MACPSW     =  1 = Macro Parameter is setup for output.
+
+889        - MACBLK     =  User defined block for Macro output.
+
+890-919    - CYCPSW     =  Cycle parameter switch (1 = specified in command).
+
+920        - ICYMTP     =  1 = Modal Cycle Macro is in effect.  2 = One Shot
+                           Cycle Macro is in effect.  Only used when cycles
+                           are output as Macro calls.
+
+921-930    - XFMFL      =  (1) = Does the control support xform blocks,
+                           (2) = Are xform blocks accumulative, (3) = 1 - Use
+                           a single vector for rotations, 2 - Use ZXY rotations,
+                           3 - Use XYZ rotations, Use XYZ rotations in multiple
+                           blocks.  (4) = 1 - Translation block is currently
+                           active, 2 - Rotation block, 3 = Both blocks.
+                           (5) = 1 - Automatic transformation blocks
+                           are active, 0 - Not.  (6) = 1 - Output translation
+                           registers with a value of 0 when cancelling
+                           translations.  (7) = 1 - Output xform after motion
+                           block when AUTO is in effect, (8) = 1 - Allow rotary
+                           axes movement during xform sequence.
+                           (9) = 1 - Automatically cancel CUTCOM when enabling
+                           transformations.  (10) = 1 - Transformation block is
+                           output with this move.
+
+931-940    - XFMREG     =  Registers for xform blocks.  (1) = X translation,
+                           (2) = Y translation, (3) = Z translation, (4) = X
+                           rotation, (5) = Y rotation, (6) = Z rotation,
+                           (7) = I component of rotation vector, (8) = J
+                           component, (9) = K component, (10) = Vector rotation.
+
+941-945    - XFMLK      =  Flags when automatic transformation blocks are
+                           activated.  (1) = Adjust for tool end point, (2) = 
+                           Adjust for tool axis, (3) = Adjust for X-axis.
+
+946-950    - XFMCD      =  (1) = Enable translations code, (2) = Enable
+                           rotations code, (3) = Disable translations code,
+                           (4) = Disable rotations code, (5) = Non-positioning
+                           code. 
+
+951-995    - SGMREG     =  Stringer Machine axes registers.
+
+996-997    - SGMACT     =  Active stringer head(s) at beginning of program.
+                           If two heads are active, they must be 3 & 4.
+
+
+1073       - MOTFLG     =  1 = This output tape block contains motion info.
+
+1074       - NOUTSW     =  Number of registers awaiting output.
+
+1075       - OPSTCD     =  Register for OPSTOP command.
+
+1076       - STOPCD     =  Register for STOP command.
+
+1077       - NOPSKP     =  Number of chars in OPSKIP/ON string.
+
+1078-1079  - UNTCOD     =  Registers for Inch/Metric designators.
+
+1080       - REWCOD     =  Register for REWIND command.
+
+1081-1089  - TAXCD      =  Registers for setting major tool axis mode. (n,1) =
+                           XYPLAN, (n,2) = ZXPLAN, (n,3) = YZPLAN.
+
+1090-1092  - NTAXCD     =  Number of registers in TAXCD.
+
+1101-1150 =  Punch file variables.
+
+1101       - IPACKD     =  Packed/Unpacked Punch file flag.
+
+1102       - IPARTO     =  Output PARTNO card to Punch file flag.
+
+1103       - PCHSPC     =  Separate registers with a space
+
+1104       - NRWSTP     =  Number of chars in rewind stop string.
+
+1105       - FINCOD     =  Register for FINI card.
+
+1106       - NEOT       =  Number of chars in End-of-Tape string.
+
+1107       - IPCHPN     =  Pointer within packed punch file record.
+
+1108       - IPCHSQ     =  Output punch file record sequence number.
+
+1109       - PCHBNC     =  Pointer to Punch file Control tape buffer (PCHBLK).
+
+1110       - MACSPC     =  Separate Macro parameters with a space.
+
+1131       - IFIRST     =  1 = First block output to Control tape.
+
+1132       - ICSMRG     =  Checksum register (CHECK/LENGTH).
+
+1133       - ICSMFL     =  1 = CHECK/LENGTH,ON, 2 = CHECK/LENGTH,OFF.
+
+1134       - MXCKSM     =  Maximum checksum value (CHECK/LENGTH).
+
+1135       - IRWEOB     =  1 = Output an EOB with the Rewind Stop code.  2 =
+                           Don't.
+
+1136       - NBOT       =  Number of chars in LBOT.
+
+1137-1146  - BRKOP      =  (1) - Tape break mode, 1 = ON, 2 = AUTO, 3 = TIMES,
+                           4 = DELTA, (2) = Create new punch file, (3) = Retract
+                           tool, (4) = Issue TMARK after tape break.
+
+1151-1200 = Print file variables.
+
+1151       - IPAGE      =  Page number for print file.
+
+1152       - IPLINE     =  Line number for print file.
+
+1153       - PRTBNC     =  Pointer to Print file Control tape buffer (PRTBLK).
+
+1154-1173  - IPRDES     =  Print file descriptor records for: 1 = Header, 2 =
+                           Trailer, 3 = Motion, 4 = Non-motion, 5 = INSERT, 6 =
+                           STOP, 7 = OPSTOP, 8 = LOADTL, 9 = FINI, 10 = PPRINT.
+
+1174       - NCHDR      =  Number of characters in internal Print file header
+                           buffer (LHDR).
+
+1175       - NTRAIL     =  Number of lines in print file trailer record.
+
+1176       - IPRTOP     =  0 = Print file has been turned off.  1 = Print file
+                           output is enabled.
+
+1177       - IPERRF     =  1 = The PSTERR command was issued inside the PSTERR
+                           Macro, so the error message that called the PSTERR
+                           Macro should be output.
+
+1201-1400 = Machine configuration variables.
+
+1201       - MACHTP     =  Type of machine.  1=Mill, 2=Lathe, 3=Blade.
+
+1202-1204  - NUMLIN     =  Number of XYZ linear axes.
+
+1205-1207  - ACTLIN     =  Active axis (1-Primary,2=Secondary) for XYZ linear
+                           axes.
+
+1208-1210  - LNCALC     =  Calculation type for Primary/Secondary XYZ linear
+                           axes.
+
+1211       - FRMFLG     =  Flag on how to treat FROM statement.
+
+1212       - MAXAXS     =  Maximum number of axis that can move in a single
+                           block.
+
+1213-1222  - AXSPRI     =  Priority array for determining which axes to move
+                           first when too many axes will move in a single block.
+
+1223       - HLDBCK     =  Flag on whether or not to hold back a motion block
+                           when only one axis moves.
+
+1224       - IZSWIV     =  1 = Z-axis swivels with pivoting head (becomes non-
+                           orthogonal when the head is other than 0 degrees).
+                           2 = No.
+
+1225       - LTHXY      =  Flag for lathes on whether or not the part is pro-
+                           grammed in the XY plan and converted to the ZX plan.
+
+1226       - INCR       =  Absolute/Incremental output flag.
+
+1227       - INCRFC     =  Flag whether or not to force next position on change
+                           from incremental to absolute modes.  1 = Do not force
+                           next position.  2 = Force immediately.  3 = Force on
+                           next motion block.
+
+1228-1229  - LTHDIA     =  (1) = Lathe input.  (2) = Lathe output.  1 = Radius,
+                           2 = Diameter
+
+1230-1237  - ICIPRM     =  Integer circular record buffer.  (1:3) = XYZ pointer
+                           depending on plane selection - 0 = 3-axis circular,
+                           (4) = Starting quadrant, (5) = Direction - 1 = CLW,
+                           2 = CCLW  (6) = Helix flag (used for CIRCLE Macro
+                           only).
+
+1238       - ISCIRC     =  1 = This motion record is a circular record.
+
+1239       - ICRXYZ     =  1 = Force XYZ position on circular record.  2 = No.
+
+1240       - MOTCOD     =  Register for linear motion code.
+
+1241       - ABSCOD     =  Register for absolute positioning code.
+
+1242       - INCCOD     =  Register for incremental positioning code.
+
+1243       - IRTNUM     =  Number of rotary axes.
+
+1244-1247  - IRTYPE     =  Type of rotary axis.  1 = Table.  2 = Head.
+
+1248-1251  - IRDEAD     =  Currently active rotary axes.  0 = Active.  1 = Dead.
+
+1252-1255  - IRTWRK     =  Linear axis that rotary axis moves about.  1 = Xaxis,
+                           2 = Yaxis, 3 = Zaxis, 4 = Rotates about a vector.
+
+1256-1257  - IRTACT     =  Number of rotary axes that are currently active.
+
+1258-1259  - IRTPNT     =  Pointer to last rotary axis that needs to be con-
+                           sidered when calculating 2 rotary axes.
+
+1260       - LASTAB     =  Index of last table in rotary table arrays.
+
+1261       - MCHPLN     =  Current machining plane.  1 = YZPLAN, 2 = ZXPLAN,
+                           3 = XYPLAN.
+
+1262-1264  - POLCOD     =  (1) = Polar linear move register, (2) = Polar rapid
+                           move, (3) = Polar angle.
+
+1265       - IPOLIN     =  1 = This is a linear move immediately preceding a
+                           circular move in polar coordinate mode.  Output cir-
+                           cle parameters.
+
+1266-1273  - ICIPR2     =  Integer circular record buffer for polar coordinate
+                           linear moves.
+
+1274       - IPOLOT     =  1 = Polar coordinate linear move was output prior to
+                           circle move.
+
+1275       - NEXCIR     =  Set to 1 in CLRMOT when called because of circular
+                           motion.  Set to 2 in CIRCUL when generating multiple
+                           circular blocks.
+
+1276       - MPVSEC     =  Flag in linearization: 1 - TVMP is parallel to the
+                           II-nd rotary axis, 2 - not.
+
+1277       - LNRADJ     =  1 = Adjust tool axis vector when close to apex
+                           point to minimize rotary movement.  2 = Don't.
+
+1278       - LRTRCT     =  0 = Don't automatically retract tool,
+                           1 = Retract/plunge tool at a distance when rotary
+                           axis limit is reached.  2 = Retract to plane.
+
+1279       - SPITAX     =  Current tool axis plane.  1 = XYPLAN, 2 = ZXPLAN,
+                           3 = YZPLAN.
+
+1280       - IHELTP     =  1 = HELANG contains increment per degree,
+                           2 = contains increment per entire circular move.
+
+1281       - IFHEAD     =  1 = This machine configuration has a head.  2 = no.
+
+1282       - NOPIVS     =  1 = Adjust point for head(s).  2 = don't.
+
+1283       - NOTABS     =  1 = Adjust point for table(s).  2 = don't.
+
+1284-1287  - IRTMOD     =  1 = Contouring axis.  2 = Positioning axis.
+
+1288-1291  - IRTSCL     =  1 = Axis moves on linear scale.  2 = Rotary.
+
+1292-1295  - IRTCLW     =  1 = Positive move is CLW.  2 = CCLW.
+
+1296-1305  - AXSINC     =  1 = Current mode.  2 = Always absolute.  3 = Always
+                           incremental.
+
+1306       - IRTCLM     =  1 = Rotary clamping is not needed.  2 = Always.  3 =
+                           When needed.  4 = When needed by any rotary axis.
+
+1307-1326  - CLMPCD     =  Clamp/Unclamp registers.
+
+1327       - CLMPBK     =  1 = Output clamp codes in block by themselves.  2 =
+                           don't.
+
+1328-1332  - RSIZCD     =  Rotary angle circumference change registers.
+
+1333       - RSIZFL     =  1 = Output rotary angle size change as Radius, 2 = 
+                           Diameter, 3 = Circumference.
+
+1334       - MROTTV     =  1 = Use tool vector to solve rotary axes position,
+                           2 = Ignore tool vector, use ROTABL command to
+                           change rotary axis positon.
+
+1335       - LRTTAD     =  1 - Add tool length to retract distance when retrac-
+                           ting tool due to machine limits (or Blade cutter 
+                           overcut), 2 - do not add tool length to rectract
+                           distance.
+
+1336-1338  - ACTBLN     =  Both Linear axis active flag (0 - one is active,
+                           1 - active both, primary & secondary). 
+
+1339       - LTHXD      =  Reverse X-axis direction flag for Lathe: 1 = reverse,
+                           2 = X unchanged.
+
+1340-1341  - IRETMD     =  (1) - 1 = Retract pivot point to clearance plane.
+                           2 = Retract tool end point to clearance plane.
+                           (2) Axis to use for retract direction.
+
+1342       - IRETYP     =  Saved feed rate type for RETRCT moves.
+
+1343-1344  - IRTRTE     =  (1) = Logic that determines shortest route for rotary
+                           axis, 1 = Combined axis (old), 2 = Largest moves,
+                           3 = Sum all rotary moves, 4 = Specific axis.  (2) =
+                           Controlling axis when (1) = 4.
+
+1345       - IRETFL     =  1 = Motion generated by RETRCT currently in effect.
+
+1346       - ISACIR     =  1 = Circle record encountered (3000), 2 = Circular
+                           motion record (5000) processed.  Used for simulation
+                           output.
+
+1347       - NCONTB     =  1 = Tables are connected (carier/rider), 2 = tables
+                           are not connected (independant).
+
+1348       - LRTRFL     =  1 = Retract tool when taking longest route and
+                           lintol is off.  2 = Don't retract tool when lintol
+                           is off.
+
+1349       - MOT1ST     =  1 = First motion block.
+
+1350       - IROTPS     =  1 = This machine has at least 1 positioning rotary
+                           axis.
+
+1351-1360  - ICLMPF     =  1 = Axis is currently clamped.
+
+1361-1364  - IRTNXT     =  1 = Force next rotary axis movement CLW.  2 = CCLW.
+
+1365       - IRTNXF     =  1 = Force next rotary axis movement has been request-
+                           ed.  2 = Force next rotary movement to take shortest 
+                           route even if outside limits.
+
+1366       - NROT       =  Number of active rotaries.
+
+1367       - ICIRFL     =  1 = Circular interpolation is supported.  2 = No.
+
+1368       - ICRFMT     =  1 = Absolute circular IJK's, 2 = Incremental, 3 =
+                           Unsigned incr, 4 = Abs/Incr, 5 = Abs/Unsigned, 6 =
+                           Radius, 7 = Polar, 8 = Dual block, 9 = Absolute &
+                           Radius, 10 = Conversational Polar Coordinate.
+
+1369       - ICRSGN     =  1 = Signed incremental distances are from start point
+                           to center point of circle.  2 = From center to start.
+
+1370       - ICRPFL     =  1 = Circular is allowed in all three planes.  2 = XY
+                           plane only.
+
+1371       - ICRADJ     =  1 = Adjust circular end point to lie exactly on the
+                           circle.  2 = No.
+
+1372       - ICRBRK     =  1 = Break circular on quadrant boundaries.  2 = On
+                           hemisphere boundaries.  3 = Full 360 degree.
+
+1373       - MLNFRC     =  1 = Force all machine axes out whenever there is
+                           any machine axis output in a block.  2 = Don't.
+
+1374       - IRTSHF     =  1 = Do not shift tool during linearization retract
+                           procedure.  2 = Shift tool to the left.  3 = Shift
+                           tool to the right.
+
+1375-1377  - IRSRTE     =  (1:2) = Saved IRTRTE.  (3) = Set to 1 when
+                           ROTABL/SHORT,NEXT is in effect.
+
+1378-1383  - CIRCOD     =  (1:2) = CLW/CCLW circular code.  (3:5) = Center point
+                           registers.  (6) = Circle radius register.
+
+1384       - ICRIJP     =  1 = Output all planes of circular with I & J center
+                           point register.  2 = No.
+
+1385       - ICMBSW     =  1 = prepst command SET/LINCIR flag with active COMBIN
+                           0 = active ALL.
+
+1386       - ICSPRE     =  1 = prepst command SET/LINCIR active flag,
+                           0 = SET/LINEAR active.
+
+1387       - MRTFRC     =  1 = Force all rotary axes out whenever there is
+                           any rotary axis output in a block.  2 = Don't.
+
+1388       - IPLNDF     =  1 = Output dwell with plane selection code.  2 = No.
+
+1389       - ICRDIM     =  1 = Output center point in Radius, 2 = Diameter.
+
+1390       - ICRDIR     =  1 = Force direction code output.  2 = No.
+
+1391       - ICIRSW     =  1 = ARCSLP/LINCIR,ON.  2 = OFF.
+
+1392       - IHELIX     =  0 = No helical in effect.  1 = Controller helical
+                           interpolation is in effect.  2 = Post generated
+                           helical.
+
+1393-1395  - ICMREG     =  Pointer to XYZ registers, used when accessing the
+                           XYZ position as a register (codint, increg, etc.).
+
+1396       - NUMINF     =  Number of interference zones currently active.
+
+1397       - ICRPLF     =  1 = Plane select codes can be output in a circular
+                           block.  2 = Output in block by themselves.
+
+1398-1400  - ICRPLS     =  Circular interpolation support in the selected
+                           machine plane: XY(1), YZ(2), ZX(3) - 1 = yes, 2 = no.
+
+1401-1700 = Motion stack variables.
+
+1401       - AXSSPT     =  Output axes stack pointer.
+
+1402       - AXSSPV     =  Saved AXSSPT when looking ahead in the clfile.
+
+1403       - CMDSPT     =  Set to AXSSPT+1 when CLRMOT is called from PPWORD.
+
+1404       - CMDSPV     =  Saved CMDSPT when looking ahead in the clfile.
+
+1405-1412  - ROTDCD     =  Rotary direction codes.
+
+1413-1416  - IRTDUP     =  Number of physical (duplicate) rotary axes.
+
+1417-1452  - IRTDAC     =  Which of the duplicate rotary axes are active.  There
+                           can be 10 duplicate axes per each rotary axis.
+
+1453-1460  - ISCWRK     =  Linear axis that rotary axis moves about that defines
+                           its initial position.  1 = Xaxis, 2 = Yaxis,
+                           3 = Zaxis.
+
+1622       - HLDFLG     =  Motion block is being held back flag.
+
+1623       - HLDSW      =  Contains the number of actual axis that is being held
+                           back.
+
+1624       - HLDDIR     =  Movement direction for held back axis.
+
+1625       - HLDISN     =  ISN of held back move.
+
+1626       - HLDCLI     =  Input CLREC of held back move.
+
+1627       - HLDCLI     =  Output CLREC of held back move.
+
+1628-1639  - LOOKFL     =  Look ahead flags.  (1) = Linear interpolation.  (2) =
+                           Circular interpolation.
+
+1640       - IRFNLS     =  Saved IRTNXF flag for use in linearization.
+
+1641-1644  - IRTNLS     =  Saved IRTNXT forced rotary axis direction for use in
+                           linearization.
+
+1645       - ACHEAD     =  1 = Machine has an AC-style head.  2 = Machine does
+                           not have an AC-style head.  3 = PostWorks should
+                           determine if machine has an AC-style head.
+
+1646       - IACHFL     =  1 = The C-axis is aligned for this move in order to
+                           get ready for the next rotary movement.  Used to 
+                           disable the Max. Dep. warning message.
+
+1647       - IACNXT     =  1 = Previous command was ROTABL/AA,ang,NEXT.  Used
+                           with look ahead feature for AC style head.
+
+1648-1652  - IACFLG     =  (1) - 1 = Look ahead is not active.  2 = Look ahead
+                           is active, 3 = Look ahead is active for Rapid moves
+                           only.  (2) - 1 = Rotate to the center of limit or as
+                           specified by ROTABL/NEXT, 2 = Scan the clfile and
+                           find the proper C-axis rotation based on any limits
+                           reached. (3) - 1 = Previous and current move must be
+                           at A0 to perform look ahead, 2 = Only previous move
+                           must be at A0.  (4) - 1 = Leave tool down when
+                           rotating C-axis only, 2 = Retract tool. 
+
+1701-1800 = Miscellaneos motion variables.
+
+1701-1705  - SLWFL      =  (1) = Machine Slowdown support, (2) = Should slowdown
+                           codes replace interpolation codes, (3) = Is slowdown
+                           code required on every block, (4) = # of slowdown
+                           codes supported.
+
+1706-1720  - SLWCD      =  Slowdown code registers.
+
+1721       - ISLWDN     =  1 = SLOWDN/ON, 2 = OFF, 3 = Output slowdown ON on
+                           next block only, 4 = ON but angular change is not
+                           great enough to warrant a slowdown span.  5 = Turn
+                           slowdown off on this block.
+
+1722       - ISLWNM     =  Slowdown mode currently in effect, 1-4.
+
+1723       - ISLWFD     =  1 = This move will be made at slowdown feedrate.
+
+1724       - IRTSAM     =  0 = Rotary axes solution does not have 2 sets with
+                           equal deltas.  1 = Both sets of rotary axes solutions
+                           have the same delta, toss up which one will be used.
+                           Temporary fix for linearization.
+
+1725-1728  - NROTA      =  Rotary axis which caused that move has to be
+                           linearized.
+
+1729       - IMAXFL     =  Flag in linearization: 0 = the second active rotary
+                           axis is not changing its direction, 1 = the second
+                           active rotary axis has changed its direction, 
+                           2 = the second rotary axis extremal value is beeing
+                           in process.
+
+1730       - IRTSAV     =  The first active rotary axis direction stored value
+                           when in linearization.
+
+1731       - IFLNRS     =  Feed rate reset flag in linearization: 0 - feed rate
+                           does not require reset, 1 - feed rate has to be
+                           reset by 'raprst', 2 - feed rate has to be reset to
+                           to old value.
+
+1732       - IACLFL     =  1 = Adjust machining time for accel/decel, 2 = Don't.
+
+1737       - NROLNM     =  Number of points in linearization when rotating
+                           the first axis to get complimentary position 
+                           within limits.
+
+1739       - IJKROT     =  Tool axis vector output:  1 = output as i,j,k
+                           2 = output as rotary axis.
+
+1740       - ITMDLT     =  1 = Axes delta estimations have been calculated.
+                           Used to get a better estimate of machine travel
+                           with canned routines (circular, cycles, etc.).
+
+1741       - ICIDLT     =  1 = Calculate true deltas for circular motion.
+
+1742       - ICYDLT     =  1 = Calculate true deltas for canned cycles.
+
+1743       - IMXDRP     =  1 = Respect maximum departure distances during rapid.
+                           2 = Don't.
+
+1744       - IACCFD     =  1 = An acceleration block is active.
+
+1745-1746  - IACCFL     =  (1) - 1 = Machine supports acceleration blocks.
+                           (2) - 1 = Acceration blocks are enabled.
+
+1747-1756  - IC3AXF     =  3-axis circular interpolation flags.  (1) = 3-axis
+                           circular interpolation is supported. (2) = 1 - Output
+                           final point on separate block, 2 = No.  (3) = CLW
+                           register, (4) = CCLW register, (5:7) = Intermediate
+                           point registers, (8) = 1 - 3-axis circle was just
+                           performed.  (9) = Determines how intermediate point
+                           is output, 1 - Same format as circular center, 2 -
+                           Same format as motion.
+
+
+1757-1776  - CLMPUB     =  User defined blocks for clamp/unclamp codes.
+
+1777       - IRTFRC     =  ROTABL/...,NEXT,CUT is in effect.  Calculate the
+                           proper angles and restore the previous saved angles
+                           prior to linearization.
+
+1801-1900 = Tool data variables.
+
+1801       - ITP        =  Pointer to current tool.
+
+1802       - NOTOOL     =  1 = Adjust tool for tool length.  2 = don't.
+
+1803       - MXTOOL     =  Number of tools used.
+
+1804-1823  - TOOLFL     =  1 = Yes, 2 = No.  (1) = SELCTL support.  (2) = Large
+                           & small gripper support.  (3) = Main/axial spindle
+                           support.  (4) = Previos loaded tool output with
+                           tlchg.  (5) = Unload code output with tlchg. (6) =
+                           An alignment block on tlchg block.  (7) = An align-
+                           ment block after tlchg block.  (8) = Turn off tool
+                           comp prior to tlchg.  (9) = Turn on tool comp after
+                           tlchg.  (10) = Is tlchg an End-of-sequence.  (11) =
+                           Tool register on block by itself.  (12) = User de-
+                           fined block for tool changes.  (14) = Output plane
+                           selection with tool offset register.  (15) = Output
+                           tool number with unload.  (16) = Output tool offsets
+                           ON in block by itself.  (17) = Output tool offsets
+                           OFF in block by itself.  (18) = Support LOAD and
+                           SELECT statements as LOADTL and SELCTL.  (19) =
+                           Buffer message preceding LOADTL and output after
+                           LOADTL.
+
+1824-1828  - TURFL      =  (1) = Number of lathe turrets.  (2) = Default turret.
+
+1829-1838  - TLDIG      =  Digit location within register for multiple codes per
+                           register.  (1) = SELCTL, (2) = LOADTL, (3) = TOOLNO,
+                           (4) = CUTCOM.
+
+1839-1858  - TLCCD      =  Tool change codes.  (1) = Pick up w/small, (2) = w/
+                           large, (3) = SELCTL, (4) = Tool number, (5) = Tool
+                           change, (6) = Manual tool change, (7) = Unload w/
+                           small main, (8) = small/axial, (9) = large/main, (10)
+                           = large/axial, (11) = Turret clw, (12) = Turret cclw.
+
+1859       - TLCBLK     =  Tool change user defined block.
+
+1860-1867  - TLOCD      =  Tool length offset registers.  (1) = Offset register,
+                           (2) = Enable offsets, (3) = Disable offsets, (4) =
+                           Plus offsets, (5) = Minus offsets, (6) = XAXIS, (7) =
+                           YAXIS, (8) = ZAXIS.
+
+1868       - TLOBLK     =  Tool length offset user defined block.
+
+1869       - TLOSGN     =  (1) = Output (-) sign for MINUS tool length compen-
+                           sation.
+
+1870       - ITSELF     =  1 = Tool is currently selected.  2 = Tool has not
+                           been selected.
+
+1871       - LSTGRP     =  Gripper last tool was loaded with.  1 = Small, 2 =
+                           large.
+
+1872       - LSTTSP     =  Spindle last tool was loaded in.  1 = High, 2 = low.
+
+1873       - SELGRP     =  Gripper selected with the SELCTL statement.
+
+1874       - SELTSP     =  Spindle selected with the SELCTL statement.
+
+1875       - TLOFPL     =  Current plane for tool length offsets.  1 = XYPLAN,
+                           2 = ZXPLAN, 3 = YZPLAN.
+
+1876       - TLOFDR     =  Current tool length direction.  0 = None, 1 = Plus,
+                           2 = Minus.
+
+1877       - TOFNXT     =  1 = Output tool compensation register at next block
+                           containing major axis move.
+
+1878-1882  - THDOPT     =  Parameters used in the LOAD command to designate
+                           which head to load.
+
+1883       - NUMTHD     =  Number of LOAD head paramters defined.
+
+1899-1900  - LTHPCL     =  (1) = 1 - Lathe-mill with polar interpolation 
+                           capabilities, (1) = 2 - lathe without polar 
+                           interpolation. (2) = 1 - Lathe with cylindrical
+                           interpolation, (2) = 2 - lathe without cylindrical
+                           interpolation.
+
+ 
+1901-2000 = Lathe cycle variables.
+
+1901-1920  - ICYLFL     =  1 = Automatic cycle support, 2 = Mode for automatic
+                           cycles, 3 = Step parameters format, 4 = Force cycle
+                           def code, 5 = Force linear axes, 6 = Force params on
+                           every block, 7 = Force feedrate, 8 = Force linear
+                           code, 9 = Position to taper prior to THREAD,STEP,
+                           10 = Position to taper prior to THRU,STEP, 11 = 1 -
+                           Cancel cycle after 1st move, 2 - Don't.  20 = 1 -
+                           Automatic cycles are in effect, 2 - Manual.
+
+1921-1945  - CYLCOD     =  Lathe cycle codes.  1 = Constant threading, 2 =
+                           Increasing variable threading, 3 = Decreasing vari-
+                           able threading, 4 = OFF, 5 = DEEP, 6 = w/STEP, 7 =
+                           DRILL, 8 = w/STEP, 9 = FACE, 10 = w/STEP, 11 = ROUGH,
+                           12 = w/STEP, 13 = THREAD, 14 = w/STEP, 15 = THRU,
+                           16 = w/STEP, 17 = TURN, 18 = w/STEP, 19 = Chamfer ON,
+                           20 = Chamfer OFF.
+
+1946-1970  - CYLREG     =  Lathe cycle parameter registers.  1 = Z-axis lead,
+                           2 = X-axis lead, 3 = Increasing variable lead, 4 =
+                           Decreasing variable lead, 5 = Final Z-axis, 6 = Final
+                           X-axis, 7 = FEDTO, 8 = OFFSET 1, 9 = OFFSET 2, 10 =
+                           RAPTO, 11 = REPEAT, 12 = RTRCTO 1, 13 = RTRCTO 2,
+                           14 = STEP 1, 15 = STEP 2, 16 = TOOL 1, 17 = TOOL 2,
+                           20 = Current Chamfer condition.
+
+
+1971-1990  - ICYLTM    =   Cycle machining times.  1 = DEEP, 2 = w/STEP, 3 =
+                           DRILL, 4 = w/STEP, 5 = FACE, 6 = w/STEP, 7 = ROUGH,
+                           8 = w/STEP, 9 = THREAD, 10 = w/STEP, 11 = THRU, 12 =
+                           w/STEP, 13 = TURN, 14 = w/STEP.
+
+2001-2600 = Register format descriptors.
+
+2001-2092  - REGBNC     =  # of chars in register start string.
+
+2133-2592  - FMTDES     =  Register floating point formats.
+
+2601-3100 = User defined blocks.
+
+2600-3000  - USRBRG     =  User defined block registers.
+
+3022       - MUSRBK     =  Maximum number of user defined blocks allowed.
+
+3023       - MOBLK      =  User defined block for 1st motion block.
+
+3024       - STBLK      =  User defined block for 1st output block.
+
+3025-3044  - NCUSRB     =  Number of registers in each user defined block.
+
+3045       - NMOBLK     =  User defined block for non-motion block.
+
+3046       - OPKBLK     =  User defined block for OPSKIP/OFF.
+
+3047       - OPSBLK     =  User defined block after OPSTOP.
+
+3048       - STPBLK     =  User defined block after STOP.
+
+3049-3058  - USRSTK     =  User defined block stack, used to store user defined
+                           blocks that need to be output when 'clrbuf' is call-
+                           ed.
+
+3059       - NUSRST     =  Pointer to 'USRSTK'.
+
+3060-3079  - ICYBLK     =  User defined cycle blocks.  1 = OFF, 2 = BORE, 3 =
+                           BORE7, 4 = BORE8, 5 = BORE9, 6 = DEEP, 7 = DRILL,
+                           8 = FACE, 9 = MILL, 10 = REAM, 11 = REVERS, 12 =
+                           SHIFT, 13 = TAP, 14 = THRU.
+
+3080-3099  - ICYLBK     =  User defined lathe cycle blocks.  1 = OFF, 2 = DEEP,
+                           3 = w/STEP, 4 = DRILL, 5 = w/STEP, 6 = FACE, 7 = 
+                           w/STEP, 8 = ROUGH, 9 = w/STEP, 10 = THREAD, 11 =
+                           w/STEP, 12 = THRU, 13 = w/STEP, 14 = TURN, 15 =
+                           w/STEP.
+
+
+3101-3250 = COOLNT, FEDRAT, RAPID & SPINDL
+
+3101       - NSPRG      =  Number of spindle ranges.  1 = Medium, 2 = Low,High,
+                           3 = all.
+
+3102       - SPNTYP     =  1 = Don't output spindle speed.  2 = Direct RPM
+                           speed.  3 = Spindle table.  4 = Percentage of max.
+
+3103       - SPNSFM     =  1 = Controller supports spindle SFM mode.  2 = no.
+
+3104       - IFEDSW     =  1 = FEDRAT command was encountered but not yet out-
+                           put.
+
+3105-3108  - SPNDCD     =  Spindle direction registers.  1 = CLW, 2 = CCLW, 3 =
+                           OFF, 4 = ORIENT.
+
+3109       - SPNBCD     =  Spindle BOTH register.
+
+3110       - IROTFT     =  Feed rate mode when rotary axes moves.
+
+3111-3114  - IFDSUP     =  Feed rate support for FPM, FPR, DPM and INVERS.
+
+3115-3117  - SPNRCD     =  Spindle range registers.
+
+3118-3120  - SPNFCD     =  Spindle RPM/SFM registers.  1 = RPM, 2 = SFM, 3 =
+                           Maximum RPM when in SFM mode.
+
+3121-3122  - SPNOCD     =  Spindle override registers.
+
+3123       - SPNBLK     =  User defined spindle on block.
+
+3124       - SPNOFF     =  1 = Output Spindle OFF in block by itself.
+
+3125-3127  - NSPNTB     =  Number of values in spindle tables.
+
+3128-3131  - COOLCD     =  Coolant registers.  1 = FLOOD, 2 = MIST, 3 = AIR, 4 =
+                           OFF.
+
+3132-3137  - SPCOCD     =  Spindle & coolant combination registers.  1 = CLW &
+                           FLOOD.  2 = CCLW & FLOOD.  3 = CLW & MIST.  4 = CCLW
+                           & MIST.  5 = CLW & AIR.  6 = CCLW & AIR.
+
+3138-3139  - COLBLK     =  1 = Output coolant/on in block by itself.  2 =
+                           coolant off.
+
+3140       - LSTCOL     =  Last COOLNT/ON specifier.
+
+3141       - SPNDIR     =  Current spindle direction.  1 = CLW, 2 = CCLW, 3 =
+                           both.
+
+3142       - SPNMOD     =  Current spindle mode.  1 = RPM, 2 = SFM.
+
+3143       - SPNRNG     =  Current spindle range.  1 = LOW, 2 = MEDIUM, 3 =
+                           HIGH, 4 = AUTO.
+
+3144-3145  - SPNSCD     =  Spindle speed register.  1 = RPM, 2 = SFM.
+
+3146       - ICOLSW     =  1 = Coolant is currently on.  2 = off.
+
+3147       - SPNXCD     =  Distance to CL of part register for SFM spindle mode.
+
+3148-3149  - IFDTYP     =  Output type for FPM & FPR feedrates.  1 = Direct, 2 =
+                           table.
+
+3150       - IFITYP     =  Current feedrate input mode.
+
+3151       - IFOTYP     =  Current feedrate output mode.
+
+3152       - NFDSUP     =  Number of feedrate modes supported.
+
+3153-3156  - IFDFRC     =  When to force out feedrate.  1 = After feed rate com-
+                           mand, 2 = After feedrate mode change, 3 = after rapid
+                           move.
+
+3157       - IFDCTP     =  1 = Output FPM feed rates using control point, 2 =
+                           based on linear slides.
+
+3158-3161  - IFDOUT     =  Output modes for input feed rate types.
+
+3162-3169  - FEDCD      =  Feedrate registers.
+
+3170-3177  - FEDMCD     =  Feedrate mode registers.
+
+3178-3181  - IFDEXP     =  1 = Feedrate extended precision mode is supported.
+                           2 = no.
+
+3182       - IFDUNT     =  Units of time for inverse time feedrates.  1 =
+                           Minutes, 2 = Seconds.
+
+3183-3184  - NFEDTB     =  Number of values in feedrate tables.
+
+3185-3186  - IFDSPC     =  1 = Force FPR when Z-axis moves.
+
+3187       - IFDLTP     =  Feedrate control, 1 = FEDRAT/LENGTH, 2 = SCALE.
+
+3188       - IDPMOV     =  1 = DPM mode register overrides linear motion re-
+                           gister.
+
+3189       - IRPSUP     =  1 = Rapid mode is supported by the controller.  2 =
+                           no.
+
+3190       - NRAPCD     =  Number of codes to set rapid mode.
+
+3191-3195  - RAPCD      =  Registers for rapid setting.
+
+3196       - IRPALT     =  1 = Don't alter rapid motion, 2 = Use X-axis as pri-
+                           mary axis when altering motion, 3 = Y-axis, 4 = Z-
+                           axis, 5 = major tool axis.
+
+3197       - IRPTAX     =  1 = Retract/plunge rapid move along tool axis instead
+                           of major axis.
+
+3198       - IRPMOD     =  1 = Output rapid moves in same mode as cutting moves,
+                           2 = always absolute, 3 = always incremental.
+
+3199       - IRAP       =  0 = Rapid not active.  1 = Make move in rapid mode.
+                           2 = Use rapid feed rate for move.  3 = Alter motion
+                           as if rapid, but make move using current feed rate.
+
+3200       - ILINPT     =  Current motion point was created by linearization.
+                           Used to disable Rapid motion modification (causes
+                           stair stepping when linearized points are modified
+                           by Rapid).
+
+3204       - IRPSAV     =  Programming mode when RAPID was issued.
+
+3205       - IRAPSW     =  Previous move was a RAPID move.
+
+3206       - IFDCIR     =  Inverse time circular interpolation mode.  1 = 1/Time
+                           2 = 1 / Radius.
+
+3207       - IFSVLN     =  Saved input feed rate mode in mchlin.
+
+3208       - POSFDF     =  1 = Positioning rotary axis can have a feed rate.
+                           2 = No.
+
+3209       - POSFED     =  1 = Output feedrate with this move.  2 = Don't.
+
+3210       - IFDRAD     =  1 = Output rotary axes radius with multi-axis feed
+                           rate.  2 = Don't.
+
+3211       - IFDRCN     =  Number of rotary axes which require radius feedrate
+                           control.
+
+3212       - LNCRAP     =  1 = Linear interpolation code required with the
+                           rapid code. 2 = Don't.
+
+3213-3216  - IFDRCD     =  Registers for rotary axes radius feedrate control
+                           (one per rotary axis).
+
+3217-3218  - FEDOCD     =  Feedrate override registers.
+
+3219       - IRPRET     =  1 = Retract to clearance plane prior to rapiding to
+                           position.  2 = Don't.
+
+3220-3227  - IRAPDO     =  (1) = IRPALT, (2) = IRAPTX, (3) = 1 - Modal rapid, 2
+                           - Non-modal, (4) = RAPID/FEDTO 1 - LENGTH, 2 - SCALE.
+                           (5) = IRPRET.
+
+3230-3238  - IRPDSV     =  Saved IRAPDO when retracting prior to rapid move.
+
+3242       - IRPSMD     =  1 = Modify RAPID moves during simulation so that
+                           the fastest axis reaches its destination first.
+                           2 = Don't modify RAPID moves in this manner.
+
+3243       - IFDADJ     =  1 = Output feed rate adjusted for axis speed limits,
+                           2 = Don't adjust output feed rate.
+
+3251-3350 = Cutcom variables.
+
+3251-3270  - CUTCFL     =  (1) = Cutcom output format, (2) = Cutcom allowed in
+                           all 3 planes, (3) = Approach/departure codes allowed,
+                           (4) = Cutcom/ON in block by itself, (5) = Cutcom/OFF
+                           in block by itself, (6) = Cutcom vector in block by
+                           itself, (7) = Cutcom vector in block by itself, (8) =
+                           Output cutcom vector on circular move, (9) = Output
+                           register with Cutcom/OFF, (10) = Output error message
+                           with move in non-cutcom axis, (11) = Output fixture
+                           offset minus values with (-) sign, (12) = Output
+                           fixture offset ON code in block by itself, (13) =
+                           Output fixture offset OFF code in block by itself,
+                           (14) = Unitize cutcom vector, (15) = Output vector
+                           between circular moves, (16) = 5-axis comp allowed.
+                           (17) = 3-D (tool radius) comp allowed.
+
+3271-3300  - CUTCCD     =  Cutcom registers.  (1) = LEFT, (2) = RIGHT, (3) =
+                           OFF, (4) = Offset, (5) = Vector definition block,
+                           (6-8) = XYZ vector, (9) = Angular direction, (10) =
+                           CLW circular dir, (11) = CCLW circular dir, (12-14) =
+                           Approach/departure codes, (15) = Approach/departure
+                           distance, (16) = Fixture register, (17) = Fixture ON,
+                           (18) = Fixture OFF, (19) = Fixture PLUS, (20) =
+                           Fixture minus, (21-23) = Fixture XYZ registers.
+                           (24) = 3-D cutcom code, (25) = Tool radius,
+                           (26) = Tool corner radius, (27) = Rotary axis
+                           position mode, (28) = Maximum feed rate.
+
+3301-3315  - ICUTDO     =  Cutter compensation variables.  (1) = 1 - Cutcom has
+                           just been turned on, (2) = 1 - Cutcom is on, (3) =
+                           1 - LEFT, 2 - RIGHT, 3 - ENDPT, (4) = Cutcom plan
+                           view, (5) = 1 - NORMAL, 2 - PERPTO, (6) = 1 - MODIFY,
+                           (7) = 1 - XAXIS, (8) = 1 - YAXIS, (9) = 1 - ZAXIS,
+                           (10) = 1 - MANUAL, (11) = 1 - Last move was circular.
+                           When ENDPT Cutcom is in effect, then the variables
+                           are as follows.  (1,2) = Same, (3) = 3,
+                           (4) = register specified, (5) = MAXIPM, (6) = ROTREF,
+                           (7:10) = Same.  (11) = 1 = PS, 2 = CS.
+
+3316-3318  - ICUTSW     =  1 = This cutcom parameter is ready to be output.
+
+3319-3321  - ICTPSV     =  Integer value for previous CUTPRM.
+
+3322       - INMSFL     =  Previous normal vector was not defined (0), defined
+                           from the part surface (1), or drive surface (2).
+
+3323       - INMDEF     =  At least one normal vector was encountered in the
+                           clfile.
+
+3324       - INMLFL     =  Current normal vector setting (see INMSFL).
+
+3351-3400 = CLRSRF, DELAY, GOHOME, POSTN variables.
+
+3351-3355  - DELYCD     =  (1) = Delay def code, (2) = Delay time reg, (3) =
+                           Delay rev reg.
+
+3356-3360  - DELYFL     =  (1) = Delay output format, (2) = Output delay in revs
+                           when in IPR, (3) = Output X-axis with delay, (4) =
+                           Reset feedrate after delay block.
+
+3361-3365  - HOMCOD     =  GOHOME register values.
+
+3366-3375  - HOMREG     =  GOHOME axis registers.
+
+3376-3380  - PSTNCD     =  POSTN definition codes.
+
+3381-3395  - PSTNRG     =  POSTN registers.  (1-10) = axis registers, (11) =
+                           Program number, (12) = Controller register number.
+
+3396       - PSTNOF     =  1 = Output POSTN/OFF in a block by itself.  2 = No.
+
+3397       - IPSTNF     =  1 = Output a preset registers block (POSTN) with the
+                           next FROM statement.  2 = Don't.
+
+3401-3550 = Mutually exclusive axes.
+
+3401-3416  - EXCLAX     =  Mutually exclusive axes (4 sets of 4).
+
+3417-3420  - EXCLCO     =  Controlling axis for each set of MEA.
+
+3421-3468  - EXCLPS     =  Output axes priority for each set of MEA when con-
+                           trolling axis moves in the positive direction.
+
+3469-3516  - EXCLNG     =  Output axes priority for each set of MEA when con-
+                           trolling axis moves in the negative direction.
+
+3517       - NUMEXC     =  Number of activated MEA sets.
+
+3518-3521  - EXCLNM     =  Number of axes in each set of MEA's.
+
+3522-3613  - REGENC     =  # of chars in register ending string.
+
+3614-3706  - IREGVL     =  Integer value of registers.
+
+3707-3798  - REGORD     =  Order of registers in output block.
+
+3980       - MACUST     =  Custom made .MDF file ID. 
+
+3981       - MODAD      =  Adjust rotary carier to motion direction so the rider
+                           axis vector is parallel to the FWD vector.  
+                           1 - active, 2 - not active. (NOT IN PRODUCTION!!!)
+
+3982       - MODRET     =  Retract tool flag (for MODE/ADJUST), 1 - retract,
+                           0 - do not retract. (NOT IN PRODUCTION!!!)
+
+3983       - MODFLG     =  Execution status for MODE/ADJUST, 0 - carier rotation
+                           is not required, 1 - rotation required in a single
+                           move, 2 - rotation required in two motion blocks.
+                           (NOT IN PRODUCTION!!!)
+
+3984       - MODBLD     =  MODE/BLADE flag = 1 for ON, 0 for OFF.
+
+3985-3993  - HLDRPN     =  Held back RAPID mode parameters. 
+
+3994-3998  - HLDFDN     =  Held back feed rate mode parameters. 
+
+4001       - MXGTOL     =  Number of tools used in the .maf file.
+
+4002       - MXFLAG     =  Adjust matrix flag (in .maf file):  0 - none matrix
+                           is in effect; 1 - matrix in the .maf file is active.
+
+4003       - MXTRAN     =  TRANS matrix flag (in cl file):  0 - none matrix in
+                           is in effect; 1 - TRANS/MATRIX is active; 
+                           2 - TRANS/MATRIX,..LAST is active.
+
+4004-4023  - ICY2FL     =  Continuation of ICYCFL array. 1 -  Rapto plane calcu-
+                           lation type (1 = rapto relative to input, 2 = rapto
+                           relative to active linear axis). 2 - Retract plane
+                           calculation type (1 = retract plane relative to input
+                           2 = retract plane relative to active linear axis). 
+                           3 - Output TPI as negative number with CYCLE/REVERS,
+                           4 - IRPALT setting for cycle positioning moves,
+                           5 - IRPTAX setting for cycle positioning moves.
+
+4031       - MODROT     =  MODE/ROTATE flag to acitvate polar interpolation.
+                           n - polar interpolation active for rotary axis 'n'.
+                           0 - polar interpolation disabled.
+
+4032       - MDTLIN     =  Motion phase number during linearization in polar 
+                           interpolation. 
+
+4033       - MODRAT     =  0 - MODE/ROTATE,ON or OFF in effect,
+                           1 - MODE/ROTATE,AUTO in effect.
+
+4040       - ALNCUT     =  ALIGN/CUT command status: 0 - OFF, 1 - ON, 2 - NEXT.
+
+4041       - ALNCSK     =  Saved ALNCUT for ALIGN/CUT,OMIT command.
+ 
+4045       - ALNMOV     =  ALIGN/MOVE command status: 0 - OFF, 1 - ON, 2 - NEXT.
+
+4046       - ALNMSK     =  Saved ALNMOV for ALIGN/MOVE,OMIT command.
+
+4047       - ALNMRP     =  Saved ALNMOV (for rapid motion) when feed moves are
+                           performed.
+
+4048       - ALNREN     =  Flag indicating the end of positioning (ALIGN/MOVE)
+                           and set to 3 after plunge move.
+
+4049       - ALNMOD     =  ALIGN/OPTION,n.  1 - align blade using old logic
+                           (version < 30-oct-96), 2 - align blade using FWD vec-
+                           tor of the next point (expcl mode), 3 - align blade
+                           using FWD vector of the last point (expcl mode). 
+ 
+4050       - NOPSON     =  Number of numerical parameters specified in OPSKIP/
+                           ON,n1,n2,... command.
+
+4051-4060  - IOPSON     =  Array of parameters specified in OPSKIP/ON,n1,....
+
+4071       - SMOKON     =  1 = SMOOTH/ON in effect, 2 = SMOOTH/OFF.
+
+4072       - SMOKAN     =  1 = SMOOTH/ATANGL,ang in effect, 2 = SMOOTH/AA,OFF. 
+
+4073-4074  - SMOCCD     =  SMOOTH registers: 1 - ON, 2 - OFF.
+
+4075       - SMONRN     =  SMOOTH/AA ON command number of registers in use.
+
+4076-4078  - SMONCD     =  SMOOTH/AA ON command Registers.
+
+4079       - SMOORN     =  SMOOTH/AA OFF command number of registers in use.
+
+4080-4082  - SMOOCD     =  SMOOTH/AA OFF command Registers.
+
+4083       - SMOKDO     =  SMOOTH/AA command runtime status: 1 - just enabled,
+                           2 - active (points are being output after output of
+                               (SMOOTH_SP:ang) string).
+
+4084       - BSPLSW     =  SMOOTH/SPLINE status: 0 - not active, 1 - active
+                           (collecting points), 2 - output spline record and
+                           control points.
+
+4085       - ISBSPL     =  0 - linear interpolation, 1 - B-spline interpolation
+                           active.
+
+4086       - NPBSPL     =  Number of points to interpolate in b-spline buffer.
+
+4087       - NPBSCV     =  Number of spans of the b-spline curve
+
+4088       - BSPLFL     =  1 = B-spline interpolation is supported, 2 = No.
+
+4089       - BSPCOD     =  B-spline interpolation mode register.
+
+4090       - BSPPCD     =  B-spline knot parameter code.
+
+4091-4094  - BSPFRC     =  (1) - force output of interpolation mode code after
+                           bspline mode, (2) - output bspline mode code in block
+                           by itself. (3) - 1=output knot values, 2=output
+                           node values. (4) - Force out first point.
+
+4095       - SMONPT     =  Number of points to output for SMOOTH/STEP at the
+                           beginning and end of move.
+
+
+4103       - LCRFMT     =  LMFP/LMDP mode circular interpolation format:
+                           1 = Absolute circular IJK's, 2 = Incremental, 3 =
+                           Unsigned incr, 4 = Abs/Incr, 5 = Abs/Unsigned, 6 =
+                           Radius, 7 = Polar, 8 = Dual block, 9 = Absolute &
+                           Radius.
+
+4104       - LFLMCD     =  LMFP mode linear motion register.
+
+4105       - LDLMCD     =  LMDP mode linear motion register.
+
+4106       - MILREG     =  Rotary axis enable code.
+
+4107       - LFDLCD     =  LMFP/LMDP minimum span register.
+
+4108-4109  - LPCREG     =  (1) - Polar interpolation code register,
+                           (2) - Cylindrical interpolation code.
+
+4110       - LTHREG     =  Rotary axis disable code (lathe mode code).
+
+4112-4117  - LFIRCD     =  Circle interpolation registers for LMFP mode: 
+                           (1:2) = CLW/CCLW circular code.  (3:5) = Center
+                           point registers.  (6) = Circle radius register.
+
+4118-4123  - LDIRCD     =  Circle interpolation registers for LMDP mode: 
+                           (1:2) = CLW/CCLW circular code.  (3:5) = Center
+                           point registers.  (6) = Circle radius register.
+
+4125       - LTMODE     =  Lathe active mode: 0 = lathe, 1 = mill LMFP mode,
+                           2 = mill LMDP mode, 3 = mill auto mode (1 or 2).
+
+4126       - MTPDYN     =  Run time machine type (same as MACHTP plus modifica-
+                           tions if any).
+
+4127-4128  - LTHSVD     =  Saved LTHDIA(1) when enter LMDP mode.
+
+4129         LTHXYS     =  Saved LTHXY when enter any MILL mode on Turn/Mill.
+
+4133-4135  - NUMLIS     =  Saved NUMLIN when enter pure lathe mode.
+
+4136       - IRFSUP     =  1 - Rapid mode is supported in Polar interpolation, 
+                           2 - not supported
+
+4137       - IRDSUP     =  1 - Rapid mode is supported in Cylindr interpolation,
+                           2 - not supported
+
+4138       - FRAPCD     =  Register for rapid code in Polar interpoltaion
+
+4139       - DRAPCD     =  Register for rapid code in Cylinder interpoltaion.
+
+4140       - SRTNUM     =  Saved IRTNUM when Lathe mode active.
+
+4141-4152  - MOTRGS     =  Saved MOTREG(5:8) when enter pure lathe mode.
+
+4153-4164  - MOTROT     =  Saved MOTREG(13:15) when Lathe mode active.
+
+4195-4197  - LTCREG     =  Rotary axis registers used in Cylindr interpolation.
+
+4201-4202  - LTPREG     =  Second linear axis registers used in Polar 
+                           interpolation.
+
+4204       - MODCYL     =  Cylinder interpolation rotary axis number, 0 - Z axis
+                           Cincinati control, (1,2,3) - as specified for Siemens
+                           control.
+
+4205       - LUNREG     =  Unit cylinder diameter register (MODCYL > 0).
+
+4206       - ISRCYL     =  0 - do not output cylinder axis name in enable 
+                           cylinder interpolation block, 1 - include cylinder 
+                           axis name in block (Siemens). 
+
+4207       - MCYNUM     =  2 - cylindrical interpolation supported in single
+                           plane, 1 - in any plane defined by user.
+
+4208       - ISRVAL     =  2 - do not include cylinder axis value in the axis
+                           code in the enable cyl. interpolation command. 1 - 
+                           include cylinder axis value in code.
+
+4209       - ISXVAL     =  2 - do not include selected axis values in the axis
+                           code in the select user plane definition. 1 - 
+                           include axis values in every axis code in user plane
+                           definition.
+
+4211       - MOTEXP     =  CL file format flag: 1 - expanded GOTO record,
+                           0 - normal GOTO record.
+
+4221       - MTVEXC     =  Flag in linearization: 1 - TVMP is near PA to irt1,
+                           2 - no.
+
+4222-4225  - PLNCOD     =  Plane selection registers.
+
+4226-4228  - NCPLAN     =  User defined plane indexes. For cylindrical interpo-
+                           lation (1) specifies rotary axis (the index of linear
+                           axis associated with rotary axis) of cylinder plus 3,
+                           (2) specifies linear axis of cylinder, (3) specifies 
+                           up_axis of the system (this is the axis where the 
+                           circumference of cylinder begins)
+
+4229       - KRDEXT     = 1 - Read expanded cl file record as 5200 record.
+                          0 - Read expanded cl file record as 5000 record.
+
+4230       - NBSCDS     = Number of codes to start spline interpolation.
+
+4231-4235  - BSTCOD     = Spline interpolation start codes.
+
+4236       - NBECDS     = Number of codes to end spline interpolation.
+
+4237-4241  - BNDCOD     = Spline interpolation end codes.
+
+4242-4249  - CIRCON     = Conversational circular interpolation codes.
+                          (1) = Circle center, (2) = Circular record definition,
+                          (3) = Delta angle.
+
+4250-4259  - ICRHEL     =  (1) = Helical support, (2) = Output final depth with
+                           helical, (3) = Output lead with helical, (4) = CLW
+                           helical code, (5) = CCLW helical code, (6) = Output
+                           mode for final depth.
+
+
+
+POSMAP
+------
+
+1-70  =  Miscellaneous real variables.
+
+1          - PI         =  Value of PI (3.141592653589793d0).
+
+2          - RAD        =  Constant for converting radians to degrees & degrees
+                           to radians.
+
+3          - DUMMY      =  Dummy value to show this variable has not been set.
+
+4          - METCNV     =  Inch<->mm conversion factor.
+
+5          - FTUNT      =  Feet units, Inch = 12, Metric = 1000.
+
+6-25       - RUSER      =  User defined real variables.
+
+26         - FTMCNV     =  Feet<->M conversion factor.
+
+27         - TLATOL     =  Tolerance for setting tlaxis component to 0 with AC-
+                           Head.
+
+71-150 = Interference zones.
+
+71-150     - INFZON     =  Interference zones in the array format (m,n,o), where
+                           m(10) = Low/High limit, m(10) = for each axis, o(4) =
+                           4 zones.
+
+151-200  = CLRSRF, DELAY, GOHOME & POSTN
+
+151-160    - HOME       =  Machine home position.
+
+161-164    - CLRPLN     =  Clearance plane.
+
+165        - DELYVL     =  Delay definition code value.
+
+166        - DELYTM     =  Amount of time each delay block uses (when multiple
+                           blocks are output to satisfy delay time).
+
+167-171    - HOMCDV     =  GOHOME code values.
+
+172-176    - PSTNCV     =  POSTN code values.
+
+177-186    - RETPOS     =  Axis position prior to the last RETRCT or GOHOME
+                           command (used by the PLUNGE command).
+
+187        - ZIGHIG     =  Zigzag heigth.
+
+188        - ZIGDIS     =  Zigzag distance.
+
+189        - ZIGSLP     =  Current zigzag slope.
+
+190        - ZIGDEP     =  Current zigzag depth.
+
+191        - ZIGHSV     =  Saved ZIGHIG (after OFF) to use with HEAD/ZIGZAG,ON. 
+
+201-800  =  Clfile real variables.
+
+201-221    - CLSAV      =  Previous clpt and expanded goto data.
+
+                           NOTE: RCLDAT (Logical cl record from clfile) is not
+                                 anymore in POSMAP array.  Now it is in the 
+                                 cldat common block.
+
+222-242    - CLPOS      =  Positioning clpt for expanded goto record.
+
+243-252    - ALNBXS     =  ALIGN point axes at end of move.
+
+253-302    - CPLANE     =  Clip planes definitions for CLRSRF command.
+
+303        - DTOLER     =  Prepst LINTOL tolerance value.
+
+304        - PREAST     =  Prepst LINTOL internal interpolation runtime value.
+                           Start point tool axis vector angle.
+
+305        - PREAFI     =  Prepst LINTOL internal interpolation runtime value.
+                           End point tool axis vector angle.
+
+306        - PREADL     =  Prepst LINTOL internal interpolation runtime value.
+                           Tool axis vector delta angle.
+
+307        - PREFI      =  Prepst LINTOL internal interpolation runtime value.
+                           Fi of tool axis vector motion plane.
+
+308        - PRETHT     =  Prepst LINTOL internal interpolation runtime value.
+                           Theta of tool axis vector motion plane.
+
+309-314    - PREPTS     =  Prepst LINTOL internal interpolation runtime value.
+                           Saved Start point for interpolation.
+
+315-317    - PREVEC     =  Prepst LINTOL internal interpolation runtime value.
+                           Delta vector to the next point.
+
+318-320    - IJKPTS     =  IJK tool vector output runtime value.  Saved start 
+                           point for interpolation.
+
+321-323    - IJKVEC     =  IJK tool vector output runtime value.  Delta vector
+                           to the next point.
+
+324        - IJKAST     =  IJK tool vector output runtime value.  
+                           Start point tool axis vector angle.
+
+325        - IJKAFI     =  IJK tool vector output runtime value.  
+                           End point tool axis vector angle.
+
+326        - IJKADL     =  IJK tool vector output runtime value.  
+                           Tool axis vector delta angle.
+
+327        - IJKFI      =  IJK tool vector output runtime value.  
+                           Fi of tool axis vector motion plane.
+
+328        - IJKTHT     =  IJK tool vector output runtime value.  
+                           Theta of tool axis vector motion plane.
+
+329-331    - IJKVC      =  IJK tool vector output runtime value.
+                           Actual tool axis vector (=TLVEC).
+
+332-343    - TMPDIS     =  MCHNUM delta movement for canned routines.
+
+344-347    - TMRDIS     =  ROTANG delta movement for canned routines.
+
+348-353    - TMLDIS     =  LINAXS delta movement for canned routines.
+
+354-363    - TMADIS     =  AXSOUT delta movement for canned routines.
+
+364-389    - CUSAV      =  Saved cutter parameters for clfile look ahead.
+
+390        - CPLNFD     =  Feed rate to move tool when intersecting a clipping
+                           plane.
+
+391-402    - CLRTPL     =  Clipping plane retract (1), rapto (2), and plunge (3)
+                           planes.
+
+403-405    - CLRTFD     =  Clipping plane retract, rapto, and plunge feed rates.
+
+441-490    - PSTWD      =  Post word scalar values.
+
+491-730    - CLPT       =  Clfile center line points and tool axis vectors.
+
+731-737    - CIRBUF     =  Clfile circle record.
+
+738-743    -            =  Not used (Previous clsav).
+ 
+744-750    - CUTTER     =  Cutter statement parameters.
+
+751-757    - CIRBSV     =  Saved circle record.
+
+759-765    - CUDISP     =  Display Cutter parameters.
+
+766-777    - CUTOFS     =  Offset when displaying cutter symbol. (1) = Cutter,
+                           (2) = Shank, (3) = Holder.
+
+801-1200 =  Output register variables.
+
+801-954    - GRANGE     =  G-code groups.
+
+955-1031   - MRANGE     =  M-code groups.
+
+1032-1123  - REGSTO     =  Previous register values.
+
+1163       - ISEQBG     =  Starting sequence number.
+
+1164       - ISEQ       =  Current sequence number.
+
+1165       - SEQINC     =  Sequence number increment.
+
+1166       - ALNVAL     =  Alignment block register value.
+
+1167       - SEQMAX     =  Maximum sequence number allowed.
+
+1168       - OPSTVL     =  OPSTOP register value.
+
+1169       - STOPVL     =  STOP register value.
+
+1170-1171  - UNTCDV     =  Register values for Inch/Metric designators.
+
+1172       - REWCDV     =  Register value for REWIND command.
+
+1173-1181  - TAXVL      =  Register values for setting major tool axis mode.
+                           (n,1) = XYPLAN, (n,2) = ZXPLAN, (n,3) = YZPLAN.
+
+1182       - ISEQSV     =  Previous ISEQ.
+
+1183       - SEQCUR     =  Current output sequence number.
+
+1184-1188  - MACCDV     =  1 = Macro Call register value.
+
+1189-1193  - XFMVL      =  Transformation code values.  See XFMCD.
+
+1201-1220 =  Punch file variables.
+
+1201       - LEDBEG     =  Amount of leader at start of Punch file.
+
+1202       - LEDEND     =  Amount of leader at end of Punch file.
+
+1203       - FINCDV     =  Value for FINI card register.
+
+1204       - TAPLEN     =  Length of control tape.
+
+1205-1214  - BRKVR      =  (1) = Tape length to break file at, (2) = Machining
+                           time, (3) = Machining distance, (4) = Retract feed,
+                           (5) = Plunge feed.
+
+1215-1219  - BRKPRM     =  (1) = Current tape break length, (2) = Current
+                           machining time, (3) = Current machining distance.
+
+1221-1600 = Machine configuration/ Motion variables.
+
+1221-1232  - MCHDLS     =  Sequence deltas for MCHNUM.
+
+1233-1236  - ROTDLS     =  Sequence deltas for ROTANG.
+
+1237-1246  - AXSDLS     =  Sequence deltas for AXSOUT.
+
+1247       - VECTOL     =  Tolerance used to determine if tool axis vector is
+                           satisfied.
+
+1248-1250  - VECNXT     =  Previous tool axis vector when ROTABL/...,NEXT,CUT
+                           is issued.
+
+1251-1253  - LNDIST     =  Distance between Primary/Secondary XYZ linear axes.
+
+1254-1273  - LIMITS     =  Machine axes limits.
+
+1274-1283  - PPTOLR     =  Minimum delta movement required to output each axes.
+
+1284       - MOTCDV     =  Value for linear motion code.
+
+1285       - ABSCDV     =  Value for absolute positioning code.
+
+1286       - INCCDV     =  Value for incremental positioning code.
+
+1287-1298  - MCHNUM     =  (1) = Input cl points.  (2) = (1) + trans.  (3) =
+                           (2) + table/head rotations.  (4) = (3) + trans/last.
+
+1299-1304  - LINAXS     =  Machine Primary and Secondary linear axes.
+
+1305-1307  - ORGIN      =  Linear axes part origin.
+
+1308-1319  - TRANZ      =  Input linear axes trans values.
+
+1320-1339  - TRANAX     =  Output linear/rotary trans values.
+
+1340-1349  - AXSOUT     =  Linear/rotary axes after all transformations have
+                           been applied.
+
+1350-1352  - SPLVEC     =  Vector of plane on which 2nd active axis is rotating.
+
+1353       - SPLDIS     =  Distance of 'SPLVEC' plane.
+
+1354-1356  - TPLVEC     =  Vector of tool plane.
+
+1357       - TPLANG     =  Angle of tool plane.
+
+1358-1359  - GAMMA      =  Initial angles of tool vector and spindle vector.
+
+1360-1363  - SADAN      =  Angles at which tool vector was adjusted using dead
+                           axes for heads.
+
+1364-1367  - TADAN      =  Angles at which tool vector was adjusted using dead
+                           axes for tables.
+
+1368       - TPLDIS     =  Distance for tool plane.
+
+1369-1371  - TLVEC      =  Current tool axis vector.
+
+1372-1374  - VECSAV     =  Previous tool axis vector.
+
+1375-1386  - TABORG     =  Rotary table origin or head pivot distance for each
+                           rotary axis.
+
+1387-1398  - STONUM     =  Previous MCHNUM.
+
+1399-1404  - LINSTO     =  Previous LINAXS.
+
+1405-1412  - ROTANG     =  (n,1) = Rotary axes on a rotary scale. (n,2) = Rotary
+                           axes on a linear scale.
+
+1413-1424  - ROTSTO     =  Previous ROTANG.
+
+1425-1434  - AXSSTO     =  Previous AXSOUT.
+
+1435-1438  - ROTBAS     =  Base angles for rotary axes on a linear scale.
+
+1439-1442  - ROTCRM     =  Circumference of rotary axes on a linear scale.
+
+1443-1452  - PPINCR     =  Minimum delta movement for each axes.
+
+1454-1473  - CLMPVL     =  Register value for clamp/unclamp codes.
+
+1474-1485  - MCHDLT     =  Deltas for MCHNUM.
+
+1486-1489  - ROTDLT     =  Deltas for ROTANG.
+
+1490-1495  - LINDLT     =  Deltas for LINAXS.
+
+1496-1505  - AXSDLT     =  Deltas for AXSOUT.
+
+1506-1517  - MCHMIN     =  Minimum travel for MCHNUM.
+
+1518-1529  - MCHMAX     =  Maximum travel for MCHNUM.
+
+1530-1533  - ROTMIN     =  Minimum travel for ROTANG.
+
+1534-1537  - ROTMAX     =  Maximum travel for ROTANG.
+
+1538-1543  - LINMIN     =  Minimum travel for LINAXS.
+
+1544-1549  - LINMAX     =  Maximum travel for LINAXS.
+
+1550-1559  - AXSMIN     =  Minimum travel for AXSOUT.
+
+1560-1569  - AXSMAX     =  Maximum travel for AXSOUT.
+
+1570-1573  - MOVDIS     =  Current delta movement.  1 = Tool end point, 2 = Feed
+                           rate control point, 3 = Output linear axes point, 4 =
+                           Rotary angles.
+
+1574-1583  - AXSDIS     =  Current delta movement for each separate output axis.
+
+1584-1593  - PPMAXD     =  Maximum departure for each separate output axis.
+
+1594-1599  - LINDLS     =  Sequence deltas for LINAXS.
+
+1600       - RSIZCV     =  Value for change rotary circumference code.
+
+1601-2200 = Motion stack variables.
+
+1601-1800  - AXSSTK     =  AXSOUT stack.
+
+1801-2040  - CLPTSV     =  Saved CLPT when looking ahead in the clfile.
+
+2041-2048  - ROTDVL     =  Rotary axis direction code values.
+
+2049-2073  - RCIPRM     =  Real circular record buffer.  (1:3) = Center point,
+                           (4) = Radius, (5) = Beginning angle, (6) = Ending
+                           angle, (7) = Unsigned delta angle, (8:10) = Ending
+                           point, (11:13) = Start point (XY for 2-axis circular,
+                           XYZ for 3-axis).  (14:16) = Starting vector for
+                           3-axis circular.  (17:20) = 3-axis circular plane.
+                           21 = Helical linear distance per degree (CIRCLE
+                           Macro only).
+
+2074-2098  - RCIPR2     =  Real circular record buffer for polar coordinate
+                           linear moves.
+
+2099-2108  - ACLDCL     =  Acceleration/Deceleration rates for axes.
+
+2109-2118  - CURSPD     =  Current speed of each machine axis.
+
+2141-2152  - HLDMCH     =  Held back MCHNUM array.
+
+2153-2158  - HLDLIN     =  Held back LINAXS array.
+
+2159-2166  - HLDROT     =  Held back ROTANG array.
+
+2167-2176  - HLDAXS     =  Held back AXSOUT array.
+
+2177-2179  - HLDVEC     =  Held back tool axis.
+
+2180-2200  - CLSAVS     =  True CL point saved for use by prepst CLRSRF
+                           command when transitioning to clip planes motion. 
+
+2201-2250 = Circular interpolation.
+
+2201-2205  - CIRTOL     =  (1) = Radius tolerance, (2) = Minimum linear movement
+                           allowed for circular, (3) = Minimum radius, (4) =
+                           Maximum radius.  5 = Helical generation tolerance.
+
+2206-2207  - CIRCDV     =  Register values for CLW/CCLW circular interpolation.
+
+2208-2211  - PLNCDV     =  Register values for plane selection codes.
+
+2212       - PLNDWL     =  Amount of dwell to output with plane selection.
+
+2213-2214  - HELANG     =  (1) = Linear distance per degree for helical.
+                           (2) = Linear distance for whole circular move.
+
+2215-2222  - CIRCOV     = Values for conversational circular interpolation
+                          codes.
+
+2227-2228  - POLCDV     =  Values for polar coordinate registers.
+
+2229-2238  - RCUTDO     =  Cutter compensation variables.  (1) = CUTCOM/MODIFY
+                           distance, (2-4) = MANUAL cutcom IJK vector values.
+                           (5-6) = Tool diameter & corner radius, (7) = MAXIPM,
+                           (8) = ROTREF.
+
+2241       - CIRTOS     =  Circular radius tolerance for prepst SET/LINCIR
+                           command.
+
+2242-2243  - HELCDV     =  Register values for CLW/CCLW helical interpolation.
+
+2244-2245  - C3XCDV     =  Register values for CLW/CCLW 3-axis circular
+                           interpolation.
+
+2251-2400 = Linearization variables.
+
+2251-2253 - LNRTOL      =  (1) = Linearization tolerance, (2) = Rapid
+                           linearization tolerance, (3) = Currently active
+                           tolerance - (1) for linear moves, (2) for rapid
+                           moves.
+
+2254-2257 - RETFED      =  1 = Retract feed rate, 2 = Plunge feed rate,
+                           3 = Blade positioning feed rate. For automatic
+                           retract feature.  4 = Shift feed rate.
+
+
+2258-2261 - RETPL       =  Automatic retract plane.
+
+2262      - TAXTOL      =  Tolerance at which to determine if a tool axis
+                           component should be set to zero.
+
+2275-2278 - ROTBSV      =  Saved ROTBAS before linearization.
+
+2279        RETDIS      =  Retract distance
+
+2280-2285 - PRESTO      =  Previous STONUM.  Used for calculating offset vector
+                           during automatic retract.
+
+2286-2290 - LNRATL      =  Tool axis adjustment tolerances for linearization.
+                           (1) = Linear tolerance at top of tool, (2) = Cone
+                           angle around apex point to consider adjustment,
+                           (3) = Minimum angular movement to consider for
+                           adjustemnt, (4) = Default tool length when
+                           programmed tool length is 0.
+
+2301-2303 - PTLPLU      =  CL plunge point.
+
+2321        RATMAX      =  Relative tool vector position on TVMP for the
+                           extremal value of the second rotary active axis.
+
+2377        FDSVLN      =  Saved feed rate in mchlin
+
+2391-2398   RTMAXN      =  Rotary axes postion for the extremal position of the
+                           second active rotary axis in linearization.
+
+2400        RTOLER      =  Tolerance for MODE/ROTATE,AUTO command.
+
+2401-2450 = Cutcom variables.
+
+2401       - CTOFRG     =  Current cutter compensation register.
+
+2402-2409  - CUTCVR     =  (1) = Max angular change for cutcom, (2) = Max cutcom
+                           vector component allowed, (3) = Base number for cut-
+                           com registers, (4) = Base number for fixture offset
+                           registers, (5) = Last used cutcom on register.
+
+2410-2439  - CUTCVL     =  Cutcom & fixture offset register values.
+
+2445       - CTLANG     =  Previous angle of move while in cutcom.
+
+2446-2448  - CUTPRM     =  Current cutcom output parameter settings for vector
+                           and angular changes.
+
+
+2451-2500 = Miscellaneous motion type variables.
+
+2451-2455  - SLWVR      =  (1) = Minimum angular change for slowdown code out-
+                           put, (2) = Slowdown tolerance, (3) = Max feedrate at
+                           90 degrees, (4) = Accel constant, (5) = Machine con-
+                           stant.
+
+2456-2470  - SLWVL      =  Values for slowdown codes.
+
+2471       - SLWFD      =  Slowdown feedrate.
+
+2472-2474  - PTPOST     =  Plunge point coordinates used in lineraization,
+                           'blade', and 'table on tool axis' logic when retract
+                           procedure is performed.
+
+2475       - TRAXSV     =  Amount to translate input points up tool axis.
+
+
+2477-2479  - PTDEST     =  Destination point coordinates saved for the final
+                           motion when performing retract procedure in the
+                           'table on tool axis' logic.
+
+2480-2481  - TBLIML     =  Table position when exact limit of any axis has been
+                           reached in 'table on tool axis' logic.
+
+2482-2493  - MATRXT     =  Matrix used to convert coordinates in the 'table on 
+                           tool axis' logic.
+
+2494-2500  - PODAVL     =  Register values for POD commands refering to all
+                           pods.
+
+
+2501-2900 = User defined blocks.
+
+2501-2900  - USRBVL     =  User defined block registers values.
+
+2901-3000 = Cycle parameters.
+
+2901-2925  - CYCCDV     =  Cycle definition code values.
+
+2926-2930  - CYCVR      =  1 = Unidirectional positioning distance, 2 = Gage
+                           height between FEDTO/RAPTO depths, 3 = Cycle rapid
+                           rate.
+
+2931-2950  - RCYCDO     =  CYCLE command parameters.
+
+2951-2960  - CYCPSV     =  Saved cycle output parameters.  (1) = FEDTO depth,
+                           (2) = RAPTO plane, (3) = Saved feed rate, (4) =
+                           Clearance plane set prior to cycle (5) = Previous
+                           feedrate when cycle is cancelled from automatic
+                           cycle for positioning move, (6) = RTRCTO plane,
+                           (7) = Previous top of part.
+
+2961-2963  - CYCJVC     =  Unidirectional move vector.
+
+2964-2967  - CYCPLN     =  Clearance plane for CYCLE/AVOID.
+
+2968-2992  - CYLCDV     =  Lathe cycle code values.
+
+2993-2997  - CYLVR      =  1 = Rapid rate for lathe cycles.
+
+2998-3000  - CYPCDV     =  Canned cycles plane selection code values.
+
+3001-3600 = COOLNT, FEDRAT, RAPID & SPINDL
+
+3001-3002  - FEDOCD     =  Feedrate override register values.
+
+3003-3006  - FEDCNS     =  Extended precision feed rate multiplication con-
+                           stants.
+
+3007-3010  - SPNDVL     =  Spindle direction register values.  1 = CLW, 2 =
+                           CCLW, 3 = OFF, 4 = ORIENT.
+
+3011       - SPNBVL     =  Spindle BOTH register value.
+
+3012       - RPMOUT     =  Last output spindle RPM.
+
+3013       - FDLCNV     =  Feed rate conversion for feed rate output limits in
+                           metric.
+
+3014-3015  - FRTVAL     =  Feed rate constant for rotary movement in inches (1)
+                           and millimeters (2).
+
+3016-3018  - SPNRVL     =  Spindle range register values.
+
+3019-3021  - SPNFVL     =  Spindle RPM/SFM register values.  1 = RPM, 2 = SFM,
+                           3 = Maximum RPM when in SFM mode.
+
+3022-3023  - SPNOVL     =  Spindle override register values.
+
+3024-3158  - SPNTCD     =  Spindle table codes.
+
+3159-3293  - SPNTVL     =  Spindle table speeds.
+
+3294-3297  - COOLVL     =  Coolant register values.  1 = FLOOD, 2 = MIST, 3 =
+                           AIR, 4 = OFF.
+
+3298-3303  - SPCOVL     =  Spindle & coolant combination register values.  1 =
+                           CLW & FLOOD.  2 = CCLW & FLOOD.  3 = CLW & MIST.  4 =
+                           CCLW & MIST.  5 = CLW & AIR.  6 = CCLW & AIR.
+
+3304       - MAXSFM     =  Maximum spindle RPM when in SFM mode.
+
+3305       - RPMSAV     =  Last programmed spindle speed.
+
+3306       - SFMSAV     =  Last programmed spindle SFM speed.
+
+3307       - RPM        =  Current spindle speed.
+
+3308       - SFM        =  Current spindle SFM speed.
+
+3309-3316  - SPNLMT     =  Spindle speed limits.  1 = LOW, 2 = MEDIUM, 3 = HIGH,
+                           4 = SFM.
+
+3317       - SFMTOL     =  Tolerance to determine if RPM spindle speed should
+                           be output when in SFM mode and output is RPM.
+
+3318       - SPNRAD     =  LATHE = difference between internal distance to CL of
+                           part and actual distance.  MILL = current cutter dia-
+                           meter.
+
+3319       - SPNXVL     =  Distance to CL of part register value for SFM spindle
+                           mode.
+
+3320-3327  - FEDMVL     =  Feedrate modes register values.
+
+3328-3329  - FDIVCO     =  Inverse time feed rate constants (for 1/T feeds other
+                           than standard calculation).
+
+3330-3419  - FEDTCD     =  Feedrate table codes.
+
+3420-3509  - FEDTVL     =  Feedrate table speeds.
+
+3510-3511  - FEDSPC     =  1 = Force FPR when FPM is less than this.
+
+3512-3527  - FEDRNG     =  Feedrate register limits.
+
+3528-3537  - FEDLMT     =  Maximum axis feedrates.
+
+3538       - RDRLMT     =  Minimum amount of time per move (reader check).
+
+3539       - FEDLEN     =  Length/scale up the tool to control the feedrate.
+
+3540-3543  - PFEED      =  Programmed feed rates for each mode.
+
+3544       - MAXIPM     =  Maximum feed for tool tip and tool top.
+
+3545       - MAXDPM     =  Maximum DPM for rotary axes.
+
+3546       - MOVTIM     =  Machine time for current move.
+
+3547-3550  - FEED       =  Current feed rate.  1 = IPM, 2 = IPR, 3 = DPM, 4 =
+                           INVERS.
+
+3551-3552  - DPMBPW     =  Pulse weight for combination degrees per minute
+                           calculations.  1 = Linear pulse weight, 2 = Rotary.
+
+3558       - SEQTIM     =  Total sequence time.
+
+3559       - CUTTIM     =  Total machining time.
+
+3560-3565  - OFEED      =  Final output feed rate.  1 = Tool tip, 2 = Feed con-
+                           trol point, 3 = Linear axes slides, 4 = DPM, 5 =
+                           Combination IPM & DPM, 6 = IPR.
+
+3566       - TIMSCL     =  Scale factor for axes machining time.
+
+3567-3576  - RAPLMT     =  Rapid rates for output axes.
+
+3577-3581  - RAPVL      =  Register values for rapid setting.
+
+3582       - RAPDIS     =  Distance or percentage of move for RAPID/FEDTO.
+
+3583-3585  - SPIVEC     =  Spindle vector (initial spindle axis).
+
+3586-3588  - SPICVC     =  Current Spindle vector (spindle axis when rotary
+                           head is not at it's initial position).
+
+3589-3591  - BLDVEC     =  Blade initial direction vector (when rotary axes
+                           are in their initial position).
+
+3592       - BLDSTO     =  Previous Blade cutter rotary position (absolute).
+
+3593       - BLDELT     =  Maximal Blade rotation allowed in a single motion.
+
+3594-3598  - PODSVL     =  Register values for POD commands refering to selected
+                           pods.
+
+3600       - RETFSV     =  Saved feed rate for RETRCT moves.
+
+3601-4000 = Tool data variables.
+
+3601-3720  - TL         =  Tool lengths.
+
+3721-3840  - TLTIM      =  Tool times.
+
+3841-3960  - TLNO       =  Tool numbers.
+
+3961       - TURDIS     =  Distance between front & rear lathe turrets.
+
+3962       - TLCTIM     =  Amount of time for tool change.
+
+3963-3982  - TLCVL      =  Tool change register values.
+
+3983-3987  - TLOVL      =  Tool length offset register values.
+
+3988       - TLOBAS     =  Base number for tool length offset registers.
+
+3989       - TSELN      =  Tool number selected with the SELCTL statement.
+
+3990       - LSTTN      =  Tool number currently in the spindle.
+
+3991       - TLOFRG     =  Current tool offset register number.
+
+3992       - TSELTM     =  Minimum move time for block to output select tool
+                           code on.
+
+3993-3994  - TRZX       =  TURRET/ADJUST translation amounts for lathe ZX.
+
+3995       - MAXTN      =  Maximum tool number allowed.
+
+3996-4000  - THDVAL     =  Values to assign to the LOAD/SET head parameters.
+
+4001-4012  - REFMAT     =  Adjust matrix values specified in the .maf file.
+
+4013-4024  - TRAMAT     =  TRANS matrix values specified in cl file.
+
+4025-4036  - XFMMAT     =  Active transformation matrix.
+
+4037-4246  - XFMSTO     =  Output axes position when transformation matrix
+                           is activated.
+
+4247-4249  - XFMXVC     =  X-axis vector for automatic transformation blocks.
+
+4051-4170  - GTLNO      =  Skewing tool numbers (specified in .maf file).
+
+4171-4290  - GTLEN      =  Skewing tool lengths (specified in .maf file).
+
+4291       - AXSFED     =  Feed rate of previous move, used for acceleration
+                           blocks.
+
+4292       - AXSFD      =  Feed rate to use in acceleration span.
+
+4293       - MAXVEL     =  Actual accelerating velocity of machine.
+
+4294       - AXSVEL     =  User limited accelerating velocity of machine.
+
+4295-4296  - ACCSTP     =  (1) = Minimum feedrate step for acceleration blocks.
+                           (2) = Maximum feedrate step.
+
+4300-4329  - MACPRM     =  Macro Parameter values.
+
+4330-4359  - CYCPRM     =  Cycle parameter values from PARAMS qualifier.
+
+4360-4363  - RTRMMX     =  Maximum register value for rotary axes.
+
+4364-4367  - RTRMVL     =  Register value to reset rotary axes when maximum
+                           register value reached.
+
+4401-4408  - ROTSTB     =  ROTSTO saved in Blade Cutter retract procedure.
+
+4413-4414  - TBRMOD     =  Table position for MODE/ROTATE.
+
+4415-4417  - PTMIDL     =  Midle point for MODE/ROTATE (i.e. closest to the
+                           table center when linearizing motion in polar inter
+                           polation).
+
+4418       - TBRMID     =  Ratio (of distances) to define midle point PTMIDL.
+
+4419-4421  - TRPOST     =  Point generated by linearization for MODE/ROTATE.
+
+4423-4432  - AXSSAV     =  Saved AXSSTO array (for MODE/ROTATE).
+
+4433-4434  - TBLAST     =  Table position for the destination point when limit
+                           error occured (for MODE/ROTATE).
+
+4435-4437  - POLARS     =  Polar coordinate of the first point (MODE/ROTATE).
+
+4438-4440  - POLARL     =  Polar coordinate of the current point (MODE/ROTATE).
+
+4441-4443  - PTMRET     =  Retract point for MODE/ADJUST (NOT IN PRODUCTION!!!).
+
+4444-4445  - ALNDIS     =  Distances for ALIGN command: 1 - dist to align point,
+                           2 - min length of move when align point is output,
+                           3 - min delta angle when align is required.
+
+4448-4449  - SMOCVL     =  Register values for SMOOTH command refering to
+                           ON and OFF.
+
+4450-4452  - SMONVL     =  Register values for SMOOTH/AA ON comand.
+
+4453-4454  - SMOOVL     =  Register values for SMOOTH/AA OFF comand.
+
+4461-4463  - ALNMPS     =  Align positioning parameters: (1) - higth above
+                           the point to align blade for, (2) - feed rate used
+                           for positioning, (3) - feed rate used for plunging.
+
+4464       - SMORAN     =  Angle specified in SMOOTH/AA,... command.
+
+4465       - SMODIS     =  Distance specified in SMOOTH/AA,ang,dis command.
+
+4466       - SMOSTP     =  Maximum step between points when SMOOTH is in effect.
+
+4468       - ZABSSV     =  Last absolute Z-position saved for calculation
+                           of swivel Z-axis when machine has ability to switch
+                           from cartesian 3-axis to swivel (modal IZSWIV).
+                           ZABSSV should be set whenever IZSWIV is set 1.
+
+4471-4478  - ROTNXT     =  Previous rotary angles when ROTABL/...,NEXT,CUT
+                           is issued.
+
+4492-4494  - NMLVEC     =  Surface normal vector.
+
+4495-4497  - NMLSAV     =  Surface normal vector for previous move.
+
+4501-4504  - ALNBAS     =  Rotary base angles for align point (ALIGN command).
+
+4505-4514  - ADJDIS     =  Output axes distances adjusted for pivots when
+                           pivot adjustments for output coordinates are not
+                           made.  Used for maximum feed rate calculations.
+
+4550-4554  - HLDRPR     =  Held back RAPDIS for rapid mode.
+
+4555-4556  - ROTZER     =  (1) = Output value for CCLW rotary axes move to 0
+                           degrees. (2) = CLW move to 0 degrees.
+
+
+4560-4565  - HLDFDR     =  Held back feed rate parameters.
+
+4567-4569  - FWDVEC     =  Forward vector defined as linear move.
+
+4570-4579  - ALNAXS     =  ALIGN point axes at start of move.
+
+4580-4582  - FWDDIR     =  Forward direction in cl part system.
+
+4585-4590  - TBPOST     =  Complementary rotary axis position used to rotate
+                           table (or blade) when rectract is performed in blade
+                           or 'table on tool axis' logic. Final point blade 
+                           rotary axis (4,5,6).
+
+4591-4593  - FWDSAV     =  Forward direction of the previous point in cl file.
+
+4595-4596  - CFRCDV     =  Register values for CLW/CCLW circular interpolation
+                           in Lathe Mill Face of Part mode.
+
+4597-4598  - CDRCDV     =  Register values for CLW/CCLW circular interpolation
+                           in Lathe Mill Diameter of Part mode.
+
+4600       - FLMCDV     =  LMFP mode linear motion register value.
+
+4601       - DLMCDV     =  LMDP mode linear motion register value.
+
+4602-4603  - GLMCDV     =  LMFP/LMDP mode G-code value.
+
+4604       - PRTRAD     =  Saved radius of part before entering LMDP mode.
+
+4605-4844  - CLPTPP     =  Original CLPT array without any preadjustments.
+
+4845-4851  - CIRBPP     =  Original CIRBUF array without any preadjustments.
+
+4852       - ZLEVEL     =  Saved Z axis of part before entering LMFP mode.
+
+4853-4858  - RCPRM6     =  Saved RCIPRM(6-10) for last point when in LMFP mode.
+
+4859-4870  - CINAXS     =  Intersection points of circle arc and machine
+                           coordinate axes (LMFP mode).
+
+4871-4878  - CINANG     =  (1-4) angles of io points of circle (see above),
+                           (5-8) delta angles from starting point of arc to
+                           the corresponding io point.
+
+4879       - MILTOL     =  Chordal tolerance for Lathe milling mode.
+
+4880       - TLMCDV     =  Lathe Mill mode; enable C axis code value. 
+
+4881       - TLLCDV     =  Lathe Mill mode; disable C axis code value.
+
+4882       - FRAPVL     =  Rapid code value for Polar interpolation.
+
+4883       - DRAPVL     =  Rapid code value for Cylindrical interpolation.
+
+4901       - BSPCDV     =  B-spline interpolation code value.
+
+4902       - BSPTOL     =  B-spline chordal tolerance (used to reject spline
+                           interpolation and substitute by linear).
+
+4903       - BSPFTL     =  B-spline fit tolerance (used to generate b-spline
+
+4911       - VTOLER     =  Tool axis vector tolerance (in degrees).
+
+4912       - FUZZ4      =  Internal tolerance (1d-4).
+
+4913       - FUZZ8      =  Internal tolerance (1d-8).
+
+4914       - FUZZM      =  Internal FPT resolution (1d-15).
+
+4930-4935  - SPMLMT     =  Milling attachment spindle speed limits used with
+                           Mill/Turn machine.  1 = LOW, 2 = MEDIUM, 3 = HIGH.
+
+4936-4940  - BSTVAL     =  Spline interpolation start values.
+
+4941-4945  - BNDVAL     =  Spline interpolation end values.
+
+4947       - RTSHFD     =  Shift distance during linearization retract
+                           procedure.
+
+5000-5091  - REGVAL     =  Current register values.
+
+5101-5118  - SGMSTO     = Stored axis values for Stringer Machine.
+
+5119-5136  - SGMHOM     = Axis home positions for Stringer Machine.
+
+5137-5172  - SGMLMT     = Axis limits for Stringer Machine.
+
+5173-5196  - SCROT      =  Initial rotations of rotary axes when they do not
+                           rotate about a major axis.  Contains either rotations
+                           about an axis or a rotation and initial direction
+                           vector, depending on how the user input the data.
+                           In Pworks the rotation axis and initial direction
+                           vectors are always calculated at the beginning of
+                           the program.
+
+
+CPOSMP
+------
+
+1-192  =  Clfile character variables.
+
+1-48       - LCLMSV     =  Saves required clfile and Macro variables when look-
+                           ing ahead in the clfile.
+
+67-132     - LPARTN     =  PARTNO card string.
+
+141-180    - LMNAME     =  Machine name.
+
+193-400  =  Macro processor variables.
+
+193-216    - ERRMAC     =  Macro name that generated error.
+
+217-728    - LPSTWD     =  Character string for PARTNO, PPRINT, INSERT.
+
+729-860    - LPWSAV     =  Saved LPSTWD(1:132) for look ahead.
+
+861-884    - LMACRO     =  Current macro name.
+
+
+900-2200 =  Output register variables.
+
+971-975    - LEOB       =  End-of-block string.
+
+976-985    - MSGST      =  Starting string for messages.
+
+986        - LEDCHR     =  Leader character.
+
+987        - TABCHR     =  Tab character.
+
+988-1499   - LSTBLK     =  Last block output to the control tape.
+
+1500-1509  - MSGEN      =  Ending string for messages.
+
+1648-1652  - LOPSKP     =  OPSKIP/ON string.
+
+1653-2164  - PRTBLK     =  Control tape block formatted for print file.
+
+2201-2600 =  Punch file variables.
+
+2201-2210  - LRWSTP     =  Rewind stop string.
+
+2211-2230  - LEOT       =  End-of-tape string.
+
+2231-2302  - PCHBUF     =  Packed punch file buffer.
+
+2515-2534  - LBOT       =  Start-of-tape string.
+
+2535-2574  - PHFILE     =  Punch file Header filename (pworks_#.phf).
+
+2601-3000 =  Print file variables.
+
+2733-2864  - LHDR       =  Internal Print file header record.
+
+3001-3300  - Miscellaneous variables.
+
+3001-3008  - LUPDAT     =  MAKE_POST revision date that created '.mdf' file.
+
+3009-3248  - CUTSYM     =  Cutter display symbol.
+
+3249-3288  - PDFFIL     =  Print file descriptor name.
+
+3301-3340  - SMOSTR     =  Starting (01-20) and ending (21-40) string for SMOOTH
+                           command.
+
+3341-3852  - PCHBLK     =  Control tape block formatted for punch file.
+
+3853-3933  - MDESC      =  Machine description.
+
+4067-4146  - PU1EXT     =  Filename extension for '.pu1' files.
+
+4147-5066  - REGST      =  Starting string for output registers.
+
+5067-5986  - REGEN      =  Ending string for output registers.
+
+5987-6498  - APPSTR     =  Append string.
+
+6499-7010  - LPPRIN     =  Text from last PPRINT command.
+

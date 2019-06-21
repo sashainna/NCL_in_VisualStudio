@@ -1,0 +1,13 @@
+#DESCRIPTOR#
+/NAME/ Ncl Batch Processing
+/POSITION/ .15,.15
+/SIZE/ 0.353516,0.126302
+/ROWS/ 1
+/COLS/ 3
+/TYPE/ MENU
+/FORMAT/ TEXT
+
+#MENUS#
+/Ncl Que/ NIS_SYSTEM_ONCE, <Schedule NCL Batch>, "%NCL_NT%\bin\ncq.exe&,No"
+/Run Batch/ NIS_NCL_BATCH
+/Edit File/ NIS_EDIT_FILE

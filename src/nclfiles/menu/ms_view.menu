@@ -1,0 +1,16 @@
+#Descriptor#
+/NAME/ Viewing
+/POSITION/ 0.125000,0.013021
+/SIZE/ 0.113281,0.447917
+/ROWS/ 12
+/COLS/ 1
+/TYPE/ pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Standard Views/ ms_view_stand.menu
+/Fit/ MSL_FIT_VIEW
+/Dynamic/ MSL_DYNAMIC
+/Center/ MSL_DYNCEN
+/Window/ MSL_WINDOW
+/Prev View/ MSL_VIEW_PREV

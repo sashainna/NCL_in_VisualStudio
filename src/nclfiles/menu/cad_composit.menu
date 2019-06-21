@@ -1,0 +1,14 @@
+#Descriptor#
+/NAME/ Cad Composites
+/POSITION/ 0.0,0.0
+/SIZE/ 0.083,0.147
+/ROWS/ 4
+/COLS/ 1
+/TYPE/ Popup
+/FORMAT/ TEXT
+
+#Menus#
+/Merge/ CAD_GEO_CM_MERGE
+/Interp/ CAD_GEO_CM_INTERP
+/Split/ CAD_GEO_CM_SPLIT
+/Disolve/ CAD_GEO_CM_DISOLV

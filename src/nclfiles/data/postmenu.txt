@@ -1,0 +1,1685 @@
+Banner$	Section:                   * PostWorks Generator /          *   Level:
+0$	Main Menu
+1$	Misc Setup
+2$	Machine Config
+2.1$	Machine Type
+2.2$	Linear Axes
+2.3$	Rotary Axes
+2.4$	Axes Registers
+2.5$	Current Position
+2.6$	Home Position
+2.7$	Machine Limits
+2.8$	Interfer Zones
+3$	Control Tape
+3.1$	Register Format
+3.2$	G-code Groups
+3.3$	M-code Groups
+3.4$	Preset Registers
+3.5$	Register Order
+3.6$	User Def Blocks
+3.7$	Tape Block
+3.8$	Punch File
+3.9$	Start/End Seq
+3.10$	Tape Breaks
+4$	Print File
+5$	Motion Block
+5.1$	Special Event
+5.2$	Rotary Motion
+5.3$	Clamping Logic
+5.4$	Axes Tolerances
+5.5$	Axes Adjustments
+5.6$	Motion Registers
+6$	Circular Interp
+6.1$	Circular Format
+6.2$	Circular Toler
+6.3$	Helical Interp
+6.4$	Circul Registers
+6.5$	Spline Interp
+7$	Motion Adjust
+7.1$	Misc Adjustments
+7.2$	Linearization
+7.3$	Look Ahead
+7.4$	Slowdowns
+7.5$	Axis Departures
+7.6$	Accel Blocks
+7.7$	Transformations
+8$	Milling Cycles
+8.1$	Cycle Def Codes
+8.2$	Cycle Parm Codes
+8.3$	Cycle Position
+8.4$	Cycle Planes
+8.5$	Cycle Blocks
+8.6$	Cycle User Block
+8.7$	Cycle Times
+9$	Lathe Cycles
+9.1$	Cycle Def Codes
+9.2$	Cycle Parm Codes
+9.3$	Cycle Position
+9.4$	Cycle Blocks
+9.5$	Cycle User Block
+9.6$	Cycle Times
+10$	Sequence Numbers
+11$	Spindle/Coolant
+11.1$	Spindle Set-up
+11.2$	Spindl Registers
+11.3$	Low Range
+11.4$	Medium Range
+11.5$	High Range
+11.6$	Coolant Set-up
+12$	Feedrate/Rapid
+12.1$	Feedrate Setup
+12.2$	Feed per Minute
+12.3$	Feed per Rev
+12.4$	Deg per Minute
+12.5$	Inverse Time
+12.6$	FPM Table
+12.7$	FPR Table
+12.8$	Rapid Setup
+12.9$	Feedrate Limits
+12.10$	Axes Feed Limits
+12.11$	Accel/Decel Time
+13$	Tool Change
+13.1$	Tlchg Support
+13.2$	Loadtl
+13.3$	Tlchg Codes
+13.4$	Tool Offsets
+14$	Cutcom
+14.1$	Cutcom Support
+14.2$	Cutcom Control
+14.3$	Cutcom Codes
+14.4$	Fixture Offsets
+15$	Misc Post Cmds
+15.1$	Msgs and INSERT
+15.2$	OPSKIP and STOP
+15.3$	DELAY
+15.4$	GOHOME
+15.5$	POSTN
+16$	Ultrasonic Blade
+16.1$	Blade Set-up
+16.2$	Blade Alignment
+16.3$	Blade Positioning
+16.4$	Curve Blending
+16.5$	Vacuum Pods
+17$	Stringer Drill
+17.1$	Stringer Set-up
+17.2$	Stringer Registers
+17.3$	Stringer Codes
+17.4$	Stringer Positions
+17.5$	Stringer Home
+17.6$	Stringer Limits
+17.7$	Stringer Blocks
+Blank$	 
+Default$	DEFAULT
+Ledinch$	Leader %s inches.
+Ledmet$	Leader %s millimeters.
+Mchsav$	Save Machine Descriptor File?
+Mchexist$	Machine Descriptor File "%s" already exists.  Overwrite?
+Rwstop$	Rewind Stop
+Select$	Selection:
+
+FEDFPM$	                              Feed Per Minute Table
+FEDFPR$	                            Feed Per Revolution Table
+FEDTB2$	 Code    Feed    Code    Feed    Code    Feed    Code    Feed    Code    Feed
+GRANG1$	Group  ++++++++  ++++++++  ++++++++   Codes    ++++++++  ++++++++  ++++++++
+REGFMT$	Reg Begin Format Sign Left IN MM Right IN MM Min Left Right End Control
+SETREG$	                           Store Register Values
+SPNHRG$	                            High Range Spindle Table
+SPNLRG$	                             Low Range Spindle Table
+SPNMRG$	                           Medium Range Spindle Table
+SPNRG2$	 Code    Rpm     Code    Rpm     Code    Rpm     Code    Rpm     Code    Rpm
+USRBLK1$	                           User Defined Blocks
+WRDORD$	                            Tape Register Order
+
+PRMADJSQ$	Load Machine Adjust File?
+PRMADJS$	Adjust file name:
+PRMCLTYP$	Clfile type (1:3):
+PRMDOCQ$	Create REMARK documentation?
+PRMDOC$	Documentation file name:
+PRMERRQ$	Output error messages?
+PRMERR$	Maximum number of errors:
+PRMFATQ$	Output fatal messages?
+PRMFAT$	Maximum number of fatals:
+PRMFILE$	Input file name:
+PRMIDENT$	Add MACHIN name to output file(s)?
+PRMLISQ$	Create listing?
+PRMLIS$	Listing file name:
+PRMMCHQ$	Override MACHIN card?
+PRMMCH$	Machine card name:
+PRMMCHI$	Load Machine Descriptor File name:
+PRMMCHO$	Create Machine Descriptor File name:
+PRMOBJQ$	Create output file?
+PRMOBJ$	Object file name:
+PRMOPTQ$	Override MACHIN options?
+PRMOPT$	Options:
+PRMPAGL$	Number of lines per output page:
+PRMPCHQ$	Create punch file?
+PRMPCH$	Punch file name:
+PRMPOST$	Automatically run post-processer(s)?
+PRMPRTQ$	Create print file?
+PRMPRT$	Print file name:
+PRMSIMQ$	Create machine simulation file?
+PRMSIM$	Machine simulation file name:
+PRMUNITS$	Units:
+PRMWRNQ$	Output warning messages?
+PRMWRN$	Maximum number of warnings:
+
+CMPHD1$	       %s (Ver. %s.%s)     %s   %s     Page
+CMPHD2$	Source file:
+CMPHD3$	Input    Pc     Data
+CMPHD4$	Macro      Start Pc   End Pc     Size    Arguments
+PREHD1$	%s (Ver. %s.%s)   Machine: %s     %s   %s     Page
+PREHD2$	Input clfile:
+PREHD3$	Output file:
+PREHD4$	 Isn   Clrec   Data
+
+0	Walk through all sections.
+1#	Miscellaneous Set-up.
+
+1.1	Post-processor name:
+1.2	Machine Description:
+1.3	Input units:
+1.4	Output units:
+1.5	Enter Inch selection code:
+1.6	Enter Millimeter selection code:
+1.7	Punch file extension:
+1.8	Suppress Punch file when error level is encountered:
+
+2	Define Machine Configuration.
+
+2.0	Walk through Machine configuration.
+2.1#	Define type of machine.
+2.1.1	Type of machine:
+	1. Mill
+	2. Lathe
+	3. Ultrasonic Cutter
+	4. Mill/Turn
+	5. Stringer Drilling Machine
+2.1.2	Does milling mode support polar interpolation:
+2.1.3	Does milling mode support cylindrical interpolation:
+2.1.4	Is Cylindrical interp supported in the user defined plane:
+2.1.5	Is Cylindrical interp supported in only a single plane:
+2.1.6	Enter number of linear X-axes:
+2.1.7	Enter number of linear Y-axes:
+2.1.8	Enter number of linear Z-axes:
+2.1.9	Are rotary axes output as tool axis vector:
+2.1.10	Enter number of rotary axes:
+2.1.11	Enter number of interference zones:
+2.1.12	Enter default spindle tool axis:
+
+2.2#	Linear axis set-up.
+2.2.1	Enter calculation type for secondary X-axis:
+	1. Secondary_X = Input_X - Fixed_distance - Primary_X
+	2. Secondary_X = Input_X - Previous_Input_X
+	3. Secondary_X = Input_X 
+2.2.2	Enter calculation type for secondary Y-axis:
+	1. Secondary_Y = Input_Y - Fixed_distance - Primary_Y
+	2. Secondary_Y = Input_Y - Previous_Input_Y
+	3. Secondary_Y = Input_Y 
+2.2.3	Enter calculation type for secondary Z-axis:
+	1. Secondary_Z = Input_Z - Fixed_distance - Primary_Z
+	2. Secondary_Z = Input_Z - Previous_Input_Z
+	3. Secondary_Z = Input_Z 
+2.2.4	Enter distance between Primary X-axis and Secondary X-axis:
+2.2.5	Enter distance between Primary Y-axis and Secondary Y-axis:
+2.2.6	Enter distance between Primary Z-axis and Secondary Z-axis:
+2.2.7	Default X-axis at start of program:
+2.2.8	Default Y-axis at start of program:
+2.2.9	Default Z-axis at start of program:
+
+2.3#	Rotary axis set-up.
+2.3.1	Rotary axis #1 is a Table/Head:
+2.3.2	Rotary axis #2 is a Table/Head:
+2.3.3	Rotary axis #3 is a Table/Head:
+2.3.4	Rotary axis #4 is a Table/Head:
+2.3.5	Rotary axis #1 rotates around which axis [X,Y,Z]:
+2.3.6	Rotary axis #2 rotates around which axis [X,Y,Z]:
+2.3.7	Rotary axis #3 rotates around which axis [X,Y,Z]:
+2.3.8	Rotary axis #4 rotates around which axis [X,Y,Z]:
+2.3.9	Does the Z-axis rotate with the rotary head:
+2.3.10	Are the rotary tables connected:
+2.3.11	Enter number of physical Rotary axes #1:
+2.3.12	Enter number of physical Rotary axes #2:
+2.3.13	Enter number of physical Rotary axes #3:
+2.3.14	Enter number of physical Rotary axes #4:
+2.3.15	Rotary axis #1 is a Contouring/Positioning axis:
+2.3.16	Rotary axis #2 is a Contouring/Positioning axis:
+2.3.17	Rotary axis #3 is a Contouring/Positioning axis:
+2.3.18	Rotary axis #4 is a Contouring/Positioning axis:
+2.3.19	Rotary axis #1 is output on a Linear/Rotary scale:
+2.3.20	Rotary axis #2 is output on a Linear/Rotary scale:
+2.3.21	Rotary axis #3 is output on a Linear/Rotary scale:
+2.3.22	Rotary axis #4 is output on a Linear/Rotary scale:
+2.3.23	Initial orientation for Rotary axis #1:
+2.3.24	Initial orientation for Rotary axis #2:
+2.3.25	Initial orientation for Rotary axis #3:
+2.3.26	Initial orientation for Rotary axis #4:
+2.3.27	Does positioning rotary axis have feedrate control:
+2.3.28	Enter circumference of Rotary axis #1:
+2.3.29	Enter circumference of Rotary axis #2:
+2.3.30	Enter circumference of Rotary axis #3:
+2.3.31	Enter circumference of Rotary axis #4:
+2.3.32	A positive number will move Rotary axis #1 in a CLW/CCLW direction:
+2.3.33	A positive number will move Rotary axis #2 in a CLW/CCLW direction:
+2.3.34	A positive number will move Rotary axis #3 in a CLW/CCLW direction:
+2.3.35	A positive number will move Rotary axis #4 in a CLW/CCLW direction:
+2.3.36	Default active rotary axes at start of program (Max. 2):
+2.3.37	Distance to center of Rotary axis #1 [x,y,z]:
+2.3.38	Distance to center of Rotary axis #2 [x,y,z]:
+2.3.39	Distance to center of Rotary axis #3 [x,y,z]:
+2.3.40	Distance to center of Rotary axis #4 [x,y,z]:
+
+2.4#	Axes register description.
+2.4.1	Register for absolute Primary X-axis:
+2.4.2	Register for incremental Primary X-axis:
+2.4.3	Register for absolute Secondary X-axis:
+2.4.4	Register for incremental Secondary X-axis:
+2.4.5	Register for absolute Primary Y-axis:
+2.4.6	Register for incremental Primary Y-axis:
+2.4.7	Register for absolute Secondary Y-axis:
+2.4.8	Register for incremental Secondary Y-axis:
+2.4.9	Register for absolute Primary Z-axis:
+2.4.10	Register for incremental Primary Z-axis:
+2.4.11	Register for absolute Secondary Z-axis:
+2.4.12	Register for incremental Secondary Z-axis:
+2.4.13	Register for internal Rotary axis #1:
+2.4.14	Register for absolute Rotary axis #1:
+2.4.15	Register for incremental Rotary axis #1:
+2.4.16	Register for internal Rotary axis #2:
+2.4.17	Register for absolute Rotary axis #2:
+2.4.18	Register for incremental Rotary axis #2:
+2.4.19	Register for internal Rotary axis #3:
+2.4.20	Register for absolute Rotary axis #3:
+2.4.21	Register for incremental Rotary axis #3:
+2.4.22	Register for internal Rotary axis #4:
+2.4.23	Register for absolute Rotary axis #4:
+2.4.24	Register for incremental Rotary axis #4:
+2.4.25	Register for Tool Axis Vector I-component:
+2.4.26	Register for Tool Axis Vector J-component:
+2.4.27	Register for Tool Axis Vector K-component:
+2.4.28	Register for absolute Polar Interpolation Y-axis:
+2.4.29	Register for incremental Polar Interpolation Y-axis:
+2.4.30	Register for internal Cylindrical Interpolation Rotary axis:
+2.4.31	Register for absolute Cylindrical Interpolation Rotary axis:
+2.4.32	Register for incremental Cylindrical Interpolation Rotary axis:
+
+2.5#	Current axes position.
+2.5.1	Current position for Primary X-axis:
+2.5.2	Current position for Secondary X-axis:
+2.5.3	Current position for Primary Y-axis:
+2.5.4	Current position for Secondary Y-axis:
+2.5.5	Current position for Primary Z-axis:
+2.5.6	Current position for Secondary Z-axis:
+2.5.7	Current position for Rotary axis #1:
+2.5.8	Current position for Rotary axis #2:
+2.5.9	Current position for Rotary axis #3:
+2.5.10	Current position for Rotary axis #4:
+
+2.6#	Home position and Clearance plane.
+2.6.1	Primary X-axis Home position:
+2.6.2	Secondary X-axis Home position:
+2.6.3	Primary Y-axis Home position:
+2.6.4	Secondary Y-axis Home position:
+2.6.5	Primary Z-axis Home position:
+2.6.6	Secondary Z-axis Home position:
+2.6.7	Rotary Axis #1 Home position:
+2.6.8	Rotary Axis #2 Home position:
+2.6.9	Rotary Axis #3 Home position:
+2.6.10	Rotary Axis #4 Home position:
+2.6.11	Default clearance plane mode:
+2.6.12	Default clearance plane:
+2.6.13	Retract distance to add to current tool length:
+2.6.14	Retract Tool tip or Pivot point to clearance plane:
+2.6.15	Enter retract direction logic:
+	1. Retract tool along the X-axis.
+	2. Retract tool along the Y-axis.
+	3. Retract tool along the Z-axis.
+	4. Retract tool along the current tool axis vector.
+
+2.7#	Machine limits.
+2.7.1	Primary X-axis travel limits [min,max]:
+2.7.2	Secondary X-axis travel limits [min,max]:
+2.7.3	Primary Y-axis travel limits [min,max]:
+2.7.4	Secondary Y-axis travel limits [min,max]:
+2.7.5	Primary Z-axis travel limits [min,max]:
+2.7.6	Secondary Z-axis travel limits [min,max]:
+2.7.7	Rotary axis #1 travel limits [min,max]:
+2.7.8	Rotary axis #2 travel limits [min,max]:
+2.7.9	Rotary axis #3 travel limits [min,max]:
+2.7.10	Rotary axis #4 travel limits [min,max]:
+2.7.11	Maximum register value for Rotary axis #1:
+2.7.12	Maximum register value for Rotary axis #2:
+2.7.13	Maximum register value for Rotary axis #3:
+2.7.14	Maximum register value for Rotary axis #4:
+2.7.15	Code to reset Rotary axis #1 when register limit is reached: 
+2.7.16	Code to reset Rotary axis #2 when register limit is reached: 
+2.7.17	Code to reset Rotary axis #3 when register limit is reached: 
+2.7.18	Code to reset Rotary axis #4 when register limit is reached: 
+
+2.8#	Machine interference zones.
+2.8.1	Primary X-axis interference area for zone 1:
+2.8.2	Secondary X-axis interference area for zone 1:
+2.8.3	Primary Y-axis interference area for zone 1:
+2.8.4	Secondary Y-axis interference area for zone 1:
+2.8.5	Primary Z-axis interference area for zone 1:
+2.8.6	Secondary Z-axis interference area for zone 1:
+2.8.7	Rotary axis #1 interference area for zone 1:
+2.8.8	Rotary axis #2 interference area for zone 1:
+2.8.9	Rotary axis #3 interference area for zone 1:
+2.8.10	Rotary axis #4 interference area for zone 1:
+2.8.11	Primary X-axis interference area for zone 2:
+2.8.12	Secondary X-axis interference area for zone 2:
+2.8.13	Primary Y-axis interference area for zone 2:
+2.8.14	Secondary Y-axis interference area for zone 2:
+2.8.15	Primary Z-axis interference area for zone 2:
+2.8.16	Secondary Z-axis interference area for zone 2:
+2.8.17	Rotary axis #1 interference area for zone 2:
+2.8.18	Rotary axis #2 interference area for zone 2:
+2.8.19	Rotary axis #3 interference area for zone 2:
+2.8.20	Rotary axis #4 interference area for zone 2:
+2.8.21	Primary X-axis interference area for zone 3:
+2.8.22	Secondary X-axis interference area for zone 3:
+2.8.23	Primary Y-axis interference area for zone 3:
+2.8.24	Secondary Y-axis interference area for zone 3:
+2.8.25	Primary Z-axis interference area for zone 3:
+2.8.26	Secondary Z-axis interference area for zone 3:
+2.8.27	Rotary axis #1 interference area for zone 3:
+2.8.28	Rotary axis #2 interference area for zone 3:
+2.8.29	Rotary axis #3 interference area for zone 3:
+2.8.30	Rotary axis #4 interference area for zone 3:
+2.8.31	Primary X-axis interference area for zone 4:
+2.8.32	Secondary X-axis interference area for zone 4:
+2.8.33	Primary Y-axis interference area for zone 4:
+2.8.34	Secondary Y-axis interference area for zone 4:
+2.8.35	Primary Z-axis interference area for zone 4:
+2.8.36	Secondary Z-axis interference area for zone 4:
+2.8.37	Rotary axis #1 interference area for zone 4:
+2.8.38	Rotary axis #2 interference area for zone 4:
+2.8.39	Rotary axis #3 interference area for zone 4:
+2.8.40	Rotary axis #4 interference area for zone 4:
+
+2.9#	Exit
+
+3	Define Control Tape format.
+
+3.0	Walk through Control Tape format.
+3.1	Tape register format.
+3.2	Define G-code groups.
+3.3	Define M-code groups.
+3.4	Store register values.
+3.5	Define tape register order.
+3.6	User defined tape blocks.
+
+3.7#	Define tape block format.
+3.7.1	Multiple non-conflicting G-codes can be in a single block:
+3.7.2	Multiple non-conflicting M-codes can be in a single block:
+3.7.3	G-codes and M-codes can be in the same block:
+3.7.4	Word address/tab sequential format:
+	1. Word Address
+	2. Fixed Tab Sequential
+3.7.5	End-of-block character(s):
+3.7.6	Start of message character(s):
+3.7.7	End of message character(s):
+3.7.8	Leader character:
+3.7.9	Tab character:
+3.7.10	Optional skip character:
+3.7.11	Default mode for CHECK/LENGTH:
+3.7.12	Enter checksum register (CHECK/LENGTH):
+3.7.13	Maximum value for checksum register:
+
+3.8#	Define Punch file format.
+3.8.1	Punch file is packed/unpacked:
+3.8.2	Maximum length of an MCD block:
+3.8.3	PARTNO card output:
+	0. Do not output the PARTNO card.
+	1. Output the first PARTNO card as is.
+	2. Output the first PARTNO card in a message block.
+	3. Output all PARTNO cards as is.
+	4. Output all PARTNO cards in message blocks.
+3.8.4	Separate tape registers with a space in Punch file:
+3.8.5	Separate Macro parameters with a space in Punch file:
+
+3.9#	Define Start/End sequences.
+3.9.1	Enter Punch Header File (.phf) name:
+3.9.2	Amount of leader at start of Punch file [inch/mm]:
+3.9.3	Amount of leader at end of Punch file [inch/mm]:
+3.9.4	Rewind stop character(s):
+3.9.5	Output an EOB with Rewind stop code:
+3.9.6	User defined starting block:
+3.9.7	Code to output with REWIND card:
+3.9.8	Code to output with FINI card:
+3.9.9	Start of Tape character(s):
+3.9.10	End of Tape character(s):
+
+3.10#	Tape Break Sequences.
+3.10.1	Enter default mode for BREAK command:
+3.10.2	Create a new punch file at Tape Breaks:
+3.10.3	Create a new print file at Tape Breaks:
+3.10.4	Retract the tool at Tape Breaks:
+3.10.5	Issue TMARK after Tape Break:
+3.10.6	Default tape length for Tape Breaks:
+3.10.7	Default machining time for Tape Breaks:
+3.10.8	Default delta linear distance for Tape Breaks:
+3.10.9	Default number of output blocks for Tape Breaks:
+3.10.10	Default retract rate for Tape Breaks:
+3.10.11	Default plunge rate for Tape Breaks:
+
+3.11	Exit
+
+4#	Print file description.
+4.1	Enter default Print Descriptor File (.pdf) name:
+4.2	Enter page header record(s):
+4.3	Enter page trailer record(s):
+4.4	Enter motion block record(s):
+4.5	Enter non-motion block record(s):
+4.6	Enter INSERT record(s):
+4.7	Enter STOP record(s):
+4.8	Enter OPSTOP record(s):
+4.9	Enter LOADTL record(s):
+4.10	Enter FINI record(s):
+4.11	Enter PPRINT record(s):
+
+5	Motion block parameters.
+
+5.0	Walk through Motion block parameters.
+5.1#	Special event handling.
+5.1.1	Specify handling of FROM statement.
+	1 = FROM is not output and will force output of all axes.
+	2 = FROM is not output and will set the current values for each axis.
+	3 = FROM is treated the same as GOTO.
+5.1.2	The X-axis is input as Radius/Diameter:
+5.1.3	The X-axis is output as Radius/Diameter:
+5.1.4	Output the X-axis as negative positions:
+5.1.5	The part is programmed in XY and should be output in ZX:
+5.1.6	Default positioning mode [ABS/INCR]:
+5.1.7	Force current position when changing from INCR to ABS mode:
+	1 = Do not output the current position.
+	2 = Output the current axes position immediately.
+	3 = Force output of all axes on next motion block.
+5.1.8	Force output of all axes when one is output:
+
+5.2#	Rotary motion.
+5.2.1	Use tool axis vector to control rotary axis positions:
+5.2.2	Adjust input points for rotary table(s):
+5.2.3	Adjust input points for rotary head(s):
+5.2.4	Force output of all rotary axes when one is output:
+5.2.5	Absolute/Incremental output for Rotary axis #1:
+	1. Output in current mode.
+	2. Output is always absolute.
+	3. Output is always incremental.
+5.2.6	Absolute/Incremental output for Rotary axis #2:
+	1. Output in current mode.
+	2. Output is always absolute.
+	3. Output is always incremental.
+5.2.7	Absolute/Incremental output for Rotary axis #3:
+	1. Output in current mode.
+	2. Output is always absolute.
+	3. Output is always incremental.
+5.2.8	Absolute/Incremental output for Rotary axis #4:
+	1. Output in current mode.
+	2. Output is always absolute.
+	3. Output is always incremental.
+5.2.9	Enter value for a CCLW move to 0 degrees for the rotary axes:
+5.2.10	Enter value for a CLW move to 0 degrees for the rotary axes:
+5.2.11	Enter rotary axes size change code:
+5.2.12	Output rotary axes size change as ...:
+	1. Radius
+	2. Diameter
+	3. Circumference
+5.2.13	Enter register for Rotary axis #1 size change:
+5.2.14	Enter register for Rotary axis #2 size change:
+5.2.15	Enter register for Rotary axis #3 size change:
+5.2.16	Enter register for Rotary axis #4 size change:
+5.2.17	Enter CLW direction code for Rotary axis #1:
+5.2.18	Enter CCLW direction code for Rotary axis #1:
+5.2.19	Enter CLW direction code for Rotary axis #2:
+5.2.20	Enter CCLW direction code for Rotary axis #2:
+5.2.21	Enter CLW direction code for Rotary axis #3:
+5.2.22	Enter CCLW direction code for Rotary axis #3:
+5.2.23	Enter CLW direction code for Rotary axis #4:
+5.2.24	Enter CCLW direction code for Rotary axis #4:
+
+5.3#	Clamping logic.
+5.3.1	Enter clamping logic for rotary axes:
+	1. Clamping/unclamping of rotary axes is not necessary.
+	2. Each rotary axis should be unclamped prior to movement and
+	   immediately clamped after each movement.
+	3. Each rotary axis should be unclamped prior to movement and
+	   clamped prior to the specific rotary axis not moving.
+	4. Each rotary axis should be unclamped prior to any rotary output
+	   and clamped prior to pure linear output with no rotary output.
+	5. Each rotary axis should be unclamped prior to any rotary movement
+	   and clamped prior to pure linear axes movement (no rotary movement).
+5.3.2	Enter clamping code for Rotary axis #1:
+5.3.3	Enter unclamping code for Rotary axis #1:
+5.3.4	Enter clamping code for Rotary axis #2:
+5.3.5	Enter unclamping code for Rotary axis #2:
+5.3.6	Enter clamping code for Rotary axis #3:
+5.3.7	Enter unclamping code for Rotary axis #3:
+5.3.8	Enter clamping code for Rotary axis #4:
+5.3.9	Enter unclamping code for Rotary axis #4:
+5.3.10	Clamping codes should be output in a block by themselves:
+5.3.11	User defined block for clamping Rotary axis 1:
+5.3.12	User defined block for unclamping Rotary axis 1:
+5.3.13	User defined block for clamping Rotary axis 2:
+5.3.14	User defined block for unclamping Rotary axis 2:
+5.3.15	User defined block for clamping Rotary axis 3:
+5.3.16	User defined block for unclamping Rotary axis 3:
+5.3.17	User defined block for clamping Rotary axis 4:
+5.3.18	User defined block for unclamping Rotary axis 4:
+
+5.4#	Define axes tolerances.
+5.4.1	Minimum linear increment allowed for Primary X-axis movement:
+5.4.2	Minimum linear increment allowed for Secondary X-axis movement:
+5.4.3	Minimum linear increment allowed for Primary Y-axis movement:
+5.4.4	Minimum linear increment allowed for Secondary Y-axis movement:
+5.4.5	Minimum linear increment allowed for Primary Z-axis movement:
+5.4.6	Minimum linear increment allowed for Secondary Z-axis movement:
+5.4.7	Minimum linear increment allowed for Rotary axis #1:
+5.4.8	Minimum linear increment allowed for Rotary axis #2:
+5.4.9	Minimum linear increment allowed for Rotary axis #3:
+5.4.10	Minimum linear increment allowed for Rotary axis #4:
+5.4.11	Tolerance for determining output on Primary X-axis:
+5.4.12	Tolerance for determining output on Secondary X-axis:
+5.4.13	Tolerance for determining output on Primary Y-axis:
+5.4.14	Tolerance for determining output on Secondary Y-axis:
+5.4.15	Tolerance for determining output on Primary Z-axis:
+5.4.16	Tolerance for determining output on Secondary Z-axis:
+5.4.17	Tolerance for determining output on Rotary axis #1:
+5.4.18	Tolerance for determining output on Rotary axis #2:
+5.4.19	Tolerance for determining output on Rotary axis #3:
+5.4.20	Tolerance for determining output on Rotary axis #4:
+
+5.5#	Default output axes adjustments.
+5.5.1	Default TRANS/-AXIS for Primary X-axis:
+5.5.2	Default TRANS/-AXIS for Secondary X-axis:
+5.5.3	Default TRANS/-AXIS for Primary Y-axis:
+5.5.4	Default TRANS/-AXIS for Secondary Y-axis:
+5.5.5	Default TRANS/-AXIS for Primary Z-axis:
+5.5.6	Default TRANS/-AXIS for Secondary Z-axis:
+5.5.7	Default TRANS/-AXIS for Rotary axis #1:
+5.5.8	Default TRANS/-AXIS for Rotary axis #2:
+5.5.9	Default TRANS/-AXIS for Rotary axis #3:
+5.5.10	Default TRANS/-AXIS for Rotary axis #4:
+5.5.11	Default TRANS/SCALE,-AXIS for Primary X-axis:
+5.5.12	Default TRANS/SCALE,-AXIS for Secondary X-axis:
+5.5.13	Default TRANS/SCALE,-AXIS for Primary Y-axis:
+5.5.14	Default TRANS/SCALE,-AXIS for Secondary Y-axis:
+5.5.15	Default TRANS/SCALE,-AXIS for Primary Z-axis:
+5.5.16	Default TRANS/SCALE,-AXIS for Secondary Z-axis:
+5.5.17	Default TRANS/SCALE,-AXIS for Rotary axis #1:
+5.5.18	Default TRANS/SCALE,-AXIS for Rotary axis #2:
+5.5.19	Default TRANS/SCALE,-AXIS for Rotary axis #3:
+5.5.20	Default TRANS/SCALE,-AXIS for Rotary axis #4:
+
+5.6#	Motion register description.
+5.6.1	Linear motion code:
+5.6.2	Linear motion code in LMFP mode:
+5.6.3	Linear motion code in LMDP mode:
+5.6.4	Absolute positioning code:
+5.6.5	Incremental positioning code:
+5.6.6	Code(s) for setting major tool axis to XYPLAN:
+5.6.7	Code(s) for setting major tool axis to ZXPLAN:
+5.6.8	Code(s) for setting major tool axis to YZPLAN:
+5.6.9	LMFP/LMDP mode minimum span register:
+5.6.10	Enable Mill/Turn Milling mode code:
+5.6.11	Disable Mill/Turn Milling mode code:
+5.6.12	Enter Mill/Turn Polar Interpolation code:
+5.6.13	Enter Mill/Turn Cylindrical Interpolation code:
+5.6.14	Register for circle unit in Cylindrical interpolation:
+5.6.15	Is cylinder axis code required in LMDP enable/disable block:
+5.6.16	Is cylinder axis value required in LMDP enable/disable block:
+5.6.17	User defined 1st motion block:
+5.6.18	User defined non-motion block:
+
+5.7	Exit
+
+6	Circular/Spline interpolation.
+
+6.0	Walk through Circular/Spline interpolation.
+6.1#	Circular interpolation format.
+6.1.1	Does the machine controller support circular interpolation:
+6.1.2	Enter format of circular interpolation:
+	1 = Absolute center.             6 = Radius.
+	2 = Incremental center.          7 = Polar coordinates.
+	3 = Unsigned incremental.        8 = Dual block.
+	4 = Absolute/incremental.        9 = Absolute and Radius.
+	5 = Absolute/unsigned.          10 = Conversational Polar coordinates.
+6.1.3	Enter format of circular interpolation in LMFP/LMDP mode:
+	1 = Absolute center.             6 = Radius.
+	2 = Incremental center.          7 = Polar coordinates.
+	3 = Unsigned incremental.        8 = Dual block.
+	4 = Absolute/incremental.        9 = Absolute and Radius.
+	5 = Absolute/unsigned.
+6.1.4	Incremental distance should be from start point to center:
+6.1.5	The center point should be output as Radius/Diameter:
+6.1.6	Circular interpolation is allowed in all 3 planes (XY,YZ,ZX):
+6.1.7	Is 3-axis circular interpolation supported:
+6.1.8	Output final point of 3-axis circular on separate block:
+6.1.9	Enter format of 3-axis circular intermediate point:
+	1 = Use circular center point format.
+	2 = Use circular end point format.
+6.1.10	Enter planes where circular interpolation is allowed (XY,YZ,ZX):
+6.1.11	Circular moves should be broken up ...:
+	1 = ... on quadrant boundaries.
+	2 = ... on hemisphere boundaries.
+	3 = ... on full 360 degree boundaries.
+6.1.12	Force position on circular interpolation record:
+6.1.13	Force direction code on circular interpolation record:
+6.1.14	Estimate delta distances during circular interpolaton:
+
+6.2#	Circular interpolation tolerances.
+6.2.1	Radius tolerance for circular interpolation:
+6.2.2	Minimum linear movement to output as circular interpolation:
+6.2.3	Minimum radius allowed for circular interpolation:
+6.2.4	Maximum radius allowed for circular interpolation:
+6.2.5	Adjust final point to lie exactly on the circle:
+
+6.3#	Helical interpolation format.
+6.3.1	Does the machine controller support helical interpolation:
+6.3.2	Output final linear depth with helical:
+6.3.3	Helical final depth is output as:
+	0. Current programming mode.
+	1. Always absolute.
+	2. Always incremental.
+6.3.4	Output delta linear movement with helical:
+	0. Do not output linear movement.
+	1. Output linear movement per radian.
+	2. Output linear movement per 360 degrees.
+6.3.5	Tolerance for generating helical movement:
+
+6.4#	Circular interpolation registers.
+6.4.1	Polar coordinate linear motion code:
+6.4.2	Polar coordinate rapid motion code:
+6.4.3	Clockwise circular interpolation code:
+6.4.4	Counter-clockwise circular interpolation code:
+6.4.5	Conversational circle center code:
+6.4.6	Conversational circular record code:
+6.4.7	Conversational delta angle register:
+6.4.8	Clockwise circular interpolation code in LMFP mode:
+6.4.9	Counter-clockwise circular interpolation code in LMFP mode:
+6.4.10	Clockwise circular interpolation code in LMDP mode:
+6.4.11	Counter-clockwise circular interpolation code in LMDP mode:
+6.4.12	Clockwise helical interpolation code:
+6.4.13	Counter-clockwise helical interpolation code:
+6.4.14	Clockwise 3-axis circular interpolation code:
+6.4.15	Counter-clockwise 3-axis circular interpolation code:
+6.4.16	X-axis circle center register:
+6.4.17	Y-axis circle center register:
+6.4.18	Z-axis circle center register:
+6.4.19	Circle radius register:
+6.4.20	X-axis intermediate point register:
+6.4.21	Y-axis intermediate point register:
+6.4.22	Z-axis intermediate point register:
+6.4.23	Polar coordinate angle register:
+6.4.24	Output X and Y circle center codes in all planes:
+6.4.25	XY-plane selection code:
+6.4.26	ZX-plane selection code:
+6.4.27	YZ-plane selection code:
+6.4.28	User defined plane selection code:
+6.4.29	Are axis code values required with plane selection:
+6.4.30	Output dwell code with plane selection:
+6.4.31	Amount of dwell to output w/plane selection code:
+6.4.32	Output plane selection code in circular block:
+
+6.5#	Spline interpolation format.
+6.5.1	Does the machine controller support spline interpolation:
+6.5.2	Enter codes for enabling high precision contouring mode:
+6.5.3	Enter codes for disabling high precision contouring mode:
+6.5.4	Enter the tolerance for fitting spline thru points:
+6.5.5	Enter chordal tolerance for spline interpolation:
+6.5.6	Enter spline interpolation code:
+6.5.7	Force linear/circular interpolation code after spline mode:
+6.5.8	Output spline interpolation code on a block itself:
+6.5.9	Output knot values or node distances:
+6.5.10	Enter register for knot values/node distances:
+6.5.11	Include start point in spline interpolation:
+
+6.6	Exit
+
+7	Motion Adjustments.
+
+7.0	Walk through Motion adjustments.
+7.1#	Miscellaneous adjustments.
+7.1.1	Maximum number of axes which can move in a single block:
+7.1.2	Priority for output axes:
+7.1.3	Number of mutually exclusive axes sets:
+7.1.4	Enter 1st set of mutually exclusive axes:
+7.1.5	Controlling axis for 1st set:
+7.1.6	Axes priority with positive axis move for 1st set:
+7.1.7	Axes priority with negative axis move for 1st set:
+7.1.8	Enter 2nd set of mutually exclusive axes:
+7.1.9	Controlling axis for 2nd set:
+7.1.10	Axes priority with positive axis move for 2nd set:
+7.1.11	Axes priority with negative axis move for 2nd set:
+7.1.12	Enter 3rd set of mutually exclusive axes:
+7.1.13	Controlling axis for 3rd set:
+7.1.14	Axes priority with positive axis move for 3rd set:
+7.1.15	Axes priority with negative axis move for 3rd set:
+7.1.16	Enter 4th set of mutually exclusive axes:
+7.1.17	Controlling axis for 4th set:
+7.1.18	Axes priority with positive axis move for 4th set:
+7.1.19	Axes priority with negative axis move for 4th set:
+7.1.20	Hold back motion where only 1 axis moves:
+
+7.2#	Rotary axes linearization.
+7.2.1	Default linearization tolerance:
+7.2.2	Default rapid linearization tolerance:
+7.2.3	Adjust tool axis vector to minimize rotary movement:
+7.2.4	Linear tolerance to use for tool axis adjustment:
+7.2.5	Angular cone to consider tool axis adjustment for:
+7.2.6	Minimum angular delta movement to consider for tool axis adjustment:
+7.2.7	Default tool length to consider for tool axis adjustment:
+7.2.8	Tolerance for truncating tool axis vector components:
+7.2.9	Retract tool when taking longest route:
+7.2.10	Allow tool retraction with linearization disabled:
+7.2.11	Add tool length to retract distance:
+7.2.12	Automatic retract distance (in addition to tool length):
+7.2.13	Automatic retract plane:
+7.2.14	Offset tool prior to retract:
+7.2.15	Default offset distance:
+7.2.16	Retract feedrate for automatic retract:
+7.2.17	Plunge feedrate for automatic retract:
+7.2.18	Blade positioning feedrate for automatic retract:
+7.2.19	Offset feedrate for automatic retract:
+7.2.20	Enter the logic to use when determining the rotary shortest route:
+	1. Combination of all rotary axis movements.
+	2. Comparison of largest rotary movements.
+	3. Summation of all rotary movements.
+	4. Using a specific rotary axis.
+7.2.21	Controlling axis for shortest route determination:
+
+7.3#	Rotary axes look-ahead.
+7.3.1	Does this machine require look-ahead positioning:
+7.3.2	Rotary axes look-ahead mode:
+7.3.3	Vector component deviation:
+7.3.4	Look-ahead for limit violations:
+7.3.5	Allow rotation of axis in single block:
+7.3.6	Retract tool when rotated in single block:
+
+7.4#	Slowdown spans.
+7.4.1	Does the control support slowdown codes:
+7.4.2	Should slowdown codes replace linear/circular codes:
+7.4.3	Are slowdown codes required on every active motion block:
+7.4.4	Number of slowdown modes supported:
+7.4.5	Minimum angular change to generate slowdown span:
+7.4.6	Linear slowdown span code #1:
+7.4.7	Linear slowdown span code #2:
+7.4.8	Linear slowdown span code #3:
+7.4.9	Linear slowdown span code #4:
+7.4.10	CLW Circular slowdown span code #1:
+7.4.11	CCLW Circular slowdown span code #1:
+7.4.12	CLW Circular slowdown span code #2:
+7.4.13	CCLW Circular slowdown span code #2:
+7.4.14	CLW Circular slowdown span code #3:
+7.4.15	CCLW Circular slowdown span code #3:
+7.4.16	CLW Circular slowdown span code #4:
+7.4.17	CCLW Circular slowdown span code #4:
+7.4.18	Slowdown off code:
+7.4.19	Default slowdown tolerance:
+7.4.20	Default slowdown mode:
+
+7.5#	Maximum axis departures.
+7.5.1	Apply maximum axis departures during rapid moves:
+7.5.2	Maximum axis departure allowed for Primary X-axis:
+7.5.3	Maximum axis departure allowed for Secondary X-axis:
+7.5.4	Maximum axis departure allowed for Primary Y-axis:
+7.5.5	Maximum axis departure allowed for Secondary Y-axis:
+7.5.6	Maximum axis departure allowed for Primary Z-axis:
+7.5.7	Maximum axis departure allowed for Secondary Z-axis:
+7.5.8	Maximum axis departure allowed for Rotary axis #1:
+7.5.9	Maximum axis departure allowed for Rotary axis #2:
+7.5.10	Maximum axis departure allowed for Rotary axis #3:
+7.5.11	Maximum axis departure allowed for Rotary axis #4:
+
+7.6#	Acceleration blocks.
+7.6.1	Does the control require acceleration spans:
+7.6.2	Default mode for acceleration blocks:
+7.6.3	Maximum vector velocity:
+7.6.4	Capped vector velocity:
+7.6.5	Minimum feed rate step:
+7.6.6	Maximum feed rate step:
+
+7.7#	Transformation blocks.
+7.7.1	Does the control support transformation codes:
+7.7.2	Are transformations based on active transformations:
+7.7.3	Enter transformation rotation output logic:
+	1. Rotations are about a single vector.
+	2. Rotations are about the major axes.
+	3. Hybrid vector and major axes rotations.
+	4. Use output rotary axes rotations.
+	5. Rotations are calcuated using Euler angles.
+7.7.4	Order of rotation:
+7.7.5	Rotations are output in opposite direction.
+7.7.6	Use table rotations in transformation block calculation:
+7.7.7	Use output rotary axis positions for coordinate transformations:
+7.7.8	Allow rotary axes movement when a transformation block is active:
+7.7.9	Automatically cancel cutcom with enable transformations block: 
+7.7.10	Automatically cancel transformations prior to motion block:
+7.7.11	Use transformed coordinates for rapid move calculations:
+
+7.8#	Transformation output.
+7.8.1	Enter enable translations code:
+7.8.2	Enter enable rotations code:
+7.8.3	Enter disable translations code:
+7.8.4	Enter disable rotations code:
+7.8.5	Enter X-translation register:
+7.8.6	Enter Y-translation register:
+7.8.7	Enter Z-translation register:
+7.8.8	Enter X-rotation register:
+7.8.9	Enter Y-rotation register:
+7.8.10	Enter Z-rotation register:
+7.8.11	Enter rotation vector I-component register:
+7.8.12	Enter rotation vector J-component register:
+7.8.13	Enter rotation vector K-component register:
+7.8.14	Enter rotation register:
+7.8.15	Enter non-positioning behavior code:
+7.8.16	Output XYZ translation registers when canceling translations:
+7.8.17	Output transformation block in relation to current motion block:
+	1. Output transformation block after motion block.
+	2. Output transformation block prior to motion block.
+	3. Transformation block is output prior to and after motion block output.
+
+7.9	Exit
+
+8	Milling Cycles.
+
+8.0	Walk through Milling Cycles.
+8.1#	Cycle definition codes.
+8.1.1	Does this machine support automatic cycles:
+8.1.2	Automatic cycles are allowed in all 3 planes (XY,YZ,ZX):
+8.1.3	Output cycles as a Macro Call:
+8.1.4	Macro Call code:
+8.1.5	Enter CYCLE/OFF code:
+8.1.6	Enter CYCLE/BORE code:
+8.1.7	Enter CYCLE/BORE7 code:
+8.1.8	Enter CYCLE/BORE8 code:
+8.1.9	Enter CYCLE/BORE9 code:
+8.1.10	Enter CYCLE/DEEP code:
+8.1.11	Enter CYCLE/DRILL code:
+8.1.12	Enter CYCLE/FACE code:
+8.1.13	Enter CYCLE/MILL code:
+8.1.14	Enter CYCLE/REAM code:
+8.1.15	Enter CYCLE/REVERS code:
+8.1.16	Enter CYCLE/SHIFT code:
+8.1.17	Enter CYCLE/TAP code:
+8.1.18	Enter CYCLE/THRU code:
+8.1.19	XY-plane selection code:
+8.1.20	ZX-plane selection code:
+8.1.21	YZ-plane selection code:
+8.1.22	Enter RAPID cycle interrupt code:
+8.1.23	Enter RETRCT/ON code:
+8.1.24	Enter RETRCT/OFF code:
+
+8.2#	Cycle parameter codes.
+8.2.1	Enter final depth register:
+8.2.2	Enter Top-of-part register:
+8.2.3	Enter RAPTO plane register:
+8.2.4	Enter Threads Per Inch register:
+8.2.5	Enter DWELL parameter 1 register:
+8.2.6	Enter DWELL parameter 2 register:
+8.2.7	Enter STEP parameter 1 register:
+8.2.8	Enter STEP parameter 2 register:
+8.2.9	Enter single parameter OFFSET register:
+8.2.10	Enter X-axis OFFSET register:
+8.2.11	Enter Y-axis OFFSET register:
+8.2.12	Enter Z-axis OFFSET register:
+8.2.13	Should XY plane registers always be output as OFFSET registers:
+8.2.14	Enter RTRCTO parameter 1 register:
+8.2.15	Enter RTRCTO parameter 2 register:
+8.2.16	Enter REPEAT parameter register:
+
+8.3#	Cycle positioning parameters.
+8.3.1	Output a unidirectional positioning move prior to each cycle point:
+8.3.2	Enter positioning direction vector:
+8.3.3	Enter positioning distance:
+8.3.4	Position above hole prior to issuing CYCLE/DEEP block:
+8.3.5	Mode for final depth value:
+	1. Same as currently programmed mode.
+	2. Always absolute.
+	3. Always incremental.
+8.3.6	The final depth distance is relative to ...:
+	1. ... the rapto plane (current location).
+	2. ... the clearance/retract plane.
+	3. ... the Top-of-part.
+8.3.7	Mode for Top-of-part:
+	1. Same as currently programmed mode.
+	2. Always absolute.
+	3. Always incremental.
+8.3.8	Output format for STEP (peck) parameters:
+	1. Contains current input sign.
+	2. Always positive.
+	3. Always negative.
+	4. Output as number of pecks required.
+8.3.9	Default rapid rate for cycles:
+
+8.4#	Rapto and Retract parameters.
+8.4.1	Mode for rapto plane value:
+	1. Same as currently programmed mode.
+	2. Always absolute.
+	3. Always incremental.
+	4. Incremental distance from Top-of-part:
+8.4.2	Enter calculation type for rapto plane:
+	1. Rapto plane is based on input coordinate.
+	2. Rapto plane is based on active linear axis.
+8.4.3	Enter gage height difference between rapto plane and top of part:
+8.4.4	Mode for retract plane value:
+	1. Always absolute.
+	2. Incremental distance from rapto plane:
+	3. Incremental distance from Top-of-part:
+8.4.5	Enter calculation type for retract plane:
+	1. Retract plane is based on input coordinate.
+	2. Retract plane is based on active linear axis.
+8.4.6	Enter the final retract logic to use:
+	1. The RETRCT command will be used.
+	2. Always retract to the clearance plane.
+	3. Always retract to the rapto plane.
+8.4.7	Should the 1st RTRCTO value override the normal retract logic:
+8.4.8	Output a retract level code ...:
+	1. when RTRCTO is specified or RETRCT/ON is in effect.
+	2. only when the RTRCTO parameter is specified.
+	3. always.
+8.4.9	Output a retract block when the rapto plane increases:
+8.4.10	Enter the format for a retract block:
+	1. The cycle will be canceled and a rapid move will be output.
+	2. The cycle will be canceled and a new retract plane will be output.
+8.4.11	Retract tool at each level of CYCLE/THRU:
+8.4.12	Enter motion alteration for cycle generated rapid moves:
+	1. Use the default rapid alteration setting.
+	2. Alter rapid moves along X-axis.
+	3. Alter rapid moves along Y-axis.
+	4. Alter rapid moves along Z-axis.
+	5. Alter rapid moves along major tool axis.
+8.4.13	Retract/plunge rapid moves along tool axis:
+
+8.5#	Cycle block output.
+8.5.1	Force cycle definition code on the initial cycle block:
+8.5.2	Force active linear axes on the initial cycle block:
+8.5.3	Force linear axes output on every cycle block:
+8.5.4	Force input cycle parameters on every cycle block:
+8.5.5	Output a feedrate with cycle blocks:
+8.5.6	Force feedrate on the initial cycle block:
+8.5.7	Should TPI value be output as a negative number with CYCLE/REVERS:
+8.5.8	Should a full cycle block be output when the final depth changes:
+8.5.9	Automatically lock feedrate/spindle overrides with CYCLE/TAP:
+8.5.10	Force linear interpolation code after CYCLE/OFF:
+
+8.6#	Cycle User defined blocks:
+8.6.1	CYCLE/OFF User defined block:
+8.6.2	CYCLE/BORE User defined block:
+8.6.3	CYCLE/BORE7 User defined block:
+8.6.4	CYCLE/BORE8 User defined block:
+8.6.5	CYCLE/BORE9 User defined block:
+8.6.6	CYCLE/DEEP User defined block:
+8.6.7	CYCLE/DRILL User defined block:
+8.6.8	CYCLE/FACE User defined block:
+8.6.9	CYCLE/MILL User defined block:
+8.6.10	CYCLE/REAM User defined block:
+8.6.11	CYCLE/REVERS User defined block:
+8.6.12	CYCLE/SHIFT User defined block:
+8.6.13	CYCLE/TAP User defined block:
+8.6.14	CYCLE/THRU User defined block:
+
+8.7#	Cycle machining times.
+8.7.1	Enter CYCLE/BORE time calculation:
+8.7.2	Enter CYCLE/BORE7 time calculation:
+8.7.3	Enter CYCLE/BORE8 time calculation:
+8.7.4	Enter CYCLE/BORE9 time calculation:
+8.7.5	Enter CYCLE/DEEP time calculation:
+8.7.6	Enter CYCLE/DRILL time calculation:
+8.7.7	Enter CYCLE/FACE time calculation:
+8.7.8	Enter CYCLE/MILL time calculation:
+8.7.9	Enter CYCLE/REAM time calculation:
+8.7.10	Enter CYCLE/REVERS time calculation:
+8.7.11	Enter CYCLE/SHIFT time calculation:
+8.7.12	Enter CYCLE/TAP time calculation:
+8.7.13	Enter CYCLE/THRU time calculation:
+8.7.14	Use the first STEP parameter in time calculations:
+8.7.15	Use the second STEP parameter in time calculations:
+8.7.16	Estimate delta distances during automatic cycles:
+
+8.8	Exit
+
+9	Lathe Cycles.
+
+9.0	Walk through Lathe Cycles.
+
+9.1#	Cycle definition codes.
+9.1.1	Does this machine support automatic cycles:
+9.1.2	Enter constant lead Threadcutting code:
+9.1.3	Enter Increasing variable lead Threadcutting code:
+9.1.4	Enter Decreasing variable lead Threadcutting code:
+9.1.5	Enter CYCLE/OFF code:
+9.1.6	Enter CYCLE/DEEP code:
+9.1.7	Enter CYCLE/DEEP w/STEP code:
+9.1.8	Enter CYCLE/DRILL code:
+9.1.9	Enter CYCLE/DRILL w/STEP code:
+9.1.10	Enter CYCLE/FACE code:
+9.1.11	Enter CYCLE/FACE w/STEP code:
+9.1.12	Enter CYCLE/ROUGH code:
+9.1.13	Enter CYCLE/ROUGH w/STEP code:
+9.1.14	Enter CYCLE/THREAD code:
+9.1.15	Enter CYCLE/THREAD w/STEP code:
+9.1.16	Enter CYCLE/THRU code:
+9.1.17	Enter CYCLE/THRU w/STEP code:
+9.1.18	Enter CYCLE/TURN code:
+9.1.19	Enter CYCLE/TURN w/STEP code:
+
+9.2#	Cycle parameter codes.
+9.2.1	Enter Z-axis lead register:
+9.2.2	Enter X-axis lead register:
+9.2.3	Enter Increasing variable lead register:
+9.2.4	Enter Decreasing variable lead register:
+9.2.5	Enter final Z-axis position register:
+9.2.6	Enter final X-axis position register:
+9.2.7	Enter FEDTO parameter register:
+9.2.8	Enter OFFSET parameter 1 register:
+9.2.9	Enter OFFSET parameter 2 register:
+9.2.10	Enter RAPTO parameter register:
+9.2.11	Enter REPEAT parameter register:
+9.2.12	Enter RTRCTO parameter 1 register:
+9.2.13	Enter RTRCTO parameter 2 register:
+9.2.14	Enter STEP parameter 1 register:
+9.2.15	Enter STEP parameter 2 register:
+9.2.16	Enter TOOL parameter 1 register:
+9.2.17	Enter TOOL parameter 2 register:
+9.2.18	Enter Chamfer ON code:
+9.2.19	Enter Chamfer Off code:
+
+
+9.3#	Cycle positioning parameters.
+9.3.1	Position to taper position prior to issuing CYCLE/THREAD,STEP block:
+9.3.2	Position to taper position prior to issuing CYCLE/TURN,STEP block:
+9.3.3	Mode for automatic cycles:
+	1. Sames as currently programmed mode.
+	2. Always absolute.
+	3. Always incremental.
+9.3.4	Output format for STEP parameters:
+	1. Contains current input sign.
+	2. Always positive.
+	3. Always negative.
+9.3.5	Default rapid rate for cycles:
+
+9.4#	Cycle block output.
+9.4.1	Force cycle definition code on the initial cycle block:
+9.4.2	Force active linear axes on the initial cycle block:
+9.4.3	Force input cycle parameters on every cycle block:
+9.4.4	Force feedrate on the initial cycle block:
+9.4.5	Force linear interpolation code after CYCLE/OFF:
+9.4.6	Automatically cancel cycle after first move:
+
+9.5#	Cycle User defined blocks:
+9.5.1	CYCLE/OFF User defined block:
+9.5.2	CYCLE/DEEP User defined block:
+9.5.3	CYCLE/DEEP w/STEP User defined block:
+9.5.4	CYCLE/DRILL User defined block:
+9.5.5	CYCLE/DRILL w/STEP User defined block:
+9.5.6	CYCLE/FACE User defined block:
+9.5.7	CYCLE/FACE w/STEP User defined block:
+9.5.8	CYCLE/ROUGH User defined block:
+9.5.9	CYCLE/ROUGH w/STEP User defined block:
+9.5.10	CYCLE/THREAD User defined block:
+9.5.11	CYCLE/THREAD w/STEP User defined block:
+9.5.12	CYCLE/THRU User defined block:
+9.5.13	CYCLE/THRU w/STEP User defined block:
+9.5.14	CYCLE/TURN User defined block:
+9.5.15	CYCLE/TURN w/STEP User defined block:
+
+9.6#	Cycle machining times:
+9.6.1	Enter CYCLE/DEEP time calculation:
+9.6.2	Enter CYCLE/DEEP w/STEP time calculation:
+9.6.3	Enter CYCLE/DRILL time calculation:
+9.6.4	Enter CYCLE/DRILL w/STEP time calculation:
+9.6.5	Enter CYCLE/FACE time calculation:
+9.6.6	Enter CYCLE/FACE w/STEP time calculation:
+9.6.7	Enter CYCLE/ROUGH time calculation:
+9.6.8	Enter CYCLE/ROUGH w/STEP time calculation:
+9.6.9	Enter CYCLE/THREAD time calculation:
+9.6.10	Enter CYCLE/THREAD w/STEP time calculation:
+9.6.11	Enter CYCLE/THRU time calculation:
+9.6.12	Enter CYCLE/THRU w/STEP time calculation:
+9.6.13	Enter CYCLE/TURN time calculation:
+9.6.14	Enter CYCLE/TURN w/STEP time calculation:
+
+9.7	Exit.
+
+10#	Sequence numbers/Alignment blocks.
+10.1	Output sequence numbers by default:
+10.2	Register for sequence numbers:
+10.3	Beginning sequence number:
+10.4	Sequence number increment:
+10.5	Output sequence numbers every nth block:
+10.6	Maximum sequence number:
+10.7	Register for alignment block number:
+10.8	User defined block for non-motion alignment blocks:
+10.9	User defined block for motion alignment blocks:
+10.10	User defined block for automatic cycle blocks:
+
+11	Spindle and Coolant.
+11.0	Walk through Spindle and Coolant parameters.
+11.1#	Spindle Set-up.
+11.1.1	Enter spindle speed output format:
+	1. Use the spindle speed as reference only.
+	2. Output the spindle speed as a direct RPM/SFM value.
+	3. Output using a predefined spindle table.
+	4. Output as a percentage of the maximum spindle speed.
+11.1.2	Does the machine controller support SFM spindle control:
+11.1.3	Enter number of spindle ranges [1-3]:
+11.1.4	Low range spindle speed limits [min,max]:
+11.1.5	Medium range spindle speed limits [min,max]:
+11.1.6	High range spindle speed limits [min,max]:
+11.1.7	SFM spindle speed limits [min,max]:
+11.1.8	Tolerance for RPM output when in SFM mode:
+11.1.9	Low range spindle speed limits for mill head [min,max]:
+11.1.10	Medium range spindle speed limits for mill head [min,max]:
+11.1.11	High range spindle speed limits for mill head [min,max]:
+
+11.2#	Spindle registers:
+11.2.1	Spindle RPM speed register:
+11.2.2	Spindle SFM speed register:
+11.2.3	Spindle CLW code:
+11.2.4	Spindle CCLW code:
+11.2.5	Spindle OFF code:
+11.2.6	Spindle ORIENT code:
+11.2.7	Spindle BOTH code:
+11.2.8	Low range spindle code:
+11.2.9	Medium range spindle code:
+11.2.10	High range spindle code:
+11.2.11	RPM spindle speed control code:
+11.2.12	SFM spindle speed control code:
+11.2.13	SFM maximum spindle speed control code:
+11.2.14	SFM spindle radius register:
+11.2.15	Disable spindle speed overrides code:
+11.2.16	Enable spindle speed overrides code:
+11.2.17	User defined block for spindle on blocks:
+11.2.18	Output spindle off codes in a block by themselves:
+
+11.3	Low range spindle speed table.
+11.4	Medium range spindle speed table.
+11.5	High range spindle speed table.
+
+11.6#	Coolant Set-up.
+11.6.1	Coolant mist code:
+11.6.2	Coolant flood code:
+11.6.3	Coolant air code:
+11.6.4	Coolant off code:
+11.6.5	Combination spindle CLW and coolant mist code:
+11.6.6	Combination spindle CCLW and coolant mist code:
+11.6.7	Combination spindle CLW and coolant flood code:
+11.6.8	Combination spindle CCLW and coolant flood code:
+11.6.9	Combination spindle CLW and coolant air code:
+11.6.10	Combination spindle CCLW and coolant air code:
+11.6.11	Output coolant on codes in a block by themselves:
+11.6.12	Output coolant off codes in a block by themselves:
+11.7	Exit
+
+12	Feedrate and Rapid.
+12.0	Walk through Feedrate and Rapid parameters.
+12.1#	Miscellaneous Feedrate Set-up.
+12.1.1	Does the machine controller support FPM feedrates:
+12.1.2	Does the machine controller support FPR feedrates:
+12.1.3	Does the machine controller support DPM feedrates:
+12.1.4	Does the machine controller support Inverse Time feedrates:
+12.1.5	Default feedrate mode:
+12.1.6	Force current feed output after FEDRAT statement:
+12.1.7	Force current feed output after feedrate mode change:
+12.1.8	Feedrate mode for rotary axes movement:
+	1. Feed per Minute.
+	2. Feed per Revolution.
+	3. Degrees per Minute.
+	4. Inverse time.
+	5. Combination Feed per Minute and Degrees per Minute.
+	6. Feed per Minute when linear motion is greater than rotary motion.
+	   Degrees per Minute when rotary motion is greater than linear motion.
+	7. Feed rate control point.
+12.1.9	Output average rotary axes radius with feedrate:
+12.1.10	Rotary axis #1 radius register:
+12.1.11	Rotary axis #2 radius register:
+12.1.12	Rotary axis #3 radius register:
+12.1.13	Rotary axis #4 radius register:
+12.1.14	Disable feedrate overrides code:
+12.1.15	Enable feedrate overrides code:
+
+12.2#	Feed per Minute Feedrates.
+12.2.1	Output FPM feedrates as FPR/INVERS:
+12.2.2	Output FPM feedrates using a predefined table:
+12.2.3	Output FPM feedrates based on the control point:
+12.2.4	FPM register:
+12.2.5	Set FPM mode register and value:
+12.2.6	Pulse weight for linear axes:
+12.2.7	Pulse weight for rotary axes:
+12.2.8	Are extended precision FPM feedrates supported:
+12.2.9	Multiplication constant for extended precision FPM feedrates:
+12.2.10	Extended precision FPM register:
+12.2.11	Set extended precision FPM mode register and value:
+
+12.3#	Feed Per Revolution Feedrates:
+12.3.1	Output FPR feedrates as FPM/INVERS:
+12.3.2	Output FPR feedrates using a predefined table:
+12.3.3	FPR register:
+12.3.4	Set FPR mode register and value:
+12.3.5	Should FPR feedrates be forced when the Z-axis moves:
+12.3.6	Force FPR feedrate when FPM feedrate is less than:
+
+12.4#	Degrees per Minute Feedrates.
+12.4.1	DPM register:
+12.4.2	Set DPM mode register and value:
+12.4.3	Should DPM mode register override linear motion register:
+
+12.5#	Inverse Time Feedrates.
+12.5.1	How should inverse time feedrates be calculated:
+	1.  1 / Time
+	2.  (Constant * 2n * Feed) / (60 * Distance)
+	3.  Machining time
+	4.  Vector speed
+	5.  (Linear + Rotary) / Time
+	6.  Feed / (Linear + Rotary)
+12.5.2	Inverse time feedrate calculation for circular interpolation:
+	1.  1 / Time
+	2.  Feed / Radius
+	3.  Machining time.
+12.5.3	Enter Constant for inverse time calculations:
+12.5.4	Enter command pulse weight for inverse time calculations:
+12.5.5	Unit of time for inverse time feedrates:
+12.5.6	Inverse time feedrate register:
+12.5.7	Set inverse time mode register and value:
+12.5.8	Are extended precision inverse time feedrates supported:
+12.5.9	Multiplication constant for extended precision 1/T feedrates:
+12.5.10	Extended precision inverse time register:
+12.5.11	Set extended precision inverse time mode register and value:
+12.5.12	Enter Constant for rotary delta movement in Inches:
+12.5.13	Enter Constant for rotary delta movement in Millimeters:
+
+12.6	Feed per Minute feedrate table.
+12.7	Feed per Revolution feedrate table.
+
+12.8#	Rapid Set-up.
+12.8.1	Does the machine controller support rapid mode:
+12.8.2	Enter codes for setting rapid mode:
+12.8.3	Does the machine controller support rapid mode in LMFP mode:
+12.8.4	Enter code for setting rapid in LMFP mode:
+12.8.5	Does the machine controller support rapid mode in LMDP mode:
+12.8.6	Enter code for setting rapid in LMDP mode:
+12.8.7	Output linear interpolation code on rapid block:
+12.8.8	Reset the programmed feedrate after a rapid move:
+12.8.9	Reset the feedrate mode after a rapid move:
+12.8.10	Enter motion alteration for rapid moves:
+	1. Do not alter rapid moves.
+	2. Alter rapid moves along X-axis.
+	3. Alter rapid moves along Y-axis.
+	4. Alter rapid moves along Z-axis.
+	5. Alter rapid moves along major tool axis.
+12.8.11	Retract/plunge rapid moves along tool axis:
+12.8.12	Retract to clearance plane on rapid moves:
+12.8.13	Mode for rapid moves:
+	1. Same as currently programmed mode.
+	2. Always absolute.
+	3. Always incremental.
+12.8.14	Modify Rapid moves to complete fastest axis first during simulation:
+
+12.9#	Output feedrate limits.
+12.9.1	FPM feedrate limits [min,max]:
+12.9.2	FPR feedrate limits [min,max]:
+12.9.3	DPM feedrate limits [min,max]:
+12.9.4	Inverse time feedrate limits [min,max]:
+12.9.5	Extended precision FPM feedrate limits [min,max]:
+12.9.6	Extended precision inverse time feedrate limits [min,max]:
+12.9.7	Enter Unit scale factor for feedrate limit values:
+
+12.10#	Machine feedrate limits.
+12.10.1	Maximum Primary X-axis feedrate:
+12.10.2	Maximum Secondary X-axis feedrate:
+12.10.3	Maximum Primary Y-axis feedrate:
+12.10.4	Maximum Secondary Y-axis feedrate:
+12.10.5	Maximum Primary Z-axis feedrate:
+12.10.6	Maximum Secondary Z-axis feedrate:
+12.10.7	Maximum Rotary axis #1 DPM feedrate:
+12.10.8	Maximum Rotary axis #2 DPM feedrate:
+12.10.9	Maximum Rotary axis #3 DPM feedrate:
+12.10.10	Maximum Rotary axis #4 DPM feedrate:
+12.10.11	Primary X-axis rapid rate:
+12.10.12	Secondary X-axis rapid rate:
+12.10.13	Primary Y-axis rapid rate:
+12.10.14	Secondary Y-axis rapid rate:
+12.10.15	Primary Z-axis rapid rate:
+12.10.16	Secondary Z-axis rapid rate:
+12.10.17	Rotary axis #1 rapid rate:
+12.10.18	Rotary axis #2 rapid rate:
+12.10.19	Rotary axis #3 rapid rate:
+12.10.20	Rotary axis #4 rapid rate:
+12.10.21	Minimum amount of time allowed per move in seconds:
+12.10.22	Adjust output feedrates for maximum axes feedrates:
+
+12.11#	Accel/Decel time adjustments.
+12.11.1	Adjust machining time for acceleration/deceleration spans:
+12.11.2	Maximum velocity for Primary X-axis:
+12.11.3	Maximum velocity for Secondary X-axis:
+12.11.4	Maximum velocity for Primary Y-axis:
+12.11.5	Maximum velocity for Secondary Y-axis:
+12.11.6	Maximum velocity for Primary Z-axis:
+12.11.7	Maximum velocity for Secondary Z-axis:
+12.11.8	Maximum velocity for Rotary axis #1:
+12.11.9	Maximum velocity for Rotary axis #2:
+12.11.10	Maximum velocity for Rotary axis #3:
+12.11.11	Maximum velocity for Rotary axis #4:
+
+12.12	Exit
+
+13	Tool Change Sequence.
+13.0	Walk through Tool Change Sequence.
+
+13.1#	Tool change support.
+13.1.1	Maximum tool number allowed:
+13.1.2	Does the machine support a "Select Tool" sequence:
+13.1.3	Does the machine have both a SMALL and LARGE gripper:
+13.1.4	Does the machine have both a MAIN and AXIAL spindle:
+13.1.5	Support SELECT/TOOL and LOAD/TOOL commands:
+13.1.6	Number of turrets:
+13.1.7	Distance between turrets:
+13.1.8	Default turret at beginning of program:
+
+13.2#	Loading the tool.
+13.2.1	Should the tool to unload be output with a tool change:
+13.2.2	Should an unload code be output for a tool change:
+13.2.3	Output tool number with a tool unload block:
+13.2.4	Output an alignment block on tool change blocks:
+13.2.5	Output an alignment block after a tool change block:
+13.2.6	Turn off tool length compensation prior to a tool change:
+13.2.7	Turn on tool length compensation after a tool change:
+13.2.8	Is a tool change considered an End-of-sequence:
+13.2.9	Look ahead for LOADTL when PPRINT encountered:
+13.2.10	Calculate separate times for each instance the same tool is loaded:
+13.2.11	Amount of time for tool change sequence in seconds:
+
+13.3#	Tool change codes.
+13.3.1	Pick up tool (with small gripper) code:
+13.3.2	Pick up tool with large gripper code:
+13.3.3	Select tool register:
+13.3.4	Tool number register:
+13.3.5	Output the tool register on a block by itself:
+13.3.6	Tool change code:
+13.3.7	Manual tool change code:
+13.3.8	Unload tool (with small gripper) from main spindle code:
+13.3.9	Unload tool (with small gripper) from axial spindle code:
+13.3.10	Unload tool with large gripper from main spindle code:
+13.3.11	Unload tool with large gripper from axial spindle code:
+13.3.12	Force turret CLW code:
+13.3.13	Force turret CCLW code:
+13.3.14	User defined block for tool changes:
+
+13.4#	Tool length offsets.
+13.4.1	Add tool lengths to output axes:
+13.4.2	Register for tool length offsets:
+13.4.3	Base number for tool length offsets:
+13.4.4	Code for enabling tool length offsets:
+13.4.5	Code for disabling tool length offsets:
+13.4.6	Code for PLUS tool length offsets:
+13.4.7	Code for MINUS tool length offsets:
+13.4.8	Output MINUS offsets as negative values:
+13.4.9	XAXIS tool offset register:
+13.4.10	YAXIS tool offset register:
+13.4.11	ZAXIS tool offset register:
+13.4.12	Output plane selection code with tool length offset register:
+13.4.13	Output tool offset ON codes in a block by themselves:
+13.4.14	Output tool offset OFF codes in a block by themselves:
+13.4.15	User defined block for tool length offsets:
+
+13.5	Exit.
+
+14	Cutter/Fixture Compensations.
+14.0	Walk through Cutter/Fixture Compensation.
+
+14.1#	Cutter compensation support.
+14.1.1	Cutter compensation output format:
+	0. Do not output directional vectors.
+	1. Output vector in direction of compensation.
+	2. Output vector parallel to next move.
+	3. Output vector parallel to current move.
+	4. Output angular direction of next move.
+14.1.2	Unitize cutcom vector:
+14.1.3	Is cutter compensation allowed in all 3 planes:
+14.1.4	Is 3-dimensional cutter compensation supported:
+14.1.5	Is 5-axis cutter compensation allowed:
+14.1.6	Are approach/departure codes supported:
+14.1.7	Maximum angular change when cutcom is active:
+14.1.8	Maximum vector component value allowed:
+
+14.2#	Cutter compensation control.
+14.2.1	Output cutcom on codes in a block by themselves:
+14.2.2	Output cutcom off code in block by itself:
+14.2.3	Output directional vector on initial cutcom on block:
+14.2.4	Output directional vector on circular block:
+14.2.5	Output directional vector between multiple circular blocks:
+14.2.6	Output an offset register with a value of 0 with cutcom off:
+14.2.7	Output an error message with move in non-cutcom axis:
+
+14.3#	Cutter compensation codes.
+14.3.1	Cutcom LEFT code:
+14.3.2	Cutcom RIGHT code:
+14.3.3	Cutcom OFF code:
+14.3.4	Cutter compensation offset register:
+14.3.5	Base number for cutter compensation register:
+14.3.6	Cutcom vector definition code:
+14.3.7	X-axis vector component register:
+14.3.8	Y-axis vector component register:
+14.3.9	Z-axis vector component register:
+14.3.10	Cutcom angular direction register:
+14.3.11	CLW circular cutcom direction code:
+14.3.12	CCLW circular cutcom direction code:
+14.3.13	Approach/departure code #1:
+14.3.14	Approach/departure code #2:
+14.3.15	Approach/departure code #3:
+14.3.16	Approach/departure distance register:
+14.3.17	3-D cutter compensation code:
+14.3.18	Tool radius register:
+14.3.19	Tool corner radius register:
+14.3.20	Rotary axis position mode register:
+14.3.21	Maximum feed rate register:
+
+14.4#	Fixture offsets.
+14.4.1	Register for fixture offsets:
+14.4.2	Base number for fixture offsets:
+14.4.3	Code for enabling fixture offsets:
+14.4.4	Code for disabling fixture offsets:
+14.4.5	Code for PLUS fixture offsets:
+14.4.6	Code for MINUS fixture offsets:
+14.4.7	Output MINUS offsets as negative values:
+14.4.8	XAXIS fixture offset register:
+14.4.9	YAXIS fixture offset register:
+14.4.10	ZAXIS fixture offset register:
+14.4.11	Output fixture offset ON codes in a block by themselves:
+14.4.12	Output fixture offset OFF codes in a block by themselves:
+
+14.5	Exit.
+
+15	Miscellaneous Post commands.
+15.0	Walk through Misc Post commands.
+
+15.1#	Messages and INSERT.
+15.1.1	Add sequence numbers to Message blocks:
+15.1.2	Add sequence numbers to INSERT blocks:
+15.1.3	Output an End-of-Block on Message blocks:
+15.1.4	Output an End-of-Block on INSERT blocks:
+15.1.5	Convert message Spaces to Tabs:
+15.1.6	Align Message blocks at column:
+15.1.7	Process PPRINT IPV statements normally:
+
+15.2#	OPSKIP, OPSTOP and STOP.
+15.2.1	Enter code for OPSTOP:
+15.2.2	Enter code for STOP:
+15.2.3	User defined block after OPSKIP/OFF:
+15.2.4	User defined block after OPSTOP:
+15.2.5	User defined block after STOP:
+15.2.6	Should OPSTOP be considered an End-of-Sequence:
+15.2.7	Should STOP be considered an End-of-Sequence:
+
+15.3#	DELAY.
+15.3.1	Enter delay definition code:
+15.3.2	Enter delay time register:
+15.3.3	Enter spindle revolution delay register:
+15.3.4	Enter output format for time delay blocks:
+	1. Always in time.
+	2. Always in spindle revolutions.
+	3. In time with FPM mode.
+	   In spindle revolutions with FPR mode.
+	4. In time when specified in time.
+	   In spindle revolutions when specified in REV's.
+	5. Multiple delay definition codes.
+	6. Inverse time.
+15.3.5	Unit to output for time delays:
+	1. Milliseconds
+	2. Seconds
+	3. Minutes
+15.3.6	Enter time interval in seconds for each delay block:
+15.3.7	Does the X-axis need to be output in a delay block:
+15.3.8	Reset the programmed feed rate after a delay block:
+
+15.4#	GOHOME.
+15.4.1	Enter code for GOHOME/CHECK:
+15.4.2	Enter code for GOHOME/AUTO:
+15.4.3	Enter code for GOHOME/FROM:
+15.4.4	Enter code for GOHOME/NEXT:
+15.4.5	Enter register for GOHOME/XAXIS,1:
+15.4.6	Enter register for GOHOME/XAXIS,2:
+15.4.7	Enter register for GOHOME/YAXIS,1:
+15.4.8	Enter register for GOHOME/YAXIS,2:
+15.4.9	Enter register for GOHOME/ZAXIS,1:
+15.4.10	Enter register for GOHOME/ZAXIS,2:
+15.4.11	Enter register for GOHOME/AXIS,1:
+15.4.12	Enter register for GOHOME/AXIS,2:
+15.4.13	Enter register for GOHOME/AXIS,3:
+15.4.14	Enter register for GOHOME/AXIS,4:
+
+15.5#	POSTN.
+15.5.1	Enter register for POSTN program number:
+15.5.2	Enter code for POSTN/NORMAL:
+15.5.3	Enter code for POSTN/INCR:
+15.5.4	Enter code for POSTN/OFF:
+15.5.5	Output POSTN/OFF code in a block by itself:
+15.5.6	Enter register for POSTN/XAXIS,1:
+15.5.7	Enter register for POSTN/XAXIS,2:
+15.5.8	Enter register for POSTN/YAXIS,1:
+15.5.9	Enter register for POSTN/YAXIS,2:
+15.5.10	Enter register for POSTN/ZAXIS,1:
+15.5.11	Enter register for POSTN/ZAXIS,2:
+15.5.12	Enter register for POSTN/AXIS,1:
+15.5.13	Enter register for POSTN/AXIS,2:
+15.5.14	Enter register for POSTN/AXIS,3:
+15.5.15	Enter register for POSTN/AXIS,4:
+
+15.6	Exit
+
+16	Ultrasonic Blade.
+16.0	Walk through Ultrasonic Blade Configuration.
+
+16.1#	Ultrasonic Blade Cutter set-up.
+16.1.1	Enter default Blade direction vector:
+16.1.2	Register for internal Blade Rotary axis:
+16.1.3	Register for absolute Blade Rotary axis:
+16.1.4	Register for incremental Blade Rotary axis:
+16.1.5	Blade Rotary axis is output on a Linear/Rotary scale:
+16.1.6	Current position for Blade Rotary axis:
+16.1.7	Maximal change of Blade Rotary axis:
+16.1.8	Blade Rotary axis travel limits [min,max]:
+
+16.2#	Ultrasonic Blade Alignment.
+16.2.1	Automatic blade alignment mode:
+16.2.2	Minimum span to apply Align alteration:
+16.2.3	Minimum blade angle which will have Align alteration:
+16.2.4	Span distance at which to align blade:
+16.2.5	Blade alignment direction:
+
+16.3#	Ultrasonic Blade Positioning.
+16.3.1	Blade alignment positioning mode:
+16.3.2	Distance above location to Align blade:
+16.3.3	Enter feed rate to position the tool:
+16.3.4	Enter feed rate to plunge the tool:
+
+16.4#	Smooth cutting command set-up.
+16.4.1	Smooth on code:
+16.4.2	Smooth off code:
+16.4.3	Enable curve blending codes:
+16.4.4	Disable curve blending codes:
+16.4.5	Curve blending limit angle register:
+16.4.6	Maximal curve blending direction change:
+16.4.7	Initial span for initiating curve blending mode:
+
+16.5#	Vacuum Pods.
+16.5.1	Pod vacuum pump off code:
+16.5.2	Pod vacuum pump on code:
+16.5.3	Pod vacuum off code:
+16.5.4	Disable Pod vacuum off code:
+16.5.5	All Pods down code:
+16.5.6	All Pods low pressure code:
+16.5.7	All Pods high pressure code:
+16.5.8	Pod row address register:
+16.5.9	Pod column address register:
+16.5.10	Address single Pod code:
+16.5.11	Addressed Pod unclamp code:
+16.5.12	Addressed Pod clamp code:
+16.5.13	Addressed Pod no pressure code:
+16.5.14	Addressed Pod up code:
+16.5.15	Addressed Pod up/clamp code:
+
+16.6	Exit
+
+17	Stringer Drilling Machine.
+17.0	Walk through Stringer Drilling Configuration.
+
+17.1#	Stringer Drill set-up.
+17.1.1	Enter active Head at start of program:
+17.1.2	Enter offset distance for Head 2 calculations:
+17.1.3	Enter pivot offset distance for Head 3 and 4 calculations:
+
+17.2#	Axes register description.
+17.2.1	Define registers for Head #:
+17.2.2	Register for X-axis:
+17.2.3	Register for Y-axis:
+17.2.4	Register for Z-axis:
+17.2.5	Register for Rotary axis #1:
+17.2.6	Register for Rotary axis #2:
+17.2.7	Register for Rotary axis #3:
+
+17.3#	Stringer codes.
+17.3.1#	User defined block for Head #1 activation:
+17.3.2#	User defined block for Head #2 activation:
+17.3.3#	User defined block for Head #3 activation:
+17.3.4#	User defined block for Head #4 activation:
+17.3.5#	User defined block for Head #1 home move:
+17.3.6#	Code for the clip holder slide home position:
+17.3.7#	Spindle ON code for drilling head:
+17.3.8#	Spindle OFF code for drilling head:
+17.3.9#	Coolant ON code for drilling head:
+17.3.10#	Coolant OFF code for drilling head:
+17.3.11#	Code for activating the milling head:
+17.3.12#	Code for activating the drilling heads:
+
+17.4#	Current axes position.
+17.4.1	Current axes positions for Head #:
+17.4.2	Current position for X-axis:
+17.4.3	Current position for Y-axis:
+17.4.4	Current position for Z-axis:
+17.4.5	Current position for Rotary axis #1:
+17.4.6	Current position for Rotary axis #2:
+17.4.7	Current position for Rotary axis #3:
+
+17.5#	Home position.
+17.5.1	Home positions for Head #:
+17.5.2	X-axis Home position:
+17.5.3	Y-axis Home position:
+17.5.4	Z-axis Home position:
+17.5.5	Rotary axis #1 Home position:
+17.5.6	Rotary axis #2 Home position:
+17.5.7	Rotary axis #3 Home position:
+
+17.6#	Machine limits:
+17.6.1	Machine limits for Head #:
+17.6.2	X-axis travel limits [min,max]:
+17.6.3	Y-axis travel limits [min,max]:
+17.6.4	Z-axis travel limits [min,max]:
+17.6.5	Rotary axis #1 travel limits [min,max]:
+17.6.6	Rotary axis #2 travel limits [min,max]:
+17.6.7	Rotary axis #3 travel limits [min,max]:
+
+17.7	Exit
+
+18	Exit

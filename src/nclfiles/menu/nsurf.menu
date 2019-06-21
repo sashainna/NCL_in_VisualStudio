@@ -1,0 +1,17 @@
+#Descriptor#
+/NAME/ Nurb Surfaces
+/POSITION/ 0.542969,0.078125
+/SIZE/ 0.085938,0.651042
+/ROWS/ 7
+/COLS/ 1
+/TYPE/ Pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Ruled/ CAM_GEO_NF_RULED
+/Curves/ CAM_GEO_NF_CURVES
+/Curves 0/ CAM_GEO_NF_CURVES0
+/Fit/ CAM_GEO_NF_FIT
+/Fit Thru/ CAM_GEO_NF_FIT_THRU
+/4 Curve/ CAM_GEO_NF_4CV
+/Revolve/ CAM_GEO_NF_REVOLVE

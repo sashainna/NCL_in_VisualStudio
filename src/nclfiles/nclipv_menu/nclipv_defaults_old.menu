@@ -1,0 +1,19 @@
+#Descriptor#
+/NAME/ Defaults
+/POSITION/ 0.125000,0.013021
+/SIZE/ 0.113281,0.447917
+/ROWS/ 2
+/COLS/ 4
+/TYPE/ pulldown
+
+#Menus#
+/Modals/ IPV_MODALS
+/Display/ IPV_DISPLAY_PROP
+/Lights/ IPV_LIGHTS
+/Interface/ NIS_IFACE_MODALS
+#BAR#
+/Clashes/ IPV_DIAGNOSTICS
+/Colors/ IPV_CUT_COLORS
+#BAR#
+/Inches/ NCLIPV_SET_INCH
+/Millimeters/ NCLIPV_SET_MM

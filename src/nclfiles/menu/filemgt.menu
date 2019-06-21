@@ -1,0 +1,22 @@
+#Descriptor#
+/NAME/ File Management
+/POSITION/ 0.6,.6
+/SIZE/ 0.353906,0.117188
+/ROWS/ 3
+/COLS/ 4
+/TYPE/ Menu
+/FORMAT/ TEXT
+
+#Menus#
+/Ncl Que/ NIS_NCL_QUE
+/Edit File/ NIS_EDIT_FILE
+/Edit .pr/ NIS_EDIT_PR
+/Copy File/ NIS_COPY_FILE
+/Run Batch/ NIS_NCL_BATCH
+/Que Status/ NIS_DISPLAY_NCLQUE
+/Edit .pr1/ NIS_EDIT_PR1
+/Rename File/ NIS_RENAME_FILE
+/Que Modals/ NIS_QUE_MODALS
+/Disp Batch Log/ NIS_DISPLAY_BATLOG
+/Edit .Pu1/ NIS_EDIT_PU1
+/Delete File/ NIS_DELETE_FILE

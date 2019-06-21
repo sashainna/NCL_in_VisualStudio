@@ -1,0 +1,36 @@
+#Descriptor#
+/NAME/ Cut Routines
+/POSITION/ 0.000000,0.542969
+/SIZE/ 0.081055,0.140625
+/ROWS/ 5
+/COLS/ 2
+/TYPE/ Icon
+/Area/ Left
+/KEYDEFS/ camkey.wnt
+/FORMAT/ BOTH
+
+#Menus#
+/Cutter/ CAM_CUTTER_PARMS
+#bar#
+/Goto/ CAM_GOTO
+/Go/ CAM_GO
+/Contour/ CAM_CONTOUR
+/Godlta/ CAM_GODLTA
+#bar#
+/Adv Pocket/ CAM_POCKET
+/PKT Modal/ CAM_POCKET_MODALS
+/VoluMill/ CAM_VOLUMILL
+/Volu Modal/ CAM_VOLUMILL_MODALS
+/Waterline/ CAM_GEO_WATERLINE
+#bar#
+/Rmill/ CAM_RMILL
+/Fmill/ CAM_FMILL
+/Smill/ CAM_SMILL
+#bar#
+/Profile/ CAM_PROFILE
+/Engrave/ CAM_ANOTE_ENGRAVE
+#bar#
+/Options/ camopt.menu
+/Misc/ cammisc.menu
+#bar#
+/Modeling/ nclcam.menu

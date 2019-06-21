@@ -1,0 +1,20 @@
+#DESCRIPTOR#
+/NAME/ Help
+/POSITION/ 0.710938,0.121094
+/SIZE/ 0.125000,0.290365
+/ROWS/ 10
+/COLS/ 1
+/TYPE/ PULLDOWN
+/FORMAT/ TEXT
+
+#MENUS#
+/NCL Manual/ NIS_SYSTEM_ONCE, <NCL Reference Manual>, "%acroread% %NCL_DOC%\ncl94ref.pdf&,NO"
+/Hot Keys (Brief)/ hotkeys.menu
+/Hot Keys (Full)/ NIS_SYSTEM_ONCE, <NCL Keyboard Layout>,"%acroread% %NCL_DOC%\keylist.pdf&,NO"
+/9.4 Release Notes/ NIS_SYSTEM_ONCE, <NCL V9.4 Release Notes>,"%acroread% %NCL_DOC%\rel94.pdf&,NO"
+/IPV Manual/ NIS_SYSTEM_ONCE, <NCLIPV Reference Manual>, "%acroread% %NCL_DOC%\nclipv.pdf&,No"
+/IGES Manual/ NIS_SYSTEM_ONCE, <IGES Reference Manual>, "%acroread% %NCL_DOC%\ncliges.pdf&,No"
+/Toolib Manual/ NIS_SYSTEM_ONCE, <Toolib Reference Manual>,"%acroread% %NCL_DOC%\toolib.pdf&,No"
+/Postworks Manual/ NIS_SYSTEM_ONCE, <PostWorks Reference Manual>, "%acroread% %NCL_DOC%\postworks.pdf&,No"
+#Bar#
+/License/ license.menu

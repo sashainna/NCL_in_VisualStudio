@@ -1,0 +1,17 @@
+#DESCRIPTOR#
+/NAME/ Standard Views
+/POSITION/ .25,.25
+/SIZE/ .080,.144
+/ROWS/ 4
+/COLS/ 2
+/TYPE/ PULLDOWN
+/FORMAT/ TEXT
+
+#MENUS#
+/View Front/ MSL_VIEW_FRONT
+/View Back/ MSL_VIEW_BACK
+/View Top/ MSL_VIEW_TOP
+/View Bottom/ MSL_VIEW_BOTTOM
+/View Left/ MSL_VIEW_LEFT
+/View Right/ MSL_VIEW_RIGHT
+/View Isometric/ MSL_VIEW_ISOMETRIC

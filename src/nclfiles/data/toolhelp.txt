@@ -1,0 +1,14 @@
+~1
+1.  Load Tool Library.
+
+   This selection requests an NCL Tool Library to load as the working library.
+   If a Tool Library is currently loaded, then you will be asked to save this
+   library prior to loading the new library.  Entering a ^C at the load prompt
+   will cancel the prompt without loading a new library.
+~2
+2.  Define Tool Library.
+
+   This selection allows you to define or change the Tool Library file name,
+   description for this library, and the Symbol Library associated with this
+   Tool Library.  Entering a ^C at any prompt in this section will return you
+   to the main menu.

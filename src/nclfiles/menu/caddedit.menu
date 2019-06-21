@@ -1,0 +1,33 @@
+#Descriptor#
+/NAME/ Cad Edit
+/POSITION/ 0.000000,0.0
+/SIZE/ 0.083,0.459
+/ROWS/ 17
+/COLS/ 1
+/TYPE/ Pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Delete/ CAD_REMOVE_GEO
+/Del All Disp/ CAD_REMOVE_ALL
+#BAR#
+/Invisible/ NCL_INVISIBLE_GEO
+/Invis All/ NCL_INVISIBLE_ALL
+/Visible/ NCL_VISIBLE_GEO
+/Visible All/ NCL_VISIBLE_ALL
+#BAR#
+/Mod Attribs/ NCL_MODIFY_ATTRIBS
+/Materials/ CAD_GEO_SF_MATERIAL
+#BAR#
+/Trim-Extend/ NCL_TRIM_EXTEND
+/Mid-End Trim/ NCL_MID_TRIM
+/Mod Entity/ CAD_MOD_ENTITY
+#BAR#
+/Scale/ CAD_SCALE_GEO
+/Split Cv/ CAD_SPLIT_CV
+/Reverse Cv/ CAD_REVERSE_CV
+#BAR#
+/Labels/ cad_labels.menu
+#BAR#
+/Move/ cad_move.menu
+/Copy/ cad_copy.menu

@@ -1,0 +1,149 @@
+ICTYP
+-----
+1   = Vocabulary Word
+2   = Operator
+3   = Real Number
+4   = Text String (unquoted)
+5   = Real Variable
+6   = Text Variable
+7   = Quoted Text String
+8   = Register Descriptor
+9   = Unknown
+10  = Unknown
+11  = Range
+12  = Macro Argument
+13  = Post Variable
+14  = Subscripted Post Variable
+15  = CLDATA Array
+16  = Multi-dimensional real array
+17  = Multi-dimensional text array
+18  = Subscripted Text Post Variable
+
+100+ = Equation order
+
+
+Delimiter Types
+---------------
+1   =
+2   ,
+3   :
+4   +
+5   -
+6   *
+7   /
+8   **
+9   ==
+10  <
+11  >
+12  <>
+13  <=
+14  >=
+15  &
+16  |
+17  (
+18  )
+
+Variable Storage Record
+-----------------------
+MFDAT(1:2) = Variable name
+MFDAT(3)   = Amount of memory to allocate.
+MFDAT(4)   = Relative pointer to memory where data is stored.
+MFDAT(5)   = Number of dimensions in array.
+MFDAT(6)   = 1st dimension
+MFDAT(7)   = 2nd dimension
+MFDAT(8)   = 3rd dimension
+
+Compiled Record
+---------------
+ICMPL(1) = Number of 2-byte words in record
+ICMPL(2) = Type of compilation record
+   0 = Noop
+   1 = Real equation
+   2 = Text equation
+   3 = Post word
+   4 = Jumpto
+   5 = If
+   6 = Termac
+   7 = Multi-parameter real function
+   8 = Multi-parameter text function
+   9 = Syntax
+   10 = Enable
+   11 = Format specification
+   12 = Define
+   13 = Clread, Clfind, Clwrit
+   14 = File I/O commands
+   15 = Multi-dimensional subscript pointer.
+   16 = Endmac
+
+PRNVAR
+------
+(1,n) = Initial subscript value.
+(2,n) = Ending subscript value (1:2).
+
+Real Variable
+-------------
+ICMPL(n) = Variable type.
+   1  = Not subscripted (or parenthesis variable)
+   2  = Subscripted
+   3  = Number
+   12 = Macro argument
+   13 = Post variable
+   15 = Cldata array
+   16 = Multi-dimensional array
+
+JCMPL(1) = Pointer to variable.
+JCMPL(2) = Pointer to subscript (parenthesis variable) or Number of dimensions.
+
+16 - Multi-dimensional subscript pointer
+----------------------------------------
+ICMPL(3) = Resultant parenthesis variable pointer.
+ICMPL(4) = Number of subscripts.
+ICMPL(5) = Max subscript in slot 1.
+ICMPL(6) = Max subscript in slot 2.
+ICMPL(7) = Max subscript in slot 3.
+ICMPL(8) = Subscript 1 type (1=Parenthesis variable, 3 = Number).
+ICMPL(9) = Subscript 2 type.
+ICMPL(10) = Subscript 3 type.
+ICMPL(11) = 5 = Real variable, 6 = Text Variable, nnnn = Post variable
+RCMPL(4) = 1st subscript variable.
+RCMPL(5) = 2nd subscript variable.
+RCMPL(6) = 3rd subscript variable.
+
+1 - Real Equation
+-----------------
+ICMPL(3) = Type of equation.
+   1  = Assignment
+   2  = Not used
+   3  = Parenthesis assignment
+   4  = Addition
+   5  = Subtraction
+   6  = Multiplication
+   7  = Division
+   8  = Exponentiation
+   9  = Equals
+   10 = Less than
+   11 = Greater than
+   12 = Not equals
+   13 = Less than equal
+   14 = Greater than equal
+   15 = And
+   16 = Or
+   17 = Not used
+   18 = Not used
+   19 = INT()
+   20 = COS()
+   21 = SIN()
+   22 = TAN()
+   23 = SQRT()
+   24 = ACOS()
+   25 = ASIN()
+   26 = ATAN()
+   27 = ABS()
+ICMPL(4) = Result type.
+   1  = Parenthesis variable.
+ICMPL(5) = 1 = 1st parameter is not subscripted, 2 = subscripted.
+ICMPL(6) = 1 = 2nd parameter is not subscripted, 2 = subscripted.
+JCMPL(4) = Result descriptor (1).
+JCMPL(5) = Result descriptor (2).
+RCMPL(4) = 1st parameter.
+RCMPL(5) = 2nd parameter.

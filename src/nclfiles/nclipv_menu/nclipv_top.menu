@@ -1,0 +1,19 @@
+#Descriptor#
+/NAME/ TOP_ROW
+/POSITION/ 0.150000,0.000000
+/SIZE/ 0.849219,0.063477
+/ROWS/ 1
+/COLS/ 9
+/TYPE/ Menubar
+/FORMAT/ TEXT
+
+#Menus#
+/&File/ nclipv_file.menu
+/&Session/ nclipv_session.menu
+/&View/ nclipv_view.menu
+/&Defaults/ nclipv_defaults.menu
+/&Simulate/ nclipv_simulate.menu
+/&Stock/ nclipv_stock.menu
+/&Fixture/ nclipv_fixture.menu
+/&Tools/ nclipv_tools.menu
+/&Analyze/ nclipv_analyze.menu

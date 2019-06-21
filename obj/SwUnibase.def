@@ -1,9 +1,0 @@
-; SwUnibase.def : Declares the module parameters.
-
-LIBRARY      "SwUnibase.DLL"
-
-EXPORTS
-	DllCanUnloadNow		PRIVATE
-	DllGetClassObject	PRIVATE
-	DllRegisterServer	PRIVATE
-	DllUnregisterServer	PRIVATE

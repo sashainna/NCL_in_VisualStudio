@@ -1,0 +1,43 @@
+#Descriptor#
+/NAME/ Tools
+/POSITION/ 0.591406,0.062500
+/SIZE/ 0.089844,0.404297
+/ROWS/ 10
+/COLS/ 2
+/TYPE/ Pulldown
+/FORMAT/ BOTH
+
+#Menus#
+/Cam/ nclcam.menu
+/Cadd/ nclcadd.menu
+/Nc Verification/ nclipv.menu
+/Lathe/ lathe.menu
+/2D Drawings/ 2d_drawings.menu
+#Bar#
+/Iges/ NIS_SYSTEM_ONCE,<Run IGES>,"%NCLPATH%\nodebugncl\iges.exe&,No"
+/Tool Library/ NIS_SYSTEM_ONCE, <Tool Library>, "%Nclpath%\nodebugncl\toolib.exe&,No"
+/Plot/ plot.menu
+#Bar#
+/Batch Proc/ nclbatch.menu
+/Edit Txt File/ NIS_EDIT_FILE
+/Os Window/ NIS_SYSTEM_ENTER
+#Bar#
+/PostWorks/ postworks.menu
+#Bar#
+/Menu Design/ NIS_MENU_DESIGN
+/Form Design/ NCL_FORM_DESIGN
+/Load Layout/ NIS_LOAD_LAYOUT
+/Save Layout/ NIS_SAVE_LAYOUT
+/Load Keydefs/ NIS_LOAD_KEYDEF
+/Load Mousedefs/ NIS_LOAD_MOUSE
+/Reset SpaceMouse/ NCL_RESET_SPACEMOUSE
+#Bar#
+/Create Test Case/ CAM_CREATE_TEST_CASE
+#Bar#
+/Load Colors/ NCL_LOAD_COLORS
+/Merge Colors/ NCL_MERGE_COLORS
+#Bar#
+/Restore Menus/ KEY_ROOT
+#Bar#
+/User Menu/ user.menu
+/Calculator/ NCL_CALCULATOR

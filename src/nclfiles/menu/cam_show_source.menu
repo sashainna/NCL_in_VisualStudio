@@ -1,0 +1,13 @@
+#Descriptor#
+/NAME/ Show Source
+/POSITION/ 0.607031,0.211914
+/SIZE/ 0.084375,0.119141
+/ROWS/ 3
+/COLS/ 1
+/TYPE/ Pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Ssrc Cur/ CAM_SSRC_CURRENT
+/Ssrc Line/ CAM_SSRC_LINE
+/Ssrc Scroll/ CAM_SSRC_SCROLL

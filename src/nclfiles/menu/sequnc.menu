@@ -1,0 +1,12 @@
+#Descriptor#
+/NAME/ Sequnc
+/POSITION/ 0.6,.6
+/SIZE/ 0.353906,0.111328
+/ROWS/ 2
+/COLS/ 1
+/TYPE/ Popup
+/FORMAT/ TEXT
+
+#Menus#
+/Path On/ CAM_IPV_TOOL_ON
+/Path Off/ CAM_IPV_TOOL_OFF

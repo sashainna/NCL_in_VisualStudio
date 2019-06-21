@@ -1,0 +1,6 @@
+NCL_STEP_HELP = start %acroread% %NCL_DOC%\NCLSTEP.pdf
+UL_STEP_MODALS = nclstep.mod
+MAX_PARA_REC = 1000000
+UG_DEF_LINE_WT = FALSE
+UX_HOMEDIR = .
+UR_UNB_FILE = "u"

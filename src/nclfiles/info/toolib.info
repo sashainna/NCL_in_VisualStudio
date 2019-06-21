@@ -1,0 +1,136 @@
+TOOLIB Header Record
+--------------------
+
+ Bytes    I*2s      I*4s       Reals      Data
+-------   -----    ------      -----      ----
+1-4       1-2      1           1(2)       First Index record
+9-12      5-6      3           2(2)       Next Available record
+13-24     7-12     4-6         2(3)-3     Version date
+25-36     13-18    7-9         4-5(2)     Creation date
+37-48     19-24    10-12       5(3)-6     Creation time
+49-60     25-30    13-15       7-8(2)     Modification date
+61-72     31-36    16-18       8(3)-9     Modification time
+73-74     37       19(1)       10(1)      # of chars in Symbol Library
+75-96     38-48    19(2)-24    10(2)-12   Symbol library
+97-100    49-50    25          13(2)      Units
+101-104   51-52    26          13(4)      # of Tool entries
+105-108   53-54    27          14(2)      Tool library changed
+109-112   55-56    28          14(4)      Low Tool Number
+113-116   57-58    29          15(2)      High Tool Number
+121-160   61-80    31-40       16-20      Tool library Description
+161-416   81-208   41-104      21-52      Tool library Name
+459-456   225-228  113-114     57         NCL Version Number
+457-461   229-230  115         58(2)      Currently active 2nd data record
+462-465   231-232  116         58(4)      Index within record for 2nd data rec
+466-469   233-234  117         59(2)      Number of recs in 2nd data record
+
+
+TOOLIB Index Record (TOOLIX)
+----------------------------
+ Bytes    I*2s      I*4s       Reals      Data
+-------   -----    ------      -----      ----
+1-4       1-2      1           1(2)       Record Number
+5-8       3-4      2           1(4)       Previous Record Number
+9-12      5-6      3           2(2)       Next Record Number
+13-16     7-8      4           2(4)       Not Used
+17-511    9-255    5-127       3-64(2)    Tool number by sets of two w/next rec
+18-512    10-256   6-128       4-64(4)    Record number of tool record
+
+
+TOOLIB Data Record (FBUF)
+-------------------------
+
+ Bytes    I*2s      I*4s       Reals      Data
+-------   -----    ------      -----      ----
+1-4       1-2      1           1(2)       Record Number
+5-8       3-4      2           1(4)       Record type 0=Tool Data,
+                                          1 = Parameter Labels,
+                                          2 = Operator Commands
+9-12      5-6      3           2(2)       1 = Record is continued
+13-16     7-8      4           2(4)       Tool Number
+17-56     9-28     5-14        3-7        Tool Description
+57-58     29       15(1)       8(1)       # of Cutter Definition
+59-60     30       15(2)       8(2)       Cutter type
+61-62     31       16(1)       8(3)       Pseudo Cutter Flag
+63-64     32       16(2)       8(4)       Display/SHADE,STATIC=1,ON=2,
+                                                        SMOOTH=3,OFF=4 
+65-112    33-56    17-28       9-14       Cutter Definition
+113-124   57-62    29-31       15-16(2)   Cutter Parameters
+125-126   63       32(1)       16(3)      # of Cutter Display Definition
+129-176   65-88    33-44       17-22      Cutter Display Definition
+177-188   89-94    45-47       23-24(2)   Cutter Display Parameters
+189-190   95       48(1)       24(3)      # of chars in Symbol
+191-192   96       48(2)       24(4)      Symbol Holder flag (1=No, 2=Holder)
+193-202   97-101   49-51(1)    25-26(1)   Symbol
+207-208   104      52(2)       26(2)      Load Tool Command Defined
+209-216   105-108  53-54       27         Holder distance
+217-218   109      55(1)       28(1)      Display STATIC=1,PART=2,ALL=3
+219-220   110      55(2)       28(2)      Display/MOVE,STATIC=1,ON=2,OFF=3
+221-222   111      56(1)       28(3)      # of chars in Drawing
+225-250   113-125  57-63(1)    29-31(3)   Drawing name
+253-254   127      64(1)       32(1)      # of Load Tool Values
+257-296   129-148  65-74       33-37      # of chars in Load Tool Values
+297-302   149-151  75-76(1)    38(3)      Load Tool Major Word
+305-464   153-232  77-116      39-58      Load Tool Values
+467-504   233-252  117-126     59-63      Load tool Parameters
+505-508   253-254  127         64(2)      Pointer to second record
+509-512   255-256  128         64(4)      Pointer within record to 2nd record
+
+TOOLIB Data Second Record (FBUF(129:134))
+-----------------------------------------
+513-520   257-260  129-130     65         Holder Y-offset for Lathe cutter
+521-536   261-268  131-134     66-67      Holder Min-Max for Lathe cutter
+537-538   269      135(1)      68(1)      0 = No shank, 1 = Cutter shank,
+                                          2 = Holder shank
+545-576   273-288  137-144     69-72      Shank parameters (d,h) or (w,l,h,o)
+
+
+TOOLIB Form (FRMFBF)
+--------------------
+
+Field     Description
+-----     -----------
+   0      Tool Number
+   1      Tool Description
+   2      Diameter
+   3      Diameter Parameter
+   4      Display Diameter
+   5      Display Diameter Parameter
+   6      Corner Radius
+   7      Corner Radius Parameter
+   8      Display Corner Radius
+   9      Display Corner Radius Parameter
+  10      Height
+  11      Height Parameter
+  12      Display Height
+  13      Display Height Parameter
+  14      Side Angle
+  15      Side Angle Parameter
+  16      Display Side Angle
+  17      Display Side Angle Parameter
+  18      Z-Height
+  19      Z-Height Parameter
+  20      DIsplay Z-Height
+  21      DIsplay Z-Height Parameter
+  22      Flat Angle
+  23      Flat Angle Parameter
+  24      Display Flat Angle
+  25      Display Flat Angle Parameter
+  26      Segment
+  27      Moving
+  28      Symbol
+  29      Holder
+  30      Attach Point
+  31      Tool Drawing
+  32      Load Command
+  33-72   Load Command Parameters
+  73      Cutter Type
+  74      Pseudo Cutter Defined
+  75      Shading
+  76      User Defined Command Defined
+  77      Lathe Symbol Offset Values
+  78      Shank Defined
+  79      Shank Diameter (Mill) X-Width (Lathe)
+  80      Shank Height (Mill) Y-Length (Lathe)
+  81      Shank Depth (Lathe)
+  82      Shank Y Offset Value (Lathe)

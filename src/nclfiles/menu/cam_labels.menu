@@ -1,0 +1,19 @@
+#Descriptor#
+/NAME/ Labels
+/POSITION/ 0.000781,0.639648
+/SIZE/ 0.158594,0.093750
+/ROWS/ 7
+/COLS/ 1
+/TYPE/ Pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Labels On/ NCL_LABEL_ON
+/Labels Off/ NCL_LABEL_OFF
+/Alter/ NCL_LABEL_ALTER
+/Rename/ CAM_RENAME_GEO
+/Leader On/ NCL_LBL_LDR_ON
+/Leader Off/ NCL_LBL_LDR_OFF
+/Modals/ NCL_LABEL_MODALS
+/Minimal Overlap/NCL_LABEL_OVERLAP
+/Reset Labels/NCL_LABEL_RESET

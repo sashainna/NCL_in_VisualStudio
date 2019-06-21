@@ -1,0 +1,903 @@
+//
+//     MODULE NAME AND RELEASE LEVEL
+//       toolib.rc , 25.5
+//    DATE AND TIME OF LAST  MODIFICATION
+//       01/20/17 , 10:07:11
+//
+// Microsoft Visual C++ generated resource script.
+//
+#include "toolibres.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (United States) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "toolibres.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#endif\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "toolib.ico"
+IDR_TOOLIBTYPE          ICON                    "toolibDoc.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New\tAlt+n",                 ID_FILE_INIT
+        MENUITEM "&Open\tAlt+o",                ID_FILE_LOAD
+        MENUITEM "&Properties\tAlt+p",          ID_FILE_DEFINE
+        MENUITEM "&Save\tAlt+s",                IDC_FILE_SAVE
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit\tAlt+x",                ID_APP_EXIT
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Add/Modify\tAlt+a",          ID_EDIT_ADD
+        MENUITEM "&Delete\tAlt+d",              ID_EDIT_DELETE
+        MENUITEM "&Search\tAlt+g",              ID_EDIT_SEARCH
+    END
+    POPUP "Stat&us"
+    BEGIN
+        MENUITEM "&Status\tAlt+v",              ID_STATUS_STATUS
+    END
+    POPUP "Lis&t"
+    BEGIN
+        MENUITEM "&Brief\tAlt+r",               ID_LIST_BRIEF
+        MENUITEM "&Full\tAlt+q",                ID_LIST_FULL
+        MENUITEM "&Modify Listing...\tAlt+m",   ID_LIST_MODIFY
+    END
+    POPUP "Opt&ions"
+    BEGIN
+        MENUITEM "Parameter &Labels\tAlt+l",    ID_DESCRIPTIONS_PARAMETERS
+        MENUITEM "Optional &Commands\tAlt+c",   ID_DESCRIPTIONS_OPERATORMESSAGE
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Help\talt+h",                ID_HELP_HELP
+        MENUITEM SEPARATOR
+        MENUITEM "&About toolib...",            ID_APP_ABOUT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS
+BEGIN
+    "A",            ID_EDIT_ADD,            VIRTKEY, ALT, NOINVERT
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    "C",            ID_DESCRIPTIONS_OPERATORMESSAGE, VIRTKEY, ALT, NOINVERT
+    "D",            ID_EDIT_DELETE,         VIRTKEY, ALT, NOINVERT
+    "G",            ID_EDIT_SEARCH,         VIRTKEY, ALT, NOINVERT
+    "H",            ID_HELP_HELP,           VIRTKEY, ALT, NOINVERT
+    "L",            ID_DESCRIPTIONS_PARAMETERS, VIRTKEY, ALT, NOINVERT
+    "M",            ID_LIST_MODIFY,         VIRTKEY, ALT, NOINVERT
+    "N",            ID_FILE_INIT,           VIRTKEY, ALT, NOINVERT
+    "O",            ID_FILE_LOAD,           VIRTKEY, ALT, NOINVERT
+    "P",            ID_FILE_DEFINE,         VIRTKEY, ALT, NOINVERT
+    "Q",            ID_LIST_FULL,           VIRTKEY, ALT, NOINVERT
+    "R",            ID_LIST_BRIEF,          VIRTKEY, ALT, NOINVERT
+    "S",            IDC_FILE_SAVE,          VIRTKEY, ALT, NOINVERT
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL, NOINVERT
+    "V",            ID_STATUS_STATUS,       VIRTKEY, ALT, NOINVERT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY, NOINVERT
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT, NOINVERT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT, NOINVERT
+    "X",            ID_APP_EXIT,            VIRTKEY, ALT, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG 0, 0, 271, 66
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About toolib"
+FONT 8, "MS Sans Serif"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,21,20
+    LTEXT           "toolib Version 1.0",IDC_ABOUTLABEL1,40,10,119,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) Numerical Control Computer Sciences 2000-2006",IDC_ABOUTLABEL2,39,24,209,8
+    DEFPUSHBUTTON   "OK",IDOK,189,41,56,14,WS_GROUP
+END
+
+IDD_CHILD1 DIALOGEX 3, 4, 357, 164
+STYLE DS_SETFONT | WS_CHILD
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    LTEXT           "Tool:",IDC_STATIC,5,10,19,10
+    EDITTEXT        IDC_EDIT_TOOL,27,7,78,13,ES_AUTOHSCROLL
+    LTEXT           "Description:",IDC_STATIC,117,9,38,8
+    EDITTEXT        IDC_EDIT_DESP,159,6,175,12,ES_AUTOHSCROLL
+    LTEXT           "Cutter Type:",IDC_STATIC,5,25,40,8
+    COMBOBOX        IDC_CUTTYPE,49,22,63,50,CBS_DROPDOWN | CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "Pseudo Cutter:",IDC_CUTTER,"Button",BS_AUTOCHECKBOX | BS_LEFTTEXT | WS_TABSTOP,115,23,63,10
+    PUSHBUTTON      "Define",IDC_CUT_DEFINE,183,23,44,12
+    LTEXT           "Default",IDC_STATIC,73,42,24,8
+    LTEXT           "Parameters",IDC_STATIC,137,41,41,8
+    LTEXT           "Diameter:",IDC_STATIC1,7,55,31,8
+    LTEXT           "Corner Radius:",IDC_STATIC2,7,71,48,8
+    EDITTEXT        IDC_EDIT_DEF1,61,52,68,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PARM1,141,52,25,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_DEF2,61,66,68,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PARM2,141,66,25,13,ES_AUTOHSCROLL
+    LTEXT           "Height:",IDC_STATIC3,7,86,24,8
+    EDITTEXT        IDC_EDIT_DEF3,61,81,68,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PARM3,141,81,25,13,ES_AUTOHSCROLL
+    LTEXT           "Side Radius:",IDC_STATIC4,7,100,41,8
+    EDITTEXT        IDC_EDIT_DEF4,61,96,68,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PARM4,141,96,25,13,ES_AUTOHSCROLL
+    LTEXT           "Mount Angle:",IDC_STATIC5,7,114,43,8
+    EDITTEXT        IDC_EDIT_DEF5,61,111,68,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PARM5,141,111,25,13,ES_AUTOHSCROLL
+    LTEXT           "Flat Angle:",IDC_STATIC6,7,129,34,8
+    EDITTEXT        IDC_EDIT_DEF6,61,126,68,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PARM6,141,125,25,13,ES_AUTOHSCROLL
+    CONTROL         "",IDC_METAFILE,"Static",SS_GRAYFRAME,200,38,130,125,WS_EX_STATICEDGE
+END
+
+IDD_CHILD2 DIALOG 3, 4, 362, 99
+STYLE DS_SETFONT | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Cutter Segments:",IDC_STATIC,6,23,55,10
+    CONTROL         "Display Parameters",IDC_STATIC,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,6,6,66,12
+    COMBOBOX        IDC_DISP_SEG,63,20,46,48,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Moving Cutter:",IDC_STATIC,119,21,47,8
+    COMBOBOX        IDC_DISP_MOV,175,20,61,56,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Shaded:",IDC_STATIC,264,22,28,8
+    COMBOBOX        IDC_SHADE,300,20,50,50,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_DISP_DRAW,63,38,63,13,ES_AUTOHSCROLL
+    CONTROL         "Load Command:",IDC_DISP_LOAD,"Button",BS_AUTOCHECKBOX | BS_LEFTTEXT | WS_TABSTOP,131,40,67,10
+    PUSHBUTTON      "Define",IDC_DISP_DEFINE,206,38,33,12
+    PUSHBUTTON      "Tool Drawing",IDC_TOOLDRAW,5,37,52,14
+    CONTROL         "",IDC_SYMBOL_CK,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,9,60,16,8
+    CONTROL         "",IDC_SHANK_CK,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,175,60,16,8
+    CONTROL         "",IDC_HOLDER_CK,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,9,80,16,8
+    PUSHBUTTON      "Symbol",IDC_SYMBOL_BUTTON,27,58,50,14
+    PUSHBUTTON      "Shank",IDC_SHANK_BUTTON,193,57,50,14
+    PUSHBUTTON      "Holder",IDC_HOLDER_BUTTON,27,77,50,14
+    EDITTEXT        IDC_SYLBOL_NAME,83,58,63,14,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_SHANK_NAME,249,56,63,14,ES_AUTOHSCROLL | ES_READONLY
+    EDITTEXT        IDC_HOLDER_NAME,83,77,64,14,ES_AUTOHSCROLL | ES_READONLY
+END
+
+IDD_CHILD3 DIALOGEX 3, 4, 360, 111
+STYLE DS_SETFONT | WS_CHILD
+FONT 8, "Courier New", 0, 0, 0x0
+BEGIN
+    LISTBOX         IDC_TOOL_LIST,6,8,350,100,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_CHILD4 DIALOG 0, 0, 363, 19
+STYLE DS_SETFONT | WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "Add/Modify",IDC_ADD,20,2,100,14
+    PUSHBUTTON      "Delete",IDC_DELETE,140,2,100,14
+    PUSHBUTTON      "Search",IDC_SEARCH,260,2,100,14
+END
+
+IDD_PROMPT DIALOG 0, 0, 230, 66
+STYLE DS_SETFONT | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "Prompt Dialog"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,113,48,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,176,48,50,14
+    LTEXT           "Prompt Message:",IDC_PROMPT_MSG,7,13,212,11
+    EDITTEXT        IDC_INPUT,23,28,193,14,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_WANTRETURN
+END
+
+IDD_DEFINEDLG DIALOG 0, 0, 250, 106
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,153,88,45,14
+    PUSHBUTTON      "Cancel",IDCANCEL,200,88,45,14
+    PUSHBUTTON      "Tool Library",IDC_BROWSE,14,9,50,14
+    EDITTEXT        IDC_EDIT1,68,9,164,14,ES_AUTOHSCROLL
+    LTEXT           "Description:",IDC_STATIC,14,30,38,8
+    EDITTEXT        IDC_EDIT2,57,27,175,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Symbol Library",IDC_BROWSE1,14,44,60,14
+    EDITTEXT        IDC_EDIT3,78,44,154,14,ES_AUTOHSCROLL
+    GROUPBOX        "",IDC_STATIC,7,0,258,85
+    PUSHBUTTON      "Profile Library",IDC_BROWSE2,14,63,50,14
+    EDITTEXT        IDC_EDIT4,68,63,164,14,ES_AUTOHSCROLL
+END
+
+IDD_CUTDLG DIALOG 0, 0, 201, 140
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Define Cutter"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,88,119,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,144,119,50,14
+    LTEXT           "Default",IDC_STATIC,81,11,24,8
+    LTEXT           "Param",IDC_STATIC,150,10,21,8
+    LTEXT           "Diameter:",IDC_STATIC1,12,27,31,8
+    LTEXT           "Corner Radius:",IDC_STATIC2,12,43,48,8
+    EDITTEXT        IDC_EDIT_DEF1,68,24,68,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PARM1,148,24,25,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_DEF2,68,39,68,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PARM2,148,39,25,13,ES_AUTOHSCROLL
+    LTEXT           "Height:",IDC_STATIC3,12,58,24,8
+    EDITTEXT        IDC_EDIT_DEF3,68,54,68,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PARM3,148,54,25,13,ES_AUTOHSCROLL
+    LTEXT           "Side Angle:",IDC_STATIC4,12,72,37,8
+    EDITTEXT        IDC_EDIT_DEF4,68,68,68,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PARM4,148,68,25,13,ES_AUTOHSCROLL
+    LTEXT           "Z-Height",IDC_STATIC5,12,86,28,8
+    EDITTEXT        IDC_EDIT_DEF5,68,83,68,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PARM5,148,83,25,13,ES_AUTOHSCROLL
+    LTEXT           "Flat Angle",IDC_STATIC6,12,101,32,8
+    EDITTEXT        IDC_EDIT_DEF6,68,96,68,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PARM6,148,96,25,13,ES_AUTOHSCROLL
+    GROUPBOX        "",IDC_STATIC,6,0,188,115
+END
+
+IDD_COMDLG DIALOG 0, 0, 310, 215
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Load Commands"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,197,194,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,252,194,50,14
+    GROUPBOX        "",IDC_STATIC,7,0,295,189
+    LTEXT           "Load Tool Command:",IDC_STATIC,13,10,68,8
+    EDITTEXT        IDC_EDIT1,13,25,54,14,ES_AUTOHSCROLL
+    LTEXT           "/",IDC_STATIC,71,28,8,8
+    EDITTEXT        IDC_EDIT2,89,26,51,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT3,146,26,28,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT4,200,25,50,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT5,255,26,28,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT6,89,42,51,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT7,146,42,28,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT8,200,41,50,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT9,255,42,28,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT10,89,58,51,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT11,146,58,28,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT12,200,57,50,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT13,255,58,28,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT14,89,74,51,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT15,146,74,28,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT16,200,73,50,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT17,255,74,28,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT18,89,90,51,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT19,146,90,28,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT20,200,89,50,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT21,255,90,28,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT22,89,106,51,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT23,146,106,28,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT24,200,105,50,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT25,255,106,28,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT26,89,122,51,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT27,146,122,28,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT28,200,122,50,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT29,255,122,28,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT30,89,138,51,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT31,146,138,28,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT32,200,138,50,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT33,255,138,28,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT34,89,154,51,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT35,146,154,28,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT36,200,154,50,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT37,255,154,28,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT38,89,170,51,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT39,146,170,28,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT40,200,170,50,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT41,255,170,28,14,ES_AUTOHSCROLL
+    LTEXT           ",",IDC_STATIC,177,29,8,8
+    LTEXT           ",",IDC_STATIC,287,30,8,8
+    LTEXT           ",",IDC_STATIC,177,45,8,8
+    LTEXT           ",",IDC_STATIC,287,46,8,8
+    LTEXT           ",",IDC_STATIC,176,62,8,8
+    LTEXT           ",",IDC_STATIC,286,61,8,8
+    LTEXT           ",",IDC_STATIC,177,77,8,8
+    LTEXT           ",",IDC_STATIC,287,77,8,8
+    LTEXT           ",",IDC_STATIC,177,93,8,8
+    LTEXT           ",",IDC_STATIC,287,93,8,8
+    LTEXT           ",",IDC_STATIC,177,109,8,8
+    LTEXT           ",",IDC_STATIC,287,109,8,8
+    LTEXT           ",",IDC_STATIC,177,127,8,8
+    LTEXT           ",",IDC_STATIC,287,125,8,8
+    LTEXT           ",",IDC_STATIC,177,143,8,8
+    LTEXT           ",",IDC_STATIC,287,141,8,8
+    LTEXT           ",",IDC_STATIC,177,159,8,8
+    LTEXT           ",",IDC_STATIC,287,157,8,8
+    LTEXT           ",",IDC_STATIC,177,174,8,8
+    LTEXT           ",",IDC_STATIC,287,174,8,8
+    LTEXT           "Word/Value",IDC_STATIC,93,12,40,8
+    LTEXT           "Param No.",IDC_STATIC,145,13,34,8
+    LTEXT           "Word/Value",IDC_STATIC,201,12,40,8
+    LTEXT           "Param No.",IDC_STATIC,255,13,34,8
+END
+
+IDD_MODLIST DIALOG 0, 0, 235, 193
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Modify Listing"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,111,174,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,178,174,50,14
+    GROUPBOX        "",IDC_STATIC,7,0,221,170
+    LTEXT           "Please check the fields that you want to put into the full listing file:",IDC_STATIC,13,10,207,8
+    CONTROL         "Heading",IDC_HEADING,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,14,24,43,10
+    CONTROL         "Tool Number and Description",IDC_TOOLNUM,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,14,36,108,10
+    CONTROL         "Cutter Parameters",IDC_CUTPARM,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,14,49,72,10
+    CONTROL         "Pseudo Cutter Parameters",IDC_PCUT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,14,62,98,10
+    CONTROL         "Display Parameters",IDC_DISP,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,14,75,76,10
+    CONTROL         "Load Tool Command",IDC_LTOOL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,14,88,81,10
+    CONTROL         "Option Commands",IDC_OPT_COMMAND,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,14,100,73,10
+    CONTROL         "Parameter labels",IDC_PARAM_LABEL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,14,113,68,10
+    CONTROL         "Symbol Parameters",IDC_PSYMBOL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,14,127,76,10
+    CONTROL         "Shank Parameters",IDC_PSHANK,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,14,140,74,10
+    CONTROL         "Holder Parameters",IDC_PHOLDER,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,14,153,74,10
+END
+
+IDD_PARMS DIALOG 0, 0, 387, 193
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Define Parameter labels"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,274,175,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,330,175,50,14
+    GROUPBOX        "",IDC_STATIC,7,1,373,169
+    LTEXT           "Label for Parameter 1:",IDC_STATIC,14,10,70,8
+    EDITTEXT        IDC_EDIT1,95,7,91,14,ES_AUTOHSCROLL
+    LTEXT           "Label for Parameter 2:",IDC_STATIC,201,10,70,8
+    EDITTEXT        IDC_EDIT2,282,6,91,14,ES_AUTOHSCROLL
+    LTEXT           "Label for Parameter 3:",IDC_STATIC,14,26,70,8
+    EDITTEXT        IDC_EDIT3,95,23,91,14,ES_AUTOHSCROLL
+    LTEXT           "Label for Parameter 4:",IDC_STATIC,201,25,70,8
+    EDITTEXT        IDC_EDIT4,283,22,91,14,ES_AUTOHSCROLL
+    LTEXT           "Label for Parameter 5:",IDC_STATIC,13,42,70,8
+    EDITTEXT        IDC_EDIT5,95,39,92,14,ES_AUTOHSCROLL
+    LTEXT           "Label for Parameter 6:",IDC_STATIC,201,41,70,8
+    EDITTEXT        IDC_EDIT6,283,38,92,14,ES_AUTOHSCROLL
+    LTEXT           "Label for Parameter 7:",IDC_STATIC,13,58,70,8
+    EDITTEXT        IDC_EDIT7,95,55,92,14,ES_AUTOHSCROLL
+    LTEXT           "Label for Parameter 8:",IDC_STATIC,201,57,70,8
+    EDITTEXT        IDC_EDIT8,283,54,92,14,ES_AUTOHSCROLL
+    LTEXT           "Label for Parameter 9:",IDC_STATIC,13,74,70,8
+    EDITTEXT        IDC_EDIT9,95,71,92,14,ES_AUTOHSCROLL
+    LTEXT           "Label for Parameter 10:",IDC_STATIC,201,73,74,8
+    EDITTEXT        IDC_EDIT10,283,70,92,14,ES_AUTOHSCROLL
+    LTEXT           "Label for Parameter 11:",IDC_STATIC,13,90,74,8
+    EDITTEXT        IDC_EDIT11,95,87,92,14,ES_AUTOHSCROLL
+    LTEXT           "Label for Parameter 12:",IDC_STATIC,201,89,74,8
+    EDITTEXT        IDC_EDIT12,283,86,92,14,ES_AUTOHSCROLL
+    LTEXT           "Label for Parameter 13:",IDC_STATIC,13,106,74,8
+    EDITTEXT        IDC_EDIT13,95,103,92,14,ES_AUTOHSCROLL
+    LTEXT           "Label for Parameter 14:",IDC_STATIC,201,105,74,8
+    EDITTEXT        IDC_EDIT14,283,102,92,14,ES_AUTOHSCROLL
+    LTEXT           "Label for Parameter 15:",IDC_STATIC,13,122,74,8
+    EDITTEXT        IDC_EDIT15,95,119,92,14,ES_AUTOHSCROLL
+    LTEXT           "Label for Parameter 16:",IDC_STATIC,201,121,74,8
+    EDITTEXT        IDC_EDIT16,283,118,92,14,ES_AUTOHSCROLL
+    LTEXT           "Label for Parameter 17:",IDC_STATIC,14,138,74,8
+    EDITTEXT        IDC_EDIT17,95,135,91,14,ES_AUTOHSCROLL
+    LTEXT           "Label for Parameter 18:",IDC_STATIC,201,137,74,8
+    EDITTEXT        IDC_EDIT18,283,134,91,14,ES_AUTOHSCROLL
+    LTEXT           "Label for Parameter 19:",IDC_STATIC,13,154,74,8
+    EDITTEXT        IDC_EDIT19,95,151,92,14,ES_AUTOHSCROLL
+    LTEXT           "Label for Parameter 20:",IDC_STATIC,201,153,74,8
+    EDITTEXT        IDC_EDIT20,283,150,91,14,ES_AUTOHSCROLL
+END
+
+IDD_OPERATE DIALOG 0, 0, 314, 114
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Optional Commands"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,202,96,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,257,96,50,14
+    LTEXT           "Please Enter Optional Commands (one command per line):",IDC_STATIC,14,6,184,8
+    EDITTEXT        IDC_EDIT1,14,19,286,72,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN | WS_VSCROLL
+END
+
+IDD_FILEOPEN_DLG DIALOG 36, 24, 327, 135
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | DS_CONTEXTHELP | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Open"
+FONT 8, "Helv"
+BEGIN
+    LTEXT           "File &name:",1090,6,6,76,9
+    EDITTEXT        IDC_FDLG_FNAME,6,16,128,12,ES_AUTOHSCROLL | ES_OEMCONVERT
+    LISTBOX         1120,6,32,128,68,LBS_SORT | LBS_OWNERDRAWFIXED | LBS_HASSTRINGS | LBS_DISABLENOSCROLL | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "&Folders:",-1,143,4,96,9
+    LTEXT           "",IDC_FDLG_FOLDER,147,18,111,9,SS_NOPREFIX
+    LISTBOX         1121,146,30,116,58,LBS_SORT | LBS_OWNERDRAWFIXED | LBS_HASSTRINGS | LBS_DISABLENOSCROLL | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "List files of &type:",1089,6,104,90,9
+    COMBOBOX        1136,6,114,130,36,CBS_DROPDOWNLIST | CBS_AUTOHSCROLL | WS_BORDER | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Dri&ves:",1091,146,103,92,9
+    COMBOBOX        1137,147,114,114,68,CBS_DROPDOWNLIST | CBS_OWNERDRAWFIXED | CBS_AUTOHSCROLL | CBS_SORT | CBS_HASSTRINGS | WS_BORDER | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "OK",IDOK,270,5,50,14,WS_GROUP
+    PUSHBUTTON      "Cancel",IDCANCEL,270,23,50,14,WS_GROUP
+    PUSHBUTTON      "&Help",1038,270,45,50,14,WS_GROUP
+    CHECKBOX        "&Read only",1040,270,67,50,12,WS_GROUP
+    PUSHBUTTON      "System",IDC_FDLG_SYSDIR,269,96,50,14
+    PUSHBUTTON      "Local",IDC_FDLG_LOCDIR,269,113,50,14
+END
+
+IDD_FIND_DIALOG DIALOG 0, 0, 233, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Search Tool"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "Find",IDD_TOOL_FIND,113,42,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,176,42,50,14
+    LTEXT           "Enter Tool to Search for:",IDC_STATIC,7,7,212,11
+    EDITTEXT        IDC_SEARCH_STRING,23,22,193,14,ES_AUTOHSCROLL | ES_WANTRETURN
+END
+
+IDD_TOOL_DISPLAY DIALOGEX 0, 0, 279, 236
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Tool Display"
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,159,218,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,214,218,50,14
+    EDITTEXT        IDC_SYMBOL_NAME,42,14,72,14,ES_AUTOHSCROLL
+    LTEXT           "Symbol:",IDC_STATIC,13,17,26,8
+    COMBOBOX        IDC_SHADE_CHC,153,15,48,60,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Shaded:",IDC_STATIC,123,17,28,8
+    LTEXT           "Values",IDC_STATIC,79,34,22,8
+    LTEXT           "Parameters",IDC_STATIC,143,34,41,8
+    LTEXT           "Diameter:",IDC_STATIC1,13,47,53,8
+    LTEXT           "Corner Radius:",IDC_STATIC2,13,63,52,8
+    EDITTEXT        IDC_EDIT_DEF1,67,45,68,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PARM1,147,45,25,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_DEF2,67,58,68,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PARM2,147,58,25,13,ES_AUTOHSCROLL
+    LTEXT           "Height:",IDC_STATIC3,13,79,52,8
+    EDITTEXT        IDC_EDIT_DEF3,67,74,68,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PARM3,147,74,25,13,ES_AUTOHSCROLL
+    LTEXT           "Side Radius:",IDC_STATIC4,13,93,54,8
+    EDITTEXT        IDC_EDIT_DEF4,67,87,68,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PARM4,147,87,25,13,ES_AUTOHSCROLL
+    LISTBOX         IDC_LIST_PROF,15,144,113,64,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Profiles",IDC_STATIC,14,129,24,8
+    LTEXT           "Class:",IDC_STATIC,103,130,20,8
+    COMBOBOX        IDC_CLASS,50,128,75,100,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "",IDC_STATIC,0,6,273,208
+    COMBOBOX        IDC_CLASHES_CHC,44,108,48,60,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Clashes:",IDC_STATIC5,14,111,28,8
+    LTEXT           "Symbols:",IDC_STATIC,151,128,29,8
+    LISTBOX         IDC_LIST_SYMBOLS,151,144,113,64,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_TEXTWIN2 DIALOG 0, 0, 100, 18
+STYLE DS_SETFONT | WS_POPUP | WS_BORDER
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Enter Text:",IDC_TEXTWINLABEL,2,2,35,15
+    EDITTEXT        IDC_TEXTWINEDIT,37,2,60,15,ES_AUTOVSCROLL
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"
+        BEGIN
+            VALUE "FileDescription", "toolib MFC Application"
+            VALUE "FileVersion", "1, 0, 0, 1"
+            VALUE "InternalName", "toolib"
+            VALUE "LegalCopyright", "Copyright (C) 1900"
+            VALUE "OriginalFilename", "toolib.EXE"
+            VALUE "ProductName", "toolib Application"
+            VALUE "ProductVersion", "1, 0, 0, 1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 264
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 59
+    END
+
+    IDD_CHILD1, DIALOG
+    BEGIN
+        RIGHTMARGIN, 356
+    END
+
+    IDD_CHILD2, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 98
+    END
+
+    IDD_CHILD3, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 105
+    END
+
+    IDD_CHILD4, DIALOG
+    BEGIN
+        RIGHTMARGIN, 362
+        VERTGUIDE, 362
+        TOPMARGIN, 2
+        BOTTOMMARGIN, 17
+    END
+
+    IDD_PROMPT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 226
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 62
+    END
+
+    IDD_DEFINEDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        BOTTOMMARGIN, 102
+    END
+
+    IDD_CUTDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 6
+        RIGHTMARGIN, 194
+        BOTTOMMARGIN, 133
+    END
+
+    IDD_COMDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 302
+        BOTTOMMARGIN, 208
+    END
+
+    IDD_MODLIST, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        BOTTOMMARGIN, 188
+    END
+
+    IDD_PARMS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 380
+        BOTTOMMARGIN, 189
+    END
+
+    IDD_OPERATE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 307
+        BOTTOMMARGIN, 110
+    END
+
+    IDD_FILEOPEN_DLG, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 134
+    END
+
+    IDD_FIND_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 226
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 56
+    END
+
+    IDD_TOOL_DISPLAY, DIALOG
+    BEGIN
+        RIGHTMARGIN, 273
+        TOPMARGIN, 6
+        BOTTOMMARGIN, 232
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_CHILD1 DLGINIT
+BEGIN
+    IDC_CUTTYPE, 0x403, 10, 0
+0x6146, 0x6563, 0x4d20, 0x6c69, 0x006c, 
+    IDC_CUTTYPE, 0x403, 9, 0
+0x6e45, 0x2064, 0x694d, 0x6c6c, "\000" 
+    IDC_CUTTYPE, 0x403, 7, 0
+0x6142, 0x7272, 0x6c65, "\000" 
+    IDC_CUTTYPE, 0x403, 5, 0
+0x6f43, 0x656e, "\000" 
+    IDC_CUTTYPE, 0x403, 5, 0
+0x6542, 0x6c6c, "\000" 
+    IDC_CUTTYPE, 0x403, 6, 0
+0x7244, 0x6c69, 0x006c, 
+    IDC_CUTTYPE, 0x403, 12, 0
+0x6f42, 0x6972, 0x676e, 0x5420, 0x6f6f, 0x006c, 
+    IDC_CUTTYPE, 0x403, 7, 0
+0x6552, 0x6d61, 0x7265, "\000" 
+    IDC_CUTTYPE, 0x403, 13, 0
+0x6843, 0x6d61, 0x6566, 0x2072, 0x6f54, 0x6c6f, "\000" 
+    IDC_CUTTYPE, 0x403, 6, 0
+0x6c42, 0x6461, 0x0065, 
+    IDC_CUTTYPE, 0x403, 14, 0
+0x7153, 0x6175, 0x6572, 0x4920, 0x736e, 0x7265, 0x0074, 
+    IDC_CUTTYPE, 0x403, 15, 0
+0x6944, 0x6d61, 0x6e6f, 0x2064, 0x6e49, 0x6573, 0x7472, "\000" 
+    IDC_CUTTYPE, 0x403, 16, 0
+0x7254, 0x6169, 0x676e, 0x656c, 0x4920, 0x736e, 0x7265, 0x0074, 
+    IDC_CUTTYPE, 0x403, 16, 0
+0x6943, 0x6372, 0x6c75, 0x7261, 0x4920, 0x736e, 0x7265, 0x0074, 
+    IDC_CUTTYPE, 0x403, 14, 0
+0x7247, 0x6f6f, 0x6976, 0x676e, 0x5420, 0x6f6f, 0x006c, 
+    0
+END
+
+IDD_CHILD2 DLGINIT
+BEGIN
+    IDC_DISP_SEG, 0x403, 8, 0
+0x6544, 0x6166, 0x6c75, 0x0074, 
+    IDC_DISP_SEG, 0x403, 5, 0
+0x6150, 0x7472, "\000" 
+    IDC_DISP_SEG, 0x403, 4, 0
+0x6c41, 0x006c, 
+    IDC_DISP_MOV, 0x403, 8, 0
+0x6544, 0x6166, 0x6c75, 0x0074, 
+    IDC_DISP_MOV, 0x403, 3, 0
+0x6e4f, "\000" 
+    IDC_DISP_MOV, 0x403, 4, 0
+0x664f, 0x0066, 
+    IDC_SHADE, 0x403, 8, 0
+0x6544, 0x6166, 0x6c75, 0x0074, 
+    IDC_SHADE, 0x403, 3, 0
+0x6e4f, "\000" 
+    IDC_SHADE, 0x403, 4, 0
+0x664f, 0x0066, 
+    0
+END
+
+IDD_TOOL_DISPLAY DLGINIT
+BEGIN
+    IDC_SHADE_CHC, 0x403, 8, 0
+0x6544, 0x6166, 0x6c75, 0x0074, 
+    IDC_SHADE_CHC, 0x403, 3, 0
+0x6e4f, "\000" 
+    IDC_SHADE_CHC, 0x403, 4, 0
+0x664f, 0x0066, 
+    IDC_CLASHES_CHC, 0x403, 7, 0
+0x7543, 0x7474, 0x7265, "\000" 
+    IDC_CLASHES_CHC, 0x403, 7, 0
+0x6f48, 0x646c, 0x7265, "\000" 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDR_MAINFRAME           "toolib\n\nToolib\n\n\nToolib.Document\nToolib Document"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_APP_TITLE       "toolib"
+    AFX_IDS_IDLEMESSAGE     "Ready"
+END
+
+STRINGTABLE
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+END
+
+STRINGTABLE
+BEGIN
+    ID_FILE_NEW             "Create a new document\nNew"
+    ID_FILE_OPEN            "Open an existing document\nOpen"
+    ID_FILE_CLOSE           "Close the active document\nClose"
+    ID_FILE_SAVE            "Save the active document\nSave"
+    ID_FILE_SAVE_AS         "Save the active document with a new name\nSave As"
+END
+
+STRINGTABLE
+BEGIN
+    ID_APP_ABOUT            "Display program information, version number and copyright\nAbout"
+    ID_APP_EXIT             "Quit the application; prompts to save documents\nExit"
+END
+
+STRINGTABLE
+BEGIN
+    ID_FILE_MRU_FILE1       "Open this document"
+    ID_FILE_MRU_FILE2       "Open this document"
+    ID_FILE_MRU_FILE3       "Open this document"
+    ID_FILE_MRU_FILE4       "Open this document"
+    ID_FILE_MRU_FILE5       "Open this document"
+    ID_FILE_MRU_FILE6       "Open this document"
+    ID_FILE_MRU_FILE7       "Open this document"
+    ID_FILE_MRU_FILE8       "Open this document"
+    ID_FILE_MRU_FILE9       "Open this document"
+    ID_FILE_MRU_FILE10      "Open this document"
+    ID_FILE_MRU_FILE11      "Open this document"
+    ID_FILE_MRU_FILE12      "Open this document"
+    ID_FILE_MRU_FILE13      "Open this document"
+    ID_FILE_MRU_FILE14      "Open this document"
+    ID_FILE_MRU_FILE15      "Open this document"
+    ID_FILE_MRU_FILE16      "Open this document"
+END
+
+STRINGTABLE
+BEGIN
+    ID_NEXT_PANE            "Switch to the next window pane\nNext Pane"
+    ID_PREV_PANE            "Switch back to the previous window pane\nPrevious Pane"
+END
+
+STRINGTABLE
+BEGIN
+    ID_WINDOW_SPLIT         "Split the active window into panes\nSplit"
+END
+
+STRINGTABLE
+BEGIN
+    ID_EDIT_CLEAR           "Erase the selection\nErase"
+    ID_EDIT_CLEAR_ALL       "Erase everything\nErase All"
+    ID_EDIT_COPY            "Copy the selection and put it on the Clipboard\nCopy"
+    ID_EDIT_CUT             "Cut the selection and put it on the Clipboard\nCut"
+    ID_EDIT_FIND            "Find the specified text\nFind"
+    ID_EDIT_PASTE           "Insert Clipboard contents\nPaste"
+    ID_EDIT_REPEAT          "Repeat the last action\nRepeat"
+    ID_EDIT_REPLACE         "Replace specific text with different text\nReplace"
+    ID_EDIT_SELECT_ALL      "Select the entire document\nSelect All"
+    ID_EDIT_UNDO            "Undo the last action\nUndo"
+    ID_EDIT_REDO            "Redo the previously undone action\nRedo"
+END
+
+STRINGTABLE
+BEGIN
+    ID_VIEW_STATUS_BAR      "Show or hide the status bar\nToggle StatusBar"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_SCSIZE          "Change the window size"
+    AFX_IDS_SCMOVE          "Change the window position"
+    AFX_IDS_SCMINIMIZE      "Reduce the window to an icon"
+    AFX_IDS_SCMAXIMIZE      "Enlarge the window to full size"
+    AFX_IDS_SCNEXTWINDOW    "Switch to the next document window"
+    AFX_IDS_SCPREVWINDOW    "Switch to the previous document window"
+    AFX_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_SCRESTORE       "Restore the window to normal size"
+    AFX_IDS_SCTASKLIST      "Activate Task List"
+END
+
+#endif    // English (United States) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif
+#include "afxres.rc"         // Standard components
+#endif
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

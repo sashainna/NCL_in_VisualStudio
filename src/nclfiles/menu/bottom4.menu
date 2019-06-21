@@ -1,0 +1,14 @@
+#Descriptor#
+/Name/ Bottom tool bar
+/Rows/ 1
+/Cols/ 4
+/Type/ Icon
+/Area/ Top
+/FORMAT/ ICON
+/JUSTIFY/ RIGHT
+
+#Menus#
+/Measure / NCL_ANALYZE_GEO
+/Invisible / NCL_INVIS
+/Entity / NCL_ENTITY_DATA
+/Motion/ CAM_MOTION_DATA

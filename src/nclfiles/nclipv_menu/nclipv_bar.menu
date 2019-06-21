@@ -1,0 +1,30 @@
+#Descriptor#
+/Name/ Tool bar
+/Rows/ 4
+/Cols/ 4
+/Type/ Icon
+/Position/ 0.582031,0.879883
+/Area/ Top
+/FORMAT/ ICON
+
+#Menus#
+/ / NCLIPV_RESTART
+/ / CAM_PLAYFILE
+/ / IPV_LOAD_STOCK
+#Bar#
+/ / IPV_DYNAMIC_MOUSE
+/ / IPV_FIT_VIEW
+/ / IPV_WINDOW_ZOOM
+/ / IPV_PREVIOUS_VIEW
+/ / IPV_DISPLAY_PROP
+#Bar#
+/ / IPV_PLAYBACK
+/ / IPV_LOAD_MACHINE
+/ / IPV_TOOL_LIST
+#Bar#
+/ / IPV_MODALS
+#Bar#
+/ / IPV_MEASURE
+/ / IPV_COMPARE
+/ / IPV_REMOVE_CHIPS
+/ / IPV_SECTION

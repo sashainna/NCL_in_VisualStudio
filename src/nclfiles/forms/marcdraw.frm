@@ -1,0 +1,36 @@
+#HEADER#
+/TITLE/ Archive Drawing
+/POSITION/ 0,0
+/SIZE/ 235,135
+
+#COMBLIST_SIMPLE#
+/LABEL/ Drawing name:
+/POSITION/10,8,60,8
+/SIZE/170,55
+/TYPE/UD_DASSTRING
+
+#EDIT#
+/LABEL/ File name:
+/POSITION/10,67,60,67
+/SIZE/170,14
+/TYPE/UD_DASSTRING
+/LEN/ 30
+/PREC/ 30
+
+#PUSHBUTTON#
+/LABEL/ Browse...
+/POSITION/185,67
+/SIZE/40,14
+/TYPE/UD_DASSTRING
+
+#LABEL#
+/LABEL/ To archive a drawing you must specify the name
+/POSITION/10,82
+/SIZE/200,14
+/TYPE/UD_DASSTRING
+
+#LABEL#
+/LABEL/ of the drawing and the complete name of the file.
+/POSITION/10,95
+/SIZE/200,14
+/TYPE/UD_DASSTRING

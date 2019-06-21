@@ -1,0 +1,13 @@
+#Descriptor#
+/NAME/ Simulate
+/POSITION/ 0.125000,0.013021
+/SIZE/ 0.113281,0.447917
+/ROWS/ 3
+/COLS/ 1
+/TYPE/ pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Simulate/ IPV_PLAYBACK
+/Feed Color/ CAM_PLAYFEED
+/Interp Color/ CAM_PLAY_INTERP

@@ -1,0 +1,19 @@
+#Descriptor#
+/NAME/ Static View Options
+/POSITION/ 0.568750,0.100586
+/SIZE/ 0.087500,0.375000
+/ROWS/ 9
+/COLS/ 1
+/TYPE/ Pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Change/ NCL_CHANGE_VIEW
+/Pan Center/ NCL_PAN
+/Scale Zoom/ NCL_SCALE_ZOOM
+/+X/ NCL_VIEW_X
+/+Y/ NCL_VIEW_Y
+/+Z/ NCL_VIEW_Z
+/-X/ NCL_VIEW_NEGX
+/-Y/ NCL_VIEW_NEGY
+/-Z/ NCL_VIEW_NEGZ
