@@ -329,50 +329,25 @@ NCRELIB322=$(AR) /OUT:$(NNCLLIB32)\$(NNCLLIBRARY) *.obj
 #--------------------------- make.list --------------------------
 #
 SRCS1= \
-badstat.f cirted.f clatocl.f clfile.f cltocla.f cycted.f fmtcod.f \
-mottap.f motted.f pstcmd.f ptdffunc.f ptdstubs.f regfmt.f settool.f \
-spcblk.f tapblk.f tedapt.f tedmch.f PtdGlobal.c PtdcFunc.c clload.c \
-PtedBatch.cpp PtedChildWindow.cpp PtedCom.cpp PtedFileDialog.cpp PtedFindReplaceDialog.cpp PtedIncFileDialog.cpp PtedMainWindow.cpp \
-PtedPWOptDialog.cpp PtedProcessDlg.cpp PtedRangeBox.cpp PtedReseqDialog.cpp PtedSetDialog.cpp PtedSetupPageDialog.cpp PtedStatusDlg.cpp \
-PtedTextBuffer.cpp PtedTextBuffer2.cpp PtedTextBuffer3.cpp PtedTextView.cpp PtedTextView2.cpp PtedTextView3.cpp PtedTextView4.cpp \
-PtedTextView5.cpp PtedWindow.cpp PtedWindow2.cpp PtedWindow3.cpp PtedWindow4.cpp PtedWindow5.cpp Ptedctl.cpp \
-StdAfx.cpp
+gencrypt.f genhelp.f genprompt.f gensupport.f genword.f genxfer.f GHelpctl.cpp \
+GPmptctl.cpp GWordctl.cpp GXferctl.cpp gcryptctl.cpp gencryptDlg.cpp genhelpView.cpp genpromptView.cpp \
+genwordView.cpp genxferView.cpp
 OBJS1= \
-badstat.ts cirted.ts clatocl.ts clfile.ts cltocla.ts cycted.ts fmtcod.ts \
-mottap.ts motted.ts pstcmd.ts ptdffunc.ts ptdstubs.ts regfmt.ts settool.ts \
-spcblk.ts tapblk.ts tedapt.ts tedmch.ts PtdGlobal.ts PtdcFunc.ts clload.ts \
-PtedBatch.ts PtedChildWindow.ts PtedCom.ts PtedFileDialog.ts PtedFindReplaceDialog.ts PtedIncFileDialog.ts PtedMainWindow.ts \
-PtedPWOptDialog.ts PtedProcessDlg.ts PtedRangeBox.ts PtedReseqDialog.ts PtedSetDialog.ts PtedSetupPageDialog.ts PtedStatusDlg.ts \
-PtedTextBuffer.ts PtedTextBuffer2.ts PtedTextBuffer3.ts PtedTextView.ts PtedTextView2.ts PtedTextView3.ts PtedTextView4.ts \
-PtedTextView5.ts PtedWindow.ts PtedWindow2.ts PtedWindow3.ts PtedWindow4.ts PtedWindow5.ts Ptedctl.ts \
-StdAfx.ts
+gencrypt.ts genhelp.ts genprompt.ts gensupport.ts genword.ts genxfer.ts GHelpctl.ts \
+GPmptctl.ts GWordctl.ts GXferctl.ts gcryptctl.ts gencryptDlg.ts genhelpView.ts genpromptView.ts \
+genwordView.ts genxferView.ts
 NOBJS1= \
-badstat.nts cirted.nts clatocl.nts clfile.nts cltocla.nts cycted.nts fmtcod.nts \
-mottap.nts motted.nts pstcmd.nts ptdffunc.nts ptdstubs.nts regfmt.nts settool.nts \
-spcblk.nts tapblk.nts tedapt.nts tedmch.nts PtdGlobal.nts PtdcFunc.nts clload.nts \
-PtedBatch.nts PtedChildWindow.nts PtedCom.nts PtedFileDialog.nts PtedFindReplaceDialog.nts PtedIncFileDialog.nts PtedMainWindow.nts \
-PtedPWOptDialog.nts PtedProcessDlg.nts PtedRangeBox.nts PtedReseqDialog.nts PtedSetDialog.nts PtedSetupPageDialog.nts PtedStatusDlg.nts \
-PtedTextBuffer.nts PtedTextBuffer2.nts PtedTextBuffer3.nts PtedTextView.nts PtedTextView2.nts PtedTextView3.nts PtedTextView4.nts \
-PtedTextView5.nts PtedWindow.nts PtedWindow2.nts PtedWindow3.nts PtedWindow4.nts PtedWindow5.nts Ptedctl.nts \
-StdAfx.nts
+gencrypt.nts genhelp.nts genprompt.nts gensupport.nts genword.nts genxfer.nts GHelpctl.nts \
+GPmptctl.nts GWordctl.nts GXferctl.nts gcryptctl.nts gencryptDlg.nts genhelpView.nts genpromptView.nts \
+genwordView.nts genxferView.nts
 OBJS321= \
-badstat.t32 cirted.t32 clatocl.t32 clfile.t32 cltocla.t32 cycted.t32 fmtcod.t32 \
-mottap.t32 motted.t32 pstcmd.t32 ptdffunc.t32 ptdstubs.t32 regfmt.t32 settool.t32 \
-spcblk.t32 tapblk.t32 tedapt.t32 tedmch.t32 PtdGlobal.t32 PtdcFunc.t32 clload.t32 \
-PtedBatch.t32 PtedChildWindow.t32 PtedCom.t32 PtedFileDialog.t32 PtedFindReplaceDialog.t32 PtedIncFileDialog.t32 PtedMainWindow.t32 \
-PtedPWOptDialog.t32 PtedProcessDlg.t32 PtedRangeBox.t32 PtedReseqDialog.t32 PtedSetDialog.t32 PtedSetupPageDialog.t32 PtedStatusDlg.t32 \
-PtedTextBuffer.t32 PtedTextBuffer2.t32 PtedTextBuffer3.t32 PtedTextView.t32 PtedTextView2.t32 PtedTextView3.t32 PtedTextView4.t32 \
-PtedTextView5.t32 PtedWindow.t32 PtedWindow2.t32 PtedWindow3.t32 PtedWindow4.t32 PtedWindow5.t32 Ptedctl.t32 \
-StdAfx.t32
+gencrypt.t32 genhelp.t32 genprompt.t32 gensupport.t32 genword.t32 genxfer.t32 GHelpctl.t32 \
+GPmptctl.t32 GWordctl.t32 GXferctl.t32 gcryptctl.t32 gencryptDlg.t32 genhelpView.t32 genpromptView.t32 \
+genwordView.t32 genxferView.t32
 NOBJS321= \
-badstat.nt32 cirted.nt32 clatocl.nt32 clfile.nt32 cltocla.nt32 cycted.nt32 fmtcod.nt32 \
-mottap.nt32 motted.nt32 pstcmd.nt32 ptdffunc.nt32 ptdstubs.nt32 regfmt.nt32 settool.nt32 \
-spcblk.nt32 tapblk.nt32 tedapt.nt32 tedmch.nt32 PtdGlobal.nt32 PtdcFunc.nt32 clload.nt32 \
-PtedBatch.nt32 PtedChildWindow.nt32 PtedCom.nt32 PtedFileDialog.nt32 PtedFindReplaceDialog.nt32 PtedIncFileDialog.nt32 PtedMainWindow.nt32 \
-PtedPWOptDialog.nt32 PtedProcessDlg.nt32 PtedRangeBox.nt32 PtedReseqDialog.nt32 PtedSetDialog.nt32 PtedSetupPageDialog.nt32 PtedStatusDlg.nt32 \
-PtedTextBuffer.nt32 PtedTextBuffer2.nt32 PtedTextBuffer3.nt32 PtedTextView.nt32 PtedTextView2.nt32 PtedTextView3.nt32 PtedTextView4.nt32 \
-PtedTextView5.nt32 PtedWindow.nt32 PtedWindow2.nt32 PtedWindow3.nt32 PtedWindow4.nt32 PtedWindow5.nt32 Ptedctl.nt32 \
-StdAfx.nt32
+gencrypt.nt32 genhelp.nt32 genprompt.nt32 gensupport.nt32 genword.nt32 genxfer.nt32 GHelpctl.nt32 \
+GPmptctl.nt32 GWordctl.nt32 GXferctl.nt32 gcryptctl.nt32 gencryptDlg.nt32 genhelpView.nt32 genpromptView.nt32 \
+genwordView.nt32 genxferView.nt32
 SRCS2= \
 
 OBJS2= \
@@ -467,11 +442,11 @@ NOBJS32=$(NOBJS321) $(NOBJS322) $(NOBJS323) $(NOBJS324) $(NOBJS325) \
 # Define the NCL directory this makefile should run in.
 #
 DIR=postworks
-SRCDIR=pwted
-NCLLIBRARY=pwted.lib
-NNCLLIBRARY=npwted.lib
-NCLLIBRARY32=pwted32.lib
-NNCLLIBRARY32=npwted32.lib
+SRCDIR=pwutil
+NCLLIBRARY=pwutil.lib
+NNCLLIBRARY=npwutil.lib
+NCLLIBRARY32=pwutil32.lib
+NNCLLIBRARY32=npwutil32.lib
 
 #
 #---------------------------EOF make.list --------------------------
