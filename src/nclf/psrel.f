@@ -3,9 +3,9 @@ C*    NAME         :  psrel.f
 C*       CONTAINS:
 C*    COPYRIGHT 1984 (c) MILLS DATA SYSTEM Inc.  All Rights Reserved.
 C*     MODULE NAME AND RELEASE LEVEL 
-C*       psrel.f , 25.1
+C*       psrel.f , 26.7
 C*    DATE AND TIME OF LAST  MODIFICATION
-C*       04/29/15 , 15:10:29
+C*       05/28/19 , 10:02:57
 C*********************************************************************
 C
 C*********************************************************************
@@ -28,6 +28,7 @@ C*    SIDE EFFECTS : none
 C*    WARNINGS     : none
 C*********************************************************************
 C
+
       subroutine psrel
 
       include 'com4a.com'
@@ -61,7 +62,7 @@ c
       parameter (NTOOL=50, NSRF=20)
       real*8 
      *   tool_struct(NTOOL),surf_struct(NSRF),
-     *   sc35,sc144, dtol, dist, psthk,toler,tcn,rad
+     *   sc35,sc144, dist, psthk,toler,dtol, tcn,rad
       real*4 
      *   taxis(3),fd(3),fwd(3),svuv(2),current_ps(7),psrf(3),
      *   vec(3), co,svdis,svco,dis,f_mag4,f_dot4,f_dist4,s1(10),
@@ -77,6 +78,7 @@ c
 c..... hard-coded constants:
 c
       real*4 ONE_MIN_EPS/0.99/, EPS1/1.e-04/, EPS2/1.e-02/
+c      real*8 tdtol
 c
 c...Debug variables
 c
@@ -367,7 +369,7 @@ c
              call load_surface (surf_struct)
 
              call ncl_tool_ps_rel (noflip,isf,ifl(331),tool_struct,
-     1       ifl(23),surf_struct,toler,dtol,iext,dist,lttck)
+     1           ifl(23), surf_struct,toler,dtol,iext,dist,lttck)
              call ncl_psmult_store_s (isf,icp,icp0,ncp,iext,s(1,1),
      1           dist)
          else
@@ -547,7 +549,10 @@ c......check flip, Sasha, Sep11, 2018
           tvec(1) = surf_struct(1)
           tvec(2) = surf_struct(2)
           tvec(3) = surf_struct(3)
-          if(f_dot(tvec,sc(220)) .lt. 0.0) noflip = .true.
+c          tdtol = dtol
+          !if(f_dot(tvec,sc(220)) .lt. 0.0) noflip = .true.
+          if(f_dot(tvec,sc(4)) .lt. 0.0) noflip = .true.
+c..........
 
         call ncl_tool_ps_rel (noflip, isf,ifl(331),tool_struct,ifl(23),
      *     surf_struct,toler,dtol,iext,dist,lttck)

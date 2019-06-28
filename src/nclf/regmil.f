@@ -1,9 +1,9 @@
 *****************************************************
 c**
 C*     MODULE NAME AND RELEASE LEVEL 
-C*       regmil.f , 25.2
+C*       regmil.f , 26.2
 C*    DATE AND TIME OF LAST  MODIFICATION
-C*       11/22/17 , 11:13:27
+C*       04/12/18 , 10:17:04
 c**
 c*****************************************************
 ****  FILE NAME: REGMIL               13-MAR-87            PEM

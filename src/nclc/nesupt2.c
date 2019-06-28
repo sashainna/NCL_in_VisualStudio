@@ -6,9 +6,9 @@
 **           ncl_label_type()
 **    COPYRIGHT 1984 (c) NCCS Inc.  All Rights Reserved.
 **    MODULE NAME AND RELEASE LEVEL
-**       nesupt2.c , 25.1
+**       nesupt2.c , 26.7
 **    DATE AND TIME OF LAST MODIFICATION
-**       04/29/15 , 15:08:52
+**       06/28/19 , 09:00:54
 *********************************************************************/
 
 #include <errno.h>
@@ -40,7 +40,6 @@ int status;
     case NCL_LINE_REL:
     case NCL_CIRCLE_REL:
     case UM_POINT_REL:
-	case UM_RBSPLCRV_REL:
     case UM_LINE_REL:
     case UM_CIRCLE_REL:
     case NCL_PLN_REL:

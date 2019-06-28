@@ -7,9 +7,9 @@ C*           profsy  prfloc
 C*
 C*    COPYRIGHT 2005 (c) NCCS Inc.  All Rights Reserved.
 C*    MODULE NAME AND RELEASE LEVEL 
-C*       profsy.f , 25.2
+C*       profsy.f , 26.2
 C*    DATE AND TIME OF LAST  MODIFICATION
-C*       07/28/15 , 11:11:17
+C*       04/12/18 , 10:14:49
 C*********************************************************************
 C
 C*********************************************************************
@@ -134,9 +134,9 @@ c
       include 'prfcom.com'
       include 'rrdm.com'
 c
-      !integer*2 ktv(4)
-      !integer*4 jtv(2)
-      !equivalence (tv,jtv,ktv)
+      integer*2 ktv(4)
+      integer*4 jtv(2)
+      equivalence (tv,jtv,ktv)
 c
       integer*2 ierr,i,ie
       integer*4 iacy6,jerr,icvtyp,inum
@@ -756,7 +756,6 @@ c
               if (scalar) then
                   if (IPRFFL(7) .eq. 1) IPRFFL(7) = 2
                   PRFCLF(1) = tv
-                  PRFCLF(5) = tv
               endif
           endif
           go to 500
@@ -1080,8 +1079,7 @@ c*******************************************************
 c
 c...End of routine
 c
-
- 8000 call prfsavepar(PRFPPL(5), PRFRPL(5), PRFCLF(5))
+ 8000 call prfsavepar(PRFPPL(5), PRFRPL(5))
       return
 c
 c...Slash expected (/)
@@ -1300,7 +1298,7 @@ c
 C*    E_SUBROUTINE     : prfpar (fthick1,fthick2, toolaxangle, tiltanglebegin,tiltangleend, tiltdistbegin, tiltdistend,
 C*                              endis, enangle, enrise, enrad, enrise2,exdis, exangle, exrise, exrad, exrise2,
 C*                               clrdis, rptdis, rtrdis, lrtrdis,fnpas, cutcpdst,fdrt1,
-C*                               fdrt2, fdrt3, fdrt4, fdrt5, fdrt6, fnorm)
+C*                               fdrt2, fdrt3, fdrt4, fdrt5, fdrt6)
 C*       Retrieves/saves current interface defined PROFIL parameters from/to prfcom.com
 C*       Fortran common area.  It is used to load/update the  PROFILL
 C*       statement building form.
@@ -1332,7 +1330,6 @@ C*          lrtrdis           loop retract dist in "positioning" interface form 
 C*          fnpas             number of passes in "passes" interface form screen  
 C*          cutcpdst          cutcom distance in "options" interface form screen  
 C*          fdrt1-fdrt6       dedrats in "feed rates" interface form screen  
-C*          fnorm             NORMAL is in command
 
 
 C*    RETURNS      : none
@@ -1346,7 +1343,7 @@ C*********************************************************************
      x  endis, enangle, enrise, enrad, enrise2,
      x  exdis, exangle, exrise, exrad, exrise2,
      x  clrdis, rptdis, rtrdis, lrtrdis,fnpas, cutcpdst,fdrt1, 
-     x  fdrt2, fdrt3, fdrt4, fdrt5, fdrt6, fnorm)
+     x  fdrt2, fdrt3, fdrt4, fdrt5, fdrt6)
 
       include 'com8a.com'
       include 'prfcom.com'
@@ -1357,9 +1354,7 @@ C*********************************************************************
      x endis, enangle, enrise, enrad, enrise2,
      x exdis, exangle, exrise, exrad, exrise2, 
      x clrdis, rptdis, rtrdis, lrtrdis, fnpas, cutcpdst,
-     x fdrt1, fdrt2, fdrt3, fdrt4, fdrt5, fdrt6 
-      
-      integer*4 fnorm
+     x fdrt1, fdrt2, fdrt3, fdrt4, fdrt5, fdrt6  
  
       
       fthick1 = PRFTHK(1)
@@ -1383,7 +1378,7 @@ C*********************************************************************
       exrad = PRFEXI(1)
       exrise2 = PRFEXI(2)
       
-      clrdis = PRFCLF(5)
+      clrdis = PRFCLF(1)
       
       rptdis = PRFPPL(5)
       rtrdis = PRFRPL(5)
@@ -1401,10 +1396,6 @@ C*********************************************************************
       fdrt5 = PRFFED(5)
       fdrt6 = PRFFED(6)
       
-      if (IPRFFL(8) .eq. 1) then
-          fnorm  = IPRFFL(8)
-      endif
-      
       return
       end
 
@@ -1417,19 +1408,18 @@ C*    SIDE EFFECTS : none
 C*    WARNINGS     : none
 C*********************************************************************
 
-      subroutine prfsavepar (rptdis, rtrdis,clrdis)
+      subroutine prfsavepar (rptdis, rtrdis)
 
       include 'com8a.com'
       include 'prfcom.com'
       
-      real*8 rptdis, rtrdis,clrdis
+      real*8 rptdis, rtrdis
       
       !frptdis = rptdis
       !frtrdis = rtrdis
       
       PRFPPL(5) = rptdis
       PRFRPL(5) = rtrdis
-      PRFCLF(5) = clrdis
       
       return
       end

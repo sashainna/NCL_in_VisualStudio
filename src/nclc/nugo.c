@@ -5,9 +5,9 @@
 **
 **    COPYRIGHT 2015 (c) NCCS Inc.  All Rights Reserved.
 **     MODULE NAME AND RELEASE LEVEL
-**       nugo.c , 25.6
+**       nugo.c , 26.3
 **    DATE AND TIME OF LAST MODIFICATION
-**       01/24/17 , 10:42:47
+**       09/20/18 , 11:39:04
 *********************************************************************/
 #include <string.h>
 #include "class.h"
@@ -766,7 +766,7 @@ UD_FSTAT stat;
 			break;
 	case FGFD4:
 		Tgtfd.base_feedrate = atof(Tfeed);
-		nclu_fedrat_form(&Tgtfd,cfed,UU_FALSE,Sfedfl, FGFD2);
+		nclu_fedrat_form(&Tgtfd, &Sgtfd, cfed,UU_FALSE,Sfedfl, FGFD2);
 		Sfedfl = UU_TRUE;
 		Sgo_chg = 1;
 		break;
@@ -1631,8 +1631,10 @@ static void S_init_form()
 
 	nclc_get_ctr_hgt(&chc, &hgt);
 	Sgtfdav = Tgtfd.accel_flag || Tgtfd.slowdown_flag||(hgt!=0.0);
-
-	Sgtfmode = Sgtfdav ? 2:0;
+//it only have 2 choice now, 0 or 1, Yurong
+//adevance value now is current, which is 0, always set 0 now
+//	Sgtfmode = Sgtfdav ? 2:0;
+	Sgtfmode = 0;
 	Sfdmod = Sgtfd.mode-1;	
 	Tgtaxis = Sgtaxis;
 	Staxav = Tgtaxis.mode != NCLX_MOT_TLAXIS_SAME &&
@@ -2705,3 +2707,4 @@ failed:;
 	return(UU_FAILURE);
 	NCL_preview_mot = 1;
 }
+

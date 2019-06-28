@@ -16,9 +16,9 @@
 **				ud_dispfrm_set_color
 **    COPYRIGHT 2000 (c) NCCS.  All Rights Reserved.
 **    MODULE NAME AND RELEASE LEVEL 
-**			d4meth2.c , 26.3
+**			d4meth2.c , 26.8
 **    DATE AND TIME OF LAST  MODIFICATION
-**			04/16/18 , 15:13:32
+**			04/16/19 , 14:50:26
 *********************************************************************/
 #include <string.h>
 #include "usysdef.h"

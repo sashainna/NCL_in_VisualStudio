@@ -5,9 +5,9 @@ C*                 smill
 C*                 smout
 C*    COPYRIGHT 2010 (c) NCCS Inc.  All Rights Reserved.
 C*     MODULE NAME AND RELEASE LEVEL
-C*      smill.f , 25.2
+C*      smill.f , 26.2
 C*     DATE AND TIME OF LAST MODIFICATION
-C*      12/02/15 , 09:50:56
+C*      04/12/18 , 10:19:11
 C*********************************************************************
 C
 C*********************************************************************

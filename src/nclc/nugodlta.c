@@ -5,9 +5,9 @@
 **
 **    COPYRIGHT 2015 (c) NCCS Inc.  All Rights Reserved.
 **     MODULE NAME AND RELEASE LEVEL
-**       nugodlta.c , 25.3
+**       nugodlta.c , 26.3
 **    DATE AND TIME OF LAST MODIFICATION
-**       10/27/16 , 13:19:10
+**       09/20/18 , 11:40:09
 *********************************************************************/
 #include <string.h>
 #include "class.h"
@@ -245,6 +245,7 @@ void nclu_godlta()
 .....Get the current feed rate and thick
 */
 	NclxMotGetFeedrate(&Sgfedrat);
+	Tgfedrat = Sgfedrat;
 /*
 .....Initialize form answers
 */
@@ -488,7 +489,7 @@ UD_FSTAT stat;
 			break;
 	case FGFD4:
 		Tgfedrat.base_feedrate = atof(Tgtfd);
-		nclu_fedrat_form(&Sgfedrat,cfed,UU_FALSE,Sfedfl, FGFD2);
+		nclu_fedrat_form(&Tgfedrat, &Sgfedrat,cfed,UU_FALSE,Sfedfl, FGFD2);
 		Sfedfl = UU_TRUE;
 		break;
 	}
@@ -1604,9 +1605,6 @@ UU_LOGICAL flag;
 		ncl_add_token(&cmdbuf,Scthk,NCL_comma);
 		ncl_add_cmdbuf(&cmdbuf);
 	}
-/*
-.....Output advanced feedrate command
-*/
 	if (Tgtfdav && Sfedfl && flag)
 	{
 		nclu_fedrat_set_fedrat(&fedrat,cfed);
@@ -1679,3 +1677,4 @@ failed:;
 	NCL_preview_mot = 1;
 	return(UU_FAILURE);
 }
+

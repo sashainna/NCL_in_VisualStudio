@@ -18,9 +18,9 @@
 **     
 **    COPYRIGHT 2000 (c) NCCS Inc.  All Rights Reserved.
 **     MODULE NAME AND RELEASE LEVEL
-**       %M% , %I%
+**       nauth.c , 26.4
 **    DATE AND TIME OF LAST  MODIFICATION
-**       %G% , %U%
+**       01/16/19 , 09:36:18
 *********************************************************************/
 
 #include "usysdef.h"

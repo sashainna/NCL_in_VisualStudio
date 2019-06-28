@@ -19,9 +19,9 @@
 **       ncl_simulate_stock_params
 **    COPYRIGHT 1995 (c) NCCS Inc.  All Rights Reserved.
 **     MODULE NAME AND RELEASE LEVEL 
-**       nesimulate.c , 25.1
+**       nesimulate.c , 26.4
 **    DATE AND TIME OF LAST  MODIFICATION
-**       04/29/15 , 15:08:49
+**       05/28/19 , 11:42:23
 *********************************************************************/
 
 #include <stdio.h>
@@ -35,7 +35,7 @@
 static int Mtype=1;
 static UM_coord Sspt;
 
-#define MAXSIMREC 64536		//4096
+#define MAXSIMREC 64536
 #if UU_COMP == UU_WIN2K
 #define is1 3
 #define is4 0

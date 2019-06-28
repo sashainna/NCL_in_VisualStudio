@@ -3,9 +3,9 @@ C*    NAME         :  motgxx.f
 C*       CONTAINS:
 C*    COPYRIGHT 1984 (c) MILLS DATA SYSTEM Inc.  All Rights Reserved.
 C*    MODULE NAME AND RELEASE LEVEL
-C*       motgxx.f , 25.1
+C*       motgxx.f , 26.4
 C*    DATE AND TIME OF LAST  MODIFICATION
-C*       04/29/15 , 15:10:18
+C*       04/12/19 , 14:17:10
 C**********************************************************************
 C**********************************************************************
 C**  PROGRAM NAME: MOTGXX
@@ -27,6 +27,7 @@ C**********************************************************************
 
       common/avdcom/avflgs
       logical avflgs(5)
+      
 c
 c...  Local variables for Auto Gofwd.
 c

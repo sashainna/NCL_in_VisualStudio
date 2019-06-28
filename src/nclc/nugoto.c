@@ -5,9 +5,9 @@
 **
 **    COPYRIGHT 2005 (c) NCCS Inc.  All Rights Reserved.
 **     MODULE NAME AND RELEASE LEVEL
-**       nugoto.c , 25.4
+**       nugoto.c , 26.4
 **    DATE AND TIME OF LAST MODIFICATION
-**       10/27/16 , 13:20:47
+**       09/20/18 , 11:41:14
 *********************************************************************/
 #include <string.h>
 #include "class.h"
@@ -200,7 +200,11 @@ static void S_enable_buttons()
 			}
 		}
 	}
-	if ((Tgtyp==0)&&(UU_LIST_LENGTH(&Sglst) <= 0))
+/*
+.....why only Tgtyp = 0 yurong
+//	if ((Tgtyp==0)&&(UU_LIST_LENGTH(&Sglst) <= 0))
+*/
+	if (UU_LIST_LENGTH(&Sglst) <= 0)
 	{
 		sec2 = UU_FALSE;
 	}
@@ -323,13 +327,17 @@ repeat:;
 .....Free the motion settings created during preview if a change has been
 .....made and ok was pressed or if cancel was pressed
 */
-	if (Spreviewflg)
+//put the moinfr after build command in order to easier clfile swap if form accept
+	if (status == -1)
 	{
-		if (!Schgmade && status != -1 && Serrflg == 0) flag = UU_TRUE;
-		else flag = UU_FALSE;
-		moinfr(&flag);
+		if (Spreviewflg)
+		{
+			if (!Schgmade && status != -1 && Serrflg == 0) flag = UU_TRUE;
+			else flag = UU_FALSE;
+			moinfr(&flag);
+		}
+		goto done;
 	}
-	if (status == -1) goto done;
 /*
 .....An annotation must be selected
 */
@@ -346,6 +354,14 @@ repeat:;
 .....Output the command
 */
 	status = S_build_command(UU_TRUE);
+//put reset routine here
+	if (status != UU_SUCCESS) Serrflg = 1;
+	if (Spreviewflg)
+	{
+		if (!Schgmade && status != -1 && Serrflg == 0) flag = UU_TRUE;
+		else flag = UU_FALSE;
+		moinfr(&flag);
+	}
 	Scurrent_pt = 0;
 	if (status != UU_SUCCESS) goto repeat;
 /*
@@ -473,11 +489,11 @@ handle_reject:;
 /*
 ........Disable the Action buttons
 */
-			ud_set_traverse_mask(FAPV,0);
-			ud_set_traverse_mask(FAPY,0);
-			ud_set_traverse_mask(FAGE,0);
-			S_section_changed(Smode[Goto],Sred,UU_TRUE,UU_TRUE);
-			ud_frm_enable_ok(UU_FALSE);
+//			ud_set_traverse_mask(FAPV,0);
+//			ud_set_traverse_mask(FAPY,0);
+//			ud_set_traverse_mask(FAGE,0);
+//			S_section_changed(Smode[Goto],Sred,UU_TRUE,UU_TRUE);
+//			ud_frm_enable_ok(UU_FALSE);
 			ud_dispfrm_set_attribs(0,FGSEL,UM_WHITE,UM_RED);
 			Tgtpt[0] = '\0';
 			ud_update_answer(FGTXT,(int *)&Tgtpt);
@@ -554,11 +570,11 @@ handle_reject:;
 */
 		if (UU_LIST_LENGTH(&Sglst) > 0)
 		{
-			ud_set_traverse_mask(FAPV,1);
-			ud_set_traverse_mask(FAPY,1);
-			ud_set_traverse_mask(FAGE,1);
-			S_section_changed(Smode[Goto],Sgreen,UU_TRUE,UU_TRUE);
-			ud_frm_enable_ok(UU_TRUE);
+//			ud_set_traverse_mask(FAPV,1);
+//			ud_set_traverse_mask(FAPY,1);
+//			ud_set_traverse_mask(FAGE,1);
+//			S_section_changed(Smode[Goto],Sgreen,UU_TRUE,UU_TRUE);
+//			ud_frm_enable_ok(UU_TRUE);
 			ud_dispfrm_set_attribs(0,FGSEL,UM_BLACK,Tgtcol);
 		}
 		S_form_vis();
@@ -588,6 +604,7 @@ done:;
 	Scurrent_pt = 0;
     if (invis) 
 		S_form_vis();
+	S_enable_buttons();
 	UD_UNMARK(jmpflag);
 	return(UD_FLDOK);
 }
@@ -647,6 +664,7 @@ UD_FSTAT stat;
 			Tgtyp = 0;
 			ud_update_answer(*fieldno,&Tgtyp);
 		}
+		break;
 	case FGFD1:
 		if (Sgtfmode != Tgtfmode) 
 		{
@@ -694,7 +712,7 @@ UD_FSTAT stat;
 		Tgfedrat.base_feedrate = atof(Tgtfd);
 		if (Tgfedrat.mode==3)
 			Tgfedrat.mode = 1;
-		nclu_fedrat_form(&Tgfedrat, cfed, UU_FALSE, Sfedfl, FGFD2);
+		nclu_fedrat_form(&Tgfedrat, &Sgfedrat, cfed, UU_FALSE, Sfedfl, FGFD2);
 		Sfedfl = UU_TRUE;
 		break;
 	}
@@ -742,11 +760,11 @@ UD_FSTAT stat;
 */
 			if (UU_LIST_LENGTH(&Sglst) > 0)
 			{
-				ud_set_traverse_mask(FAPV,1);
-				ud_set_traverse_mask(FAPY,1);
-				ud_set_traverse_mask(FAGE,1);
-				S_section_changed(Smode[Goto],Sgreen,UU_TRUE,UU_TRUE);
-				ud_frm_enable_ok(UU_TRUE);
+//				ud_set_traverse_mask(FAPV,1);
+//				ud_set_traverse_mask(FAPY,1);
+//				ud_set_traverse_mask(FAGE,1);
+//				S_section_changed(Smode[Goto],Sgreen,UU_TRUE,UU_TRUE);
+//				ud_frm_enable_ok(UU_TRUE);
 				ud_dispfrm_set_attribs(0,FGSEL,UM_BLACK,Tgtcol);
 			}
 		}
@@ -2331,14 +2349,12 @@ UU_LOGICAL flag;
 		NCL_preview_mot = 0;
 	else
 		NCL_preview_mot = 1;
-
-	ncl_init_cmdbuf(&cmdbuf);
 /*
 .....Determine if the Tool Axis
 .....needs to be output
 */
 	taxfl = (strcmp(Sgtve,Tgtve) != 0);
-
+	ncl_init_cmdbuf(&cmdbuf);
 /*
 .....Loop through selections
 */
@@ -2370,7 +2386,7 @@ UU_LOGICAL flag;
                 }
             } 
 /*
-.....Output advanced feedrate command if not Preview
+.....Output advanced feedrate command
 */
 			if (Tgtfdav && Sfedfl && flag)
 			{
@@ -2387,7 +2403,7 @@ UU_LOGICAL flag;
 .....Output RAPID command
 */
                 {
-                    if (!flag) ncl_add_token(&cmdbuf, "*", NCL_nocomma);
+                   if (!flag) ncl_add_token(&cmdbuf, "*", NCL_nocomma);
                     ncl_add_token(&cmdbuf,NCL_rapid,NCL_nocomma);
                     ncl_add_cmdbuf(&cmdbuf);
                     if (flag == UU_TRUE)
@@ -2487,6 +2503,8 @@ UU_LOGICAL flag;
 */
 //Never execute the fedrat command if previewed.
 //Yurong Ask Ken
+//we need make change here
+//if 
 		if (Spreviewflg && !Schgmade) ncl_call_input(&cmdbuf,UU_TRUE);
 /*
 .....Execute command if a change has been made since the last preview or no
@@ -2509,3 +2527,4 @@ failed:;
 	NCL_preview_mot = 1;
 	return(UU_FAILURE);
 }
+

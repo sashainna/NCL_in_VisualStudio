@@ -4,9 +4,9 @@ C*    NAME         :  mosyn.f
 C*       CONTAINS:
 C*    COPYRIGHT 1984 (c) MILLS DATA SYSTEM Inc.  All Rights Reserved.
 C*     MODULE NAME AND RELEASE LEVEL 
-C*       mosyn.f , 25.4
+C*       mosyn.f, 26.4
 C*    DATE AND TIME OF LAST  MODIFICATION
-C*       01/20/17 , 11:17:05
+C*       01/15/19 , 14:56:18
 C********************************************************************/
 C
 C*********************************************************************

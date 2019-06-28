@@ -3,9 +3,9 @@ C*    NAME         :  domove.f
 C*       CONTAINS:
 C*    COPYRIGHT 1989 (c) MILLS DATA SYSTEM Inc.  All Rights Reserved.
 C*    MODULE NAME AND RELEASE LEVEL 
-C*       domove.f , 25.1
+C*       domove.f , 26.8
 C*    DATE AND TIME OF LAST  MODIFICATION
-C*       04/29/15 , 15:09:57
+C*       05/28/19 , 11:56:45
 C***********************************************************************
 C **********************************************************************
 C **  PROGRAM NAME: DOMOVE
@@ -15,6 +15,7 @@ C **
 C **********************************************************************
 C **********************************************************************
  
+
       SUBROUTINE DOMOVE
  
       include 'com8a.com'
@@ -92,7 +93,7 @@ c     init pars for flip check Sasha Aug. 2018
      x    ifl(42).eq.0 .and. ifl(23).eq.4 .and. kcps.eq.0) lfncmb = -1
       
 c     save to check flip later in psrel, Sasha Aug. 2018           
-      call vctovc(sc(1),sc(217))
+c      call vctovc(sc(1),sc(217))
       call vctovc(sc(4),sc(220))
       CALL MOVER
       
