@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<POSTS>
+  <MACHINE name="888" state="inactive" type="standard">
+    <ALIAS></ALIAS>
+    <IMAGE></IMAGE>
+    <FILL></FILL>
+    <USERVAR></USERVAR>
+    <WARNING state="on" limit="9999"></WARNING>
+    <ERROR state="on" limit="9999"></ERROR>
+    <FATAL>1</FATAL>
+    <APTERR state="default"></APTERR>
+    <ADJUST state="inactive" mx="none"></ADJUST>
+    <DEBUG level="off" ext="lis"></DEBUG>
+    <CLFILE type="2" length="132" option="" file="" args=""></CLFILE>
+    <PRINT active="yes" ext="pr1" page="60"></PRINT>
+    <PUNCH active="yes" ext="pu1" ident="false"></PUNCH>
+    <SIMUL active="no" ext="no" linear="no"></SIMUL>
+    <LOG active="on" ext="log"></LOG>
+    <SUPPRESS state="default"></SUPPRESS>
+    <OPTIONS input="default" output="default" pdfname="" prgnr="" maxout=""></OPTIONS>
+  </MACHINE>
+  <MACHINE name="8100132" state="inactive" type="standard">
+    <ALIAS></ALIAS>
+    <IMAGE></IMAGE>
+    <FILL></FILL>
+    <USERVAR></USERVAR>
+    <WARNING state="on" limit="9999"></WARNING>
+    <ERROR state="on" limit="9999"></ERROR>
+    <FATAL>1</FATAL>
+    <APTERR state="default"></APTERR>
+    <ADJUST state="inactive" mx="none"></ADJUST>
+    <DEBUG level="off" ext="lis"></DEBUG>
+    <CLFILE type="2" length="132" option="" file="" args=""></CLFILE>
+    <PRINT active="yes" ext="pr1" page="60"></PRINT>
+    <PUNCH active="yes" ext="pu1" ident="false"></PUNCH>
+    <SIMUL active="no" ext="no" linear="no"></SIMUL>
+    <LOG active="on" ext="log"></LOG>
+    <SUPPRESS state="default"></SUPPRESS>
+    <OPTIONS input="default" output="default" pdfname="" prgnr="" maxout=""></OPTIONS>
+  </MACHINE>
+  <MACHINE name="777" state="active" type="standard">
+    <ALIAS></ALIAS>
+    <IMAGE></IMAGE>
+    <FILL></FILL>
+    <USERVAR></USERVAR>
+    <WARNING state="on" limit="9999"></WARNING>
+    <ERROR state="on" limit="9999"></ERROR>
+    <FATAL>1</FATAL>
+    <APTERR state="default"></APTERR>
+    <ADJUST state="inactive" mx="none"></ADJUST>
+    <DEBUG level="off" ext="lis"></DEBUG>
+    <CLFILE type="2" length="132" option="" file="" args=""></CLFILE>
+    <PRINT active="yes" ext="pr1" page="60"></PRINT>
+    <PUNCH active="yes" ext="pu1" ident="false"></PUNCH>
+    <SIMUL active="no" ext="no" linear="no"></SIMUL>
+    <LOG active="on" ext="log"></LOG>
+    <SUPPRESS state="default"></SUPPRESS>
+    <OPTIONS input="default" output="default" pdfname="" prgnr="" maxout=""></OPTIONS>
+  </MACHINE>
+</POSTS>

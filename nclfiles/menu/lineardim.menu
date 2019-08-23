@@ -1,0 +1,15 @@
+#Descriptor#
+/NAME/ Linear Dim
+/POSITION/ 0.620313,0.320312
+/SIZE/ 0.084375,0.175781
+/ROWS/ 5
+/COLS/ 1
+/TYPE/ Pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Horizontal/ CAD_DRAFT_DHORIZ
+/Vertical/ CAD_DRAFT_DVERT
+/Parallel/ CAD_DRAFT_DPARL
+/Perp/ CAD_DRAFT_DPERP
+/Thickness/ CAD_DRAFT_DTHICK

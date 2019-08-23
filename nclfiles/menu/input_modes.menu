@@ -1,0 +1,14 @@
+#Descriptor#
+/Name/ Input Modes
+/Rows/ 1
+/Cols/ 3
+/Type/ Icon
+/Position/ 0.582031,0.879883
+/Area/ Top
+/FORMAT/ ICON
+
+#Menus#
+/ / KEY_PICK
+/ / KEY_TEXT
+/ / KEY_LOCATE
+

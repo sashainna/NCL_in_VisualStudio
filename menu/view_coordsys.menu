@@ -1,0 +1,13 @@
+#Descriptor#
+/NAME/ View by Coordinate System
+/POSITION/ 0.568750,0.100586
+/SIZE/ 0.087500,0.375000
+/ROWS/ 3
+/COLS/ 1
+/TYPE/ Pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Tracut/ NCL_VIEW_TRACUT
+/Refsys/ NCL_VIEW_REFSYS
+/Matrix/ NCL_VIEW_MATRIX

@@ -1,0 +1,23 @@
+#Descriptor#
+/NAME/ motion
+/POSITION/ 0.000000,0.000000
+/SIZE/ 0.081250,0.542969
+/ROWS/ 11
+/COLS/ 1
+/TYPE/ Icon
+/Area/ Left
+/KEYDEFS/ camkey.wnt
+/FORMAT/ BOTH
+
+#Menus#
+/Cutter/ CAM_CUTTER_PARMS
+/Tlaxis/ CAM_TLAXIS
+/Fedrat/ CAM_FEDRAT
+/Indir/ CAM_INDIR
+/Cont Path/ go.menu
+/Cut Rtn/ cutrtn.menu
+/Misc/ cammisc.menu
+#Bar#
+/Assist/ CAM_MOTION_CALC
+#Bar#
+/Modeling/ nclcam.menu

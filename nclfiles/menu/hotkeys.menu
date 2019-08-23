@@ -1,0 +1,20 @@
+#Descriptor#
+/NAME/ Hot Key Favorites
+/POSITION/ 0.45,0.07
+/SIZE/ 0.141602,0.385417
+/ROWS/ 10
+/COLS/ 1
+/TYPE/ pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/c - Dynamic View Center/ NCL_DYNAMIC_CENTER
+/d - Dynamic Viewing/ NCL_DYNAMIC_MOUSE
+/f - Fit View/ NCL_FIT_VIEW
+/l - Limit Pick / NCL_LIMIT_GEO
+/o - Erase Motion/ CAM_ERASE_MOTION
+/q - Display Cutter/ CAM_DISPLY_CUTTER
+/r - Reset View / NCL_RESET_VIEW
+/v - Pick Verify on-off/ NCL_VERIFY_TOGGLE
+/w - Window Zoom / NCL_WINDOW_ZOOM
+/R - Run Program/ CAM_RUN,"END"

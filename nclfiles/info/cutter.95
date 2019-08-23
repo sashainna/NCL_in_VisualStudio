@@ -1,0 +1,81 @@
+============
+Cutter Flags
+============
+
+icutfl(1) = 0 = Display standard cutter, 1 = Display DISPLY cutter,
+            2 = Display symbol cutter, 3 = Display standard and symbol cutters,
+            4 = Display DISPLY and symbol cutters.
+icutfl(2) = 0 = CUTTER/DISPLY,PART, 1 = DISPLY,ALL
+icutfl(3) = 0 = CUTTER/DISPLY,MOVE,OFF, 1 = MOVE,ON
+icutfl(4) = 0 = CUTTER/DISPLY,SHADE,OFF, 1 = SHADE,ON, 2 = SHADE,SMOOTH
+
+========================
+Cutter Parameters (cbuf)
+========================
+
+Standard Mill
+-------------
+cbuf(1) = Diameter
+cbuf(2) = Corner Radius
+cbuf(3) = Height
+cbuf(4) = Angle
+
+Barrel Cutter
+-------------
+cbuf(1) = Diameter
+cbuf(2) = Corner Radius
+cbuf(3) = Height
+cbuf(4) = Special
+cbuf(5) = Special
+cbuf(6) = Special
+
+Blade
+-----
+cbuf(1) = -9809 (10000-BLADE)
+cbuf(2) = 0
+cbuf(3) = Height
+cbuf(4) = Chizel
+cbuf(5) = Width
+cbuf(6) = Sine(Angle)
+
+Lathe Bit
+---------
+cbuf(1) = -9300 (1000-LATHE)
+cbuf(2) = Diameter (Radius*2.)
+cbuf(3) = Inscribed Diameter
+cbuf(4) = Height
+cbuf(5) = Angle
+cbuf(6) = Mounting Angle
+
+Grooving Tool
+-------------
+cbuf(1) = -9300 (1000-LATHE)
+cbuf(2) = Diameter (Radius*2.)
+cbuf(3) = Tool Width (X)
+cbuf(4) = Height
+cbuf(5) = Angle
+cbuf(6) = Tool Length (Y)
+
+=================================
+Cutter Display Parameters (dcutr)
+=================================
+
+dcutr(1)  = Diameter
+dcutr(2)  = Corner Radius
+dcutr(3)  = Height
+dcutr(4)  = Cosine(Angle)
+dcutr(5)  = Barrel Special
+dcutr(6)  = Barrel Special
+dcutr(7)  = Barrel Special
+dcutr(8)  = Barrel Special
+dcutr(9)  = 1 = Barrel Cutter, 11 = Lathe Square, 12 = Diamond, 13 = Triangle,
+            14 = Circle, 15 = Grooving Tool
+dcutr(10) = Symbol offset (Z for Mill, X for Lathe)
+dcutr(11) = Symbol Y-offset for Lathe tools
+dcutr(12) = Symbol Z-Minimum for Lathe tools
+dcutr(13) = Symbol Z-Maximum for Lathe tools
+dcutr(14) = Shank diameter (Mill) or X-width (Lathe)
+dcutr(15) = Shank height (Mill) or Y-length (Lathe)
+dcutr(16) = Shank Z-height (Lathe)
+dcutr(17) = Shank Y-offset (Lathe)
+dcutr(18) = Shank clashes - 0 = CUTTER, 1 = HOLDER

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VisualStudioUserFile ProjectType="typeStaticLibrary" ProjectCreator="Intel Fortran" Keyword="Static Library - Converted from CVF" Version="11.0" ProjectIdGuid="{295163AF-531F-4D6D-970F-F67B970F3002}">
+	<Configurations>
+		<Configuration Name="Debug|x64" Command="$(TargetPath)" WorkingDirectory="$(ProjectDir)" MergeEnvironment="false"/>
+		<Configuration Name="Release|x64"/></Configurations></VisualStudioUserFile>

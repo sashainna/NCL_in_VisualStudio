@@ -1,0 +1,12 @@
+#Descriptor#
+/NAME/ Nccs License
+/POSITION/ 0.718750,0.118490
+/SIZE/ 0.109375,0.130208
+/ROWS/ 2
+/COLS/ 1
+/TYPE/ Pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/License Manager/ NIS_SYSTEM_ONCE, <Lic>, "%NCCS_LICENSE%\nccs_license.exe&,No"
+/Nccs Id/ NIS_SYSTEM_ONCE, <Display System ID>, "%NCCS_LICENSE%\nccs_id.exe&,No"

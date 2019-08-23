@@ -1,0 +1,24 @@
+#Descriptor#
+/NAME/ Fixture
+/POSITION/ 0,0
+/SIZE/ .080,.120
+/ROWS/ 11
+/COLS/ 1
+/TYPE/ Pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Box Pt Pt/ IPV_FIXT_BXPT
+/Box Pt Lwh/ IPV_FIXT_BXLEN
+/Solid/ IPV_FIXT_SOLID
+/More.../ ipv_fixt1.menu
+#Bar#
+/Profile/ IPV_FIXT_SWEEP
+/Contour/ IPV_FIXT_CONTOUR
+/Revolve/ IPV_FIXT_REVOLVE
+#Bar#
+/Load Stl/ IPV_LOAD_FIXT_STL
+/Save Stl/ IPV_SAVE_FIXT_STL
+#Bar#
+/Modify/ IPV_FIXT_ATTRIBS
+/Modals/ IPV_FIXT_MODALS

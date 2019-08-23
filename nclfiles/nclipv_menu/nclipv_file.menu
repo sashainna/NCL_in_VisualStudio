@@ -1,0 +1,21 @@
+#Descriptor#
+/NAME/ File Mgmt
+/POSITION/ 0.125000,0.013021
+/SIZE/ 0.113281,0.447917
+/ROWS/ 2
+/COLS/ 3
+/TYPE/ pulldown
+/FORMAT/ BOTH
+
+#Menus#
+/New/ NCLIPV_RESTART
+/Open Toolpath/ CAM_PLAYFILE
+/Load Machine/ IPV_LOAD_MACHINE
+#BAR#
+/Load Prims/ IPV_LOAD_STOCK
+/Save Prims/ IPV_SAVE_STOCK
+#BAR#
+/Print Screen/ IPV_PRINT_SCREEN
+/Menu Design/ NIS_MENU_DESIGN
+#BAR#
+/Exit/ IPV_APP_EXIT

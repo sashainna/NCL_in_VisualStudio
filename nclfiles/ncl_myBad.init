@@ -1,0 +1,186 @@
+NCLVER = %NCL2019
+NCL    = C:\NCL_from_GitHub\NCL_in_VisualStudio\nclfiles
+
+UD_FORMDIR = %NCL\forms
+
+NCL_TOOL=%NCL\toolib
+NCL_TOOLIB=ncl.TLB
+NCL_TOOL_DSUP=%NCL\toolib\data
+NCL_TOOL_DRAWING=NCL_TOOL\drawings
+NCL_TOOLIB_HELP="start %NCL_2019%\doc\toolib.pdf"
+NCL_TOOL_DESC = TOOL.LIB
+NCL_TOOL_SYMLIB = Tools
+
+
+UB_DESCRIBE = UU_FALSE
+UB_DESC_SUFFIX = "sd"
+UB_LOC_M_SYMDIR = .
+UB_SYM_AREA_SUFFIX = "S"
+UB_SYM_EXTEN = UB_SYM_AREA_SUFFIX UB_SYM_SUFFIX
+UB_SYM_SUFFIX = "sy"
+UB_SYS_M_SYMDIR = %NCL\symbols
+UB_UPDATE_LOAD_SYMS = FALSE
+
+
+nc00=%NCL2019_INIT_FILES\
+M_UD_LAYOUT_DIR=%NCL2019_INIT_FILES
+UD_LAY_SUFFIX=lay
+UD_MENU_SUFFIX=menu
+NCL_MENU=%NCL2019_INIT_FILES\menu
+NCL_DOC = %NCL\doc
+NCL_POST = %PWORKS_BIN
+M_UD_LAYOUT=ncl.lay
+UZ_CAM_KEYDEFS=%NCL2019_INIT_FILES\nclkeys.kdf
+UZ_MOUSE_BUTDEFS = %NCL2019_INIT_FILES\mouse_default.mo
+UL_NIS_MODALS = %NCL2019_INIT_FILES\ncl.mod
+UL_NCLIPV_MODALS = %NCL2019_INIT_FILES\nclipv.mod
+UL_NCLIPV_MACHINES = %NCL\..\machines
+UL_NCLIPV_PRINT = 0
+UV_SCREEN_LAYOUT=%M_UD_LAYOUT_DIR\ncl_screen.lay
+UU_MSLVARS = %NCL2019_INIT_FILES\mslite.init
+UU_PLOTVARS = %NCL2019_INIT_FILES\nclplot.init
+NCLIPV_LOGFILE = nclipv.log
+NCL_INCDIR = %NCL\macros\
+NCL_TEMP_CLFILE   = %temp_s
+
+UL_INTERFACE_MENU = ""
+
+DRAFTSTDIR = %NCL\unifiles
+DRAFTSTD = \ANSISTD.DAT
+CALCGRAM = %NCL\unifiles\grm\icalc.grm
+M_DASGRAM = %NCL\unifiles\grm\das.grm
+
+FONT1 = %NCL\unifiles\duplex.fo
+FONT2 = %NCL\unifiles\romsim.fo
+FONT3 = %NCL\unifiles\italic.fo
+FONT4 = %NCL\unifiles\grksim.fo
+FONT6 = %NCL\unifiles\ansi.fo
+FONT7 = %NCL\unifiles\ansi-15.fo
+FONT8 = %NCL\unifiles\ansi15.fo
+FONT10 = %NCL\unifiles\astrology.fo
+FONT11 = %NCL\unifiles\cursive.fo
+FONT12 = %NCL\unifiles\cyrilc_1.fo
+FONT13 = %NCL\unifiles\cyrillic.fo
+FONT14 = %NCL\unifiles\futural.fo
+FONT15 = %NCL\unifiles\futuram.fo
+FONT16 = %NCL\unifiles\gothgbt.fo
+FONT17 = %NCL\unifiles\gothgrt.fo
+FONT18 = %NCL\unifiles\gothiceng.fo
+FONT19 = %NCL\unifiles\gothicger.fo
+FONT20 = %NCL\unifiles\gothicita.fo
+FONT21 = %NCL\unifiles\gothitt.fo
+FONT22 = %NCL\unifiles\greek.fo
+FONT23 = %NCL\unifiles\greekc.fo
+FONT24 = %NCL\unifiles\greeks.fo
+FONT25 = %NCL\unifiles\japanese.fo
+FONT26 = %NCL\unifiles\japanese2.fo
+FONT27 = %NCL\unifiles\markers.fo
+FONT28 = %NCL\unifiles\mathlow.fo
+FONT29 = %NCL\unifiles\mathupp.fo
+FONT30 = %NCL\unifiles\meteorology.fo
+FONT31 = %NCL\unifiles\music.fo
+FONT32 = %NCL\unifiles\romand.fo
+FONT33 = %NCL\unifiles\romans.fo
+FONT34 = %NCL\unifiles\romant.fo
+FONT35 = %NCL\unifiles\scriptc.fo
+FONT36 = %NCL\unifiles\scripts.fo
+FONT37 = %NCL\unifiles\symbolic.fo
+FONT38 = %NCL\unifiles\timesg.fo
+FONT39 = %NCL\unifiles\timesi.fo
+FONT40 = %NCL\unifiles\timesib.fo
+FONT41 = %NCL\unifiles\timesr.fo
+FONT42 = %NCL\unifiles\timesrb.fo
+FONT_ansi = FONT6
+FONT_ansi-15 = FONT7
+FONT_ansi15 = FONT8
+FONT_iso = FONT6
+FONT_iso-15 = FONT7
+FONT_iso15 = FONT8
+FONT_drafting = FONT6
+FONT_duplex = FONT1
+FONT_grksim = FONT4
+FONT_italic = FONT3
+FONT_romsim = FONT2
+FONT_ansileft = FONT7
+FONT_ansiright = FONT8
+FONT_astrology = FONT10
+FONT_cursive = FONT11
+FONT_cyrilc_1 = FONT12
+FONT_cyrillic = FONT13
+FONT_futural = FONT14
+FONT_futuram = FONT15
+FONT_gothgbt = FONT16
+FONT_gothgrt = FONT17
+FONT_gothiceng = FONT18
+FONT_gothicger = FONT19
+FONT_gothicita = FONT20
+FONT_gothitt = FONT21
+FONT_greek = FONT22
+FONT_greekc = FONT23
+FONT_greeks = FONT24
+FONT_japanese = FONT25
+FONT_japanese2 = FONT26
+FONT_markers = FONT27
+FONT_mathlow = FONT28
+FONT_mathupp = FONT29
+FONT_meteorology = FONT30
+FONT_music = FONT31
+FONT_romand = FONT32
+FONT_romans = FONT33
+FONT_romant = FONT34
+FONT_scriptc = FONT35
+FONT_scripts = FONT36
+FONT_symbolic = FONT37
+FONT_timesg = FONT38
+FONT_timesi = FONT39
+FONT_timesib = FONT40
+FONT_timesr = FONT41
+FONT_timesrb = FONT42
+
+UU_DERROR = TRUE
+gkserrors = %NCL\unifiles\gerrors.erf
+
+UD_RPB_SUFFIX = "rp"
+U_RECORD_PLAYB_AREA = %NCL\rpfiles
+INITPLAY = %NCL\rpfiles\initplay.rp
+
+
+UW_FORM_SCALEX = 1
+UW_FORM_SCALEY = 1
+
+
+UM_DRW_ARCHIVE_LIB = .
+UM_DRAWING_SUFFIX = "dw"
+UM_DRW_ASUFFIX = "da"
+
+UD_SELBUF_SIZ = 500000
+UZ_DIALS = YES
+UZ_BUTTONS = YES
+UU_OVERLAY=FALSE
+UU_SHADING = ON
+UV_VPORT_DISPLAY  = SHADED
+
+HOMEDIR = .
+UX_HOMEDIR = .
+UR_PART_AREA = .
+UR_UNB_FILE = u
+UR_ASCII_PART = ud
+UR_PART_SUFFIX = u
+UL_PROGRAM_SUFFIX = pp,geo,as,apt,mac,ncl
+UL_CLFILE1_SUFFIX = cl
+UL_CLFILE2_SUFFIX = cln
+UL_MCD_SUFFIX = pu*,mcd,eia
+UD_KEYFILE_SUFFIX = wnt,key,kdf
+UD_TEXT_SUFFIX = "txt"
+
+IGES_EXE = %NCL\bin\iges.exe
+
+STEP_EXE = %NCL\bin\step.exe
+
+UL_NCL_EDIT = notepad *
+% UL_NCL_EDIT = C:\windows\system32\cmd /K "C:\Program Files (x86)\Boxer Text Editor\B.exe" *
+
+U_UNITS = INCH
+
+UL_NCL_VIDEO_PATH = %NCL\..\Video\Completed_Videos_With_Audio
+

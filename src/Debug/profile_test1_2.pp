@@ -1,0 +1,19 @@
+partno test
+multax/on
+ca/on
+loadu/profile.u
+$$ CV2 = CURVE/profile.u
+cu/0.05,0.025,1
+$$ CUTTER/0.001,0.0,0.1
+dc
+goto/pt1
+$$ gd/0.05,-0.5,0.7
+gd/0.375
+cut
+PT5   =POINT/XSMALL,ENDPT,1C9(2)
+$$ chkpts/0.001,0.005,0.01
+CV2   =SPLINE/PROJCT,1C9(2),SF3214
+$$ PT5   =POINT/XSMALL,ENDPT,CV2
+MAXANG/5
+PROFIL/ON,CV2,PS,SF3214,NORMAL,OUT,0.01,10,AT,0.01,10,START,NEARPT,PT5,CLW,$
+RAPTO,0.225,RETRCT,0.2

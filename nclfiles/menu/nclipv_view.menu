@@ -1,0 +1,18 @@
+#Descriptor#
+/NAME/ Viewing
+/POSITION/ 0.125000,0.013021
+/SIZE/ 0.113281,0.447917
+/ROWS/ 8
+/COLS/ 1
+/TYPE/ pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Static Views/ nclipv_view_static.menu
+/Fit/ IPV_FIT_VIEW
+/Dynamic/ IPV_DYNAMIC_MOUSE
+/Center/ IPV_VIEW_CENTER
+/Window/ IPV_WINDOW_ZOOM
+/Prev View/ IPV_PREVIOUS_VIEW
+/Reset/ IPV_VIEW_SAME
+/View Modals/ NCL_DYNAMIC_MODALS

@@ -1,0 +1,20 @@
+#Descriptor#
+/NAME/ Fixture
+/POSITION/ 0,.0
+/SIZE/ .080,.144
+/ROWS/ 5
+/COLS/ 2
+/TYPE/ Pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Cone Pt PT R/ IPV_FIXT_CONPT
+/Cone Pv L R/ IPV_FIXT_CONCE
+/Cyl Ci L/ IPV_FIXT_CYLCIR
+/Cyl Pt Pt R/ IPV_FIXT_CYLPT
+/Cyl Pv L R/ IPV_FIXT_CYLCE
+/Sphere Ci/ IPV_FIXT_SPHCI
+/Sphere Pt R/ IPV_FIXT_SPHCE
+/Torus Ci Ci/ IPV_FIXT_TORCI
+/Torus Ci R/ IPV_FIXT_TORRA
+/Torus Pv R R/ IPV_FIXT_TORCE

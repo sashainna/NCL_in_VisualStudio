@@ -1,0 +1,43 @@
+#Descriptor#
+/Name/ Main tool bar
+/Rows/ 1
+/Cols/ 18
+/Type/ Icon
+/Position/ 0.582031,0.879883
+/Area/ Top
+
+#Menus#
+/ / NCL_RESTART
+/ / CAM_LOAD_PP
+/ / CAM_SAVE_PP
+/ / nclipv.menu
+/ / NCL_DYNAMIC_MOUSE
+/ / NCL_FIT_VIEW
+/ / NCL_WINDOW_ZOOM
+/ / NCL_PREVIOUS_VIEW
+/ / NCL_DISPLAY_MODE, shade.bmp
+/ / CAM_RUN_END
+/ / CAM_COMMAND
+#choice# insert.menu
+/ / CAM_EDIT_PP
+/ / keypad.menu
+#choice# input_modes.menu
+/ / CAM_ERASE_MOTION
+/ / CAM_DISPLY_CUTTER
+/ / NCL_REPAINT_FULL
+/ / KEY_NOOP
+/ / KEY_NOOP
+/ / KEY_NOOP
+/ / KEY_NOOP
+/ / KEY_NOOP
+/ / KEY_NOOP
+/ / KEY_NOOP
+/ / KEY_NOOP
+/ / KEY_NOOP
+/ / KEY_NOOP
+/ / KEY_NOOP
+/ / KEY_NOOP
+/ / KEY_NOOP
+/ / KEY_NOOP
+/ / KEY_NOOP
+

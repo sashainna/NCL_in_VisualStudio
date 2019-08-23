@@ -1,0 +1,16 @@
+#Descriptor#
+/Name/ RUN Program Menu
+/Rows/ 1
+/Cols/ 6
+/Type/ Icon
+/Position/ 0.582031,0.879883
+/Area/ Top
+/FORMAT/ ICON
+
+#Menus#
+/ END    / CAM_RUN,<Run to EOF>,"END",CAM_RUN_END.bmp
+/ MACRO  / CAM_RUN,<Run to Macro>,"MACRO",CAM_RUN_MAC.bmp
+/ TERMAC / CAM_RUN,<Run to Termac>,"TERMAC",CAM_RUN_TMC.bmp
+/ LOOPST / CAM_RUN,<Run to Loop Start>,"LOOPST",CAM_RUN_LST.bmp
+/ LOOPND / CAM_RUN,<Run to Loop End>,"LOOPND",CAM_RUN_LND.bmp
+/ LINE   / CAM_RUN,<Run to Line Number>,"LINE",CAM_RUN_LIN.bmp

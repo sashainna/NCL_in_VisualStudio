@@ -1,0 +1,27 @@
+#Descriptor#
+/NAME/ Defaults
+/POSITION/ 0.6,.6
+/SIZE/ 0.380858,0.117188
+/ROWS/ 13
+/COLS/ 1
+/TYPE/ Pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Set Attribs/ NCL_SET_ATTRIBS
+/Axis Grid/ camaxgrid.menu
+#Bar#
+/Input Layer/ NCL_INPUT_LAYER
+/Manage Layers/ NCL_LAYERS
+#Bar#
+/Name Modals/ NCL_NAME_MODALS
+/Pick Modals/ NCL_PICK_MODALS
+/Interface Modals/ NIS_IFACE_MODALS
+/Misc Modals/ NCL_MISC_MODALS
+/Source Format/ CAM_COMMAND_SRC
+/Unibase Modals/ NCL_UNIBASE_MODALS
+/Label Modals/ NCL_LABEL_MODALS
+/Geometry Color Modals/ NCL_COLOR_MODALS
+/Modals Files Output/ NIS_MODALS_OUTPUT
+#Bar#
+/Units/ units.menu

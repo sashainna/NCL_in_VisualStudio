@@ -1,0 +1,26 @@
+Subtype = 8 = CUTTER/DISPLY,SHANK-HOLDER (9.7+)
+Mxcl    = 5+
+
+ Bytes    I*2s      I*4s       Reals      Data
+-------   -----    ------      -----      ----
+1-2       1        1(1)        1(1)       Number of Characters in Symbol
+3:4       2        1(2)        1(2)       1 = Parameters, 2 = Symbol,
+                                          3 = Tool file, 4 = Pt-list
+5:6       3        2(1)        1(3)       0 = Shank as Cutter,
+                                          1 = Shank as Holder,
+                                          2 = Holder definition
+9:16      5:8      3:4         2          Diameter/Lathe Width/Sym Offset
+17:24     9:12     5:6         3          Height/Lathe Length/Lathe Y-offset
+25:32     13:16    7:8         4          Z-offset/Lathe depth/Lathe Z-min
+33:40     17:20    9:10        5          Y-offset/Lathe Z-max
+41:n      21:n     11:n        6          Symbol
+
+
+
+PPRINT IPV SHANK DISPLY "pt-list" [,ofs]                [CUTTER]
+                                  [x,y ] [OFFSET,z1,z2] [HOLDER]
+
+
+
+PPRINT IPV SHANK dia,hgt [,ang] [,ofs] [CUTTER]
+                 wid,len,dep,y-offset  [HOLDER]

@@ -1,0 +1,16 @@
+#Descriptor#
+/NAME/ Motion Status
+/POSITION/ 0,0
+/SIZE/ .150,.035
+/ROWS/ 1
+/COLS/ 5
+/TYPE/ Icon
+/Area/ Status1
+/FORMAT/ TEXT
+
+#Buttons#
+/File Name = /PROGRAM,CAM_LOAD_PP
+/Unibase = / UNIBASE,CAD_LOAD_UNIBASE
+/Dir = / DIRECTORY,CAM_LOAD_PP
+/Feed Rate = / FEDRAT,CAM_FEDRAT
+

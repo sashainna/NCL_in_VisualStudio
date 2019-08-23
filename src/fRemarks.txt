@@ -1,0 +1,6 @@
+GAP REPORT LOG OPENED ON Fri Nov 30 09:56:53 2018
+
+remark #30761: Add -Qparallel option if you want the compiler to generate recommendations for improving auto-parallelization.
+
+Number of advice-messages emitted for this compilation session: 0.
+END OF GAP REPORT LOG

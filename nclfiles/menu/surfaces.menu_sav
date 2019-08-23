@@ -1,0 +1,41 @@
+#Descriptor#
+/NAME/ Surfaces
+/POSITION/ 0.542969,0.078125
+/SIZE/ 0.095703,0.651042
+/ROWS/ 14
+/COLS/ 2
+/TYPE/ Popup
+
+#Menus#
+/N-Ruled/ CAM_GEO_NF_RULED, Nf_ruled.bmp
+/N-Curves/ CAM_GEO_NF_CURVES, Nf_curves.bmp
+/N-Curves 0/ CAM_GEO_NF_CURVES0, Nf_curves0.bmp
+/N-Fit/ CAM_GEO_NF_FIT, Nf_fit.bmp
+/N-Fit Thru/ CAM_GEO_NF_FIT_THRU, Nf_fit_thru.bmp
+/4 Curve/ CAM_GEO_NF_4CV, Nf_4cv.bmp
+/Revolve/ CAM_GEO_NF_REVOLVE, Nf_revolve.bmp
+#Bar#
+/Reded Surf/ CAM_GEO_SF_REDEF, Sf_redef.bmp
+/Remove Boundaries/ CAM_GEO_TRIM_REMOVE, Sf_rmv.bmp
+/Trim Surf/ CAM_GEO_SF_TRIM, Sf_trim.bmp
+/Untrim Surf/ CAM_GEO_SF_OUT, Sf_out.bmp
+#Bar#
+/Ruled/ CAM_GEO_SF_RULED, Sf_ruled.bmp
+/Curves/ CAM_GEO_SF_CURVES, Sf_curves.bmp
+/Curves 0/ CAM_GEO_SF_CURVES0, Sf_curves0.bmp
+/Fit/ CAM_GEO_SF_FIT, Sf_fit.bmp
+/Fit Thru/ CAM_GEO_SF_FIT_THRU, Sf_fit_thru.bmp
+/Offset/ CAM_GEO_SF_OFFSET, Sf_offset.bmp
+/Pl-Pl-Ra/ CAM_GEO_SF_PLPLRA, Sf_plplra.bmp
+/Fillet/ CAM_GEO_SF_FILLET, Sf_fillet.bmp
+/Net/ CAM_GEO_SF_NET, Sf_net.bmp
+/Sf Thru Sf/ CAM_GEO_SF_NET_THRU, Sf_net_thru.bmp
+#Bar#
+/Shade Sf/ NCL_SHADE_ENTITY, Shade_entity.bmp
+/Unshade Sf/ NCL_UNSHADE_ENTITY, Unshade_entity.bmp
+#bar#
+/Analyze Sf/ NCL_ANALYZE_SURF, Analyze_surf.bmp
+/Analyze Thru/ NCL_ANALYZE_SURF_THRU, Analyze_surf_thru.bmp
+#Bar#
+/Mod Attrib/ CAM_GEO_SF_ATTRIB, Sf_attrib.bmp
+/Modals/ CAM_GEO_SF_MODALS, Sf_modals.bmp

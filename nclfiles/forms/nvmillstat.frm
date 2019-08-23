@@ -1,0 +1,16 @@
+#HEADER#
+/TITLE/ VoluMill Pocket Status
+/POSITION/ 50,50
+/SIZE/240,75
+
+#PROGRESS#
+/LABEL/ VoluMill Calculation Progress:
+/POSITION/ 10,8
+/SIZE/ 200,14
+/TYPE/ UD_DASINT
+
+#PUSHBUTTON#
+/LABEL/ Interrupt
+/POSITION/ 90,25
+/SIZE/ 50,14
+/TYPE/ UD_DASSTRING

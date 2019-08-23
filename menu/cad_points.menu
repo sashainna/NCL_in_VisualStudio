@@ -1,0 +1,19 @@
+#Descriptor#
+/NAME/ Cad Points
+/POSITION/ 0.0,0.0
+/SIZE/ 0.083,0.251
+/ROWS/ 8
+/COLS/ 1
+/TYPE/ Pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Single/ CAD_GEO_PT_XY
+/Delta/ CAD_GEO_PT_DELTA
+/Lin Pat/ CAD_GEO_PN_LINEAR
+/Circ Pat/ CAD_GEO_PN_CIRC
+/Intof/ CAD_GEO_PT_IO
+/On Entity/ CAD_GEO_PT_ONENT
+/On Curve/ CAD_GEO_PT_ONCV
+/On Surf/ CAD_GEO_PT_ONSF
+

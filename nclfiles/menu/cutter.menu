@@ -1,0 +1,13 @@
+#Descriptor#
+/NAME/ Cutter
+/POSITION/ 0.477344,0.147461
+/SIZE/ 0.081250,0.177734
+/ROWS/ 3
+/COLS/ 1
+/TYPE/ Pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Define/ CAM_CUTTER_PARMS
+/Tool Library/ NIS_TOOLIB
+/Cancel/ KEY_NOOP

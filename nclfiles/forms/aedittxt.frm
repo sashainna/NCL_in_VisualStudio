@@ -1,0 +1,32 @@
+drafting edit text
+0.180 0.126
+5 77
+0 0 0 0
+1
+4 2 E
+5 
+4 2 E
+2 3 1 UD_DASSTRING 0 1
+0
+60 60 0
+4 2 E
+2 68 2 UD_DASSTRING 0 1
+5
+*Mod
+*End
+*Del
+*Ins
+*Add
+4 4 0
+4 24 Line
+4 30 1 UD_DASINT 0 1
+0
+0 3 0
+4 33 of
+4 37 1 UD_DASINT 0 1
+0
+0 3 0
+4 2 Edit
+4 8 1 UD_DASSTRING 0 1
+0
+16 16 0

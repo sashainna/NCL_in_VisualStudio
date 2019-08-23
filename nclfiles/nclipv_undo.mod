@@ -1,0 +1,4 @@
+#UNDO#
+/ACTIVE/ *YES
+/SIZE/ 0
+/FIXTURE/ *YES

@@ -1,0 +1,13 @@
+#Descriptor#
+/NAME/ Drawing Status
+/POSITION/0.824219,0.155000
+/SIZE/ .125,0
+/ROWS/ 2
+/COLS/ 1
+/TYPE/MENU
+/DOCKABLE/NO
+/FORMAT/ TEXT
+
+#Buttons#
+/Mode = / NCLMODE,NCL_SELECT_MODE
+/Draft Scale = / DRAFT_SCALE, CAD_DRAFT_SCALE

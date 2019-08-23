@@ -1,0 +1,16 @@
+#DESCRIPTOR#
+/NAME/ PostWorks
+/POSITION/ .50,.15
+/SIZE/ 0.353516,0.128906
+/ROWS/ 2
+/COLS/ 3
+/TYPE/ MENU
+/FORMAT/ TEXT
+
+#MENUS#
+/Pworks/ NIS_SYSTEM_ONCE, <Execute Pworks>, "%PWORKS_BIN%\pworks&,No"
+/Pmacro/ NIS_SYSTEM_ONCE, <Execute Pmacro>, "%PWORKS_BIN%\pmacro&,No"
+/MakePost/ NIS_SYSTEM_ONCE, <Execute Mpost>, "%PWORKS_BIN%\mpost&,No"
+/Genxfer/ NIS_SYSTEM_ONCE, <Transfer MDF File>, "%PWORKS_BIN%\genxfer&,No"
+/Postcomp/ NIS_SYSTEM_ONCE, <Execute PostComp>, "%PWORKS_BIN%\postcomp&,No"
+/Edit File/ NIS_EDIT_FILE

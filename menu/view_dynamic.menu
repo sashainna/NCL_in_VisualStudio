@@ -1,0 +1,17 @@
+
+#Descriptor#
+/NAME/ Dynamic View Options
+/POSITION/ 0.568750,0.100586
+/SIZE/ 0.087500,0.375000
+/ROWS/ 6
+/COLS/ 1
+/TYPE/ Pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Rotate Xy/ NCL_DYNAMIC_XYROT
+/Rotate Z/ NCL_DYNAMIC_ZROT
+/Rotate Vec/ NCL_DYNAMIC_VCROT
+/Pan/ NCL_DYNAMIC_PAN
+/Zoom/ NCL_DYNAMIC_ZOOM
+/Tumble/ NCL_DYNAMIC_TUMBLE

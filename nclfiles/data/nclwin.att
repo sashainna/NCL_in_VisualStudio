@@ -1,0 +1,112 @@
+! NCL CLFILE (.CL) ATTRIBUTES
+
+#VOCAB#
+'ncl.wrd'
+
+#FILE#          ! GENERAL FILE DISCRIPTION SECTION
+
+/ACCESS/ BLOCK
+/RECL/ 36/R8/   ! this is in R*8 (not F77 units in OPEN statement)
+/SYNC/ NO       ! logical record can begin everywhere
+/CROSS/ YES     ! logical record can cross phisical record
+/FILL/ YES      ! fill up phisical record if logical is completed
+/HOST/ WINDOW
+
+#FLOAT#
+
+/EXPONT/ 11,1
+/BIAS/ 1023
+
+#PREC#          ! PHISICAL RECORD DESCRIPTION SECTION
+
+/LREC/ 1/R8/,35/R8/   ! 35 * R8 items in one phisical record (last is empty, 
+                      ! I do not know why), not saved in record.
+
+#LREC#          ! LOGICAL RECORDS DESCRIPTION SECTION
+
+/RECL/ 120/R8/  ! Max 120*R8 items in one logical record, saved in NWDL
+/NWDL/ /R8/
+
+#MINOR#         ! minor word format        
+
+1/I2/,3/I2/0    ! minor word value is stored in the first 2 bytes
+
+#NUMBER#        ! minor word format        
+
+1/I2/,3/I2/0    ! minor word value is stored in the last 2 bytes
+
+#MACH#
+
+6/C1/,2/C1/' '    ! 6 chars name 
+
+#TEXT#
+
+66/C1/,6/C1/' '   ! 72 chars in 9 words is in clfile, NCL accepts only
+                  ! 66 and last 6 chars are spaces.
+
+#COMMON#
+
+/I2/ NWDL
+/I2/ TYPE
+/I2/ SUBT
+/I2/ ISN
+
+#2000#            ! PARTNO, PPRINT and INSERT are specified in SUBT list
+
+/SUBT/ 1043,1044,1045,1046
+/R8/ TEXT
+
+
+
+#2000#            ! MACHIN      
+
+/SUBT/ 1015
+/R8/ MACH         ! variable specified in #MACH# 
+/R8/ MINOR
+
+#2000# 
+
+/SUBT/ ALL
+/R8/ MINOR        ! MINOR word value or floating point value.
+
+#3000#
+
+/SUBT/ 2
+/R8/ SRFTYP  
+/R8/ EXTR         ! EXTR stands for extra field = unused
+/R8/ EXTR
+/R8/ EXTR
+/R8/ EXTR
+/R8/ XVAL
+/R8/ YVAL
+/R8/ ZVAL
+/R8/ IVEC
+/R8/ JVEC
+/R8/ KVEC
+/R8/ RDUS
+
+#5000#
+
+/SUBT/ 3,4,5
+/R8/ POINT        ! MAX 120 R*8'S... 20 POINTS IF MULTAX/ON, 40 IF MULTAX/OFF
+
+#5000#
+
+/SUBT/ 6
+/R8/ POINT        ! MAX 120 R*8'S... 20 POINTS IF MULTAX/ON, 40 IF MULTAX/OFF
+
+#6000#
+
+/SUBT/ 6
+/R8/ CDIAM
+/R8/ CORRAD
+/R8/ CHIGHT
+
+#9000#
+
+/SUBT/ 2
+/STATUS/ 0,1,2
+
+#14000#
+
+/SUBT/ 0

@@ -1,0 +1,15 @@
+#Descriptor#
+/NAME/ Wp Axis
+/POSITION/ 0.436719,0.095703
+/SIZE/ 0.079687,0.158203
+/ROWS/ 5
+/COLS/ 1
+/TYPE/ Pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Align Vp/ NCL_WPAXIS_ALIGN
+/Chg Org/ NCL_WPAXIS_ORIG
+/Chg Axis/ NCL_WPAXIS_AXIS
+/Snap Axis/ NCL_WPAXIS_SNAP
+/Rot Axis/ NCL_WPAXIS_ROT

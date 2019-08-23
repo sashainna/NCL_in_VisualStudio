@@ -1,0 +1,21 @@
+#CHOICE#
+/Left/ KEY_PICK_LOCATE
+/Middle/ KEY_DONE
+/Right/ KEY_REJECT
+
+#LOCATE#
+/Left/ KEY_PICK_LOCATE
+/Middle/ KEY_DONE
+/Right/ KEY_REJECT
+/Wheel_Down/ NCL_ZOOM_UP
+/Wheel_Up/ NCL_ZOOM_DOWN
+
+#PICK#
+/Left/ KEY_PICK_LOCATE
+/Middle/ KEY_DONE
+/Right/ KEY_REJECT
+
+#TEXT#
+/Left/ KEY_NOOP
+/Middle/ KEY_DONE
+/Right/ KEY_REJECT

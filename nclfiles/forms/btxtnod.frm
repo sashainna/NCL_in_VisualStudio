@@ -1,0 +1,33 @@
+#HEADER#
+/TITLE/ Text Node Attributes
+/POSITION/ 50,50
+/SIZE/150,105
+
+#CHOICEBOX#      
+/LABEL/ Text Type:
+/POSITION/ 10,8,50,8
+/SIZE/ 120,40
+/TYPE/ UD_DASSTRING
+/CHOICES/ "prompt, resp. opt.", "prompt, resp. req.", "label"
+
+#CHOICEBOX#      
+/LABEL/ Visibility:
+/POSITION/ 10,25,50,25
+/SIZE/ 120,40
+/TYPE/ UD_DASSTRING
+/CHOICES/ "graphic", "nongraphic"
+
+#COLOR#      
+/LABEL/ Text Color:
+/POSITION/ 10,42,50,42
+/SIZE/ 120,14
+/TYPE/ UD_DASSTRING
+
+#EDIT#
+/LABEL/Angle:
+/POSITION/ 10,59,50,59
+/SIZE/150,14
+/TYPE/ UD_DASANGLE
+/LEN/ 10
+/PREC/ 5
+/RANGE/-360,360

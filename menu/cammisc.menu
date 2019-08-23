@@ -1,0 +1,31 @@
+#Descriptor#
+/NAME/ Cut & Copy
+/POSITION/ 0.000000,0.478704
+/SIZE/ 0.085938,0.416667
+/ROWS/ 15
+/COLS/ 1
+/TYPE/ PULLDOWN
+/DOCKABLE/ YES
+/JUSTIFY/ LEFT
+/FORMAT/ TEXT
+
+#MENUS#
+/Dntcut/ CAM_DNTCUT
+/Cut/ CAM_CUT
+/Dntcut Nm/ CAM_DNTCUT_NM
+#Bar#
+/Genpts/ CAM_GEO_PT_GENPT
+/Genpts Nm/ CAM_GEO_PT_GPTNM
+#Bar#
+/Index/ CAM_INDEX
+/Index Nm/ CAM_INDEX_NM
+#Bar#
+/Copy Same/ CAM_COPY_SAME
+/Copy Modify/ CAM_COPY_MODIFY
+/Copy Transl/ CAM_COPY_TRANSL
+/Copy Xyrot/ CAM_COPY_XYROT
+/Copy Yzrot/ CAM_COPY_YZROT
+/Copy Zxrot/ CAM_COPY_ZXROT
+#Bar#
+/Reverse On/ CAM_REVERS_ON
+/Reverse Off/ CAM_REVERS_OFF

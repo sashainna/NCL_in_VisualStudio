@@ -1,0 +1,13 @@
+#Descriptor#
+/NAME/ Motion Status
+/POSITION/ 0,0
+/SIZE/ .250,.035
+/ROWS/ 1
+/COLS/ 1
+/TYPE/ Icon
+/Area/ Status1
+/FORMAT/ TEXT
+/JUSTIFY/ LEFT
+
+#Buttons#
+/Tool = / TOOL_ENDPT, cutrtn.menu

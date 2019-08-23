@@ -97,11 +97,7 @@ C
  
       data int1/'w(i1)'/
       data int2/'w(i2)'/
-!=IRS,SUN,HPX,IBM,VMS
-!      data is1/1/, is4/4/
-!=WNT,W2K
-!      data is1/4/, is4/1/
-!=ALL
+      data is1/4/, is4/1/
  
       lv90  = sc(169).lt.9.04999
       trflg = .true.
@@ -197,7 +193,7 @@ c
 c...Check for buffer overflow
 c...Bobby  -  6/5/92
 c
-                              if (ix2+len .gt. mxc) 
+                              if (ix2+len .gt. mxc)
      x                             len = mxc - ix2 + 1
                               TCIN(IX2:IX2+len-1)=CTMP
                               IX2=IX2+len-1
@@ -217,7 +213,7 @@ c
                           call error(ifl(2))
                           goto 99999
                         endif
-                        if (ix2+len .gt. mxc) 
+                        if (ix2+len .gt. mxc)
      x                      len = mxc - ix2 + 1
                         TCIN(IX2:IX2+len-1)=str
                         ix2 = ix2+len-1
@@ -645,11 +641,7 @@ C...JLS 4/14/99
 C
                   if (savitp.eq.1.and.savist.eq.ARCSLP.and.
      x                ityp.eq.1.and.ist.eq.FILLET.and.
-!=IRS,HPX,SUN,IBM
-!     x                ifl(351).eq.1.and..not.lv90) then
-!=WNT,W2K
      x                ifl(351).eq.1) then
-!=ALL
                      call parsit
                      lres = .false.
 c
@@ -1158,13 +1150,8 @@ c
 c
       integer*2 is1, is4
 c
-!=IRS,SUN,HPX,IBM,VMS
-!      is1=1
-!      is4=4
-!=WNT,W2K
       is1=4
       is4=1
-!=ALL
 c
       return
       end

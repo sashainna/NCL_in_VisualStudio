@@ -1,0 +1,26 @@
+#Descriptor#
+/NAME/ Stocks
+/POSITION/ 0,.0
+/SIZE/ .080,.144
+/ROWS/ 4
+/COLS/ 1
+/TYPE/ pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Box/ IPV_STOCK_BXPT
+/Box Pt Lwh/ IPV_STOCK_BXLEN
+/Box Bound/ IPV_STOCK_BOUND
+#Bar#
+/Cone Pt Pt/ IPV_STOCK_CONPT
+/Cone Pt Ve/ IPV_STOCK_CONCE
+/Cyl Pt Pt/ IPV_STOCK_CYLPT
+/Cyl Pt Ve/ IPV_STOCK_CYLCE
+/Sphere/ IPV_STOCK_SPHCE
+/Torus/ IPV_STOCK_TORCE
+#Bar#
+/Load Stl/ IPV_LOAD_STOCK_STL
+/Save Stl/ IPV_SAVE_STOCK_STL
+#Bar#
+/Modify/ IPV_STOCK_ATTRIBS
+/Modals/ IPV_STOCK_MODALS

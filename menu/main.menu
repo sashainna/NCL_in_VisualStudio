@@ -1,0 +1,33 @@
+#Descriptor#
+/Name/ MAIN_MENU
+/Area/ Area5
+/Rows/ 2
+/Cols/ 9
+/Type/ Icon
+/FORMAT/ TEXT
+
+#Menus#
+#Choice#
+/Xy-Xy/ CAM_GEO_LN_XY
+/Xy-Xy/ CAM_GEO_LN_XY
+/Xyz-Xyz/ CAM_GEO_LN_XYZ
+/Pt-Pt/ CAM_GEO_LN_PTPT
+/Connected/CAM_GEO_LN_CONNECT
+#Menus#
+/Utility/ util.menu
+/Nc Out/ punch.menu
+/Plot/ plot.menu
+/Dat Tran/ tran.menu
+/File Mgt/ nisfile.menu
+/Ncl File/ camfile.menu
+/Batch/ batch.menu
+/Nclipv/ nclipv.menu
+/Control/ camctrl.menu
+/Status/ camstat.menu
+/Model Env/ nclmenv.menu
+/AXIS_GRID/ nclaxgrid.menu
+/Unibase/ unibase.menu
+/Feature/ cadfeat.menu
+/Symbol/ symbol.menu
+/Drawing/ caddraw.menu
+/Drafting/ CAD_DRAFTING

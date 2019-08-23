@@ -5,7 +5,7 @@ C*					aptsrc  aptisn  asmult  ascutr  ascudi  aspwrd
 C*             asclnm  asgoto
 C*
 C*    COPYRIGHT 1993 (c) NCCS Inc.  All Rights Reserved.
-C*     MODULE NAME AND RELEASE LEVEL 
+C*     MODULE NAME AND RELEASE LEVEL
 C*        aptsrc.for , 26.2
 C*    DATE AND TIME OF LAST  MODIFICATION
 C*        09/26/18 , 12:48:55
@@ -40,7 +40,7 @@ c
 c***********************************************************************
 c
       subroutine aptsrc (kfl,casnm,kclf,kst,ken)
-
+ 
       include 'com4a.com'
 c
       integer*2 kfl,kclf
@@ -101,7 +101,7 @@ c...Open the file
 c
       call flopnw (aslun, temp, 'SEQUENTIAL', 'FORMATTED',
      x   80, 'NULL', iostat)
-
+ 
 c
 c...Store APT Source name and Date record
 c
@@ -170,7 +170,7 @@ c          if (pnc(2) .ne. 0) call putapt (pbuf(2),pnc(2))
             else
               goto 35
             endif
-   30     continue  
+   30     continue
 c
    35     if (dclbuf(32) .gt. 0) then
               inum   = 1009
@@ -335,7 +335,7 @@ c
         else
           goto 2170
         endif
- 2160 continue 
+ 2160 continue
  2170 idc    = 0
       go to 100
 c
@@ -494,13 +494,13 @@ c
       character*80 cbuf(10)
 c
       real*8 cutr(7)
-c 
+c
       integer*2    strt,i,j,lens(7),lin,flg,wflg
       integer*2    posn,tn,curlen,typp,ids(7),curpos
       character*9  fst(7)
       character*30 cutstr
       character*72 tstr
-c      
+c
       parameter (BLADE=191)
       parameter (LATHE=700)
 c
@@ -544,7 +544,7 @@ c
           endif
           if (ncut .le. 4) then
 C
-C...If cutr(2) is not equal to 0 then there is 
+C...If cutr(2) is not equal to 0 then there is
 C...a corner radius.
 C
               if (cutr(2) .ne. 0.) then
@@ -565,9 +565,9 @@ C
      x                       (tan(.01745329252d0*(-cutr(4)/2))+1)/
      x                       (tan(.01745329252d0*(90+cutr(4)))))
                   endif
-                     
+ 
               endif
-c.....Write APTSRC,CUTTER with user defined precision for real values              
+c.....Write APTSRC,CUTTER with user defined precision for real values
               if (ifl(390) .ne. 0) then
                   ncut = 7
                   typp = 0
@@ -687,8 +687,8 @@ c
  1009 format ('$$ ',A,'BLADE,',3(F8.3,','),F8.3)
  1010 format ('$$ ',A,'LATHE,',4(F8.3,','),F8.3)
  1011 format (A,4(F10.5,','),F10.5)
-c 
-c...Print with user defined precision 
+c
+c...Print with user defined precision
 c
  550  if (ifl(390).gt.0.and. .not.icmnt) then
 c
@@ -699,18 +699,18 @@ c
         lin = 1
         flg = 0
 c
-c......Set the format strings, ordering of cutr statements and lengths 
-c......The ordering is based on the orders used above when 
+c......Set the format strings, ordering of cutr statements and lengths
+c......The ordering is based on the orders used above when
 c......ifl(307) = 0 or 1
 c
-        do 600 i=strt,ncut  
+        do 600 i=strt,ncut
           if (typp.eq.0) then
             if (i.lt.3) then
               ids(i) = i
             else if (i.lt.6) then
               ids(i) = i + 2
             else
-              ids(i) = 10 - i  
+              ids(i) = 10 - i
             endif
           else if (typp.eq.1) then
             if (i.lt.3) then
@@ -728,18 +728,18 @@ c
           call varfmt(cutr(ids(i)),ifl(390),fst(ids(i)),lens(ids(i)))
 600     continue
 c
-c......Write to cbuf 
+c......Write to cbuf
 c
-        write (tstr,'(A)') lcutr(1:ncc) 
+        write (tstr,'(A)') lcutr(1:ncc)
         if (typp.eq.2.or.typp.eq.3) then
           if (typp.eq.2) then
-            tstr(posn:71) = 'BLADE,' 
+            tstr(posn:71) = 'BLADE,'
           else
-            tstr(posn:71) = 'LATHE,' 
+            tstr(posn:71) = 'LATHE,'
           endif
           posn = posn + 6
           curlen = curlen + 6
-        endif  
+        endif
         do 700 i=strt,ncut
           tn = curlen + lens(ids(i)) + 1
           write(cutstr,fst(ids(i))) cutr(ids(i))
@@ -753,12 +753,12 @@ c
               posn = posn - 1
               flg = 1
 c
-c......No comma was used           
+c......No comma was used
 c
               curlen = curlen - 1
             endif
 c
-c......Write current string to cbuf and move to new line            
+c......Write current string to cbuf and move to new line
 c
           else
             tstr(posn:72) = ' $'
@@ -1059,11 +1059,7 @@ c
       character*40 lbuf
 c
       equivalence (rbuf,ibuf,jbuf, lbuf)
-!=IRS,HPX,SUN,IBM,VMS
-!      data is1 /1/, is4 /4/
-!=WNT,W2K
-!      data is1 /4/, is4 /1/
-!=ALL
+      data is1 /4/, is4 /1/
 c
 c...Format post word
 c
@@ -1379,7 +1375,7 @@ c
       rbuf(2) = gbuf(2)
       rbuf(3) = gbuf(3)
       if (ifl(353) .eq. 1) call conent (rbuf,sc(183),3)
-
+ 
       if (ifl(319) .eq. 0) then
           write (cbuf(1)(knc(1)+1:knc(1)+32),10) rbuf(1),rbuf(2),rbuf(3)
           knc(1) = knc(1) + 32
@@ -1408,7 +1404,7 @@ c
               rbuf(2) = rbuf(2) / sec
               rbuf(3) = rbuf(3) / sec
           endif
-
+ 
           if (kfl .eq. 1 .and. ifl(319) .eq. 0) then
               write (cbuf(1)(knc(1)+1:knc(1)+29),20) rbuf(1),rbuf(2),
      1                  rbuf(3)

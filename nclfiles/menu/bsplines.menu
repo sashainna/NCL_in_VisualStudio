@@ -1,0 +1,34 @@
+#Descriptor#
+/NAME/ B-Splines
+/POSITION/ 0.0,0.0
+/SIZE/ 0.083,0.199
+/ROWS/ 9
+/COLS/ 2
+/TYPE/ Pulldown
+/FORMAT/ BOTH
+
+#Menus#
+/Pt-Pv .../ CAM_GEO_SP_PT
+/Pt Thru Pt/ CAM_GEO_SP_PTPT
+/Fit Pt-Pt/ CAM_GEO_SP_FIT_PTPT
+/Fit Thru Pt/ CAM_GEO_SP_FIT_PTS
+/Pt-Vec .../ CAM_GEO_SP_PTVE
+/Fit Pt-Ve/ CAM_GEO_SP_FIT_PTVE
+/Offset/ CAM_GEO_SP_OFFSET
+/Comp Offset/ CAM_GEO_CV_OFFCOMP
+/Translate/ CAM_GEO_SP_TRANSL
+/Io-Sf-Sf/ CAM_GEO_SP_IOSF
+/Sf Edge/ CAM_GEO_SP_EDGE
+/Trim Loop/ CAM_GEO_SP_OUT
+/Trim Edge/ CAM_GEO_SP_EDGE_OUT
+/Trim Edges/ CAM_GEO_SP_EDGES_OUT
+/Project/ CAM_GEO_SP_PROJECT
+/Composite/ CAM_GEO_CV_COMPOSIT
+/Component/ CAM_GEO_COMPCV_OUT
+/Revsf Edge/ CAM_GEO_SP_REVSF
+#Bar#
+/Contour/ CAM_GEO_SFS_CONTOUR
+/Io-Sfs-Pl/ CAM_GEO_SFS_IO
+#Bar#
+/NCL Curves/ Curves.menu
+/S-Splines/ SSplines.menu

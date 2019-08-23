@@ -1,0 +1,36 @@
+#Descriptor#
+/NAME/ Keypad
+/POSITION/ .1,.15
+/DOCKABLE/ NO
+/SIZE/ 0.270508,0.375000
+/ROWS/ 5
+/COLS/ 5
+/TYPE/ Menu
+/FORMAT/ TEXT
+
+#Menus#
+/NUMr/ CAM_FUNC_NRESERV
+/1/ 1
+/2/ 2
+/3/ 3
+/Cmd/ CAM_COMMAND
+/NUMp/ CAM_FUNC_NPATERN
+/4/ 4
+/5/ 5
+/6/ 6
+/Up/ KEY_UPFIELD
+/Can/ CAM_FUNC_CAN
+/7/ 7
+/8/ 8
+/9/ 9
+/Down/ KEY_DNFIELD
+/ / KEY_NOOP
+/0/ 0
+/./ .
+/-/ -
+/,/ ,
+/ / KEY_NOOP
+/+/ +
+/*/ *
+/// /
+/Enter/ ENTER

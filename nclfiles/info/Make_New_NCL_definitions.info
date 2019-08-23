@@ -1,0 +1,130 @@
+COMMAND CREATION ALGORITHM FOR NCL
+Ed Ames 11 Aug 00
+
+COMMAND LINE DEFINITION
+
+  file:		nclf/decl**.f	(e.g. declpv.f)
+		
+	This parses the command line one word at a time.
+	"call parsit"  will bring in the next word from the command line.
+		Variable ITYP contains number for type of word
+		1 = vocabulary word (ex. OBTAIN or PROJCT)
+		2 = identifier
+		...
+		7 = end of input
+		Variable IST contains descriptive number of ITYP
+		(ex. ITYP = 1   IST = 888  -> vocab word , word = PROJCT,
+		     ITYP = 2   IST = 3    -> identifier , word = point)
+	Do switching on these (make sure of correct command format).
+	NCLKEY information contained in global variable "tv" but in weird format.  
+	You must save this to global array "sc(#)".  Start at "sc(11)".
+	If error,  "call error (#)"  where "#" is error message number
+		from the back of the NCL manual.
+	If surface, (ITYP=2, IST=9) "call parsuv" to see if u,v parameters
+		were included on command line.
+		Be aware that parsuv changes global variables tv, ITYP, IST.
+		You have to save them and reassign back after calling parsuv.
+		
+	Further command processing is sometimes carried out in function 
+	geog** .  Sometimes this function is in its own file.
+	
+   file:		nclf/geog**.f
+   	Further command parsing.  Here you convert the NCLKEY to ordinary 
+   	c-callable format.
+   	Use "call gtdesc(sc(#), nclkey, num_words_returned, type)".
+   	Type refers to the number for each type of entity (like IST  
+   	when ITYP=2 from nclf/decl**.f) (e.g. itype = 9 -> surface).
+   	Sometimes has routine to display entity (something like dspent()).
+   	
+   file:		inc/nclfc.h
+   	Make a function prototype that FORTRAN and C can both use.
+   	(e.g. #define ncl_***...  ncl_***..._ )
+   	
+   file:		nclc/****.c
+   	Main computations are done in C.  If geog** function doesn't handle
+   	display of entity, use dspent()  (in nclc/nesupt.c).
+	All functions are called ncl_****.  In other words, prepend ncl_
+	to the function name.
+   	
+This will allow you to use command line for definition.
+
+USER INTERFACE DEFINITION
+
+   file:		inc/zkeysym.h
+   	Add key to call definition routine (e.g.  CAM_***_***_*** ...).
+   	Be sure to increase the total count of that type of command key 
+   	(e.g. CAMKEYS) to include your new one.  This is done at top of file.
+   	
+   file:		interface/zusercalls.c
+   	Add a case to handle the key number that was just defined in zkeysym.h.
+   	(e.g.  "case #: nclu_***_***_** ...; break;").  Make it call an
+   	nclu function that you will make shortly.
+   	
+   file:		interface/zuserkeys.c
+   	Must recompile for change from inc/zkeysym.h to take effect.
+   	
+   	
+   file:		nclc/nu**.c	(e.g. nupt.c)
+   	This makes a string that holds the command that you would have
+   	typed on the command line.  Then it puts it into a command buffer
+   	and updates the buffer.
+   	Get labels of entities by 
+   	 "ncl_get_dlabel(UD_DASPCKLOC, label,prompt,filter_flag)"
+   	The prompts you find in interface/iunihep.msg.  The default section
+   	is UA_NCL (section 17), look in messages.  This give the prompt
+   	text the user sees when picking.  If you want a different section,
+   	um_dl_pldas (in model/m2dasup2.c).
+   	The filter flags can be found in inc/dselmask.h.  These ensure that
+   	the correct type of entity are picked.
+   	
+   	Switch on the return from "ncl_get_dlabel()".  If NCL_OKINPUT, 
+   	continue; if NCL_NOINPUT, ignore or redo; and if NCL_DONE, quit out
+   	of function.
+   	
+   	Initialize command buffer.
+   	Set command mode to UU_TRUE.
+   	Start loading it up; remember, NCL_comma means and a comma after label.
+   	NCL_nocomma means don't append comma after label.
+   	Use "ncl_add_token();
+   	Add the command to buffer and update.
+   	"ncl_add_cmdbuf()", "ncl_call()"
+   	Ensure function name starts with "nclu_" (e.g. nclu_pt_proj_sf()).
+   	
+   file:		inc/wsmfpfunc.h
+   	Add string for key for menu help (a string that pops up when you 
+   	right click on a menu item).
+   	
+   file:		ws/wsmfmdesgn2.c
+   	Must recompile in order for changes in wsmfpfunc.h to take effect.
+   	
+   file:		****.menu
+   	Look in your own ~/ncl/menu to see if you already have one that you
+   	can edit.
+   	
+   	If you don't, 
+   		nclfiles
+   		cd menu
+   		cp ****.menu ~/ncl/menu
+   		cd ~/ncl/menu
+   	
+   	Add needed handler	/"name that appears on button"/ KEY 
+   	The KEY is from inc/zkeysym.h.
+   	If even number of entries, increase /ROWS/ at top by 1, add your
+   	call, and (IMPORTANT) add another   "/ / KEY_NOOP".
+   	Otherwise, delete the "/ / KEY_NOOP" and add your call.
+   	
+   Compile everything and link it.  Should work.
+
+   
+EDIT SCCS stuff / DELTAS
+
+	nclf/decl**.f
+	(nclf/geog**.f)
+	inc/nclfc.h
+	nclc/****.c		ncl_*** ... ()
+	inc/zkeysym.h
+	interface/zusercalls.c
+	nclc/nu**.c		nclu_***  ... ()
+	inc/wsmfpfunc.h
+	
+	Everything else was just a "get" from the SCCS.  They can be deleted.

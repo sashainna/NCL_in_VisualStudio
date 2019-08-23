@@ -1,0 +1,42 @@
+#Descriptor#
+/NAME/ 2D Drawings
+/POSITION/ 0.081250,0.000000
+/SIZE/ 0.918750,0.040039
+/ROWS/ 22
+/COLS/ 1
+/TYPE/ Icon
+/Area/ Left
+/FORMAT/ TEXT
+
+#Menus#
+/Set Mode / NCL_SELECT_MODE
+#BAR#
+/Create Drwg/ CAD_DRAW_CREATE
+/Place View/ CAD_DRAW_PLACEVW
+/View Drwg/ CAD_DRAW_VIEW
+#BAR#
+/Points/ cad_points.menu
+/Lines/ cad_lines.menu
+/Arcs/ cad_arcs.menu
+/Circles/ cad_circles.menu
+/Curves/ cad_curves.menu
+/Composit/ cad_composit.menu
+#BAR#
+/Edit/ drawedit.menu
+#BAR#
+/Linear Dim/ lineardim.menu
+/Other Dim/ otherdim.menu
+/Annotation/ annotation.menu
+/Draft Edit/ draftedit.menu
+#BAR#
+/Drwg Scale/ CAD_DRAFT_SCALE
+/Draft View/ CAD_DRAFT_VIEW
+/Draft Modals/ draftmod.menu
+#BAR#
+/Save Std/ CAD_DRAFT_SAVE
+/Load Std/ CAD_DRAFT_LOAD
+#BAR#
+/Alt Act/ KEY_ALTACT
+#BAR#
+/Archive Dwg/ CAD_DRAW_ARCHIVE
+/Retrieve Dwg/ CAD_DRAW_RETRIEVE

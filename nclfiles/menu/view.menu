@@ -1,0 +1,32 @@
+#Descriptor#
+/NAME/ Viewing
+/POSITION/ 0.568750,0.100586
+/SIZE/ 0.087500,0.375000
+/ROWS/ 21
+/COLS/ 1
+/TYPE/ Pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Shade/ view_shade.menu
+/Manage/ view_mgmt.menu
+#Bar#
+/Dynamic Mouse/ NCL_DYNAMIC_MOUSE
+/Dynamic Center/ NCL_DYNAMIC_CENTER
+/Dynamic Other/ view_dynamic.menu
+#Bar#
+/Static/ view_static.menu 
+/Coord Sys/ view_coordsys.menu
+/Fit/ NCL_FIT_VIEW
+/Window/ NCL_WINDOW_ZOOM
+/Flip/ NCL_FLIP_VIEW
+/Previous/ NCL_PREVIOUS_VIEW
+/Tlaxis/ NCL_VIEW_TOOL
+#Bar#
+/Reset/ NCL_RESET_VIEW
+#Bar#
+/Buffers/ NCL_DISPLAY_BUFFER
+/Background/ NCL_BACKGROUND
+/Lights/ CAD_GEO_LIGHTS_MODALS
+/Load Lights/CAD_LOAD_LIGHTS
+/View Modals/ NCL_DYNAMIC_MODALS

@@ -1,0 +1,105 @@
+#HEADER#
+/TITLE/ Symbol Text Attributes
+/POSITION/ 50,50
+/SIZE/170,235
+
+#COLOR#      
+/LABEL/ Character Color:
+/POSITION/ 10,8,85,8
+/SIZE/ 130,14
+/TYPE/ UD_DASSTRING
+
+#EDIT#
+/LABEL/Character Height:
+/POSITION/ 10,23,85,23
+/SIZE/150,14
+/TYPE/ UD_DASVAL
+/PREC/ 4
+/LEN/ -8
+
+#EDIT#
+/LABEL/Text Angle:
+/POSITION/ 10,38,85,38
+/SIZE/150,14
+/TYPE/ UD_DASANGLE
+/PREC/ 3
+/LEN/ -12
+
+#PUSHBUTTON#
+/LABEL/Text Font:
+/POSITION/ 10,53
+/SIZE/50,14
+/TYPE/ UD_DASSTRING
+
+#CHOICE_LIST#
+/LABEL/
+/POSITION/ 85,53
+/SIZE/55,70
+/TYPE/ UD_DASSTRING
+
+#CHOICEBOX#
+/LABEL/ Text Precision:
+/POSITION/ 10,68,85,68
+/SIZE/130,40
+/TYPE/UD_DASSTRING
+/CHOICES/ "String","Char","Stroke"
+
+#CHOICEBOX#
+/LABEL/ Text Site:
+/POSITION/ 10,83,85,83
+/SIZE/130,40
+/TYPE/UD_DASSTRING
+/CHOICES/ "top left","middle left","bottom left","top center", "middle center"
+/CHOICES/ "bottom center","top right","middle right","bottom right"
+
+#CHOICEBOX#
+/LABEL/ Text Path:
+/POSITION/ 10,98,85,98
+/SIZE/130,40
+/TYPE/UD_DASSTRING
+/CHOICES/ "right","left","up","down"
+
+#CHOICEBOX#
+/LABEL/ Horizontal Alignment:
+/POSITION/ 10,113,85,113
+/SIZE/130,40
+/TYPE/UD_DASSTRING
+/CHOICES/ "normal","left","center","right"
+
+#CHOICEBOX#
+/LABEL/ Vertical Alignment:
+/POSITION/ 10,128,85,128
+/SIZE/130,40
+/TYPE/UD_DASSTRING
+/CHOICES/ "normal","top","half","base","bottom"
+
+#EDIT#
+/LABEL/Character Expansion:
+/POSITION/ 10,143,85,143
+/SIZE/150,14
+/TYPE/ UD_DASUNITLESS
+/PREC/ 2
+/LEN/ -5
+
+#EDIT#
+/LABEL/Character Spacing:
+/POSITION/ 10,158,85,158
+/SIZE/150,14
+/TYPE/ UD_DASUNITLESS
+/PREC/ 2
+/LEN/ -5
+
+#CHOICEBOX#
+/LABEL/ Character Density:
+/POSITION/ 10,173,85,173
+/SIZE/130,40
+/TYPE/UD_DASSTRING
+/CHOICES/ "standard","medium","heavy", "extra heavy"
+
+#EDIT#
+/LABEL/Line Spacing:
+/POSITION/ 10,188,85,188
+/SIZE/150,14
+/TYPE/ UD_DASUNITLESS
+/PREC/ 2
+/LEN/ -6

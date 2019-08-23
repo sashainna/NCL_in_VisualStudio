@@ -388,6 +388,7 @@ char NCL_xyplan[]  = "XYPLAN";
 char NCL_yzplan[]  = "YZPLAN";
 char NCL_zxplan[]  = "ZXPLAN";
 char NCL_smill[]  = "SMILL/";
+char NCL_pmill[]  = "PMILL/";
 
 char NCL_box[] = "BOX";
 char NCL_cone[] = "CONE";
@@ -769,6 +770,7 @@ extern char NCL_xyplan[];
 extern char NCL_yzplan[];
 extern char NCL_zxplan[];
 extern char NCL_smill[];
+extern char NCL_pmill[];
 
 extern char NCL_box[];
 extern char NCL_cone[];

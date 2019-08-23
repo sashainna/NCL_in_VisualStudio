@@ -1,0 +1,16 @@
+#Descriptor#
+/NAME/ CAM Variables
+/POSITION/ 0.000000,0.000000
+/SIZE/ 0.081250,0.542969
+/ROWS/ 3
+/COLS/ 1
+/TYPE/ Popup
+/FORMAT/ BOTH
+
+#Menus#
+/Scalar/  CAM_SCALAR_DEFINE
+/Notes/  CAM_GEO_ANOTE
+/Set Notes/  CAM_ANOTE_ATTRIBS
+/Mod Notes/  CAM_ANOTE_MODIFY
+/Data Stmt/ CAM_GEO_DATA
+/Data File/ CAM_GEO_DATA_FILE

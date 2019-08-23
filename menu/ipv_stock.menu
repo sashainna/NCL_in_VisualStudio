@@ -1,0 +1,25 @@
+#Descriptor#
+/NAME/ Stock
+/POSITION/ 0,.0
+/SIZE/ .080,.144
+/ROWS/ 12
+/COLS/ 1
+/TYPE/ Pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Box Pt Pt/ IPV_STOCK_BXPT
+/Box Pt Lwh/ IPV_STOCK_BXLEN
+/Box Bound/ IPV_STOCK_BOUND
+/Solid/ IPV_STOCK_SOLID
+/More.../ ipv_stock1.menu
+#Bar#
+/Profile/ IPV_STOCK_SWEEP
+/Contour/ IPV_STOCK_CONTOUR
+/Revolve/ IPV_STOCK_REVOLVE
+#Bar#
+/Load Stl/ IPV_LOAD_STOCK_STL
+/Save Stl/ IPV_SAVE_STOCK_STL
+#Bar#
+/Modify/ IPV_STOCK_ATTRIBS
+/Modals/ IPV_STOCK_MODALS

@@ -1,0 +1,16 @@
+#Descriptor#
+/NAME/ status2.stat
+/POSITION/ 0,0
+/SIZE/ 0.2,0.035
+/ROWS/ 1
+/COLS/ 5
+/TYPE/ Icon
+/Area/ Status2
+/FORMAT/ TEXT
+
+#Buttons#
+/Tool Posn = / TOOL_ENDPT, CAM_GOTO_XY
+/Tool Axis = / TLAXIS
+/Tool Mode = / TLAXIS_MODE, CAM_TLAXIS
+/Thick = / THICK,CAM_THICK
+/Toler = / TOLER,CAM_MOTION_CALC

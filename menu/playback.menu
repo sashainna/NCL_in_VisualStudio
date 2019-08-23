@@ -1,0 +1,27 @@
+#Descriptor#
+/NAME/ Motion Playback
+/POSITION/ 0.6,.6
+/SIZE/ 0.351562,0.117188
+/ROWS/ 13
+/COLS/ 1
+/TYPE/ Pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Playback/ CAM_PLAYBACK
+/Play Current/ CAM_PLAY_CURRENT
+/Pb File/ CAM_PLAYFILE
+#Bar#
+/Feed Color/ CAM_PLAYFEED
+/Interp Color/ CAM_PLAY_INTERP
+/Clip Planes/ CAM_PLAYCLIP
+#Bar#
+/Start Seq/ CAM_SEQUNC_START
+/End Seq/ CAM_SEQUNC_END
+/List Seq/ CAM_SEQUNC_LIST
+/Erase Seq/ CAM_SEQUNC_ERASE
+#Bar#
+/Erase Motion/ CAM_ERASE_MOTION
+/Display Cutter/ CAM_DISPLY_CUTTER
+#Bar#
+/Modals/ CAM_PLAY_MODALS

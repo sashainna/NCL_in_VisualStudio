@@ -1,0 +1,13 @@
+#Descriptor#
+/NAME/ Status
+/POSITION/ 0.646094,0.879883
+/SIZE/ 0.351562,0.117188
+/ROWS/ 3
+/COLS/ 1
+/TYPE/ Pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Entity Data/ NCL_ENTITY_DATA
+/Entity Attrib/ NCL_ENTITY_ATTRIB
+/Motion Data/ CAM_MOTION_DATA

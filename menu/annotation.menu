@@ -1,0 +1,17 @@
+#Descriptor#
+/NAME/ Annotation
+/POSITION/ 0.0,0.0
+/SIZE/ 0.083,0.225
+/ROWS/ 7
+/COLS/ 1
+/TYPE/ Popup
+/FORMAT/ TEXT
+
+#Menus#
+/Notes/ CAD_DRAFT_ANOTE
+/Labels/ CAD_DRAFT_ALABEL
+/Curve Text/ CAD_DRAFT_ATEXT
+/Crosshatch/ CAD_DRAFT_AHATCH
+/Curve Arrow/ CAD_DRAFT_AARROW
+/Pos Tol/ CAD_DRAFT_APOSTOL
+/Balloons/ CAD_DRAFT_ABALL

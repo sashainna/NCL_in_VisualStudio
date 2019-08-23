@@ -1,0 +1,1 @@
+NCL_TOOLIB_HELP = start %acroread% %NCL_DOC%\NCLIGES.pdf

@@ -1,0 +1,18 @@
+#Descriptor#
+/NAME/ Motion Status
+/POSITION/ 0,0
+/SIZE/ 0.125,0.035
+/ROWS/ 1
+/COLS/ 5
+/TYPE/ Icon
+/Area/ Bottom
+/FORMAT/ TEXT
+
+#Buttons#
+/Tool Posn = / TOOL_ENDPT, cutrtn.menu
+/Tool Axis = / TLAXIS , CAM_TLAXIS
+/Tool Mode = / TLAXIS_MODE, CAM_TLAXIS
+/Thick = / THICK,CAM_MOTION_CALC
+/Toler = / TOLER,CAM_MOTION_CALC
+/Feed Rate = / FEDRAT,CAM_FEDRAT
+

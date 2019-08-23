@@ -1,0 +1,23 @@
+#Descriptor#
+/NAME/ Cad Lines
+/POSITION/ 0.0,0.0
+/SIZE/ 0.083,0.381
+/ROWS/ 13
+/COLS/ 1
+/TYPE/ Pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Pt-Pt/ CAD_GEO_LN_PTPT
+/Connected/ CAD_GEO_LN_CON
+/Pt-Tt-Xx/ CAD_GEO_LN_PTTA
+/Tanto/ CAD_GEO_LN_TANTO
+/Pt-Tt-Cv/ CAD_GEO_LN_PTTACV
+/Pa-Ln/ CAD_GEO_LN_PALN
+/Pt-Pa-Ln/ CAD_GEO_LN_PTPALN
+/Pt-Pe-Xx/ CAD_GEO_LN_PTPE
+/Pt-Pe-Cv/ CAD_GEO_LN_PTPECV
+/Atangl/ CAD_GEO_LN_ATANGL
+/Axis/ CAD_GEO_LN_AXIS
+/Sgl Chamf/ CAD_GEO_LN_CHAMF
+/Mlt Chamf/ CAD_GEO_LN_MCHAMF

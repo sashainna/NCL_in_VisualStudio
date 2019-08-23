@@ -1,0 +1,96 @@
+$$
+$$ MACRO FOR NIGATA OUTPUT 15M COMTROL
+$$ WITH FULL ROTARY TABLE
+$$
+  Char Buf1(80), Sdir(5)
+  Real Tln, Tcu, Srpm, Tend
+    Tend = 0
+    Tln = 0
+    Sdir = "CLW"
+    DISPLY/ON
+TERMAC
+
+PARTNO/MACRO,6
+    Buf1 = %Arg(1)
+ 
+TERMAC
+
+POSTN/MACRO,1
+    Char buf(80)
+    buf = "O" + rtoc(%Arg(1), #N)
+    SEQNO/OFF
+    INSERT/buf
+    PPRINT/Buf1
+    SEQNO/1,incr,1
+   
+TERMAC
+
+FINI/MACRO,0
+    FORCE/#M,106,NEXT, #T,%Tlno(1),NOW
+TERMAC
+
+LOADTL/MACRO,10
+    If (Tln == 0) Then
+	FORCE/#T,OMIT
+	SELCTL/%Arg(1)
+    ENDIF
+    Tcu = %Arg(1)
+
+    FORCE/#T,TCU,NEXT
+    LOADTL/%Arg(1:%Narg)
+    ENABLE/GOTO
+    ENABLE/SPINDL
+TERMAC
+
+GOTO/MACRO,2
+  Real n
+    If (%Multax == 1) Then
+	n = 6
+    Else
+	n = 3
+    Endif
+    If (Tln == 0) Then
+	Tln = 1
+    Endif
+
+    FORCE/#G,0,NEXT, #G,90,NEXT
+    FROM/%Clpt(1:n)
+    SPINDL/Srpm,Sdir
+    FORCE/#X,NEXT, #Y,NEXT
+    SELCTL/AUTO
+    If (Tend == 1) Then
+	FORCE/#T,%Tlno(1),NOW
+    Else
+        FORCE/NOW
+    Endif
+    FORCE/ #A,NOW $$ ROTARY TABLE INDEX
+    FORCE/#G,43,NEXT, #Z,NEXT, #H,Tcu,NEXT, #M,8,NOW
+    DISABLE/GOTO
+TERMAC
+
+
+PSTERR/Macro,10 
+    If (%Arg(1) <> 'TOOLEN1') Then
+	If (%Arg(1) == 'NOLDTOOL') Then
+	    Tend = 1
+	Else
+	    PSTERR
+	Endif
+    Endif 
+TERMAC
+
+SPINDL/MACRO,10
+    SYNTAX/1-999999,(CLW,CCLW)
+    If (%Error <> 1) Then
+	SRPM=%Arg(1)
+	If (%Narg == 2) SDIR = %Arg(2)
+    Endif
+    DISABLE/SPINDL
+TERMAC
+
+
+
+
+
+    
+

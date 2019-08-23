@@ -1,0 +1,20 @@
+#Descriptor#
+/NAME/ Stock
+/POSITION/ 0,.0
+/SIZE/ .080,.144
+/ROWS/ 5
+/COLS/ 2
+/TYPE/ Pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Cone Pt PT R/ IPV_STOCK_CONPT
+/Cone Pv L R/ IPV_STOCK_CONCE
+/Cyl Ci L/ IPV_STOCK_CYLCIR
+/Cyl Pt Pt R/ IPV_STOCK_CYLPT
+/Cyl Pv L R/ IPV_STOCK_CYLCE
+/Sphere Ci/ IPV_STOCK_SPHCI
+/Sphere Pt R/ IPV_STOCK_SPHCE
+/Torus Ci Ci/ IPV_STOCK_TORCI
+/Torus Ci R/ IPV_STOCK_TORRA
+/Torus Pv R R/ IPV_STOCK_TORCE

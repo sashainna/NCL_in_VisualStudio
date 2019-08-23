@@ -1,0 +1,34 @@
+#Descriptor#
+/NAME/ Status
+/POSITION/ 0.646094,0.879883
+/SIZE/ 0.351562,0.117188
+/ROWS/ 5
+/COLS/ 4
+/TYPE/ Pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Geometry/ CAM_STAT_GEO
+/Measure/ NCL_ANALYZE_GEO
+/Entity Data/ NCL_ENTITY_DATA
+/Entity Attrib/ NCL_ENTITY_ATTRIB
+/Motion Data/ CAM_MOTION_DATA
+#Bar#
+/Create Feature/ CAD_CREATE_FEATURE
+/Delete Feature/ CAD_DELETE_FEATURE
+#Bar#
+/Cutter/ CAM_STAT_CUTTER
+/Thick/ CAM_STAT_THICK
+/Tool Location/ CAM_STAT_TOOL
+/Toler/ CAM_STAT_TOLER
+/Modals/ CAM_STAT_MODALS
+#Bar#
+/Unibase/ NCL_UNIBASE_STAT , "TRUE"
+#Bar#
+/Coordsys/ Coordsys.stat
+/Drawing/ draw.stat
+/File/ file.stat
+/Motion/ motion.stat
+/Process/ process.stat
+/Units & Layer/ units_layer.stat
+/Time/ time.stat

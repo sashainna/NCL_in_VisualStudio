@@ -1,0 +1,16 @@
+#Descriptor#
+/Name/ Shaded Mode Menu
+/Rows/ 1
+/Cols/ 6
+/Type/ Icon
+/Position/ 0.582031,0.879883
+/Area/ Top
+/FORMAT/ ICON
+
+#Menus#
+/ / NCL_VIEW_SHADED
+/ / NCL_VIEW_WIREFRAME
+/ / NCL_VIEW_HIDDEN
+/ / NCL_VIEW_SHADED_ONLY
+/ / NCL_EDGE_ON_ALL
+/ / NCL_EDGE_OFF_ALL

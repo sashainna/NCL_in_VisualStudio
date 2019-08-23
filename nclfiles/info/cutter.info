@@ -1,0 +1,104 @@
+============
+Cutter Flags
+============
+
+icutfl(1) = 0 = Display standard cutter, 1 = Display DISPLY cutter,
+            2 = Display symbol cutter, 3 = Display curve cutter,
+            4 = Display point-list cutter.
+icutfl(2) = 0 = CUTTER/DISPLY,PART, 1 = DISPLY,ALL
+icutfl(3) = 0 = CUTTER/DISPLY,MOVE,OFF, 1 = MOVE,ON
+icutfl(4) = 0 = CUTTER/DISPLY,SHADE,OFF, 1 = SHADE,ON, 2 = SHADE,SMOOTH
+icutfl(5) = 0 = Don't display shank, 1 = Display shank parameters,
+            2 = Display shank symbol, 3 = Display shank curve.
+            4 = Display point-list shank.
+icutfl(6) = 0 = Don't display holder, 1 = Display holder parameters,
+            2 = Display holder symbol, 3 = Display holder curve.
+            4 = Display point-list holder.
+icutfl(7) = CUTTER/DISPLY,SHADE,SHANK, 0 = OFF, 1 = ON
+icutfl(8) = CUTTER/DISPLY,SHADE,HOLDER, 0 = OFF, 1 = ON
+
+========================
+Cutter Parameters (cbuf)
+========================
+
+Standard Mill
+-------------
+cbuf(1) = Diameter
+cbuf(2) = Corner Radius
+cbuf(3) = Height
+cbuf(4) = Angle
+
+Barrel Cutter
+-------------
+cbuf(1) = Diameter
+cbuf(2) = Corner Radius
+cbuf(3) = Height
+cbuf(4) = Special
+cbuf(5) = Special
+cbuf(6) = Special
+
+Blade
+-----
+cbuf(1) = -9809 (10000-BLADE)
+cbuf(2) = 0
+cbuf(3) = Height
+cbuf(4) = Chizel
+cbuf(5) = Width
+cbuf(6) = Sine(Angle)
+
+Lathe Bit
+---------
+cbuf(1) = -9300 (1000-LATHE)
+cbuf(2) = Diameter (Radius*2.)
+cbuf(3) = Inscribed Diameter
+cbuf(4) = Height
+cbuf(5) = Angle
+cbuf(6) = Mounting Angle
+
+Grooving Tool
+-------------
+cbuf(1) = -9300 (1000-LATHE)
+cbuf(2) = Diameter (Radius*2.)
+cbuf(3) = Tool Width (X)
+cbuf(4) = Height
+cbuf(5) = Angle
+cbuf(6) = Tool Length (Y)
+
+=================================
+Cutter Display Parameters (dcutr)
+=================================
+
+dcutr(1)  = Diameter
+dcutr(2)  = Corner Radius
+dcutr(3)  = Height
+dcutr(4)  = Cosine(Angle)
+dcutr(5)  = Barrel Special
+dcutr(6)  = Barrel Special
+dcutr(7)  = Barrel Special
+dcutr(8)  = Barrel Special
+dcutr(9)  = 1 = Barrel Cutter, 11 = Lathe Square, 12 = Diamond, 13 = Triangle,
+            14 = Circle, 15 = Grooving Tool
+dcutr(10) = Holder diameter (Mill) or X-width (Lathe)
+dcutr(11) = Holder height (Mill) or Y-length (Lathe)
+dcutr(12) = Holder Side Angle (Mill) or Holder Z-height (Lathe)
+dcutr(13) = Holder Z-offset (Mill) or Holder Y-offset (Lathe)
+                   or
+dcutr(10) = Holder symbol offset (Z for Mill, X for Lathe)
+dcutr(11) = Holder symbol Y-offset for Lathe tools
+dcutr(12) = Holder symbol Z-Minimum for Lathe tools
+dcutr(13) = Holder symbol Z-Maximum for Lathe tools
+                  ----
+dcutr(14) = Shank diameter (Mill) or X-width (Lathe)
+dcutr(15) = Shank height (Mill) or Y-length (Lathe)
+dcutr(16) = Shank Side Angle (Mill) or Shank Z-height (Lathe)
+dcutr(17) = Shank Z-offset (Mill) or Shank Y-offset (Lathe)
+                   or
+dcutr(14) = Shank symbol offset (Z for Mill, X for Lathe)
+dcutr(15) = Shank symbol Y-offset for Lathe tools
+dcutr(16) = Shank symbol Z-Minimum for Lathe tools
+dcutr(17) = Shank symbol Z-Maximum for Lathe tools
+                  ----
+dcutr(18) = Shank clashes - 0 = CUTTER, 1 = HOLDER
+                  ----
+dcutr(19) = Cutter symbol Z-Minimum for Lathe tools
+dcutr(20) = Cutter symbol Z-Maximum for Lathe tools

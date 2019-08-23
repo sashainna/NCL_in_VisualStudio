@@ -1,0 +1,13 @@
+#Descriptor#
+/NAME/ Units & Layer Stat
+/POSITION/0.825000,0.155000
+/SIZE/ .125,0
+/ROWS/ 2
+/COLS/ 1
+/TYPE/MENU
+/DOCKABLE/NO
+/FORMAT/ TEXT
+
+#Buttons#
+/Units = / UNITS,NCL_UNITS
+/Layer = / LAYER,NCL_INPUT_LAYER

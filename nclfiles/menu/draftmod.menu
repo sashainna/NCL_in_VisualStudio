@@ -1,0 +1,19 @@
+#Descriptor#
+/NAME/ Draft Modals
+/POSITION/ 0.0,0.0
+/SIZE/ 0.083,0.277
+/ROWS/ 9
+/COLS/ 1
+/TYPE/ Pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Note Text/ CAD_DRAFT_ONTEXT
+/Dim Text/ CAD_DRAFT_ODTEXT
+/Dimension/ CAD_DRAFT_ODIM
+/Tolerance/ CAD_DRAFT_OTOL
+/Dim Line/ CAD_DRAFT_ODLINE
+/Ext Line/ CAD_DRAFT_OELINE
+/Leader/ CAD_DRAFT_OLEADER
+/Arrowhead/ CAD_DRAFT_OARROW
+/Special/ CAD_DRAFT_OSPEC

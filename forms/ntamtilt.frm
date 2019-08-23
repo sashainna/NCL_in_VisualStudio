@@ -1,0 +1,20 @@
+#HEADER#
+/TITLE/ Tool Axis Modifier
+/POSITION/ 50,50
+/SIZE/120,70
+
+#EDIT#
+/LABEL/ Right Angle:  
+/POSITION/ 10,8,60,8
+/SIZE/100,14
+/TYPE/ UD_SCAVAL
+/PREC/ 4
+/LEN/ -7
+
+#EDIT#
+/LABEL/ Forward Angle:
+/POSITION/ 10,25,60,25
+/SIZE/100,14
+/TYPE/ UD_SCAVAL
+/PREC/ 4
+/LEN/ -7

@@ -2168,7 +2168,7 @@ UM_coord *pts;
 					*ind11 = i;
 				}
 				nint = um_iSegPlane(pts[i+1],pts[i],pln1,ipt);
-				if (nint > 0 && *ind12 < 0 && um_dcccc(ipt,ipt11) > UM_FUZZ/* && i==388*/)
+				if (nint > 0 && *ind12 < 0 && um_dcccc(ipt,ipt11) > 0.1*UM_FUZZ/* && i==388*/)
 				{
 					um_vctovc(ipt,*ipt12);
 					*ind12 = i;
@@ -2181,7 +2181,7 @@ UM_coord *pts;
 					*ind21 = i;
 				}
 				nint = um_iSegPlane(pts[i+1],pts[i],pln2,ipt);
-				if (nint > 0 && *ind22 < 0 && um_dcccc(ipt,ipt21) > UM_FUZZ /*&& i==314*/)
+				if (nint > 0 && *ind22 < 0 && um_dcccc(ipt,ipt21) > 0.1*UM_FUZZ /*&& i==314*/)
 				{
 					um_vctovc(ipt,*ipt22);
 					*ind22 = i;
@@ -2395,6 +2395,8 @@ UM_real8 *npas,*nstp,*atrad;
 
 			if (tnpts==1)
 			{
+				if (points)
+					uu_free((char*)points);
 				points = (UU_LIST* ) uu_malloc (sizeof(UU_LIST));
 				uu_list_init(points,sizeof(UM_coord),400,400);
 				ind11 = ind12 = ind21 = ind22 = -1;
@@ -2404,6 +2406,8 @@ UM_real8 *npas,*nstp,*atrad;
 				tnpts = ncl_pmill_check_planes(dpl1,dpl2,points,pts,plcross1,sfkey,&ind11,&ind12,&ind21,&ind22);
 				if (tnpts==1)
 				{
+					if (points)
+						uu_free((char*)points);
 					points = (UU_LIST* ) uu_malloc (sizeof(UU_LIST));
 					uu_list_init(points,sizeof(UM_coord),400,400);
 					ind11 = ind12 = ind21 = ind22 = -1;
@@ -2413,6 +2417,8 @@ UM_real8 *npas,*nstp,*atrad;
 					tnpts = ncl_pmill_check_planes(dpl1,dpl2,points,pts,plcross1,sfkey,&ind11,&ind12,&ind21,&ind22);
 					if (tnpts==1)
 					{
+						if (points)
+							uu_free((char*)points);
 						points = (UU_LIST* ) uu_malloc (sizeof(UU_LIST));
 						uu_list_init(points,sizeof(UM_coord),400,400);
 						ind11 = ind12 = ind21 = ind22 = -1;
@@ -2424,6 +2430,8 @@ UM_real8 *npas,*nstp,*atrad;
 						tnpts = ncl_pmill_check_planes(dpl1,dpl2,points,pts,plcross1,sfkey,&ind11,&ind12,&ind21,&ind22,&ipt11,&ipt12,&ipt21,&ipt22);
 						if (tnpts==1)
 						{
+							if (points)
+								uu_free((char*)points);
 							points = (UU_LIST* ) uu_malloc (sizeof(UU_LIST));
 							uu_list_init(points,sizeof(UM_coord),400,400);
 							ind11 = ind12 = ind21 = ind22 = -1;
@@ -2434,6 +2442,8 @@ UM_real8 *npas,*nstp,*atrad;
 							tnpts = ncl_pmill_check_planes(dpl1,dpl2,points,pts,plcross1,sfkey,&ind11,&ind12,&ind21,&ind22);
 							if (tnpts==1)
 							{
+								if (points)
+									uu_free((char*)points);
 								points = (UU_LIST* ) uu_malloc (sizeof(UU_LIST));
 								uu_list_init(points,sizeof(UM_coord),400,400);
 								ind11 = ind12 = ind21 = ind22 = -1;
@@ -2868,3 +2878,29 @@ UM_real4 *x,*y;
 		uu_list_push(&pmill_pts,&pt);
 	}
 }
+
+//
+//int both_inter(pts, dv1, dv2, ps, crs, key, in11, in12, in21,in22,ipv1,ipv2,ipv3,ipv4)
+//UU_LIST* pts;
+//struct NCL_nclpl_rec *dv1, *dv2;
+//UM_coord* ps;
+//UM_vector crs;
+//unsigned int *key;
+//int *in11, *in12, *in21, *in22;
+//UM_coord *ipv1, *ipv2, *ipv3, *ipv4;
+//{
+//	int tnpts;
+//	tnpts=0;
+//
+//	if (pts)
+//		uu_free((char*)pts);
+//	pts = (UU_LIST* ) uu_malloc (sizeof(UU_LIST));
+//	uu_list_init(pts,sizeof(UM_coord),400,400);
+//	in11 = in12 = in21 = in22 = -1;
+//	//crs[0] = 0.0;
+//	//crs[1] = 1.0;
+//	//crs[2] = 1.0;
+//	um_unitvc(crs,crs);
+//	tnpts = ncl_pmill_check_planes(dv1,dv2,pts,ps,crs,key,&in11,&in12,&in21,&in22,&ipv1, &ipv2, &ipv3, &ipv4);
+//	return tnpts;
+//}

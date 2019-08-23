@@ -1,0 +1,12 @@
+#Descriptor#
+/NAME/ Repaint
+/POSITION/ 0.6,.6
+/SIZE/ 0.351562,0.117188
+/ROWS/ 2
+/COLS/ 1
+/TYPE/ Pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Repaint All/ NCL_REPAINT_FULL
+/Repaint View/ NCL_REPAINT_VIEW

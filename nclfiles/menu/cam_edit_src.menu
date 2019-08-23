@@ -1,0 +1,19 @@
+#Descriptor#
+/NAME/ Edit Source
+/POSITION/ 0.6,.6
+/SIZE/ 0.352344,0.119141
+/ROWS/ 3
+/COLS/ 3
+/TYPE/ Menu
+/FORMAT/ TEXT
+
+#Menus#
+/Insert/ CAM_INSERT_MODE
+/Skip To/ CAM_SKIP_LINE
+/Edit Line/ CAM_EDIT_LINE
+/Input/ CAM_INPUT_MODE
+/Find/ CAM_FIND_LINE
+/Del Line/ CAM_DELETE_LINE
+/Overwrite/ CAM_CONSOL_MODE
+/Findtk/ CAM_FIND_TOKEN
+/Show Source/ cam_show_source.menu

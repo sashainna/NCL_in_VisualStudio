@@ -1,0 +1,58 @@
+#HEADER#
+/TITLE/ Rmill Parameters
+/POSITION/ 0,0
+/SIZE/ 200,160
+
+#CHOICEBOX#      
+/LABEL/ Motion Style:
+/POSITION/ 10,8
+/SIZE/ 120,40
+/TYPE/ UD_DASSTRING
+/CHOICES/ "lace", "scrub", "lace_prof","scrub_prof"
+
+#EDIT#
+/LABEL/ Plunge Distance:
+/POSITION/ 10,25
+/SIZE/ 150,14
+/TYPE/ UD_SCAVAL
+/PREC/ 4
+/LEN/ 7
+
+#CHOICEBOX#      
+/LABEL/ Step Over Mode:
+/POSITION/ 10,42
+/SIZE/ 120,40
+/TYPE/ UD_DASSTRING
+/CHOICES/ "Scallop", "Fixed"
+
+#EDIT#
+/LABEL/ Step Over/Scallop Value:
+/POSITION/ 10,59
+/SIZE/ 170,14
+/TYPE/ UD_SCAVAL
+/PREC/ 4
+/LEN/ 7
+
+#EDIT#
+/LABEL/ General Feedrate:
+/POSITION/ 10,76
+/SIZE/ 150,14
+/TYPE/ UD_SCAVAL
+/PREC/ 4
+/LEN/ 7
+
+#EDIT#
+/LABEL/ Positioning Feedrate:
+/POSITION/ 10,93
+/SIZE/ 170,14
+/TYPE/ UD_DASSSTRING
+/PREC/ 4
+/LEN/ 7
+
+#EDIT#
+/LABEL/ Plunge/Entry Feedrate:
+/POSITION/ 10,110
+/SIZE/ 170,14
+/TYPE/ UD_SCAVAL
+/PREC/ 4
+/LEN/ 7

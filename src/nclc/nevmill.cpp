@@ -27,7 +27,8 @@
 #define DEBUGL 0
 #define DEBUGX 0
 #define DEBUG_XML 0
-//#define DUMMY 1
+#define WIN32
+#define DUMMY 1
 
 #if DUMMY == 1
 extern "C" void nclf_vmill_pocket() {}

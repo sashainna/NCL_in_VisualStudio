@@ -1,0 +1,33 @@
+#Descriptor#
+/NAME/ Ncl File Mgmt
+/POSITION/ 0.125000,0.013021
+/SIZE/ 0.113281,0.447917
+/ROWS/ 5
+/COLS/ 3
+/TYPE/ pulldown
+/FORMAT/ BOTH
+
+#Menus#
+/Open/ NCL_OPEN_FILE
+/New/ NCL_RESTART
+/New Session/ NCL_NEW_SESSION
+#Bar#
+/Save Part Prgm/ CAM_SAVE_PP
+/Save Session/ NCL_SAVE_SESSION
+#Bar#
+/Save Unibase/ CAD_SAVE_UNIBASE
+/Merge Unibase/ CAD_MERGE_UNIBASE
+/Secondary Unibase/ secondu.menu
+/Selective Save/ CAD_SEL_SAVE
+/Autosave/ NCL_AUTOSAVE_FORM
+#Bar#
+/Print Screen/ NIS_PRINT_SCREEN
+/Print IPV Screen/ IPV_PRINT_SCREEN
+#Bar#
+/Clfiles/ clfile.menu
+#Bar#
+/Reset Space mouse/NCL_RESET_SPACEMOUSE
+#Bar#
+/Recent Files/ recent_files.menu
+#Bar#
+/Exit/ NCL_EXIT

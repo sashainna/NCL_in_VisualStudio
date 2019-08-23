@@ -1,0 +1,15 @@
+#Descriptor#
+/NAME/ Analayze
+/POSITION/ 0.125000,0.013021
+/SIZE/ 0.113281,0.447917
+/ROWS/ 1
+/COLS/ 4
+/TYPE/ pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Measure/ IPV_MEASURE
+/Compare/ IPV_COMPARE
+#BAR#
+/Remove Chips/ IPV_REMOVE_CHIPS
+/Section/ IPV_SECTION

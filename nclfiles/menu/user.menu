@@ -1,0 +1,20 @@
+#DESCRIPTOR#
+/NAME/ User Menu
+/POSITION/ .1,.1
+/SIZE/ .15,.5
+/ROWS/ 10
+/COLS/ 1
+/TYPE/ Pulldown
+/FORMAT/ TEXT
+
+#MENUS#
+/User Menu/ KEY_NOOP
+/User Menu/ KEY_NOOP
+/User Menu/ KEY_NOOP
+/User Menu/ KEY_NOOP
+/User Menu/ KEY_NOOP
+/User Menu/ KEY_NOOP
+/User Menu/ KEY_NOOP
+/User Menu/ KEY_NOOP
+/User Menu/ KEY_NOOP
+/User Menu / KEY_NOOP

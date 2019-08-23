@@ -1,0 +1,1218 @@
+.LIPS slm 1
+
+   FILE NAME: VAX::DUA0:[USERS.NCLSYS]COMMAP.TXT
+
+ *************************************************************************
+ 
+               DEC UNIT ASSIGNMENTS
+ 
+ 
+   LUN      FILE
+ 
+    1      PART PROGRAM DIRECT ACCESS WORK FILE
+    2      CLFILE
+    3      PLOTTER OR VT125
+    4      DATA TABLE VOCABULARY AND APT SOURCE (USED AT WRAPUP TIME)
+    5      TERMINAL
+    6      TEMPORARY FILES SUCH AS DOCHELP AND BATCH QUEUE FILE
+    7      ERROR MESSAGES
+    8      BATCH LISTING
+    9      RANFIL
+   10      DATA BASE
+ 
+ 
+ *************************************************************************
+
+               TI UNIT ASSIGNMENTS
+ 
+           UNIT NO      FILE
+ 
+              8       VERFIL
+              9       RANFIL FOR FOREGROUND EXECUTION
+             19       RANFIL FOR BACKGROUND EXECUTION
+             32       PRINTER
+             33       TERMINAL
+             35       APT SOURCE OUTPUT
+             36       CLFILE
+             37       NCL SOURCE INPUT
+          41-43       DATA BASE FILES
+             44       HELP DOCUMENT FILE
+             45       SHOW SOURCE OF A FILE OTHER THAN CURRENT
+             50       NCLBATCH FILE INDICATING REQUIRED FILES TO
+                       BE OPENED IN BATCH RUN
+ 
+ *************************************************************************
+ 
+                           #################
+                           #               #
+                           #    IFL MAP    #
+                           #               #
+                           #################
+ 
+ ******************* GENERAL PURPOSE INTEGER*2 FLAGS *********************
+
+ IFL(1)     NEXTSK      NEXT TASK TO EXECUTE. (SEE PRCNTL, DRIVER)
+     2      IERROR      ERROR FLAG.  ( ERR IF PLUS, WARNING IF NEG )
+     3      INBUF       RANFIL PAGE NOW IN JBUF
+     4      LPGNO       LAST PAGE NO OF RANFIL USED   ( 11 INIT )
+     5      IQRX        INDEX TO QUICK REFERENCE TABLE ( SHOWS LAST ENTRY )
+     6      GOUGCK      0=OFF, 1=ON    EPM   11-7-84
+     7      IGOPG       THE OPEN GEOMETRY STORAGE PAGE
+     8      IGKNT       THE NUMBER OF WORDS USED IN IGOPG.  0 INIT.
+     9       *
+ IFL(10)     *          IFL(9-12) ARE USED FOR VARIABLE SYMBOL TABLE
+     11      *           BOOKKEEPING BETWEEN VSTCHK AND VSTORE.
+     12      *
+ ***************************************************** GEOMETRY ITEM COUNTS
+     13     NPTS        POINT COUNT  (TOTAL)
+     14     NVES        VECTOR  "       "
+     15     NLNS        LINE    "       "
+     16     NPLS        PLANE   "       "
+     17     NCIS        CIRCLE  "       "
+     18     NCVS        CURVE   "       "
+     19     NSFS        SURF    "       "
+ IFL(20)    NMXS        MATRIX  "       "
+     21     ITLRGT - CUTTER RELATION TO DS (TLRGT=+1,TLON=0,TLLFT=-1)
+     22     INDIVP - INDIRV OR INDIRP WAS SPECIFIED
+     23     MODCUT - TLAXIS CUTMODE        0 SAME
+                                           1 NORMAL,PS
+                                           2 ATANGL,5,PS
+                                           3 TANTO,DS,1
+                                           4   "    " ",FAN   (12-22-82)
+                                           5 TANTO,DS,1,PERPTO,V1
+                                           6 TANTO,DS,1,PARELM
+                                           7 NORMAL,PS,PERPTO,V1
+                                           8 COMBIN,1,D1,D2
+                                           9 COMBIN,1,PARELM,D1,D2
+                                          10 ATANGL,5,PS,PERPTO,V1
+                                          11 ATANGL,5,PS,CLDIST,.5
+                                          12 ATANGL,5,PS,CLDIST,.5,PERPTO,V1
+                                          13 THRU,PT1
+                                          14 THRU,CV1
+     24     IONPS     =0, TLOFPS    =1,TLONPS
+     25     END OF FILE POINTER FOR SOURCE INPUT
+     26     TEMP DEBUG FLAG.                                     PEM 1-12-82
+     27     DS CONCAVE FLAG.  =1 CONCAVE,  =0 CONVEX             PEM 3-18-82
+     28     ENDUP RECOUP FLAG                                    PEM 7-30-82
+     29     WITHOLD OUTPUT TO TDAT  (SEE MOVER)                  PEM 8-03-82
+ IFL(30)    RLDSRF OF 2 SAME CVS WHEN SET                        PEM 9-10-82
+     31     ERROR LIMIT
+     32     WARNING LIMIT
+     33     NUMBER OF ERRORS SO FAR
+     34     NUMBER OF WARNINGS SO FAR
+     35     BATCH INDICATOR 0=INTERACTIVE, 1=BATCH
+     36     LAST RECORD NUMBER OF DOCUMENT HELP FILE             MSG 1-26-82
+     37     PROCESSING MODE
+             1 = CONSOLE INPUT
+             2 = INSERT
+             3 = RUNNING
+             4 = NON-PROCESS
+             5 = (NOT USED YET)
+             6 = RUNNING STEP
+     38     MACRO FLAG  0=NO MACRO, 1=DEFINING MACRO, 2=CALLING MACRO
+     39     ELEMENT NUMBER POINTER OF VST ENTRY OF CURRENTLY EXECUTING CALL
+ IFL(40)    SAVE CURRENT PMODE WHILE DOING A MACRO CALL
+     41     CANON FLAG - 0 = OFF , 1 = ON
+     42     CUTMODE  0=CUT , 1=DNTCUT
+     43     NEXTYP - CONTAINS THE TYPE OF TOKEN DELIMITER ON CURRENT TOKEN
+     44     HOLDS THE CURRENT 'ACCEPTED' DELIMITER (9=COMMA,5=SLASH,1=EQUAL)
+     45     LOOP STATE FLAG 
+              0=NO LOOP
+              1=DECLARING LOOP/DOLOOP
+              2=EXECUTING LOOPST/LOOPND
+              3=EXECUTING DOLOOP
+     46     set in cvio, used in motimm                          EV 05-04-01
+     47     WINDOW 2 FLAG - 0=UPDATE WINDOW 2, 1=DON'T UPDATE
+     48       ISVMOD IN DRIVER (VIA EQUIV.)                      PEM  5-6-81
+     49       ITER FLAG IN MOVER                                 PEM  5-6-81
+ IFL(50)      IPTK  "    "   "                                   PEM  5-6-81
+     51     IA    >
+     52     IB    >  ROTATING COL PTRS IN MOVER                  PEM  5-15-81
+     53     IC    >
+     54      ISRF   CURRENT SURF OF INTEREST  PS=1,DS=2,CS=3
+     55     ZSURF FLAG. IF = 1 SC(37)-SC(40) = CANONICAL PLANE
+     56      PS   )
+     57      DS   )  TOOL-TO-SURF APPLY MODES.  SEE PSREL, ETC.
+     58      CS   )
+     59     WRITE ACCESS DATA BASE NEXT AVAILABLE PAGE (WDBNPG)  MSG 6-8-81
+ IFL(60)    WRITE ACCESS DATA BASE CURRENT GEO PAGE    (WDBGPG)  MSG 6-8-81
+     61     WRITE ACCESS DATA BASE CURRENT GEO ELEMENT (WDBEL)   MSG 6-8-81
+     62     FILE NUMBER OF WRITE ACCESS DATA BASE FILE (WDBIO)   MSG 6-8-81
+     63     CURRENT DATA BASE FILE NUMBER              (CDBIO)   MSG 6-8-81
+     64     PRIMARY DATA BASE FILE NUMBER              (DBFN1)   MSG 6-8-81
+     65     SECONDARY DATA BASE FILE NUMBER            (DBFN2)   MSG 6-8-81
+     66     Contains the record number of the ranfil record      MSG 12-18-90
+            that contains the first entry of the stack of 
+            entries for the current looping region limit 
+            information.
+
+            NOTE: This IFL used to be used for the following:
+              TERTIARY DATA BASE FILE NUMBER             (DBFN3)   MSG 6-8-81
+
+     67     used as initds in mover and usrfpn                   EV 03-30-2001
+     68     Used in csavoid and csrel                            EV 11-12-2001
+     69     CLFILE FLAG -  1=WRITING CLFILE, 0=NO CLFILE
+ IFL(70)    TOOL-TO-CRV APPLY MODE.    0=2D   1=3D  <CUTTER/222 OR 333>
+     71     RANFIL OPEN ASSOCV VARIABLE                          MSG 7-22-81
+     72     1 IF REFSYS IS IN EFFECT, 0 IF NOT
+     73     1 IF TRACUT IS IN EFFECT, 0 IF NOT
+     74     SURFACE DEFINING ENTITY 1 GEOMETRY TYPE              MSG 8-18-81
+     75     SURFACE DEFINING ENTITY 2 GEOMETRY TYPE              MSG 8-18-81
+     76     SURFACE DEFINING ENTITY 3 GEOMETRY TYPE              MSG 8-18-81
+     77     SURFACE DEFINING ENTITY 4 GEOMETRY TYPE              MSG 8-18-81
+     78     IF 1, USER HAS INTERUPTED TERMINAL OUTPUT WITH ESC KEY
+     79     NWDS USED IN TDAT BLOCK (MOVER)                      PEM 9-01-81
+ IFL(80)    FAN PASS1 FLAG   =1 IF FAN PASS1 IS RUNNING        PEM 14-JUN-84
+     81     IMPLICIT CS  MEMORY OF TL L/R  IN IFL(21)          PEM 24-JAN-85
+     82     MULTAX     =0 NOMULT    =1 MULTAX                    PEM 9-01-81
+     83     CS NEARFLAG  =0 NOT NEAR,  =1 TOOL IS NEAR CS        PEM 9-15-81
+     84     MOTION DISPLAY FLAG, 0=NO DISPLAY, 1=DISPLAY IN WINDOW 3
+     85     MOTION DEBUG SWITCH
+     86     MOTION INTERUPT SWITCH
+     87     GEOMETRY DISPLAY FLAG 0=NO DISPLAY, 1=DISPLAY IN WINDOW 3
+     88     APT SOURCE OUTPUT FLAG
+             0 = NO SOURCE FILE CREATED
+             1 = SOURCE FILE CREATED BUT DELETE CLFILE
+             2 = SOURCE FILE CREATED AND KEEP CLFILE
+     89     AUTOST  0 = OFF, 1 = ON
+ IFL(90)    FORCED PASS STPT GOTO IF =1    (SEE BEGPAS)          PEM 10-13-81
+     91     NUMPTS  MAXIMUM NUMBER OF ITERATIONS FOR ANY ONE MOVE
+     92     APT SOURCE WRITE 1 = DON'T WRITE ORIGINAL SOURCE     MSG 10-16-81
+                                 AS COMMENTS TO APT SOURCE FILE
+                             0 = DO WRITE IT
+     93     HELP DOCUMENT FILE OPEN STATUS 0 = CLOSED 1 = OPEN   MSG 10-21-81
+     94     CIRCULAR INTERPOLATION  0=OFF   1=ON
+     95     CIRCULAR INTERP THIS PASS ( ACTS WITH THE ABOVE )    PEM 11-10-81
+     96     CIMPLEX INTEGRATION - =1 IFF CIRC REC SEEN           IJD 20-APR-92
+     97       "    "    "   "    "
+     98       "    "    "   "    "
+     99     TAPE FOOTAGE CHECK: 0 IF NO FOOTAGE CHECKING         MSG 12-2-81
+                                1 IF FOOTAGE CHECKING            MSG 12-2-81
+ IFL(100)   PLOT FLAG: 0 = NOT PLOTTING, NO DEFAULTS SET         MSG 2-5-82
+                       1 = PLOTTING                              MSG 2-5-82
+                       2 = NOT PLOTTING, DEFAULTS SET            MSG 2-5-82
+     101    *RUN/STEP INDICATOR                                  MSG 5-26-82
+                       0 = NOT RUNNING IN STEP MODE              MSG 5-26-82
+                       1 = RUNNING IN STEP MODE                  MSG 5-26-82
+     102    TANTO CS ENDING, BACKOUT FLAG FOR ENDPAS             PEM 3-17-83
+     103    SAVE AREA USED BY *SET/CANON TO HOLD CURRENT CANON STATE
+             FLAG (IFL(41))                                      MSG 7-30-82
+     104    TA/,,MODIFY  INDICATOR   (0=OFF  1=ON)               PEM 10-15-82
+     105    INCLUSIVE 'THRU' FLAG  0=NONE, 1=SUBSCRIPTING, 
+		2=AUTO GEN (generate from the defined base name)
+		3=AUTO GEN (generate from any saved base name)
+     106    Maximum line length output in command                RLS 08-06-09
+     107    Not used.
+     108    Not used.
+     109    CONTAINS INITIAL VALUE OF IFL(4) AND IFL(7)          MSG 11-5-82
+ IFL(110)   USED TO STORE THE MACRO TABLE RECORD NUMBER          EPM 11-12-82
+     111    NESTED GEOMETRY FLAG  1=NESTING, 0=NOT NESTING       EPM 1-3-83
+     112    COUNTER FOR NUMBER OF NESTED POINTS                  EPM 1-6-83
+     113    COUNTER FOR NUMBER OF NESTED VECTORS                 EPM 1-6-83
+     114    COUNTER FOR NUMBER OF NESTED LINES                   EPM 1-6-83
+     115    COUNTER FOR NUMBER OF NESTED PLANES                  EPM 1-6-83
+     116    COUNTER FOR NUMBER OF NESTED CIRCLES                 EPM 1-6-83
+     117    COUNTER FOR NUMBER OF NESTED CURVES                  EPM 1-6-83
+     118    COUNTER FOR NUMBER OF NESTED SURFS                   EPM 1-6-83
+     119    COUNTER FOR NUMBER OF NESTED MATRIXES                EPM 1-6-83
+ IFL(120)   COUNTER EQUIVALENCED TO FOUND1 FOR NESTING           EPM 1-23-83
+     121    NUMBER OF DELETED CHARACTERS FOR NESTING             EPM
+     122    SAVE NEXTYP IN PTHRU                                 EPM 2-5-83
+     123    W2INX                                                EPM
+     124    IFIRST                                               EPM
+     125    DEBUG SKIP GETTRM COUNT IN PUTMSG                    MSG 3-4-83
+     126    SET BY *SET/NOWARN TO CAUSE ERROR NOT TO STOP IF     MSG 3-9-83
+             A WARNING MESSAGE IS GENERATED
+     127    USED BY PLOT TO SPECIFY GRAPHICS DEVICE TYPE         EPM 3-10-83
+              0 = HP7220 TYPE HARD COPY
+              1 = VT125
+              2 = TEKTRONIX 4014
+              3 = TEKTRONIX 4105
+              4 = TEKTRONIX 4107
+              5 = TEKTRONIX 4109
+              6 = TEKTRONIX 4115
+     128    VT125 USE: 0 = MOVE TO POSITIONS WITHOUT DRAWING     MSG 4-5-83
+                       1 = MOVE TO POSITIONS IN DRAWING MODE
+     129    VT125 USE: 0 = DO NOT DRAW CIRCLES INDICATING        MSG 4-5-83
+                           CUTTER DURING MOTION.
+                       1 = DRAW CIRCLES INDICATING CUTTER AT
+                           BEGINNING AND END OF EACH MOTION
+                           STATEMENT PLUS EVERY 10TH ITERATION
+                           WITHIN A MOTION STATEMENT MOVE.
+                       N = SAME AS IF THE VALUE IS 1 BUT DRAW
+                           THE CIRCLE EVERY NTH ITERATION. 
+ IFL(130)   VT125 USE: THE NUMBER OF ITERATIONS SINCE LAST       MSG 4-5-83
+                       CUTTER CIRCLE WAS DRAWN.
+     131    VT125 USE: 0 = TERMINAL SCREEN LINES 6-24 FOR        MSG 4-7-83
+                           REGULAR TEXT AND GRAPHIC OUTPUT
+                       1 = TERMINAL SCREEN LINES 6-24 FOR
+                           GRAPHIC OUTPUT ONLY
+     132    VT125 USE: LAST X-COORDINATE USED FOR VT125 GRAPHICS MSG 4-12-83
+     133    VT125 USE: LAST Y-COORDINATE USED FOR VT125 GRAPHICS MSG 4-12-83
+     134    LETSIZ VALUE (PREV. LETSIZ*SCALE/100 FOR VT125)      IJD 2-OCT-84
+     135    VT125 USE: 0 = DON'T CALL DISPLY TO ERASE GEOMETRY   MSG 4-15-83
+                       1 = CALL DISPLY TO ERASE GEOMETRY
+                       2 = CALL DISPLY TO DISPLAY IN AUTO DISPLAY MODE
+     136    VT125 USE: AUTO DISPLAY VALUE FOR NUMBER OF SEGMENTS MSG 4-21-83
+                        CIRCLE OR CURVE
+     137    VT125 USE: AUTO DISPLAY VALUE FOR NUMBER OR U        MSG 4-21-83
+                        SEGMENTS IN SURFACE
+     138    VT125 USE: AUTO DISPLAY VALUE FOR NUMBER OR V        MSG 4-21-83
+                        SEGMENTS IN SURFACE
+     139    SCRUB CO-ORDINATE DISPLAY CURRENT LINE NUMBER        MSG 4-29-83
+ IFL(140)   GETMSG SAVES NUMBER OF INPUT CHARS HERE FOR GETNST   EPM 5-24-83
+     141    SET BY ERROR TO THE NUMBER OF CHARACTERS GETTRM      MSG 7-5-83
+             SHOULD WRITE FROM W2(1) WHEN DOING NEXT TERMINAL READ
+     142    LATHE MODULE SWITCH  0 IF NOT, 1 IF LATHE MODULE     EPM 7-25-83
+     143    NUMBER OF SHAPES DECLARED FOR AUTO NAME GEN          EPM 7-25-83
+     144    CIRC INTERP TYPE   0=AII, 1=NCCS                     EPM 8-31-83
+     145    MACRO PARAMETER SWITCH FOR VSTCHK                    MSG 9-9-83
+             0 = CHASE MACRO PARAMETER ASN
+             1 = RETURN MACRO PARAMETER ASN
+     146    USED IN APEX POINT LOGIC IN CSREL                    EV 07-13-01
+     147    USED TO INITIALIZE LOOK VECTOR - IN MOVER AND PSREL  EV 11-21-01
+     148    RE-WRITE PART PROGRAM FILE AT END OF RUN SWITCH FOR  MSG 10-3-83
+             BATCH (/UP OPTION OF NCQ)
+             0 = DON'T RE-WRITE
+             1 = RE-WRITE PART PROGRAM FILE WITH CHANGES MADE DURING RUN
+     149    OUTPUT PRINT FILE SWITCH FOR BATCH RUN               MSG 10-4-83
+                   /OP OPTION OF NCQ
+            -2 = WRITE TO PRINT FILE BECAUSE AN ERROR OCCURED
+            -1 = AN ERROR HAS OCCURED BUT IS NOT CURRENTLY BEING PROCESSED
+             0 = DON'T WRITE TO PRINT FILE DURING BATCH RUN
+             1 = WRITE TO PRINT FILE DURING BATCH RUN
+ IFL(150)   USED BY *INPUT MODE TO WRITE SOURCE FILE LINES BUT   MSG 10-6-83
+             DON'T PROCESS
+             0 = NOT IN *INPUT MODE
+             1 = *INPUT MODE IS ACTIVE
+            -1 = *INPUT MODE IS BEING DEACTIVATED BY ANOTHER * COMMAND
+     151    NUMBER OF LINES IN A BATCH LISTING                   MSG 10-12-83
+     152    PROGRAM STATE:                                       MSG 10-21-83
+             0 = SEQUENTIAL
+             1 = MACRO DEFINITION
+             2 = MACRO CALL
+             3 = LOOP DEFINITION
+             4 = LOOP EXECUTION
+     153    SAVE AREA FOR LAST PROGRAM STATE                     MSG 10-21-83
+     154    PRINT SWITCH     0=PRINT/SMALL , 1=PRINT/LARGE       EPM 1-11-84
+                             2=PRINT NOTHING                     IJD 26-MAY-88
+     155    HOLD CURRENT PEN NUMBER - USED BY DISPLAY TO         MSG 1-31-84
+             OVERRIDE DEFAULT COLORS
+     156    X CO-ORDINATE OF LAST CALCULATED POINT SENT TO A     MSG 2-15-84
+             GRAPHIC TERMINAL FOR PLOTTING.  NOT THE SAME AS THE
+             THE ACTUAL POINT THAT IS USED ON THE DEVICE IF THE
+             POINT WAS OFF THE SCREEN.
+     157    SECOND HALF OF ABOVE INTEGER*4 VALUE
+     158    Y CO-ORDINATE OF LAST CALCULATED POINT SENT TO A     MSG 2-15-84
+             GRAPHIC TERMINAL FOR PLOTTING.  NOT THE SAME AS THE
+             THE ACTUAL POINT THAT IS USED ON THE DEVICE IF THE
+             POINT WAS OFF THE SCREEN.
+     159    SECOND HALF OF ABOVE INTEGER*4 VALUE
+ IFL(160)   X CO-ORDINATE OF A NEW CALCULATED POINT SENT TO A    MSG 2-15-84
+             GRAPHIC TERMINAL FOR PLOTTING.  NOT THE SAME AS THE
+             THE ACTUAL POINT THAT IS USED ON THE DEVICE IF THE
+             POINT WAS OFF THE SCREEN.
+     161    SECOND HALF OF ABOVE INTEGER*4 VALUE
+     162    Y CO-ORDINATE OF A NEW CALCULATED POINT SENT TO A    MSG 2-15-84
+             GRAPHIC TERMINAL FOR PLOTTING.  NOT THE SAME AS THE
+             THE ACTUAL POINT THAT IS USED ON THE DEVICE IF THE
+             POINT WAS OFF THE SCREEN.
+     163    SECOND HALF OF ABOVE INTEGER*4 VALUE
+     164    LOGICAL*1  - TRUE IF LAST CALCULATED POINT FOR       MSG 2-15-84
+                              GRAPHICS OUTPUT WAS OFF SCREEN
+                         FALSE IF LAST POINT WAS ON SCREEN
+     165    LOWER LEFT X CO-ORDINATE OF CURRENT VIEWPORT ON      MSG 2-15-84
+             A GRAPHICS SCREEN.
+     166    LOWER LEFT Y CO-ORDINATE OF CURRENT VIEWPORT ON      MSG 2-15-84
+             A GRAPHICS SCREEN.
+     167    UPPER RIGHT X CO-ORDINATE OF CURRENT VIEWPORT ON     MSG 2-15-84
+             A GRAPHICS SCREEN.
+     168    UPPER RIGHT Y CO-ORDINATE OF CURRENT VIEWPORT ON     MSG 2-15-84
+             A GRAPHICS SCREEN.
+     169    SEGMENT COUNTER FOR GRAPHICS OPTION                  MSG 3-8-84
+ IFL(170)   GRAPHICS OPTION SWITCH                               MSG 3-8-84
+             0 = GRAPHICS OPTION NOT INSTALLED
+             1 = GRAPHICS OPTION IS INSTALLED
+     171    SOURCE STATEMENT INPUT SWITCH FOR GRAPHICS OPTION    MSG 3-9-84
+             0 = STATEMENT WAS KEYED IN AND NOT SYNTAX CHECKED
+             1 = STATEMENT WAS ENTERED VIA DATA TABLET AND  
+                 SYNTAX CHECKED.
+     172    GRAPHICS OPTION TABLET MENU ENTRY DISPLAY SWITCH     MSG 3-11-84
+             0 = NO TEXT IS DISPLAYED ON LINES 2 AND 3
+             1 = SELECTED TEXT IS DISPLAYED ON LINES 2 AND 3
+                  THIS SWITCH IS SET BY GOMAIN AND TESTED BY 
+                  DRIVER TO SEE IF LINES 2-4 SHOULD BE ERASED
+     173    RESERVED FOR GRAPHICS OPTION USE                     MSG 3-12-84
+     174    Contains the index that points to the top of the     MSG 12-18-90
+            stack of looping region information.  This is used
+            along with ifl(66) to find the current looping 
+            region limit data.
+
+            NOTE: This IFL used to be used for the following:
+             RESERVED FOR GRAPHICS OPTION USE                    MSG 3-12-84
+                I believe it was never actually used though. Mark.
+
+     175    RESERVED FOR GRAPHICS OPTION USE                     MSG 3-12-84
+     176    RESERVED FOR GRAPHICS OPTION USE                     MSG 3-12-84
+     177    RESERVED FOR GRAPHICS OPTION USE                     MSG 3-12-84
+     178    RESERVED FOR GRAPHICS OPTION USE                     MSG 3-12-84
+     179    RESERVED FOR GRAPHICS OPTION USE                     MSG 3-12-84
+ IFL(180)   RESERVED FOR GRAPHICS OPTION USE                     MSG 3-12-84
+     181    RESERVED FOR GRAPHICS OPTION USE                     MSG 3-12-84
+     182    RESERVED FOR GRAPHICS OPTION USE                     MSG 3-12-84
+     183    HOLDS CURRENT LETDIR ANGLE                           IJD 11-OCT-84
+     184    AUTO DISPLY SWITCH    0=OFF, 1=ON                    EPM 5-21-84
+     185    INDEX INTO PLOTTING BUFFER                           IJD 4-APR-85
+             (REPLACED CUTTER CIRCLE BUFFER POINTS INDICATOR)
+     186    MAXIMUM NUMBER OF CHARACTERS TO BUFFER IN PLOTTING   IJD 4-APR-85
+            BUFFER. (REPLACED COUNTER FOR CUTTER CIRC BUFFERING)
+     187    TERMINAL TYPE THAT IS BEING USED FOR CONSOLE INPUT   MSG 5-15-84
+              VALUES ARE THE SAME AS IFL(127)
+     188    POINTER TO NEXT LINE TO WRITE SOURCE STATEMENT IN    MSG 5-15-84
+              WINDOW TWO ON TEK 4115
+     189    LETTER COMMAND BYPASS SWITCH                         MSG 5-25-84
+              0 = HANDLE LETTERING NORMALLY
+              1 = BYPASS SENDING LETTERING COMMAND TO PLOTTING
+                   DEVICE
+ IFL(190)   SWITCH TO INDICATE IF DISPLAY IS TO USE RANFIL OR    MSG 6-1-84
+              OR CURRENTLY OPENED DATA BASE FILE.
+              0 = RANFIL
+              1 = DATA BASE
+     191    1 = Parse token between set delimiters (commas)      RLS 9-3-14
+            without looking for special characters or situations.
+     192    USED BY GETNST TO SIGNIFY THAT AN UNNAMED NESTED ITEM OCCURED
+              IN THE INPUT LINE.  IF SO, AN ERROR IS GENERATED IF THE 
+              STATEMENT IS A MACRO CALL.  0 MEANS THAT NONE WAS FOUND,
+              A NON-ZERO VALUE INDICATES THAT ONE WAS FOUND AND THE NUMBER
+              IS INX OF WHERE IT OCCURS IN THE LINE.
+     193    GEOMETRY LABEL SWITCH FOR POINTS                     IJD 10-OCT-84
+              0 - DO NOT DISPLAY NAME WHEN DISPLAYING GEOMETRY
+              1 - DISPLAY NAME WHEN DISPLAYING GEOMETRY
+              SET BY '*SET/LABEL' COMMAND
+     194    GEOMETRY LABEL SWITCH FOR VECTORS                    IJD 10-OCT-84
+     195       "       "     "     "  LINES                      IJD 10-OCT-84
+     196       "       "     "     "  CIRCLES                    IJD 10-OCT-84
+     197       "       "     "     "  CURVES                     IJD 10-OCT-84
+     198       "       "     "     "  SURFACES                   IJD 10-OCT-84
+     199    INDICATES WHAT KIND OF OPEN TO DO ON A GEOMETRIC     MSG 11-29-90
+            DATA BASE FILE
+               1 = READ ONLY (SHARED)
+               3 = WRITE ACCESS
+
+            (THIS IFL USAGE APPLIES TO NCL502 ON VMS SYSTEMS ONLY)
+
+            NOTE: This IFL used to be used for the following:
+             COUNTER FOR UNAUTHORIZED USE OF NCL                  MSG 4-17-84
+              INITIALLY SET TO 1 AT STARTUP TIME IF FILE
+              DL0:[0,0]FILE11.SYS IS NOT FOUND WITH THE VALUE
+              1895.01
+              COUNTER IS DOUBLED EACH TIME ASSIGN IS ENTERED AND
+              A WAIT FOR THAT MANY SECONDS IS PERFORMED.
+
+ IFL(200)   GEOMETRY LABEL SWITCH FOR SHAPES.                    IJD 10-OCT-84
+     201    RESERVED FOR DATA TABLET USAGE                       MSG 12-17-84
+     202    RESERVED FOR DATA TABLET USAGE                       MSG 12-17-84
+     203    RESERVED FOR DATA TABLET USAGE                       MSG 12-17-84
+     204    RESERVED FOR DATA TABLET USAGE                       MSG 12-17-84
+     205    DATA TABLET USAGE FLAG                               MSG  2-18-85
+             0 = DATA TABLET NOT BEING USED
+             1 = DATA TABLET BEING USED
+     206    RSX SECONDARY TASK NAME (FIRST HALF)                 MSG 12-17-84
+     207    RSX SECONDARY TASK NAME (SECOND HALF)                MSG 12-17-84
+     208    RESERVED FOR DATA TABLET USAGE                       MSG 12-17-84
+     209    RESERVED FOR DATA TABLET USAGE                       MSG 12-17-84
+ IFL(210)   USED BY LOGICAL EXPRESSION PARSING MECHANISM         MSG 3-23-90
+             -1 = LOGICAL EXPRESSION EVALUATES TO "FALSE"
+             +1 = LOGICAL EXPRESSION EVALUATES TO "TRUE"
+     211    USED BY DTABRT TO STORE THE CURRENT DATA TABLET      MSG 5-30-85
+             LAYOUT BOX NUMBER THAT IS BEING WORKED ON (USED 
+             WHEN IN 'MODAL' MODE.
+     212    cv/io has been trimmed                               EV  01-19-01
+     213    SECONDARY FEDRAT INDICATOR                           PEM 13MAY85
+     214    MEMORY OF (213) FOR 'ONCE' RESTORES                  PEM 13MAY85
+     215    IMPLIED  C/S INDICATOR; 1 = ACTIVE IMPLIED C/S, 0=NO EPM  1-30-85
+     216    1 = Motion is being generated by Preview feature.    RLS  4-25-01
+     217    SAVE MOTION TYPE (GF,GR,ETC) FOR IMPLIED C/S         EPM  1-30-85
+     218    PRINT/ON OR OFF FLAG                                 EPM 5-30-89
+             0 = PRINT EVERYTHING SENT TO THE BATCH LISTING
+             1 = DO NOT PRINT ANYTHING TO THE BATCH LISTING
+            (IFL(218) WAS PREVIOUSLY USED TO SAVE LAST C/S 
+             RELATIONSHIP (ON,TO,PAST), THIS IS NOW SC(161))     IJD  6-10-88
+     219    SAVE LAST TOOL RELATIONSHIP (TL,TR, TLON)            EPM  2-1-85
+ IFL(220)   SAVE TABLET ROTATION ANGLE                           RMR  2-14-85
+             (SET BY TABREG, USED BY BOX) 
+     221      SECOND HALF OF ABOVE REAL                          RMR  2-14-85
+     222    SAVE TABLET SCALING FACTOR (SAME AS ABOVE)           RMR  2-14-85
+     223      SECOND HALF OF ABOVE REAL                          RMR  2-14-85
+     224    SAVE X TRANSLATION AMOUNT  (SAME AS ABOVE)           RMR  2-14-85
+     225    SAVE Y TRANSLATION AMOUNT  (SAME AS ABOVE)           RMR  2-14-85
+     226    TERMINAL CHANNEL NUMBER USED BY VAX ONLY IN ASGCHN,  MSG  2-15-85
+              GETTIO AND PUTTIO.
+     227    SECOND HALF OF ABOVE NUMBER                          MSG  2-15-85
+     228    EQUIVALENCED TO A LOGICAL*1 THAT INDICATES AN ERROR  MSG  2-17-85
+              CONDITION OCCURED ON THE LINE JUST INPUTTED AND 
+              THE ONLY VALID DATA TABLET ENTRY THAT WILL BE
+              ALLOWED WILL BE TO ERASE THE LINE.
+     229    BEGINNING OF CURRENT DATA TABLET TOKEN               MSG  2-18-85
+ IFL(230)   NUMBER OF CHARACTERS TO INDENT THE BEGINNING OF A    MSG  2-19-85
+     231    NUMBER OF CHARACTERS TO INDENT THE FIRST SEPERATOR   MSG  2-19-85
+     232    LOGICAL*1: TRUE IF A SET/PLOT,GRAPH FOR 4107/9 DONE  RMR  3-06-85
+     233    COUTPT SAVE AREA USED BY DTMAIN                      MSG  3-6-85
+     234    DISPLY POINT FLAG                                    IJD  8-MAR-85
+              VALUE 0 - DON'T DISPLY POINTS IN DISPLY/ALL
+                    1 -       DISPLY POINTS IN DISPLY/ALL
+     235    DISPLY VECTOR FLAG
+     236    DISPLY LINE FLAG
+     237    DISPLY CIRCLE FLAG
+     238    DISPLY CURVE FLAG
+     239    DISPLY SURF FLAG
+ IFL(240)   DISPLY SHAPE FLAG
+*********** DISPLY PLANE FLAG IS IFL(265)                        EPM 2-19-87
+     241    HOLDS DATA TABLET CURRENT MENU NUMBER                MSG 12-MAR-85
+     242    CURRENT SEGMENT NUMBER FOR MOTION TO TEK TERMINAL.   IJD 26-APR-85
+               (0 IF NO MOTION SEGMENT IS OPEN)
+     243    SLOWDN TIM1, TIM2 INDICATOR                          PEM 13-MAY-85
+     244    SEGMENT NUMBER OF LAST GEOMETRY SEGMENT THAT WAS     MSG 26-JUN-85
+             PICKED.  USED BY ERASE/GEO_NAME
+     245    SUPTYPE OF LAST GEOMETRY SEGMENT THAT WAS PICKED.    MSG 26-JUN-85
+             USED BY ERASE/GEO_NAME
+     246    GENPTS FLAG                                          IJD 2-AUG-85
+                 0 - NOT DOING GENPTS
+                 1 - GENPTS, POINTS ONLY
+                 2 - GENPTS, POINTS AND TLAXIS VECTOR
+                 3 - GENPTS, POINTS AND FWD VECTOR
+                 4 - GENPTS, POINTS, TLAXIS VECTOR AND FWD VECTOR
+                 7 - GENPTS, PNTVECS (TLAXIS)
+                 8 - GENPTS, PNTVECS (FWD)
+                 9 - GENPTS, PNTVECS (TLAXIS) AND FWD VECTOR
+                10 - GENPTS, PNTVECS (FWD) AND TLAXIS VECTOR
+     247    INIT FLAG IN SAVMOT.                                 IJD 2-AUG-85
+     248    ELEMENT NUMBER IN RANFILE TO STORE NEXT GENPT ITEM.  IJD 2-AUG-85
+     249    PAGE NUMBER IN RANFILE TO STORE NEXT GENPT ITEM.     IJD 2-AUG-85
+ IFL(250)   NUMBER OF GENPT ITEMS GENERATED.                     IJD 2-AUG-85
+     251    NUMBER OF ITEMS IN CUTTER PLOTTING ARRAY.            IJD 22-OCT-85
+                 ZEROED WHEN CUTTER DEF'N OR PLOTTING PLAN
+                 CHANGES AND CUTTER MUST BE RE-CALCULATED.
+     252    RANFILE PAGE NUMBER FOR CUTTER ARRAY ON RSX.         IJD 12-NOV-85
+                 (ZERO IF PAGE NOT ASSIGNED)
+     253    CONTROLS DISPLAY OF PART PROGRAM STATEMENT ON LINE 1 RMR 25-NOV-85
+                  0 - DONT INIT INPUT LINE BEFORE ENTERING GETLIN      
+                  1 - INIT INPUT LINE
+                  2 - DONT INIT INPUT LINE - INDICATES FIND   IN PROGRESS
+                  3 - DONT INIT INPUT LINE - INDICATES FINDTK IN PROGRESS
+                  4 - DONT INIT INPUT LINE - INDICATES SHOW/SOURCE,S IN PROGRESS
+                  5 - DONT INIT INPUT LINE - INDICATES HELP IN PROGRESS
+     254    ON/ERROR flag (0=BREAK, 1=CONTIN, 2=LABEL)
+     255    ON/ERROR output message flag (NOWARN, WARN)
+     256    ABORT FLAG - SET WHEN <CTRL>U PRESSED                RMR  1-DEC-85
+     257    ACTIVATES <CTRL>U FEATURE WHEN SET                   RMR  1-DEC-85
+     258    CONTROLS AUTOMATIC DISPLAY OF PART PROGRAM STATEMENT MSG 19-DEC-85
+             FROM FILE ON LINE 1.  SET BY *SET/AUTOL1 COMMAND.
+             OVERRIDES IFL(253).
+                  0 = DON'T DISPLAY STATEMENT
+                  1 = DO DISPLAY STATEMENT
+     259    INDICATES TEK 4111 OR 4125 TERMINAL IN USE AS        MSG 2-7-86
+             GRAPHIC OUTPUT DEVICE
+                  0 = NEITHER IN USE
+                  1 = 4111 IN USE
+                  2 = 4125 IN USE
+ IFL(260)   TEK 4125 NUMBER OF CHARACTERS IN A LINE (DACHARS)    MSG 2-10-86
+                  WOULD MOST LIKELY BE EITHER 80 OR 160
+                  SET IN SETFIL AND TESTED IN MENULD
+     261    CIRCULAR INTERPOLATION IN APT SOURCE FLAG - SET BY *SET/CIRAPT
+                  0 = PUT OUT ONLY A CIRCLE RECORD AS A COMMENT IN APT SOURCE
+                  1 = PUT OUT PSIS/... ,INDIRP/... ,GF/(CI/...),ON,(PL/...)
+     262    SET BY CLONE SO DRIVER DOES NOT CALL GEOGNX.
+     263    SERIAL NUMBER OF THIS COPY OF NCL. SET BY SERNUM.
+     264    UNITS FLAG   0=INCHES, 1=MILLIMETERS                 EPM 1-12-87
+     265    DISPLAY PLANES FLAG                                  EPM 1-23-87
+     266    GEOMETRY LABEL SWITCH FOR PLANES                     EPM 1-27-87
+     267    TRALST FLAG   0 = OFF ,  1 = ON                      EPM 2-19-87
+     268    NCLCADD FLAG  0 = NCLCADD, 1 = NATIVE NCL            EPM 3-7-87
+     269    NUMBER OF MOTION POINTS TO BE OUTPUT BY PLOTM BEFORE IJD 12-MAR-87
+            DIGS SEGMENT IS CLOSED TO FLUSH BUFFER.
+ IFL(270)   Used for Fmill command                               EV  14-OCT-03 
+     271    MIN X PLOTTER UNIT                                   IJD  2-APR-87
+     272    MAX X PLOTTER UNIT                                   IJD  2-APR-87
+     273    MIN Y PLOTTER UNIT                                   IJD  2-APR-87
+     274    MAX Y PLOTTER UNIT                                   IJD  2-APR-87
+     275    RETURN ERROR FLAG - 0 = NO ERROR                     IJD 14-JUL-87
+                                1 = ERROR
+                                2 = ERROR FROM RUN PICKED OFF ICONS
+     276    NOPS FLAG   0 IS NORMAL, 1 IF NOPS WAS SEEN          EPM  8-15-87
+     277    AUTO NAME GEN COUNTER FOR PATERNS                    EPM  8-15-87
+     278    AUTO DISPLY FLAG FOR PATERNS                         EPM  8-20-87
+     279    LABEL DISPLAY FLAG FOR PATERNS                       EPM  9-2-87
+ IFL(280)   GO/ STARTUP IS EXECUTING IF NON-ZERO                 PEM  6-NOV-87
+     281    MARKER USED BY PUTSRC WHEN ADDING AUTO GEN NAME      EPM  11-11-87
+     282    BARREL CUTTER WHEN IFL(282)=1                        PEM  17-NOV-87
+     283    LOOP FLAG  0=NO LOOPST IN EFFECT, 1=LOOPST           EPM  12-4-87
+     284    TERMINATOR VALUE FOR DO LOOP                         EPM  11-19-87
+     285    INCREMENT IN DO LOOP                                 EPM  11-19-87
+     286    DO LOOP NESTING LEVEL                                EPM  12-3-87
+     287    LOOP TABLE POINTER                                   EPM  12-3-87
+     288    DS attribute is not ON in a GO statement             EV   04-26-02
+     289    tlaxis/...[CENTER,...] flag                          EV   02-11-03
+ IFL(290)   BARREL TOOL. DS CONTACT POINT INDICATOR              PEM  22-DEC-87 
+     291    ENDPAS BACKOUT FLAG                                  PEM  03-MAY-88
+     292    SAVE INX WHEN *RUN TO CONTINUATION LINE              IJD 08-JUN-88
+     293    TLAXIS VECTOR FLAG - 1 = OUTPUT PS NORMAL            IJD 06-SEP-88
+                                 0 = OUTPUT REGULAR TLAXIS
+     294    FORMAT FLAG   0 = SHORT     1 = LONG                 EPM 11-OCT-88
+     295    SMOOTH INTERPOLATION DEGREE                          EV  13-FEB-04
+     296    Used in labelling logic                              EV  27-MAY-05
+     297    SAVE THE NUMERIC PART OF PARTPGM.NCLXX               KK  20-FEB-89
+     298    TA/COMB INDICATOR TO MOVER                           PEM 19-APR-89
+     299    SET TO 1 WHEN DOING UNIBASE LOAD                     IJD 20-APR-89
+               or,when request came from nclcadd.                RAZ  1-JAN-91
+ IFL(300)   Set to 0 if REVERS statement is for reversing geo    MSG 12-19-89
+            Set to 1 if REVERS statement is passed to CL file
+
+****  Note: The IFL array was increased from 300 to 400 members 3-29-90.
+            (NCL502 only)
+
+     301    Set to 0 by the ud_killmsg C routine to indicate the  MSG 4-23-90
+             error message line is to be erased by the uims 
+             routines.
+            Set to 1 by the STATLN.F routine to indicate an NCL
+             status line is presently being displayed in the error
+             message line and it should not be erased unless 
+             another message is ready to be put up.  This is so 
+             the status line message is left up as much as possible.
+     302    Used by PUTERM to decide how long the line is to put  MSG 5-11-90
+            out.
+             0 =  80 characters maximum
+             1 = 100 characters maximum
+     303    Used by STATLN status line display routine to         MSG 10-30-90
+            determine if user wants to have the status line 
+            information displayed when it changes.
+             0 = display it every time it changes
+             1 = do not display it if it changes
+             2 = display current status line (used by USHOW.F for
+                 one time display.
+     304    3 axis version flag - 0 = 5 axis, 1 = 3 axis          IJD 12-FEB-91
+     305    Counter in nested identifier in PSIS statement (@PSn) IJD 11-APR-91
+     306    Used by ipatch to tell nsrfpn & meshpn which patch to IJD 28-MAY-91
+            use next when ext point is out of bounds of surface.
+     307    Used for *SET/APTSRC,CUTTER,option                    SK  17-JUL-91
+                     0 = APT
+                     1 = NCL
+                     2 = PPRINT
+     308    Used for *SET/APTSRC,VERIFY                           SK  17-JUL-91
+                     0 = Standard
+                     1 = Vericut
+                     2 = NCLIPV
+     309    NUMBER OF PNTVECs DECLARED FOR AUTO NAME GEN          VVP 17-SEP-91
+ IFL(310)   Number of variables in macro called by PODPTS command VVP 10-SEP-93
+     311    Pointer to memory allocated for points collected in a
+            single GO statement (I*4).                            VVP  7-JAN-94
+     312    See above                                             VVP  7-JAN-94
+     313    Set after DNTCUT/NM seen.                             IJD  7-JAN-94
+     314    Used for FEDRAT/AT (secondary) new syntax.            VVP 19-JAN-94
+                     0 = no FR/AT in effect
+                     1 = FR/AT active modal
+                     2 = FR/AT active ONCE
+     315    Used for FEDRAT/OUT (accelerate), same way as above.  VVP 19-JAN-94
+     316    1 - if DataBase is open for GET/PUT commands, 2 - Unibase. 
+     317    Saved ifl(314) for RMILL motion.                      VVP 19-FEB-94
+     318    Saved ifl(315) for RMILL motion.                      VVP 19-FEB-94
+     319    Used for *SET/APTSRC,acy                              RLS 22-FEB-94
+                     0 = LOW
+                     1 = HIGH
+ IFL(320)   MEMORY OF (314) FOR 'ONCE' RESTORES                   VVP 23-FEB-94
+     321    MEMORY OF (315) FOR 'ONCE' RESTORES                   VVP 23-FEB-94
+     322    VX mode flag.  1 = Running in conjunction with VX.    RLS 15-SEP-94
+     323    Saved rpfron when DNTCUT is active (used with FR/OUT) VVP  3-MAR-95
+     324    Data statement flag >0 = number of elements in        IJD 22-SEP-95
+            current data stmt.
+     325    Inclusive thru flag                                   IJD 22-SEP-95
+     326    Counter for "recursive" function calls.               IJD 22-SEP-95
+     327    Check to a point flag                                 IJD 25-SEP-95
+     328    Check surface contacted with multiple check sf.       IJD 15-OCT-96
+     329    Set by CI/fillet,.. so driver doesn't call drwent     VVP 23-OCT-96
+ IFL(330)   Machining Library flag 1 = running in machining lib   IJD 09-JAN-97
+     331    =1 if PS is driven as trimmed                         IJD 29-JAN-97
+     332    =1 if DS is driven as trimmed                         IJD 29-JAN-97
+     333    =1 if CS is driven as trimmed                         IJD 29-JAN-97
+     334    =1 if sec PS is driven as trimmed (not currently set) IJD 22-MAY-01
+     335    =1 do not output 5210 record when in mocomb           VVP 10-APR-97
+     336    =1 if on part surface extension                       IJD 11-JUN-97
+     337    =key of CV if PS is defined by CV on DS               VVP 17-JUN-97
+     338    second half of above key
+     339    Number of cvonsf created by auto name generator       VVP 15-JUL-97
+ IFL(340)   Driving trimmed sf flag                               IJD 06-NOV-97
+               0 = used flag in surface
+               1 = always drive as trimmed
+               2 = never drive as trimmed
+     341    Index of current part surface for multi ps            IJD 17-NOV-97
+     342    =1 if tool on PS mode                                 IJD 30-DEC-97
+     343    1 = Command was generated using GUI                   RLS 05-MAR-98
+     344    Display of shape                                      JLS 14-SEP-98
+               0 = display 2-D
+               1 = display 3-D
+     345    =1 Loading part program file (used with wrtpp)        RLS 03-DEC-98
+     346    =1 disallow automatic reversing of boundaries and     EV  18-FEB-99
+               slopes when creating a CAM surface.
+     347    Used to keep track of motion for ARCSLP/FILLET        JLS 31-MAR-99
+     348    Used for keeping track of fillets and rapid during    JLS 31-MAR-99
+            ARCSLP/FILLET
+     349    =1 Used to indicate that multiple check surfaces are  JLS 18-JUN-99
+            just being checked.
+ IFL(350)   Used for NCL501+                                      PO  11-MAY-92
+     351    PREPST options enabled.                               IJD 11-OCT-99
+     352    TLAXIS/COMBIN logic flag.                             JC  24-JUN-99
+     353    *SET/APTSRC,TRACUT flag (stored in SC(183:194)).      RLS 07-JAN-00
+                     0 = OFF
+                     1 = TRACUT matrix
+     354    GET/geo active flag                                   RLS 15-FEB-00
+     355    Case of major words 0 = UPPER, 1 = lower              JLS 28-FEB-00
+     356    Case of vocabulary words, 0 = UPPER, 1 = lower        JLS 28-FEB-00
+     357    Case of labels, 0 = UPPER, 1 = lower                  JLS 28-FEB-00
+     358    Minimum amount of space used for parameter alignment  JLS 28-FEB-00
+     359    Multi-ps sharp corner smoothing is in effect (gougck) RLS 24-MAR-00
+ IFL(360)   1 = Format source lines as they are put in pp file    RLS 04-DEC-00
+     361    =1 when in GOSRF2 so tbdini is not called twice       IJD 22-MAY-01
+            (formerly ifl(334))
+     362    OML units flag.  0 = Inches.  1 = Millimeters.        RLS 15-APR-02
+     363    Autost omit/retain flag - 0=output autost pt, 1= do   IJD 07-AUG-02
+            not output autost point.
+     364    Transition tool axis mode for tool axis lock.         IJD 09-AUG-02
+     365    Tool axis lock flag                                   IJD 13-AUG-02
+                  0= off, 1= OMIT, 2= normal, 3= END
+     366    =1 for tool axis lock radius mode.                    IJD 16-AUG-02
+     367    1 = PREPST REVERS command was processed.              RLS 13-JAN-03
+     368    Saved value of ifl(91) for NUMPTS/...,ONCE            IJD 08-OCT-03
+     369    Ending parenthesis for IF statement to limit nested   IJD 28-JUN-04
+            geometry processing.
+ IFL(370)   1 = IF statement being declared.                      IJD 14-JUL-04
+     371    1 = Allow circular in all 3 planes, 0 = Major planes  RLS 12-JAN-07
+            only.
+     372    0 = GENPTS are created immediately following each     RLS 16-MAR-07
+            motion.  1 = GENPTS are created after GENPTS/NOMORE.
+     373    Number of anotes created by auto name generator       RLS 04-MAY-07
+     374    *set/LANG,....					                           HT 16-MAY-07 
+					1 - CADRA
+     375    1 - when *set/lang,cadra is enabled and parser is     HT 16-MAY-07
+					 called to check for macro parameters, (-) is 
+					 added to the token
+     376    1 - when *set/lang,cadra is enabled and parser is     HT 16-MAY-07
+					 called to check for labels, (:) is 
+					 added to the token
+     377    1 - when Tracut/Last is in effect                     HT 12-JUL-07
+     378    1 - when no loop or macro is defined                  HT 12-JUL-07
+     379    1 - when expression is TEXTF                          HT 26-JUL-07
+ IFL(380)   Number of symbols created by auto name generator      RLS 03-OCT-07
+ IFL(381)   Number of symbol instances created by name generator  RLS 03-OCT-07
+    (382)   Number of solids created by name generator            RLS 06-JUN-08
+     383    1 - REMARK/ON in effect, all commands are comments    RLS 30-SEP-08
+     384    GENPTS 0 = TE, 1 = PS, 2 = DS, 3 = LAST               RLS 30-SEP-08
+     385    Internal flag used for projecting closest to a near point.
+     386    1 - Output real values to APT Source file, 0 = ints   RLS 10-JUL-09
+     387    Start of comment characters in input line             RLS 06-AUG-09
+     388    1 - Driver in control, Command generated geometry     RLS 21-OCT-09
+            2 - Driver in control, First motion cl record output
+     389    VoluMill option enabled.                              RLS 15-NOV-11
+ IFL(390)   Scalar value for precision in *SET/APTSRC,CUTTER      ASF 11-JUL-12
+     391    *RUN flag for stopping at macro or loop               ASF 13-AUG-12
+             0 - Execute as normal *RUN command
+             1 - Stop at the next macro call
+             2 - Stop at the end of the current/next macro call
+             3 - Stop at the start of the next loop
+             4 - Stop at the end of the current/next loop
+     392    Command Mode flag for *RUN stopping commands          ASF 13-AUG-12
+             0 - Do not enter command mode when stopping
+             1 - Enter command mode when *RUN/... is reached
+     393    Command Mode flag for *STOP command                   ASF 13-AUG-12
+             0 - Do not enter command mode when *STOP is reached
+             1 - Enter command mode when *STOP is reached
+     394    Ignore inner boundary flag for SMILL                  ASF 04-OCT-12
+             0 - Do not ignore inner boundaries when tesselating
+             1 - Ignore inner boundaries when tesselating
+     395    Flag for composite curve component offset
+             0 - No offset
+             1 - Do offset for given range of components
+             2 - Offset all components
+     396    Connection type when defining composite curve
+             0 - No connection (Do not connect)
+             1 - Linear  (Connect using tangent lines)
+             2 - Smooth  (Connect using splines)
+             3 - Chamfer (Connect endpts using lines)
+     397    Not used
+     398    Not used
+     399    Not used
+ IFL(400)   Not used
+
+ 
+ **************************   END OF IFL TABLE   *************************
+ 
+  *************************************************************************
+ 
+                           #################
+                           #               #
+                           #    IFL4 MAP   #
+                           #               #
+                           #################
+ 
+ ******************* GENERAL PURPOSE INTEGER*4 FLAGS *********************
+
+ IFL4(1)    THE NUMBER OF LINES IN PARTPGM.NCL                   RMR 26-NOV-85
+      2     USED BY *EDIT AND AND PUTSRC                         MSG 4-23-85
+      3     THE LINE NUMBER MATCHED IN THE LAST FIND COMMAND     RMR 26-NOV-85
+      4     JUMPTO/IF SVLL VALUE TEMPORARY HOLDER                MSG 9-22-83
+      5     LOWER RANGE FOR CURRENT LOOPING REGION
+      6     UPPER RANGE FOR CURRENT LOOPING REGION
+      7     SAVE LOWER LOOPING LINE                              EPM  12-4-87
+      8     SAVE UPPER LOOPING LINE                              EPM  12-4-87
+      9     SAVE NLINE FOR FIRST EXECUTABLE LOOP STMT
+ IFL4(10)   NON-UTILITY STATEMENT PRECEEDED BY AN ASTERISK       MSG 9-19-83
+             0 = NO ASTERISK
+             1 = THE NLINE VALUE OF THE FIRST LINE OF THE STATEMENT
+      11    SAVE OFF IFL(67) FOR DO LOOP DURING MACRO CALL       EPM  1-FEB-89
+      12    SAVE OFF IFL(68) FOR DO LOOP DURING MACRO CALL       EPM  1-FEB-89
+      13    SAVE NLINE FOR IMPLIED C/S IN CASE OF ERROR          EPM  1-30-85
+      14    UNIBASE KEY OF MODSYS MATRIX                         IJD 21-SEP-04
+      15    UNIBASE KEY OF DRIVE SURFACE                         RLS ??-???-??
+      16    UNIBASE KEY OF CHECK SURFACE                         RLS ??-???-??
+      17    UNIBASE KEY OF PART SURFACE (including NET SURF)     RLS 27-MAY-15
+     106    LOWER RANGE OF 'THRU' CLAUSE                         YL  ??-???-??
+     107    UPPER RANGE OF 'THRU' CLAUSE                         YL  ??-???-??
+     108    INCREMENT OF 'THRU' CLAUSE                           YL  ??-???-??
+
+ **************************   END OF IFL TABLE   *************************
+
+                 ##################################
+                 #                                #
+                 #  SYSTEM COMMON BLOCK (SYSCOM)  #
+                 #                                #
+                 ##################################
+ 
+  SC(1)     TEX         )                          ******* TOOL MOTION INFO
+     2      TEY         )  CURRENT TE POINT
+     3      TEZ         )
+     4      TI            ]
+     5      TJ            ] CURRENT TA VECTOR  ( UP SENSE )
+     6      TK            ]
+     7      FWX         )
+     8      FWY         )   CURRENT FWD SENSE
+     9      FWZ         )
+  SC(10)                  ]
+     11                   ]
+     12                   ]
+     13                   ] 13 WORDS FOR INTERSEG MESSAGES.
+     __                   ]
+     __                   ]
+     22                   ] LISTS GT THAN NWDS=13 CONTINUE ON RANFIL
+     23     PSTH        )
+     24     DSTH        )   CURRENT THICK
+     25     CS1TH       )
+     26     CS2TH       )
+     27     TOLER
+     28                   ]
+     29                   ]
+  SC(30)                  ]
+     31                   ] CURRENT CUTTER
+     32                   ]
+     33                   ]
+     34                   ]
+     35     PS ADDRESS
+     36      CS MODIFIER     -1,0,+1  FOR  TO,ON,PAST       8-4-81
+     37         ]
+     38         ]
+     39         ]   CANONICAL FORM OF ZSURF PLANE IF IFL(55) = 1
+  SC(40)        ]
+     41-52    CONTAINS CURRENT TRACUT MATRIX
+     53   SURFACE DEFINITION ENTITY TYPES - BROKEN INTO 4 I2'S, EACH
+            INDICATING THE TYPE OF GEOMETRIC ENTITY IN THE SURFACE
+           DEFINITION.   TYPE   -   CODE
+                        CIRCLE       7
+                        CURVE        8
+     54   MAXDP   MAX ITERATION STEP ALLOWED FOR MOTION GENERATION
+     55   TAPE FOOTAGE COUNTERS: 2 REAL*4 COUNTERS -             MSG 12-2-81
+                                 1ST REAL*4 IS MAX AMOUNT TO     MSG 12-2-81
+                                  PUT OUT WARNING TO PROGARMR    MSG 12-2-81
+                                 2ND REAL*4 IS CURRENT AMOUNT    MSG 12-2-81
+                                  OF TAPE GENERATED SINCE LAST   MSG 12-2-81
+                                  BREAK COMMAND                  MSG 12-2-81
+     56-67  CONTAINS CURRENT REFSYS MATRIX
+     68-79  CONTAINS INVERSE OF CURRENT REFSYS MATRIX
+  SC(80)    MAXANG                                               EPM 2-15-83
+     81-83  VECTOR FOR REAL TIME TOOL AXIS MODIFY                IJD 31JUL96
+     84-86  LAST RIGHT FOR DISPLAY OF BLADE CUTTER.              IJD 31JUL96
+     87-89  PERPTO VECTOR FROM TLAXIS TO MOTIMM (TEMPORARY)      RLS 23AUG96
+     91     LINEAR VALUE TO DETERMINE IF IN TOLER AT START       RLS 08OCT97
+     92     ANGULAR VALUE TO DETERMINE IF IN TOLER AT START      RLS 08OCT97
+     93-104 INVERSE TRACUT MATRIX                                RLS 26JUL02
+   ...
+ SC(105) SAVED VALUE OF MAXDP FOR MAXDP/...,ONCE                 IJD 08OCT03
+ SC(106) PLOTING SCALE FACTOR                                    MSG 2-5-82
+ SC(107) 1ST INTEGER*4 = PLOT X-ORIGIN                           MSG 2-5-82
+         2ND INTEGER*4 = PLOT Y-ORIGIN                           MSG 2-5-82
+ SC(108) 1ST INTEGER*2 = PLOT PLAN VIEW INDICATOR                MSG 2-5-82
+                         0 = NOT SET                             MSG 2-5-82
+                         1 = XYPLAN                              MSG 2-5-82
+                         2 = ZXPLAN                              MSG 2-5-82
+                         3 = YZPLAN                              MSG 2-5-82
+                         4 = XYZPLAN                             MSG 2-5-82
+         2ND INTEGER*2 = FIRST MOVE INDICATOR                    MSG 2-5-82
+                         0 = NO MOTION OCCURED TO PLOTTER YET    MSG 2-5-82
+                         1 = MOTION HAS OCCURED                  MSG 2-5-82
+                         2 = FIRST FROM STATEMENT HAS BEEN       MSG 2-11-82
+                             SEEN AND SENT TO PLTOUT             MSG 2-11-82
+         3RD INTEGER*2 = LAST PEN POSITION LITERAL               MSG 2-5-82
+                         'PU' IF PEN WAS IN A PENUP POSITION     MSG 2-9-82
+                         'PD' IF PEN WAS IN A PENDWN POSITION    MSG 2-9-82
+         4TH INTEGER*2 = DRAFT/LETORG COMMAND GIVEN INDICATOR    MSG 2-10-82
+                         0 = NO LETORG COMMAND HAD BEEN GIVEN    MSG 2-10-82
+                             SINCE THE LAST MOTION HAS BEEN      MSG 2-10-82
+                             PLOTTED                             MSG 2-10-82
+                         1 = A LETORG COMMAND HAS BEEN GIVEN     MSG 2-10-82
+                             AND A LETTER COMMAND HAS NOT        MSG 2-10-82
+                             BEEN GIVEN                          MSG 2-10-82
+    109 F1 FACTOR FOR XYZPLAN PLOTTING                           MSG 2-5-82
+ SC(110) F2 FACTOR FOR XYZPLAN PLOTTING                          MSG 2-5-82
+    111 F3 FACTOR FOR XYZPLAN PLOTTING                           MSG 2-5-82
+    112  F4 FACTOR FOR XYZPLAN PLOTTING                          MSG 2-5-82
+    113  F5 FACTOR FOR XYZPLAN PLOTTING                          MSG 2-5-82
+    114 F6 FACTOR FOR XYZPLAN PLOTTING                           MSG 2-5-82
+    115 LAST PLOTTER COORDINATE VALUES                           MSG 2-9-82
+         1ST INTEGER*2 = ENDING PLOTTER X COORDINATE OF LAST     MSG 2-9-82
+                         GOOD MOVE                               MSG 2-9-82
+         2ND INTEGER*2 = ENDING PLOTTER Y COORDINATE OF LAST     MSG 2-9-82
+                         GOOD MOVE                               MSG 2-9-82
+         3RD INTEGER*2 = LAST X COORDINATE SENT TO THE PLOTTER   MSG 2-9-82
+                         DURING A MOVE                           MSG 2-9-82
+         4TH INTEGER*2 = LAST Y COORDINATE SENT TO THE PLOTTER   MSG 2-9-82
+                         DURING A MOVE                           MSG 2-9-82
+ SC(116) USED BY INCLUSIVE 'THRU' TO SAVE THE IDENTIFIER         EPM 10-25-82
+ SC(117) PLOTTING DEVICE NUMBER OF INCREMENTS PER INCH           MSG 4-5-83
+ SC(118) DEBUG ROUTINE HALT NAME (PUTMSG SUBROUTINE)             MSG 4-27-83
+ SC(119) NCL VERSION NUMBER                                      MSG 8-23-83
+ SC(120) USED BY COPY1 AND COPY2 SUBROUTINES                     MSG 2-24-84
+ SC(121) USED BY COPY1 AND COPY2 SUBROUTINES                     MSG 2-24-84
+ SC(122) USED IN PLOTTER BUFFERING.                              IJD 4-APR-85
+         1ST 5 BYTES = COORDS OF LAST MOVE GENERATED ON TEK TERM
+         6TH BYTE    = NOT USED
+         7TH BYTE    = LOGICAL - 
+                       FOR TEK TRUE IF LAST MOVE WAS PENUP.
+                       FOR HP & VT125 TRUE IF LAST MOVE WAS NOT MOTION.
+                       (ALSO SET TRUE WHEN THE BUFFER IS FLUSHED
+                        SO THE NEW BUFFER WILL BE SET UP CORRECTLY).
+         8TH BYTE    = LOGICAL - TRUE WHEN LETTERING IS BEING 
+                       DONE SO SAVED PENUP MOVE WILL BE DONE
+                       BEFORE LETTERING ON TEK.
+ SC(123) PRIMARY FEED RATE IN EFFECT.                            EPM 1-21-85
+ SC(124) IMPLICIT CS THICK MEMORY                                PEM 24-JAN-85
+ SC(125) SLOWDOWN DISTANCE IN SECONDARY FEDRAT COMMAND           PEM 29-JAN-85
+ SC(126) SECONDARY FEEDRATE VALUE IN SECONDARY FEDRAT COMMAND    PEM 29-JAN-85
+          (SPEED OR SCALE FACTOR) 
+ SC(127) MEMORY OF SC(125) FOR 'ONCE' RESTORES                   PEM 29-JAN-85
+ SC(128)   "    "  SC(126)  "    "       "                       PEM 29-JAN-85
+ SC(129) DRIVE SURFACE DESCRIPTOR FOR IMPLIED C/S                EPM 1-30-85
+ SC(130) THICK P/S SAVE FOR IMPLIED C/S                          EPM 1-30-85
+ SC(131) THICK D/S SAVE FOR IMPLIED C/S                          EPM 1-30-85
+ SC(132) THICK C/S SAVE FOR IMPLIED C/S                          EPM 1-30-85
+ SC(133) SAVE FEEDRAT FOR IMPLIED C/S                            EPM 2-12-85
+ SC(134) CURRENT GRIDDING FACTOR USED BY DATA TABLET             MSG  3-12-85
+         ACTUAL VALUE IN INCHES MULTIPLIED BY NUMBER OF
+         INCREMENTS TO THE INCH FOR THE PARTICULAR DEVICE
+ SC(135) NAME OF SCALAR TO STORE NUMBER OF PTS GENERATED BY      IJD 2-AUG-85
+         GENPTS.
+ SC(136) NAME OF SUBSCRIPTED VARIABLE TO STORE PTS GENERATED BY  IJD 2-AUG-85
+         GENPTS.
+ SC(137) NAME OF SUBSCRIPTED VARIABLE TO STORE TLAXIS VECTORS    IJD 2-AUG-85
+         GENERATED BY GENPTS.
+ SC(138) NAME OF SUBSCRIPTED VARIABLE TO STORE FWD VECTORS       IJD 2-AUG-85
+         GENERATED BY GENPTS.
+ SC(139) 1ST REAL*4 - I VALUE OF TLAXIS WHEN CUTTER LAST PLOTTED. IJD 6-NOV-85
+         2ND REAL*4 - J   "   "     "     "     "     "     "
+ SC(140) 1ST REAL*4 - K VALUE OF TLAXIS WHEN CUTTER LAST PLOTTED. IJD 6-NOV-85
+         2ND REAL*4 - NOT USED
+ SC(141) SC(1) SAVED WHEN DNTCUT IS EXECUTED
+ SC(142) SC(2) SAVED WHEN DNTCUT IS EXECUTED
+ SC(143) SC(3) SAVED WHEN DNTCUT IS EXECUTED
+ SC(144) ASN OF PART SURFACE (FORMERLY IN D(2)).
+ SC(145) ASN OF DRIVE SURFACE (FORMERLY IN D(52)).
+ SC(146) ASN OF CHECK SURFACE (FORMERLY IN D(102)).
+ SC(147) D(1) HOLD                SC(147-152) HOLDS 6 D-TBL PARAMS
+ SC(148) D(2)  "                  WHILE A GO/NOPS CMD EXECUTES.
+ SC(149) D(3)  "                  OLD PS IS REINSTATED AFTER THAT TASK
+ SC(150) D(4)  "                  ENDS.
+ SC(151) D(5)  "
+ SC(152) D(6)  "                                                PEM  19-OCT-87
+ SC(153)  BARREL TOOL PARAMS                                    PEM  17-NOV-87
+ SC(154)    "     "     "                                        "    "  "  "
+ SC(155) HOLDS THE TERMINATOR LABEL FOR CURRENT DO LOOP         EPM  19-NOV-87
+ SC(156) HOLDS THE NAME OF THE SCALAR COUNTER FOR DO LOOP        "   12-2-87
+ SC(157) HOLDS UPPER LIMIT OF DO LOOP RANGE                     EPM  12-9-87
+ SC(158) HOLDS THE INCR VALUE FOR DO LOOP                       EPM  12-9-87
+ SC(159) HOLDS THE PREVIOUS DO LOOP TERM LABEL FOR OVERLAP CHK  EPM 12-12-87
+ SC(160) DISTANCE TRAVELLED IN ONE MOVE (FOR MULT CHECK)        IJD 10-MAY-1988
+ SC(161) SAVE SC(12) FOR IMPLIED CHECK (PREV IFL(218))          IJD 10-JUN-1988
+ SC(162) AUTO MAXDP WD - 1ST I*2 - # OF TRIES                   IJD 21-JUN-1989
+                         2ND I*2 - WARNING PRINT FLAG
+                                    0 = DON'T ISSUE WARNING
+                                    1 = ISSUE WARNING TELLING MAXDP VALUE USED
+                         2ND R*4 - MIN MAXDP
+ SC(163) Name of MATRIX currently being used for REFSYS.        MSG 4-17-90
+ SC(164) Name of MATRIX currently being used for TRACUT.        MSG 4-17-90
+ SC(165) Name of MACRO currently being defined.                 MSG 4-17-90
+ SC(166) Version number of Database currently open              IJD 15-JUL-1991
+ SC(167) Tolerance for nesting tool to part & drive surface     IJD 17-JUN-1992
+ SC(168) Tolerance for nesting tool to check surface            IJD 17-JUN-1992
+ SC(169) Version number set by user for motion calc method.     IJD 10-NOV-1992
+ SC(170) IFTOL value                                            IJD 02-MAR-1995
+ SC(171) X coordinate of last motion point displayed
+ SC(172) Y coordinate of last motion point displayed
+ SC(173) Z coordinate of last motion point displayed
+ SC(174) Check to a point distance                              IJD 25-SEP-1995
+ SC(175) Tolerance for curve/surface display                    VP  27-JUL-1995
+ SC(176) Distance moved by top of tool for multi cs             IJD 11-JUN-1998
+ SC(177) THICK C/S for multiple thick                           JS  17-JUL-1998
+ SC(178) THICK C/S for multiple thick                           JS  17-JUL-1998
+ SC(179) THICK C/S for multiple thick                           JS  17-JUL-1998
+ SC(180) THICK C/S for multiple thick                           JS  17-JUL-1998
+ SC(181) Holds minimum check surface distance                   JLS 18-JUN-1999
+ SC(182) ON/ERROR,label identifier                              RLS 13-DEC-1999
+ SC(183-194) APTSRC Tracut Matrix                               RLS 07-JAN-2000
+ SC(195) Secondary part surface key                             IJD 10-APR-2001
+ SC(196) Tool axis locked distance.                             IJD 10-JUL-2002
+ SC(197) Tool axis locked interpolate distance.                 IJD 10-JUL-2002
+ SC(198) Tool axis locked previous radius distance              IJD 16-JUL-2002
+ SC(199) Surface expansion factor                               EV  01-AUG-2005
+ SC(200) Not Used
+ SC(201) MAXANG value used for MAXANG/...,ONCE.                 IJD 26-NOV-2003
+ SC(202)                  ]
+    203                   ]
+    204                   ]
+    205                   ] 20 ADDTL WORDS FOR INTERSEG MSGS..  RLS 27-OCT-2015
+     __                   ]
+     __                   ]
+    221                   ]
+***************************   END OF SC TABLE   *************************
+
+ 
+                             ###################
+                             #                 #
+                             #     LFL MAP     #
+                             #                 #
+                             ###################
+ 
+ ***************************** LOGICAL FLAGS *****************************
+
+ LFL(1)   
+ LFL(2)   
+ LFL(3)   
+ LFL(4)   
+ LFL(5)   
+ LFL(6)   
+ LFL(7)   
+ LFL(8)   
+ LFL(9)   
+ LFL(10)  
+ LFL(11)  
+ LFL(12)  
+ LFL(13)  
+ LFL(14)  
+ LFL(15)  
+ LFL(16)  
+ LFL(17)  
+ LFL(18)  
+ LFL(19)  
+ LFL(20)  
+ LFL(21)  
+ LFL(22)  
+ LFL(23)  
+ LFL(24)  
+ LFL(25)  
+ LFL(26)  
+ LFL(27)  
+ LFL(28)  
+ LFL(29)  
+ LFL(30)  
+ LFL(31)  
+ LFL(32)  
+ LFL(33)  
+ LFL(34)  
+ LFL(35)  
+ LFL(36)  
+ LFL(37)  
+ LFL(38)  
+ LFL(39)  
+ LFL(40)  
+ LFL(41)  
+ LFL(42)  
+ LFL(43)  
+ LFL(44)  
+ LFL(45)  
+ LFL(46)  
+ LFL(47)  
+ LFL(48)  
+ LFL(49)  
+ LFL(50)  
+ 
+ ************************** END OF LOGICAL FLAGS *************************
+ 
+ 
+                             ###################
+                             #                 #
+                             #    NCSFL MAP    #
+                             #                 #
+                             ###################
+ 
+ ********************* NCCS ADDED INTEGER*2 FLAGS ************************
+
+ NCSFL(1)   /LI OPTION
+      (2)   FLAG TO SHOW IF CURRENT RECORD WAS OUTPUT TO PRINT
+             FILE (FOR CONTINUATION LINES)
+      (3)   IF SET, GETMSG WILL BYPASS READ AND LEAVE INX THE SAME
+      (4)   *INPUT MODE
+      (5)   OUTPUT TO SOURCE FILE SWITCH
+             1 = LINE WAS PRECEEDED WITH A '*' SO DON'T WRITE TO
+                  SOURCE FILE
+             2 = OUTPUT TO SOURCE FILE
+      (6)   * IN FRONT OF ANY COMMAND
+      (7)   RANFIL SWITCH
+             0 = RANFIL ON DISK
+             1-6 = POINTER TO IN-MEMORY BLOCK OF RANFIL COMMON AREA
+      (8)   BEGINNING LINE NUMBER OF A CONTINUATION LINE
+      (9)   INCLUD called from CALL/m1 (Automatic include).
+ 
+ ****************** END OF NCCS ADDED INTEGER*2 FLAGS ********************
+ 
+ 
+                             ###################
+                             #                 #
+                             #   EVENT FLAGS   #
+                             #                 #
+                             ###################
+ 
+ ************************* RSX EVENT FLAGS *******************************
+
+ EVENT FLAG              USAGE
+    1            UNUSED
+    2            RTCOMM AND TTCOM1 USE IT TO NOTIFY EACH OTHER    MSG  4-16-85
+                  THAT A MULTITASK COMMUNICATION DATA PACKET HAS 
+                  BEEN SENT.  THE CAST ROUTINE ACTUALLY SETS THE
+                  EVENT FLAG.
+    3            NCLR AND NCLT USE IT TO INDICATE THAT NCLT HAS   MSG  4-16-85
+                  STARTED UP SUCCESSFULLY.
+    4            SETFIL USES IT TO TIME OUT THE READ FROM THE     MSG  4-16-85
+                  TERMINAL IF NO ANSWER IS RECEIVED FROM THE
+                  REQUEST FOR TERMINAL ID.
+    5            USED IN NCLR TO WAIT FOR SPAWNED INSTALL TASK    MSG  4-17-85
+                  TO INSTALL NCLTXX.
+    6            UNUSED
+    7            UNUSED
+    8            UNUSED
+    9            UNUSED
+   10-32         UNUSED
+ 
+ ************************** END OF EVENT FLAGS ***************************
+ 
+                         ###################
+                         #                 #
+                         #  TEK SEGMENTS   #
+                         #                 #
+                         ###################
+ 
+ ******************** TEKTRONIX 4107/9 SEGMENTS USAGE ********************
+ *****************************  NCL501 ONLY  *****************************
+
+ SEGMENT NUMBER        USAGE                                INITIALS  DATE
+
+            0  CROSSHAIR CURSOR                              MSG  2-14-85
+            1  INVISIBLE CURSOR                              MSG  2-14-85
+            2  NOT USED
+            .   .
+            .   .
+            .   .
+           98  NOT USED
+           99  HOLDS INFO ON PAST TABLET REGISTRATION VALUES BRB  2-14-85
+                ALSO USES CLASS 64
+          100  NOT USED
+     101-1024  HOLD DATA TABLET MENUS                        MSG  2-14-85
+   1024-32767  FOR DISPLAYED GEOMETRY/MOTION                 MSG  2-14-85
+
+ ************** END OF TEKTRONIX 4107/9 SEGMENT NUMBER USAGE ************
+
+ 
+ ****************** TEKTRONIX 4107/9 SEGMENTS CLASS USAGE ***************
+ *****************************  NCL501 ONLY  *****************************
+
+ SEGMENT          USAGE                                     INITIALS  DATE
+  CLASS
+
+     1   DISPLAY OF AXIS                                     MSG  2-14-85
+     2   DISPLAY OF MOTION                                   MSG  2-14-85
+     3   DISPLAY OF POINTS                                   MSG  2-14-85
+     4   DISPLAY OF VECTORS                                  MSG  2-14-85
+     5   DISPLAY OF LINES                                    MSG  2-14-85
+     6   NOT USED
+     7   DISPLAY OF CIRCLES                                  MSG  2-14-85
+     8   DISPLAY OF CURVES                                   MSG  2-14-85
+     9   DISPLAY OF SURFACES                                 MSG  2-14-85
+    10   NOT USED
+    11   NOT USED
+    12   NOT USED
+    13   NOT USED
+    14   NOT USED
+    15   NOT USED
+    16   NOT USED
+    17   NOT USED
+    18   DISPLAY OF SHAPES                                   MSG  2-14-85
+    19   NOT USED
+    20   NOT USED
+    21   NOT USED
+    22   NOT USED
+    23   NOT USED
+    24   NOT USED
+    25   NOT USED
+    26   NOT USED
+    27   NOT USED
+    28   NOT USED
+    29   NOT USED
+    30   NOT USED
+    31   NOT USED
+    32   NOT USED
+    33   TEMPORARILY USED TO INDICATE DISPLAYED POINTS       MSG  2-14-85
+          HAVE BEEN ERASED AND ARE SET TO INVISIBLE SEGMENTS
+    34   TEMPORARILY USED TO INDICATE DISPLAYED VECTORS      MSG  2-14-85
+          HAVE BEEN ERASED AND ARE SET TO INVISIBLE SEGMENTS
+    35   TEMPORARILY USED TO INDICATE DISPLAYED LINES        MSG  2-14-85
+          HAVE BEEN ERASED AND ARE SET TO INVISIBLE SEGMENTS
+    36   NOT USED
+    37   TEMPORARILY USED TO INDICATE DISPLAYED CIRCLES      MSG  2-14-85
+          HAVE BEEN ERASED AND ARE SET TO INVISIBLE SEGMENTS
+    38   TEMPORARILY USED TO INDICATE DISPLAYED CURVES       MSG  2-14-85
+          HAVE BEEN ERASED AND ARE SET TO INVISIBLE SEGMENTS
+    39   TEMPORARILY USED TO INDICATE DISPLAYED SURFACES     MSG  2-14-85
+          HAVE BEEN ERASED AND ARE SET TO INVISIBLE SEGMENTS
+    40   NOT USED
+    41   NOT USED
+    42   NOT USED
+    43   NOT USED
+    44   NOT USED
+    45   NOT USED
+    46   NOT USED
+    47   NOT USED
+    48   TEMPORARILY USED TO INDICATE DISPLAYED SHAPES       MSG  2-14-85
+          HAVE BEEN ERASED AND ARE SET TO INVISIBLE SEGMENTS
+    49   NOT USED
+    50   ALL MENUS
+    51   NOT USED
+    52   NOT USED
+    53   NOT USED
+    54   NOT USED
+    55   NOT USED
+    56   NOT USED
+    57   NOT USED
+    58   NOT USED
+    59   NOT USED
+    60   NOT USED
+    61   NOT USED
+    62   NOT USED
+    63   NOT USED
+    64   USED IN SEGMENT 99 WHICH CONTAINS INFORMATION       MSG  2-14-85
+          ABOUT TABLET REGISTRATION
+
+ ************** END OF TEKTRONIX 4107/9 SEGMENT CLASS USAGE  *************

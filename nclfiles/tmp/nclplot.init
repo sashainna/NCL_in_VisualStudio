@@ -1,0 +1,24 @@
+
+MPEPATH=NCLPATH
+FONT1 = MPEPATH\unifiles\fonts\duplex.fo
+FONT2 = MPEPATH\unifiles\fonts\romsim.fo
+FONT3 = MPEPATH\unifiles\fonts\italic.fo
+FONT4 = MPEPATH\unifiles\fonts\grksim.fo
+FONT6 = MPEPATH\unifiles\fonts\ansi.fo
+FONT7 = MPEPATH\unifiles\fonts\ansi-15.fo
+FONT8 = MPEPATH\unifiles\fonts\ansi15.fo
+FONT_ansi = FONT6
+FONT_ansi-15 = FONT7
+FONT_ansi15 = FONT8
+FONT_iso = FONT6
+FONT_iso-15 = FONT7
+FON_iso15 = FONT8
+FONT_drafting = FONT6
+FONT_duplex = FONT1
+FONT_grksim = FONT4
+FONT_italic = FONT3
+FONT_romsim = FONT2
+FONT_ansileft = FONT7
+FONT_ansiright = FONT8
+HOMEDIR = .
+UU_PSCOLOR = COLOR

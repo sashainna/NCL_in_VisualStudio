@@ -1,0 +1,14 @@
+#Descriptor#
+/NAME/ Clfiles
+/POSITION/ 0.519531,0.295898
+/SIZE/ 0.084375,0.142578
+/ROWS/ 4
+/COLS/ 1
+/TYPE/ Pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Create Cl/ CAM_CREATE_CL
+/Edit Cl/ CAM_EDIT_CL
+/Erase Cl/ CAM_ERASE_CL
+/Create As/ CAM_CREATE_AS

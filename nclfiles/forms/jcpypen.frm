@@ -1,0 +1,30 @@
+pen copy
+0.260 0.126
+5 55
+0 0.02  1 1
+1
+4 21 PEN COPY
+4
+4 4 Pen Table File:
+4 20 1 UD_DASSTRING 1 1
+0
+25 25
+0
+4 42 
+4 42 6 UD_DASSTRING 0 1
+1
+*Browse...
+8 8 
+0
+2 4 New Pen Table File:
+2 20 1 UD_DASSTRING 1 1
+0
+25 25
+0
+2 42 
+2 42 6 UD_DASSTRING 0 1
+1
+*Browse...
+8 8 
+0
+

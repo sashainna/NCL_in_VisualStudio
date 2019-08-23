@@ -1,0 +1,34 @@
+#Descriptor#
+/NAME/ Cam Edit
+/POSITION/ 0.500000,0.162109
+/SIZE/ 0.081250,0.471680
+/ROWS/ 16
+/COLS/ 1
+/TYPE/ Pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Remove/ CAM_REMOVE_GEO
+#Bar#
+/Invisible/ NCL_INVISIBLE_GEO
+/Invis All/ NCL_INVISIBLE_ALL
+/Visible/ NCL_VISIBLE_GEO
+/Visible All/ NCL_VISIBLE_ALL
+/Redisplay/ NCL_REDISP_GEO
+#Bar#
+/Mod Attribs/ NCL_MODIFY_ATTRIBS
+/Materials/ CAD_GEO_SF_MATERIAL
+/Load Materials/CAD_LOAD_MATERIALS
+#Bar#
+/Trim-Extend/ NCL_TRIM_EXTEND
+/Mid Trim/ NCL_MID_TRIM
+/Untrim/ NCL_UNTRIM
+#Bar#
+/Surfaces/ surfparam.menu
+/Close-Open/ CAM_REDEF_CLOSE
+/Reverse Geo/ CAM_REVERSE_GEO
+#Bar#
+/Labels/ cam_labels.menu
+#Bar#
+/Move/ cam_move.menu
+/Copy/ cam_copy.menu

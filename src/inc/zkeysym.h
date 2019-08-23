@@ -927,7 +927,7 @@ UZ_keycalls UZ_keyfuncs[] =
 	{"CAM_GEO_SS_OFFSET",CAMKEY,401,0x2,"Create Offset Surface-Spline)"},
 	{"CAM_GEO_SS_EDGES_OUT",CAMKEY,402,0x2,"Extract Trimmed Edges Spline"},
 	{"CAM_GEO_SP_EDGES_OUT",CAMKEY,403,0x2,"Extract Trimmed Edges Curve"},
-	{"DUMMY",CAMKEY,404,0x2,"Not used"},
+	{"CAM_PMILL",CAMKEY,404,0x2,"Port Surface Machining"},
 	{"CAM_SMILL",CAMKEY,405,0x2,"Mutilple Surface Machining"},
 	{"CAM_GEO_DATA",CAMKEY,406,0x2,"DATA Statement Definition"},
 	{"CAM_GEO_MX_COORDSYS",CAMKEY,407,0x2,"Matrix Using 3 Pairs of Points"}, 

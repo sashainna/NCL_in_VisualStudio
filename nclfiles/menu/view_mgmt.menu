@@ -1,0 +1,22 @@
+#Descriptor#
+/NAME/ View Mgt
+/POSITION/ .15,.15
+/SIZE/ 0.350586,0.167604
+/ROWS/ 3
+/COLS/ 4
+/TYPE/ Menu
+/FORMAT/ TEXT
+
+#Menus#
+/Single/ NCL_SCREEN_SELECT, <Single View>, "single"
+/2 Side/ NCL_SCREEN_SELECT, <Side by Side View>, "vert. dual"
+/Save Vw/ NCL_SAVE_VIEW
+/Stacked/ NCL_SCREEN_SELECT, <Stacked View>, "horiz. dual"
+/Four Vw/ NCL_SCREEN_SELECT, <Four View>, "quad"
+/Load Vw/ NCL_LOAD_VIEW
+/Six Vw/ NCL_SCREEN_SELECT,  <Six Equal View>, "six equal"
+/One+Five/ NCL_SCREEN_SELECT, <Five + One View>, "five and one"
+/Invisible/ NCL_SCREEN_SELECT, <Invisible View>, "Invisible"
+/Ext Unibase/ NCL_SCREEN_SELECT, <External Unibase View>, "UBFN"
+/Delete Vw/ NCL_DELETE_VIEW
+/Select Screen/ NCL_SCREEN_SELECT

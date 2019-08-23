@@ -1,0 +1,28 @@
+#Descriptor#
+/Name/ Main tool bar
+/Rows/ 4
+/Cols/ 1
+/Type/ Icon
+/Position/ 0.582031,0.879883
+/Area/ Top
+/FORMAT/ ICON
+
+#Menus#
+/ / MSL_LOAD_MACHINE
+#Bar#
+/ / MSL_DYNAMIC
+/ / MSL_FIT_VIEW
+/ / MSL_WINDOW
+/ / MSL_VIEW_PREV
+#Bar#
+/ / MSL_VIEW_FRONT
+/ / MSL_VIEW_BACK
+/ / MSL_VIEW_TOP
+/ / MSL_VIEW_BOTTOM
+/ / MSL_VIEW_LEFT
+/ / MSL_VIEW_RIGHT
+/ / MSL_VIEW_ISOMETRIC
+#Bar#
+/ / MSL_MACHINE_ATTR
+/ / MSL_DIAGNOSTICS
+/ / MSL_SIMULATION

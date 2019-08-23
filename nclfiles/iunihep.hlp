@@ -1,0 +1,2266 @@
+@
+@
+#
+   You attempted to pick an entity and either
+ 
+   - the cursor was not touching a pickable entity, or
+   - the entity you tried to pick was previously picked (multiple 
+     pick operations only), or 
+   - if you are using a filter, no filtered entity was under the
+     cursor.
+ 
+   The cursor must be touching the entity you wish to pick.  You 
+   can retry the pick operation until it is successful, or select 
+   Reject Operation.
+#
+  Default can be selected only when the prompt contains a default
+  value enclosed in brackets.  Example: [<0,0,0>].
+#
+  You have attempted to select an option from a sub-menu  while a 
+  option previously selected from the menu is still in progress.  
+ 
+  Before selecting another option from this menu you must either:
+ 
+    - complete the operation currently in progress.
+    - cancel the operation by selecting the Reject Operation icon.
+    - re-invoke this subsystem to obtain a 'new copy' of the sub-menu.
+      You can then select another option from the sub-menu, complete it,
+      and then exit the subsystem to return to this subsystem.  You
+      can then complete this operation.
+#
+  The calculator variable entered is of the type "scalar," but the system
+  is prompting you for a point.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Change the cursor to Choice mode (arrow cursor) with the middle mouse
+ button or white puck button and try again.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+  Delete Last can only be used once.  Use Delete in Edit/Move 
+  Subsystem to delete entities other than the last one entered.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+  You have attempted to select an option from a sub-menu  while a 
+  option previously selected from the menu is still in progress.  
+ 
+  Before selecting another option from this menu you must either:
+ 
+    - complete the operation currently in progress.
+    - cancel the operation by selecting the Reject Operation icon.
+    - re-invoke this subsystem to obtain a 'new copy' of the sub-menu.
+      You can then select another option from the sub-menu, complete it,
+      and then exit the subsystem to return to this subsystem.  You
+      can then complete this operation.
+#
+ You attempted to pick an entity and either
+ 
+ - the cursor was not touching a pickable entity, or
+ - the entity you tried to pick was previously picked (multiple 
+   pick operations only), or 
+ - if you are using a filter, no filtered entity was under the
+   cursor.
+ 
+ The cursor must be touching the entity you wish to pick.  You 
+ can retry the pick operation until it is successful, or select 
+ Reject Operation.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ The system did not detect that the tip of the choice cursor (arrow) was 
+ positioned on an icon when the mouse or puck button was pressed.   
+ 
+ If the cursor appears visually to be properly positioned within an icon
+ when this error occurs, a system problem is indicated.  Call NCL
+ Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+      You entered a text string longer than that allowed for the 
+ requested information. ;ref 
+#
+  You are being prompted for a real number.  You must respond by
+    - typing in a real number, or 
+    - picking a real number (such as a feature) from the graphics
+      area of the screen, or
+    - typing in the name of a calculator variable of the type "real."
+      Calculator variables are entered by typing "^variablename".
+       
+     Real numbers are entered in one of the following forms:
+           23
+           23.456
+           789
+           .23e4
+#
+  You are being prompted for a real number.  You must respond by
+    - typing in a real number, or 
+    - picking a real number (such as a feature) from the graphics
+      area of the screen, or
+    - typing in the name of a calculator variable of the type "real."
+      Calculator variables are entered by typing "^variablename".
+       
+     Real numbers are entered in one of the following forms:
+           23
+           23.456
+           789
+           .23e4
+#
+  You are being prompted for a real number.  You must respond by
+    - typing in a real number, or 
+    - picking a real number (such as a feature) from the graphics
+      area of the screen, or
+    - typing in the name of a calculator variable of the type "real."
+      Calculator variables are entered by typing "^variablename".
+       
+     Real numbers are entered in one of the following forms:
+           23
+           23.456
+           789
+           .23e4
+#
+  You are being prompted for a real number.  You must respond by
+    - typing in a real number, or 
+    - picking a real number (such as a feature) from the graphics
+      area of the screen, or
+    - typing in the name of a calculator variable of the type "real."
+      Calculator variables are entered by typing "^variablename".
+       
+     Real numbers are entered in one of the following forms:
+           23
+           23.456
+           789
+           .23e4
+#
+  You are being prompted for a real number.  You must respond by
+    - typing in a real number, or 
+    - picking a real number (such as a feature) from the graphics
+      area of the screen, or
+    - typing in the name of a calculator variable of the type "real."
+      Calculator variables are entered by typing "^variablename".
+       
+  Real numbers are entered in one of the following forms:
+             123
+             123.456
+             .789
+             1.23e4
+#
+  You are being prompted for a vector.  You must respond by
+    - typing in a vector, or 
+    - picking a vector from the graphics area of the screen, or
+         - typing in the name of a calculator variable of the type "vector."
+      Calculator variables are entered by typing "^variablename".
+ 
+  Vectors are entered in one of the following forms:
+             x,y
+             x,y,z
+             <x,y>
+             <x,y,z>
+  where x, y and z are integers.
+ 
+  A vector can be picked from the graphics area of the screen by
+  changing the input mode to "pick" and either
+    - picking a vector feature (the feature that looks like an arrow).
+    - using the keyboard character 'v' to trigger a pick of a curve.
+      Each end of a curve has implicit inward-pointing vectors giving
+      the direction of the curve at that endpoint.
+#
+  You are being prompted for a vector.  You must respond by
+    - typing in a vector, or 
+    - picking a vector from the graphics area of the screen, or
+    - typing in the name of a calculator variable of the type "vector."
+      Calculator variables are entered by typing "^variablename".
+ 
+  Vectors are entered in one of the following forms:
+             x,y
+             x,y,z
+             <x,y>
+             <x,y,z>
+  where x, y and z are integers.
+ 
+  A vector can be picked from the graphics area of the screen by
+  changing the input mode to "pick" and either
+    - picking a vector feature (the feature that looks like an arrow).
+    - using the keyboard character 'v' to trigger a pick of a curve.
+      Each end of a curve has implicit inward-pointing vectors giving
+      the direction of the curve at that endpoint.
+#
+  You are being prompted for a vector.  You must respond by
+    - typing in a vector, or 
+    - picking a vector from the graphics area of the screen, or
+    - typing in the name of a calculator variable of the type "vector."
+      Calculator variables are entered by typing "^variablename".
+ 
+  Vectors are entered in one of the following forms:
+             x,y
+             x,y,z
+             <x,y>
+             <x,y,z>
+  where x, y and z are integers.
+ 
+  A vector can be picked from the graphics area of the screen by
+  changing the input mode to "pick" and either
+    - picking a vector feature (the feature that looks like an arrow).
+    - using the keyboard character 'v' to trigger a pick of a curve.
+    - typing in a vector, or 
+    - picking a vector from the graphics area of the screen, or
+    - typing in the name of a calculator variable of the type "vector."
+      Calculator variables are entered by typing "^variablename".
+       
+  Vectors are entered in one of the following forms:
+             x,y
+             x,y,z
+             <x,y>
+             <x,y,z>
+  where x, y and z are integers.
+ 
+  A vector can be picked from the graphics area of the screen by
+  changing the input mode to "pick" and either
+    - picking a vector feature (the feature that looks like an arrow).
+    - using the keyboard character 'v' to trigger a pick of a curve.
+      Each end of a curve has implicit inward-pointing vectors giving
+      the direction of the curve at that endpoint.
+#
+  You are being prompted for a vector.  You must respond by
+    - typing in a vector, or 
+    - picking a vector from the graphics area of the screen, or
+    - typing in the name of a calculator variable of the type "vector."
+      Calculator variables are entered by typing "^variablename".
+ 
+  Vectors are entered in one of the following forms:
+             x,y
+             x,y,z
+             <x,y>
+             <x,y,z>
+  where x, y and z are integers.
+ 
+  A vector can be picked from the graphics area of the screen by
+  changing the input mode to "pick" and either
+    - picking a vector feature (the feature that looks like an arrow).
+    - using the keyboard character 'v' to trigger a pick of a curve.
+      Each end of a curve has implicit inward-pointing vectors giving
+      the direction of the curve at that endpoint.
+#
+  You are being prompted for a vector.  You must respond by
+    - typing in a vector, or 
+    - picking a vector from the graphics area of the screen, or
+    - typing in the name of a calculator variable of the type "vector."
+      Calculator variables are entered by typing "^variablename".
+       
+  Vectors are entered in one of the following forms:
+             x,y
+             x,y,z
+             <x,y>
+             <x,y,z>
+  where x, y and z are integers.
+ 
+  A vector can be picked from the graphics area of the screen by
+  changing the input mode to "pick" and either
+    - picking a vector feature (the feature that looks like an arrow).
+    - using the keyboard character 'v' to trigger a pick of a curve.
+      Each end of a curve has implicit inward-pointing vectors giving
+      the direction of the curve at that endpoint.
+#
+    You are being prompted for a vector.  You must respond by
+    - typing in a vector, or 
+    - picking a vector from the graphics area of the screen, or
+    - typing in the name of a calculator variable of the type "vector."
+      Calculator variables are entered by typing "^variablename".
+    
+  Vectors are entered in one of the following forms:
+             x,y
+             x,y,z
+             <x,y>
+             <x,y,z>
+  where x, y and z are integers.
+ 
+  A vector can be picked from the graphics area of the screen by
+  changing the input mode to "pick" and either
+  picking a vector feature (the feature that looks like an arrow).
+    - using the keyboard character 'v' to trigger a pick of a curve.
+      Each end of a curve has implicit inward-pointing vectors giving
+      the direction of the curve at that endpoint.
+#
+  Error should not occur during normal operation.  Contact NCL Support.
+#
+  A vector expresses a direction and distance.  For NCL system 
+  input, the distance must always be greater than zero, therefore
+  at least one of the components of the vector must not be equal to 
+  zero, and the vector 0,0,0 is not valid.
+#
+  Error should not occur during normal operation.  Contact NCL Support.
+#
+  You have previously started recording the session.  You cannot 
+  turn record on if it is already on.  To record in a different
+  file, select Record Off then Record On with a different file name.
+  You can tell when record is on by observing the Record= field in 
+  the screen status area, which will display ON.
+#
+  You have previously started recording the session.  You cannot 
+  turn playback on while record is on. 
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+  You have previously started playback.  You cannot 
+  turn playback on while playback alread in progress. 
+#
+  A normal pick operation is triggered by pressing the left mouse 
+  button or the Return key on the keyboard.  You can also use the 
+  keyboard l, p, a, f, or v keys (lowercase only) to trigger a pick 
+  if to wish to restrict picking to one of the following entity types:
+    l - lines  p - points  a - arcs  f - displayed features  
+    v - vectors 
+#
+  You have selected a subsystem icon from within another (or the same)
+  subsystem more than fifteen times.  In order to prevent degradation
+  of system performance due to excessive stack lengths, the system
+  is forcing a jump to the system root menu (the Sign-On menu).  You
+  can continue normal operations after this jump takes place.
+ 
+  To prevent this situation from occuring, you should "back up" to 
+ previously invoked subsystems by exiting the current subsystem when
+  finished, rather than re-invoking the other subsystems.
+#
+  Error should not occur during normal operation.  Contact NCL Support.
+#
+  Picking is limited to geometric, drafting, and feature entities.
+  You cannot pick axes, viewport information fields, etc.  
+ 
+  You can retry the operation until successful, or select Command Reject.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+  You have selected a subsystem icon from within another (or the same)
+  subsystem nearly fifteen times.  In order to prevent degradation
+  of system performance due to excessive stack lengths, the system
+  will force a jump to the system root menu (the Sign-On menu) when
+  the level of recursion reaches 15. To avoid this, you should select
+  the Go To Main icon as soon as possible.  
+ 
+  To prevent this situation from occuring, you should "back up" to 
+  previously invoked subsystems by exiting the current subsystem when
+  finished, rather than re-invoking the other subsystems.
+#
+    You have entered a vector which has a z component which is not equal to
+    zero.  The Drawing Management subsystem of the NCL System is restricted
+    to 2D operations, therefore the vector you entered is not valid.  You 
+    should enter vectors in the form x,y or <x,y>
+#
+  You have entered a coordinate which has a z component which is
+  not equal to zero.  The Drawing Management subsystem of the NCL
+  System is restricted to 2D operations, therefore the coordinate you
+  entered is not valid.  You should enter coordinates in the form x,y
+  or <x,y>
+#
+  You cannot input points with the locate (+) cursor in a viewport 
+  in which the construction plane is orthogonal to the view plane.
+  The construction plane is orthogonal when the x and y axes of the
+  construction plane axes display appear to be aligned with one-another.
+ 
+  Use another viewport which has a different view of the model
+  displayed, or change the view in this viewport, to avoid this problem.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+    your application has invoked an unbalanced number of MARK
+    and UNMARK functions.  if you invoke a jump to root or command reject
+    function at this point you will most certainly crash the system.
+ 
+    SAVE your part and exit the system.
+#
+ 
+    The application is asking for a NDC point.  The coordiantes must be
+    normalized between 0.0 and 1.0.
+#
+ 
+    Your application has recursively invoked procedures that have open
+    scrolling text windows.  The number of windows eceeds the number that 
+    your application is configured for.  Unwind the execution stack to 
+    continue your work.
+#
+    Specify a vector offset from the picked entity.  Invoke DAS help
+    for information on entering a vector.
+#
+                INPUT A COORDINATE
+ 
+ The legal inputs are:
+ 
+    LOCATOR:  If a locator is input then the trigger 
+              character is examined for validity.  A "Z" 
+              signifies that the Z depth is to be input as
+              a distance next.  Depth is input in construction
+              coordinates.  A trigger with the space bar causes
+              the active Z depth to be used.
+ 
+    PICK:     If an entity is picked, the trigger character is
+              examined for a momentary action.  "D" signifies
+              that a delta point is required.  Other characters
+              are used in conjunction with existing geometry.  If
+              a point is picked, then it is used to derive the
+              coordinate. The end closest to any other entity
+              pick will be derived to satisfy coordinate input.
+ 
+    CONTROL:  A control input signifies that the user wishes to:
+ 
+                a. end the session
+                b. reject the last input
+                c. reject all the last inputs and restart the
+                   interaction sequence.
+                d. reject this command and return to the menu
+                   navigator.
+                e. get help
+ 
+    STRING:   Coordinates can be entered by text string in one
+              of the three supported coordinate systems.
+ 
+     # number = 19
+    /* select subsystem input request */
+             PICK ENTITIES
+ 
+    The legal inputs are:
+ 
+       PICK:     A pick is the normal mode of input.  Graphical
+                 entities--text or geometry--are picked by centering
+                 the cursor over the entity and triggering the pick
+                 by pressing the spacebar or momentary action key.
+ 
+                 The operator can also trigger higher order pick
+                 by pressing "A" for alternate action.  The alternate
+                 action menu of options includes:
+ 
+                   - single select
+                   - chain select
+                   - select inside a region
+                   - select outside a region
+                   - all displayed
+                   - entire drawing
+ 
+     CONTROL:    A control input signifies that the user wishes to:
+ 
+                   a. end the session
+                   b. reject the last input
+                   c. reject all the last inputs and restart the
+                      interaction sequence.
+                   d. reject this command and return to the menu
+                      navigator.
+                   e. get help
+ 
+#
+                   INPUT A VALUE
+ 
+    The legal inputs are as follows:
+ 
+       VALUATOR: If a valuator is input the value is returned
+                 as it comes in.  No units are allowed.
+ 
+       STRING:   Enter a value with or without units.
+ 
+       CONTROL:  A control input signifies that the user wishes to:
+ 
+                   a. end the session
+                   b. reject the last input
+                   c. reject all the last inputs and restart the
+                      interaction sequence.
+                   d. reject this command and return to the menu
+                      navigator.
+                   e. get help
+ 
+#
+                      INPUT AN INTEGER 
+ 
+       VALUATOR: If a valuator is input the value is returned
+                 as it comes in.  No units are allowed.
+ 
+       STRING:   Enter a value with or without units.
+ 
+       CONTROL:  A control input signifies that the user wishes to:
+ 
+                   a. end the session
+                   b. reject the last input
+                   c. reject all the last inputs and restart the
+                      interaction sequence.
+                   d. reject this command and return to the menu
+                      navigator.
+                   e. get help
+ 
+#
+                      INPUT A VECTOR
+ 
+    The legal inputs are as follows:
+ 
+       PICK:     The following items may be picked to define a vector.
+ 
+                   line  - a vector from the endpoint farthest from
+                           the end picked to the picked end will be
+                           generated.
+ 
+                   feature - a vector feature can be picked
+ 
+       STRING:   Enter a vector in one of the three supported
+                 coordinate systems.
+ 
+       CONTROL:  A control input signifies that the user wishes to:
+ 
+                   a. end the session
+                   b. reject the last input
+                   c. reject all the last inputs and restart the
+                      interaction sequence.
+                   d. reject this command and return to the menu
+                      navigator.
+                   e. get help
+#
+             INPUT A PICK ID (PICK SOME ENTITIES)
+ 
+#
+       PICK AN ENTITY AND RETURN THE COORDINATE USED TO PICK IT 
+ 
+    The legal inputs are as follows:
+ 
+       PICK:     A pick is  the only valid means of inputting
+                 this type of action.  The pick event must
+                 immediately followed by a locator event.
+ 
+       CONTROL:  A control input signifies that the user wishes to:
+ 
+                   a. end the session
+                   b. reject the last input
+                   c. reject all the last inputs and restart the
+                      interaction sequence.
+                   d. reject this command and return to the menu
+                      navigator.
+                   e. get help
+ 
+#
+                INPUT A CHARACTER STRING 
+ 
+    The legal inputs are as follows:
+ 
+       STRING:   Enter a coordinate, name of file, number, etc. 
+ 
+       CONTROL:  A control input signifies that the user wishes to:
+ 
+                   a. end the session
+                   b. reject the last input
+                   c. reject all the last inputs and restart the
+                      interaction sequence.
+                   d. reject this command and return to the menu
+                      navigator.
+                   e. get help
+#
+                      INPUT A CHOICE
+ 
+ The legal inputs are as follows:
+ 
+    CHOICE:   The operator may choose a valid option from a list of
+              choices or a menu.
+ 
+    CONTROL:  A control input signifies that the user wishes to:
+ 
+                a. end the session
+                b. reject the last input
+                c. reject all the last inputs and restart the
+                   interaction sequence.
+                d. reject this command and return to the menu
+                   navigator.
+                e. get help
+@
+@
+#
+    If you are in the Calculator when this error occurs, you should type
+    'list' to display calculator variable names and types.  
+ 
+    If you are not in the Calculator, this message can only occur when 
+    enter the carat ('^') in response to a prompt.  The carat signifies
+    that you wish to answer the prompt with a calculator expression.  If
+    you do so and this message occurs, you have used a variable name 
+    that was not previously defined.  For example, 
+ 
+           ^p=p1+<10,10,0>
+ 
+    would cause this message to occur if p1 had not previously been 
+    defined.
+#
+  You cannot select the Calculator subsystem from within the 
+  Calculator more than four times.  This restriction also applies to
+  selecting the Calculator from within a subsystem invoked while in the 
+  Calculator.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+  The expression just entered contains more operators than can
+  be held in temporary storage at one time.  Simplify the expression
+  by entering seperate statements to assign portions of the expression
+  to calculator variables.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+      You have attempted to create a calculator variable with a name 
+ beginning with the letter 'f', which is used only for naming
+ functions.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+        You have entered a calculator statement containing name beginning
+ with 'f', but that name is not a defined function.  
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+        Multiplication of coordinates is not defined.  You can add or 
+ subtract coordinates, or add, subtract, multiply or divide a
+ coordinate by a scalar.
+#
+        Division of coordinates is not defined.  You can add or 
+ subtract coordinates, or add, subtract, multiply or divide a
+ coordinate by a scalar.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ The calculator requires a file named 'calc.grm' which contains
+ the grammer used for parsing input statments.  This file was not
+ found during initialization of the calculator.  Refer to the
+ Installation section of the reference manual to be sure that the
+ system is properly installed and that the run script you are using
+ contains the necessary information.
+#
+ The calculator requires a file which was not found during 
+ initialization of the calculator.  Refer to the Installation 
+ section of the reference manual to be sure that the system is 
+ properly installed and that the run script you are using
+ contains the necessary information.
+              AVAILABLE COMMANDS AND CAPABILITIES IN CALCULATOR
+              --------------------------------------------------
+                            April 16, 1984
+ 
+ 
+ **NOTE -  Upper and lower case characters are the same in the CALCULATOR.
+ 
+ 
+ A. COMMANDS (either upper or lower case)
+ -------------------------------------------------------
+ 
+    1. "QUIT"   - Quit the calculator.
+ 
+    2. "RESET"  - Clear all values and variable names from the symbol table.
+ 
+    3. "LIST"   - List values and variable names in the symbol table.
+ 
+    4. "FLT #"  - Convert from scientific to floating decimal notation.  Default
+                  is floating decimal with six digits of precision.  "#" is an
+                  optional integer specifying precision; default is six.
+ 
+    5. "SCI"    - Convert from floating decimal to scientific notation.
+ 
+    6. "DEGREE"    - Set calculator default for angles to degrees.
+ 
+    7. "RADIAN"    - Set calculator default for angles to radians.
+ 
+ 
+ B. CAPABILITIES
+ ---------------
+ 
+    1. NORMAL CALCULATIONS
+    ----------------------
+ 
+       - add, subtract, multiply, divide, modulus (+, -, *, /, mod)
+ 
+    2. SCIENTIFIC CALCULATIONS
+    --------------------------
+ 
+       - trigonometric functions (i.e. sin X, cos X, tan X).
+ 
+       - inverse trigonometric functions (i.e. arcsin X, arccos X, arctan X).
+ 
+       - hyperbolic trigonometric functions (i.e. sinh X, cosh X, tanh X).
+ 
+       - power function (i.e. X^Y).
+ 
+       - square root (i.e. sqrt X).
+ 
+       - logarithmic functions (i.e. log X , ln X).
+ 
+       - exponential functions (i.e expten X == 10 ^ X, exp X == e ^ X).
+ 
+       - absolute value (i.e. abs X).
+ 
+    3. GEOMETRIC CALCULATIONS
+    -------------------------
+ 
+       - geometric entities are entered in the following form
+ 
+       COORDINATES:
+         CARTESIAN   - "< NUM , NUM , NUM >"
+         CYLINDRICAL - "<R NUM, T NUM, Z NUM>"
+                       where  R represents radius
+                              T represents azimuthal angle
+                              Z represents z value
+         SPHERICAL   - "<A NUM, B NUM, C NUM>"
+                       where  A represents radius
+                              B represents azimuthal angle
+                              C represents elevation angle
+         ( NUM can be a scalar expression )
+ 
+       VECTORS:
+          'V' COORDINATE
+ 
+       - component (i.e. for CARTESIAN - (C.X | C.Y | C.Z)
+                         for CYLINDRICAL - (C.R | C.T | C.Z)
+                         for SPHERICAL - (C.A | C.B | C.C)
+                    where "C" is a variable name          )
+         each component can be reassigned a new value
+         (i.e C.X = <expression>)
+ 
+       - addition ( Operands must be coordinates, but mixed coordinate
+       
+         types are allowed. i.e. CARTESIAN + SPHERICAL. operator= "+" )
+ 
+       - subtraction (same as addition. operator = "-").
+ 
+       - multiplication (One operand must be SCALAR. operator= "*").
+ 
+       - division ( same as multiplication. operator = "/" )
+ 
+       - cross ( same as addition. operator = "CROSS").
+ 
+       - dot  (same as cross. operator = "DOT")
+ 
+       - distance (Operands must both be coordinates, but mixed
+         coordinate types 
+                   are allowed. i.e. <coordinate> "DIST" <coordinate>)
+ 
+       - angle (same as distance. operator = "ANG")
+ 
+       - unit vector of a coordinate ( "UNITVC" <coordinate>)
+ 
+       - magnitude of a coordinate ( "MAG" <coordinate>)
+ 
+       - change degree to radian (i.e. "RAD" ANGLE)
+ 
+       - change radian to degree (i.e. "DEG" ANGLE)
+ 
+       - an angle's complement (i.e. "COMP" ANGLE)
+ 
+       - an angle's supplement (i.e. "SUPM" ANGLE)
+ 
+         ( ANGLE can be a scalar expression )
+ 
+    4. FUNCTIONS
+    ------------
+ 
+       - functions are defined by the following form
+ 
+         FUNCTION NAME "(" PARAMETERS ")" "=" FUNCTION DEFINITION
+ 
+         where
+             FUNCTION NAME- A user-defined name of eight characters or less, and
+                            the initial character "F". 
+ 
+             PARAMETERS   - only four parameters are allowed.
+ 
+             FUNCTION DEFINITION - any operations allowed in the calculator.
+ 
+       - FUNCTION CALL
+ 
+          - parameters can be any legal expression in the calculator.
+            (including another function call)
+          - an operand in an expression can be a function call
+          - function value can be assigned to another non-function name.
+ 
+ 
+    5. MEMORY CALCULATION
+    ----------------------
+ 
+       - Variable names are user-defined, eight characters or less.
+         Initial character "F" is reserved for function names; the
+         period (.) is reserved for the component of the coordinate.
+         (i.e. XYZ = calculation expression. )
+ 
+       - Variable type is defined by associated value entered by the user.
+         Variable type can be SCALAR, CARTESIAN, CYLINDRICAL, SPHERICAL,
+         FUNCTION. 
+ 
+       - Variable names and associated value are retrieved by mentioning
+         the name in the expression.
+ 
+       - Variable value and type are redefined automatically by assigning another
+         expression.
+ 
+       - Variable names and current associated attributes are listed by the
+         "LIST" command.
+ 
+ 
+ C. PRECEDENCE OF OPERATORS ( in decreasing order)
+ -----------------------------------------------------
+ 
+       - parenthesis.
+ 
+       - unary minus.
+ 
+       - trigonometric, logarithmic, and exponential functions, square root, 
+         absolute value, unit vector, magnitude, degree to radian,
+         radian to degree, complement, supplement.
+ 
+       - ^ (power).
+ 
+       - *, /, mod, cross, dot, dist.
+ 
+       - +, -.
+@
+#
+ The format required depends on the type of data requested by the 
+ system.  Valid formats are:
+ 
+ POINTS   10,20            (Cartesian - x,y)
+          10,20,30         (          - x,y,z)
+          a10,b45,c90      (Spherical - distance, azimuth, elevation.)
+          r10,t45,z10      (Cylindrical - radius, azimuth, s-depth.)
+ 
+          d 10,10          (Delta forms - relative to ref. pt.)
+          d 10,20,30
+          d a10,b45,c90     
+          d r10,t45,z10
+ 
+          Appropriate units (see below) can be used for any value
+          in a cordinate.  Examples:
+ 
+          10 cm, 136 mm
+          a10ft,b45,c1.3rad
+ 
+ DISTANCES     10               (uses default set in Environment subsyst.)
+          10 mm            millimeters
+          10 cm            centimeters
+          etc.             m, km, in, ft, mi
+ 
+ ANGLES        90               (uses default angular unit set in Env.)
+          90 deg           (Degrees)
+          1.5 rad          (Radians)
+ 
+ VECTORS       1,2              (x magnitude, y magnitude)
+          1,3,1            (x,y,z)
+          a1,b90,c45       (Spherical)
+          r1,t90,z10       (Cyl.)
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+@
+#
+ During normal operation, text can only be input from the keyboard in
+ response to a prompt for which there are valid forms of text input 
+ (not, for example, in response to a request to 'pick').  
+ 
+ Certain system-level debugging and control commands are available
+ for use by NCL support personnel. If this error occurs when you are
+ attempting to enter such a command, the command was not valid.  Contact
+ NCL Support.
+#
+ You selected an icon with the choice cursor (arrow cursor) or pressed a
+ function which invokes a 'control' action such as accepting a default
+ value.  The action invoked is not valid at this time.  Refer to the
+ Reference Manual for a description of the icon or function key.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+@
+#
+  The 'order' of the feature that will be displayed is determined by
+  the number of times that you pick the entity when you are selecting
+  it.  one pick = 1st order, two = 2nd order, etc.  You have picked an 
+  entity more times than there are orders for that type of entity.
+ 
+  Refer to the Reference manual for an explaination of feature orders.
+#
+     Error should not occur during normal operation.  Contact NCL Support.
+#
+  Features can only be displayed for the following geometric 
+  entities:
+  Line
+  Circle and circular arc
+  Ellipse and elliptical arc
+  Spline
+#
+     Error should not occur during normal operation.  Contact NCL Support.
+#
+     Error should not occur during normal operation.  Contact NCL Support.
+#
+     Error should not occur during normal operation.  Contact NCL Support.
+#
+  Features can only be displayed for the following geometric 
+  entities:
+  Line
+  Circle and circular arc
+  Ellipse and elliptical arc
+  Spline
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ This error should not occur during normal operation.  Contact NCL Support.
+#
+ This error should not occur during normal operation.  Contact NCL Support.
+#
+  You have selected more entities for feature display than the 
+  feature subsystem can handle at one time.  If this message occurs
+  for a small number of entities, a system error may have occurrred;
+  contact NCL support.  Otherwise, retry feature display with fewer
+  entities selected.
+#
+  You have selected more entities for feature display than the 
+  feature subsystem can handle at one time.  If this message occurs
+  for a small number of entities, a system error may have occurrred;
+  contact NCL support.  Otherwise, retry feature display with fewer
+  entities selected.
+#
+  You have selected more entities for feature display than the 
+  feature subsystem can handle at one time.  If this message occurs
+  for a small number of entities, a system error may have occurrred;
+  contact NCL support.  Otherwise, retry feature display with fewer
+  entities selected.
+@
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+   A minimum of four points must be selected to create a spline: the end-
+   points and two intermediate points.  You have entered fewer than four.
+   Retry the operation with four points.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ The length of the axis direction vector you entered is smaller 
+ than the system's predetermined error threshold.  Use of a
+ vector smaller than the threshold can introduce errors and 
+ is not permitted. Enter a vector with the same direction but 
+ a greater length.
+#
+ At least one of the angles entered was greater than 360 degrees or less
+ than -360 degrees and the sum of the angles is not between -360 and +360.
+ (or the radian equivalent values of -2 pi and +2 pi).  The requested option
+ is not defined for angles outside this range.
+#
+ You must select an entity of one of the following types:
+   Line
+   Circle or circular arc
+   Ellipse or elliptical arc
+   Spline
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ This option does not allow angles greater than 180 (pi radians),
+ or negative angles.
+#
+ The two lines to be chamfered must lie in the same plane and must not
+ be parallel.  Try changing the view to one which is not orthogonal to 
+ the view in which the lines lie.  
+#
+ The first step in chamfering is to trim each line back from the endpoint
+ closest to the point on the line where it was picked (where the cursor
+ was positioned.  It trims the first line picked back the "chamfer distance"
+ you specify from the intersection point of the two lines.  This error
+ is caused when the distance specified is greater than the distance from that 
+ intersection point to the opposite end of the line.  
+ 
+ This error can be caused by picking the lines in the wrong place.  Pick them 
+ close to the end that will be trimmed.  Re-select the chamfer option to 
+ retry.
+#
+ The first step in chamfering is to trim each line back from the endpoint
+ closest to the point on the line where it was picked (where the cursor
+ was positioned.  It trims the first line picked back the "chamfer distance"
+ you specify from the intersection point of the two lines.  It then 
+ constructs the chamfer line at the "chamfer angle" you specify.  
+ This error is caused when the angle specified is such that the chamfer
+ line does not intersect the second line picked.
+ 
+ This error can be caused by picking the lines in the wrong place.  Pick them 
+ close to the end that will be trimmed.  Re-select the chamfer option to 
+ retry.
+#
+ The circle radius is smaller than the system's predetermined error
+ threshold.  Use of a radius smaller than the threshold can introduce
+ errors and is not permitted. Enter a larger radius.
+#
+ This error can be caused by snapping of located points (points input
+ with the (+) cursor) to the grid.  Check that snap resolution set with 
+ the Define Grid Icon in the Axis/Grid subsystem is correct.
+#
+ The endpoint entered does not lie in the plane of the arc, which is 
+ determined by the start point and the z axis of the working plane.  This
+ message is a warning that the point entered will be projected onto the 
+ plane of the arc to determine the endpoint of the arc.
+#
+ This error can be caused by snapping of located points (points input
+ with the (+) cursor) to the grid.  Check that snap resolution set with 
+ the Define Grid Icon in the Axis/Grid subsystem is correct.
+#
+ The system may have picked an entity other than the one you intended.  You 
+ can exercise better control over which entity is picked by;
+ 
+   - using care when positioning the cursor.  The cursor should touch 
+     only the entity which you wish to pick.
+ 
+   - using a selective pick trigger key instead of the mouse button
+     'l' key - only a line will be picked.
+     'a' key - only an arc or a circle will be picked.
+ 
+   - zooming in closer to the portion of the view where the pick will 
+     occur, or changing to an oblique view.
+#
+ The middle point of the three points used to define the arc or circle lies on
+ an imaginary line connecting the other two points.
+#
+ This error can be caused by snapping of located points (points input
+ with the (+) cursor) to the grid.  Check that snap resolution set with 
+ the Define Grid Icon in the Axis/Grid subsystem is correct.
+#
+ This error can be caused by snapping of located points (points input
+ with the (+) cursor) to the grid.  Check that snap resolution set with 
+ the Define Grid Icon in the Axis/Grid subsystem is correct.
+#
+ The length of the arc is smaller than the system's predetermined error
+ threshold.  Use of an arc with an arc length smaller than the threshold
+ can introduce errors and is not permitted. 
+#
+ The two lines to be chamfered must lie in the same plane and must not
+ be parallel.  Try changing the view to one which is not orthogonal to 
+ the view in which the lines lie.  
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ The system may have picked an entity other than the one you intended.  You 
+ can exercise better control over which entity is picked by;
+ 
+   - using care when positioning the cursor.  The cursor should touch 
+     only the entity which you wish to pick
+   - using a selective pick trigger key instead of the mouse button
+     'l' key - only a line will be picked
+     'a' key - only an arc or a circle will be picked
+ 
+   - zooming in closer to the portion of the view where the pick will 
+     occur, or changing to an oblique view.
+#
+ Only lines, circular arcs, and circles can be picked for this option.
+#
+ You must pick a different entity for each prompt.  
+ 
+ The system may have picked an entity other than the one you intended.  You 
+ can exercise better control over which entity is picked by;
+ 
+   - using care when positioning the cursor.  The cursor should touch 
+     only the entity which you wish to pick.
+ 
+   - using a selective pick trigger key instead of the mouse button
+     'l' key - only a line will be picked
+     'a' key - only an arc or a circle will be picked
+ 
+   - zooming in closer to the portion of the view where the pick will 
+     occur, or changing to an oblique view.
+#
+ The circle radius is smaller than the system's predetermined error
+ threshold.  Use of a radius smaller than the threshold can introduce
+ errors and is not permitted. 
+#
+ In order for the composite process to be successful, the following 
+ conditions must be met:
+ 
+   - The curves must be selected in the sequence in which they are 
+       connected.  You must either pick them manually in the proper 
+       sequence, or you must use Chain Select in the Select subsystem. 
+       You CANNOT use In Area, etc., to select them as they will not 
+       necessarily be selected in the proper sequence.  
+   
+   - The curves must be connected endpoint to endpoint within the 
+       error tolerance of the system (a very small number).  To determine
+       where a point of discontinuity that is not readily visable exists, 
+       it is suggested that you initiate a chain select and observe the last 
+       entity that is selected.  The point of discontinuity will be at the 
+       endpoint of that curve.  
+#
+ The system may have picked an entity other than the one you intended.  You 
+ can exercise better control over which entity is picked by;
+ 
+   - using care when positioning the cursor.  The cursor should touch 
+     only the entity which you wish to pick
+   - using a selective pick trigger key instead of the mouse button
+     'l' key - only a line will be picked
+     'a' key - only an arc or a circle will be picked
+ 
+   - zooming in closer to the portion of the view where the pick will 
+     occur, or changing to an oblique view.
+#
+ Curves of any type, including splines, can be composited;  drafting
+ entities, symbols, etc. cannot be composited.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ This particular edge of solid may not be used for current operation.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ You can only pick geometric entities to answer this prompt.  You cannot
+ pick text, drafting or any other non-geometric entities.  
+ 
+ The system may be picking an entity other than the one you intend.  You 
+ can exercise better control over which entity is picked by;
+ 
+ - using care when positioning the cursor.  The cursor should touch 
+   only the entity which you wish to pick.
+ 
+ - using a selective pick trigger key instead of the mouse button
+   'l' key - only a line will be picked
+   'a' key - only an arc or a circle will be picked.
+ 
+ - zooming in closer to the portion of the view where the pick will 
+   occur.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ This error can be caused by snapping of located points (points input
+ with the (+) cursor) to the grid.  Check that snap resolution set with 
+ the Define Grid Icon in the Axis/Grid subsystem is correct.
+#
+ The system may have picked an entity other than the one you intended.  You 
+ can exercise better control over which entity is picked by;
+ 
+   - using care when positioning the cursor.  The cursor should touch 
+     only the entity which you wish to pick.
+ 
+   - using a selective pick trigger key instead of the mouse button
+     'l' key - only a line will be picked
+     'a' key - only an arc or a circle will be picked.
+ 
+   - zooming in closer to the portion of the view where the pick will 
+     occur, or changing to an oblique view.
+#
+ The point must lie in the same plane as the circle.  Try changing the 
+ view to one which is not orthogonal to the view in which the circle lies
+ so you can be sure you are entering a point that is in the same plane.
+#
+ The system may have picked an entity other than the one you intended.  You 
+ can exercise better control over which entity is picked by;
+ 
+   - using care when positioning the cursor.  The cursor should touch 
+     only the entity which you wish to pick.
+ 
+   - using a selective pick trigger key instead of the mouse button
+     'l' key - only a line will be picked
+     'a' key - only an arc or a circle will be picked.
+ 
+   - zooming in closer to the portion of the view where the pick will 
+     occur, or changing to an oblique view.
+#
+ The system may have picked an entity other than the one you intended.  You 
+ can exercise better control over which entity is picked by;
+ 
+   - using care when positioning the cursor.  The cursor should touch 
+     only the entity which you wish to pick.
+ 
+   - using a selective pick trigger key instead of the mouse button
+     'l' key - only a line will be picked
+     'a' key - only an arc or a circle will be picked.
+ 
+   - zooming in closer to the portion of the view where the pick will 
+     occur, or changing to an oblique view.
+#
+ The length of the line that to be constructed would be smaller than the
+ system's predetermined error threshold.  Construction of a line smaller
+ than the threshold can introduce errors and is not permitted. 
+#
+ The system may have picked an entity other than the one you intended.  You 
+ can exercise better control over which entity is picked by;
+ 
+   - using care when positioning the cursor.  The cursor should touch 
+     only the entity which you wish to pick.
+ 
+   - using a selective pick trigger key instead of the mouse button
+     'l' key - only a line will be picked
+     'a' key - only an arc or a circle will be picked.
+ 
+     - zooming in closer to the portion of the view where the pick will 
+ ccur.
+#
+ When the point entered lies on the line picked, the new line is con-
+ structed parallel to the working plane.  The construction angle cannot
+ be calculated when the line picked is parallel to the working plane 
+ normal.  If you wish the line to be drawn in the working plane at an 
+ angle to the point where the picked line intersects the working plane,
+ it is suggested that you construct a line using Line Perpendicular from 
+ the picked line to a point on the working plane x axis and then use Line
+ at an Angle to construct the desired line.
+#
+ CASE 1: The point through which the line will pass does not lie on the
+ line: 
+ 
+ the indicated range is sufficient for all possible lines.
+ 
+ CASE 2: The point though which the line will pass lies on the picked
+ line:
+ 
+ the new line will be constructed on the side of the existing line to
+ which the cursor lies when it is picked (as with a positive distance
+ with Line Parallel to a Line). A negative angle constructs a line to
+ the opposite side.  Therefore angles outside the indicated range are
+ not necessary.  
+#
+ Use Line Parallel Through a Point to create a line parallel to the 
+ picked line.
+#
+ This error will occur when you are filleting in autotrim mode and the system
+ finds that the length of one  of the curves would be zero or very small if
+ trimmed to join the fillet arc.  For example, filleting two perpendicular lines
+ will a radius of 1 in would cause this error if either line were 1 in long.  
+ 
+ The system will leave the line untrimmed.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ This error can be caused by snapping of located points (points input
+ with the (+) cursor) to the grid.  Check that snap resolution set with 
+ the Define Grid Icon in the Axis/Grid subsystem is correct.
+#
+ The circle radius is smaller than the system's predetermined error
+ threshold.  Use of a radius smaller than the threshold can introduce
+ errors and is not permitted. Enter a larger radius.
+#
+ The system may have picked an entity other than the one you intended.  You 
+ can exercise better control over which entity is picked by;
+ 
+   - using care when positioning the cursor.  The cursor should touch 
+     only the entity which you wish to pick.
+ 
+   - using a selective pick trigger key instead of the mouse button
+     'l' key - only a line will be picked
+     'a' key - only an arc or a circle will be picked.
+ 
+     - zooming in closer to the portion of the view where the pick will 
+ ccur.
+#
+ The system may have picked an entity other than the one you intended.  You 
+ can exercise better control over which entity is picked by;
+ 
+   - using care when positioning the cursor.  The cursor should touch 
+     only the entity which you wish to pick.
+ 
+   - using a selective pick trigger key instead of the mouse button
+     'l' key - only a line will be picked
+     'a' key - only an arc or a circle will be picked.
+ 
+   - zooming in closer to the portion of the view where the pick will 
+     occur, or changing to an oblique view.
+#
+ The length of vector is smaller than the system's predetermined error
+ threshold.  Use of a vector with length smaller than the threshold can
+ introduce errors and is not permitted. 
+#
+ The length of the line after trimming would be smaller than the system's
+ predetermined error threshold.  Construction of lines shorter than the
+ threshold can introduce errors and is not permitted.
+#
+ The system may have picked an entity other than the one you intended.  You 
+ can exercise better control over which entity is picked by;
+ 
+   - using care when positioning the cursor.  The cursor should touch 
+     only the entity which you wish to pick.
+ 
+   - using a selective pick trigger key instead of the mouse button
+     'l' key - only a line will be picked
+     'a' key - only an arc or a circle will be picked.
+ 
+   - zooming in closer to the portion of the view where the pick will 
+#
+ The entity selected for trimming is a composite curve and cannot be 
+ trimmed.  To trim an element of a composite, use the Dissolve icon on 
+ the Composite sub-menu of the Wire-Frame Modeling menu to change the 
+ composite back to ordinary curves.  Remember that composites can contain
+ composties, which would also have to be dissolved.
+#
+ The fillet radius specified was such that the endpoint of the fillet arc
+ is very close to the endpoint of the one of the fillet lines. 
+ The line that would result from trimming the filleted line back to
+ the arc would be smaller than the system's predetermined error
+ threshold.  Construction of a line smaller than the threshold can
+ introduce errors and is not permitted.
+ 
+ The curve will be left un-trimmed.
+ 
+ This problem can be resolved by deleting the fillet arc and re-filleting
+ with a slightly smaller radius.
+#
+ Since circles cannot be trimmed (they can only be mid-trimmed) automatic
+ trimming will not be done on filleted circles.  Use the Mid-Trim icon in
+ the Move/Edit subsystem to manually trim the circle to the arc.
+#
+ The fillet radius specified was such that the endpoint of the new fillet
+ arc is very close to the endpoint of the one of the filleted arcs. 
+ The arc that would result from trimming the new arc back to
+ the filleted arc would be smaller than the system's predetermined error
+ threshold.  Construction of an arc smaller than the threshold can
+ introduce errors and is not permitted.
+#
+ The system may have picked an entity other than the one you intended.  You 
+ can exercise better control over which entity is picked by;
+ 
+   - using care when positioning the cursor.  The cursor should touch 
+     only the entity which you wish to pick.
+ 
+   - using a selective pick trigger key instead of the mouse button
+     'l' key - only a line will be picked
+     'a' key - only an arc or a circle will be picked.
+ 
+   - zooming in closer to the portion of the view where the pick will 
+#
+ The resulting arc would have a length shorter than the system's
+ predetermined error threshold.  Construction of an arc with an arc 
+ ength shorter than the threshold can introduce errors and is not permitted. 
+#
+ The curves must all lie in the same plane.  Lines must not be parallel.
+ If the curves appear on the display to intersect, try changing the view
+ to one which is oblique to the plane in which the curves lie to insure
+ that they are in fact in the same plane.  If they still appear to 
+ intersect, try the operation again in the new view to insure that the 
+ desired entities are being picked.  
+#
+ The mid-trim operation was not completed because the two entities 
+ selected to trim to intersect at a point that lies on the curve to be 
+ trimmed.
+#
+ This option requires that you pick a composite curve.
+ The system may have picked an entity other than the one you intended.  You 
+ can exercise better control over which entity is picked by;
+ 
+   - using care when positioning the cursor.  The cursor should touch 
+     only the entity which you wish to pick.
+ 
+   - using a selective pick trigger key instead of the mouse button
+     'l' key - only a line will be picked
+     'a' key - only an arc or a circle will be picked.
+ 
+   - zooming in closer to the portion of the view where the pick will 
+     occur, or changing to an oblique view.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ The system may have picked an entity other than the one you intended.  You 
+ can exercise better control over which entity is picked by;
+ 
+ - using care when positioning the cursor.  The cursor should touch 
+   only the entity which you wish to pick.
+ 
+ - using a selective pick trigger key instead of the mouse button
+   'l' key - only a line will be picked
+   'a' key - only an arc or a circle will be picked.
+ 
+ - zooming in closer to the portion of the view where the pick will 
+   occur, or changing to an oblique view.
+#
+ The system may have picked an entity other than the one you intended.  You 
+ can exercise better control over which entity is picked by;
+ 
+ - using care when positioning the cursor.  The cursor should touch 
+   only the entity which you wish to pick.
+ 
+ - using a selective pick trigger key instead of the mouse button
+   'l' key - only a line will be picked
+   'a' key - only an arc or a circle will be picked.
+ 
+ - zooming in closer to the portion of the view where the pick will 
+   occur, or changing to an oblique view.
+#
+ The system may have picked an entity other than the one you intended.  You 
+ can exercise better control over which entity is picked by;
+ 
+ - using care when positioning the cursor.  The cursor should touch 
+   only the entity which you wish to pick.
+ 
+ - using a selective pick trigger key instead of the mouse button
+   'l' key - only a line will be picked
+   'a' key - only an arc or a circle will be picked.
+ 
+ - zooming in closer to the portion of the view where the pick will 
+   occur, or changing to an oblique view.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ The system may have picked an entity other than the one you intended.  You 
+ can exercise better control over which entity is picked by;
+ 
+ - using care when positioning the cursor.  The cursor should touch 
+   only the entity which you wish to pick.
+ 
+ - using a selective pick trigger key instead of the mouse button
+   'l' key - only a line will be picked
+   'a' key - only an arc or a circle will be picked.
+ 
+ - zooming in closer to the portion of the view where the pick will 
+   occur, or changing to an oblique view.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ The smaller of the two axes is shorter than the system's predetermined error
+ threshold.  Construction of an ellipse with an axis smaller than the
+ threshold can introduce errors and is not permitted. 
+#
+ The system may have picked an entity other than the one you intended.  You 
+ can exercise better control over which entity is picked by;
+ 
+ - using care when positioning the cursor.  The cursor should touch 
+   only the entity which you wish to pick.
+ 
+ - using a selective pick trigger key instead of the mouse button
+   'l' key - only a line will be picked
+   'a' key - only an arc or a circle will be picked.
+ 
+ - zooming in closer to the portion of the view where the pick will 
+   occur, or changing to an oblique view.
+#
+ You can see the names of the drawings that have been created by 
+ selecting the List Drawings icon.
+#
+ You can see the names of the drawings that have been created by 
+ selecting the List Drawings icon.
+#
+ You can see the names of the views that have been created by 
+ selecting the List Views icon.
+#
+ The following procedure can often be a convenient way to establish
+ the up vector for the view:
+ 
+   - position the cursor to the Up Vector field on the form.
+   - press 'pick' on the keyboard or use the middle mouse button to 
+     change the input mode to pick.
+   - position the pick cursor to the BOTTOM of a line that points
+     in the direction you wish to become the 'up' direction.
+   - trigger the pick with the 'v' key on the keyboard instead of the
+     mouse button.
+ 
+ The form will then come back up and the Up Vector field will contain
+ the necessary vector.
+ 
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ The three lines selected to define the curve must all lie in the same
+ plane.  If the curves appear to intersect on the display, try changing
+ the view to one which is oblique to the plane in which the curves lie to
+ insure that they are in fact in the same plane.  If they still appear to 
+ intersect, try the operation again in the new view to insure that the 
+ desired entities are being picked.  
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ The system may have picked an entity other than the one you intended.  You 
+ can exercise better control over which entity is picked by;
+ 
+ - using care when positioning the cursor.  The cursor should touch 
+   only the entity which you wish to pick.
+ 
+ - using a selective pick trigger key instead of the mouse button
+   'l' key - only a line will be picked
+   'a' key - only an arc or a circle will be picked.
+ 
+ - zooming in closer to the portion of the view where the pick will 
+   occur, or changing to an oblique view.
+#
+ The Multifillet option does not support filleting between two arcs.  You
+ can fillet between arcs with the Single Fillet option.
+#
+ The valid ranges of scale factors are:
+      
+      - less than one but greater than zero to scale DOWN
+ 
+      - Greater than one to scale UP.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ The capacity of the drawing management system for a single drawing
+ has been exceeded.  This error should not occur during normal system
+ operation.  Contact NCL Customer Support.
+#
+ You attempted to use the locate cursor to enter a point in a viewport
+ in which the view normal vector is perpendicular to the construction 
+ plane normal vector.  This is not allowed because the system must 
+ project the located screen position onto the construction plane.  
+ You can
+ 
+   - change the view or use a different view in another viewport, or
+   - change the construction plane.
+#
+ The system will not let you set the grid spacing smaller than 1/20
+ of the viewport aperture.  This prevents you from accidentally drawing 
+ a grid with spacing so fine that it takes several minutes to draw.  You
+ will see the aperture displayed at the bottom of the Activate Grid 
+ form.  Note that the snap resolution can be set as small as desired.  
+#
+ The fillet arc does not intersect the line segements. Enter a smaller radius.
+#
+ Attempted to create more segments than the digs graphics package 
+ allows.  The number of segments allowed is the  compile time 
+ constant 'UG_MAXSEGNO' defined in gtbldef.h. 
+ 
+ Please delete entities or exit.
+#
+ 
+ The outer radius - the inner radius is smaller than the preset
+ tolerances set in Romulus.
+#
+ You must pick a point, a line, a circle, or a curve.  
+#
+ Distances and lengths can be entered with or without a units 
+ specification.  If without, the default set in the Environment subystem
+ will be used (set to inches when the system is initialized).  Valid 
+ units are: 
+ 
+          mm            millimeters
+          cm            centimeters
+          m             meters
+          km            kilometers
+          in            inches
+          ft            feet
+          mi            miles
+#
+ Angles can be entered with or without an angular unit specification.
+ If without, the default set in the Environment subsystem will be used
+ (set to degrees when the system is initialized).  Valid angular units
+ are:
+ 
+          deg           degrees
+          rad           radians
+#
+ The required point can be picked, located, or typed in.  The following
+ are valid forms for text input of coordinates:
+          10,20            (Cartesian - x,y)
+          10,20,30         (          - x,y,z)
+          a10,b45,c90      (Spherical - distance, azimuth, elevation.)
+          r10,t45,z10      (Cylindrical - radius, azimuth, s-depth.)
+ 
+          d 10,10          (Delta forms - relative to ref. pt.)
+          d a10,b90,c45    (etc.)
+ 
+ Appropriate units can be used for any value in a cordinate. 
+ Examples: 10 cm, 136 mm    a10ft,b30deg,c1.5rad
+#
+ Distances and lengths can be entered with or without a units 
+ specification.  If without, the default set in the Environment subystem
+ will be used (set to inches when the system is initialized).  Valid 
+ units are: 
+ 
+          mm            millimeters
+          cm            centimeters
+          m             meters
+          km            kilometers
+          in            inches
+          ft            feet
+          mi            miles
+#
+ The required point can be picked, located, or typed in.  The following
+ are valid forms for text input of coordinates:
+          10,20            (Cartesian - x,y)
+          10,20,30         (          - x,y,z)
+          a10,b45,c90      (Spherical - distance, azimuth, elevation.)
+          r10,t45,z10      (Cylindrical - radius, azimuth, s-depth.)
+ 
+          d 10,10          (Delta forms - relative to ref. pt.)
+          d a10,b90,c45    (etc.)
+ 
+ Appropriate units can be used for any value in a cordinate. 
+ Examples: 10 cm, 136 mm    a10ft,b30deg,c1.5rad
+#
+ The required point can be picked, located, or typed in.  The following
+ are valid forms for text input of coordinates:
+          10,20            (Cartesian - x,y)
+          10,20,30         (          - x,y,z)
+          a10,b45,c90      (Spherical - distance, azimuth, elevation.)
+          r10,t45,z10      (Cylindrical - radius, azimuth, s-depth.)
+ 
+          d 10,10          (Delta forms - relative to ref. pt.)
+          d a10,b90,c45    (etc.)
+ 
+ Appropriate units can be used for any value in a cordinate. 
+ Examples: 10 cm, 136 mm    a10ft,b30deg,c1.5rad
+#
+ The required point can be picked, located, or typed in.  The following
+ are valid forms for text input of coordinates:
+          10,20            (Cartesian - x,y)
+          10,20,30         (          - x,y,z)
+          a10,b45,c90      (Spherical - distance, azimuth, elevation.)
+          r10,t45,z10      (Cylindrical - radius, azimuth, s-depth.)
+ 
+          d 10,10          (Delta forms - relative to ref. pt.)
+          d a10,b90,c45    (etc.)
+ 
+ Appropriate units can be used for any value in a cordinate. 
+ Examples: 10 cm, 136 mm    a10ft,b30deg,c1.5rad
+#
+ The required point can be picked, located, or typed in.  The following
+ are valid forms for text input of coordinates:
+          10,20            (Cartesian - x,y)
+          10,20,30         (          - x,y,z)
+          a10,b45,c90      (Spherical - distance, azimuth, elevation.)
+          r10,t45,z10      (Cylindrical - radius, azimuth, s-depth.)
+ 
+          d 10,10          (Delta forms - relative to ref. pt.)
+          d a10,b90,c45    (etc.)
+ 
+ Appropriate units can be used for any value in a cordinate. 
+ Examples: 10 cm, 136 mm    a10ft,b30deg,c1.5rad
+#
+ The required point can be picked, located, or typed in.  The following
+ are valid forms for text input of coordinates:
+          10,20            (Cartesian - x,y)
+          10,20,30         (          - x,y,z)
+          a10,b45,c90      (Spherical - distance, azimuth, elevation.)
+          r10,t45,z10      (Cylindrical - radius, azimuth, s-depth.)
+ 
+          d 10,10          (Delta forms - relative to ref. pt.)
+          d a10,b90,c45    (etc.)
+ 
+ Appropriate units can be used for any value in a cordinate. 
+ Examples: 10 cm, 136 mm    a10ft,b30deg,c1.5rad
+#
+ The required point can be picked, located, or typed in.  The following
+ are valid forms for text input of coordinates:
+          10,20            (Cartesian - x,y)
+          10,20,30         (          - x,y,z)
+          a10,b45,c90      (Spherical - distance, azimuth, elevation.)
+          r10,t45,z10      (Cylindrical - radius, azimuth, s-depth.)
+ 
+          d 10,10          (Delta forms - relative to ref. pt.)
+          d a10,b90,c45    (etc.)
+ 
+ Appropriate units can be used for any value in a cordinate. 
+ Examples: 10 cm, 136 mm    a10ft,b30deg,c1.5rad
+#
+ The required point can be picked, located, or typed in.  The following
+ are valid forms for text input of coordinates:
+          10,20            (Cartesian - x,y)
+          10,20,30         (          - x,y,z)
+          a10,b45,c90      (Spherical - distance, azimuth, elevation.)
+          r10,t45,z10      (Cylindrical - radius, azimuth, s-depth.)
+ 
+          d 10,10          (Delta forms - relative to ref. pt.)
+          d a10,b90,c45    (etc.)
+ 
+ Appropriate units can be used for any value in a cordinate. 
+ Examples: 10 cm, 136 mm    a10ft,b30deg,c1.5rad
+#
+ Distances and lengths can be entered with or without a units 
+ specification.  If without, the default set in the Environment subystem
+ will be used (set to inches when the system is initialized).  Valid 
+ units are: 
+ 
+          mm            millimeters
+          cm            centimeters
+          m             meters
+          km            kilometers
+          in            inches
+          ft            feet
+          mi            miles
+#
+ The required point can be picked, located, or typed in.  The following
+ are valid forms for text input of coordinates:
+          10,20            (Cartesian - x,y)
+          10,20,30         (          - x,y,z)
+          a10,b45,c90      (Spherical - distance, azimuth, elevation.)
+          r10,t45,z10      (Cylindrical - radius, azimuth, s-depth.)
+ 
+          d 10,10          (Delta forms - relative to ref. pt.)
+          d a10,b90,c45    (etc.)
+ 
+ Appropriate units can be used for any value in a cordinate. 
+ Examples: 10 cm, 136 mm    a10ft,b30deg,c1.5rad
+#
+ The required point can be picked, located, or typed in.  The following
+ are valid forms for text input of coordinates:
+          10,20            (Cartesian - x,y)
+          10,20,30         (          - x,y,z)
+          a10,b45,c90      (Spherical - distance, azimuth, elevation.)
+          r10,t45,z10      (Cylindrical - radius, azimuth, s-depth.)
+ 
+          d 10,10          (Delta forms - relative to ref. pt.)
+          d a10,b90,c45    (etc.)
+ 
+ Appropriate units can be used for any value in a cordinate. 
+ Examples: 10 cm, 136 mm    a10ft,b30deg,c1.5rad
+#
+ Distances and lengths can be entered with or without a units 
+ specification.  If without, the default set in the Environment subystem
+ will be used (set to inches when the system is initialized).  Valid 
+ units are: 
+ 
+          mm            millimeters
+          cm            centimeters
+          m             meters
+          km            kilometers
+          in            inches
+          ft            feet
+          mi            miles
+#
+ The required point can be picked, located, or typed in.  The following
+ are valid forms for text input of coordinates:
+          10,20            (Cartesian - x,y)
+          10,20,30         (          - x,y,z)
+          a10,b45,c90      (Spherical - distance, azimuth, elevation.)
+          r10,t45,z10      (Cylindrical - radius, azimuth, s-depth.)
+ 
+          d 10,10          (Delta forms - relative to ref. pt.)
+          d a10,b90,c45    (etc.)
+ 
+ Appropriate units can be used for any value in a cordinate. 
+ Examples: 10 cm, 136 mm    a10ft,b30deg,c1.5rad
+#
+ Angles can be entered with or without an angular unit specification.
+ If without, the default set in the Environment subsystem will be used
+ (set to degrees when the system is initialized).  Valid angular units
+ are:
+ 
+          deg           degrees
+          rad           radians
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Angles can be entered with or without an angular unit specification.
+ If without, the default set in the Environment subsystem will be used
+ (set to degrees when the system is initialized).  Valid angular units
+ are:
+ 
+          deg           degrees
+          rad           radians
+#
+ Angles can be entered with or without an angular unit specification.
+ If without, the default set in the Environment subsystem will be used
+ (set to degrees when the system is initialized).  Valid angular units
+ are:
+ 
+          deg           degrees
+          rad           radians
+@
+#
+ This error should not occur during normal operation.  Contact NCL Support.
+#
+ The system was not able to replace the existing file.  This error can
+ occur when you have permission to read the file but not to write to 
+ it.  You should either:
+ 
+     -  obtain permission from the owner of the file to write to it and 
+        retry the operation; or
+     -  Save the file with a different name resolve the problem by using
+        appropriate operating system commands after exiting NCL.
+#
+   This error should not occur during normal operation.  Contact NCL Support.
+#
+   This error should not occur during normal operation.  Contact NCL Support.
+#
+   This error should not occur during normal operation.  Contact NCL Support.
+#
+   This error should not occur during normal operation.  Contact NCL Support.
+#
+   This error should not occur during normal operation.  Contact NCL Support.
+#
+   This error should not occur during normal operation.  Contact NCL Support.
+#
+   This error should not occur during normal operation.  Contact NCL Support.
+#
+   This error should not occur during normal operation.  Contact NCL Support.
+#
+   Error should not occur during normal operation.  Contact NCL Support.
+#
+   Error should not occur during normal operation.  Contact NCL Support.
+#
+   Error should not occur during normal operation.  Contact NCL Support.
+#
+   The Autosave option is ON.  The system will periodically Snapsave 
+   the database according to the parameters set when the option was 
+   invoked.  You can restore the most recent Autosaved database by 
+   selecting the Restore icon in the File Management subsystem.
+@
+@
+#
+ The library must be a directory.  You must create the library
+ before attempting to archive to the library.
+#
+ The archive library must be empty before it can be deleted.
+@
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ NCL set the indicated limit based on anticipated user requirements.  
+ If the limit is too low for your specific requirements, contact NCL 
+ Customer support.
+ 
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ NCL set the indicated limit based on anticipated user requirements.  
+ If the limit is too low for your specific requirements, contact NCL 
+ Customer support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ The system could not delete the master symbol in the library.  This error
+ will occur when you do not have the permission of the owner of the library
+ to write or delete symbols in the library.  
+ 
+ You should save the symbol using a different name or obtain permission from the
+ owner of the old symbol to delete it.
+ 
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ The library in which symbols are to be archived must be created prior
+ to starting NCL.  Use a different path name or exit the system and
+ create the archive library.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ The named symbol does not exist in the library specified.  To see the 
+ names of the symbols in the library, select the List Symbol Library 
+ option.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Symbols cannot currently contain drafting entities nor other symbols.
+ Drafting entities must be simulated with ordinary curves and text nodes.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ The archive library must be empty before it can be deleted.  Use the
+ List Master Symbols in Library option to list the symbols remaining 
+ in the library.  Use the Delete Master Symbol From Library option to
+ delete symbols from the library.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ The symbol archive library must be a directory.  You must use the Create
+ Symbol Library option to create the library before attempting to archive 
+ symbols into the library.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+#
+ If the number of selected symbol entities indicated in the error message is not
+ the correct number for the symbol, try again making sure that only the
+ correct entities are selected.
+#
+ During a load or merge of parts containing symbol instances, the data 
+ base may become inconsistent. There may be more than one master symbol 
+ of the same name or some master symbol can not be instanced. In this 
+ case, the data base is reset and the part has been deleted.
+#
+ Error should not occur during normal operation.  Contact NCL Support.
+@
+#
+ The system could not find the named plot setup file.  
+ 
+ You must define the setup file using the Create/Update Setup
+ file option.
+#
+ The system could not find the named pen table file.  
+ 
+ You must define the pen table using the Create/Update Pen Table option.
+#
+ This error should not occur during normal system operation. 
+ Contact NCL Support.
+#
+ Quickplot projects the view of the model onto the construction plane, 
+ therefore, the construction plane must be the same as the viewing plane
+ in the viewport selected for Quickplot. 
+ 
+ To set the construction plane parallel to the view, select the Axis/Grid
+ subsystem and invoke the Align to Viewing Plane option.
+#
+ To list the names of all drawings that have been defined for the model,
+ select the List Drawings option in the Plot Management subsystem.
+#
+ The system will not let you set the grid spacing smaller than 1/20
+ of the viewport aperture.  This prevents you from accidentally drawing 
+ a grid with spacing so fine that it takes several minutes to draw.  You
+ will see the aperture displayed at the bottom of the Activate Grid 
+ form.  Note that the snap resolution can be set as small as desired.  
+#
+ This error should not occur during normal system operation. 
+ Contact NCL Support.
+#
+ This error should not occur during normal system operation. 
+ Contact NCL Support.
+#
+ 
+ 
+ This error should not occur during normal system operation. 
+ Contact NCL Support.
+#
+ This error should not occur during normal system operation. 
+ Contact NCL Support.
+#
+ Error should not occur during normal system operation.  Contact NCL Support.
+#
+ Error should not occur during normal system operation.  Contact NCL Support.
+#
+ Error should not occur during normal system operation.  Contact NCL Support.
+@
+#
+ The system has attempted to load drafting standard modal
+ settings from the named file.  The file name is specified in the 
+ DRAFTSTD parameter in the U.INIT initialization file.  
+ 
+ You should exit the system and use the host operating system
+ utilities to list the contents of the U.INIT file and to verify the 
+ existance of the specified default file.  A valid U.INIT file and 
+ default file are provided on the NCL distribution file.  If you are
+ using these files as distributed, contact NCL support.
+#
+ The following fonts are provided by NCL:
+ 
+ NAME                     DESCRIPTION
+ --------------           --------------------------
+ ROMSIM                   Roman simplex
+ ANSI                     Modified Roman Simplex
+ GRKSIM                   Greek Simplex
+ DUPLEX                   
+ ITALIC
+ 
+ 
+#
+ The system may have picked an entity other than the one you intended.  You 
+ can exercise better control over which entity is picked by;
+ 
+ - using care when positioning the cursor.  The cursor should touch 
+   only the entity which you wish to pick.
+ 
+ - using a selective pick trigger key instead of the mouse button
+   'l' key - only a line will be picked
+   'a' key - only an arc or a circle will be picked.
+ 
+ - zooming in closer to the portion of the view where the pick will 
+   occur, or changing to an oblique view.
+#
+ This error can be caused by snapping of located points (points input
+ with the (+) cursor) to the grid.  Check that snap resolution set with 
+ the Define Grid Icon in the Axis/Grid subsystem is correct.
+#
+ The system may have picked an entity other than the one you intended.  You 
+ can exercise better control over which entity is picked by;
+ 
+ - using care when positioning the cursor.  The cursor should touch 
+   only the entity which you wish to pick.
+ 
+ - using a selective pick trigger key instead of the mouse button
+   'l' key - only a line will be picked
+   'a' key - only an arc or a circle will be picked.
+ 
+ - zooming in closer to the portion of the view where the pick will 
+   occur, or changing to an oblique view.
+#
+ The system determined that the lines selected for angular dimensioning
+ are parallel.
+ 
+ The system may have picked an entity other than the one you intended.  You 
+ can exercise better control over which entity is picked by;
+ 
+ - using care when positioning the cursor.  The cursor should touch 
+   only the entity which you wish to pick.
+ 
+ - using a selective pick trigger key instead of the mouse button
+   'l' key - only a line will be picked
+   'a' key - only an arc or a circle will be picked.
+ 
+ - zooming in closer to the portion of the view where the pick will 
+   occur, or changing to an oblique view.
+#
+ NCL set the indicated limit based on anticipated user requirements.  
+ If the limit is too low for your specific requirements, contact NCL 
+ Customer support.
+#
+ All of the curves selected for crosshatching must lie in the same plane.
+ 
+ The system may have picked an entity other than the one you intended.  You 
+ can exercise better control over which entity is picked by;
+ 
+ - using care when positioning the cursor.  The cursor should touch 
+   only the entity which you wish to pick.
+ 
+ - using a selective pick trigger key instead of the mouse button
+   'l' key - only a line will be picked
+   'a' key - only an arc or a circle will be picked.
+ 
+ - zooming in closer to the portion of the view where the pick will 
+   occur.
+#
+ The system determined that the selected curves were not connected
+ endpoint-to-endpoint to form a closed planar boundary.  If the 
+ correct curves appear to have been picked, you can find a point of
+ discontinuity which is not visually apparent by attempting to 
+ change the color of the boundary by doing a chain select.  Select
+ the Edit/Move subsystem Modify Attributes option followed by the
+ Select subsystem Chain Select option.  Pick an endpoint of a curve
+ on the boundary.  Observe the attention diamonds resulting from the
+ pick.  No diamonds will appear on the curves following the point
+ of discontinuity.
+#
+ Selected geometry is projected onto the working plane to determine the 
+ dimension distance.  If the working plane is not parallel to the 
+ drafting viewing plane, the points input for dimensioning can appear
+ to be separated even though they are coincident on the working plane.
+ You can input the points to the Calculator by picking them to 
+ determine whether they have the same x,y coordinates in the working
+ plane.  
+#
+ The drafting standards file name should be specified in the DRAFTSTD
+ parameter in the U.INIT initialization file.  The DRAFTSTD parameter
+ was not specified.  NCL provides a valid U.INIT file on the 
+ distribution media.  Exit the system and use the host operating
+ system utilities to list the U.INIT file and compare it to the 
+ distributed file.  Contact NCL support if they compare.
+#
+ The system may be picking an entity other than the one you intend.  You 
+ can exercise better control over which entity is picked by;
+ 
+ - using care when positioning the cursor.  The cursor should touch 
+   only the entity which you wish to pick.
+ 
+ - using a selective pick trigger key instead of the mouse button
+   'l' key - only a line will be picked
+   'a' key - only an arc or a circle will be picked.
+ 
+ - zooming in closer to the portion of the view where the pick will 
+   occur.
+#
+ The system may be picking an entity other than the one you intend.  You 
+ can exercise better control over which entity is picked by;
+ 
+ - using care when positioning the cursor.  The cursor should touch 
+   only the entity which you wish to pick.
+ 
+ - using a selective pick trigger key instead of the mouse button
+   'l' key - only a line will be picked
+   'a' key - only an arc or a circle will be picked.
+ 
+ - zooming in closer to the portion of the view where the pick will 
+   occur.
+#
+ The drafting entity selected either does not contain any text
+ (possibly the wrong entity was selected); or it is not
+ text which can be modified by the user.  Some drafting entities 
+ contain text which is automatically generated by the system and
+ cannot be modified by the user.
+#
+ The system may be picking an entity other than the one you intend.  You 
+ can exercise better control over which entity is picked by;
+ 
+ - using care when positioning the cursor.  The cursor should touch 
+   only the entity which you wish to pick.
+ 
+ - using a selective pick trigger key instead of the mouse button
+   'l' key - only a line will be picked
+   'a' key - only an arc or a circle will be picked.
+ 
+ - zooming in closer to the portion of the view where the pick will 
+   occur.
+@
+#
+ 
+ 
+             SYSTEM ERROR!!!!!
+ 
+ This application has used up all available dynamic memory on
+ this system, has run out of swap space, or some such other
+ catastrophic error.
+ 
+ In order to attempt recovery, an automatic 'jump to root' will
+ be executed.  Save your part, exit the application, and
+ re-execute.  If Unibase is not corrupted you should be able
+ to recover the part.  If not, reload from the last snapsave
+ or a back-up copy of the part.
+#
+ 
+ 
+             FATAL SYSTEM ERROR!!!!!
+ 
+ This application has used up all available choice devices that
+ the menu navigator uses to assign a menu node.  The system will now exit.
+ 
+ In order to run, two solutions are available.
+ 
+ 1)   Increase the number of choice devices in DIGS.
+ 2) Reset the choice device alogrithm flag to allocate devices
+ sequencially.  This flag may be found in dasnog.h
+#
+ 
+ 
+             FATAL SYSTEM ERROR!!!!!
+ 
+ This application has used up all available choice devices that
+ the popup menu handler uses to assign a popup node.  The system will now exit.
+ 
+ In order to run, there is one solution available.
+ 
+    Increase the start number of the menu choice device (UD_MENU_CHC_DEV_ST) 
+    in "dasnog.h" and recompile d1alloc.c.
+ 
+    Popup menus are allocated from UD_POP_CHC_DEV_ST and end at
+    UD_MENU_CHC_DEV_ST-1.  The difference of thos two values must be larger
+    than the number of popup menus in the system.
+ 
+    The default (DDC) values are:
+ 
+       UD_POP_CHC_DEV_ST  21      /* start choice dev number for popup menus */
+       UD_MENU_CHC_DEV_ST 71      /* start choice dev number for normal menus */
+@
+#
+ 
+ 
+             FATAL SYSTEM ERROR!!!!!
+ 
+ The class number in the class table is different from the row that
+ is being initialized.
+ 
+ In order to run, the initialized class number must be equal to the
+ row number.  The row is out of sequence.  The class table must be
+ defined at compile time in ascending numerical order.
+@
+@
+#
+ Error should not occur during normal operation.  Contact NCL Support.

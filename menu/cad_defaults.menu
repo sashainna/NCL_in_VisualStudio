@@ -1,0 +1,20 @@
+#Descriptor#
+/NAME/ Defaults
+/POSITION/ 0.6,.6
+/SIZE/ 0.352539,0.114583
+/ROWS/ 2
+/COLS/ 5
+/TYPE/ Menu
+/FORMAT/ TEXT
+
+#Menus#
+/Set Attribs/ NCL_SET_ATTRIBS
+/Axis Grid/ cad_axgrid.menu
+/Input Layer/ NCL_INPUT_LAYER
+/Inches/ NCL_SET_INCH
+/Name Modals/ NCL_NAME_MODALS
+/Misc Modals/ NCL_MISC_MODALS
+/Manage Layers/ NCL_LAYERS
+/Millimeters/ NCL_SET_MM
+/Pick Modals/ NCL_PICK_MODALS
+/Disp List/ NCL_UNIBASE_MODALS

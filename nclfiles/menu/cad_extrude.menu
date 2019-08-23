@@ -1,0 +1,13 @@
+#Descriptor#
+/NAME/ Extrusions
+/POSITION/ 0.0,0.0
+/SIZE/ 0.083,0.121
+/ROWS/ 3
+/COLS/ 1
+/TYPE/ Pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Linear/ CAD_GEO_EXTR_LINEAR
+/Circular/ CAD_GEO_EXTR_CIRC
+/Project/ CAD_GEO_EXTR_PROJECT

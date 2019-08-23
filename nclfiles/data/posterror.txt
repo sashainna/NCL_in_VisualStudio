@@ -1,0 +1,208 @@
+AXSTKOVR$	Output axes stack overflow.  Internal bug.
+AXSTKUND$	Output axes stack underflow.  Internal bug.
+BADMX$	Did not calculate proper rotation values from the rotation matrix.
+CIRANG$	Rotary movement in circular interpolation.  Reverted to linear motion.
+CIRMAXR$	Circle radius over maximum.  Output as linear motion.
+CIRMINR$	Circle radius under minimum. Output as linear motion.
+CIRPLN$	Could not calculate circular plane.  Output as linear motion.
+CIRPOL1$	Circular interpolation is not supported in polar coordinate system.
+CIRPOL2$	Output as linear motion.
+CIRRAD$	Radius = %s   Limit = %s
+CIRTOLR$	Circular move out of radius tolerance.  Reverted to linear motion.
+CIRVEC$	Tool axis vector is not parallel to circle axis.
+CIR3AX$	3-axis movement in circular interpolation.  Reverted to linear motion.
+CLSINV$	CLRSRF/START or STOP issued without any plane defined.
+CLSEXCC$	Number of planes exceeded maximum (10) allowed for CLRSRF.
+CLSMOD$	Z-axis direction modifier expected (NEGZ,POSZ).
+COMAEXP$	Comma expected.
+COMPLXEQ$	Equation is too complex.
+CONFPRM$	Conflicting parameters.  This command is ignored.
+CUTANG$	Angular change is too great while CUTCOM is active.  Did not alter output.
+CUTANG1$	Angular change = %s degrees.  Maximum allowed = %s degrees.
+CUTENT$	Initial CUTCOM move is circular motion and may not be supported by the machine.
+CUTMOV$	Move is in non-CUTCOM axis only, which may not be supported by the machine.
+CUTPLN$	CUTCOM and circular planes do not match.  Reverted to linear motion.
+CUTVEC$	CUTCOM vector component is out of range.  Set to maximum value allowed.
+CUTVEC1$	Value = %s   Maximum = %s
+CYCACT$	This command is not valid when CYCLEs are in effect.  Ignored command.
+CYCCIR$	Canned cycle currently in effect.  Output circular record as linear motion.
+CYCCUT$	Cycle & Cutcom not allowed at the same time.  Ignored command.
+CYCNACT$	CYCLE is not currently active.  Ignored command.
+DEFAULT$	DEFAULT
+DEMPART$	Part may be damaged.
+DEPMAX$	%s axis exceeded maximum departure allowed.  Did not alter output.
+DEPLMT$	Delta = %s   Limit = %s
+DIVZERO$	Attempted divide by zero.
+DONOTDEF$	A DO loop is not being defined.
+DLYOFF$	Delay per revolution programmed with spindle off.  No delay output.
+ERRLIN$	#ERROR - %s at line %s in %s macro.
+ERRLIN2$	#ERROR - %s at PC %s in %s macro.
+ERRSUM$	%s -  %s completed with %s errors.
+EXCLAXS$	Mutually exclusive axes %s and %s move at the same time.
+FMTEXP$	Format specifier expected.
+FMTRNG$	Format specifier out of range.
+FPROFF$	Feed per revolution programmed with spindle off.  Changed to FPM mode.
+HITKEY$	Hit any key to continue or ^C to cancel display.
+IFDODEEP$	IF/DO structure nested too deeply.
+IFDONEST$	Illegal nesting of IF/DO structures.
+IFNOTDEF$	An IF structure is not being defined.
+INCOVL$	Too many nested include files.  INCLUD command ignored.
+INFZON$	Tool is currently in interference zone #%s.  Did not alter output.
+INPRANG$	Input value out of range.
+INPRNG$	Input value out of range.  This command is ignored.
+INVADJF$	Invalid syntax for Machine Adjust File record.
+INVAPTSC$	Invalid syntax for APT Source record.
+INVARG$	Invalid argument to function.
+INVCIRC$	Circular interpolation records are ignored.
+INVCKPL$	Check plane is invalid. Could not calculate end position.
+INVFRMI$	Invalid input for record %s: "%s".
+INVGOFWD$	GOFWD statement programmed without circle or direction statement.
+INVGOTO$	Invalid number of values in GOTO command.
+INVINSTR$	Invalid runtime instruction.
+INVLAB$	Invalid label descriptor.
+INVLEV$	Invalid level number.
+INVLICO$	You are not authorized to run this software product.
+INVLIC$	You are not authorized to run this Machine Descriptor File.
+INVMAJOR$	Invalid major word.  This command is ignored.
+INVMINOR$	Invalid minor word.  This command is ignored.
+INVMX$	Invalid matrix definition.  This command is ignored.
+INVNUMPR$	Invalid number of parameters in command.
+INVOPT$	Invalid runtime option: "%s".
+INVPARAM$	Invalid parameter in command definition.
+INVPSIS$	Unrecognized PSIS statement.
+INVPSYN$	Invalid command syntax.  This command is ignored.
+INVPSYNW$	Invalid command syntax.  The rest of the command is ignored.
+INVRESP$	Invalid response.
+INVRSP$	Invalid response.  Type in a '?' for help.
+INVSYN$	Invalid syntax.
+IVMINORW$	Invalid minor word.  This word is ignored.
+LABEXP$	Label expected.
+LABMAX$	Maximum of 24 characters per label/variable.
+LEFTVEC$	Unfulfilled portion of vector = %s, %s, %s
+LMTLWR$	%s axis exceeded negative limit.  Did not alter output.
+LMTMSG$	Axis value = %s   Limit = %s
+LMTUPR$	%s axis exceeded positive limit.  Did not alter output.
+LOCK2R$	Both activated rotary axes move about the same vector.  Locked 2nd axis.
+LOCKALLR$	Activated rotary axes move about the spindle vector.  Locked all axes.
+LOGG1$	+P9);1099,55;;K=~2,~9[*/)0.*1,//[2~
+LONGRTE$	Rotary axes are taking the longest route.
+MACDEF$	A Macro is currently being defined.
+MACERRLN$	#ERROR - %s at (ISN=%s, Clrec=%s, PC=%s) in %s macro.
+MACHMAX$	Too many MACHIN cards.  Remainder ignored.
+MACHSYN$	MACHIN card syntax error.  The clfile was not processed.
+MACONLY$	This statement is only valid within a Macro definition.
+MANYAXIS$	Number of axes in motion block exceeds maximum allowed.
+MANYERRS$	#FATAL - PostWorks terminated due to too many errors.
+MANYPRMS$	Too many parameters are specified on this command.
+MAXARG$	Too many arguments for Macro.  Remainder ignored.
+MDFVER$	MDF version of %s is later than program version of %s.
+MEMALL$	Error trying to allocate work memory.  System error.
+MINOREXP$	Minor word expected.  This command is ignored.
+MULTBLK$	This move was broken up into multiple blocks.
+MULTLAB$	Multiple definition of Label.
+MULTMAC$	Multiple definition of Macro.
+MULTPARM$	Multiple definition of same parameter.
+MULTVAR$	Multiple definition of Variable.
+NESTCALL$	Post-processor command will generate illegal internal call.
+NOAVOID$	A CLRSRF/AVOID command has not yet been defined.  Ignored command.
+NOAXIS$	This axis is not active in the current post configuration.
+NOCIRDIR$	Cannot calculate circular direction. Output as linear motion.
+NOCRAD$	Calculated circle radius is zero.
+NOCYCDEF$	CYCLE/ON programmed without a previous CYCLE mode.  Ignored command.
+NOHELP$	There is no help for this prompt.
+NOLDTOOL$	A LOADTL statement was not encountered.  Ignored command.
+NOMACERR$	#ERROR - %s at (ISN=%s, Clrec=%s).
+NOMACHIN$	A MACHIN card was not found.  The clfile was not processed.
+NOMACRO$	This Macro has not been defined.
+NOMEMALL$	A requested portion of memory has not been allocated.  Internal bug.
+NOPUNCH$	A Punch file is not being generated due to previous errors.
+NORETRCT$	A RETRCT command has not been programmed yet.  Ignored command.
+NOROTB1$	Unable to bring move within limits by rotating table.
+NOROTB2$	Enabling MODE/ROTATE may alleviate this problem.
+NOROTSOL$	The active rotary axes could not fulfill the tool axis vector.
+NOSCALAR$	A requested variable has not been allocated.  Internal bug.
+NOSCHLEV$	There is no such menu level.
+NOTAPPLY$	This prompt does not apply to the current post configuration.
+NOTBEGIN$	Statement may not begin with this.
+NOTDESIR$	Output may not be what is desired.
+NOTPERP$	Tool axis must be perpendicular to a table. Ignored command.
+NOTPERP1$	Tool axis is not perpendicular to a table.
+NOTPERP2$	Command MODE/ROTATE has been canceled.
+NOTVALID$	This command is not valid for this machine.  Ignored command.
+NUMBEXP$	Number expected.  This command is ignored.
+NUMVAREX$	Number or variable expected.
+OBJVER$	Pmacro Object version %s is a mismatch with program version of %s.
+OPEREXP$	Operator expected.
+OUTNOT$	Output may be corrupted.
+PARENIV$	Invalid nesting of parenthesis.
+PARENLF$	Left parenthesis without right parenthesis.
+PARENRT$	Right parenthesis without left parenthesis.
+PGMLARG$	Program is too large.
+PLNEXP$	Plane expected.
+POSITROT$	An attempt was made to move a positioning axis with contouring axes.
+PRCMULT$	#ERROR - Multiple definition of Print Descriptor File record.
+PRCSYN$	#ERROR - Print Descriptor File syntax error.
+PRTOFF$	* * * * * * * * * * * *   L I S T I N G   O F F   * * * * * * * * * * * *
+PSTAERR$	#INPUT ERROR - %s at (Isn=%s, Clrec=%s).
+PSTERR$	#ERROR - %s at (Isn=%s, Clrec=%s).
+PSTERRSM$	%s Warnings   %s Errors   %s Fatals
+PSTERRSN$	%s Warnings   %s Errors   %s Fatals   %s Input Errors
+PSTFAT$	#FATAL - %s at (Isn=%s, Clrec=%s).
+PSTSUM$	%s - %s completed at %s %s
+PSTWRN$	#WARNING - %s at (Isn=%s, Clrec=%s).
+RDPRM$	Error reading Standalone Prompt record.
+RETRDISA$	Automatic retract feature is disabled.
+ROTNOSAT$	The rotary axis could not be moved in the requested direction.
+ROTXFM$	There is rotary axes movement when a transformation block is active.
+SETTINGS$	Some of the settings may be incorrect.
+SFMMAX$	Spindle SFM speed exceeded maximum allowed.  Set to maximum.
+SFMMIN$	Spindle SFM speed exceeded minimum allowed.  Set to minimum.
+SLWSHORT$	Distance too short for slowdown span.  Output entire move at slowdown feed.
+SMDNOPT$	The second mandatory tool end coordinate was not programmed.
+SMDNPERP$	The forward vector and tool axis vector are not perpendicular.
+SMDNPRP3$	The drilling vector for Head 3 is not perpendicular to the stringer.
+SMDNPRP4$	The drilling vector for Head 4 is not perpendicular to the stringer.
+SMDNSAME$	Coordinates must be programmed in pairs and be the same location.
+SMROTAX1$	Both active rotary axes move about the same vector.
+SMROTAX2$	Could not calculate new rotaries.
+SPAWN$	Error trying to spawn sub-process "%s".
+SPNLMT$	Spindle speed = %s   Limit = %s
+SPNMAX$	Spindle RPM speed exceeded maximum allowed.  Set to maximum.
+SPNMIN$	Spindle RPM speed exceeded minimum allowed.  Set to minimum.
+STENDCON$	End of file reached while searching for continuation record.
+STLONG$	Statement cannot be longer than 512 characters.
+SUBEXP$	Subscript expected.
+SUBMANY$	Too many subscripts specified.
+SUBNEED$	Not enough subscripts specified.
+SUBOUND$	Subscript out of bounds.
+SUBRANG$	Subscript range not allowed.
+SYNMACH$	Invalid Machine name: "%s".
+SYNOPT$	Invalid syntax for runtime option: "%s".
+TAB1ST$	Tables must be defined prior to heads.
+TABCYL$	Cylinder axis must be a table type rotary axis.
+TABCYL1$	Invalid 3-rd axis specified in machine plane definition.
+TOOLDIF1$	This tool number does not match the tool selected using SELCTL.
+TOOLDIF2$	The SELCTL parameter will be used.  SELCTL = %s
+TOOLEN1$	This tool does not have the same tool length as previously programmed.
+TOOLEN2$	The new length will be used.  Previous length = %s
+TOOLGRP1$	This tool gripper does not match the gripper selected using SELCTL.
+TOOLNSEL$	This tool was not previously selected.  A SELCTL was issued internally.
+TOOLMAX$	Tool number over maximum allowed.  Maximum = %s
+TOOLOVR1$	You have exceeded the local tool storage.
+TOOLOVR2$	This tool will overwrite a previous loaded tool.
+TOOLRD1$	This tool does not have the same tool radius as previously programmed.
+TOOLRD2$	The new radius will be used.  Previous radius = %s
+TOOLSPN1$	This tool spindle does not match the spindle selected using SELCTL.
+TXTVAREX$	Text variable expected.
+UNCLSDIF$	Unclosed IF/DO structure.
+UNDEFLAB$	Undefined label.
+UNDEFVAR$	Undefined variable.
+UNRECCL$	Unrecognized clfile record.  Type = %s   Sub-type = %s.
+UNRECCMD$	Unrecognized command.
+VAREXP$	Real variable expected.
+VARVOCNM$	Variable, vocabulary word or number expected.
+VECPLN$	Tool axis does not intersect clearance plane.  Ignored command.
+VOCEXP$	Vocabulary word expected.
+VECZERO$	Calculated vector has a length of zero.
+WRDNUMRG$	Vocabulary word, number or range expected.
+ZPARLEL$	The Z-axis is parallel to the XY plane.  The output point is incorrect.

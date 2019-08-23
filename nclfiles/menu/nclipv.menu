@@ -1,0 +1,39 @@
+#DESCRIPTOR#
+/NAME/ NCL/IPV
+/POSITION/0,0
+/SIZE/ 0,0
+/ROWS/8
+/COLS/3
+/TYPE/ ICON
+/AREA/ Left
+/KEYDEFS/ ipvkey.wnt
+/FORMAT/ TEXT
+
+#MENUS#
+/Start Session/ IPV_INTERACTIVE
+/End Session/ IPV_STANDALONE
+#CHOICE# ipv_session.menu
+#CHOICE# ipv_modals.menu
+/Machine/ IPV_LOAD_MACHINE
+/Clashes/ IPV_DIAGNOSTICS
+#BAR#
+#CHOICE# ipv_toolpath.menu
+/Simulate/ IPV_PLAYBACK
+#BAR#
+/Stock/ ipv_stock.menu
+/Fixture/ ipv_fixt.menu
+#CHOICE# ipv_prims.menu
+#BAR#
+/Colors/ IPV_CUT_COLORS
+/Tool List/ IPV_TOOL_LIST
+/Tool Modals/ IPV_TOOL_MODALS
+#BAR#
+#CHOICE# ipv_analyze.menu
+#BAR#
+/Dynamic/ IPV_DYNAMIC_MOUSE
+/Center/ IPV_VIEW_CENTER
+/Fit/ IPV_FIT_VIEW
+/Window/ IPV_WINDOW_ZOOM
+#CHOICE# ipv_view_static.menu
+/Reset/ IPV_VIEW_SAME
+/Repaint/ IPV_REPAINT_VIEW

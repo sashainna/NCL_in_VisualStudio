@@ -1,0 +1,11 @@
+#HEADER#
+/TITLE/ Tool Axis Modifier
+/POSITION/ 50,50
+/SIZE/130,55
+
+#CHOICEBOX#
+/LABEL/ Gouge Avoidance:
+/POSITION/ 12,10,75,10
+/SIZE/110,40
+/TYPE/ UD_DASSTRING
+/CHOICES/ "Off", "On"

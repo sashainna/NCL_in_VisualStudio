@@ -1,0 +1,18 @@
+#Descriptor#
+/NAME/ Control
+/POSITION/ 0.544922,0.057292
+/SIZE/ 0.083008,0.208333
+/ROWS/ 7
+/COLS/ 1
+/TYPE/ Pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Set-Reset/ CAM_SET_MODAL
+#Bar#
+/Skip To/ CAM_SKIP_LINE
+/Find/ CAM_FIND_LINE
+/Del Line/ CAM_DELETE_LINE
+#Bar#
+/Ssrc Cur/ CAM_SSRC_CURRENT
+/Ssrc Scroll/ CAM_SSRC_SCROLL

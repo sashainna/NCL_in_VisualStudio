@@ -1,0 +1,18 @@
+#Descriptor#
+/NAME/ Cad Circles
+/POSITION/ 0.0,0.0
+/SIZE/ 0.083,0.251
+/ROWS/ 8
+/COLS/ 1
+/TYPE/ Pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Pt-Pt-Pt/ CAD_GEO_CI_PTPTPT
+/Pt-Pt-Dia/ CAD_GEO_CI_PTPTDI
+/Ce Ra/ CAD_GEO_CI_CERA
+/Ce Pt/ CAD_GEO_CI_CEPT
+/Ce Tan/ CAD_GEO_CI_CETT
+/Tt-Tt-Ra/ CAD_GEO_CI_TTRA
+/Tt-Tt-Tt/ CAD_GEO_CI_TANTO
+/N Circles/ CAD_GEO_CI_NCIRC

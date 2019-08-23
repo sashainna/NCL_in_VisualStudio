@@ -1,0 +1,12 @@
+#Descriptor#
+/NAME/ File Status
+/POSITION/ 0,0
+/SIZE/ .329,.035
+/ROWS/ 1
+/COLS/ 1
+/TYPE/ Icon
+/Area/ Top
+/FORMAT/ TEXT
+
+#Buttons#
+/Elapsed Time = / TIME, NCL_UPDATE_TIME

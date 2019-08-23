@@ -1,0 +1,15 @@
+#Descriptor#
+/NAME/ Cam Move
+/POSITION/ 0.085938,0.041016
+/SIZE/ 0.115625,0.068359
+/ROWS/ 5
+/COLS/ 1
+/TYPE/ Pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Pt-Pt/ CAD_MOVE_PTPT
+/Vector/ CAD_MOVE_VECTOR
+/Drag/ CAD_MOVE_DRAG
+/Rotate/ CAD_MOVE_ROTATE
+/Mirror/ CAD_MOVE_MIRROR

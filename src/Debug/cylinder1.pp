@@ -1,0 +1,23 @@
+$$ LN1   =LN/1,0,1,1,0,6
+LN1   =LN/1,0,-1,1,0,6.125
+$$ PV1   =PV/0,0,0,0,0,1
+PV1   =PV/0,0,5.125,0,0,-1
+$$V2 = VECTOR/0.707,0,0.707
+$$ PL1   =PL/0,0,1,0
+PL1   =PL/0,0,1,5.125
+PL2   =PL/0,0,1,0
+$$ PL2   =PL/0.707,0,0.707,0
+$$PL2   =PL/0,0.707,0.707,5.125
+$$ PL2   =PL/0.1,0.0,0.707,0.0
+$$PL2   =PLANE/V2,0
+$$ PT1   =PT/-1.5,0.0,1.5
+PT1   =PT/0,0,5.125
+$$ PT1   =PT/0,0.0,0
+SF1   =NSURF/REVOLV,LN1,PV1,0,360
+CU    /0.25,0.125,0.25,-89
+$$ CV7=cv/intof,SF1,pl1
+GOTO  /PT1
+TA    /THRU,PT1
+PMILL/SF1,CONTCT,PL1,PL2,STEP,1.0,HELIX,omit,in
+invis/SF1
+

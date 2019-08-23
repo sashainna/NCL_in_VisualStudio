@@ -1,10 +1,10 @@
 C***********************************************************************
 C*    NAME         :  clfile.f
 C*       CONTAINS:
-C*					clinit  getcln  setclf  setas  clsave  clfile  clwrit 
+C*					clinit  getcln  setclf  setas  clsave  clfile  clwrit
 C*					clwr    clload  clrev
 C*    COPYRIGHT 1993 (c) NCCS Inc.  All Rights Reserved.
-C*     MODULE NAME AND RELEASE LEVEL 
+C*     MODULE NAME AND RELEASE LEVEL
 C*        clfile.for , 26.2
 C*    DATE AND TIME OF LAST  MODIFICATION
 C*        09/26/18 , 12:49:56
@@ -765,7 +765,7 @@ c
      1          ioclf,irev,idid,is1,is4,iend,nc,iflg,iflg1,
      2          iwrd(10)
 c
-    
+ 
 c
       real*8 rdata(420),tmpdat(420)
 c
@@ -776,11 +776,7 @@ c
 c
       data iwrd /0, 1009, 1007, 5, 0,0,0,0,0,0/
 c
-!=IRS,HPX,SUN,IBM,VMS
-!      data is1 /1/, is4 /4/
-!=WNT,W2K
       data is1 /4/, is4 /1/
-!=ALL
 c
 c...Initialize routine
 c

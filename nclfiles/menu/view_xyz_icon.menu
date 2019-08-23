@@ -1,0 +1,14 @@
+#Descriptor#
+/NAME/ View Axis
+/POSITION/ 0.000000,0.839844
+/SIZE/ 0.082813,0.036133
+/ROWS/ 3
+/COLS/ 1
+/TYPE/ Icon
+/Area/ Area2
+/FORMAT/ TEXT
+
+#Menus#
+/X/ NCL_VIEW_X
+/Y/ NCL_VIEW_NEGY
+/Z/ NCL_VIEW_Z

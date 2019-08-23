@@ -1,0 +1,17 @@
+#Descriptor#
+/NAME/ Ncl Lathe
+/POSITION/ .1,.15
+/SIZE/ 0.081055,0.145833
+/ROWS/ 2
+/COLS/ 3
+/TYPE/ Menu
+/FORMAT/ TEXT
+
+#Menus#
+/Shape/ CAM_GEO_SHAPE
+/Lathe Rough/ CAM_LATHE_ROUGH
+/Mod Attrib/ CAM_GEO_SH_ATTRIB
+/Sh Pp Words/ CAM_GEO_SH_PPWORDS
+/Lathe Finish/ CAM_LATHE_FINISH
+/Modals/ CAM_GEO_SH_MODALS
+

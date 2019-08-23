@@ -1177,7 +1177,7 @@ doit:
 				case 401: nclu_cv_offset1(3); break;
 				case 402: nclu_cv_out(6); break;
 				case 403: nclu_cv_out(7); break;
-				case 404: break;
+				case 404: nclu_pmill(); break;
 				case 405: nclu_smill(); break;
 				case 406: nclu_data_stmt(); break;
 				case 407: nclu_mx_coordsys();break;

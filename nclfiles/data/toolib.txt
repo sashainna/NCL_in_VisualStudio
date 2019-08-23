@@ -1,0 +1,75 @@
+##
+##     MODULE NAME AND RELEASE LEVEL
+##       toolib.txt , 17.2
+##    DATE AND TIME OF LAST  MODIFICATION
+##       10/14/3 , 16:53:25
+##
+Addmod$	This Tool currently exists.  Overwrite?
+Addrec$	New tool successfully added.
+Banner$	NCL Tool Library:                       *  Symbol Library:
+Batlog$	%s Tools added.  %s duplicate Tools.  %s syntax errors.
+Batsyn$	Batch file syntax error.
+Default$	DEFAULT
+Delconf$	Do you really want to delete this Tool?
+Delrec$	Tool entry successfully deleted.
+Findtool$	Enter Tool to search for:
+Hitkey$	                              Hit any key to continue.
+Invfrmi$	Invalid input for form field: "%s".
+Invlev$	Invalid level number.
+Invopt$	Invalid runtime option. "%s".
+Invrsp$	Invalid response.
+Libexist$	Tool Library "%s" already exists.  Overwrite?
+Libnam$	Enter Tool Library name:
+Lodbat$	Enter Tool Library batch file to load:
+Lodlib$	Enter Tool Library to load:
+Modrec$	Existing tool successfully modified.
+Notfound$	Could not find requested Tool.
+Page$	Page:
+Savbat$	Enter Tool Library batch file to create:
+Savlib$	This Tool Library has been modified.  Do you want to save it?
+Savlis$	Enter Tool Library listing file to create:
+Select$	Selection:
+Stat1$	Tool Library:
+Stat2$	Description:
+Stat3$	Symbol Library:
+Stat4$	Created:                             Updated:
+Stat5$	Tool Entries:          Low Tool Number:              High Tool Number:
+Stat6$	Units:            Modified:
+View1$	Tool:              Description:
+View2$	CUTTER PARAMETERS
+View3$	                       Actual                  Display
+View4$	                  Default   Param          Default   Param
+View5$	Diameter:
+View6$	Corner Radius:
+View7$	Height:
+View8$	Side Ang/Rad:
+View9$	Z-Height:
+View10$	Flat Angle:
+View11$	Display Parameters
+View12$	Cutter Segments:           Dynamic Cutter:            Shaded:
+View13$	Symbol:                Tool Drawing:
+View14$	Holder:         Attach Point:             Min,Max:
+View15$	Load Tool Command:
+View16$	       /                ,                ,                ,                , $
+View17$	                        ,                ,                ,                , $
+View18$	                        ,                ,                , 
+View19$	                      View/Modify Tool Entry
+View20$	*******************************************************************************
+View21$	| F = Find  | V = View  | M = Modify  | A = Add  | D = Delete  | ^C = Return  |
+View22$	Shank Diameter:          Height:
+View23$	Shank Width:             Length:          Depth:          Y-Offset:
+
+1	Load Tool Library.
+2#	Define Tool Library.
+
+2.1	Enter Tool Library name:
+2.2	Description:
+2.3	Enter Symbol Library name:
+
+3	Tool Library Statistics.
+4	View/Modify Tool Entry.
+5	Add From Batch File.
+6	Create Batch File.
+7	Create Brief Tool Library List.
+8	Create Full Tool Library List.
+9	Exit.

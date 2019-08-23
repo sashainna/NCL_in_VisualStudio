@@ -1,0 +1,25 @@
+12345UNICAD FILE HEADER DATA
+  128*INCH**DATE:11/18/2003, 11:29NCL VERSION*9.350**    8     STREAM      ASCII     **WINDOWS*NT*
+MENU nclcam.menu cam
+MENU CAM_GEO_LN_XY CAM_GEO_LN_XY
+/*****  coordinates of point:  *****/
+LOCATOR device = 3 trans = 1 loc  = (-2.855638e+000 8.937251e-001 0.000000e+000), choice = 1
+/*****  coordinates of point:  *****/
+LOCATOR device = 3 trans = 1 loc  = (3.618959e+000 1.780628e+000 0.000000e+000), choice = 1
+/*****  coordinates of point:  *****/
+LOCATOR device = 3 trans = 1 loc  = (-2.514870e+000 -2.421927e+000 0.000000e+000), choice = 1
+/*****  coordinates of point:  *****/
+LOCATOR device = 3 trans = 1 loc  = (4.109665e+000 -1.262131e+000 0.000000e+000), choice = 1
+/*****  coordinates of point:  *****/
+LOCATOR device = 3 trans = 1 loc  = (1.710657e+000 -1.289420e+000 0.000000e+000), choice = 3
+/*****  COMMAND REJECT  *****/
+MENU CAM_GEO_NF_RULED CAM_GEO_NF_RULED
+/*****  Label of first boundary curve of ruled surface  *****/
+PICK device = 3 trans = 1 loc  = (-2.105948e+000 9.619484e-001 0.000000e+000), choice = 1
+/*****  Label of second boundary curve of ruled surface  *****/
+PICK device = 3 trans = 1 loc  = (-8.110285e-001 -2.108100e+000 0.000000e+000), choice = 1
+/*****  Label of first boundary curve of ruled surface  *****/
+PICK device = 3 trans = 1 loc  = (-3.482652e+000 -8.527912e-001 0.000000e+000), choice = 3
+/*****  COMMAND REJECT  *****/
+MENU KEY_RECOFF KEY_RECOFF
+MENU KEY_RECOFF KEY_RECOFF

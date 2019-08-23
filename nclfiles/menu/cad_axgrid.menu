@@ -1,0 +1,20 @@
+#Descriptor#
+/NAME/ Axis Grid
+/POSITION/ 0.0,0.0
+/SIZE/ 0.083,0.303
+/ROWS/ 10
+/COLS/ 1
+/TYPE/ Pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Mdl Ax On/ NCL_MDAXIS_ON
+/Mdl Ax Off/ NCL_MDAXIS_OFF
+/Wp Ax On/ NCL_WPAXIS_ON
+/Wp Ax Off/ NCL_WPAXIS_OFF
+/Set Mdl Ax/ mdlaxis.menu
+/Reset Mdl Ax/ NCL_MDAXIS_RESET
+/Set Wp Ax/ wpaxis.menu
+/Reset Wp Ax/ NCL_WPAXIS_RESET
+/Grid On/ NCL_GRID_ACT
+/Grid Off/ NCL_GRID_INACT

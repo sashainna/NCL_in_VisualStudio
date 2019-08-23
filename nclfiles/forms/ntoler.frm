@@ -1,0 +1,20 @@
+#HEADER#
+/TITLE/ Set Machining Tolerances
+/POSITION/ 0,0
+/SIZE/ 140,70
+
+#EDIT#
+/LABEL/ Chordal Tolerance:
+/POSITION/ 10,8,80,8
+/SIZE/ 120,14
+/TYPE/ UD_SCAVAL
+/PREC/ 4
+/LEN/ -8
+
+#EDIT#
+/LABEL/ Positional Tolerance:
+/POSITION/ 10,27,80,27
+/SIZE/ 120,14
+/TYPE/ UD_SCAVAL
+/PREC/ 4
+/LEN/ -8

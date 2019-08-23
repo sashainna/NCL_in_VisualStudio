@@ -1,0 +1,34 @@
+#Descriptor#
+/NAME/ Second Unibase Management
+/POSITION/ 0.125000,0.013021
+/SIZE/ 0.113281,0.447917
+/ROWS/ 14
+/COLS/ 1
+/TYPE/ Pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Open Unibase/ CAM_UBFN_OPEN
+/Close Unibase/ CAM_UBFN_CLOSE
+#BAR#
+/Get All/ CAM_GET_ALL
+/Get All Rename/ CAM_GET_ALL_RENAME
+/Get Geo/ CAM_GET_GEO
+/Get Geo Rename/ CAM_GET_GEO_RENAME
+/Get Geo Thru/ CAM_GET_GEO_THRU
+/Get Thru Rename/ CAM_GET_GEO_THRU_RE
+/Get Geo By Layer/ CAM_GET_LAYER
+/Get Geo By Type/ CAM_GET_TYPE
+/Get Variables/ CAM_GET_DATA
+#BAR#
+/Put All/ CAM_PUT_ALL
+/Put Geo/ CAM_PUT_GEO
+/Put Geo Thru/ CAM_PUT_GEO_THRU
+/Put Geo By Layer/ CAM_PUT_LAYER
+/Put Geo By Type/ CAM_PUT_GEO_TYPE
+/Put Variables/ CAM_PUT_DATA
+#BAR#
+/Invisible/	CAM_UBFN_INVIS_GEO
+/Invisible All/	CAM_UBFN_INVIS_ALL
+/Visible/	CAM_UBFN_VIS_GEO
+/Visible All/	CAM_UBFN_VIS_ALL

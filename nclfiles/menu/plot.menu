@@ -1,0 +1,14 @@
+#Descriptor#
+/NAME/ Plotting
+/POSITION/ .15,.15
+/SIZE/ 0.353125,0.116211
+/ROWS/ 2
+/COLS/ 2
+/TYPE/ Menu
+/FORMAT/ TEXT
+
+#Menus#
+/Create Plot/ CAD_PLOT_LOCAL
+/Pen Table/ CAD_PLOT_PENTB
+/Offline Plot/ NIS_SYSTEM_ONCE,<Create Physical Plot>,"%Ncl%\bin\plot.exe&,No"
+/Setup File/ CAD_PLOT_SETFL

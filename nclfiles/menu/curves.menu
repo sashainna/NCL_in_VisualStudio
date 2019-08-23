@@ -1,0 +1,22 @@
+#Descriptor#
+/NAME/ Curves
+/POSITION/ 0.704102,0.273438
+/SIZE/ 0.085938,0.455729
+/ROWS/ 11
+/COLS/ 1
+/TYPE/ Pulldown
+/FORMAT/ BOTH
+
+#Menus#
+/Pt-Pv .../ CAM_GEO_CV_PT
+/Pt Thru Pt/ CAM_GEO_CV_PTPT
+/Fit Pt-Pt/ CAM_GEO_CV_FIT_PTPT
+/Fit Thru Pt/ CAM_GEO_CV_FIT_PTS
+/Pt-Vec .../ CAM_GEO_CV_PTVE
+/Fit Pt-Ve/ CAM_GEO_CV_FIT_PTVE
+/Offset/ CAM_GEO_CV_OFFSET
+/Translate/ CAM_GEO_CV_TRANSL
+/Io-Sf-Sf/ CAM_GEO_CV_IOSF
+/Sf Edge/ CAM_GEO_CV_EDGE
+/Conic/ CAM_GEO_CV_CONIC
+

@@ -1,0 +1,15 @@
+#Descriptor#
+/NAME/ Cam Copy
+/POSITION/ 0.000781,0.611328
+/SIZE/ 0.166406,0.122070
+/ROWS/ 5
+/COLS/ 1
+/TYPE/ Pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Pt-Pt/ CAD_COPY_PTPT
+/Vector/ CAD_COPY_VECTOR
+/Drag/ CAD_COPY_DRAG
+/Rotate/ CAD_COPY_ROTATE
+/Mirror/ CAD_COPY_MIRROR

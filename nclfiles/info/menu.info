@@ -1,0 +1,77 @@
+Layout File Structure
+---------------------
+
+#DIRECTORY#
+/MENU/ menu_directory_path
+/BITMAP/ icon_directory_path
+
+#MENUBAR#
+/MENU/ menu_bar.menu
+
+#MENUAREA#
+/NAME/ Area1
+/POSITION/ TOP,BOTTOM,LEFT,RIGHT
+/MENU/ default_menu_or_blank
+/DOCKABLE/ FRONT,END,NO
+
+#MENUS#
+/MENU/ floating_menu,xpos,ypos
+
+#ERROR#
+/POSITION/ TOP,BOTTOM,LEFT,RIGHT
+/SIZE/ w,h
+
+#PROMPTS#
+/POSITION/ TOP,BOTTOM,LEFT,RIGHT
+/SIZE/ w,h
+
+#COMMAND#              (Command line position and size)
+/POSITION/ TOP,BOTTOM,LEFT,RIGHT
+/SIZE/ w,h
+
+#STATUS#
+/NAME/ Status1
+/POSITION/ TOP,BOTTOM,LEFT,RIGHT
+/SIZE/ w,h
+/STATUS/ status.dlg
+
+#GRAPHICS#
+/POSITION/ xpos,ypos
+/SIZE/ wid,hgt
+
+
+Menu File Structure
+-------------------
+
+#DESCRIPTOR#
+/NAME/ title_bar_text
+/ROWS/ num_rows
+/COLS/ num_cols
+/TYPE/ ICON,MENU,PULLDOWN,POPUP
+/POSITION/ xpos,ypos
+/AREA/ area_name
+/DOCKABLE/ YES,NO
+
+#BITMAP# default_icon_bitmap_file
+
+#MENUS#
+/button_label/ function [,icon_bitmap_file] [,icon_number]
+#CHOICE# choice_menu [,default_choice_button_number]
+#BAR#
+
+
+Modals File Attributes
+NIS_IFACE_MODALS
+----------------------
+
+#INTERFACE#
+/MENU_FORMAT/ *ICON,*TEXT,*BOTH
+/ICON_SIZE/ *16,*24*,*32
+
+
+Icon Files
+----------
+
+filename.bmp
+filename_24.bmp
+filename_32.bmp

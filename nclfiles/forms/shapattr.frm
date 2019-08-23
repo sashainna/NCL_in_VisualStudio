@@ -1,0 +1,47 @@
+#HEADER#
+/TITLE/ Shape Attributes
+/POSITION/ 0,0
+/SIZE/ 140,120
+
+#CHOICEBOX#      
+/LABEL/ Display Mode:
+/POSITION/ 10,8,80,8
+/SIZE/ 120,40
+/TYPE/ UD_DASSTRING
+/CHOICES/ "2-D", "Wireframe", "Shaded"
+
+#EDIT#
+/LABEL/ No. of U curves:
+/POSITION/ 10,25,80,25
+/SIZE/ 100,14
+/TYPE/ UD_DASINT
+/RANGE/2,200
+/PREC/ 4
+/LEN/ 4
+
+#EDIT#
+/LABEL/ No. of V curves:
+/POSITION/ 10,42,80,42
+/SIZE/ 100,14
+/TYPE/ UD_DASINT
+/RANGE/2,200
+/PREC/ 4
+/LEN/ 4
+
+#EDIT#
+/LABEL/ Points per U curve:
+/POSITION/ 10,59,80,59
+/SIZE/ 150,14
+/TYPE/ UD_DASINT
+/RANGE/0,200
+/PREC/ 4
+/LEN/ 4
+
+#EDIT#
+/LABEL/ Points per V curve:
+/POSITION/ 10,76,80,76
+/SIZE/ 150,14
+/TYPE/ UD_DASINT
+/RANGE/0,200
+/PREC/ 4
+/LEN/ 4

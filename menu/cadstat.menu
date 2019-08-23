@@ -1,0 +1,13 @@
+#Descriptor#
+/NAME/ Status
+/POSITION/ 0.6,.6
+/SIZE/ 0.350586,0.115885
+/ROWS/ 3
+/COLS/ 1
+/TYPE/ Menu
+/FORMAT/ TEXT
+
+#Menus#
+/Geometry/ CAM_STAT_GEO
+/Ent Data/ NCL_ENTITY_DATA
+/Ent Attrib/ NCL_ENTITY_ATTRIB

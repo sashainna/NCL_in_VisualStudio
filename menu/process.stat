@@ -1,0 +1,13 @@
+#Descriptor#
+/NAME/ Process Status
+/POSITION/.7,.155
+/SIZE/ .25,0
+/ROWS/ 2
+/COLS/ 1
+/TYPE/MENU
+/DOCKABLE/NO
+/FORMAT/ TEXT
+
+#Buttons#
+/Proc Mode = / PROCESS_MODE,CAM_COMMAND
+/Input Mode = / INPUT_MODE, CAM_TEXT_MODE

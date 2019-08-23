@@ -1,0 +1,25 @@
+#Descriptor#
+/NAME/ cam
+/POSITION/ 0.000000,0.000000
+/SIZE/ 0.081250,0.542969
+/ROWS/ 11
+/COLS/ 1
+/TYPE/ Icon
+/AREA/ Left
+/DOCKABLE/ YES
+/FORMAT/ BOTH
+
+#Menus#
+#Choice#  points.menu
+#Choice#  lines.menu
+#Choice#  circles.menu
+#Choice#  planes.menu
+#Choice#  vectors.menu
+#Choice#  pntvecs.menu
+#Choice#  paterns.menu
+#Choice#  matrix.menu
+#Choice#  bsplines.menu
+#Choice#  surfaces.menu
+#Bar#
+/Motion / motion.menu
+

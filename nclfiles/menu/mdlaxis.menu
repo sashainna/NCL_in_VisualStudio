@@ -1,0 +1,15 @@
+#Descriptor#
+/NAME/ Model Axis
+/POSITION/ 0,0
+/SIZE/ .080,.144
+/ROWS/ 5
+/COLS/ 1
+/TYPE/ Pulldown
+/FORMAT/ TEXT
+
+#Menus#
+/Align Vp/ NCL_MDAXIS_ALIGN
+/Chg Org/ NCL_MDAXIS_ORIG
+/Chg Axis/ NCL_MDAXIS_AXIS
+/Snap Axis/ NCL_MDAXIS_SNAP
+/Rot Axis/ NCL_MDAXIS_ROT

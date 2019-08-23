@@ -1,0 +1,21 @@
+#Descriptor#
+/NAME/ TOP_ROW
+/POSITION/ 0.150000,0.000000
+/SIZE/ 0.849219,0.063477
+/ROWS/ 1
+/COLS/ 11
+/TYPE/ Menubar
+/FORMAT/ TEXT
+
+#Menus#
+/&File/ file.menu
+/&Edit/ camedit.menu
+/&View/ view.menu
+/&Tools/ tools.menu
+/&Status/ status.menu
+/&Defaults/ defaults.menu
+/&Macros/ macro.menu
+/&Playback/ playback.menu
+/&Control/ control.menu
+/&Repaint/ repaint.menu
+/&Help/ help.menu

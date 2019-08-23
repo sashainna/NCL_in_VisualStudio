@@ -1,0 +1,12 @@
+#Descriptor#
+/Name/ Swap Views
+/Rows/ 1
+/Cols/ 2
+/Type/ Icon
+/Position/ 0.582031,0.879883
+/Area/ Top
+/FORMAT/ ICON
+
+#Menus#
+/ / NCL_SWAP_VIEW
+/ / NCL_SWAP_ENTITIES
