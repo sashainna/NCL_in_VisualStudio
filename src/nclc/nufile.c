@@ -109,7 +109,7 @@ char *filename;
 		else
 		{
 			wflg=0;
-			loadpp(UM_addr_of_f77_str(name), &i, &errflg, &wflg);
+			loadpp(UM_addr_of_f77_str(name), &i, &errflg, &wflg,"");
 			if (errflg != 0) 
 			{
 				ul_short_filename(str,buff,60);

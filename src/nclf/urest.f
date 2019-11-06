@@ -448,7 +448,7 @@ c
             if (ipos.lt.j.and.temp(ipos:ipos).eq.' ') goto 406
             i=1
             nc1 = strlen1(temp(ipos:))
-            call loadpp (temp(ipos:), nc1, i, 0)
+            call loadpp (temp(ipos:), nc1, i, 0,'')
             if (i.ne.0) then
               call error(145)
             else
@@ -505,10 +505,12 @@ c
 c......Let the user edit the part program
 c
             call uledit(temp,nc1,temp2,nc2)
+c            call ultname(temp,nc1,temp2,nc2)
+c            tt = temp
 c
 c......Load the part program file back in
 c
-            call loadpp (temp2, nc2, i, 1)
+            call loadpp (temp2, nc2, i, 1,'')
 c
 c......Delete the temporary file
 c
@@ -865,3 +867,5 @@ c              and process the statement again
  
 99999 return
       end
+
+      

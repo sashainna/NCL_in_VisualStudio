@@ -243,7 +243,7 @@ int typ;
 
 	vect = 0;
 
-	if ((typ==UD_SCAVEC)||(typ==UD_SCAVEC2))
+	if (typ==UD_SCAVEC)
 	{
 /*
 ......we need check if it is a name of vector
@@ -306,13 +306,6 @@ int typ;
 	tok  = (char*)strtok(NULL, "\r\n,");
 	if (tok==NULL)
 	{
-/*
-.....it must three numbers on those type
-*/
-		if ((typ==UD_SCAVEC)||(typ==UD_SCAVEC2)||(typ==UD_DASVEC)||(typ==UD_SCACART)||(typ==UD_DASCART))
-		{
-			return -1;
-		}
 		goto done;
 	}
 	strcpy(tempstr2, tok);
@@ -347,13 +340,6 @@ int typ;
 	tok  = (char*)strtok(NULL, "\r\n,");
 	if (tok==NULL)
 	{
-/*
-.....it must three numbers on those type
-*/
-		if ((typ==UD_SCAVEC)||(typ==UD_SCAVEC2)||(typ==UD_DASVEC)||(typ==UD_SCACART)||(typ==UD_DASCART))
-		{
-			return -1;
-		}
 		goto done;
 	}
 	strcpy(tempstr2, tok);
@@ -386,15 +372,6 @@ int typ;
 	strcat(string, unit);
 	if (vect==1)
 		strcat(string, ">");
-	tok  = (char*)strtok(NULL, "\r\n,");
-	if (tok!=NULL)
-	{
-/*
-......it should not have more than 3 number
-*/
-		error = 1;
-		ret = -1;
-	}
 done:;
 	strcpy(string2, string);
 	if (error==0)
@@ -740,7 +717,7 @@ ncl_get_vector_string(vec_name, vec_string)
 char *vec_name, *vec_string;
 {
 	struct NCL_vector_rec e;
-	int status, ifnd, len, label_end, sub_end, i, j, not_num;
+	int status, ifnd, len, label_end, sub_end, i, j, not_num, type;
 	char label[65], substr[20], string[65], string_sav[65];
 	UM_int4 nclsubscript;
 	UM_int4 ipg,iel,nclkey;

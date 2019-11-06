@@ -2390,7 +2390,7 @@ UU_REAL offdis,mxtol2;
 	for (itime = 0; itime < ntimes; itime++)
 	{
 		Slastfl = UU_FALSE;
-		//ncl_nvmill_reset_calls();
+		ncl_nvmill_reset_calls();
 		ckintr(&ifl86,&wbatch);
 		isub = 86; getifl(&isub,&ifl86);
 		if (ifl86 != 0)

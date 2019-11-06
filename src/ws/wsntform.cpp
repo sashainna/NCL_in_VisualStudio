@@ -266,6 +266,8 @@ END_MESSAGE_MAP()
 
 LRESULT CNCLForm::OnCtrlColorStatic(WPARAM wParam, LPARAM lParam)
 {
+	int i, len,ret;
+	char tempstr[256], fcolor_str[256], bcolor_str[256], *tok;
 	COLORREF fcolor, bcolor;
 		
 	fcolor = RGB(255,0,0);
@@ -1335,6 +1337,7 @@ void CNCLForm::initform(UD_FSTRUCT *fstruct, UD_FDATA *fdata)
 						fid, x+start_x, y, wid, hgt);
 		m_idtable[i+m_fldno+m_dspno] = fid;
 	}
+	int pic_x, pic_y;
 	for (i=0; i<fstruct->n_picture_fields; i++)
 	{
 		fid = IDC_FORMTEMPPIC + i; 
@@ -2292,11 +2295,6 @@ int CNCLForm::FormPick(int fldno)
 	CWnd *MainWin = (CMainFrame*)(AfxGetMainWnd());
 	::EnableWindow(MainWin->GetSafeHwnd(), TRUE);
 	::SetActiveWindow(MainWin->GetSafeHwnd());
-	if (m_parentID!=-1)
-	{
-		if (UW_display_frmwin[m_parentID]->IsKindOf(RUNTIME_CLASS(CNCLFormBar))!=UU_TRUE)
-			UW_display_frm[m_parentID]->ShowWindow(SW_HIDE);
-	}
 	ShowWindow(SW_HIDE);
 	uw_ntreset_redraw();
 /*
@@ -2374,24 +2372,12 @@ int CNCLForm::FormPick(int fldno)
 */
 done:;
 	UD_UNMARK(markval);
-//
-	if (m_parentID!=-1)
-	{
-		if (UW_display_frmwin[m_parentID]->IsKindOf(RUNTIME_CLASS(CNCLFormBar))!=UU_TRUE)
-			UW_display_frm[m_parentID]->ShowWindow(SW_SHOW);
-	}
-//
 	ShowWindow(SW_SHOW);
 	::EnableWindow(MainWin->GetSafeHwnd(), FALSE);
 /*
 ......need to enable the form again because the form could be child of 
 ......main window, when disable main window, the form is disable too
 */
-	if (m_parentID!=-1)
-	{
-		if (UW_display_frmwin[m_parentID]->IsKindOf(RUNTIME_CLASS(CNCLFormBar))!=UU_TRUE)
-			UW_display_frm[m_parentID]->EnableWindow();
-	}
 	EnableWindow();
 	::SetActiveWindow(m_hWnd);
 /*
@@ -5147,6 +5133,7 @@ extern "C" void uw_ntget_pixelsize_from_unit(int pt, char *fntname, int unitx, i
 	CWnd *picctl = NCL_MainFrame;
 	CClientDC dc(picctl);
 	aFont.CreatePointFont(pt,fntname, &dc);
+	SIZE size;
 
 	CFont* savfont = dc.SelectObject(&aFont );
 	CSize sizeText = dc.GetTextExtent("XXXXXXXXXXxxxxxxxxxx",20);
@@ -5168,6 +5155,7 @@ extern "C" void uw_ntget_size_ratio(int pt1, char *fntname1, int pt2, char *fntn
 			double *ratio_x, double *ratio_y)
 {
 	CFont aFont, bFont;
+	float ratio;
 	int wid1, hgt1, wid2, hgt2;
 	CWnd *ctl = NCL_MainFrame;
 	CClientDC dc(ctl);

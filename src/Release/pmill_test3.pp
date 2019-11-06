@@ -1,0 +1,18 @@
+LOADU/port.u
+invis/sf1,sf4,sf5,sf7,sf8,sf6, sf39
+CV3   =SPLINE/PSF1,3, 0.5
+$$ *stop
+PL1   =PL/(PV/ON,CV3,0.025)
+PL2   =PL/(PV/ON,CV3,0.7)
+PT1   =POINT/YSMALL,ENDPT,CV3
+TH/0.1
+CU    /0.35,0.175,0.35,-89
+OB    /PT1,X,Y,Z
+PT2   =PT/X+0.25,Y-0.5,Z
+GOTO  /X+3,Y-0.5,Z
+GOTO/PT2
+TA/THRU,PT2
+$$ *stop
+PMILL/PSF1,CONTCT,PL1,PL2,STEP,0.1,HELIX,OMIT,IN
+
+

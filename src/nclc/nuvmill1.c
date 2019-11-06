@@ -34,7 +34,6 @@ static UD_FSTAT OnClose();
 
 static int Sprogress,Sfrm=-1;
 static UU_LOGICAL *Sinterrupt;
-void nclu_vmill_close_progress();
 
 /*********************************************************************
 **   I_FUNCTION: nclu_vmill_open_progress(interrupt)
@@ -49,8 +48,8 @@ void nclu_vmill_close_progress();
 **   SIDE EFFECTS: none
 **   WARNINGS: none
 *********************************************************************/
-void nclu_vmill_open_progress(UU_LOGICAL *interrupt)
-//UU_LOGICAL *interrupt;
+void nclu_vmill_open_progress(interrupt)
+UU_LOGICAL *interrupt;
 {
 	UM_int2 ifl,iflx;
 /*

@@ -47,6 +47,7 @@ C
 
        integer*2 stat, isv131, ixsv, ifl383
        character*6 svtkn,tkn
+       character*256 tt
        character*2 tkn2,stkn2
        equivalence (tkn2,tkn,token2)
        equivalence (stkn2,svtkn)

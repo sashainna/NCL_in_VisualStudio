@@ -1331,7 +1331,7 @@ c...this rate of fan value is only allow from 0 to 1, so to me, it is not make s
 c...set to 0 when less then 1, then it only have 0 and 1 two value
 c...temp remove Yurong
 c
-c        if (ival .le. 1) rval = 0
+        if (ival .le. 1) rval = 0
       else
         ifl(295) = ival
         asc(280) = rval

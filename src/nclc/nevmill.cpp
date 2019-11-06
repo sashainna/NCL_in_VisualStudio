@@ -27,8 +27,8 @@
 #define DEBUGL 0
 #define DEBUGX 0
 #define DEBUG_XML 0
+//#define DUMMY 1
 #define WIN32
-#define DUMMY 1
 
 #if DUMMY == 1
 extern "C" void nclf_vmill_pocket() {}
@@ -75,7 +75,8 @@ extern "C" void ncl_nvmill_reset_calls(){}
 #include <Mesh/TriMeshExchange.h>
 
 
-#ifdef DEBUG_XML
+#ifdef DEBUG_XML 
+//#if DEBUG_XML == 1
 #include <boost/serialization/deque.hpp>
 #include <boost/serialization/vector.hpp>
 #include <boost/serialization/map.hpp>
@@ -220,10 +221,16 @@ exchange::ToolpathRecords *pRecords;
 /*
 .....VoluMill License
 */
+
 namespace license
 {
    int generateLicenseFromMasterLicense (LicenseKey* pKey);
 }
+
+//namespace license
+//{
+//int __cdecl generateLicenseFromMasterLicense (struct license::LicenseKey* pKey);
+//}
 
 #define ERROR_VOLUMILL_INTERNAL_ERROR 1007
 #define ERROR_OPEN_POCKETS_NOT_ALLOWED 1010
@@ -290,11 +297,15 @@ void nclf_vmill_pocket(UM_int2 *nbound4, UM_real8 *kbound8, char token[120][64],
 .....Open log file
 */
 	S_openLog();
+
 /*
 .....Get the VoluMill license
 */
 	license::LicenseKey licenseKey;
-	iprog=license::generateLicenseFromMasterLicense (&licenseKey);
+	iprog=generateLicenseFromMasterLicense (&licenseKey);
+	//iprog=generateLicenseFromMasterLicense (&licenseKey);
+	//iprog=generateLicenseFromMasterLicense (&licenseKey);
+	//iprog = 100;
 #if DEBUG_XML
 //	std::ostream *fos;
 //	fos = new std::ofstream("key.xml");
@@ -405,6 +416,8 @@ void nclf_vmill_pocket3(UM_int2 *ier)
 */
 	license::LicenseKey licenseKey;
 	iprog=license::generateLicenseFromMasterLicense (&licenseKey);
+	//iprog=generateLicenseFromMasterLicense (&licenseKey);
+	//iprog = 100;
 /*
 ....Initilize VoluMill parameters
 */

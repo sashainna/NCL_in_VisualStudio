@@ -148,9 +148,6 @@
     <None Include="openncl\yfmotsup.f">
       <Filter>openncl</Filter>
     </None>
-    <None Include="pwkeys\passwd.f">
-      <Filter>pwkeys</Filter>
-    </None>
     <None Include="inc\ncltitle.ico">
       <Filter>Resource Files</Filter>
     </None>
@@ -267,6 +264,9 @@
     </None>
     <None Include="nlib\obj\toolbar1.bmp">
       <Filter>Resource Files</Filter>
+    </None>
+    <None Include="pwkeys\passwd.f">
+      <Filter>pwkeys</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -4184,6 +4184,12 @@
     </ClCompile>
     <ClCompile Include="interface\iunihep.c">
       <Filter>interface</Filter>
+    </ClCompile>
+    <ClCompile Include="nclc\pwcfunc.cpp">
+      <Filter>nclc</Filter>
+    </ClCompile>
+    <ClCompile Include="nclc\PWMessageBox.cpp">
+      <Filter>nclc</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

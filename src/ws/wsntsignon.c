@@ -494,7 +494,7 @@ int cam, cad;
 			ud_prmerr(buf);
 			i = strlen(ppname);
 /*			for (i=strlen(ppname);i<UX_MAX_FILE_LEN;i++) ppname[i] = ' ';*/
-			loadpp(UM_addr_of_f77_str(ppn),&i,&ierr,&wflg);
+			loadpp(UM_addr_of_f77_str(ppn),&i,&ierr,&wflg,"");
 			uw_ntret_actln();
 			ptppnm(UM_addr_of_f77_str(ppn),&i);
 			ptdfnm(UM_addr_of_f77_str(ppn),&i);

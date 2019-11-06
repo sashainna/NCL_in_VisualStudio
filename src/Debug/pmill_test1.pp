@@ -1,5 +1,6 @@
 LOADU/port.u
-invis/sf1,sf4,sf5,psf1,sf58,sf57,sf7,sf8,sf6, sf39
+$$ invis/sf1,sf4,sf5,psf1,sf58,sf57,sf7,sf8,sf6, sf39
+invis/sf1,sf4,sf5,sf7,sf8,sf6, sf39
 CV3   =SPLINE/PSF1,3,0.45
 CV4   =SPLINE/OFFSET,CV3,ZS,1.0
 PL1   =PL/(PV/ON,CV4,0.025)
@@ -14,7 +15,7 @@ GOTO  /X+3,Y-0.5,Z
 GOTO/PT2
 TA/THRU,PT2
 PMILL/PSF1,CONTCT,PL1,PL2,STEP,0.1,LINEAR,OMIT,IN
-PMILL/PSF1,CONTCT,PL2,PL3,STEP,0.1,HELIX,OMIT,IN
+$$ PMILL/PSF1,CONTCT,PL2,PL3,STEP,0.1,HELIX,OMIT,IN
 $$ invis/sf2
 
 

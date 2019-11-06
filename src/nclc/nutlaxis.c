@@ -141,6 +141,7 @@ enum
 
 extern UD_METHOD UD_initfrm_intry;
 extern UD_METHOD UD_form_secsel;
+// UD_METHOD UD_form_secsel = NULL;
 
 static int S_option_first = 1; 
 UU_LOGICAL S_close_enable=1,Sreentry = 0;

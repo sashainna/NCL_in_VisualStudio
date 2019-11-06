@@ -94,6 +94,7 @@ static UU_LOGICAL Suse_thrupt;
 static UM_coord Sthrupt;
 
 extern int writeFile1 (char* value);
+extern void urest(char*, int, int, char*);
 
 /*********************************************************************
 **    E_FUNCTION     : ncl_pmill_getfl(flag)
@@ -2275,12 +2276,13 @@ UM_real8 *npas,*nstp,*atrad;
 	um_identtf (rot);
 	key0 = NULLKEY;
 
-	if (fp = fopen( "..\\contourPoints.txt", "a" )) // Open file for writing
-	{
 
-		fclose(fp);
-		remove( "..\\contourPoints.txt");
-	}
+	//if (fp = fopen( "..\\contourPoints.txt", "a" )) // Open file for writing
+	//{
+
+	//	fclose(fp);
+	//	remove( "..\\contourPoints.txt");
+	//}
 /*
 .....Get unit
 */
