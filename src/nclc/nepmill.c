@@ -2190,6 +2190,7 @@ UM_coord *pts;
 			}
 			if (*ind11 < 0 || *ind12 < 0 || *ind21 < 0 || *ind22 < 0 || *ind11==*ind12 ||*ind11==*ind21 ||*ind11==*ind22 ||*ind12==*ind21 ||*ind12==*ind22 ||*ind21==*ind22 ||
 				fabs(*ind11-*ind12) < 0.1*fabs(*ind21-*ind22))
+			/*if (*ind11 < 0 || *ind12 < 0 || *ind21 < 0 || *ind22 < 0 || *ind11==*ind12 ||*ind11==*ind21 ||*ind11==*ind22 ||*ind12==*ind21 ||*ind12==*ind22 ||*ind21==*ind22 )*/
 			{
 				uu_list_free(points);
 				//vctovc(c_pl1.n,&dpl2->nvec);
@@ -2576,6 +2577,7 @@ UM_real8 *npas,*nstp,*atrad;
 	ncl_debug_pts(&poly2,0);
 #endif
 		}
+		else goto Err1;
 	}
 /*
 .....START point
@@ -2669,6 +2671,7 @@ UM_real8 *npas,*nstp,*atrad;
 	if (*ndrv == 2)
 	{
 		um_vcmnvc(dpl2->pt,dpl1->pt,vdir);
+		um_unitvc(vdir,vdir);
 		if (um_dot(vdir,dpl1->nvec) < 0.)
 			um_vctmsc(dpl1->nvec,-1.,vdir);
 		else

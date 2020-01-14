@@ -240,7 +240,9 @@ c
 c
 c...Reverse clfile if necessary
 c
-      if (ifl(367) .eq. 1) call clrev (iclf,irst,iren)
+      if (ifl(367) .eq. 1) then
+          call clrev (iclf,irst,iren)
+      endif
       if (ifl(69) .eq. 0) go to 1000
 c
 c...Open clfile

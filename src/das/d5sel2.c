@@ -26,6 +26,7 @@ static char uu_sccsident[]={"@(#) d5sel.c 2.2 9/30/85 14:49:55 single"};
 static char uu_sccsident[]={"@(#) d5sel.c 2.2 9/30/85 14:49:55 double"};
 #endif
 
+
 #include "usysdef.h"
 #include "ustdio.h"
 #include "dselect.h"
@@ -37,6 +38,8 @@ static char uu_sccsident[]={"@(#) d5sel.c 2.2 9/30/85 14:49:55 double"};
 #include "nccs.h"
 #include "gtbl.h"
 #include "nclfc.h"
+
+
 
 #define UD_NULLPICKID -1			/* invalid pick id */
 int NCL_clipf = 0;
@@ -76,16 +79,18 @@ int level;										/*  level number */
 	UM_PICKENT pent;
 	int stat;								/* status of um_d_pickresolve */
 	char us[150];
+	char p_buff[80];
+
 
 	if(initflag == UU_TRUE)
 	{
 		buf_ptr = 0;
 		oldbuf_ptr = 0;
 	}
-	uu_dprint(UU_DTRC,(us,"enter gnxt,buf_ptr=%d,old=%d,buffer[ptr]=%d %d %d",
-		buf_ptr,oldbuf_ptr, UD_Select_buf[buf_ptr], UD_Select_buf[buf_ptr+1],
-		UD_Select_buf[buf_ptr+2]));
 
+	sleep(1);
+
+	
 	if(bufadr == NULL)
 
 /*	-- system select buffer -- */
@@ -144,6 +149,7 @@ int level;										/*  level number */
 		{
 			status = UU_TRUE;
 			stat = um_d_pickresolve(&UD_Select_buf[buf_ptr], level, &pent);
+			
 			if (stat == 0) *mtid = um_get_pickkey(&pent, level);
 		}
 		else

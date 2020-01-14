@@ -1,0 +1,17 @@
+
+forms/npmill_myRecent.frm
+forms/npmill_newOfOct18.frm
+nclfiles/forms/npmill_oldBad.frm
+src/das/d4meth2_old.c
+src/Ncl.opensdf
+src/Ncl.sdf
+src/Ncl_fromY.sdf
+src/Ncl_myRecentOct28.vcxproj
+src/nclc/nescalar2_recent.c
+src/nclc/nupmill_lastBad - Copy.c
+src/nclc/nupmill_lastOfOct15.c
+src/nclc/nupmill_myAsOfOct15.c
+src/nclc/nupmill_myRecent.c
+src/nclc/nupmill_newModified.c
+src/nclc/nupmill_newOfOct18.c
+src/nclc/nupmill_oldGood.c

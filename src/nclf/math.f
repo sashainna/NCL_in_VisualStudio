@@ -661,12 +661,12 @@ c   OUTPUT: gpo    R*8  Dn   -  Resultant array
 c
 c***********************************************************************
       subroutine conv4_8(gpi,gpo,n)
-      real*4  gpi(n)
+      real*4 gpi(n)
       real*8 gpo(n)
       integer*2 i
-          
+
       do 1 i=1,n
-1     gpo(i) = gpi(i)
+ 1       gpo(i) = gpi(i)
       return
       end
 c***********************************************************************

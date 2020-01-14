@@ -380,7 +380,7 @@ UM_vector v2;
 	UU_REAL proj;			/* v1 projected on v2 */
 
 	proj = UM_DOT(v1, v2);
-	if ( (1.0 - fabs(proj)) < UM_DFUZZ) return (UU_TRUE);
+	if ( (1.0 - fabs(proj)) < 0.01*UM_DFUZZ) return (UU_TRUE);
 	else return (UU_FALSE);
 }
 

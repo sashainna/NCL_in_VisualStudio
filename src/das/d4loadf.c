@@ -1926,7 +1926,7 @@ UD_FSTRUCT *fstruct;
 			strcpy(tmpstr, cmsg);
 			if (tmpstr[0]!='\"')
 			{
-				tok = strtok(tmpstr, ",\t\n");
+				tok = (char*)strtok(tmpstr, ",\t\n");
 				if (tok==NULL)
 				{
 					goto bad_parm;
@@ -1936,7 +1936,7 @@ UD_FSTRUCT *fstruct;
 			}
 			else
 			{
-				tok = strtok(tmpstr+1, "\"");
+				tok = (char*)strtok(tmpstr+1, "\"");
 				if (tok==NULL)
 				{
 					goto bad_parm;
@@ -1979,7 +1979,7 @@ UD_FSTRUCT *fstruct;
 			strcpy(tmpstr, &(tmpstr[k]));
 			if (tmpstr[0]!='\"')
 			{
-				tok = strtok(tmpstr, ",\t\n");
+				tok = (char*)strtok(tmpstr, ",\t\n");
 				if (tok==NULL)
 				{
 					goto bad_parm;
@@ -1988,7 +1988,7 @@ UD_FSTRUCT *fstruct;
 			}
 			else
 			{
-				tok = strtok(tmpstr+1, "\"");
+				tok = (char*)strtok(tmpstr+1, "\"");
 				if (tok==NULL)
 				{
 					goto bad_parm;

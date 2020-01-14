@@ -15,6 +15,9 @@
 
 
 #include     <stdio.h>
+#include	<string.h>
+#include	<ctype.h>
+#include	<stdlib.h>
 #include     "usysdef.h"
 #include     "gtbl.h"
 #include     "g.h"
@@ -29,9 +32,9 @@
 
 static UTI_HEADER hdmsg[]= {
 {-1,-1,-1,-1,-1,-1},{0,106,106,70,-1,0},{-1,-1,-1,-1,-1,-1},{176,57,-1,0,-1,0},
-{233,11,-1,0,-1,0},{244,5,-1,0,-1,0},{249,14,263,1,-1,0},{264,328,592,350,-1,0},{942,28,970,12,-1,0},
-{982,1,983,8,-1,0},{991,33,1024,11,-1,0},{1035,124,1159,127,-1,0},{1286,30,1316,20,-1,0},{1336,60,1396,172,-1,0},
-{1568,16,1584,4,-1,0},{1588,1,-1,0,-1,0},{1589,6,1595,94,-1,0},{1689,19,1708,717,-1,0},};
+{233,11,-1,0,-1,0},{244,5,-1,0,-1,0},{249,14,263,1,-1,0},{264,328,592,349,-1,0},{941,28,969,12,-1,0},
+{981,1,982,8,-1,0},{990,33,1023,11,-1,0},{1034,124,1158,127,-1,0},{1285,30,1315,20,-1,0},{1335,60,1395,172,-1,0},
+{1567,16,1583,3,-1,0},{1586,1,-1,0,-1,0},{1587,6,1593,94,-1,0},{1687,19,1706,717,-1,0},};
 
 static UTI_ERMSG pemsg[]= {
 {1,0,"Valuator input not allowed; use locate, pick or text string. ",-1},
@@ -975,7 +978,6 @@ static UTI_ERMSG pemsg[]= {
 {347,-1,"Pick entities to get:",-1},
 {348,-1,"Pick entities to put:",-1},
 {349,-1,"Pick entities to redisplay:",-1},
-{350,-1,"Pick solid or net-surface to decompose.",-1},
 {1,0,"Cannot save; empty part. [See Help]",237},
 {2,0,"File could not be replaced; save with a different name.  [More info in HELP.]",238},
 {3,0,"UB#3; cannot open specified save file",-1},
@@ -1620,8 +1622,7 @@ static UTI_ERMSG pemsg[]= {
 {16,0,"'%s' is only available when CAM is enabled.",-1},
 {1,-1,"Enter reference point",-1},
 {2,-1,"Exit Drawing Management?",-1},
-{3,-1,"- NCL - Copyright 1991-2019 Numerical Control Computer Sciences, Windows 64-bit",-1},
-{4,-1,"- NCL - Copyright 1991-2019 Numerical Control Computer Sciences, Windows 64-bit",-1},
+{3,-1,"- NCL - Copyright 1991-2018 Numerical Control Computer Sciences, Windows 64-bit",-1},
 {1,1,"Class initialization failure - class number disparity, row = %d, class = %d",338},
 {1,0,"Can't create %s from given constraints.",-1},
 {2,0,"Only 2D curves may be swept into surface.",-1},
@@ -1924,12 +1925,12 @@ static UTI_ERMSG pemsg[]= {
 {180,-1,"Label of Z surf plane",-1},
 {181,-1,"Label of refsys matrix",-1},
 {182,-1,"Label of modsys matrix",-1},
-{183,-1,"Enter 1st input coord:",-1},
-{184,-1,"Enter 2nd input coord:",-1},
-{185,-1,"Enter 3rd input coord:",-1},
-{186,-1,"Enter 1st output coord:",-1},
-{187,-1,"Enter 2nd output coord:",-1},
-{188,-1,"Enter 3rd output coord:",-1},
+{-1},
+{-1},
+{-1},
+{-1},
+{-1},
+{-1},
 {-1},
 {190,-1,"Macro name",-1},
 {191,-1,"Complete macro parameter list",-1},
@@ -2255,9 +2256,8 @@ static UTI_ERMSG pemsg[]= {
 {511,-1,"Label of entity to remove",-1},
 {512,-1,"Select new label location (DONE for the default location)",-1},
 {513,-1,"Select end location of leader line on the entity(DONE for the default location)",-1},
-{514,-1,"Pick the first check plane",-1},
-{515,-1,"Pick the second check plane",-1},
-{516,-1,"Pick start point",-1},
+{-1},
+{-1},
 {-1},
 {-1},
 {-1},
@@ -2319,8 +2319,8 @@ static UTI_ERMSG pemsg[]= {
 {-1},
 {-1},
 {-1},
-{577,-1,"Pick first THRU component of composite entity.",-1},
-{578,-1,"Pick last THRU component of composite entity.",-1},
+{577,-1,"Pick first THRU component of composite curve.",-1},
+{578,-1,"Pick last THRU component of composite curve.",-1},
 {579,-1,"Pick curve (spline) to translate",-1},
 {580,-1,"Label of line, circle or curve defining composite curve",-1},
 {581,-1,"Label of 1st point or point-vector on CONIC curve",-1},
@@ -2489,7 +2489,7 @@ static UU_LOGICAL to_file=UU_FALSE;
 **    WARNINGS     : none
 *********************************************************************/
 
-void uu_ugerror0 (subid, erid, errtxt)
+void uu_ugerror0 (/*int */subid, /*int*/ erid, /*char**/ errtxt)
 int  subid, erid;
 char *errtxt;
 
@@ -2518,6 +2518,32 @@ char *errtxt;
 
 
 /*********************************************************************
+**    I_FUNCTION     :  uu_outputerr(msg)
+**       output the error message to the user desired io
+**    PARAMETERS   
+**       INPUT  : 
+**          subid : subsystem number
+**          erid  : prompt number
+**       OUTPUT :  
+**          output
+**    RETURNS      : pointer to a string
+**    SIDE EFFECTS : none
+**    WARNINGS     : none
+*********************************************************************/
+
+void uu_outputerr(/*char**/ msg)
+char	*msg;
+{
+	uu_denter(-1,(us,"ERROR MESSAGE -- %s",msg));
+	if (to_graphic)
+		ud_wrerr(msg);
+	if (to_file)
+		fprintf(erfd, "%s\n", msg);
+	uu_dexit;
+}	/* uu_outputerr */
+
+
+/*********************************************************************
 **    I_FUNCTION     :  uu_uerror0 (subid, erid)
 **       Unicad error message without argument
 **    PARAMETERS   
@@ -2531,7 +2557,7 @@ char *errtxt;
 **    WARNINGS     : none
 *********************************************************************/
 
-void uu_uerror0 (subid, erid)
+void uu_uerror0 (/*int*/ subid,/* int*/ erid)
 int  subid, erid;
 
 {
@@ -2559,6 +2585,67 @@ int  subid, erid;
 }	/* uu_uerror0 */
 
 
+/*********************************************************************
+**    I_FUNCTION     :  uui_msgtemp(m, temp, contrch, msg, pp)
+**       concatenate the user specified information into the string
+**       contains the control format
+**    PARAMETERS   
+**       INPUT  : 
+**          m : an index to the control format
+**          contrch : the control character
+**          msg : the string contains the control format
+**          p1 : an union contains the user's information
+**       OUTPUT :  
+**          temp : the concatenated string
+**    RETURNS      : none
+**    SIDE EFFECTS : none
+**    WARNINGS     : none
+*********************************************************************/
+
+void uui_msgtemp(/*int*/ m, /*char**/ temp, /*char*/ contrch, /*char**/ msg, /*int*/	pp)
+char  temp[], msg[], contrch;
+int  pp, m;
+
+{
+	char yy[12];
+	UU_REAL qq;
+
+	switch (contrch)
+	{
+	 case  's' :
+			sprintf (temp, msg, (char *) pp);
+			break;
+
+	 case  'd' :
+			sprintf (temp, msg, pp);
+			break;
+
+	 case  'g':
+			sprintf (yy,"%f", (UU_REAL *) pp);
+			sscanf (yy, "%f", &qq);
+			/*   printf ("pp=%g, %f \n", (UU_REAL *) pp, qq);  */
+			if (qq < 10000.0)
+				sprintf (temp, msg, (UU_REAL *)pp);
+			else
+				{
+				 msg[m] = 'e';
+				 sprintf (temp, msg, (UU_REAL *)pp);
+				 msg[m] = 'g';
+				}
+			break;
+
+	 case  'e':
+			sprintf (temp, msg, (UU_REAL *) pp);
+			break;
+
+	 default : strcpy (temp,msg);
+			break;
+	}
+}	/* uui_msgtemp */
+
+
+
+
 
 /********************************************************************
 **    I_FUNCTION     :  uu_ugerror1(subid, erid, p1)
@@ -2575,9 +2662,9 @@ int  subid, erid;
 **    WARNINGS     : none
 *********************************************************************/
 
-void uu_ugerror1(subid, erid, p1, errtxt)
+void uu_ugerror1(/*int*/ subid, /*int */erid,/* int*/ p1, /*char**/ errtxt)
 int	subid, erid;
-char *p1;  
+int	p1;  
 char *errtxt;  
 
 {
@@ -2632,9 +2719,9 @@ char *errtxt;
 **    WARNINGS     : none
 *********************************************************************/
 
-void uu_uerror1(subid, erid, p1)
+void uu_uerror1(/*int*/ subid, /*int */erid, /*int*/ p1)
 int	subid, erid;
-char *p1;  
+int	p1;  
 
 {
 	int	index, leng, i;
@@ -2690,9 +2777,9 @@ char *p1;
 **    WARNINGS     : none
 *********************************************************************/
 
-void uu_uerror2 (subid, erid, p1, p2)
+void uu_uerror2 (/*int*/ subid, /*int*/ erid, /*int*/ p1, /*int*/ p2)
 int	subid, erid;
-char *p1, *p2;
+int	p1, p2;
 
 {
 	int	index, i, k, j;
@@ -2759,9 +2846,10 @@ char *p1, *p2;
 **    WARNINGS     : none
 *********************************************************************/
 
-void uu_uerror3 (subid, erid, p1, p2, p3)
+//void uu_uerror3 (int	subid, int	erid,int	 p1, int	p2, int	p3)
+void uu_uerror3 (	subid, 	erid,	 p1, 	p2, 	p3)
 int	subid, erid;
-char *p1, *p2, *p3;
+int	p1, p2, p3;
 
 {
 	int	index, i, k, j;
@@ -2822,65 +2910,6 @@ char *p1, *p2, *p3;
 
 
 
-/*********************************************************************
-**    I_FUNCTION     :  uui_msgtemp(m, temp, contrch, msg, pp)
-**       concatenate the user specified information into the string
-**       contains the control format
-**    PARAMETERS   
-**       INPUT  : 
-**          m : an index to the control format
-**          contrch : the control character
-**          msg : the string contains the control format
-**          p1 : an union contains the user's information
-**       OUTPUT :  
-**          temp : the concatenated string
-**    RETURNS      : none
-**    SIDE EFFECTS : none
-**    WARNINGS     : none
-*********************************************************************/
-
-uui_msgtemp(m, temp, contrch, msg, pp)
-char  temp[], msg[], contrch, *pp;
-int  m;
-
-{
-	char yy[12];
-	UU_REAL qq;
-
-	switch (contrch)
-	{
-	 case  's' :
-			sprintf (temp, msg, (char *) pp);
-			break;
-
-	 case  'd' :
-			sprintf (temp, msg, pp);
-			break;
-
-	 case  'g':
-			sprintf (yy,"%f", (UU_REAL *) pp);
-			sscanf (yy, "%f", &qq);
-			/*   printf ("pp=%g, %f \n", (UU_REAL *) pp, qq);  */
-			if (qq < 10000.0)
-				sprintf (temp, msg, (UU_REAL *)pp);
-			else
-				{
-				 msg[m] = 'e';
-				 sprintf (temp, msg, (UU_REAL *)pp);
-				 msg[m] = 'g';
-				}
-			break;
-
-	 case  'e':
-			sprintf (temp, msg, (UU_REAL *) pp);
-			break;
-
-	 default : strcpy (temp,msg);
-			break;
-	}
-}	/* uui_msgtemp */
-
-
 
 
 
@@ -2898,7 +2927,7 @@ int  m;
 **    WARNINGS     : none
 *********************************************************************/
 
-char *uu_uprompt0 (subid, pmtid)
+char *uu_uprompt0 (/*int */subid,/* int*/ pmtid)
 int  subid, pmtid;
 
 {
@@ -2946,9 +2975,9 @@ int  subid, pmtid;
 **    WARNINGS     : none
 *********************************************************************/
 
-char *uu_uprompt1(subid, pmtid, p1)
+char *uu_uprompt1(/*int*/ subid, /*int*/ pmtid, /*int*/ p1)
 int	subid, pmtid;
-char *p1;  
+int	p1;  
 
 {
 	int	index, leng, i;
@@ -3006,9 +3035,9 @@ char *p1;
 **    WARNINGS     : none
 *********************************************************************/
 
-char *uu_uprompt2 (subid, pmtid, p1, p2)
+char *uu_uprompt2 (/*int*/ subid, /*int*/ pmtid, /*int*/ p1,/* int*/ p2)
 int	subid, pmtid;
-char *p1, *p2;
+int	p1, p2;
 
 {
 	int	index, i, k, j;
@@ -3056,30 +3085,6 @@ char *p1, *p2;
 }	/* uu_uprompt2 */
 
 
-/*********************************************************************
-**    I_FUNCTION     :  uu_outputerr(msg)
-**       output the error message to the user desired io
-**    PARAMETERS   
-**       INPUT  : 
-**          subid : subsystem number
-**          erid  : prompt number
-**       OUTPUT :  
-**          output
-**    RETURNS      : pointer to a string
-**    SIDE EFFECTS : none
-**    WARNINGS     : none
-*********************************************************************/
-
-uu_outputerr(msg)
-char	*msg;
-{
-	uu_denter(-1,(us,"ERROR MESSAGE -- %s",msg));
-	if (to_graphic)
-		ud_wrerr(msg);
-	if (to_file)
-		fprintf(erfd, "%s\n", msg);
-	uu_dexit;
-}	/* uu_outputerr */
 
 
 
@@ -3106,14 +3111,14 @@ int		fdt;
 UX_pathname	pathname;
 UU_LOGICAL	found;
 
-	charptr = UU_NULL;
+	charptr = (char*)UU_NULL;
 	if (strcmp("FALSE",ux_getenv("UU_DERROR",UX_NPRTERRS))==0)
 		to_graphic = UU_FALSE;
 }	/* uu_initerr */
 
 
+//FILE*	fopen();
 
-//FILE	*fopen();
 static FILE  *fd1 = UU_NULL;
 
 /*********************************************************************
@@ -3151,6 +3156,49 @@ int	fdt;
 
 
 
+/*********************************************************************
+**    I_FUNCTION     :  uui_ugetbuf (buf,temp1,ptr,leng,length)
+**       put the certain length of characters from one array to another
+**       buffer
+**    PARAMETERS   
+**       INPUT  : 
+**          temp - input array
+**          length - maxi length of characters can be put into buffer
+**       OUTPUT :  
+**          ptr - pointer to the first unconverted character in the array
+**          leng - total unconvered chars
+**          buf - array of converted characters
+**    RETURNS      : none
+**    SIDE EFFECTS : none
+**    WARNINGS     : none
+*********************************************************************/
+
+void uui_ugetbuf (/*char* */buf,/*char**/ temp1,/*int* */ptr,/*int**/ leng,/*int */length)
+int	*ptr, *leng, length;
+char	buf[], temp1[];
+
+{
+	int	i, j, k, ind;
+
+	ind = *ptr + length;
+ 	if ((temp1[ind-1] != ' ')&&(temp1[ind] != ' '))
+	  {
+		for (i=ind-1;(temp1[i]!=' ')&&(i>=*ptr); i--);
+		for (k=0,j= *ptr; j<i; buf[k++]=temp1[j++]);
+	   *ptr = i++;
+	  }
+	else
+	  {
+		for (k=0,j= *ptr; j<ind; buf[k++]=temp1[j++]);
+		*ptr = ind;
+	  }	
+	buf[k++] = '\n';
+   buf[k] = '\0';
+	*leng = strlen (&temp1[*ptr]);
+}	/* uui_ugetbuf */
+
+
+
 
 /*********************************************************************
 **    I_FUNCTION     :  char *uu_uerhep (subid, erid, first, status, length )
@@ -3168,7 +3216,7 @@ int	fdt;
 **    WARNINGS     : none
 *********************************************************************/
 
-char *uu_uerhep (subid, erid, first, status, length )
+char *uu_uerhep (/*int*/ subid,/* int*/ erid, /*int*/ first, /*int**/ status, /*int*/ length )
 int  subid, erid, length ;
 int  first, *status;
 
@@ -3279,7 +3327,7 @@ int  first, *status;
 **    WARNINGS     : none
 *********************************************************************/
 
-char *uu_upmthep (subid, pmtid, first, status, length )
+char *uu_upmthep (/*int */subid, /*int*/ pmtid, /*int*/ first, /*int**/ status, /*int */length )
 int  subid, pmtid, length ;
 int  first, *status;
 
@@ -3389,7 +3437,7 @@ int  first, *status;
 **    WARNINGS     : none
 *********************************************************************/
 
-char *uu_usysinfor (subid,first,status,length)
+char *uu_usysinfor (/*int*/ subid,/*int*/ first,/*int**/ status,/*int*/ length)
 int	subid, first, *status, length;
 
 {
@@ -3476,49 +3524,6 @@ int	subid, first, *status, length;
 
 
 
-/*********************************************************************
-**    I_FUNCTION     :  uui_ugetbuf (buf,temp1,ptr,leng,length)
-**       put the certain length of characters from one array to another
-**       buffer
-**    PARAMETERS   
-**       INPUT  : 
-**          temp - input array
-**          length - maxi length of characters can be put into buffer
-**       OUTPUT :  
-**          ptr - pointer to the first unconverted character in the array
-**          leng - total unconvered chars
-**          buf - array of converted characters
-**    RETURNS      : none
-**    SIDE EFFECTS : none
-**    WARNINGS     : none
-*********************************************************************/
-
-uui_ugetbuf (buf,temp1,ptr,leng,length)
-int	*ptr, *leng, length;
-char	buf[], temp1[];
-
-{
-	int	i, j, k, ind;
-
-	ind = *ptr + length;
- 	if ((temp1[ind-1] != ' ')&&(temp1[ind] != ' '))
-	  {
-		for (i=ind-1;(temp1[i]!=' ')&&(i>=*ptr); i--);
-		for (k=0,j= *ptr; j<i; buf[k++]=temp1[j++]);
-	   *ptr = i++;
-	  }
-	else
-	  {
-		for (k=0,j= *ptr; j<ind; buf[k++]=temp1[j++]);
-		*ptr = ind;
-	  }	
-	buf[k++] = '\n';
-   buf[k] = '\0';
-	*leng = strlen (&temp1[*ptr]);
-}	/* uui_ugetbuf */
-
-
-
 
 
 
@@ -3537,7 +3542,7 @@ char	buf[], temp1[];
  **    WARNINGS     : none
  *********************************************************************/
  
- char **uu_uchoicemsg(subid,choid,choicenum)
+ char **uu_uchoicemsg(/*int */subid,/*int */choid, /*int* */choicenum)
  int	subid, choid, *choicenum;
  
  {

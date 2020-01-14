@@ -57,11 +57,11 @@ c
 
       if (SIMCOM) return
 c...
-      if (debug) then
+      
         write(cout,9010)ierrno,ifl(2),pmode
 9010    format(' error: ierrno=',i4,',ifl(2)=',i4,',pmode=',i2)
         call putmsg(cout,50,15,0)
-      endif
+    
 
 
 c         Turn off the flag that says an NCL status line is displayed
@@ -94,6 +94,9 @@ c          the warning bypass flag is on
           ifl(101)=0
       endif
       errno=ierrno
+      !if (errno.eq. 561) then
+      !    go to 99999
+      !endif
       if (lercnt) then
           if (ifl(25).eq.2) then
               ifl(37)=3
@@ -245,9 +248,17 @@ c...Yurong
          w2 = ' '
          ncw2 = 0
       else
+          !if (errno.eq.561) then
+          !    aout = ' '
+          !    call putprt(aout,1,1)
+          !    aout='Redefine check Planes '
+          !    call putprt(aout,20,1)
+          !    goto 99999
+          !endif
          call flname(4, 'nclerrs{', efile)
          call flopen(errlun, efile, 'OLD', 'DIRECT', 'UNFORMATTED',
      x         80,'NULL',  ierr)
+            
          read(errlun,rec=errno+1)w2(1:80)
          ncw2 = 80
          close (unit=errlun)

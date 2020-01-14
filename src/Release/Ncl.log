@@ -1,3 +1,2059 @@
-﻿     Creating library .\Release\Ncl.lib and object .\Release\Ncl.exp
+﻿  qeval.c
+  qfunc.c
+  qinitb.c
+  qinitrel.c
+  qlang.c
+  qlang1.c
+  qlang2.c
+  qlangio1.c
+  qlangio2.c
+  qstack.c
+  qsymtb.c
+  qsymtb1.c
+  qsymtb2.c
+  qvmatch.c
+  c1assoc.c
+  c1class.c
+  c1class1.c
+  c1crv.c
+  c1dba.c
+  c1selsav.c
+  Generating Code...
+c:\ncl_from_github\ncl_in_visualstudio\src\calc\qsymtb.c(1123): warning C4700: uninitialized local variable 'val' used
+c:\ncl_from_github\ncl_in_visualstudio\src\calc\qlangio1.c(293): warning C4716: 'uti_prcord' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\calc\qlang.c(56): warning C4716: 'uqi_setend' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\calc\qeval.c(273): warning C4716: 'uqi_cnegate' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\calc\qeval.c(586): warning C4716: 'uqi_coordop' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\calc\qeval.c(621): warning C4716: 'uqi_cordmult' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\calc\qeval.c(703): warning C4716: 'uqi_panswer' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\calc\qeval.c(453): warning C4716: 'uqi_bi_op' : must return a value
+  Compiling...
+  c1srf.c
+  c1uclass.c
+  c2bstub.c
+  cannoin.c
+  cappin.c
+  cattrin.c
+  ccrvin.c
+  cdraftin.c
+  cgeoin.c
+  classtab.c
+  classup.c
+class\classup.c(433): warning C4552: '!' : operator has no effect; expected operator with side-effect
+class\classup.c(475): warning C4552: '!' : operator has no effect; expected operator with side-effect
+  cpermsn.c
+  crelain.c
+  crootin.c
+  csolin.c
+  csrfin.c
+  csupin.c
+  ctextin.c
+  cuclass.c
+  cuinit.c
+  Generating Code...
+  Compiling...
+  cunibin.c
+  d1cmdif.c
+  d1dopngl.c
+  d1drag.c
+  d1gkssup.c
+  d1iconf.c
+  d1indas.c
+  d1initd.c
+C:\NCL_from_GitHub\NCL_in_VisualStudio\src\inc\dinput.h(27): warning C4005: 'EXT' : macro redefinition
+          c:\ncl_from_github\ncl_in_visualstudio\src\inc\udeboff.h(27) : see previous definition of 'EXT'
+c:\ncl_from_github\ncl_in_visualstudio\src\inc\dmark.h(29): warning C4005: 'EXT' : macro redefinition
+          c:\ncl_from_github\ncl_in_visualstudio\src\inc\alloc.h(16) : see previous definition of 'EXT'
+  d1initmu.c
+  d1inuim.c
+  d1rect.c
+  d1rubber.c
+  d2auxm.c
+  d2das.c
+  d2dpl.c
+  d2epop.c
+  d2getcol.c
+  d2hldas.c
+  d2hldcd.c
+  d2hldpk.c
+  Generating Code...
+c:\ncl_from_github\ncl_in_visualstudio\src\das\d2getcol.c(221): warning C4716: 'ud_setpallet2' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\das\d1rect.c(157): warning C4716: 'ud_wsxform' : must return a value
+  Compiling...
+  d2hldst.c
+  d2limds.c
+das\d2limds.c(90): warning C4033: 'ud_lgeo' must return a value
+das\d2limds.c(159): warning C4033: 'ud_lpra' must return a value
+das\d2limds.c(195): warning C4033: 'ud_lsin' must return a value
+das\d2limds.c(232): warning C4033: 'ud_lnin' must return a value
+das\d2limds.c(263): warning C4033: 'ud_leditable' must return a value
+  d2plane.c
+  d2popup.c
+  d2timsp.c
+das\d2timsp.c(69): warning C4033: 'ud_dtval' must return a value
+das\d2timsp.c(106): warning C4033: 'ud_dtsel' must return a value
+das\d2timsp.c(176): warning C4033: 'ud_dtcord' must return a value
+das\d2timsp.c(354): warning C4033: 'ud_dtstr' must return a value
+  d3icnum.c
+  d3jump.c
+das\d3jump.c(77): warning C4033: 'ud_jump' must return a value
+das\d3jump.c(140): warning C4033: 'ud_jmpmark' must return a value
+  d3pipe1.c
+  d3pipe2.c
+  d3pipe3.c
+  d3prevt.c
+  d3read.c
+  d3rp.c
+  d3rp1.c
+  d3rpsup.c
+  d3uims.c
+  d3uims2.c
+das\d3uims2.c(388): warning C4098: 'ud_get_filename' : 'void' function returning a value
+  d3win.c
+das\d3win.c(172): warning C4047: '!=' : 'int' differs in levels of indirection from 'void *'
+das\d3win.c(187): warning C4047: '!=' : 'int' differs in levels of indirection from 'void *'
+das\d3win.c(206): warning C4047: '!=' : 'int' differs in levels of indirection from 'void *'
+  d4actfl.c
+  d4actfm.c
+  Generating Code...
+c:\ncl_from_github\ncl_in_visualstudio\src\das\d3read.c(108): warning C4716: 'ud_read' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\das\d2limds.c(402): warning C4716: 'ud_unlimit' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\das\d2limds.c(480): warning C4716: 'ud_prntlim' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\das\d2limds.c(443): warning C4716: 'ud_prlimit' : must return a value
+  Compiling...
+  d4actfr.c
+  d4ckdat.c
+  d4datx.c
+  d4dvgio.c
+das\d4dvgio.c(126): warning C4033: 'ud_tsetup' must return a value
+  d4form.c
+  d4loadf.c
+  d4meth.c
+  d4meth2.c
+  d4prunit.c
+  d4pstat.c
+das\d4pstat.c(92): warning C4033: 'ud_pstat' must return a value
+  d5calsel.c
+  d5dasin.c
+  d5filt.c
+  d5gtfilt.c
+  d5lgio.c
+das\d5lgio.c(134): warning C4033: 'uti_twrite' must return a value
+das\d5lgio.c(234): warning C4033: 'uti_lxread' must return a value
+das\d5lgio.c(241): warning C4033: 'uti_lxread' must return a value
+das\d5lgio.c(248): warning C4033: 'uti_lxread' must return a value
+  d5lgsub.c
+das\d5lgsub.c(286): warning C4033: 'uti_lexanl' must return a value
+das\d5lgsub.c(360): warning C4033: 'uti_lxnew' must return a value
+das\d5lgsub.c(704): warning C4033: 'uti_metas' must return a value
+das\d5lgsub.c(772): warning C4033: 'uti_number' must return a value
+das\d5lgsub.c(776): warning C4033: 'uti_number' must return a value
+das\d5lgsub.c(780): warning C4033: 'uti_number' must return a value
+das\d5lgsub.c(1005): warning C4033: 'uti_parser' must return a value
+das\d5lgsub.c(1087): warning C4033: 'uti_trace' must return a value
+  d5menu.c
+das\d5menu.c(71): warning C4033: 'udi_mupush' must return a value
+  d5mudsp.c
+C:\NCL_from_GitHub\NCL_in_VisualStudio\src\inc\dmenucom.h(42): warning C4005: 'EXT' : macro redefinition
+          c:\ncl_from_github\ncl_in_visualstudio\src\inc\alloc.h(16) : see previous definition of 'EXT'
+  d5mufst.c
+  d5muin.c
+das\d5muin.c(49): warning C4033: 'ud_dtmenu' must return a value
+  Generating Code...
+c:\ncl_from_github\ncl_in_visualstudio\src\das\d5menu.c(413): warning C4716: 'ud_muexit' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\das\d5menu.c(342): warning C4715: 'udi_mumatch' : not all control paths return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\das\d5lgsub.c(781): warning C4716: 'uti_number' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\das\d5lgsub.c(1088): warning C4716: 'uti_trace' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\das\d5lgsub.c(1183): warning C4716: 'cin_intern' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\das\d5lgsub.c(510): warning C4700: uninitialized local variable 'isno' used
+c:\ncl_from_github\ncl_in_visualstudio\src\das\d4pstat.c(93): warning C4716: 'ud_pstat' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\das\d4dvgio.c(188): warning C4716: 'ud_trmoff' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\das\d4dvgio.c(227): warning C4716: 'ud_atoff' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\das\d4dvgio.c(245): warning C4716: 'ud_attbld' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\das\d4dvgio.c(265): warning C4716: 'ud_eraall' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\das\d4dvgio.c(282): warning C4716: 'ud_crspos' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\das\d4dvgio.c(208): warning C4716: 'ud_treset' : must return a value
+  Compiling...
+  d5muint.c
+  d5munav.c
+  d5munav1.c
+  d5sel.c
+  d5sel1.c
+  d5sel2.c
+  d5semmch.c
+  d5stack.c
+  d6dhelp.c
+  d6layrn.c
+  d6sdeb.c
+das\d6sdeb.c(46): warning C4033: 'ud_set_mask' must return a value
+  d7menu.c
+das\d7menu.c(1776): warning C4033: 'ud_reload_menu' must return a value
+  d7mlayout.c
+  daseg.c
+  dpikstk.c
+  dprint.c
+  g3dsup.c
+  gansi.c
+  garch.c
+C:\NCL_from_GitHub\NCL_in_VisualStudio\src\inc\garch.h(22): warning C4005: 'EXT' : macro redefinition
+          c:\ncl_from_github\ncl_in_visualstudio\src\inc\alloc.h(16) : see previous definition of 'EXT'
+  garchall.c
+  Generating Code...
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\garchall.c(173): warning C4716: 'gqarchids' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\g3dsup.c(48): warning C4716: 'ug_dintersect' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\das\d7menu.c(2102): warning C4715: 'ud_save_dragmenu' : not all control paths return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\das\d7menu.c(3196): warning C4716: 'Ssel_menutype' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\das\d5stack.c(575): warning C4716: 'udi_interval' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\das\d5munav1.c(460): warning C4716: 'ud_icmustk_dn' : must return a value
+  Compiling...
+  garchio.c
+digs\garchio.c(174): warning C4033: 'garchstr' must return a value
+  gatts.c
+  gatts2.c
+  gatts3.c
+  gchchi.c
+  gconvert.c
+  gctrl.c
+  gdcoord.c
+  gddev.c
+  gddev2.c
+  gdtext.c
+  genshad.c
+  genspan2.c
+  gerror.c
+  gfind.c
+digs\gfind.c(277): warning C4033: 'ug_otone' must return a value
+  ginp.c
+digs\ginp.c(760): warning C4033: 'gglocmode' must return a value
+  ginq.c
+  gksftn.c
+  glnitr.c
+  glnstyle.c
+digs\glnstyle.c(161): warning C4033: 'ug_lnstyle' must return a value
+  Generating Code...
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\glnstyle.c(117): warning C4716: 'ug_reset_pattern' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\ginp.c(761): warning C4716: 'gglocmode' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\gfind.c(293): warning C4716: 'ug_otone' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\gfind.c(356): warning C4716: 'gtrav' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\gfind.c(919): warning C4716: 'gtravxfm' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\gfind.c(952): warning C4716: 'gtravxfm2' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\gfind.c(407): warning C4716: 'gtravnxt' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\garchio.c(316): warning C4716: 'garchstr' : must return a value
+  Compiling...
+  glnwdt.c
+  glsi2.c
+  gmat4.c
+  gmath.c
+  gmedcut.c
+digs\gmedcut.c(632): warning C4133: 'function' : incompatible types - from 'Qelement *' to 'char *'
+  gmedfind.c
+  gmedout.c
+  gndc.c
+  gnintrp.c
+  gnout.c
+  gout.c
+  gout2.c
+  gout3.c
+  goutfa.c
+  gpcoef.c
+  gpick.c
+  gpick2.c
+  gpickras.c
+  gpocket.c
+  gpolyz.c
+  Generating Code...
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\gpickras.c(627): warning C4716: 'ug_txrectras' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\gpick.c(1057): warning C4716: 'ug_findtext' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\gpick.c(1173): warning C4716: 'ug_findpolygon3' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\gpick.c(1241): warning C4716: 'ug_findpolygon2' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\gpick.c(600): warning C4716: 'ug_findpolyln3' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\gpick.c(650): warning C4716: 'ug_findshd' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\gpick.c(700): warning C4716: 'ug_findpolyln' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\gpick.c(822): warning C4716: 'ug_findpolymk3' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\gpick.c(873): warning C4716: 'ug_findpolymk2' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\goutfa.c(334): warning C4716: 'ug_flarea3' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\goutfa.c(141): warning C4716: 'ug_fla3' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\goutfa.c(384): warning C4700: uninitialized local variable 'irtn' used
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\gmedcut.c(127): warning C4715: 'ug_medcut' : not all control paths return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\gmath.c(89): warning C4716: 'ug_vcmnvc' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\gmath.c(99): warning C4716: 'ug_vctmsc' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\gmath.c(110): warning C4716: 'ug_vcplvc' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\gmath.c(206): warning C4716: 'ug_cross' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\gmat4.c(238): warning C4716: 'ug_efa' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\gmat4.c(291): warning C4716: 'ug_edi' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\gmat4.c(348): warning C4716: 'grotx' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\gmat4.c(379): warning C4716: 'groty' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\gmat4.c(410): warning C4716: 'grotz' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\glnwdt.c(347): warning C4716: 'output' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\glnwdt.c(395): warning C4716: 'ug_ilnln' : must return a value
+  Compiling...
+  gpow.c
+  gqelt.c
+digs\gqelt.c(84): warning C4047: '=' : 'Gint' differs in levels of indirection from 'void *'
+digs\gqelt.c(88): warning C4047: '=' : 'Gint' differs in levels of indirection from 'void *'
+  grecre.c
+  greflct.c
+  grgb.c
+  gsavsc.c
+  gseg.c
+  gsegac.c
+  gsegras.c
+  gshade.c
+  gsqrt.c
+  gsren.c
+  gtnorm.c
+  gtran.c
+  gtran2.c
+digs\gtran2.c(195): warning C4033: 'ug_ndcw3' must return a value
+  gtran3.c
+  gtran4.c
+digs\gtran4.c(346): warning C4033: 'ug_cliprect' must return a value
+digs\gtran4.c(615): warning C4033: 'ug_icliprect' must return a value
+  gtran5.c
+  gtrana.c
+  gtranws.c
+  Generating Code...
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\gtranws.c(147): warning C4716: 'ug_wswindow3' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\gtranws.c(216): warning C4716: 'ug_wsview' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\gtranws.c(284): warning C4716: 'ug_wsview3' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\gtrana.c(175): warning C4716: 'gsvup2' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\gtran5.c(96): warning C4716: 'gsviewmapping' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\gtran4.c(347): warning C4716: 'ug_cliprect' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\gtran4.c(1022): warning C4716: 'ug_lnclipplane' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\gtran4.c(924): warning C4716: 'ug_faclipplane' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\gtran3.c(266): warning C4716: 'ug_mat3mp' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\gtran2.c(205): warning C4716: 'ug_ndcw3' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\gtran.c(403): warning C4716: 'ug_smodxf' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\gtran.c(528): warning C4716: 'ug_slmodxf' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\gtran.c(551): warning C4716: 'ug_nntran' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\gtran.c(574): warning C4716: 'ug_sntran' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\gshade.c(224): warning C4716: 'ug_vfb_run' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\gsegras.c(235): warning C4716: 'ug_dfindpkras' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\gsegac.c(149): warning C4716: 'ug_segdel' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\grecre.c(231): warning C4716: 'ug_drecreseg' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\grecre.c(153): warning C4716: 'ug_drecresegs' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\grecre.c(188): warning C4716: 'ug_drecresegs_1' : must return a value
+  Compiling...
+  gttio.c
+  gviw.c
+  gviw2.c
+  gviw3.c
+  gvlib.c
+  gwrap.c
+  aang.c
+drafting\aang.c(114): warning C4033: 'ua_angular' must return a value
+drafting\aang.c(238): warning C4033: 'ua_angular' must return a value
+drafting\aang.c(331): warning C4033: 'ua_angular' must return a value
+drafting\aang.c(435): warning C4033: 'ua_angular' must return a value
+  aanggen.c
+  aangutl.c
+  aarcdata.c
+  aarclen.c
+drafting\aarclen.c(620): warning C4033: 'ua_arclen' must return a value
+  aaroattr.c
+  aarrcrv.c
+drafting\aarrcrv.c(75): warning C4033: 'ua_arrow' must return a value
+  aarrow.c
+  aarrowan.c
+  aascdrf.c
+  aattrib.c
+  aattrtxt.c
+  abaseln.c
+drafting\abaseln.c(82): warning C4033: 'ua_baseln' must return a value
+drafting\abaseln.c(115): warning C4033: 'ua_baseln' must return a value
+drafting\abaseln.c(155): warning C4033: 'ua_baseln' must return a value
+  aboxsite.c
+drafting\aboxsite.c(1927): warning C4033: 'ua_box_move' must return a value
+  Generating Code...
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\abaseln.c(276): warning C4700: uninitialized local variable 'grid_save' used
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\aarrcrv.c(211): warning C4716: 'ua_arr_cre' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\aaroattr.c(67): warning C4715: 'ua_set_aro_attr' : not all control paths return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\aarclen.c(511): warning C4716: 'ua_arclen_seang' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\aarclen.c(582): warning C4716: 'ua_iboxcir' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\aarclen.c(799): warning C4716: 'ua_arc_length_symbol' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\aarcdata.c(72): warning C4715: 'ua_get_arcdata' : not all control paths return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\aanggen.c(1099): warning C4716: 'ua_text_angle_calc' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\gttio.c(423): warning C4716: 'uu_ttsing' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\gttio.c(509): warning C4716: 'uu_ttdatabits' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\gttio.c(635): warning C4716: 'uu_ttflout' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\gttio.c(877): warning C4716: 'uu_ttflin' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\digs\gttio.c(600): warning C4716: 'uu_ttput' : must return a value
+  Compiling...
+  acconvt.c
+  acenattr.c
+  acenter.c
+  achain.c
+drafting\achain.c(584): warning C4033: 'ua_chain_dims' must return a value
+drafting\achain.c(594): warning C4033: 'ua_chain_dims' must return a value
+drafting\achain.c(631): warning C4033: 'ua_chain_dims' must return a value
+drafting\achain.c(671): warning C4033: 'ua_chain_dims' must return a value
+drafting\achain.c(909): warning C4033: 'ua_move_chain' must return a value
+  acpln.c
+  adbms.c
+  adebug.c
+  adefault.c
+  adiam.c
+drafting\adiam.c(106): warning C4033: 'ua_diam' must return a value
+drafting\adiam.c(112): warning C4033: 'ua_diam' must return a value
+drafting\adiam.c(119): warning C4033: 'ua_diam' must return a value
+drafting\adiam.c(126): warning C4033: 'ua_diam' must return a value
+drafting\adiam.c(150): warning C4033: 'ua_diam' must return a value
+drafting\adiam.c(189): warning C4033: 'ua_diam' must return a value
+drafting\adiam.c(249): warning C4033: 'ua_diam' must return a value
+  adiamutl.c
+drafting\adiamutl.c(127): warning C4033: 'ua_dia_shaft' must return a value
+drafting\adiamutl.c(158): warning C4033: 'ua_dia_shaft' must return a value
+drafting\adiamutl.c(197): warning C4033: 'ua_dia_shaft' must return a value
+drafting\adiamutl.c(218): warning C4033: 'ua_dia_shaft' must return a value
+drafting\adiamutl.c(577): warning C4033: 'ua_dia_cyln' must return a value
+drafting\adiamutl.c(617): warning C4033: 'ua_dia_cyln' must return a value
+drafting\adiamutl.c(639): warning C4033: 'ua_dia_cyln' must return a value
+drafting\adiamutl.c(656): warning C4033: 'ua_dia_cyln' must return a value
+drafting\adiamutl.c(2518): warning C4033: 'ua_dia_rep_dim' must return a value
+drafting\adiamutl.c(2523): warning C4033: 'ua_dia_rep_dim' must return a value
+drafting\adiamutl.c(2573): warning C4033: 'ua_dia_rep_dim' must return a value
+drafting\adiamutl.c(2586): warning C4033: 'ua_dia_rep_dim' must return a value
+  adimattr.c
+drafting\adimattr.c(85): warning C4033: 'ua_set_dim_attr' must return a value
+  adisparc.c
+  adisplay.c
+  adist.c
+  adlattr.c
+  adrfclas.c
+  adrfinit.c
+C:\NCL_from_GitHub\NCL_in_VisualStudio\src\inc\adrfcom.h(21): warning C4005: 'EXT' : macro redefinition
+          c:\ncl_from_github\ncl_in_visualstudio\src\inc\udeboff.h(27) : see previous definition of 'EXT'
+  aedittxt.c
+drafting\aedittxt.c(261): warning C4033: 'ua_edit_text' must return a value
+  aedtxfrm.c
+  aextattr.c
+  Generating Code...
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\aextattr.c(62): warning C4715: 'ua_set_ext_attr' : not all control paths return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\aedittxt.c(665): warning C4716: 'ua_edit_restore' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\aedittxt.c(700): warning C4716: 'ua_count_lines' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\adlattr.c(59): warning C4715: 'ua_set_dl_attr' : not all control paths return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\adimattr.c(153): warning C4716: 'ua_set_lin_units' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\adiamutl.c(376): warning C4716: 'ua_dia_shaft_cre' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\adiamutl.c(1478): warning C4716: 'ua_dia_cyln_cre' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\adiamutl.c(1081): warning C4700: uninitialized local variable 'orig_loc_type' used
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\adiamutl.c(2414): warning C4716: 'ua_dia_plus' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\adiamutl.c(2671): warning C4715: 'ua_dia_rep_dim' : not all control paths return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\adiam.c(638): warning C4716: 'ua_dia_txt_ang' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\adiam.c(578): warning C4716: 'ua_dia_txt' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\adbms.c(296): warning C4716: 'ua_sal_to_uni' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\adbms.c(492): warning C4716: 'ua_uni_to_sal' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\achain.c(921): warning C4716: 'ua_move_chain' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\acenattr.c(63): warning C4715: 'ua_set_centerline_attr' : not all control paths return a value
+  Compiling...
+  afptol.c
+drafting\afptol.c(398): warning C4033: 'ua_fptol' must return a value
+drafting\afptol.c(440): warning C4033: 'ua_fptol' must return a value
+drafting\afptol.c(453): warning C4033: 'ua_fptol' must return a value
+drafting\afptol.c(466): warning C4033: 'ua_fptol' must return a value
+  aginqsal.c
+  aiboxarc.c
+  ainitent.c
+  airel.c
+  alabel.c
+  aldimutl.c
+  aleader.c
+  alindata.c
+  alinear.c
+drafting\alinear.c(89): warning C4033: 'ua_linear_dims' must return a value
+drafting\alinear.c(126): warning C4033: 'ua_linear_dims' must return a value
+drafting\alinear.c(144): warning C4033: 'ua_linear_dims' must return a value
+  allattr.c
+  amclospt.c
+  amdrfsup.c
+  amenu.c
+  amnptent.c
+  amoddim.c
+  anoteutl.c
+  apledit.c
+  apllab.c
+  apllab1.c
+  Generating Code...
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\apllab.c(107): warning C4716: 'ua_balloon' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\apllab.c(606): warning C4716: 'ua_edit_balloon' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\apledit.c(1001): warning C4716: 'ua_update_all_entries' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\apledit.c(1072): warning C4716: 'ua_update_selected_entries' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\apledit.c(490): warning C4716: 'ua_modify_pl_entry' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\apledit.c(601): warning C4716: 'ua_delete_pl_entry' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\apledit.c(754): warning C4716: 'ua_add_pl_entry' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\amdrfsup.c(440): warning C4716: 'ua_linear_disp' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\amdrfsup.c(473): warning C4716: 'ua_note_msg' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\allattr.c(57): warning C4715: 'ua_set_ll_attr' : not all control paths return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\alindata.c(50): warning C4715: 'ua_get_linedata' : not all control paths return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\aldimutl.c(393): warning C4716: 'ua_near_on_draft' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\ainitent.c(184): warning C4716: 'ua_initent_apptext' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\ainitent.c(268): warning C4716: 'ua_initent_txt_blk' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\ainitent.c(325): warning C4716: 'ua_initent_arrow_blk' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\ainitent.c(382): warning C4716: 'ua_initent_line_blk' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\ainitent.c(421): warning C4716: 'ua_initent_asso_blk' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\ainitent.c(480): warning C4716: 'ua_initent_arc_blk' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\afptol.c(359): warning C4716: 'ua_fp_leader' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\afptol.c(566): warning C4716: 'ua_crea_box' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\afptol.c(670): warning C4715: 'ua_fptol_tol' : not all control paths return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\afptol.c(736): warning C4716: 'ua_update_fptol' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\afptol.c(761): warning C4716: 'ua_init_fpline' : must return a value
+  Compiling...
+  apltbl.c
+drafting\apltbl.c(663): warning C4033: 'ua_pl_tbl_entry' must return a value
+  apltbl1.c
+  apltbl2.c
+drafting\apltbl2.c(455): warning C4033: 'ua_pl_tbl_row' must return a value
+  apolar.c
+drafting\apolar.c(105): warning C4033: 'ua_polar' must return a value
+drafting\apolar.c(144): warning C4033: 'ua_polar' must return a value
+drafting\apolar.c(242): warning C4033: 'ua_polar' must return a value
+drafting\apolar.c(284): warning C4033: 'ua_polar' must return a value
+  aradius.c
+drafting\aradius.c(1090): warning C4033: 'ua_radius' must return a value
+drafting\aradius.c(1129): warning C4033: 'ua_radius' must return a value
+drafting\aradius.c(1189): warning C4033: 'ua_radius' must return a value
+  aregen.c
+  arepangdim.c
+  arepeatdim.c
+drafting\arepeatdim.c(79): warning C4033: 'ua_repeat_dims' must return a value
+drafting\arepeatdim.c(151): warning C4033: 'ua_repeat_dims' must return a value
+  arotpt.c
+  asadas.c
+  asalgks.c
+  asctext.c
+  ascutil.c
+  asdas.c
+  asgetenv.c
+  aspattr.c
+  aspop.c
+  asstring.c
+  asubfs.c
+drafting\asubfs.c(343): warning C4033: 'ua_user_text_dtol' must return a value
+drafting\asubfs.c(350): warning C4033: 'ua_user_text_dtol' must return a value
+drafting\asubfs.c(358): warning C4033: 'ua_user_text_dtol' must return a value
+drafting\asubfs.c(546): warning C4033: 'ua_user_text_dtol' must return a value
+drafting\asubfs.c(597): warning C4033: 'ua_user_text_mtol' must return a value
+drafting\asubfs.c(604): warning C4033: 'ua_user_text_mtol' must return a value
+drafting\asubfs.c(612): warning C4033: 'ua_user_text_mtol' must return a value
+  aswapstd.c
+drafting\aswapstd.c(66): warning C4033: 'ua_swap_standard' must return a value
+  Generating Code...
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\asubfs.c(564): warning C4716: 'ua_user_text_dtol' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\asubfs.c(858): warning C4716: 'ua_user_text_mtol' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\asubfs.c(915): warning C4716: 'ua_apptext_subf' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\aspattr.c(121): warning C4715: 'ua_set_sp_attr' : not all control paths return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\ascutil.c(530): warning C4715: 'us_compsctosc' : not all control paths return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\arepeatdim.c(376): warning C4715: 'ua_repeat_dims' : not all control paths return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\arepeatdim.c(118): warning C4700: uninitialized local variable 'previous_key' used
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\arepeatdim.c(356): warning C4700: uninitialized local variable 'grid_save' used
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\aregen.c(700): warning C4716: 'ua_loc_old_text_org' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\aregen.c(792): warning C4716: 'ua_loc_new_text_org' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\aregen.c(868): warning C4716: 'ua_reloc_text_arc' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\aregen.c(907): warning C4716: 'ua_reloc_text_angular' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\aregen.c(1104): warning C4716: 'ua_regen_save' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\aregen.c(1131): warning C4716: 'ua_regen_restore' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\aregen.c(1303): warning C4716: 'ua_regen_update_record' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\aradius.c(383): warning C4716: 'ua_radius_plus' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\aradius.c(613): warning C4716: 'ua_rad_large' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\aradius.c(946): warning C4716: 'ua_rad_outside' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\aradius.c(1040): warning C4716: 'ua_rad_ext' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\aradius.c(1515): warning C4716: 'ua_rad_center' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\aradius.c(1575): warning C4716: 'ua_rad_txt_ang' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\aradius.c(1654): warning C4716: 'ua_crea_long_leader' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\apolar.c(689): warning C4716: 'ua_copy_txt_blk' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\apltbl2.c(456): warning C4716: 'ua_pl_tbl_row' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\apltbl1.c(318): warning C4716: 'ua_drw_pl_text' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\apltbl1.c(891): warning C4716: 'ua_get_next_pl_string' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\apltbl.c(351): warning C4716: 'ua_pl_tbl_box' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\apltbl.c(504): warning C4716: 'ua_pl_titles' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\apltbl.c(703): warning C4716: 'ua_get_pl_text' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\apltbl.c(790): warning C4716: 'ua_strip_pl_entry' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\apltbl.c(848): warning C4716: 'ua_update_pl_count_field' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\apltbl.c(744): warning C4716: 'ua_check_pl_quantity' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\apltbl.c(664): warning C4716: 'ua_pl_tbl_entry' : must return a value
+  Compiling...
+  aswrite.c
+  atolattr.c
+  atxtauto.c
+  atxtcom.c
+  atxtdba.c
+  atxtdrw.c
+  atxtedit.c
+  atxtfrm.c
+  atxtinit.c
+  atxtnote.c
+  atxtutl.c
+  autility.c
+drafting\autility.c(151): warning C4033: 'ua_degree_tol_text' must return a value
+drafting\autility.c(495): warning C4033: 'ua_value_to_string' must return a value
+drafting\autility.c(802): warning C4033: 'ua_arch_text' must return a value
+drafting\autility.c(896): warning C4033: 'ua_trim_line' must return a value
+drafting\autility.c(1612): warning C4033: 'ua_set_ddim_text' must return a value
+drafting\autility.c(2482): warning C4033: 'ua_get_upvector' must return a value
+drafting\autility.c(2544): warning C4033: 'ua_dual_degree_tol_text' must return a value
+  axhatch.c
+drafting\axhatch.c(1034): warning C4033: 'ua_xhatch' must return a value
+  axhatch2.c
+drafting\axhatch2.c(323): warning C4033: 'ua_xhatch_mergeilist' must return a value
+drafting\axhatch2.c(329): warning C4033: 'ua_xhatch_mergeilist' must return a value
+drafting\axhatch2.c(467): warning C4033: 'ua_xhatch_mergeilist' must return a value
+  axhclas.c
+  axhcsup.c
+  axhdigs.c
+drafting\axhdigs.c(53): warning C4047: '!=' : 'int' differs in levels of indirection from 'void *'
+  axhform.c
+  axhint.c
+  f2line.c
+  Generating Code...
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\axhform.c(83): warning C4715: 'ua_xh_form' : not all control paths return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\axhclas.c(454): warning C4716: 'ua_update_xhatch' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\axhclas.c(505): warning C4716: 'ua_xh_update_attr' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\axhclas.c(280): warning C4716: 'ua_transf_xhatch' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\axhclas.c(331): warning C4716: 'ua_create_xhatch' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\axhatch2.c(716): warning C4715: 'ua_xhatch_compare' : not all control paths return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\axhatch.c(1035): warning C4715: 'ua_xhatch' : not all control paths return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\axhatch.c(1216): warning C4715: 'ua_mod_xh_attr' : not all control paths return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\autility.c(496): warning C4716: 'ua_value_to_string' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\autility.c(1705): warning C4716: 'ua_english_text' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\autility.c(2451): warning C4716: 'ua_degree_text' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\autility.c(2545): warning C4716: 'ua_dual_degree_tol_text' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\autility.c(1630): warning C4716: 'ua_set_ddim_text' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\autility.c(1191): warning C4700: uninitialized local variable 'factor' used
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\autility.c(2350): warning C4716: 'ua_set_mdim_text' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\autility.c(3241): warning C4716: 'ua_set_rep_mdim_text' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\atxtutl.c(534): warning C4716: 'ua_saveattr_text' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\atxtutl.c(622): warning C4716: 'ua_restattr_text' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\atxtedit.c(261): warning C4716: 'uai_delete_line' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\atxtedit.c(340): warning C4716: 'uai_add_line' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\atxtedit.c(370): warning C4716: 'uai_prnt_list' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\atxtedit.c(207): warning C4716: 'uai_edit_line' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\drafting\atolattr.c(88): warning C4715: 'ua_set_tol_attr' : not all control paths return a value
+  Compiling...
+  f3circle.c
+  f4conic.c
+  f5comp.c
+  f6spline.c
+  f7spline.c
+  f8solid.c
+  farrow.c
+  feacalc.c
+  feacoord.c
+  feainit.c
+  feamain.c
+  feapick.c
+  feareal.c
+  feareset.c
+  feasub.c
+  feavect.c
+  jauto.c
+  jfmgt.c
+  jmisc.c
+  jpentbf.c
+general\jpentbf.c(249): warning C4047: '==' : 'int' differs in levels of indirection from 'void *'
+  Generating Code...
+  Compiling...
+  jplotfrm.c
+  jplotit.c
+  jplotsz.c
+general\jplotsz.c(50): warning C4033: 'uj_setps' must return a value
+general\jplotsz.c(188): warning C4033: 'jp_7475size' must return a value
+general\jplotsz.c(330): warning C4033: 'jp_pssize' must return a value
+general\jplotsz.c(482): warning C4033: 'jp_7580size' must return a value
+general\jplotsz.c(626): warning C4033: 'jp_1043size' must return a value
+  jquery.c
+  jreadmu.c
+  jsignonf.c
+  jtrcback.c
+  jtuto.c
+general\jtuto.c(80): warning C4033: 'uj_tutorial' must return a value
+general\jtuto.c(91): warning C4033: 'uj_tutorial' must return a value
+general\jtuto.c(109): warning C4033: 'uj_tutorial' must return a value
+general\jtuto.c(129): warning C4033: 'uj_tutorial' must return a value
+general\jtuto.c(140): warning C4033: 'uj_tutorial' must return a value
+  juquery.c
+  imouse3.c
+  ipuck4.c
+  iunihep.c
+  ltermio.c
+interface\ltermio.c(93): warning C4033: 'clreol' must return a value
+interface\ltermio.c(122): warning C4033: 'clreos' must return a value
+interface\ltermio.c(150): warning C4033: 'clrscr' must return a value
+interface\ltermio.c(196): warning C4033: 'crslft' must return a value
+interface\ltermio.c(241): warning C4033: 'crsrgt' must return a value
+interface\ltermio.c(300): warning C4033: 'dmpbuf' must return a value
+interface\ltermio.c(433): warning C4033: 'getc1' must return a value
+interface\ltermio.c(482): warning C4033: 'hilit' must return a value
+interface\ltermio.c(524): warning C4033: 'plot' must return a value
+interface\ltermio.c(581): warning C4033: 'plot_w2' must return a value
+interface\ltermio.c(607): warning C4033: 'rstcur' must return a value
+interface\ltermio.c(632): warning C4033: 'savcur' must return a value
+interface\ltermio.c(752): warning C4033: 'scroll1' must return a value
+interface\ltermio.c(873): warning C4033: 'trmatt' must return a value
+interface\ltermio.c(919): warning C4033: 'trmnl' must return a value
+interface\ltermio.c(993): warning C4033: 'trmrst' must return a value
+interface\ltermio.c(1047): warning C4033: 'savescr' must return a value
+interface\ltermio.c(1075): warning C4033: 'restscr' must return a value
+  nmodfy.c
+interface\nmodfy.c(484): warning C4033: 'nmodfy_pop' must return a value
+  zapphep.c
+  zappinit.c
+  zmisc.c
+  znuinit.c
+  zrp.c
+  zsaxgrid.c
+  Generating Code...
+c:\ncl_from_github\ncl_in_visualstudio\src\interface\zapphep.c(27): warning C4716: 'uu_aprompt0' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\interface\zapphep.c(35): warning C4716: 'uu_aerhep' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\interface\zapphep.c(42): warning C4716: 'uu_apmthep' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\interface\zapphep.c(49): warning C4716: 'uu_asysinfor' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\interface\zapphep.c(55): warning C4716: 'uu_achoicemsg' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\interface\iunihep.c(3309): warning C4715: 'uu_uerhep' : not all control paths return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\interface\iunihep.c(3419): warning C4715: 'uu_upmthep' : not all control paths return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\interface\iunihep.c(3522): warning C4715: 'uu_usysinfor' : not all control paths return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\general\jtuto.c(438): warning C4716: 'uji_getfls' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\general\jtuto.c(460): warning C4716: 'uji_free' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\general\jsignonf.c(208): warning C4716: 'uji_packinfo' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\general\jplotsz.c(189): warning C4716: 'jp_7475size' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\general\jplotsz.c(331): warning C4716: 'jp_pssize' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\general\jplotsz.c(483): warning C4716: 'jp_7580size' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\general\jplotsz.c(627): warning C4716: 'jp_1043size' : must return a value
+  Compiling...
+  zsdraft.c
+  zsedit.c
+  zsflmgmt.c
+  zsnclmotn.c
+interface\zsnclmotn.c(70): warning C4033: 'uz_zmotion' must return a value
+interface\zsnclmotn.c(95): warning C4033: 'uz_zncl_cmd' must return a value
+  zsselect.c
+  zssurfac.c
+  zssymmgt.c
+  zstat.c
+  zstat2.c
+interface\zstat2.c(208): warning C4047: '==' : 'unsigned int' differs in levels of indirection from 'void *'
+interface\zstat2.c(279): warning C4047: '=' : 'char *' differs in levels of indirection from 'int'
+interface\zstat2.c(306): warning C4047: '!=' : 'int' differs in levels of indirection from 'void *'
+  zsview.c
+  zuni.c
+  zusercalls.c
+  zuserkeys.c
+  zwntcalls.c
+  m1mcrv.c
+  m1romenu.c
+  m1romini.c
+  m2calcf.c
+  m2dasup1.c
+  m2dasup2.c
+  Generating Code...
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m2calcf.c(163): warning C4716: 'umi_line_mindist' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m2calcf.c(281): warning C4716: 'umi_point_dist' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m1romini.c(15): warning C4716: 'roinit' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m1romini.c(16): warning C4716: 'romain' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m1romini.c(17): warning C4716: 'unmcby' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m1romini.c(18): warning C4716: 'ugednm' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m1romini.c(19): warning C4716: 'uedcby' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m1romini.c(20): warning C4716: 'ugtcrv' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m1romini.c(21): warning C4716: 'ublend' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m1romini.c(22): warning C4716: 'unewby' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m1romini.c(23): warning C4716: 'scurby' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m1romini.c(24): warning C4716: 'gtbyno' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m1romini.c(25): warning C4716: 'gtbycl' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m1romini.c(26): warning C4716: 'wsbycr' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m1romini.c(27): warning C4716: 'ugface' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m1romini.c(28): warning C4716: 'wsedbl' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m1romini.c(29): warning C4716: 'uplcrv' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m1romini.c(30): warning C4716: 'utweek' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m1romini.c(31): warning C4716: 'gplout' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m1romini.c(32): warning C4716: 'ufdlst' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m1romini.c(33): warning C4716: 'anoffa' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m1romini.c(34): warning C4716: 'nofaby' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m1romini.c(35): warning C4716: 'noanfa' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m1romini.c(36): warning C4716: 'endvr' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m1romini.c(37): warning C4716: 'fwded' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m1romini.c(38): warning C4716: 'faofby' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m1romini.c(39): warning C4716: 'bxoffa' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m1romini.c(40): warning C4716: 'sfoffa' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m1romini.c(41): warning C4716: 'ugtsrf' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\interface\zsdraft.c(81): warning C4715: 'uz_zdrafting' : not all control paths return a value
+  Compiling...
+  m2dasup3.c
+  m2dasup4.c
+  m2dba.c
+  m2dba2.c
+  m2debmdl.c
+  m2delete.c
+  m2dynmem.c
+  m2egen.c
+  m2einit.c
+  m2eirel.c
+  m2elabel.c
+  m2elight.c
+model\m2elight.c(175): warning C4033: 'um_drw38_light' must return a value
+  m2epop.c
+  m2etran.c
+  m2eval.c
+  m2geom.c
+  m2global.c
+C:\NCL_from_GitHub\NCL_in_VisualStudio\src\inc\mlab.h(14): warning C4005: 'EXT' : macro redefinition
+          C:\NCL_from_GitHub\NCL_in_VisualStudio\src\inc\mdrwsize.h(17) : see previous definition of 'EXT'
+  m2iattr.c
+  m2icolor.c
+  m2ilayer.c
+  Generating Code...
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m2elight.c(281): warning C4715: 'um_drw38_light' : not all control paths return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m2dynmem.c(86): warning C4716: 'umi_print_alloc_messages' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m2debmdl.c(235): warning C4716: 'um_print_attribute' : must return a value
+  Compiling...
+  m2init.c
+  m2lnwid.c
+  m2query.c
+  m2savld.c
+  m2scroll.c
+  m2stubs.c
+  m2test.c
+  m2uanaly.c
+  m2uattr.c
+  m2uattrf.c
+  m2ucolor.c
+  m2udislv.c
+  m2ulabel.c
+  m2ulayer.c
+  m2ulight.c
+  m2umodal.c
+  m2upjpln.c
+  m2ursurf.c
+  m2vxcntl.c
+  m3eccs.c
+  Generating Code...
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m2uanaly.c(616): warning C4715: 'umu_2da_modals' : not all control paths return a value
+  Compiling...
+  m3ecirc1.c
+  m3ecirc2.c
+  m3ecirc3.c
+  m3ecirc4.c
+  m3ecirc5.c
+  m3ecirc6.c
+  m3ecn1.c
+model\m3ecn1.c(827): warning C4033: 'um_ilnconic' must return a value
+  m3ecn2.c
+  m3ecn3.c
+  m3ecomp.c
+  m3ecomp1.c
+  m3ecomp2.c
+  m3ecomp3.c
+  m3ecpln1.c
+  m3ecpln2.c
+  m3edash.c
+  m3eextr.c
+  m3efilet.c
+  m3egrid.c
+  m3egroup.c
+  Generating Code...
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m3ecirc5.c(310): warning C4716: 'um_bisect' : must return a value
+  Compiling...
+  m3eline.c
+  m3eline1.c
+  m3eline2.c
+  m3eplin.c
+  m3epoly.c
+  m3ept.c
+  m3espan.c
+  m3espline.c
+  m3etrim.c
+  m3etrim1.c
+  m3evect.c
+  m3icirc1.c
+  m3icn1.c
+  m3icn2.c
+model\m3icn2.c(287): warning C4033: 'um_rotquad' must return a value
+  m3icomp.c
+  m3idaxis.c
+  m3iptbtw.c
+  m3multi.c
+  m3ucirc1.c
+  m3ucirc2.c
+  Generating Code...
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m3icomp.c(307): warning C4716: 'um_flip' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m3icn2.c(362): warning C4716: 'um_tranquad' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m3icn2.c(384): warning C4716: 'um_copyquad' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m3icn2.c(315): warning C4716: 'um_rotquad' : must return a value
+  Compiling...
+  m3ucirc3.c
+  m3ucirc4.c
+  m3ucirc5.c
+  m3ucn1.c
+  m3ucn2.c
+  m3ucn3.c
+model\m3ucn3.c(549): warning C4047: '=' : 'int' differs in levels of indirection from 'void *'
+model\m3ucn3.c(550): warning C4047: '=' : 'int' differs in levels of indirection from 'void *'
+  m3ucn4.c
+model\m3ucn4.c(63): warning C4033: 'umu_c4_iges' must return a value
+  m3ucomp.c
+  m3ucomp1.c
+  m3ucpln.c
+  m3udaxis.c
+  m3uextr.c
+  m3ufilet.c
+  m3ugroup.c
+  m3uline.c
+  m3umgeom.c
+  m3uplin.c
+  m3upoly.c
+  m3upt.c
+  m3upt1.c
+  Generating Code...
+  Compiling...
+  m3utrim.c
+  m3utrim1.c
+  m4bndry.c
+  m4bndry1.c
+  m4bndry2.c
+  m4cvio.c
+  m4e2da.c
+model\m4e2da.c(255): warning C4033: 'um_2d_props' must return a value
+model\m4e2da.c(667): warning C4033: 'um_ccrv_to_pts' must return a value
+  m4ebsc.c
+  m4ecrv0.c
+  m4ecrv1.c
+  m4ecrv2.c
+  m4ecrv3.c
+  m4ecrv5.c
+  m4ecvsf.c
+  m4edas.c
+  m4edba.c
+model\m4edba.c(60): warning C4047: '=' : 'int' differs in levels of indirection from 'void *'
+  m4enptent.c
+  m4epop.c
+  m4erbsc.c
+  m4esavld.c
+  Generating Code...
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m4e2da.c(668): warning C4716: 'um_ccrv_to_pts' : must return a value
+  Compiling...
+  m4evcrv.c
+  m4i2dcvh.c
+  m4ibasis.c
+  m4ibsc.c
+  m4iconv.c
+  m4icrv1.c
+  m4ioslo.c
+  m4ioslo1.c
+  m4ioslo2.c
+  m4ipcvh.c
+  m4isect.c
+  m4isect1.c
+  m4ucrv.c
+  m4utol.c
+  m5econv.c
+  m5ecrv.c
+  m5edba.c
+model\m5edba.c(69): warning C4047: '=' : 'int' differs in levels of indirection from 'void *'
+  m5edraft.c
+  m5esrf.c
+  m5esrf1.c
+  Generating Code...
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m5esrf.c(130): warning C4716: 'um_tessellate' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m4iconv.c(260): warning C4716: 'umi_ag_pro_conic' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m4ibsc.c(86): warning C4716: 'um_d2basis' : must return a value
+  Compiling...
+  m5ioslo.c
+  m5ioslo1.c
+  m5uattr.c
+  m5usrf2.c
+  m6edas.c
+  m6edba.c
+model\m6edba.c(59): warning C4047: '=' : 'int' differs in levels of indirection from 'void *'
+  m6edraft.c
+  m6esh1.c
+  m6ish1.c
+  m6ishell.c
+model\m6ishell.c(139): warning C4033: 'umi_drw_face_uv' must return a value
+  m7geom.c
+  m7geom1.c
+  m7math1.c
+  m7math2.c
+  m7math2d.c
+  m7math3.c
+  m7mathc.c
+  m7mathco.c
+  m7mathco1.c
+  m7mathev.c
+  Generating Code...
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m7mathev.c(290): warning C4700: uninitialized local variable 'numerator' used
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m7mathco1.c(127): warning C4715: 'um_layonpln' : not all control paths return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m7mathc.c(101): warning C4716: 'um_projvect' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m7mathc.c(143): warning C4716: 'um_circpts' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m6ishell.c(140): warning C4716: 'umi_drw_face_uv' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m6ish1.c(722): warning C4716: 'umi_x_bnd_rayv' : must return a value
+  Compiling...
+  m7mathmx.c
+  m7mathtf.c
+  m7mathvc.c
+  m8ersol1.c
+  m8ersol2.c
+  m8ifit1.c
+  m8irsol1.c
+  m8irsol4.c
+  m8irsol6.c
+  m8irsol7.c
+  m8stubs.c
+  m8ursol4.c
+  m9edrf.c
+  m9edrw.c
+  m9edrw2.c
+  m9edrw3.c
+  m9eplot.c
+  m9epocket.c
+  m9eproj.c
+  m9eview.c
+  Generating Code...
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m9edrw.c(274): warning C4716: 'um_drw_2drectangle' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m9edrw.c(315): warning C4716: 'um_get_drawing_extents' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m9edrw.c(448): warning C4716: 'um_update_active_drawing' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m8irsol6.c(160): warning C4716: 'um_build_viewmat' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m8irsol4.c(459): warning C4716: 'um_rom_appear' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m8irsol1.c(324): warning C4716: 'um_get_by_edge' : must return a value
+  Compiling...
+  m9eview1.c
+  m9udrw1.c
+model\m9udrw1.c(158): warning C4033: 'umu_46_delete_drawing' must return a value
+  m9udrw2.c
+  m9udrw3.c
+  m9udrw4.c
+  m9udrwf.c
+  m9uview.c
+  mipv.c
+  mmsmathf.c
+  mtessel.c
+  bowtie.c
+  dunits.c
+  n2dba.c
+  n2query.c
+  n2uattr.c
+  nauth.c
+  nbatch.c
+  ncalculator.c
+  nclclass.c
+nclc\nclclass.c(450): warning C4033: 'ncl_get_endpts' must return a value
+  nclclip.c
+  Generating Code...
+c:\ncl_from_github\ncl_in_visualstudio\src\model\m9udrw1.c(184): warning C4715: 'umu_46_delete_drawing' : not all control paths return a value
+  Compiling...
+  nclresize.c
+  nclsig.c
+nclc\nclsig.c(76): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void (__cdecl *)(int)'
+  nclspc001.c
+  nclxcatia.c
+  neagcnv.c
+  neanalyze.c
+  neanalyze1.c
+  neattr.c
+  neauth.c
+  nebound.c
+  nebound1.c
+  neboundary.c
+  neboundary1.c
+  nebox.c
+  nebucket.c
+  necatia.c
+  necattr.c
+  necdraw.c
+  necdraw1.c
+  necdraw2.c
+  Generating Code...
+  Compiling...
+  necirc.c
+  neclass.c
+  neclfile.c
+  neclosed.c
+  necmd.c
+  necolors.c
+  necrcv.c
+  necrsf.c
+  necurpb.c
+  necutdis.c
+  necutprof.c
+  necutsym.c
+  necutsym2.c
+  necv.c
+  necv2.c
+  necvfix.c
+  necvio.c
+  necvlev.c
+  necvoffs.c
+  necvsup.c
+  Generating Code...
+  Compiling...
+  necvsup1.c
+  nedas.c
+  nedasif.c
+  nedasif1.c
+  nedata.c
+  nedatastmt.c
+  nedisplst.c
+  nedrawcut.c
+  nedrawcut1.c
+  nedrawcut2.c
+  nedrvcrv.c
+  neeval.c
+  neevlent.c
+  nefmill.c
+  nefmill1.c
+  nefmill2.c
+  nefmill3.c
+  negeodbg.c
+  negeogn.c
+  negeogn1.c
+  Generating Code...
+  Compiling...
+  negeogn2.c
+  negeogn3.c
+  negeogn4.c
+  negetbox.c
+  negfauto.c
+  neglobal.c
+  negtrec.c
+nclc\negtrec.c(74): warning C4133: 'function' : incompatible types - from 'GOTO_dat *' to 'char *'
+nclc\negtrec.c(166): warning C4133: 'function' : incompatible types - from 'GOTO_dat *' to 'char *'
+  neifelse.c
+  neinit.c
+  neirel.c
+  nelabel.c
+  nelabtbl.c
+  neln.c
+  nemcdcnv.c
+  nemesh.c
+  nemodsys.c
+  nemot.c
+nclc\nemot.c(2081): warning C4047: '=' : 'UN_motseg *' differs in levels of indirection from 'int'
+  nemotattr.c
+  nemotcut.c
+nclc\nemotcut.c(1966): warning C4098: 'getcut_hgt' : 'void' function returning a value
+  nemotdraw.c
+  Generating Code...
+  Compiling...
+  nemotpb.c
+  nemotpb1.c
+  nemotstk.c
+  nemotsup.c
+  nemotws.c
+  nemsfun.c
+  nemx.c
+  nenetsf.c
+  nepick.c
+  nepick1.c
+  nepl.c
+nclc\nepl.c(269): warning C4033: 'projpt' must return a value
+nclc\nepl.c(306): warning C4033: 'ncl_nclpln_to_pln' must return a value
+  nepmill.c
+  nepn.c
+  nepocket.c
+  nepocket2.c
+  nepocket3.c
+  nepocket4.c
+  neprofil.c
+  neproj.c
+  neproj0.c
+  Generating Code...
+c:\ncl_from_github\ncl_in_visualstudio\src\nclc\nepl.c(98): warning C4716: 'gtdpt' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\nclc\nepl.c(270): warning C4716: 'projpt' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\nclc\nepl.c(307): warning C4716: 'ncl_nclpln_to_pln' : must return a value
+  Compiling...
+  neproj1.c
+  neproj2.c
+  neproj3.c
+  neproj4.c
+  nepsegs0.c
+  nepsmult.c
+  nepsmult1.c
+  nept.c
+  nepv.c
+  nequilt.c
+  neranfl.c
+  nerbsf.c
+  nerbsp.c
+  nerbsp2.c
+  nerd.c
+  nerd1.c
+  nerefsys.c
+  neretrim.c
+  neretrim1.c
+  nerevsf.c
+  Generating Code...
+  Compiling...
+  nerevsf1.c
+  nescalar.c
+  nescalar2.c
+  nescratch.c
+  nesequnc.c
+  nesf.c
+  nesf2.c
+  nesfbuild.c
+  nesfprim.c
+  nesfprim1.c
+  nesfsup.c
+  nesfsup1.c
+  neshade.c
+  nesimulate.c
+  neskylst.c
+  nesmclpath.c
+  nesmedge.c
+  nesmill.c
+  nesmouse.c
+  nesmutil.c
+  Generating Code...
+  Compiling...
+  nesolid.c
+  nesolid1.c
+  nesolid2.c
+  nesolid3.c
+  nesrc.c
+  nesrcctl.c
+  nestubs.c
+  nesupt.c
+  nesupt1.c
+  nesupt2.c
+  nesuptoml.c
+  netessel.c
+  netessmgr.c
+  netextvar.c
+  netmp.c
+  netoler.c
+  netoolib.c
+  netrimsf.c
+  netrimsf1.c
+  netrimsf2.c
+  Generating Code...
+c:\ncl_from_github\ncl_in_visualstudio\src\nclc\nesolid3.c(1313): warning C4700: uninitialized local variable 'ntess' used
+  Compiling...
+  neub2sup.c
+  neub2sup1.c
+  neubtoub.c
+  neunibas.c
+  neuvcvass.c
+  neve.c
+  neview.c
+  nevolve.c
+  nevolve1.c
+  nevolvegn.c
+  nevolvegn1.c
+  nevx.c
+nclc\nevx.c(327): warning C4133: 'function' : incompatible types - from 'NCL_name_list_data *' to 'char *'
+  nevxmac.c
+nclc\nevxmac.c(294): warning C4133: '=' : incompatible types - from 'NCL_macro_call_data *' to 'NCL_macro_datakey *'
+  nevxsup.c
+  newatbase.c
+  newatcir.c
+  newatcon.c
+  newaterln.c
+  newaterln1.c
+  newaterln2.c
+  Generating Code...
+  Compiling...
+  newatmain.c
+  newatover.c
+  newatstk.c
+  newind.c
+  nget.c
+  nget1.c
+  ngtimx.c
+  npltmot.c
+  nput.c
+  nsecondu.c
+  nshape.c
+  ntlattr.c
+  nu5sel.c
+  nuanalyze.c
+  nuarcslp.c
+  nucattr.c
+  nuci.c
+  nuclone.c
+  nucntl.c
+  nucontour.c
+  Generating Code...
+  Compiling...
+  nucutr.c
+  nucutr1.c
+  nucv.c
+  nucv1.c
+  nudata.c
+  nudisplay.c
+  nudrw.c
+  nuedits.c
+  nuengrave.c
+nclc\nuengrave.c(179): warning C4047: 'initializing' : 'int *' differs in levels of indirection from 'char (*)[80]'
+  nuerase.c
+  nufedrat.c
+  nufile.c
+  nufilet.c
+  nufmill.c
+  nugo.c
+  nugodlta.c
+  nugoto.c
+  nulabel.c
+  nulathe.c
+  nulaydef.c
+  Generating Code...
+c:\ncl_from_github\ncl_in_visualstudio\src\nclc\nufedrat.c(1300): warning C4716: 'S_enable_buttons' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\nclc\nudrw.c(567): warning C4716: 'nclu_init_drawing_size' : must return a value
+  Compiling...
+  nuln.c
+  numacdyn.c
+  numenu.c
+  numisc.c
+  numodals.c
+  numodsys.c
+  numot.c
+  numotion.c
+  numotsup.c
+  numove.c
+  numx.c
+  nunotes.c
+  nupl.c
+  nupmill.c
+nclc\nupmill.c(246): warning C4047: 'initializing' : 'int *' differs in levels of indirection from 'char (*)[96]'
+nclc\nupmill.c(250): warning C4133: 'initializing' : incompatible types - from 'double *' to 'int *'
+  nupn.c
+  nupocket.c
+  nupocket1.c
+  nupocket2.c
+  nupokmod.c
+nclc\nupokmod.c(605): warning C4047: 'initializing' : 'int *' differs in levels of indirection from 'char (*)[80]'
+  nuprofil.c
+nclc\nuprofil.c(326): warning C4047: 'initializing' : 'int *' differs in levels of indirection from 'char (*)[65]'
+  Generating Code...
+c:\ncl_from_github\ncl_in_visualstudio\src\nclc\nupmill.c(1750): warning C4700: uninitialized local variable 'status' used
+  Compiling...
+  nuprog.c
+  nuproj.c
+  nupt.c
+  nupv.c
+  nurbsp.c
+  nuredef.c
+  nurefsys.c
+  nuremove.c
+  nurevers.c
+  nurmill.c
+nclc\nurmill.c(277): warning C4047: 'initializing' : 'int *' differs in levels of indirection from 'char (*)[80]'
+  nusf.c
+  nusf1.c
+  nusf2.c
+  nush.c
+  nusmill.c
+  nusolid.c
+  nusolid1.c
+  nusystem.c
+  nutestcase.c
+  nutil.c
+  Generating Code...
+  Compiling...
+  nutil1.c
+  nutlaxis.c
+  nutlcalc.c
+  nuunits.c
+  nuve.c
+  nuview.c
+  nuvmill.c
+  nuvmill1.c
+  nuvmpmod.c
+nclc\nuvmpmod.c(192): warning C4047: 'initializing' : 'int *' differs in levels of indirection from 'char (*)[97]'
+  nuwrap.c
+  nuzsurf.c
+  trimsup.c
+  nclxuser.c
+  yclfile.c
+openncl\yclfile.c(226): warning C4133: 'function' : incompatible types - from 'UN_clstruc *' to 'char *'
+openncl\yclfile.c(242): warning C4133: 'function' : incompatible types - from 'UN_clstruc *' to 'char *'
+openncl\yclfile.c(257): warning C4133: 'function' : incompatible types - from 'UN_clstruc *' to 'char *'
+  ydebuga.c
+  ydebugb.c
+  ydebugc.c
+  yfortran.c
+  ymdlattrib.c
+  ymdlget.c
+  Generating Code...
+c:\ncl_from_github\ncl_in_visualstudio\src\nclc\nutlcalc.c(1585): warning C4716: 'S_enable_buttons' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\nclc\nutlcalc.c(1625): warning C4716: 'S_Edit_field' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\nclc\nutlaxis.c(2520): warning C4716: 'S_init_form2' : must return a value
+  Compiling...
+  ymdlput.c
+  ymodel.c
+  ymotion.c
+  ymotmdl.c
+  ymotrtn.c
+  ymotsup.c
+  yunibase.c
+  yuser.c
+  hostid_nt.c
+C:\NCL_from_GitHub\NCL_in_VisualStudio\postworks\pwinc\spromeps.h(490): warning C4005: 'RB_MAX_OS_TYPE' : macro redefinition
+          C:\NCL_from_GitHub\NCL_in_VisualStudio\postworks\pwinc\scribe_nt.h(182) : see previous definition of 'RB_MAX_OS_TYPE'
+C:\NCL_from_GitHub\NCL_in_VisualStudio\postworks\pwinc\spromeps.h(518): warning C4005: 'RB_RSRV_PORT_FLAGS' : macro redefinition
+          C:\NCL_from_GitHub\NCL_in_VisualStudio\postworks\pwinc\scribe_nt.h(207) : see previous definition of 'RB_RSRV_PORT_FLAGS'
+C:\NCL_from_GitHub\NCL_in_VisualStudio\postworks\pwinc\spromeps.h(519): warning C4005: 'RB_DEFAULT_PORT_FLAGS' : macro redefinition
+          C:\NCL_from_GitHub\NCL_in_VisualStudio\postworks\pwinc\scribe_nt.h(208) : see previous definition of 'RB_DEFAULT_PORT_FLAGS'
+  pwdtim.c
+  badd2.c
+  bautoup.c
+  bcondba.c
+  bconect.c
+  bconinit.c
+  bconinst.c
+  bdebug.c
+  bdrwsym.c
+  beimanip.c
+  bfrmcolr.c
+  Generating Code...
+c:\ncl_from_github\ncl_in_visualstudio\src\symbols\bdebug.c(354): warning C4716: 'ubi_pscroll' : must return a value
+  Compiling...
+  bidrag.c
+  bimgeomc.c
+  bimktype.c
+  binstance.c
+  bipload.c
+  bmlib.c
+  bpermsn.c
+  bquery.c
+  bsavsym.c
+symbols\bsavsym.c(184): warning C4129: '' : unrecognized character escape sequence
+  bsymasoc.c
+symbols\bsymasoc.c(136): warning C4129: '' : unrecognized character escape sequence
+  bsymfrm.c
+symbols\bsymfrm.c(514): warning C4047: '=' : 'char *' differs in levels of indirection from 'int'
+  buask.c
+  buconect.c
+  buexplod.c
+  bumdata.c
+  bumlib.c
+  bummanip.c
+symbols\bummanip.c(449): warning C4047: '=' : 'char *' differs in levels of indirection from 'int'
+  bumsymc.c
+  bupload.c
+  busnode.c
+  Generating Code...
+  Compiling...
+  bxdba.c
+  bxinit.c
+  bxmanip.c
+  bxtf.c
+  last.c
+  ldir.c
+  ldisplay.c
+  linit.c
+  lipv.c
+  lipv1.c
+  lipvassem.c
+  lipvaxis.c
+  lipvcmd.c
+  lipvcmd1.c
+  lipvcolor.c
+  lipvcomp.c
+  lipvdiag.c
+  lipvdiag1.c
+  lipvdisp.c
+  lipvlight.c
+  Generating Code...
+  Compiling...
+  lipvmach.c
+  lipvmach1.c
+  lipvmach2.c
+  lipvmach3.c
+  lipvmach4.c
+  lipvmeas.c
+  lipvmod.c
+  lipvmodals.c
+  lipvmot.c
+umb\lipvmot.c(2508): warning C4133: 'function' : incompatible types - from 'UN_mot_attr *' to 'char *'
+umb\lipvmot.c(2526): warning C4133: 'function' : incompatible types - from 'UN_mot_data *' to 'char *'
+  lipvmotstk.c
+  lipvmotstk1.c
+  lipvmotsup.c
+  lipvmsl.c
+  lipvplay.c
+  lipvregion.c
+  lipvsess.c
+  lipvstk.c
+umb\lipvstk.c(1834): warning C4133: 'function' : incompatible types - from 'LW_stock_struc *' to 'char *'
+  lipvstk1.c
+  lipvstk2.c
+umb\lipvstk2.c(351): warning C4133: 'function' : incompatible types - from 'LW_stock_struc *' to 'char *'
+  lipvstkmod.c
+umb\lipvstkmod.c(827): warning C4033: 'OnModmx' must return a value
+  Generating Code...
+c:\ncl_from_github\ncl_in_visualstudio\src\umb\lipvstkmod.c(856): warning C4715: 'OnModmx' : not all control paths return a value
+  Compiling...
+  lipvstubs.c
+  lipvsup.c
+  lipvtool.c
+  lipvview.c
+  lipvview2.c
+  lmiconf.c
+  lmisc.c
+  lmodals.c
+  lmodals1.c
+  lmodfile.c
+  lmparse.c
+  lncl.c
+  lsession1.c
+  lsession2.c
+  lsetdir.c
+  lsignon.c
+  lubatch.c
+umb\lubatch.c(81): warning C4033: 'ul_display_batch' must return a value
+umb\lubatch.c(215): warning C4033: 'ul_que_ncl' must return a value
+umb\lubatch.c(273): warning C4033: 'ul_que_util' must return a value
+umb\lubatch.c(343): warning C4033: 'ul_set_ncl_mod' must return a value
+umb\lubatch.c(358): warning C4033: 'ul_set_ncl_mod' must return a value
+umb\lubatch.c(380): warning C4033: 'ul_status_batch' must return a value
+umb\lubatch.c(446): warning C4033: 'ul_submit_batch' must return a value
+  lufile.c
+  lusystem.c
+  lutape.c
+umb\lutape.c(349): warning C4033: 'ul_punch_it' must return a value
+umb\lutape.c(674): warning C4033: 'ul_set_dnc_mod' must return a value
+umb\lutape.c(746): warning C4033: 'ul_set_dnc_mod' must return a value
+umb\lutape.c(846): warning C4033: 'ul_set_punch_mod' must return a value
+umb\lutape.c(892): warning C4033: 'ul_set_punch_mod' must return a value
+  Generating Code...
+c:\ncl_from_github\ncl_in_visualstudio\src\umb\lutape.c(560): warning C4715: 'ul_punch_it' : not all control paths return a value
+  Compiling...
+  luutil.c
+  lverify.c
+  lverify1.c
+  lverify2.c
+umb\lverify2.c(529): warning C4133: 'function' : incompatible types - from 'LW_stock_struc *' to 'char *'
+  lwindow.c
+  r1eassoc.c
+  r1emsgpk.c
+  r1esched.c
+  r1isched.c
+C:\NCL_from_GitHub\NCL_in_VisualStudio\src\inc\r1isched.h(27): warning C4005: 'EXT' : macro redefinition
+          c:\ncl_from_github\ncl_in_visualstudio\src\inc\udeboff.h(27) : see previous definition of 'EXT'
+unibase\r1isched.c(213): warning C4047: 'function' : 'char *' differs in levels of indirection from 'UR_schedEntry **'
+unibase\r1isched.c(213): warning C4024: 'uu_lsinsrt' : different types for formal and actual parameter 1
+  reascsup.c
+  reasenv.c
+  reasp.c
+  recd.c
+  recdd.c
+  reda.c
+  redat.c
+  redatdct.c
+  reddv.c
+  redmpent.c
+  redmpevt.c
+  Generating Code...
+c:\ncl_from_github\ncl_in_visualstudio\src\unibase\r1isched.c(706): warning C4716: 'ur1i_printSched' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\unibase\r1isched.c(778): warning C4716: 'ur1i_printEntry' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\unibase\r1isched.c(831): warning C4716: 'ur1i_hash_print' : must return a value
+  Compiling...
+  redmpmdl.c
+  redtr.c
+  redu.c
+  redva.c
+  reeas.c
+unibase\reeas.c(94): warning C4033: 'ur_enable_auto_save' must return a value
+  reenvin.c
+  reenvlod.c
+  reenvout.c
+  reenvsav.c
+  refad.c
+  regas.c
+  regavm.c
+  reglmk.c
+  regnak.c
+  regndk.c
+  regnk.c
+  regnndk.c
+  regnodk.c
+  regnsak.c
+  regtc.c
+  Generating Code...
+  Compiling...
+  regvm.c
+  reia.c
+  reidr.c
+  reir.c
+  reitr.c
+  reiu.c
+  relp01.c
+  relp02.c
+  relp03.c
+  relp04.c
+  remembrp.c
+  remo.c
+  reoralod.c
+  reorasav.c
+  reoratri.c
+  reoratro.c
+  reparse.c
+  reprterr.c
+  rera.c
+  rerad.c
+  Generating Code...
+  Compiling...
+  reradv.c
+  rerd.c
+  rerdf.c
+  rerdr.c
+  rerds.c
+  rerdv.c
+  rere.c
+  rerecenv.c
+  rerp.c
+  rerra.c
+  rerrn.c
+  rertr.c
+  reru.c
+  rervk.c
+  resad.c
+  resd.c
+  resdm.c
+  resdtr.c
+  resp01.c
+  resp02.c
+  Generating Code...
+  Compiling...
+  resp03.c
+  resp04.c
+  resp04c.c
+  ress.c
+  reswap.c
+  retouch.c
+  reua.c
+  reuadv.c
+  reud.c
+  reudf.c
+  reuds.c
+  reudv.c
+  reue.c
+  reundo.c
+  reunread.c
+  reup10000.c
+  reup10100.c
+  reup8103.c
+  reup8105.c
+  reup8200.c
+  Generating Code...
+  Compiling...
+  reup8250.c
+  reup8400.c
+  reup8500.c
+  reup9100.c
+  reup9200.c
+  reup9300.c
+  reup9400.c
+  reup9600.c
+  reup9700.c
+  reup9900.c
+  reupdate.c
+  reura.c
+  reutr.c
+  reuu.c
+  reuvk.c
+  riaal.c
+  riart.c
+  ricfk.c
+  rics.c
+  rict.c
+  Generating Code...
+  Compiling...
+  ridal.c
+  ridelsup.c
+  ridma.c
+  ridmppcs.c
+  ridrt.c
+  ridt.c
+  ridtv.c
+  rieatcom.c
+  rienvtab.c
+  rifdstk.c
+  rifdt.c
+  rifndoff.c
+  rifndsiz.c
+  rigetaln.c
+  rigetdig.c
+  rigettok.c
+  riglpp.c
+  riglti.c
+  rignnti.c
+  rignot.c
+  Generating Code...
+c:\ncl_from_github\ncl_in_visualstudio\src\unibase\ridelsup.c(96): warning C4700: uninitialized local variable 'num_keys' used
+  Compiling...
+  rignti.c
+  rigtp.c
+  rigvp.c
+  rik2rt.c
+  rilp02a.c
+  rilrgpw2.c
+  rimkpstr.c
+  rinewmod.c
+  rinewpag.c
+  rinotify.c
+  rioradel.c
+  rioraerr.c
+  rioraini.c
+  rioraiss.c
+  riorasss.c
+  riparerr.c
+  riparse1.c
+  rird1ent.c
+  rirdatms.c
+  rirdents.c
+  Generating Code...
+  Compiling...
+  rirdenv.c
+  rirdrcb.c
+  rirdtk.c
+  riread1d.c
+  riretmem.c
+  rirma.c
+  rirt.c
+  rirt2k.c
+  rirtavi.c
+  rirtv.c
+  risp02a.c
+unibase\risp02a.c(57): warning C4033: 'uri_sp02a' must return a value
+unibase\risp02a.c(65): warning C4033: 'uri_sp02a' must return a value
+unibase\risp02a.c(123): warning C4033: 'uri_sp02a' must return a value
+  ritotype.c
+  riualf.c
+  riualv.c
+  riudtk.c
+  riuma.c
+  riut.c
+  riutv.c
+  riuvi.c
+  riwt1ent.c
+  Generating Code...
+  Compiling...
+  riwtatms.c
+  riwtatms1.c
+unibase\riwtatms1.c(334): warning C4033: 'te_sprintf_float' must return a value
+unibase\riwtatms1.c(383): warning C4033: 'te_sprintf_real' must return a value
+unibase\riwtatms1.c(432): warning C4033: 'te_sprintf_double' must return a value
+  riwtents.c
+  riwtenv.c
+  riwtrcb.c
+  rixk.c
+  rixmf.c
+  rixpand.c
+  rizk.c
+  rmattrdd.c
+  rmdraw.c
+  rmlabddl.c
+  rriddl.c
+  rtpltst.c
+  rulp.c
+  rurp.c
+  rusp.c
+  uadok.c
+  uagetenv.c
+  uapgeo.c
+  Generating Code...
+c:\ncl_from_github\ncl_in_visualstudio\src\unibase\riwtatms1.c(335): warning C4716: 'te_sprintf_float' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\unibase\riwtatms1.c(384): warning C4716: 'te_sprintf_real' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\unibase\riwtatms1.c(433): warning C4716: 'te_sprintf_double' : must return a value
+  Compiling...
+  ub2it.c
+  ubits.c
+  ubread.c
+  ubrent.c
+  ubwrite.c
+  ucompb.c
+  uctofor.c
+  udebug.c
+utl\udebug.c(326): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void (__cdecl *)(int)'
+utl\udebug.c(333): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void (__cdecl *)(int)'
+utl\udebug.c(348): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void (__cdecl *)(int)'
+utl\udebug.c(404): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void (__cdecl *)(int)'
+utl\udebug.c(504): warning C4033: 'uu_trap' must return a value
+utl\udebug.c(507): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void (__cdecl *)(int)'
+utl\udebug.c(508): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void (__cdecl *)(int)'
+utl\udebug.c(509): warning C4113: 'void (__cdecl *)()' differs in parameter lists from 'void (__cdecl *)(int)'
+  udebug1.c
+utl\udebug1.c(76): warning C4033: 'uu_sys_err_recovery' must return a value
+  udisplay.c
+  uerror.c
+  ufillb.c
+utl\ufillb.c(43): warning C4033: 'uu_fill_bytes' must return a value
+  ugetopt.c
+utl\ugetopt.c(62): warning C4047: '!=' : 'int' differs in levels of indirection from 'void *'
+  uhash.c
+  uiarray.c
+  uio.c
+  uit2b.c
+  ulist.c
+  ulists.c
+  umainc.c
+  Generating Code...
+c:\ncl_from_github\ncl_in_visualstudio\src\utl\uio.c(87): warning C4716: 'ud_idev' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\utl\uiarray.c(65): warning C4716: 'uu_iainit' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\utl\uiarray.c(103): warning C4716: 'uu_iadel' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\utl\uiarray.c(202): warning C4716: 'uu_iaadd' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\utl\uerror.c(244): warning C4716: 'uu_erprt' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\utl\udebug.c(213): warning C4716: 'uu_tobuff' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\utl\udebug.c(263): warning C4716: 'uu_prtstk' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\utl\udebug.c(198): warning C4716: 'uu_trcprint' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\utl\udebug.c(293): warning C4716: 'uu_trcstk' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\utl\udebug.c(321): warning C4716: 'uu_abort' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\utl\udebug.c(516): warning C4716: 'uu_trap' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\utl\ubwrite.c(98): warning C4716: 'uu_bflush' : must return a value
+  Compiling...
+  umoveb.c
+  umsg2stg.c
+  unicad.c
+  unidone.c
+  uniinit.c
+  unserve.c
+  upostmsg.c
+  uqsort.c
+utl\uqsort.c(52): warning C4033: 'uu_qsort' must return a value
+  ustrtok.c
+  utilinit.c
+  utime.c
+  utlaloc.c
+  uversion.c
+  uwinproc.c
+  vconv.c
+  vdd1init.c
+view\vdd1init.c(901): warning C4033: 'uv_load_scr_layout' must return a value
+  vdefvw.c
+  vedba.c
+  vedebug.c
+  vedraw.c
+  Generating Code...
+c:\ncl_from_github\ncl_in_visualstudio\src\view\vdd1init.c(1337): warning C4715: 'uv_adjust_screen' : not all control paths return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\view\vdd1init.c(1299): warning C4716: 'uv_load_scr_layout' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\utl\unserve.c(384): warning C4716: 'uu_nserv_reterm' : must return a value
+  Compiling...
+  vedynstep.c
+  vedynvw.c
+  vescreen.c
+  veview.c
+  vevport.c
+  viinit.c
+  virel.c
+  vudebug.c
+  vudynvw.c
+  vuscreen.c
+view\vuscreen.c(252): warning C4033: 'uv_view_select' must return a value
+view\vuscreen.c(385): warning C4033: 'uv_screen_select' must return a value
+  vuview1.c
+  vuview2.c
+  vuview3.c
+  vwindow.c
+  wsglfun.c
+ws\wsglfun.c(64): warning C4047: 'function' : 'char *' differs in levels of indirection from 'Matrix (*)'
+ws\wsglfun.c(64): warning C4024: 'uu_lsinsrt' : different types for formal and actual parameter 1
+  wsglmsfun.c
+  wsglmx2.c
+  wsglout2.c
+  wsgltrk2.c
+  wsglwin.c
+  Generating Code...
+c:\ncl_from_github\ncl_in_visualstudio\src\view\vwindow.c(115): warning C4716: 'uv_vp_aspect_ratio' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\view\vuscreen.c(288): warning C4715: 'uv_view_select' : not all control paths return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\view\vuscreen.c(422): warning C4715: 'uv_screen_select' : not all control paths return a value
+  Compiling...
+  xe1gtenv.c
+  xe1paths.c
+  xf0udos0.c
+  xf1farea.c
+  xf1files.c
+  xuf1logf.c
+  xuf2libs.c
+  xuf2list.c
+  sdelay.c
+  sdoprnt.c
+  sdoscan.c
+  signal.c
+sysdep\signal.c(35): warning C4113: 'int (__cdecl *)()' differs in parameter lists from 'void (__cdecl *)(int)'
+  sindex.c
+  smalloc.c
+sysdep\smalloc.c(254): warning C4133: '=' : incompatible types - from 'int *' to 'char *'
+sysdep\smalloc.c(920): warning C4133: '==' : incompatible types - from 'int *' to 'BLOCK_T *'
+  wsgifsave.c
+  wsglatt.c
+  wsgldyn.c
+  wsglinit.c
+  wsglmx.c
+  wsglout.c
+  Generating Code...
+c:\ncl_from_github\ncl_in_visualstudio\src\sysdep\signal.c(37): warning C4716: 'uu_signal' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\sysdep\sdelay.c(77): warning C4716: 'uu_delay' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\sysdep\sdelay.c(97): warning C4716: 'uu_delay_milli' : must return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\xio\xuf2list.c(580): warning C4716: 'ux_udos_out' : must return a value
+  Compiling...
+  wsglout1.c
+  wsglpik.c
+  wsglprint.c
+  wsglseg.c
+  wsglshade.c
+  wsgltran.c
+  wsgltrk.c
+  wsimgcnv.c
+  wsntapp.c
+ws\wsntapp.c(65): warning C4033: 'uw_ntdnprompt' must return a value
+ws\wsntapp.c(92): warning C4033: 'uw_ntstr_prompt' must return a value
+  wsntdum.c
+  wsntpocket.c
+  wsntsignon.c
+  wsntsmouse.c
+  Generating Code...
+  nevmill.cpp
+  pwcfunc.cpp
+  PWMessageBox.cpp
+  wsntbmpbtn.cpp
+  wsntclrbtn.cpp
+  wsntclrcell.cpp
+  wsntclrdlg.cpp
+  wsntcmdbar.cpp
+  wsntcursor.cpp
+  wsntDDButton.cpp
+  wsntDDclrbtn.cpp
+  wsntDDCombo.cpp
+  wsntDDEdit.cpp
+  wsntDDform.cpp
+  wsntDDgroup.cpp
+  wsntDDListBox.cpp
+  wsntDDlstctl.cpp
+  wsntDDlstctl2.cpp
+  wsntDDpic.cpp
+  wsntDDProcess.cpp
+  Generating Code...
+c:\ncl_from_github\ncl_in_visualstudio\src\ws\wsntddprocess.cpp(132): warning C4715: 'CNCLDDProcess::OnCreate' : not all control paths return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\ws\wsntddlstctl2.cpp(149): warning C4715: 'CNCLDDListCtrl2::OnCreate' : not all control paths return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\ws\wsntddlstctl.cpp(138): warning C4715: 'CNCLDDListCtrl::OnCreate' : not all control paths return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\ws\wsntddlistbox.cpp(139): warning C4715: 'CNCLDDListBox::OnCreate' : not all control paths return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\ws\wsntddgroup.cpp(203): warning C4715: 'CNCLDDGroup::OnCreate' : not all control paths return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\ws\wsntddform.cpp(4753): warning C4700: uninitialized local variable 'i' used
+c:\ncl_from_github\ncl_in_visualstudio\src\ws\wsntddedit.cpp(149): warning C4715: 'CNCLDDEdit::OnCreate' : not all control paths return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\ws\wsntddcombo.cpp(200): warning C4715: 'CNCLDDCombo::OnCreate' : not all control paths return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\ws\wsntddclrbtn.cpp(144): warning C4715: 'CNCLDDColorButton::OnCreate' : not all control paths return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\ws\wsntddbutton.cpp(146): warning C4715: 'CNCLDDButton::OnCreate' : not all control paths return a value
+  Compiling...
+  wsntDDSlider.cpp
+  wsntDDStatic.cpp
+  wsntdrawbutton.cpp
+  wsntdropsource.cpp
+  wsntdroptarget.cpp
+  wsnteditctl.cpp
+  wsntFdsnFrm.cpp
+  wsntFdsnView.cpp
+  wsntfile.cpp
+  wsntformbar.cpp
+ws\wsntformbar.cpp(4401): warning C4533: initialization of 'rect' is skipped by 'goto graphic_display'
+          ws\wsntformbar.cpp(4376) : see declaration of 'rect'
+          ws\wsntformbar.cpp(4401) : see declaration of 'graphic_display'
+ws\wsntformbar.cpp(4401): warning C4533: initialization of 'rect' is skipped by 'goto graphic_display'
+          ws\wsntformbar.cpp(4376) : see declaration of 'rect'
+          ws\wsntformbar.cpp(4401) : see declaration of 'graphic_display'
+  wsntformfrm.cpp
+  wsntformFview.cpp
+  wsntformMview.cpp
+  wsntFormProp.cpp
+  wsntformPview.cpp
+  wsntformview.cpp
+  wsntfrmdoc.cpp
+  wsntfsview.cpp
+  wsntgettxt.cpp
+  wsntgettxt2.cpp
+  Generating Code...
+c:\ncl_from_github\ncl_in_visualstudio\src\ws\wsntfdsnfrm.cpp(748): warning C4715: 'CNCLFdsnFrame::FormSave' : not all control paths return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\ws\wsntddstatic.cpp(219): warning C4715: 'CNCLDDStatic::OnCreate' : not all control paths return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\ws\wsntddslider.cpp(141): warning C4715: 'CNCLDDSlider::OnCreate' : not all control paths return a value
+  Compiling...
+  wsntgphwin.cpp
+  wsntgraphic.cpp
+  wsntheaderctrl.cpp
+  wsnthls.cpp
+  wsnthuesatchooser.cpp
+  wsntIconListBox.cpp
+  wsntlstctl.cpp
+  wsntlstctl2.cpp
+  wsntlumchooser.cpp
+  wsntmdroptarget.cpp
+  wsntmdroptarget2.cpp
+  wsntmenudsndlg.cpp
+  wsntmmap.cpp
+  wsntModalFrame.cpp
+  wsntNCLButton.cpp
+  wsntpalettectl.cpp
+ws\wsntpalettectl.cpp(34): warning C4005: 'PI' : macro redefinition
+          C:\NCL_from_GitHub\NCL_in_VisualStudio\src\inc\wsgl.h(219) : see previous definition of 'PI'
+  wsntpalettewnd.cpp
+  wsntpicsel.cpp
+  wsntsecbtn.cpp
+  wsntsecprop.cpp
+  Generating Code...
+c:\ncl_from_github\ncl_in_visualstudio\src\ws\wsntsecbtn.cpp(172): warning C4715: 'CNCLSecButton::OnCreate' : not all control paths return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\ws\wsntnclbutton.cpp(199): warning C4715: 'CNCLButton::OnCreate' : not all control paths return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\ws\wsntmenudsndlg.cpp(2865): warning C4700: uninitialized local variable 'i' used
+c:\ncl_from_github\ncl_in_visualstudio\src\ws\wsnticonlistbox.cpp(307): warning C4715: 'CIconListBox::OnCreate' : not all control paths return a value
+  Compiling...
+  wsntSliderCtrl.cpp
+  wsntstatbtn.cpp
+  wsntStatusBar.cpp
+  wsnttblst.cpp
+  wsnttooltip.cpp
+  wshdibapi.cpp
+  wsncldockbar.cpp
+  wsncldockframe.cpp
+  wsnclframe.cpp
+  wsncltoolbar.cpp
+  wsntarea.cpp
+  wsntbitmap.cpp
+  wsntcfun.cpp
+  wsntctl.cpp
+  wsntdir.cpp
+  wsntdlgbar.cpp
+  wsntdlgitem.cpp
+  wsntdoc.cpp
+  wsntdockcont.cpp
+  wsntdynint.cpp
+  Generating Code...
+c:\ncl_from_github\ncl_in_visualstudio\src\ws\wsncldockframe.cpp(104): warning C4715: 'CNCLDockFrameWnd::OnCreate' : not all control paths return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\ws\wshdibapi.cpp(565): warning C4700: uninitialized local variable 'hMemDC2' used
+c:\ncl_from_github\ncl_in_visualstudio\src\ws\wsntstatusbar.cpp(273): warning C4715: 'CNCLStatusBar::OnCreate' : not all control paths return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\ws\wsntstatusbar.cpp(481): warning C4715: 'CNCLStatusBar::AddSubControl' : not all control paths return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\ws\wsntstatusbar.cpp(2542): warning C4715: 'CNCLStatusBar::InsertSubControl' : not all control paths return a value
+c:\ncl_from_github\ncl_in_visualstudio\src\ws\wsntstatbtn.cpp(171): warning C4715: 'CNCLStatButton::OnCreate' : not all control paths return a value
+  Compiling...
+  wsntevent.cpp
+  wsntform.cpp
+  wsntform2.cpp
+  wsntframe.cpp
+  wsntlay.cpp
+  wsntmdesgn.cpp
+  wsntmenu.cpp
+  wsntopt.cpp
+  wsntpktwin.cpp
+ws\wsntpktwin.cpp(1569): warning C4533: initialization of 'pt' is skipped by 'goto done'
+          ws\wsntpktwin.cpp(1507) : see declaration of 'pt'
+          ws\wsntpktwin.cpp(1569) : see declaration of 'done'
+ws\wsntpktwin.cpp(1749): warning C4533: initialization of 'pt' is skipped by 'goto done'
+          ws\wsntpktwin.cpp(1683) : see declaration of 'pt'
+          ws\wsntpktwin.cpp(1749) : see declaration of 'done'
+ws\wsntpktwin.cpp(1749): warning C4533: initialization of 'pt' is skipped by 'goto done'
+          ws\wsntpktwin.cpp(1683) : see declaration of 'pt'
+          ws\wsntpktwin.cpp(1749) : see declaration of 'done'
+  wsntpmenu.cpp
+  wsnttmenu.cpp
+  wsnttrm.cpp
+  wsnttxtwin.cpp
+  wsntview.cpp
+ws\wsntview.cpp(1244): warning C4533: initialization of 'pt' is skipped by 'goto done'
+          ws\wsntview.cpp(1182) : see declaration of 'pt'
+          ws\wsntview.cpp(1244) : see declaration of 'done'
+ws\wsntview.cpp(1244): warning C4533: initialization of 'pt' is skipped by 'goto done'
+          ws\wsntview.cpp(1182) : see declaration of 'pt'
+          ws\wsntview.cpp(1244) : see declaration of 'done'
+ws\wsntview.cpp(2097): warning C4533: initialization of 'pt' is skipped by 'goto done'
+          ws\wsntview.cpp(2035) : see declaration of 'pt'
+          ws\wsntview.cpp(2097) : see declaration of 'done'
+ws\wsntview.cpp(2097): warning C4533: initialization of 'pt' is skipped by 'goto done'
+          ws\wsntview.cpp(2035) : see declaration of 'pt'
+          ws\wsntview.cpp(2097) : see declaration of 'done'
+  Generating Code...
+c:\ncl_from_github\ncl_in_visualstudio\src\ws\wsnttxtwin.cpp(573): warning C4715: 'CNCLTextWin::OnCreate' : not all control paths return a value
+     Creating library .\Release\Ncl.lib and object .\Release\Ncl.exp
   Ncl.vcxproj -> C:\NCL_from_GitHub\NCL_in_VisualStudio\src\.\Release\Ncl.exe
   Ncl.vcxproj -> C:\NCL_from_GitHub\NCL_in_VisualStudio\src\.\Release\Ncl.exe

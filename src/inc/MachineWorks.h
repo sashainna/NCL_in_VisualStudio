@@ -33,7 +33,7 @@
 #define MWINIT_SKIP_Multicut         /* Do not install Multicut            */ 
 #define MWINIT_SKIP_RenderAdvanced   /* Do not install Advanced rendering  */
 #define MWINIT_SKIP_Pixelcut         /* Skips PixelCut */
-//#define MWINIT_SKIP_Samplecut         /* Skips SampleCut */
+#define MWINIT_SKIP_Samplecut         /* Skips SampleCut */
 #define MWINIT_SKIP_RenderDirectX10   
 
 /* Start up journaling for debug builds */

@@ -1,0 +1,69 @@
+
+#TITLE#
+/NAME/ %PROGRAM %VERSION : %PARTPGM40
+
+#DIRECTORY#
+/MENU/ "C:\NCL_from_GitHub\NCL_in_VisualStudio\nclfiles\menu"
+/BITMAP/ "C:\NCL_from_GitHub\NCL_in_VisualStudio\nclfiles\bitmaps"
+
+#STATUSBAR#
+/MENU/ C:\NCL_from_GitHub\NCL_in_VisualStudio\nclfiles\menu\bottom1.stat
+/MENU/ C:\NCL_from_GitHub\NCL_in_VisualStudio\nclfiles\menu\bottom2.stat
+/MENU/ C:\NCL_from_GitHub\NCL_in_VisualStudio\nclfiles\menu\bottom3.stat
+/MENU/ C:\NCL_from_GitHub\NCL_in_VisualStudio\nclfiles\menu\bottom4.menu
+
+#MENUBAR#
+/MENU/ top.menu
+
+#MENUAREA#
+/NAME/ Bottom
+/DOCKABLE/ FRONT
+/POSITION/ BOTTOM
+/MENU/ 
+
+#MENUAREA#
+/NAME/ Right
+/DOCKABLE/ FRONT
+/POSITION/ RIGHT
+/MENU/ 
+
+#MENUAREA#
+/NAME/ Top
+/DOCKABLE/ FRONT
+/POSITION/ TOP
+/MENU/ toolbar.menu
+
+#PROMPTS#
+/TYPE/ ICON
+/POSITION/ TOP
+/SIZE/ 0.200000,0.047222
+
+#COMMAND#
+/ACTIVE/ SINGLE
+/ATTACH/ TOP,LEFT
+/POSITION/ Top
+/SIZE/ 0.425000,0.048148,5
+/DOCKABLE/  TOP
+
+#ERROR#
+/TYPE/ ICON
+/POSITION/ TOP
+/SIZE/ 0.264583,0.047222
+
+#WINDOW#
+/ACTIVE/ YES
+/ATTACH/ BOTTOM,LEFT
+/POSITION/ Bottom
+/SIZE/ 80,5
+/DOCKABLE/ YES
+/STATIC/ YES
+
+#MENUAREA#
+/NAME/ Left
+/DOCKABLE/ NO
+/POSITION/ LEFT
+/MENU/ cutrtn.menu
+
+#GRAPHICS#
+/POSITION/ 0.070833,0.004630
+/SIZE/ 0.900000,0.909259

@@ -1,3 +1,1977 @@
-﻿  nupmill.c
+﻿  qeval.c
+  qfunc.c
+  qinitb.c
+  qinitrel.c
+  qlang.c
+  qlang1.c
+  qlang2.c
+  qlangio1.c
+  qlangio2.c
+  qstack.c
+  qsymtb.c
+  qsymtb1.c
+  qsymtb2.c
+  qvmatch.c
+  c1assoc.c
+  c1class.c
+  c1class1.c
+  c1crv.c
+  c1dba.c
+  c1selsav.c
+  Generating Code...
+  Compiling...
+  c1srf.c
+  c1uclass.c
+  c2bstub.c
+  cannoin.c
+  cappin.c
+  cattrin.c
+  ccrvin.c
+  cdraftin.c
+  cgeoin.c
+  classtab.c
+  classup.c
+  cpermsn.c
+  crelain.c
+  crootin.c
+  csolin.c
+  csrfin.c
+  csupin.c
+  ctextin.c
+  cuclass.c
+  cuinit.c
+  Generating Code...
+  Compiling...
+  cunibin.c
+  d1cmdif.c
+  d1dopngl.c
+  d1drag.c
+  d1gkssup.c
+  d1iconf.c
+  d1indas.c
+  d1initd.c
+  d1initmu.c
+  d1inuim.c
+  d1rect.c
+  d1rubber.c
+  d2auxm.c
+  d2das.c
+  d2dpl.c
+  d2epop.c
+  d2getcol.c
+  d2hldas.c
+  d2hldcd.c
+  d2hldpk.c
+  Generating Code...
+  Compiling...
+  d2hldst.c
+  d2limds.c
+  d2plane.c
+  d2popup.c
+  d2timsp.c
+  d3icnum.c
+  d3jump.c
+  d3pipe1.c
+  d3pipe2.c
+  d3pipe3.c
+  d3prevt.c
+  d3read.c
+  d3rp.c
+  d3rp1.c
+  d3rpsup.c
+  d3uims.c
+  d3uims2.c
+  d3win.c
+  d4actfl.c
+  d4actfm.c
+  Generating Code...
+  Compiling...
+  d4actfr.c
+  d4ckdat.c
+  d4datx.c
+  d4dvgio.c
+  d4form.c
+  d4loadf.c
+  d4meth.c
+  d4meth2.c
+  d4prunit.c
+  d4pstat.c
+  d5calsel.c
+  d5dasin.c
+  d5filt.c
+  d5gtfilt.c
+  d5lgio.c
+  d5lgsub.c
+  d5menu.c
+  d5mudsp.c
+  d5mufst.c
+  d5muin.c
+  Generating Code...
+  Compiling...
+  d5muint.c
+  d5munav.c
+  d5munav1.c
+  d5sel.c
+  d5sel1.c
+  d5sel2.c
+  d5semmch.c
+  d5stack.c
+  d6dhelp.c
+  d6layrn.c
+  d6sdeb.c
+  d7menu.c
+  d7mlayout.c
+  daseg.c
+  dpikstk.c
+  dprint.c
+  g3dsup.c
+  gansi.c
+  garch.c
+  garchall.c
+  Generating Code...
+  Compiling...
+  garchio.c
+  gatts.c
+  gatts2.c
+  gatts3.c
+  gchchi.c
+  gconvert.c
+  gctrl.c
+  gdcoord.c
+  gddev.c
+  gddev2.c
+  gdtext.c
+  genshad.c
+  genspan2.c
+  gerror.c
+  gfind.c
+  ginp.c
+  ginq.c
+  gksftn.c
+  glnitr.c
+  glnstyle.c
+  Generating Code...
+  Compiling...
+  glnwdt.c
+  glsi2.c
+  gmat4.c
+  gmath.c
+  gmedcut.c
+  gmedfind.c
+  gmedout.c
+  gndc.c
+  gnintrp.c
+  gnout.c
+  gout.c
+  gout2.c
+  gout3.c
+  goutfa.c
+  gpcoef.c
+  gpick.c
+  gpick2.c
+  gpickras.c
+  gpocket.c
+  gpolyz.c
+  Generating Code...
+  Compiling...
+  gpow.c
+  gqelt.c
+  grecre.c
+  greflct.c
+  grgb.c
+  gsavsc.c
+  gseg.c
+  gsegac.c
+  gsegras.c
+  gshade.c
+  gsqrt.c
+  gsren.c
+  gtnorm.c
+  gtran.c
+  gtran2.c
+  gtran3.c
+  gtran4.c
+  gtran5.c
+  gtrana.c
+  gtranws.c
+  Generating Code...
+  Compiling...
+  gttio.c
+  gviw.c
+  gviw2.c
+  gviw3.c
+  gvlib.c
+  gwrap.c
+  aang.c
+  aanggen.c
+  aangutl.c
+  aarcdata.c
+  aarclen.c
+  aaroattr.c
+  aarrcrv.c
+  aarrow.c
+  aarrowan.c
+  aascdrf.c
+  aattrib.c
+  aattrtxt.c
+  abaseln.c
+  aboxsite.c
+  Generating Code...
+  Compiling...
+  acconvt.c
+  acenattr.c
+  acenter.c
+  achain.c
+  acpln.c
+  adbms.c
+  adebug.c
+  adefault.c
+  adiam.c
+  adiamutl.c
+  adimattr.c
+  adisparc.c
+  adisplay.c
+  adist.c
+  adlattr.c
+  adrfclas.c
+  adrfinit.c
+  aedittxt.c
+  aedtxfrm.c
+  aextattr.c
+  Generating Code...
+  Compiling...
+  afptol.c
+  aginqsal.c
+  aiboxarc.c
+  ainitent.c
+  airel.c
+  alabel.c
+  aldimutl.c
+  aleader.c
+  alindata.c
+  alinear.c
+  allattr.c
+  amclospt.c
+  amdrfsup.c
+  amenu.c
+  amnptent.c
+  amoddim.c
+  anoteutl.c
+  apledit.c
+  apllab.c
+  apllab1.c
+  Generating Code...
+  Compiling...
+  apltbl.c
+  apltbl1.c
+  apltbl2.c
+  apolar.c
+  aradius.c
+  aregen.c
+  arepangdim.c
+  arepeatdim.c
+  arotpt.c
+  asadas.c
+  asalgks.c
+  asctext.c
+  ascutil.c
+  asdas.c
+  asgetenv.c
+  aspattr.c
+  aspop.c
+  asstring.c
+  asubfs.c
+  aswapstd.c
+  Generating Code...
+  Compiling...
+  aswrite.c
+  atolattr.c
+  atxtauto.c
+  atxtcom.c
+  atxtdba.c
+  atxtdrw.c
+  atxtedit.c
+  atxtfrm.c
+  atxtinit.c
+  atxtnote.c
+  atxtutl.c
+  autility.c
+  axhatch.c
+  axhatch2.c
+  axhclas.c
+  axhcsup.c
+  axhdigs.c
+  axhform.c
+  axhint.c
+  f2line.c
+  Generating Code...
+  Compiling...
+  f3circle.c
+  f4conic.c
+  f5comp.c
+  f6spline.c
+  f7spline.c
+  f8solid.c
+  farrow.c
+  feacalc.c
+  feacoord.c
+  feainit.c
+  feamain.c
+  feapick.c
+  feareal.c
+  feareset.c
+  feasub.c
+  feavect.c
+  jauto.c
+  jfmgt.c
+  jmisc.c
+  jpentbf.c
+  Generating Code...
+  Compiling...
+  jplotfrm.c
+  jplotit.c
+  jplotsz.c
+  jquery.c
+  jreadmu.c
+  jsignonf.c
+  jtrcback.c
+  jtuto.c
+  juquery.c
+  imouse3.c
+  ipuck4.c
+  iunihep.c
+  ltermio.c
+  nmodfy.c
+  zapphep.c
+  zappinit.c
+  zmisc.c
+  znuinit.c
+  zrp.c
+  zsaxgrid.c
+  Generating Code...
+  Compiling...
+  zsdraft.c
+  zsedit.c
+  zsflmgmt.c
+  zsnclmotn.c
+  zsselect.c
+  zssurfac.c
+  zssymmgt.c
+  zstat.c
+  zstat2.c
+  zsview.c
+  zuni.c
+  zusercalls.c
+  zuserkeys.c
+  zwntcalls.c
+  m1mcrv.c
+  m1romenu.c
+  m1romini.c
+  m2calcf.c
+  m2dasup1.c
+  m2dasup2.c
+  Generating Code...
+  Compiling...
+  m2dasup3.c
+  m2dasup4.c
+  m2dba.c
+  m2dba2.c
+  m2debmdl.c
+  m2delete.c
+  m2dynmem.c
+  m2egen.c
+  m2einit.c
+  m2eirel.c
+  m2elabel.c
+  m2elight.c
+  m2epop.c
+  m2etran.c
+  m2eval.c
+  m2geom.c
+  m2global.c
+  m2iattr.c
+  m2icolor.c
+  m2ilayer.c
+  Generating Code...
+  Compiling...
+  m2init.c
+  m2lnwid.c
+  m2query.c
+  m2savld.c
+  m2scroll.c
+  m2stubs.c
+  m2test.c
+  m2uanaly.c
+  m2uattr.c
+  m2uattrf.c
+  m2ucolor.c
+  m2udislv.c
+  m2ulabel.c
+  m2ulayer.c
+  m2ulight.c
+  m2umodal.c
+  m2upjpln.c
+  m2ursurf.c
+  m2vxcntl.c
+  m3eccs.c
+  Generating Code...
+  Compiling...
+  m3ecirc1.c
+  m3ecirc2.c
+  m3ecirc3.c
+  m3ecirc4.c
+  m3ecirc5.c
+  m3ecirc6.c
+  m3ecn1.c
+  m3ecn2.c
+  m3ecn3.c
+  m3ecomp.c
+  m3ecomp1.c
+  m3ecomp2.c
+  m3ecomp3.c
+  m3ecpln1.c
+  m3ecpln2.c
+  m3edash.c
+  m3eextr.c
+  m3efilet.c
+  m3egrid.c
+  m3egroup.c
+  Generating Code...
+  Compiling...
+  m3eline.c
+  m3eline1.c
+  m3eline2.c
+  m3eplin.c
+  m3epoly.c
+  m3ept.c
+  m3espan.c
+  m3espline.c
+  m3etrim.c
+  m3etrim1.c
+  m3evect.c
+  m3icirc1.c
+  m3icn1.c
+  m3icn2.c
+  m3icomp.c
+  m3idaxis.c
+  m3iptbtw.c
+  m3multi.c
+  m3ucirc1.c
+  m3ucirc2.c
+  Generating Code...
+  Compiling...
+  m3ucirc3.c
+  m3ucirc4.c
+  m3ucirc5.c
+  m3ucn1.c
+  m3ucn2.c
+  m3ucn3.c
+  m3ucn4.c
+  m3ucomp.c
+  m3ucomp1.c
+  m3ucpln.c
+  m3udaxis.c
+  m3uextr.c
+  m3ufilet.c
+  m3ugroup.c
+  m3uline.c
+  m3umgeom.c
+  m3uplin.c
+  m3upoly.c
+  m3upt.c
+  m3upt1.c
+  Generating Code...
+  Compiling...
+  m3utrim.c
+  m3utrim1.c
+  m4bndry.c
+  m4bndry1.c
+  m4bndry2.c
+  m4cvio.c
+  m4e2da.c
+  m4ebsc.c
+  m4ecrv0.c
+  m4ecrv1.c
+  m4ecrv2.c
+  m4ecrv3.c
+  m4ecrv5.c
+  m4ecvsf.c
+  m4edas.c
+  m4edba.c
+  m4enptent.c
+  m4epop.c
+  m4erbsc.c
+  m4esavld.c
+  Generating Code...
+  Compiling...
+  m4evcrv.c
+  m4i2dcvh.c
+  m4ibasis.c
+  m4ibsc.c
+  m4iconv.c
+  m4icrv1.c
+  m4ioslo.c
+  m4ioslo1.c
+  m4ioslo2.c
+  m4ipcvh.c
+  m4isect.c
+  m4isect1.c
+  m4ucrv.c
+  m4utol.c
+  m5econv.c
+  m5ecrv.c
+  m5edba.c
+  m5edraft.c
+  m5esrf.c
+  m5esrf1.c
+  Generating Code...
+  Compiling...
+  m5ioslo.c
+  m5ioslo1.c
+  m5uattr.c
+  m5usrf2.c
+  m6edas.c
+  m6edba.c
+  m6edraft.c
+  m6esh1.c
+  m6ish1.c
+  m6ishell.c
+  m7geom.c
+  m7geom1.c
+  m7math1.c
+  m7math2.c
+  m7math2d.c
+  m7math3.c
+  m7mathc.c
+  m7mathco.c
+  m7mathco1.c
+  m7mathev.c
+  Generating Code...
+  Compiling...
+  m7mathmx.c
+  m7mathtf.c
+  m7mathvc.c
+  m8ersol1.c
+  m8ersol2.c
+  m8ifit1.c
+  m8irsol1.c
+  m8irsol4.c
+  m8irsol6.c
+  m8irsol7.c
+  m8stubs.c
+  m8ursol4.c
+  m9edrf.c
+  m9edrw.c
+  m9edrw2.c
+  m9edrw3.c
+  m9eplot.c
+  m9epocket.c
+  m9eproj.c
+  m9eview.c
+  Generating Code...
+  Compiling...
+  m9eview1.c
+  m9udrw1.c
+  m9udrw2.c
+  m9udrw3.c
+  m9udrw4.c
+  m9udrwf.c
+  m9uview.c
+  mipv.c
+  mmsmathf.c
+  mtessel.c
+  bowtie.c
+  dunits.c
+  n2dba.c
+  n2query.c
+  n2uattr.c
+  nauth.c
+  nbatch.c
+  ncalculator.c
+  nclclass.c
+  nclclip.c
+  Generating Code...
+  Compiling...
+  nclresize.c
+  nclsig.c
+  nclspc001.c
+  nclxcatia.c
+  neagcnv.c
+  neanalyze.c
+  neanalyze1.c
+  neattr.c
+  neauth.c
+  nebound.c
+  nebound1.c
+  neboundary.c
+  neboundary1.c
+  nebox.c
+  nebucket.c
+  necatia.c
+  necattr.c
+  necdraw.c
+  necdraw1.c
+  necdraw2.c
+  Generating Code...
+  Compiling...
+  necirc.c
+  neclass.c
+  neclfile.c
+  neclosed.c
+  necmd.c
+  necolors.c
+  necrcv.c
+  necrsf.c
+  necurpb.c
+  necutdis.c
+  necutprof.c
+  necutsym.c
+  necutsym2.c
+  necv.c
+  necv2.c
+  necvfix.c
+  necvio.c
+  necvlev.c
+  necvoffs.c
+  necvsup.c
+  Generating Code...
+  Compiling...
+  necvsup1.c
+  nedas.c
+  nedasif.c
+  nedasif1.c
+  nedata.c
+  nedatastmt.c
+  nedisplst.c
+  nedrawcut.c
+  nedrawcut1.c
+  nedrawcut2.c
+  nedrvcrv.c
+  neeval.c
+  neevlent.c
+  nefmill.c
+  nefmill1.c
+  nefmill2.c
+  nefmill3.c
+  negeodbg.c
+  negeogn.c
+  negeogn1.c
+  Generating Code...
+  Compiling...
+  negeogn2.c
+  negeogn3.c
+  negeogn4.c
+  negetbox.c
+  negfauto.c
+  neglobal.c
+  negtrec.c
+  neifelse.c
+  neinit.c
+  neirel.c
+  nelabel.c
+  nelabtbl.c
+  neln.c
+  nemcdcnv.c
+  nemesh.c
+  nemodsys.c
+  nemot.c
+  nemotattr.c
+  nemotcut.c
+  nemotdraw.c
+  Generating Code...
+  Compiling...
+  nemotpb.c
+  nemotpb1.c
+  nemotstk.c
+  nemotsup.c
+  nemotws.c
+  nemsfun.c
+  nemx.c
+  nenetsf.c
+  nepick.c
+  nepick1.c
+  nepl.c
+  nepmill.c
+  nepn.c
+  nepocket.c
+  nepocket2.c
+  nepocket3.c
+  nepocket4.c
+  neprofil.c
+  neproj.c
+  neproj0.c
+  Generating Code...
+  Compiling...
+  neproj1.c
+  neproj2.c
+  neproj3.c
+  neproj4.c
+  nepsegs0.c
+  nepsmult.c
+  nepsmult1.c
+  nept.c
+  nepv.c
+  nequilt.c
+  neranfl.c
+  nerbsf.c
+  nerbsp.c
+  nerbsp2.c
+  nerd.c
+  nerd1.c
+  nerefsys.c
+  neretrim.c
+  neretrim1.c
+  nerevsf.c
+  Generating Code...
+  Compiling...
+  nerevsf1.c
+  nescalar.c
+  nescalar2.c
+  nescratch.c
+  nesequnc.c
+  nesf.c
+  nesf2.c
+  nesfbuild.c
+  nesfprim.c
+  nesfprim1.c
+  nesfsup.c
+  nesfsup1.c
+  neshade.c
+  nesimulate.c
+  neskylst.c
+  nesmclpath.c
+  nesmedge.c
+  nesmill.c
+  nesmouse.c
+  nesmutil.c
+  Generating Code...
+  Compiling...
+  nesolid.c
+  nesolid1.c
+  nesolid2.c
+  nesolid3.c
+  nesrc.c
+  nesrcctl.c
+  nestubs.c
+  nesupt.c
+  nesupt1.c
+  nesupt2.c
+  nesuptoml.c
+  netessel.c
+  netessmgr.c
+  netextvar.c
+  netmp.c
+  netoler.c
+  netoolib.c
+  netrimsf.c
+  netrimsf1.c
+  netrimsf2.c
+  Generating Code...
+  Compiling...
+  neub2sup.c
+  neub2sup1.c
+  neubtoub.c
+  neunibas.c
+  neuvcvass.c
+  neve.c
+  neview.c
+  nevolve.c
+  nevolve1.c
+  nevolvegn.c
+  nevolvegn1.c
+  nevx.c
+  nevxmac.c
+  nevxsup.c
+  newatbase.c
+  newatcir.c
+  newatcon.c
+  newaterln.c
+  newaterln1.c
+  newaterln2.c
+  Generating Code...
+  Compiling...
+  newatmain.c
+  newatover.c
+  newatstk.c
+  newind.c
+  nget.c
+  nget1.c
+  ngtimx.c
+  npltmot.c
+  nput.c
+  nsecondu.c
+  nshape.c
+  ntlattr.c
+  nu5sel.c
+  nuanalyze.c
+  nuarcslp.c
+  nucattr.c
+  nuci.c
+  nuclone.c
+  nucntl.c
+  nucontour.c
+  Generating Code...
+  Compiling...
+  nucutr.c
+  nucutr1.c
+  nucv.c
+  nucv1.c
+  nudata.c
+  nudisplay.c
+  nudrw.c
+  nuedits.c
+  nuengrave.c
+  nuerase.c
+  nufedrat.c
+  nufile.c
+  nufilet.c
+  nufmill.c
+  nugo.c
+  nugodlta.c
+  nugoto.c
+  nulabel.c
+  nulathe.c
+  nulaydef.c
+  Generating Code...
+  Compiling...
+  nuln.c
+  numacdyn.c
+  numenu.c
+  numisc.c
+  numodals.c
+  numodsys.c
+  numot.c
+  numotion.c
+  numotsup.c
+  numove.c
+  numx.c
+  nunotes.c
+  nupl.c
+  nupmill.c
+  nupn.c
+  nupocket.c
+  nupocket1.c
+  nupocket2.c
+  nupokmod.c
+  nuprofil.c
+  Generating Code...
+  Compiling...
+  nuprog.c
+  nuproj.c
+  nupt.c
+  nupv.c
+  nurbsp.c
+  nuredef.c
+  nurefsys.c
+  nuremove.c
+  nurevers.c
+  nurmill.c
+  nusf.c
+  nusf1.c
+  nusf2.c
+  nush.c
+  nusmill.c
+  nusolid.c
+  nusolid1.c
+  nusystem.c
+  nutestcase.c
+  nutil.c
+  Generating Code...
+  Compiling...
+  nutil1.c
+  nutlaxis.c
+  nutlcalc.c
+  nuunits.c
+  nuve.c
+  nuview.c
+  nuvmill.c
+  nuvmill1.c
+  nuvmpmod.c
+  nuwrap.c
+  nuzsurf.c
+  trimsup.c
+  nclxuser.c
+  yclfile.c
+  ydebuga.c
+  ydebugb.c
+  ydebugc.c
+  yfortran.c
+  ymdlattrib.c
+  ymdlget.c
+  Generating Code...
+  Compiling...
+  ymdlput.c
+  ymodel.c
+  ymotion.c
+  ymotmdl.c
+  ymotrtn.c
+  ymotsup.c
+  yunibase.c
+  yuser.c
+  hostid_nt.c
+  pwdtim.c
+  badd2.c
+  bautoup.c
+  bcondba.c
+  bconect.c
+  bconinit.c
+  bconinst.c
+  bdebug.c
+  bdrwsym.c
+  beimanip.c
+  bfrmcolr.c
+  Generating Code...
+  Compiling...
+  bidrag.c
+  bimgeomc.c
+  bimktype.c
+  binstance.c
+  bipload.c
+  bmlib.c
+  bpermsn.c
+  bquery.c
+  bsavsym.c
+  bsymasoc.c
+  bsymfrm.c
+  buask.c
+  buconect.c
+  buexplod.c
+  bumdata.c
+  bumlib.c
+  bummanip.c
+  bumsymc.c
+  bupload.c
+  busnode.c
+  Generating Code...
+  Compiling...
+  bxdba.c
+  bxinit.c
+  bxmanip.c
+  bxtf.c
+  last.c
+  ldir.c
+  ldisplay.c
+  linit.c
+  lipv.c
+  lipv1.c
+  lipvassem.c
+  lipvaxis.c
+  lipvcmd.c
+  lipvcmd1.c
+  lipvcolor.c
+  lipvcomp.c
+  lipvdiag.c
+  lipvdiag1.c
+  lipvdisp.c
+  lipvlight.c
+  Generating Code...
+  Compiling...
+  lipvmach.c
+  lipvmach1.c
+  lipvmach2.c
+  lipvmach3.c
+  lipvmach4.c
+  lipvmeas.c
+  lipvmod.c
+  lipvmodals.c
+  lipvmot.c
+  lipvmotstk.c
+  lipvmotstk1.c
+  lipvmotsup.c
+  lipvmsl.c
+  lipvplay.c
+  lipvregion.c
+  lipvsess.c
+  lipvstk.c
+  lipvstk1.c
+  lipvstk2.c
+  lipvstkmod.c
+  Generating Code...
+  Compiling...
+  lipvstubs.c
+  lipvsup.c
+  lipvtool.c
+  lipvview.c
+  lipvview2.c
+  lmiconf.c
+  lmisc.c
+  lmodals.c
+  lmodals1.c
+  lmodfile.c
+  lmparse.c
+  lncl.c
+  lsession1.c
+  lsession2.c
+  lsetdir.c
+  lsignon.c
+  lubatch.c
+  lufile.c
+  lusystem.c
+  lutape.c
+  Generating Code...
+  Compiling...
+  luutil.c
+  lverify.c
+  lverify1.c
+  lverify2.c
+  lwindow.c
+  r1eassoc.c
+  r1emsgpk.c
+  r1esched.c
+  r1isched.c
+  reascsup.c
+  reasenv.c
+  reasp.c
+  recd.c
+  recdd.c
+  reda.c
+  redat.c
+  redatdct.c
+  reddv.c
+  redmpent.c
+  redmpevt.c
+  Generating Code...
+  Compiling...
+  redmpmdl.c
+  redtr.c
+  redu.c
+  redva.c
+  reeas.c
+  reenvin.c
+  reenvlod.c
+  reenvout.c
+  reenvsav.c
+  refad.c
+  regas.c
+  regavm.c
+  reglmk.c
+  regnak.c
+  regndk.c
+  regnk.c
+  regnndk.c
+  regnodk.c
+  regnsak.c
+  regtc.c
+  Generating Code...
+  Compiling...
+  regvm.c
+  reia.c
+  reidr.c
+  reir.c
+  reitr.c
+  reiu.c
+  relp01.c
+  relp02.c
+  relp03.c
+  relp04.c
+  remembrp.c
+  remo.c
+  reoralod.c
+  reorasav.c
+  reoratri.c
+  reoratro.c
+  reparse.c
+  reprterr.c
+  rera.c
+  rerad.c
+  Generating Code...
+  Compiling...
+  reradv.c
+  rerd.c
+  rerdf.c
+  rerdr.c
+  rerds.c
+  rerdv.c
+  rere.c
+  rerecenv.c
+  rerp.c
+  rerra.c
+  rerrn.c
+  rertr.c
+  reru.c
+  rervk.c
+  resad.c
+  resd.c
+  resdm.c
+  resdtr.c
+  resp01.c
+  resp02.c
+  Generating Code...
+  Compiling...
+  resp03.c
+  resp04.c
+  resp04c.c
+  ress.c
+  reswap.c
+  retouch.c
+  reua.c
+  reuadv.c
+  reud.c
+  reudf.c
+  reuds.c
+  reudv.c
+  reue.c
+  reundo.c
+  reunread.c
+  reup10000.c
+  reup10100.c
+  reup8103.c
+  reup8105.c
+  reup8200.c
+  Generating Code...
+  Compiling...
+  reup8250.c
+  reup8400.c
+  reup8500.c
+  reup9100.c
+  reup9200.c
+  reup9300.c
+  reup9400.c
+  reup9600.c
+  reup9700.c
+  reup9900.c
+  reupdate.c
+  reura.c
+  reutr.c
+  reuu.c
+  reuvk.c
+  riaal.c
+  riart.c
+  ricfk.c
+  rics.c
+  rict.c
+  Generating Code...
+  Compiling...
+  ridal.c
+  ridelsup.c
+  ridma.c
+  ridmppcs.c
+  ridrt.c
+  ridt.c
+  ridtv.c
+  rieatcom.c
+  rienvtab.c
+  rifdstk.c
+  rifdt.c
+  rifndoff.c
+  rifndsiz.c
+  rigetaln.c
+  rigetdig.c
+  rigettok.c
+  riglpp.c
+  riglti.c
+  rignnti.c
+  rignot.c
+  Generating Code...
+  Compiling...
+  rignti.c
+  rigtp.c
+  rigvp.c
+  rik2rt.c
+  rilp02a.c
+  rilrgpw2.c
+  rimkpstr.c
+  rinewmod.c
+  rinewpag.c
+  rinotify.c
+  rioradel.c
+  rioraerr.c
+  rioraini.c
+  rioraiss.c
+  riorasss.c
+  riparerr.c
+  riparse1.c
+  rird1ent.c
+  rirdatms.c
+  rirdents.c
+  Generating Code...
+  Compiling...
+  rirdenv.c
+  rirdrcb.c
+  rirdtk.c
+  riread1d.c
+  riretmem.c
+  rirma.c
+  rirt.c
+  rirt2k.c
+  rirtavi.c
+  rirtv.c
+  risp02a.c
+  ritotype.c
+  riualf.c
+  riualv.c
+  riudtk.c
+  riuma.c
+  riut.c
+  riutv.c
+  riuvi.c
+  riwt1ent.c
+  Generating Code...
+  Compiling...
+  riwtatms.c
+  riwtatms1.c
+  riwtents.c
+  riwtenv.c
+  riwtrcb.c
+  rixk.c
+  rixmf.c
+  rixpand.c
+  rizk.c
+  rmattrdd.c
+  rmdraw.c
+  rmlabddl.c
+  rriddl.c
+  rtpltst.c
+  rulp.c
+  rurp.c
+  rusp.c
+  uadok.c
+  uagetenv.c
+  uapgeo.c
+  Generating Code...
+  Compiling...
+  ub2it.c
+  ubits.c
+  ubread.c
+  ubrent.c
+  ubwrite.c
+  ucompb.c
+  uctofor.c
+  udebug.c
+  udebug1.c
+  udisplay.c
+  uerror.c
+  ufillb.c
+  ugetopt.c
+  uhash.c
+  uiarray.c
+  uio.c
+  uit2b.c
+  ulist.c
+  ulists.c
+  umainc.c
+  Generating Code...
+  Compiling...
+  umoveb.c
+  umsg2stg.c
+  unicad.c
+  unidone.c
+  uniinit.c
+  unserve.c
+  upostmsg.c
+  uqsort.c
+  ustrtok.c
+  utilinit.c
+  utime.c
+  utlaloc.c
+  uversion.c
+  uwinproc.c
+  vconv.c
+  vdd1init.c
+  vdefvw.c
+  vedba.c
+  vedebug.c
+  vedraw.c
+  Generating Code...
+  Compiling...
+  vedynstep.c
+  vedynvw.c
+  vescreen.c
+  veview.c
+  vevport.c
+  viinit.c
+  virel.c
+  vudebug.c
+  vudynvw.c
+  vuscreen.c
+  vuview1.c
+  vuview2.c
+  vuview3.c
+  vwindow.c
+  wsglfun.c
+  wsglmsfun.c
+  wsglmx2.c
+  wsglout2.c
+  wsgltrk2.c
+  wsglwin.c
+  Generating Code...
+  Compiling...
+  xe1gtenv.c
+  xe1paths.c
+  xf0udos0.c
+  xf1farea.c
+  xf1files.c
+  xuf1logf.c
+  xuf2libs.c
+  xuf2list.c
+  sdelay.c
+  sdoprnt.c
+  sdoscan.c
+  signal.c
+  sindex.c
+  smalloc.c
+  wsgifsave.c
+  wsglatt.c
+  wsgldyn.c
+  wsglinit.c
+  wsglmx.c
+  wsglout.c
+  Generating Code...
+  Compiling...
+  wsglout1.c
+  wsglpik.c
+  wsglprint.c
+  wsglseg.c
+  wsglshade.c
+  wsgltran.c
+  wsgltrk.c
+  wsimgcnv.c
+  wsntapp.c
+  wsntdum.c
+  wsntpocket.c
+  wsntsignon.c
+  wsntsmouse.c
+  Generating Code...
+  nevmill.cpp
+  pwcfunc.cpp
+  PWMessageBox.cpp
+  wsntbmpbtn.cpp
+  wsntclrbtn.cpp
+  wsntclrcell.cpp
+  wsntclrdlg.cpp
+  wsntcmdbar.cpp
+  wsntcursor.cpp
+  wsntDDButton.cpp
+  wsntDDclrbtn.cpp
+  wsntDDCombo.cpp
+  wsntDDEdit.cpp
+  wsntDDform.cpp
+  wsntDDgroup.cpp
+  wsntDDListBox.cpp
+  wsntDDlstctl.cpp
+  wsntDDlstctl2.cpp
+  wsntDDpic.cpp
+  wsntDDProcess.cpp
+  wsntDDSlider.cpp
+  Generating Code...
+  Compiling...
+  wsntDDStatic.cpp
+  wsntdrawbutton.cpp
+  wsntdropsource.cpp
+  wsntdroptarget.cpp
+  wsnteditctl.cpp
+  wsntFdsnFrm.cpp
+  wsntFdsnView.cpp
+  wsntfile.cpp
+  wsntformbar.cpp
+  wsntformfrm.cpp
+  wsntformFview.cpp
+  wsntformMview.cpp
+  wsntFormProp.cpp
+  wsntformPview.cpp
+  wsntformview.cpp
+  wsntfrmdoc.cpp
+  wsntfsview.cpp
+  wsntgettxt.cpp
+  wsntgettxt2.cpp
+  wsntgphwin.cpp
+  Generating Code...
+  Compiling...
+  wsntgraphic.cpp
+  wsntheaderctrl.cpp
+  wsnthls.cpp
+  wsnthuesatchooser.cpp
+  wsntIconListBox.cpp
+  wsntlstctl.cpp
+  wsntlstctl2.cpp
+  wsntlumchooser.cpp
+  wsntmdroptarget.cpp
+  wsntmdroptarget2.cpp
+  wsntmenudsndlg.cpp
+  wsntmmap.cpp
+  wsntModalFrame.cpp
+  wsntNCLButton.cpp
+  wsntpalettectl.cpp
+  wsntpalettewnd.cpp
+  wsntpicsel.cpp
+  wsntsecbtn.cpp
+  wsntsecprop.cpp
+  wsntSliderCtrl.cpp
+  Generating Code...
+  Compiling...
+  wsntstatbtn.cpp
+  wsntStatusBar.cpp
+  wsnttblst.cpp
+  wsnttooltip.cpp
+  wshdibapi.cpp
+  wsncldockbar.cpp
+  wsncldockframe.cpp
+  wsnclframe.cpp
+  wsncltoolbar.cpp
+  wsntarea.cpp
+  wsntbitmap.cpp
+  wsntcfun.cpp
+  wsntctl.cpp
+  wsntdir.cpp
+  wsntdlgbar.cpp
+  wsntdlgitem.cpp
+  wsntdoc.cpp
+  wsntdockcont.cpp
+  wsntdynint.cpp
+  wsntevent.cpp
+  Generating Code...
+  Compiling...
+  wsntform.cpp
+  wsntform2.cpp
+  wsntframe.cpp
+  wsntlay.cpp
+  wsntmdesgn.cpp
+  wsntmenu.cpp
+  wsntopt.cpp
+  wsntpktwin.cpp
+  wsntpmenu.cpp
+  wsnttmenu.cpp
+  wsnttrm.cpp
+  wsnttxtwin.cpp
+  wsntview.cpp
+  Generating Code...
+     Creating library .\Debug\Ncl.lib and object .\Debug\Ncl.exp
+ncl_lib_.lib(ubstor.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(surfpn.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(strwf1.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(sgeo1.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(setifl.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(retlbl.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(regstp.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(razpok.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(pthru.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(prtgeo.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(polfin.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(pocket.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(offpkt.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(mxmath.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(lrpush.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(labflg.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(jumpto.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(gpgmnm.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(getnxt.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(fixpp.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(ersall.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(entcpy.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(dist.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(disply.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(declpn.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(dbpnsf.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(cvofwf.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(cvintx.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(conpre.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(clcept.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(buildn.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(wlproj.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(trimsf.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(termac.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(strmot.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(rsttrm.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(rldpre.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(regmil.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(qsrfpn.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(ptshed.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(ptentt.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(pokmod.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(obtain.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(ncl.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(lthmot.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(gvtlin.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(gtranw.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(getkey.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(flshbf.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(exprs2.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(dsrelx.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(dsplcc.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(delgeo.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(dbstor.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(cylpre.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(cvio.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(clnssf.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(cirpre.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(chklab.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(wrtpp.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(vmpksy.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(uevsft.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(tanto.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(stock.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(slpfar.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(sfpt.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(setsc.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(revpre.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(putent.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(ptranw.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(ppnptt.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(parser.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(nsrfpn.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(mshpre.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(lthctl.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(index.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(ilbent.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(gtprimt.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(gettrm.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(getclf.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(find.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(expres.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(draft2.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(dispcv.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(declmx.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(dcrvpt.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(dbfind.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(curvpv.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(contck.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(cirprh.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(callit.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(alnbci.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(vocsch.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(ubfn.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(tsfsup.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(strtup.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(ssurf.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(savecm.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(revers.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(regscl.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(razpk1.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(prompt.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(ppwrt.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(poksup.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(pncalc.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(parsuv.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(motimm.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(mocntl.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(loadpp.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(lathes.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(gosrf2.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(getmsg.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(finpre.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(endpas.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(dsplsh.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(domove.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(declpl.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(cvsfsd.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(crvpre.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(clword.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(cirprj.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(bsfpre.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(watrln.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(vstchk.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(upiter.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(unitcv.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(syscal.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(star.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(sfpkgy.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(runvt.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(remove.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(ranini.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(putdb.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(ptpsrc.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(psmult.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(pokabc.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(patgen.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(mshsel.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(lthfol.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(kolaps.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(includ.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(gpnptt.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(getsrc.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(filmsc.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(expnam.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(dstrcc.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(dsplpn.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(cycman.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(csrelx.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(copy2.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(cirbld.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(chkinp.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(ascrub.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(varfmt.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(uvend.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(uevcvt.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(trnshd.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(ssc.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(showpn.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(sfprim.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(rldpat.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(regdis.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(putsrc.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(psmod3.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(prsgeo.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(nwait.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(ncvevl.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(nclspf001.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(mover.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(lrfind.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(lnpv.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(gtview.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(gtpptt.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(gtgeom.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(getent.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(genpts.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(fio.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(dspmsh.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(dlen.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(declnf.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(dbgqlt.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(dbclos.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(curnam.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(cirdef.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(cirapt.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(bscrub.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(begpas.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(acibln.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(vcvpnt.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(testcs.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(tanorm.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(ssrfpn.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(srfdef.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(rldgen.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(renam.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(ranio.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(putinpp.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(ptshpt.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(ptdesc.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(polbld.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(pmill.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(off12.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(nclver.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(mosyn.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(metool.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(labwf.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(gtsptt.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(gosrf1.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(geognd.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(finfix.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(error.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(dspcut.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(drvwir.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(declbl.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(dbpssf.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(cutseg.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(copy1.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(cirrec.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(chkvoc.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(basesf.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(yfmotion.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(uvend2.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(uset.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(ttcrv.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(tltang.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(ssrc.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(sfinit.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(setver.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(session.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(ran.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(putprt.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(profil.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(premov.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(off09.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(nstub2.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(math4.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(math.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(jmpchk.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(help.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(getnst.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(getdb.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(geogn1.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(flunit.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(driver.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(dodata.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(declve.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(dbpent.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(dbgnsf.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(cvepts.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(crvgn1.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(crvbld.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(circpt.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(chkzsf.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(char.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(aptsrc.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(vocab2.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(uerr.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(ubio.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(sgeo.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(rotpts.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(regdir.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(putmsg_w2.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(ptmptt.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(ptmhdt.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(poddef.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(pfillet.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(mosyn2.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(loopst.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(lathex.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(ifelse.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(gtmx.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(gtentt.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(fmill.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(fixrld.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(dsplge.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(dispsf.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(dbshow.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(dbgssf.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(dbcall.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(csrel.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(circpv.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(bentst.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(yfmotrtn.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(uvend1.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(uparrw.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(trnshp.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(tancir.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(simsurf.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(sifl.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(scrub.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(savmot.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(regpts.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(ranstr.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(psrel.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(ppword.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(pokobt.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(parsit.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(nestpt.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(ncvclf.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(meshpn.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(lnrdef.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(labchk.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(getnln.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(getifl.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(geognb.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(fincut.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(drwent.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(dotf.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(defnam.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(declan.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(decclr.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(cvgide.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(csdist.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(convert.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(cintck.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(canf.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(barseg.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(acibci.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(vocsup.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(uvprmv.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(urest.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(ubshow.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(srfpre.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(shapre.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(setstp.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(segchk.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(putmsg.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(putcl.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(psrela.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(psproj.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(parsgn.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(off10.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(ncltim.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(motout.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(labset.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(gtrtnm.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(geomf.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(geogne.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(fillet.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(evlrbs.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(dspssf.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(draft1.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(declsy.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(declss.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(dbgmsh.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(cutool.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(crvgen.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(crvevl.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(conent.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(cctrn.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(aptcl.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(tllock.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(stunlb.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(strwf2.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(srfevl.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(sequnc.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(scurve.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(regfrm.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(redef.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(ptspnt.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(prtput.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(offcv.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(nfuncs.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(nclini.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(mosyn1.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(lrdata.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(loopnd.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(gtmptt.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(gtdesc.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(filpre.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(filmod.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(dsrel.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(dspmev.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(declpv.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(declci.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(crvpnt.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(crvlen.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(condif.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(cidist.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(batch.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(passwd.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(vvcvpt.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(usrfpn.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(trnqlt.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(trnqhd.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(ssdist.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(smpre.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(scrfil.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(rufcut.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(regprf.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(randel.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(postp.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(podpts.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(plotm.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(numf.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(nclxini.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(mocomb.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(gtshpt.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(getsuv.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(geognc.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(geogna.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(fillin.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(echk.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(dotext.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(displq.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(decmac.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(declcv.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(dbpqlt.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(cvofst.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(cssurf.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(clput.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(cirprg.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(chkent.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(atan2f.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(vstore.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(upncal.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(trnmsh.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(strcmm.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(srfcls.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(sfeval.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(sdepre.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(savepp.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(putw2.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(ptppnm.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(ptonln.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(outmot.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(offpre.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(nclfin.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(motgxx.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(ipvfor.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(icbent.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(gtcntt.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(getxln.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(flmath.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(fininv.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(domode.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(dispmx.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(declso.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(declsh.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(dbfn.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(crvfit.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(crvcls.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(cirpri.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(calrst.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(angcal.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(vector.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(utilty.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(ucrvpv.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(tdsply.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(shafix.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(setins.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(sbsolv.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(rectfy.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(pwild.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(ptsmth.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(profsy.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(pockmo.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(patpre.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(mosyn3.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(moinfo.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(lrpop.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(lblchk.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(gtcseg.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(gettol.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(filchk.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(eval.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(errcal.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(dsplsf.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(dsbarl.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(declsf.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(declln.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(cutool2.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(clone.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(cirpnt.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(berr.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(yfmotsup.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(vmill.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(ushow.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(trimci.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(statln.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(srffit.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(rufpre.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(rmill.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(regpas.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(quipre.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(ptgeom.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(pokpar.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(pleval.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(off08.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(modfy.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(mdinit.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(labcam.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(ipatch.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(getpod.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(geogn2.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(farslp.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(dstrge.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(draft3.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(dnarrw.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(dellns.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(dbchk.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(cutget.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(clfile.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(chr2real.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(chkpts.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(assgn.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(voccad.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(uvmove.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(transf.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(tlaxis.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(smill.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(sfptdo.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(sfevl2.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(rpchk.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(putapt.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(ptdfnm.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(projcv.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(onerr.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(off11.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(motpn.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(lrupdt.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(gtref.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(gtpsrc.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(gotopn.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(gocntl.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(fmtsrc.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(errpol.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(draft.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(disppl.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(declpt.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(dbpmsh.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(dbgent.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(cylman.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(convid.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(chr2int.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(beginp.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+ncl_lib_.lib(altcom.obj) : warning LNK4204: 'C:\NCL_from_GitHub\NCL_in_VisualStudio\src\Debug\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
   Ncl.vcxproj -> C:\NCL_from_GitHub\NCL_in_VisualStudio\src\.\Debug\Ncl.exe
   Ncl.vcxproj -> C:\NCL_from_GitHub\NCL_in_VisualStudio\src\.\Debug\Ncl.exe

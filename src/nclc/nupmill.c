@@ -67,59 +67,60 @@
 #define MOTIONTRG4		6 //step text input
 #define MOTIONTRG5		7 //Tolerance choice
 #define MOTIONTRG6		8 //Tolerance text input
-#define MOTIONTRG7		9 //Direction set to 'planes' only, make it dis-active
-#define MOTIONTRG8		10 //sf1 text input
-#define MOTIONTRG9		11 //sf1 select button
-#define MOTIONTRG10		12 //sf2 text input
-#define MOTIONTRG11		13 //sf2 select button
-#define MOTIONTRG12		14 // Retract choice
-#define MOTIONTRG13		15 // Retract
-#define MOTIONTRG14		16 // Retract
-#define MOTIONTRG15		17 // Fedrat choice
-#define MOTIONTRG16		18 // Fedrat
+/*#define MOTIONTRG7		9 //Direction set to 'planes' only, make it dis-active*/
+#define MOTIONTRG8		9 //sf1 text input
+#define MOTIONTRG9		10 //sf1 select button
+#define MOTIONTRG10		11 //sf2 text input
+#define MOTIONTRG11		12 //sf2 select button
+#define MOTIONTRG12		13 // Retract choice
+#define MOTIONTRG13		14 // Retract
+#define MOTIONTRG14		15 // Retract
+#define MOTIONTRG15		16 // Fedrat choice
+#define MOTIONTRG16		17 // Fedrat
 /*
 ......Boundaries
 */
-#define BOUNDRG4	19
-#define BOUNDRG5	20
+#define BOUNDRG4	18
+#define BOUNDRG5	19
 /*
 .....Entry /Exit
 */
-#define ENEXTRG1	21
-#define ENEXTRG2	22
-#define ENEXTRG3	23
-#define ENEXTRG4	24
-#define ENEXTRG5	25
-#define ENEXTRG6	26
-#define ENEXTRG7	27
-#define ENEXTRG8	28
-#define ENEXTRG9	29
-#define ENEXTRG10	30
-#define ENEXTRG11	31
-#define ENEXTRG12	32
-#define ENEXTRG13	33
+#define ENEXTRG1	20
+#define ENEXTRG2	21
+#define ENEXTRG3	22
+#define ENEXTRG4	23
+#define ENEXTRG5	24
+#define ENEXTRG6	25
+#define ENEXTRG7	26
+#define ENEXTRG8	27
+#define ENEXTRG9	28
+#define ENEXTRG10	29
+#define ENEXTRG11	30
+#define ENEXTRG12	31
+#define ENEXTRG13	32
 /*
 .....Colors
 */
-#define CLRRG1	34
-#define CLRRG2	35
-#define CLRRG3	36
-#define CLRRG4	37
-#define CLRRG5	38
-#define CLRRG6	39
-#define CLRRG7	40
-#define CLRRG8	41
+#define CLRRG1	33
+#define CLRRG2	34
+#define CLRRG3	35
+#define CLRRG4	36
+#define CLRRG5	37
+#define CLRRG6	38
+#define CLRRG7	39
+#define CLRRG8	40
 /*
 .....Action Buttons
 */
-#define FAPV	42
-#define FAPY	43
-#define FARS	44
-#define FAPB	45
-#define FAVE	46
-#define FAGE	47
-#define FAVW	48
-#define FVIDEO	49
+#define FAPV	41
+#define FAPY	42
+#define FARS	43
+#define FAPB	44
+#define FAVE	45
+#define FAGE	46
+#define FAVW	47
+#define FVIDEO	48
+
 
 #define HIDE_KEY 0
 #define CONTOUR_KEY 1
@@ -164,8 +165,8 @@ static char Sptnam[MXLAB];
 static char Sraptoval[MXLAB];
 static char Sretrctval[MXLAB];
 static char SLraptoval[MXLAB];
-static char Sdirval1[MXLAB];
-static char Sdirval2[MXLAB];
+//static char Sdirval1[MXLAB];
+//static char Sdirval2[MXLAB];
 
 static char Smethod_str[MXLAB];
 static char Sorient_str[MXLAB];
@@ -174,24 +175,28 @@ static char Tptnam[MXLAB];
 static char Traptoval[MXLAB];
 static char Tretrctval[MXLAB];
 static char TLraptoval[MXLAB];
-static char Tdirval1[MXLAB];
-static char Tdirval2[MXLAB];
+//static char Tdirval1[MXLAB];
+//static char Tdirval2[MXLAB];
 
 static char Tmethod_str[MXLAB];
 static char Torient_str[MXLAB];
 
-static int Sstarttyp=0, Sdir=0, Stoltyp=0, Sedgetyp = 0;
+static int Sstarttyp=0, /*Sdir=0*/ Stoltyp=0, Sedgetyp = 0;
 static int Smethod=0, SLraptotyp=0, SLraptofed=0;
 static int Sraptotyp=0, Sraptofed=0, Sretrcttyp=0, Sretrctfed=0;
 static UU_REAL Sstp=0.0, Stoler=0.0;
 static UU_REAL Trad=0.0, Srad=0.0;
-static int Tstarttyp=0, Tdir=0, Ttoltyp=0, Tedgetyp = 0;
+static int Tstarttyp=0, /*Tdir=0,*/ Ttoltyp=0, Tedgetyp = 0;
 static int Tmethod=0, Torient=0,    TLraptotyp=0, TLraptofed=0;
 static int Traptotyp=0, Traptofed=0, Tretrcttyp=0, Tretrctfed=0;
 static int Signore=0, Tignore=0;
 
 static UN_motseg *Smptr=0,Smotatt;
 static UN_mot_vpbox_struc Smvpbox[UV_NVPORTS];
+
+static UU_LOGICAL loaded = UU_FALSE;
+
+static UU_LOGICAL firstSelected = UU_FALSE;
 
 static char Sstp_str[65]="0.0", Srad_str[65]="0.0",
 		Stoler_str[65]="0.0",
@@ -202,18 +207,37 @@ static char Tstp_str[65]="0.0", Trad_str[65]="0.0",
 		Traptofrv_str[65]="0.0", Tretrctfrv_str[65]="0.0",
 		TLraptofrv_str[65]="0.0", Tcmd_str[8][65];
 
+static char Sdirval1[65]="0.0";
+static char Tdirval1[65]="0.0 ";
+
+static char Sdirval2[65]="0.0";
+static char Tdirval2[65]="0.0";
+
 static int SfrmPlay=0;
 static int Serrflg,Spreviewflg,Schgmade,Smenu_ch[14];
 static UD_FSTAT OnColors(), OnAction(), OnVideo();
 static UD_FSTAT OnPText(), OnPButton();
 static UD_FSTAT OnMChcPick(), OnMText(), OnMButton();
-static UD_FSTAT OnBChcPick(), OnBText(), OnBButton(), OnBChkPick();
+static UD_FSTAT OnBChcPick(), OnBChkPick();
 static UD_FSTAT OnEChcPick(), OnEText(), OnEButton();
 static void S_unhilite_all(), S_hilite_entity(), S_hilite_entities(),
 		S_init_form(), S_create_key_list(), S_add_key(), S_section_changed(),
 		S_form_invis(), S_update_answers(), S_unhilite_entities();
 static int S_build_command();
 static char Sselsrf[NCL_MAX_LABEL_AND_SUBSCRIPT] = "", Tselsrf[NCL_MAX_LABEL_AND_SUBSCRIPT] = ""; 
+
+int point_coordinates();
+int nclu_pl_from_crv(char*);
+int nclu_pl_on_crv();
+int nclu_pt_from_crv(char*);
+int nclu_pt_on_crv_start(char*, char*);
+int nclu_pt_on_crv_end(char*, char*);
+int create_point();
+
+static UU_REAL x,y,z,min_x,min_y,min_z,max_x, max_y,max_z;
+static	unsigned UU_LONG key_max, key_min,key_select;
+
+static	UM_coord ndc_min, ndc_max;
 
 static int *Sanswers[] = {
 /*
@@ -223,9 +247,9 @@ static int *Sanswers[] = {
 /*
 ......Motion Type 16
 */
-		&Tmethod, &Trad, &Torient,  (int *)&Tstp_str, 
+		&Tmethod, &Trad, &Torient, (int *)&Tstp_str, 
 		&Ttoltyp,(int *)&Ttoler_str,
-		&Tdir,(int *)&Tdirval1,  UU_NULL,
+		/*&Tdir,*/(int *)&Tdirval1,  UU_NULL,
 			(int *)&Tdirval2,  UU_NULL, 
 		&TLraptotyp, (int *)&TLraptoval,  UU_NULL,
 		&TLraptofed, (int *)&TLraptofrv_str,
@@ -372,39 +396,41 @@ static UU_LOGICAL S_enable_buttons()
 	ul_strip_blanks(Tdirval1, &nc);
 	if (nc<=0)
 	{
-		ud_dispfrm_set_attribs(0,MOTIONTRG8,UM_WHITE,UM_RED);
-		ud_dispfrm_set_attribs(0,MOTIONTRG9,UM_WHITE,UM_RED);
+		ud_dispfrm_set_attribs(0,MOTIONTRG8,UM_WHITE,UM_WHITE);
+		ud_dispfrm_set_attribs(0,MOTIONTRG9,UM_WHITE,UM_GREEN);
 		sect23 = UU_FALSE;
 	}
 	else
 	{
 		ud_dispfrm_set_attribs(0, MOTIONTRG8, UM_BLACK, UM_WHITE);
-		ud_dispfrm_set_attribs(0,MOTIONTRG9, UM_BLACK, Tdirclr);
+		ud_dispfrm_set_attribs(0,MOTIONTRG9, UM_BLACK, UM_GREEN);
 		sect23 = UU_TRUE;
 	}
 	sect24 = UU_TRUE;
-	if (Tdir==0)
+	//if (Tdir==0)
 	{
 		nc = (int)strlen(Tdirval2);
 		ul_strip_blanks(Tdirval2, &nc);
 		if (nc<=0)
 		{
-			ud_dispfrm_set_attribs(0,MOTIONTRG10,UM_WHITE,UM_RED);
-			ud_dispfrm_set_attribs(0,MOTIONTRG11,UM_WHITE,UM_RED);
+			ud_dispfrm_set_attribs(0,MOTIONTRG10,UM_WHITE,UM_WHITE);
+			ud_dispfrm_set_attribs(0,MOTIONTRG11,UM_WHITE,UM_GREEN);
 			sect24 = UU_FALSE;
 		}
 		else
 		{
 			ud_dispfrm_set_attribs(0, MOTIONTRG10, UM_BLACK, UM_WHITE);
-			ud_dispfrm_set_attribs(0,MOTIONTRG11, UM_BLACK, Tdirclr);
+			ud_dispfrm_set_attribs(0,MOTIONTRG11, UM_BLACK, UM_GREEN);
 			sect24 = UU_TRUE;
 		}
 	}
+ /* 
 	else
 	{
 		ud_dispfrm_set_attribs(0, MOTIONTRG10, UM_BLACK, UM_WHITE);
-		ud_dispfrm_set_attribs(0, MOTIONTRG11, UM_BLACK, Tdirclr);
+		ud_dispfrm_set_attribs(0, MOTIONTRG11, UM_BLACK, UM_GREEN);
 	}
+  */
 	sect25 = UU_TRUE;
 	sect26 = UU_TRUE;
 	if (TLraptotyp==0)
@@ -736,7 +762,7 @@ static UU_LOGICAL S_enable_buttons()
 	nc1 = (int)strlen(label);
 	ul_strip_blanks(label,&nc1);
 	nc2 = 0;
-	if (Tdir==0)
+	//if (Tdir==0)
 	{
 		ul_to_upper(Tdirval2);
 		strcpy(label, Tdirval2);
@@ -986,9 +1012,9 @@ static void S_save_form()
 	Smethod = Tmethod;
 	strcpy(Srad_str, Trad_str);
 	strcpy(Sstp_str, Tstp_str);
-	Sdir = Tdir;
+	//Sdir = Tdir;
 	strcpy(Sdirval1, Tdirval1);
-	if (Tdir==0)
+	//if (Tdir==0)
 	{
 		strcpy(Sdirval2, Tdirval2);
 	}
@@ -1480,7 +1506,23 @@ UD_FSTAT stat;
 	int pr, *mask;
 	int j1 = 0;
 	int status;
-	UU_REAL uval = 0;
+	//UU_REAL uval = 0;
+
+	/*S_deselect_all();*/
+	if (loaded)
+	{
+		S_deselect_all();
+		//S_init_form();
+		strcpy(Sdirval1, "0.0");
+		strcpy(Sdirval2, "0.0");
+
+		strcpy(Tdirval1, "0.0");
+		strcpy(Tdirval2, "0.0");
+
+		ncl_hide_geo(-1,-1,-1,-1,UU_TRUE,UU_NULL,0);
+
+		ncl_erase_mdisplay(&Smptr,&Smotatt,Smvpbox);
+	}
 /*
 .....Set the appropriate selection mask and prompt
 */
@@ -1488,17 +1530,53 @@ UD_FSTAT stat;
 	{
 		mask = (int *)UD_ncl_allsfsh;
 		pr = 508;
-		status = S_select_geo(&Sgsf,&Ssurf,mask,0,pr,Tcolor,0,MILLRG1,Tselsrf, &uval);
+
+		status = S_select_geo(&Sgsf,&Ssurf,mask,0,pr,Tcolor,0,MILLRG1,Tselsrf/*, &uval*/);
+
+		if (!strcmp(Sgsf.label, "") )
+		{
+			
+			uw_ntdispmsg("No port in scene");
+			return(UD_BADACT);
+		}
+
+		//@@@@@@@@@@@@@@@
+
+		nclu_pl_from_crv("PL1");
+		nclu_pl_from_crv("PL2");
+
+		/*strcpy(Sdirval1, "0.0");
+		strcpy(Sdirval2, "0.0");
+
+		strcpy(Tdirval1, "0.0");
+		strcpy(Tdirval2, "0.0");*/
+
+		nclu_cv_from_srf("CV3");
+		nclu_cv_from_srf("CV4");
 		status = nclu_cv_on_srf(Sgsf.label, "CV3", 3, 0.45);
+		status = nclu_pt_from_crv("PT1");
+		status = nclu_pt_from_crv("PT2");
+		status = nclu_pt_from_crv("PT3");
+		status = nclu_pt_on_crv_start("PT1","CV3");
+		//status = nclu_pt_from_crv("PT2");
+		status = nclu_pt_from_crv("PT2");
+		status = nclu_pt_from_crv("PT3");
+		status = nclu_pt_on_crv_start("PT3","CV4");
+		status = nclu_pt_from_crv("PT4");
+		status = nclu_pt_on_crv_end("PT4","CV3");
+		//@@@@@@@@@@@@
+
 		Snsurf = UU_LIST_LENGTH(&Ssurf);
 		if (Snsurf>0)
 			ud_set_traverse_mask(MILLRG3, UU_TRUE);
+		loaded = UU_TRUE;
 	}
 	else if (*fieldno == MILLRG3)
 	{
 		OnDeselect(fieldno, val, stat);
 		nclu_cv_from_srf("CV3");
 		ud_set_traverse_mask(MILLRG3, UU_FALSE);
+		loaded = UU_FALSE;
 	}
 	Sacc[PMill] = 1;
 	S_enable_buttons();
@@ -1510,6 +1588,7 @@ int *fieldno;
 UD_DDATA *val;
 UD_FSTAT stat;
 {
+
 	char valuestr[80];
 	switch (*fieldno)
 	{
@@ -1537,6 +1616,7 @@ UD_FSTAT stat;
 		}
 		Smenu_ch[5] = *(val->frmint);
 		break;
+/*		 
 	case MOTIONTRG7:
 		if (*(val->frmint)==1)
 		{
@@ -1550,6 +1630,7 @@ UD_FSTAT stat;
 		}
 		Smenu_ch[2] = *(val->frmint);
 		break;
+  */
 	case MOTIONTRG12:
 		if (*(val->frmint)==0)
 		{
@@ -1625,6 +1706,7 @@ UD_FSTAT stat;
 	S_enable_buttons();
 	return(UD_FLDOK);
 }
+
 static UD_FSTAT OnMText(fieldno, val, stat)
 int *fieldno;
 UD_DDATA *val;
@@ -1645,55 +1727,85 @@ int *fieldno;
 UD_DDATA *val;
 UD_FSTAT stat;
 {
+	
+	UM_coord ndc;
 	int pr, namfld, *mask;
 	UU_REAL uval = 0;
 	char *namp;
-	int status=-1;
+	int status;	//=-1;
+	if (loaded==UU_FALSE)
+	{
+			uw_ntdispmsg("No port surface exists or selected");
+			return(UD_BADACT);
+	}
+
 	if (*fieldno == MOTIONTRG9)
 	{
-		if (Tdir == 0)
+		uval=atof(Tdirval1);
+		if ((uval<=0.0)|| (uval >=1))
 		{
-			mask = (int *)UD_allcurvess_pts;;
-			pr = 514;
+			uw_ntdispmsg("Value should be input 0 < u < 1");
+			return(UD_BADACT);
 		}
-		else if (Tdir == 1)
+		status = key_of_label("PT1", status);
+		if (status<=0)
 		{
-			mask = (int *)UD_allcurvess_pts;
-			pr = 709;
+			uw_ntdispmsg("No port surface exists ");
+			return(UD_BADACT);
 		}
-		namp = Tdirval1;
-		namfld = MOTIONTRG8;
-		status = S_select_geo(&Sgdrv1,UU_NULL,mask,0,pr,Tdirclr,0,namfld,"PL1",&uval);
-		status = nclu_pl_from_crv("PL1");
-		status = nclu_pl_on_crv("PL1", "CV3", uval);
+		status = nclu_pt_on_crv_start("PT1","CV3");
+		status = nclu_pt_from_crv("PT2");
+		status = nclu_pt_from_crv("PT1");
+		status = key_of_label("PT3", status);
+		if (status<=0)
+		{
+			uw_ntdispmsg("No port surface exists");
+			return(UD_BADACT);
+		}
+		status = nclu_pt_on_crv_start("PT3","CV4");
+		nclu_pl_from_crv("PL1");
+		status = nclu_pl_on_crv("PL1", "CV4", uval);
+		strcpy(Ttoler_str, Stoler_str);
+
+		firstSelected = UU_TRUE;
 	}
 	else if (*fieldno == MOTIONTRG11)
 	{
-		mask = (int *)UD_allcurvess_pts;
-		pr = 515;
-		namp = Tdirval2;
-		namfld = MOTIONTRG10;
-		status = S_select_geo(&Sgdrv2,UU_NULL,mask,0,pr,Tdirclr,0,namfld,"PL2",&uval);
-		status = nclu_pl_from_crv("PL2");
-		status = nclu_pl_on_crv("PL2", "CV3", uval);
-		status = nclu_pt_from_crv("PT1");
-		status = nclu_pt_on_crv("CV4");
-		go_to_start("PT2");
+
+		if (firstSelected == UU_FALSE)
+		{
+			uw_ntdispmsg("First plane not created");
+			return(UD_BADACT);
+		}
+		status = nclu_pt_from_crv("PT3");
+		status = nclu_pt_on_crv_start("PT3","CV4");
+		uval=atof(Tdirval2);
+		if ((uval<=0.0)|| (uval >=1))
+		{
+			uw_ntdispmsg("Value should be put 0 < u < 1");
+			return(UD_BADACT);
+		}
+		nclu_pl_from_crv("PL2");
+		status = nclu_pl_on_crv("PL2", "CV4",uval);
+		strcpy(Ttoler_str, Stoler_str);
+		go_to_start("PT3");
 	}
 	else if (*fieldno == MOTIONTRG14)
 	{
-		mask = (int *)UD_allcurvess_pts;
+		mask = (int *)UD_allcurves;
 		pr = 663;
 		namp = TLraptoval;
 		namfld = MOTIONTRG13;
-		status = S_select_geo(&SgLrap,UU_NULL,mask,0,pr,Spassclr,0,namfld,namp,&uval);
+		status = S_select_geo(&SgLrap,UU_NULL,mask,0,pr,Spassclr,0,namfld,namp/*,&uval*/);
 	}
 	if (status==0)
 	{
 		Sacc[MotionT] = 1;
 		S_enable_buttons();	
+		return(UD_FLDOK);
 	}
-	return(UD_FLDOK);
+	/*return(UD_FLDOK);*/
+	return(UD_BADACT);
 }
 
 static UD_FSTAT OnBChcPick(fieldno, val, stat)
@@ -1877,7 +1989,7 @@ UD_DDATA *val;
 UD_FSTAT stat;
 
 {
-	UU_REAL uval = 0;
+	//UU_REAL uval = 0;
 	int pr, namfld, *mask;
 	char *namp;
 	int status=-1;
@@ -1887,7 +1999,7 @@ UD_FSTAT stat;
 		pr = 516;
 		namp = Tptnam;
 		namfld = ENEXTRG2;
-		status = S_select_geo(&Sgspt,UU_NULL,mask,0,pr,Tstptclr,0,namfld,namp, &uval);
+		status = S_select_geo(&Sgspt,UU_NULL,mask,0,pr,Tstptclr,0,namfld,namp/*, &uval*/);
 	}
 	else if (*fieldno == ENEXTRG6)
 	{
@@ -1895,7 +2007,7 @@ UD_FSTAT stat;
 		pr = 659;
 		namp = Traptoval;
 		namfld = ENEXTRG5;
-		status = S_select_geo(&Sgrap,UU_NULL,mask,0,pr,Tclnclr,0,namfld,namp, &uval);
+		status = S_select_geo(&Sgrap,UU_NULL,mask,0,pr,Tclnclr,0,namfld,namp/*, &uval*/);
 	}
 	else if (*fieldno == ENEXTRG11)
 	{
@@ -1903,7 +2015,7 @@ UD_FSTAT stat;
 		pr = 660;
 		namp = Tretrctval;
 		namfld = ENEXTRG10;
-		status = S_select_geo(&Sgret,UU_NULL,mask,0,pr,Tretclr,0,namfld,namp, &uval);
+		status = S_select_geo(&Sgret,UU_NULL,mask,0,pr,Tretclr,0,namfld,namp/*, &uval*/);
 	}
 	if (status==0)
 	{
@@ -1967,19 +2079,20 @@ UU_LOGICAL flg;
 	else
 		ncl_add_token(&cmdbuf, NCL_to, NCL_comma);
 
-	if (Tdir == 0)
+	//if (Tdir == 0)
 	{		
 		if (Tdirval1[0])
-			ncl_add_token(&cmdbuf, Tdirval1, NCL_comma);
+			ncl_add_token(&cmdbuf, "PL1", NCL_comma);
 		if (Tdirval2[0])	
-			ncl_add_token(&cmdbuf, Tdirval2, NCL_comma);
+			ncl_add_token(&cmdbuf, "PL2", NCL_comma);
 	}
+/*  
 	else
 	{	
 		if (Tdirval1[0])
 			ncl_add_token(&cmdbuf, Tdirval1, NCL_comma);
 	}
-
+*/
 	ncl_add_token(&cmdbuf, NCL_run_step, NCL_comma);
 	strcpy(buf, Tstp_str);
 	ncl_add_token(&cmdbuf, buf, NCL_comma);
@@ -2090,7 +2203,7 @@ static UD_FSTAT S_storvals()
 .....Store values to check for changes  temp for PMILL
 */
 	Smenu_ch[1] = Sstarttyp;
-	Smenu_ch[2] = Sdir;
+//	Smenu_ch[2] = Sdir;
 	Smenu_ch[5] = Stoltyp;
 	Smenu_ch[6] = Smethod;
 	Smenu_ch[7] = SLraptotyp;
@@ -2121,9 +2234,6 @@ static void S_init_form()
 
 	int sc10_3;
 	char buf[10];
-/*need get pmill value  all temp values this function
-	smillpar(&pahismill, &stessmill,&rptsmill,&rtrsmill,&sc10_3,&dpesmill,&fresmill,&tolsmill, &fdrrptsmill, &fdrrtrsmill );
-*/
 /*
 .....Initialize the form settings
 */
@@ -2133,7 +2243,7 @@ static void S_init_form()
 		Snsurf = 0;
 
 		Sstarttyp = 0;
-		Sdir = 0;
+//		Sdir = 0;
 		Stoltyp = 0;
 		Smethod = 0; 
 		SLraptotyp = 0;
@@ -2194,7 +2304,7 @@ static void S_init_form()
 	ncl_sprintf(Srad_str, &Srad,1);
 	ncl_sprintf(Stoler_str,&Stoler,1);
 	Tstarttyp = Sstarttyp;
-	Tdir = Sdir;
+//	Tdir = Sdir;
 	Ttoltyp = Stoltyp;
 	Tmethod = Smethod; 
 	TLraptotyp = SLraptotyp;
@@ -2295,15 +2405,17 @@ char *display,*traverse;
 	else
 		traverse[MOTIONTRG6] = 1;
 		
-	traverse[MOTIONTRG7] = 0; //plane always
+//	traverse[MOTIONTRG7] = 0; //plane always
 	traverse[MOTIONTRG8] = 1;
 	traverse[MOTIONTRG9] = 1;
+	/*
 	if (Tdir == 1)
 	{
 		traverse[MOTIONTRG10] = 0;
 		traverse[MOTIONTRG11] = 0;
 	}
 	else
+  */
 	{			
 		traverse[MOTIONTRG10] = 1;
 		traverse[MOTIONTRG11] = 1;
@@ -2425,7 +2537,7 @@ void nclu_pmill()
 		OnMChcPick, OnMText, OnMChcPick,
 		OnMText, 
 		OnMChcPick, OnMText,
-		OnMChcPick, OnMText, OnMButton, 
+		/*OnMChcPick,*/ OnMText, OnMButton, 
 					OnMText, OnMButton,
 		OnMChcPick, OnMText, OnMButton, 
 		OnMChcPick, OnMText, 
@@ -2454,7 +2566,7 @@ void nclu_pmill()
 
 	static char traverse[]= {
 		1,1,1,
-		1,1,1,1,1,1,1,1,1,1, 
+		1,1,1,1,1,1,1,1,1, 
 		1,1,1,1,1,1,
 		1,1,
 		1,1,1,1,1,1,1,1,1,1,1,1,1,
@@ -2462,7 +2574,7 @@ void nclu_pmill()
 		1,1,1,1,1,1,1,1};
 	static char called[]  = {
 		6,6,6,
-		6,6,6,6,6,6,6,6,6,6, 
+		6,6,6,6,6,6,6,6,6,
 		6,6,6,6,6,6,
 		6,6,
 		6,6,6,6,6,6,6,6,6,6,6,6,6,
@@ -2470,7 +2582,7 @@ void nclu_pmill()
 		6,6,6,6,6,6,6,6};
 	static char display[] = {
 		1,1,1,
-		1,1,1,1,1,1,1,1,1,1, 
+		1,1,1,1,1,1,1,1,1, 
 		1,1,1,1,1,1,
 		1,1,
 		1,1,1,1,1,1,1,1,1,1,1,1,1,
@@ -2700,17 +2812,15 @@ static void S_update_answers()
 		if (Sanswers[i] != UU_NULL) ud_update_answer(i,Sanswers[i]);
 }
 
-static int S_select_geo(sfpt,sflst,mask,multi,prmno,color,frm,fieldno,label,uval)
+static int S_select_geo(sfpt,sflst,mask,multi,prmno,color,frm,fieldno,label/*,uval*/)
 UM_sgeo *sfpt;
 UU_LIST *sflst;
 unsigned int *mask;
 UU_LOGICAL multi;
 int prmno,color,fieldno,frm;
 char *label;
-UU_REAL* uval;
+//UU_REAL* uval;
 {
-	/*struct UM_crvdatabag	cr;	
-	UM_transf tfmat;*/
 
 	int numint,iret,nc;
 	unsigned int *imask;
@@ -2817,24 +2927,15 @@ repeat:;
 */
 		sfpt->key = e.key;
 		sfpt->relnum = e.rel_num;
-		if (mask == UD_allcurvess_pts)
+		/*if (mask == UD_allcurves)
 		{
 			if (sfpt->key != 0)
 			{
-				/*cr.key = um_get_pickkey(&pick.pent, 2);
-				um_get_all_geom(&cr, sizeof(cr));
-				uc_retrieve_transf(cr.key, tfmat);
-	  			*uval = um_getarclen(&cr,tfmat);
-	  			UM_len_inttoext(*uval,*uval);*/
 				sprintf(paracoord,"%.2f",pick.ploc.cord[1]);
 				*uval = pick.ploc.cord[1];
-				uv_cctondc(pick.ploc.cord, ndc, pick.ploc.transform);
-				/*uv_projcpln(ndc,ndc, pick.ploc.transform);*/
-				uv_projcpln(pick.ploc.cord,ndc, pick.ploc.transform);
-				uv_projvpln(ndc,ndc, pick.ploc.transform);
 			}
 		}
-		else
+		else*/
 		{
 
 			if (sfpt->key != 0) ncl_get_label(&e,sfpt->label);
@@ -2849,18 +2950,15 @@ repeat:;
 */
 		if (fieldno != -1)
 		{
-			if (mask == UD_allcurvess_pts)
+			/*if (mask == UD_allcurves)
 			{
 				if (sfpt->key != 0)
 				{
 					sprintf(paracoord,"%.2f",pick.ploc.cord[1]);
 					*uval = pick.ploc.cord[1];
-					uv_cctondc(pick.ploc.cord, ndc, pick.ploc.transform);
-					uv_projcpln(ndc,ndc, pick.ploc.transform);
-					uv_projvpln(ndc,ndc, pick.ploc.transform);
 				}
 			}
-			else
+			else*/
 				strcpy(label,sfpt->label);
 			if (frm == 0) ud_update_answer(fieldno,(int *)label);
 			else ud_dispfrm_update_answer(frm,fieldno,(int *)label);
@@ -3011,7 +3109,8 @@ UU_REAL coord;
 		status = ncl_add_token(&cmdbuf, "=", NCL_nocomma);
 		status = ncl_add_token(&cmdbuf, NCL_spline, NCL_nocomma);
 		status = ncl_add_token(&cmdbuf, "OFFSET", NCL_comma);
-		status = ncl_add_token(&cmdbuf, "CV3", NCL_comma);
+		/*status = ncl_add_token(&cmdbuf, "CV3", NCL_comma);*/
+		status = ncl_add_token(&cmdbuf, name, NCL_comma);
 		status = ncl_add_token(&cmdbuf, "ZS", NCL_comma);
 		sprintf(paracoord,"%f",1.0);
 		status = ncl_add_token(&cmdbuf, paracoord, NCL_nocomma);
@@ -3088,10 +3187,22 @@ char* plname;
 char* name;
 UU_REAL coord;
 {
+	
 	NCL_cmdbuf cmdbuf;
 	int status;
 	char paracoord[50];
 
+	if ((coord<=0.0) || (coord>=1.0))
+	{
+
+		uw_ntdispmsg("Value should be selected 0 < u < 1");
+		return(UD_BADACT);
+	}
+	if (coord<=0.01)
+		coord = 0.02;
+	if (coord>=0.9)
+		coord = 0.85;
+	
 		ncl_init_cmdbuf(&cmdbuf);
 		
 		status = ncl_add_token(&cmdbuf, plname, NCL_nocomma);
@@ -3103,8 +3214,8 @@ UU_REAL coord;
 		status = ncl_add_token(&cmdbuf, ")", NCL_nocomma);
 
 		ncl_set_cmdmode(UU_TRUE);
-			ncl_add_cmdbuf(&cmdbuf);
-			ncl_call(&cmdbuf);
+		ncl_add_cmdbuf(&cmdbuf);
+		ncl_call(&cmdbuf);
 
 done:;
 	return (0);
@@ -3145,31 +3256,33 @@ done:;
 }
 
 /*********************************************************************
-**    E_FUNCTION     : nclu_pt_on_crv(name)
-**       creates a plane orthogonal to curve
+**    E_FUNCTION     : nclu_pt_on_crv_start(point_name, curve_name)
+**       creates a start point on curve
 **       at given point
 **    PARAMETERS   
 **       INPUT  : 
 **			name of curve
+**			name of point
 **       OUTPUT :  
 **          none
 **    RETURNS      : none
 **    SIDE EFFECTS : none
 **    WARNINGS     : none
 *********************************************************************/
-int nclu_pt_on_crv(name)
-char* name;
+int nclu_pt_on_crv_start(point_name, curve_name)
+char* point_name;
+char* curve_name;
 {
 	NCL_cmdbuf cmdbuf;
 	int status;
 		ncl_init_cmdbuf(&cmdbuf);
-		
-		status = ncl_add_token(&cmdbuf,"PT1", NCL_nocomma);
+		nclu_pt_from_crv(point_name);
+		status = ncl_add_token(&cmdbuf,point_name, NCL_nocomma);
 		status = ncl_add_token(&cmdbuf, "=", NCL_nocomma);
 		status = ncl_add_token(&cmdbuf, "POINT/YSMALL", NCL_comma);
 		status = ncl_add_token(&cmdbuf, "ENDPT", NCL_comma);
-		status = ncl_add_token(&cmdbuf, name, NCL_nocomma);
-		
+		status = ncl_add_token(&cmdbuf, curve_name, NCL_nocomma);
+
 		ncl_set_cmdmode(UU_TRUE);
 		ncl_add_cmdbuf(&cmdbuf);
 		ncl_call(&cmdbuf);
@@ -3196,6 +3309,9 @@ char* name;
 		ncl_set_cmdmode(UU_TRUE);
 		ncl_add_cmdbuf(&cmdbuf);
 		ncl_call(&cmdbuf);
+		
+		if (!strcmp(point_name, "PT1") || !strcmp(point_name, "PT2"))
+		{
 
 		ncl_init_cmdbuf(&cmdbuf);
 		
@@ -3229,8 +3345,45 @@ char* name;
 		ncl_set_cmdmode(UU_TRUE);
 		ncl_add_cmdbuf(&cmdbuf);
 		ncl_call(&cmdbuf);
-
+		}
 done:;
+	return (0);
+}
+
+
+/*********************************************************************
+**    E_FUNCTION     : nclu_pt_on_crv_end(point_name, curve_name)
+**       creates end point on curve
+**       at given point
+**    PARAMETERS   
+**       INPUT  : 
+**			name of curve
+**			name of point
+**       OUTPUT :  
+**          none
+**    RETURNS      : none
+**    SIDE EFFECTS : none
+**    WARNINGS     : none
+*********************************************************************/
+int nclu_pt_on_crv_end(point_name, curve_name)
+char* point_name;
+char* curve_name;
+{
+	NCL_cmdbuf cmdbuf;
+	int status;
+		ncl_init_cmdbuf(&cmdbuf);
+		
+		status = ncl_add_token(&cmdbuf,point_name, NCL_nocomma);
+		status = ncl_add_token(&cmdbuf, "=", NCL_nocomma);
+		status = ncl_add_token(&cmdbuf, "POINT/YLARGE", NCL_comma);
+		status = ncl_add_token(&cmdbuf, "ENDPT", NCL_comma);
+		status = ncl_add_token(&cmdbuf, curve_name, NCL_nocomma);
+
+		
+		ncl_set_cmdmode(UU_TRUE);
+		ncl_add_cmdbuf(&cmdbuf);
+		ncl_call(&cmdbuf);
+		done:;
 	return (0);
 }
 
@@ -3308,5 +3461,93 @@ char* name;
 			
 
 done:;
+	return (0);
+}
+
+
+/*********************************************************************
+**    E_FUNCTION     : key_of_label
+**       returns key of entity with label
+**      
+**    PARAMETERS   
+**       INPUT  : 
+**			name of curve
+
+**       OUTPUT :  
+**          none
+**    RETURNS      : none
+**    SIDE EFFECTS : none
+**    WARNINGS     : none
+*********************************************************************/
+int key_of_label(label, key)
+char label[MXLAB];  //PT label here
+UU_KEY_ID key;
+{
+	int i,nc;
+	UM_f77_str f77_str;
+	nc = strlen(label);
+	UM_init_f77_str(f77_str,label,64);
+	getkey(UM_addr_of_f77_str(f77_str),&key);
+	done:;
+	return (key);
+}
+
+/*********************************************************************
+**    E_FUNCTION     : point_coord
+**       returns coord of point by its key
+**      
+**    PARAMETERS   
+**       INPUT  : 
+**			name of curve
+
+**       OUTPUT :  
+**          none
+**    RETURNS      : none
+**    SIDE EFFECTS : none
+**    WARNINGS     : none
+*********************************************************************/
+int point_coordinates(key, ndc)
+UU_KEY_ID key;
+UM_coord			ndc;
+{
+
+	struct NCL_fixed_databag e;
+	struct NCL_nclpt_rec *pt_rec;
+	
+	e.key = key;  
+	ncl_retrieve_data (&e); 
+	if ((e.rel_num==UM_POINT_REL)|| (e.rel_num==NCL_POINT_REL))  {
+		pt_rec = (struct NCL_nclpt_rec *) &e;
+		ndc[0] = pt_rec->pt[0];
+		ndc[1] = pt_rec->pt[1]; 	
+		ndc[2] = pt_rec->pt[2];
+		
+	}
+	done:;
+	return (0);
+}
+
+int create_point(point_name, Surf_name, u,v)
+	char* point_name, *Surf_name;
+UU_REAL u,v;
+{
+	NCL_cmdbuf cmdbuf;
+	int status;
+	char paracoord[50];
+
+		ncl_init_cmdbuf(&cmdbuf);
+		status = ncl_add_token(&cmdbuf,point_name, NCL_nocomma);
+		status = ncl_add_token(&cmdbuf, "=", NCL_nocomma);
+		status = ncl_add_token(&cmdbuf,"point/on", NCL_comma);
+		status = ncl_add_token(&cmdbuf,Surf_name, NCL_comma);
+		sprintf(paracoord,"%.2f",u);
+		status = ncl_add_token(&cmdbuf, paracoord, NCL_comma);
+		sprintf(paracoord,"%.2f",v);
+		status = ncl_add_token(&cmdbuf, paracoord, NCL_nocomma);
+		
+		ncl_set_cmdmode(UU_TRUE);
+		ncl_add_cmdbuf(&cmdbuf);
+		ncl_call(&cmdbuf);
+		done:;
 	return (0);
 }

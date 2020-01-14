@@ -4197,5 +4197,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\wsntres.h" />
+    <ClInclude Include="inc\MachineWorks.h" />
   </ItemGroup>
 </Project>
