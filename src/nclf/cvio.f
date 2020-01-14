@@ -327,7 +327,8 @@ c
 
       common/cviofl/cvion,iadvcs
       logical cvion
-      integer*2 iadvcs, isrf
+      !integer*2 iadvcs, isrf
+      integer*2 iadvcs
 
       real*8 ptx(12),pte(3),vx(6),sn(3),d1sv,sc144,
      *       asn,svsc35,svsc10,svsc11,d1,d2,zero/0.d0/,f_dist,f_dot

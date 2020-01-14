@@ -57,10 +57,11 @@ c
 
       if (SIMCOM) return
 c...
-      
+      if (debug) then
         write(cout,9010)ierrno,ifl(2),pmode
 9010    format(' error: ierrno=',i4,',ifl(2)=',i4,',pmode=',i2)
         call putmsg(cout,50,15,0)
+        endif
     
 
 

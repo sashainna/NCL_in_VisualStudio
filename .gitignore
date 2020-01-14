@@ -15,3 +15,5 @@ src/nclc/nupmill_myRecent.c
 src/nclc/nupmill_newModified.c
 src/nclc/nupmill_newOfOct18.c
 src/nclc/nupmill_oldGood.c
+src\Debug\*.obj
+src\Debug\*.sbr
