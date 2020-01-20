@@ -9,8 +9,8 @@
 **       06/17/15 , 13:22:31
 *********************************************************************/
 #include "MachineWorks.h"
-//#include "li/mwauthnt.h"
-#include "mwauthnt.h"
+#include "li/mwauthnt.h"
+//#include "mwauthnt.h"
 
 LiInitialiseLocal()
 {

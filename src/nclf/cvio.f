@@ -327,7 +327,6 @@ c
 
       common/cviofl/cvion,iadvcs
       logical cvion
-      !integer*2 iadvcs, isrf
       integer*2 iadvcs
 
       real*8 ptx(12),pte(3),vx(6),sn(3),d1sv,sc144,
@@ -336,7 +335,7 @@ c
       integer*2 ksn(4),nwds,itype,iprim1,iprim2,itry_sf,nsf
       equivalence (asn,ksn)
       equivalence (isrf,ifl(54)),(ia,ifl(51)),(ntk,ifl(79))
-      real*4 u1,v1,u2,v2,uv(4), tt(30,3)
+      real*4 u1,v1,u2,v2,uv(4)
       equivalence(sc(19),uv),(u1,uv(1)),(v1,uv(2)),(u2,uv(3)),(v2,uv(4))
 
       integer*2 i,k,ione/1/,ivxfl,isf11,isf12
@@ -344,13 +343,6 @@ c
       real*8 told,umin,umax,vmin,vmax,u8,v8
       integer*2 ifl2,np
       logical lv92,lv925,lv93,lv94,lerr,lcvsf,lredef,lno331
-      
-      !real*4 tt(30,3)
-      
-      tt(1,1)=1.0
-      tt(1,2)=1.0
-      tt(1,3)=1.0
-
 
       lv92 = sc(169).lt.9.249d0
       lv925 = sc(169).lt.9.25d0
@@ -625,7 +617,6 @@ c
         if (maxp .lt. 3000) maxp = 3000
       else
         maxp = 50
-        !maxp = 3000
       endif
       isav  = 0
       if (itry_sf .gt. 2) isav = 1
@@ -656,9 +647,6 @@ c
          err = .false.
          goto 5
       endif
-      
-      call conv4_4 (tt(1,ia),t(1,3),9)
-      
       call conv4_4 (t(1,ia),t(1,3),9)
 c
 c... move - stop at first sf edge found

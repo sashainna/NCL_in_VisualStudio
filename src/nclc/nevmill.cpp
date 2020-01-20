@@ -60,19 +60,20 @@ extern "C" void ncl_nvmill_reset_calls(){}
 /*
 .....VoluMill headers
 */
-#include <Util/IncludeEverywhere.h>
-#include <Util/Version.h>
-#include <License/LicenseAPI.h>
-#include <Exchange/ToolpathRecords.h>
-#include <Exchange/VoluMillExchange.h>
-#include <Geom/CurveAlg.h>
+//#include <Util/IncludeEverywhere.h>
+#include "IncludeEverywhere.h"
+#include "Version.h"
+#include "LicenseAPI.h"
+#include "ToolpathRecords.h"
+#include "VoluMillExchange.h"
+#include "CurveAlg.h"
 #include "nclvmptool.h"
 #include <iostream>
 #include <ostream>
 #include <fstream>
-#include <Mesh/TriMeshFacets.h>
-#include <Mesh/TriMesh3d.h>
-#include <Mesh/TriMeshExchange.h>
+#include "TriMeshFacets.h"
+#include "TriMesh3d.h"
+#include "TriMeshExchange.h"
 
 
 #ifdef DEBUG_XML 

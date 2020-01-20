@@ -103,6 +103,7 @@ c
       endif
       lans = SAPRM(kpr)
       nc = strlen1(lans)
+      if (nc.eq.0) goto 8000
       title = "NCCS_LICENSE Question"
       nc1 = strlen1(title)
       call getyesno(lans, nc, title, nc1, ans)
