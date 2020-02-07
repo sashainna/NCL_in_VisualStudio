@@ -128,6 +128,10 @@ c:\ncl_from_github\ncl_in_visualstudio\src\das\d2limds.c(443): warning C4716: 'u
 das\d4dvgio.c(126): warning C4033: 'ud_tsetup' must return a value
   d4form.c
   d4loadf.c
+das\d4loadf.c(1930): warning C4047: '=' : 'char *' differs in levels of indirection from 'int'
+das\d4loadf.c(1941): warning C4047: '=' : 'char *' differs in levels of indirection from 'int'
+das\d4loadf.c(1985): warning C4047: '=' : 'char *' differs in levels of indirection from 'int'
+das\d4loadf.c(1995): warning C4047: '=' : 'char *' differs in levels of indirection from 'int'
   d4meth.c
   d4meth2.c
   d4prunit.c
@@ -1308,8 +1312,8 @@ c:\ncl_from_github\ncl_in_visualstudio\src\nclc\nudrw.c(567): warning C4716: 'nc
   nunotes.c
   nupl.c
   nupmill.c
-nclc\nupmill.c(246): warning C4047: 'initializing' : 'int *' differs in levels of indirection from 'char (*)[96]'
-nclc\nupmill.c(250): warning C4133: 'initializing' : incompatible types - from 'double *' to 'int *'
+nclc\nupmill.c(215): warning C4047: 'initializing' : 'int *' differs in levels of indirection from 'char (*)[96]'
+nclc\nupmill.c(219): warning C4133: 'initializing' : incompatible types - from 'double *' to 'int *'
   nupn.c
   nupocket.c
   nupocket1.c
@@ -1319,7 +1323,7 @@ nclc\nupokmod.c(605): warning C4047: 'initializing' : 'int *' differs in levels 
   nuprofil.c
 nclc\nuprofil.c(326): warning C4047: 'initializing' : 'int *' differs in levels of indirection from 'char (*)[65]'
   Generating Code...
-c:\ncl_from_github\ncl_in_visualstudio\src\nclc\nupmill.c(1750): warning C4700: uninitialized local variable 'status' used
+c:\ncl_from_github\ncl_in_visualstudio\src\nclc\nupmill.c(1525): warning C4700: uninitialized local variable 'status' used
   Compiling...
   nuprog.c
   nuproj.c

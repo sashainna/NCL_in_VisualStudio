@@ -67,7 +67,6 @@
 #define MOTIONTRG4		6 //step text input
 #define MOTIONTRG5		7 //Tolerance choice
 #define MOTIONTRG6		8 //Tolerance text input
-/*#define MOTIONTRG7		9 //Direction set to 'planes' only, make it dis-active*/
 #define MOTIONTRG8		9 //sf1 text input
 #define MOTIONTRG9		10 //sf1 select button
 #define MOTIONTRG10		11 //sf2 text input
@@ -78,48 +77,31 @@
 #define MOTIONTRG15		16 // Fedrat choice
 #define MOTIONTRG16		17 // Fedrat
 /*
-......Boundaries
-*/
-#define BOUNDRG4	18
-#define BOUNDRG5	19
-/*
 .....Entry /Exit
 */
-#define ENEXTRG1	20
-#define ENEXTRG2	21
-#define ENEXTRG3	22
-#define ENEXTRG4	23
-#define ENEXTRG5	24
-#define ENEXTRG6	25
-#define ENEXTRG7	26
-#define ENEXTRG8	27
-#define ENEXTRG9	28
-#define ENEXTRG10	29
-#define ENEXTRG11	30
-#define ENEXTRG12	31
-#define ENEXTRG13	32
+#define ENEXTRG1	18
+#define ENEXTRG2	19
+#define ENEXTRG3	20
 /*
 .....Colors
 */
-#define CLRRG1	33
-#define CLRRG2	34
-#define CLRRG3	35
-#define CLRRG4	36
-#define CLRRG5	37
-#define CLRRG6	38
-#define CLRRG7	39
-#define CLRRG8	40
+#define CLRRG1	21
+#define CLRRG2	22
+#define CLRRG3	23
+#define CLRRG6	24
+#define CLRRG7	25
+#define CLRRG8	26
 /*
 .....Action Buttons
 */
-#define FAPV	41
-#define FAPY	42
-#define FARS	43
-#define FAPB	44
-#define FAVE	45
-#define FAGE	46
-#define FAVW	47
-#define FVIDEO	48
+#define FAPV	27
+#define FAPY	28
+#define FARS	29
+#define FAPB	30
+#define FAVE	31
+#define FAGE	32
+#define FAVW	33
+#define FVIDEO	34
 
 
 #define HIDE_KEY 0
@@ -150,8 +132,8 @@ static UU_LIST Ssurf;
 static int Snsurf = 0;
 static int Scolor;
 static int Tcolor;
-static int Tstptclr, Tdirclr, Tclnclr, Tretclr, Tpassclr,
-	Sstptclr, Sdirclr, Sclnclr, Sretclr, Spassclr, Spassclr;
+static int Tstptclr, Tdirclr,Tpassclr,
+	Sstptclr, Sdirclr, Spassclr, Spassclr;
 static int Tgeotog, Tgeocol, Sgeotog, Sgeocol;
 
 static UU_LOGICAL Sgeo_init;
@@ -162,34 +144,23 @@ static UM_sgeo Sgsf,Sgspt, Sgrap, Sgret, SgLrap, Sgdrv1, Sgdrv2;
 static UU_LOGICAL Spmfrm_init = UU_FALSE;
 
 static char Sptnam[MXLAB];
-static char Sraptoval[MXLAB];
-static char Sretrctval[MXLAB];
 static char SLraptoval[MXLAB];
-//static char Sdirval1[MXLAB];
-//static char Sdirval2[MXLAB];
 
 static char Smethod_str[MXLAB];
 static char Sorient_str[MXLAB];
 
 static char Tptnam[MXLAB];
-static char Traptoval[MXLAB];
-static char Tretrctval[MXLAB];
 static char TLraptoval[MXLAB];
-//static char Tdirval1[MXLAB];
-//static char Tdirval2[MXLAB];
 
 static char Tmethod_str[MXLAB];
 static char Torient_str[MXLAB];
 
-static int Sstarttyp=0, /*Sdir=0*/ Stoltyp=0, Sedgetyp = 0;
+static int Sstarttyp=0, Stoltyp=0;
 static int Smethod=0, SLraptotyp=0, SLraptofed=0;
-static int Sraptotyp=0, Sraptofed=0, Sretrcttyp=0, Sretrctfed=0;
 static UU_REAL Sstp=0.0, Stoler=0.0;
 static UU_REAL Trad=0.0, Srad=0.0;
-static int Tstarttyp=0, /*Tdir=0,*/ Ttoltyp=0, Tedgetyp = 0;
+static int Tstarttyp=0, Ttoltyp=0;
 static int Tmethod=0, Torient=0,    TLraptotyp=0, TLraptofed=0;
-static int Traptotyp=0, Traptofed=0, Tretrcttyp=0, Tretrctfed=0;
-static int Signore=0, Tignore=0;
 
 static UN_motseg *Smptr=0,Smotatt;
 static UN_mot_vpbox_struc Smvpbox[UV_NVPORTS];
@@ -200,11 +171,9 @@ static UU_LOGICAL firstSelected = UU_FALSE;
 
 static char Sstp_str[65]="0.0", Srad_str[65]="0.0",
 		Stoler_str[65]="0.0",
-		Sraptofrv_str[65]="0.0", Sretrctfrv_str[65]="0.0",
 		SLraptofrv_str[65]="0.0";
 static char Tstp_str[65]="0.0", Trad_str[65]="0.0",
 		Ttoler_str[65]="0.0",
-		Traptofrv_str[65]="0.0", Tretrctfrv_str[65]="0.0",
 		TLraptofrv_str[65]="0.0", Tcmd_str[8][65];
 
 static char Sdirval1[65]="0.0";
@@ -249,26 +218,18 @@ static int *Sanswers[] = {
 */
 		&Tmethod, &Trad, &Torient, (int *)&Tstp_str, 
 		&Ttoltyp,(int *)&Ttoler_str,
-		/*&Tdir,*/(int *)&Tdirval1,  UU_NULL,
-			(int *)&Tdirval2,  UU_NULL, 
+		(int *)&Tdirval1,  UU_NULL,
+		(int *)&Tdirval2,  UU_NULL, 
 		&TLraptotyp, (int *)&TLraptoval,  UU_NULL,
 		&TLraptofed, (int *)&TLraptofrv_str,
 /*
-.....Boundaries
-*/
-		&Tedgetyp, &Tignore,
-/*
 .....Entry/Exit
 */
-		&Tstarttyp, (int *)&Tptnam, UU_NULL, 			
-		&Traptotyp, (int *)&Traptoval,  UU_NULL,
-		&Traptofed, (int *)&Traptofrv_str,
-		&Tretrcttyp, (int *)&Tretrctval, UU_NULL,
-		&Tretrctfed, (int *)Tretrctfrv_str,
+		&Tstarttyp, (int *)&Tptnam, UU_NULL, 	
 /*
 .....Colors
 */
-		&Tcolor, &Tstptclr, &Tdirclr, &Tclnclr, &Tretclr, 
+		&Tcolor, &Tstptclr, &Tdirclr,
 		&Tpassclr, &Tgeotog, &Tgeocol,
 		UU_NULL, UU_NULL, UU_NULL, UU_NULL, UU_NULL, UU_NULL, UU_NULL,UU_NULL
 	};
@@ -424,14 +385,7 @@ static UU_LOGICAL S_enable_buttons()
 			sect24 = UU_TRUE;
 		}
 	}
- /* 
-	else
-	{
-		ud_dispfrm_set_attribs(0, MOTIONTRG10, UM_BLACK, UM_WHITE);
-		ud_dispfrm_set_attribs(0, MOTIONTRG11, UM_BLACK, UM_GREEN);
-	}
-  */
-	sect25 = UU_TRUE;
+ 	sect25 = UU_TRUE;
 	sect26 = UU_TRUE;
 	if (TLraptotyp==0)
 	{
@@ -527,140 +481,6 @@ static UU_LOGICAL S_enable_buttons()
 	{
 		ud_dispfrm_set_attribs(0, ENEXTRG2, UM_BLACK, UM_WHITE);
 		ud_dispfrm_set_attribs(0, ENEXTRG3, UM_BLACK, Tstptclr);
-	}
-	if (Traptotyp==0)
-	{
-		ud_dispfrm_set_attribs(0, ENEXTRG5, UM_BLACK, UM_WHITE);
-		ud_dispfrm_set_attribs(0, ENEXTRG6, UM_BLACK, Tclnclr);
-		sect42 = UU_TRUE;
-	}
-	else
-	{
-		nc = (int)strlen(Traptoval);
-		ul_strip_blanks(Traptoval, &nc);
-		if (nc<=0)
-		{
-			ud_dispfrm_set_attribs(0, ENEXTRG5, UM_WHITE, UM_RED);
-			if (Traptotyp==2)
-				ud_dispfrm_set_attribs(0, ENEXTRG6, UM_WHITE, UM_RED);
-			else
-				ud_dispfrm_set_attribs(0, ENEXTRG6, UM_BLACK, Tclnclr);
-			sect42 = UU_FALSE;
-		}
-		else
-		{
-			if (Traptotyp==1)
-			{
-				rval = atof(Traptoval);
-				if (rval<=0)
-					sect42 =  UU_FALSE;
-			}
-			if (sect42) 
-			{
-				ud_dispfrm_set_attribs(0, ENEXTRG5, UM_BLACK, UM_WHITE);
-				ud_dispfrm_set_attribs(0, ENEXTRG6, UM_BLACK, Tclnclr);
-			}
-			else 
-			{
-				ud_dispfrm_set_attribs(0, ENEXTRG5,UM_WHITE,UM_RED);
-				if (Traptotyp==2)
-					ud_dispfrm_set_attribs(0, ENEXTRG6, UM_WHITE, UM_RED);
-				else
-					ud_dispfrm_set_attribs(0, ENEXTRG6, UM_BLACK, Tclnclr);
-			}
-		}
-		if (Traptofed==2)
-		{
-			nc = (int)strlen(Traptofrv_str);
-			ul_strip_blanks(Traptofrv_str, &nc);
-			if (nc<=0)
-			{
-				ud_dispfrm_set_attribs(0,ENEXTRG8,UM_WHITE,UM_RED);
-				sect42 = UU_FALSE;
-			}
-			else
-			{
-				rval = atof(Traptofrv_str);
-				if (rval<=0)
-				{
-					sect42 =  UU_FALSE;
-					ud_dispfrm_set_attribs(0, ENEXTRG8,UM_WHITE,UM_RED);
-				}
-				else 
-					ud_dispfrm_set_attribs(0, ENEXTRG8, UM_BLACK, UM_WHITE);
-			}
-		}
-		else
-			ud_dispfrm_set_attribs(0, ENEXTRG8, UM_BLACK, UM_WHITE);
-	}
-
-	if (Tretrcttyp==0)
-	{
-		ud_dispfrm_set_attribs(0, ENEXTRG10, UM_BLACK, UM_WHITE);
-		ud_dispfrm_set_attribs(0, ENEXTRG11, UM_BLACK, Tretclr);
-		ud_dispfrm_set_attribs(0, ENEXTRG13, UM_BLACK, UM_WHITE);
-		sect43 = UU_TRUE;
-	}
-	else
-	{
-		nc = (int)strlen(Tretrctval);
-		ul_strip_blanks(Tretrctval, &nc);
-		if (nc<=0)
-		{
-			ud_dispfrm_set_attribs(0, ENEXTRG10, UM_WHITE, UM_RED);
-			ud_dispfrm_set_attribs(0, ENEXTRG11, UM_WHITE, UM_RED);
-			if (Tretrcttyp==2)
-				ud_dispfrm_set_attribs(0, ENEXTRG11, UM_WHITE, UM_RED);
-			else
-				ud_dispfrm_set_attribs(0, ENEXTRG11, UM_BLACK, Tretclr);
-			sect43 = UU_FALSE;
-		}
-		else
-		{
-			if (Tretrcttyp==1)
-			{
-				rval = atof(Tretrctval);
-				if (rval<=0)
-					sect43 =  UU_FALSE;
-			}
-			if (sect43) 
-			{
-				ud_dispfrm_set_attribs(0, ENEXTRG10, UM_BLACK, UM_WHITE);
-				ud_dispfrm_set_attribs(0, ENEXTRG11, UM_BLACK, Tretclr);
-			}
-			else 
-			{
-				ud_dispfrm_set_attribs(0, ENEXTRG10,UM_WHITE,UM_RED);
-				ud_dispfrm_set_attribs(0, ENEXTRG11,UM_WHITE,UM_RED);
-				if (Traptotyp==2)
-					ud_dispfrm_set_attribs(0, ENEXTRG11, UM_WHITE, UM_RED);
-				else
-					ud_dispfrm_set_attribs(0, ENEXTRG11, UM_BLACK, Tretclr);
-			}
-		}
-		if (Tretrctfed==2)
-		{
-			nc = (int)strlen(Tretrctfrv_str);
-			ul_strip_blanks(Tretrctfrv_str, &nc);
-			if (nc<=0)
-			{
-				ud_dispfrm_set_attribs(0,ENEXTRG13,UM_WHITE,UM_RED);
-				sect43 = UU_FALSE;
-			}
-			else
-			{
-				rval = atof(Tretrctfrv_str);
-				if (rval<=0)
-				{
-					sect43 =  UU_FALSE;
-					ud_dispfrm_set_attribs(0, ENEXTRG13,UM_WHITE,UM_RED);
-				}
-				else 
-					ud_dispfrm_set_attribs(0, ENEXTRG13, UM_BLACK, UM_WHITE);
-			}
-		}
-		else
-			ud_dispfrm_set_attribs(0, ENEXTRG13, UM_BLACK, UM_WHITE);
 	}
 /*
 .....Set section color
@@ -786,21 +606,7 @@ static UU_LOGICAL S_enable_buttons()
 		ul_strip_blanks(label,&nc5);
 	}
 	nc6 = 0;
-	if (Traptotyp==2)
-	{
-		ul_to_upper(Traptoval);
-		strcpy(label, Traptoval);
-		nc6 = (int)strlen(label);
-		ul_strip_blanks(label,&nc6);
-	}
 	nc7 = 0;
-	if (Tretrcttyp==2)
-	{
-		ul_to_upper(Tretrctval);
-		strcpy(label, Tretrctval);
-		nc7 = (int)strlen(label);
-		ul_strip_blanks(label,&nc7);
-	}
 	if ((nc1>0)||(nc2>0)||(nc3>0)||(nc5>0)
 		||(nc6>0)||(nc7>0)||(nc8>0))
 	{
@@ -1005,43 +811,21 @@ static void S_save_form()
 	Scolor = Tcolor;
 	Sstptclr = Tstptclr;
 	Sdirclr = Tdirclr;
-	Sclnclr = Tclnclr;
-	Sretclr = Tretclr;
 	Spassclr = Tpassclr;
 	strcpy(Sselsrf, Tselsrf);
 	Smethod = Tmethod;
 	strcpy(Srad_str, Trad_str);
 	strcpy(Sstp_str, Tstp_str);
-	//Sdir = Tdir;
 	strcpy(Sdirval1, Tdirval1);
-	//if (Tdir==0)
-	{
 		strcpy(Sdirval2, Tdirval2);
-	}
 	SLraptotyp = TLraptotyp;
 	strcpy(SLraptoval, TLraptoval);
 	if ((TLraptotyp!=0)&&(TLraptofed==2))
 	{
 		strcpy(SLraptofrv_str, TLraptofrv_str);
 	}
-	Sedgetyp = Tedgetyp;
-	Signore = Tignore;
 	Sstarttyp = Tstarttyp;
 	strcpy(Sptnam, Tptnam);
-	Sraptotyp = Traptotyp;
-	strcpy(Sraptoval, Traptoval);
-	Sraptofed = Traptofed;
-	if ((Traptotyp!=0)&&(Traptofed==2))
-	{
-		strcpy(Sraptofrv_str, Traptofrv_str);
-	}
-	Sretrcttyp = Tretrcttyp;
-	strcpy(Sretrctval, Tretrctval);
-	Sretrctfed = Tretrctfed;
-	if ((Tretrcttyp!=0)&&(Tretrctfed==2))
-	{
-		strcpy(Sretrctfrv_str, Tretrctfrv_str);
-	}
 /*
 .....Save geometry colors
 */
@@ -1097,8 +881,6 @@ UD_FSTAT stat;
 	ud_dispfrm_set_attribs(0,CLRRG1,UM_BLACK,Tcolor);
 	ud_dispfrm_set_attribs(0,CLRRG2,UM_BLACK,Tstptclr);
 	ud_dispfrm_set_attribs(0,CLRRG3,UM_BLACK,Tdirclr);
-	ud_dispfrm_set_attribs(0,CLRRG4,UM_BLACK,Tclnclr);
-	ud_dispfrm_set_attribs(0,CLRRG5,UM_BLACK,Tretclr);
 	ud_dispfrm_set_attribs(0,CLRRG6,UM_BLACK,Tpassclr);
 	ud_dispfrm_set_attribs(0,CLRRG8,UM_BLACK,Tgeocol);
 	S_enable_buttons();
@@ -1141,16 +923,6 @@ static void S_deselect_all()
 	{
 		Tptnam[0] = '\0';
 		ud_update_answer(ENEXTRG2,(int *)Tptnam);
-	}
-	if (Traptotyp==2)
-	{
-		Traptoval[0] = '\0';
-		ud_update_answer(ENEXTRG5,(int *)Traptoval);
-	}
-	if (Tretrcttyp==2)
-	{
-		Tretrctval[0] = '\0';
-		ud_update_answer(ENEXTRG10,(int *)Tretrctval);
 	}
 }
 /*********************************************************************
@@ -1401,12 +1173,6 @@ UD_FSTAT stat;
 		S_hilite_entity(&Sgdrv1,Tdirclr);
 		S_hilite_entity(&Sgdrv2,Tdirclr);
 		break;
-	case CLRRG4:
-		S_hilite_entity(Sgrap,Tclnclr);
-		break;
-	case CLRRG5:
-		S_hilite_entity(Sgret,Tretclr);
-		break;
 	case CLRRG6:
 		S_hilite_entity(&SgLrap,Tpassclr);
 		break;
@@ -1506,13 +1272,10 @@ UD_FSTAT stat;
 	int pr, *mask;
 	int j1 = 0;
 	int status;
-	//UU_REAL uval = 0;
 
-	/*S_deselect_all();*/
 	if (loaded)
 	{
 		S_deselect_all();
-		//S_init_form();
 		strcpy(Sdirval1, "0.0");
 		strcpy(Sdirval2, "0.0");
 
@@ -1542,28 +1305,15 @@ UD_FSTAT stat;
 
 		//@@@@@@@@@@@@@@@
 
-		nclu_pl_from_crv("PL1");
-		nclu_pl_from_crv("PL2");
-
-		/*strcpy(Sdirval1, "0.0");
-		strcpy(Sdirval2, "0.0");
-
-		strcpy(Tdirval1, "0.0");
-		strcpy(Tdirval2, "0.0");*/
-
-		nclu_cv_from_srf("CV3");
-		nclu_cv_from_srf("CV4");
-		status = nclu_cv_on_srf(Sgsf.label, "CV3", 3, 0.45);
-		status = nclu_pt_from_crv("PT1");
-		status = nclu_pt_from_crv("PT2");
-		status = nclu_pt_from_crv("PT3");
-		status = nclu_pt_on_crv_start("PT1","CV3");
-		//status = nclu_pt_from_crv("PT2");
-		status = nclu_pt_from_crv("PT2");
-		status = nclu_pt_from_crv("PT3");
-		status = nclu_pt_on_crv_start("PT3","CV4");
-		status = nclu_pt_from_crv("PT4");
-		status = nclu_pt_on_crv_end("PT4","CV3");
+		status = key_of_label("CV3", status);
+		if (status<=0)
+			status = nclu_cv_on_srf(Sgsf.label, "CV3", 3, 0.45);
+		status = key_of_label("PT1", status);
+		if (status<=0)
+			status = nclu_pt_on_crv_start("PT1","CV3");
+		status = key_of_label("PT3", status);
+		if (status<=0)
+			status = nclu_pt_on_crv_start("PT3","CV4");
 		//@@@@@@@@@@@@
 
 		Snsurf = UU_LIST_LENGTH(&Ssurf);
@@ -1593,6 +1343,46 @@ UD_FSTAT stat;
 	switch (*fieldno)
 	{
 	case MOTIONTRG1:
+//why remove? it will never active the last few line in Motion page. Yurong
+		if (*(val->frmint) != 2)
+		{
+			ud_set_traverse_mask(MOTIONTRG12,UU_FALSE);
+			ud_set_traverse_mask(MOTIONTRG13,UU_FALSE);
+			ud_set_traverse_mask(MOTIONTRG14,UU_FALSE);
+			ud_set_traverse_mask(MOTIONTRG15,UU_FALSE);
+			ud_set_traverse_mask(MOTIONTRG16,UU_FALSE);
+			ud_set_traverse_mask(CLRRG6,UU_FALSE);
+		}
+		else
+		{
+			ud_set_traverse_mask(MOTIONTRG12,UU_TRUE);
+			if (TLraptotyp==0)
+			{
+				ud_set_traverse_mask(MOTIONTRG13,UU_FALSE);
+				ud_set_traverse_mask(MOTIONTRG14,UU_FALSE);
+				ud_set_traverse_mask(CLRRG6,UU_FALSE);
+				ud_set_traverse_mask(MOTIONTRG15,UU_FALSE);
+				ud_set_traverse_mask(MOTIONTRG16,UU_FALSE);
+			}
+			else if (TLraptotyp==1)
+			{
+				ud_set_traverse_mask(MOTIONTRG13,UU_TRUE);
+				ud_set_traverse_mask(MOTIONTRG14,UU_FALSE);
+				ud_set_traverse_mask(CLRRG6,UU_FALSE);
+				ud_set_traverse_mask(MOTIONTRG15,UU_TRUE);
+				ud_set_traverse_mask(MOTIONTRG16,UU_TRUE);
+			}
+			else
+			{
+				ud_set_traverse_mask(MOTIONTRG13,UU_TRUE);
+				ud_set_traverse_mask(MOTIONTRG14,UU_TRUE);
+				ud_set_traverse_mask(CLRRG6,UU_TRUE);
+				ud_set_traverse_mask(MOTIONTRG15,UU_TRUE);
+				ud_set_traverse_mask(MOTIONTRG16,UU_TRUE);
+			}
+		}
+
+
 		if (*(val->frmint) == 2) //Arc
 		{
 			ud_set_display_mask(UD_INPUTF, MOTIONTRG3, 0);
@@ -1616,21 +1406,6 @@ UD_FSTAT stat;
 		}
 		Smenu_ch[5] = *(val->frmint);
 		break;
-/*		 
-	case MOTIONTRG7:
-		if (*(val->frmint)==1)
-		{
-			ud_set_traverse_mask(MOTIONTRG10,UU_FALSE);
-			ud_set_traverse_mask(MOTIONTRG11,UU_FALSE);
-		}
-		else
-		{
-			ud_set_traverse_mask(MOTIONTRG10,UU_TRUE);
-			ud_set_traverse_mask(MOTIONTRG11,UU_TRUE);
-		}
-		Smenu_ch[2] = *(val->frmint);
-		break;
-  */
 	case MOTIONTRG12:
 		if (*(val->frmint)==0)
 		{
@@ -1753,18 +1528,14 @@ UD_FSTAT stat;
 			uw_ntdispmsg("No port surface exists ");
 			return(UD_BADACT);
 		}
-		status = nclu_pt_on_crv_start("PT1","CV3");
-		status = nclu_pt_from_crv("PT2");
-		status = nclu_pt_from_crv("PT1");
 		status = key_of_label("PT3", status);
 		if (status<=0)
 		{
 			uw_ntdispmsg("No port surface exists");
 			return(UD_BADACT);
 		}
-		status = nclu_pt_on_crv_start("PT3","CV4");
-		nclu_pl_from_crv("PL1");
 		status = nclu_pl_on_crv("PL1", "CV4", uval);
+
 		strcpy(Ttoler_str, Stoler_str);
 
 		firstSelected = UU_TRUE;
@@ -1777,17 +1548,13 @@ UD_FSTAT stat;
 			uw_ntdispmsg("First plane not created");
 			return(UD_BADACT);
 		}
-		status = nclu_pt_from_crv("PT3");
-		status = nclu_pt_on_crv_start("PT3","CV4");
 		uval=atof(Tdirval2);
 		if ((uval<=0.0)|| (uval >=1))
 		{
 			uw_ntdispmsg("Value should be put 0 < u < 1");
 			return(UD_BADACT);
 		}
-		nclu_pl_from_crv("PL2");
-		status = nclu_pl_on_crv("PL2", "CV4",uval);
-		strcpy(Ttoler_str, Stoler_str);
+		status = nclu_pl_on_crv("PL2", "CV4", uval);
 		go_to_start("PT3");
 	}
 	else if (*fieldno == MOTIONTRG14)
@@ -1804,7 +1571,6 @@ UD_FSTAT stat;
 		S_enable_buttons();	
 		return(UD_FLDOK);
 	}
-	/*return(UD_FLDOK);*/
 	return(UD_BADACT);
 }
 
@@ -1849,126 +1615,6 @@ UD_FSTAT stat;
 		}
 		Smenu_ch[1] = *(val->frmint);
 		break;
-	case ENEXTRG4:
-		if (*(val->frmint) == 0)
-		{
-			ud_set_traverse_mask(ENEXTRG5,UU_FALSE);
-			ud_set_traverse_mask(ENEXTRG6,UU_FALSE);
-			ud_set_traverse_mask(ENEXTRG7,UU_FALSE);
-			ud_set_traverse_mask(ENEXTRG8,UU_FALSE);
-		}
-		else
-		{
-			ud_set_traverse_mask(ENEXTRG5,UU_TRUE);
-			ud_set_traverse_mask(ENEXTRG7,UU_TRUE);
-			if (*(val->frmint) == 1)
-			{
-				ud_set_traverse_mask(ENEXTRG6,UU_FALSE);
-				ud_set_traverse_mask(CLRRG4,UU_FALSE);
-			}
-			else
-			{
-				ud_set_traverse_mask(ENEXTRG6,UU_TRUE);
-				ud_set_traverse_mask(CLRRG4,UU_TRUE);
-			}
-			if (Traptofed==2)
-				ud_set_traverse_mask(ENEXTRG8,UU_TRUE);
-			else
-				ud_set_traverse_mask(ENEXTRG8,UU_FALSE);
-		}
-		Smenu_ch[9] = *(val->frmint);
-		break;
-	case ENEXTRG9:
-		if (*(val->frmint) == 0)
-		{
-			ud_set_traverse_mask(ENEXTRG10,UU_FALSE);
-			ud_set_traverse_mask(ENEXTRG11,UU_FALSE);
-			ud_set_traverse_mask(ENEXTRG12,UU_FALSE);
-			ud_set_traverse_mask(ENEXTRG13,UU_FALSE);
-		}
-		else
-		{
-			ud_set_traverse_mask(ENEXTRG10,UU_TRUE);
-			ud_set_traverse_mask(ENEXTRG12,UU_TRUE);
-			if (*(val->frmint) == 1)
-			{
-				ud_set_traverse_mask(ENEXTRG11,UU_FALSE);
-				ud_set_traverse_mask(CLRRG5,UU_FALSE);
-			}
-			else
-			{
-				ud_set_traverse_mask(ENEXTRG11,UU_TRUE);
-				ud_set_traverse_mask(CLRRG5,UU_TRUE);
-			}
-			if (Tretrctfed==2)
-				ud_set_traverse_mask(ENEXTRG13,UU_TRUE);
-			else
-				ud_set_traverse_mask(ENEXTRG13,UU_FALSE);
-		}
-		Smenu_ch[11] = *(val->frmint);
-		break;
-	case ENEXTRG7:
-		if (*(val->frmint)==2)
-		{
-			ud_set_traverse_mask(ENEXTRG8,UU_TRUE);
-			strcpy(Traptofrv_str, Sav_valuestr1);
-			ud_dispfrm_update_answer(0,ENEXTRG8,(int *)Traptofrv_str);
-		}
-		else
-		{
-			ud_set_traverse_mask(ENEXTRG8,UU_FALSE);
-			if (*(val->frmint)==0)
-			{
-				strcpy(valuestr, Sfeed_valuestr);
-				if (Ssav_fchc1==2)
-					strcpy(Sav_valuestr1, Traptofrv_str);
-				ud_dispfrm_update_answer(0,ENEXTRG8,(int *)valuestr);
-			}
-			if (*(val->frmint)==1)
-			{
-/*
-.....rapid
-*/
-				if (Ssav_fchc1==2)
-					strcpy(Sav_valuestr1, Traptofrv_str);
-				valuestr[0] = '\0';
-				ud_dispfrm_update_answer(0,ENEXTRG8,(int *)valuestr);
-			}
-		}
-		Smenu_ch[10] = *(val->frmint);
-		Ssav_fchc1 = *(val->frmint);
-		break;
-	case ENEXTRG12:
-		if (*(val->frmint)==2)
-		{
-			ud_set_traverse_mask(ENEXTRG13,UU_TRUE);
-			strcpy(Tretrctfrv_str, Sav_valuestr2);
-			ud_dispfrm_update_answer(0,ENEXTRG13,(int *)Tretrctfrv_str);
-		}
-		else
-		{
-			ud_set_traverse_mask(ENEXTRG13,UU_FALSE);
-			if (*(val->frmint)==0)
-			{
-				strcpy(valuestr, Sfeed_valuestr);
-				if (Ssav_fchc2==2)
-					strcpy(Sav_valuestr2, Tretrctfrv_str);
-				ud_dispfrm_update_answer(0,ENEXTRG13,(int *)valuestr);
-			}
-			if (*(val->frmint)==1)
-			{
-/*
-.....rapid
-*/
-				if (Ssav_fchc2==2)
-					strcpy(Sav_valuestr2, Tretrctfrv_str);
-				valuestr[0] = '\0';
-				ud_dispfrm_update_answer(0,ENEXTRG13,(int *)valuestr);
-			}
-		}
-		Smenu_ch[12] = *(val->frmint);
-		Ssav_fchc2 = *(val->frmint);
-		break;
 	}
 	Sacc[Entry] = 1;
 	S_enable_buttons();	
@@ -1989,7 +1635,6 @@ UD_DDATA *val;
 UD_FSTAT stat;
 
 {
-	//UU_REAL uval = 0;
 	int pr, namfld, *mask;
 	char *namp;
 	int status=-1;
@@ -2000,22 +1645,6 @@ UD_FSTAT stat;
 		namp = Tptnam;
 		namfld = ENEXTRG2;
 		status = S_select_geo(&Sgspt,UU_NULL,mask,0,pr,Tstptclr,0,namfld,namp/*, &uval*/);
-	}
-	else if (*fieldno == ENEXTRG6)
-	{
-		mask = (int *)UD_ncl_allsfpl;
-		pr = 659;
-		namp = Traptoval;
-		namfld = ENEXTRG5;
-		status = S_select_geo(&Sgrap,UU_NULL,mask,0,pr,Tclnclr,0,namfld,namp/*, &uval*/);
-	}
-	else if (*fieldno == ENEXTRG11)
-	{
-		mask = (int *)UD_ncl_allsfpl;
-		pr = 660;
-		namp = Tretrctval;
-		namfld = ENEXTRG10;
-		status = S_select_geo(&Sgret,UU_NULL,mask,0,pr,Tretclr,0,namfld,namp/*, &uval*/);
 	}
 	if (status==0)
 	{
@@ -2066,33 +1695,10 @@ UU_LOGICAL flg;
 			ncl_add_token(&cmdbuf, geo[i].label, NCL_comma);
 		}
 	}
-//added edge type back Yurong
-	if (Tedgetyp > 0)
-	{
-		if (Tedgetyp == EDGPAST)
-			ncl_add_token(&cmdbuf, NCL_past, NCL_comma);
-		else if (Tedgetyp == EDGON)
-			ncl_add_token(&cmdbuf, NCL_on, NCL_comma);
-		else if (Tedgetyp == CONTCT)
-			ncl_add_token(&cmdbuf, NCL_contct, NCL_comma);
-	}
-	else
-		ncl_add_token(&cmdbuf, NCL_to, NCL_comma);
-
-	//if (Tdir == 0)
-	{		
 		if (Tdirval1[0])
 			ncl_add_token(&cmdbuf, "PL1", NCL_comma);
 		if (Tdirval2[0])	
 			ncl_add_token(&cmdbuf, "PL2", NCL_comma);
-	}
-/*  
-	else
-	{	
-		if (Tdirval1[0])
-			ncl_add_token(&cmdbuf, Tdirval1, NCL_comma);
-	}
-*/
 	ncl_add_token(&cmdbuf, NCL_run_step, NCL_comma);
 	strcpy(buf, Tstp_str);
 	ncl_add_token(&cmdbuf, buf, NCL_comma);
@@ -2106,7 +1712,6 @@ UU_LOGICAL flg;
 		}
 	}
 
-	//ul_to_upper(Torient);
 
 	if (Tmethod == 0)
 	{
@@ -2140,29 +1745,6 @@ UU_LOGICAL flg;
 		strcpy(buf, Ttoler_str);
 		ncl_add_token(&cmdbuf, buf, NCL_comma);
 	}
-
-	if (Traptotyp && Traptoval[0])
-	{
-		ncl_add_token(&cmdbuf, NCL_rapto, NCL_comma);
-		ncl_add_token(&cmdbuf, Traptoval, NCL_comma);
-		if (Traptofed == 1)
-			ncl_add_token(&cmdbuf, NCL_rapid, NCL_comma);
-		else if (Traptofed == 2)
-			ncl_add_token(&cmdbuf, Traptofrv_str, NCL_comma);
-	}
-
-	if (Tretrcttyp && Tretrctval[0])
-	{
-		ncl_add_token(&cmdbuf, NCL_retrct, NCL_comma);
-		ncl_add_token(&cmdbuf, Tretrctval, NCL_comma);
-		if (Tretrctfed == 1)
-			ncl_add_token(&cmdbuf, NCL_rapid, NCL_comma);
-		else if (Tretrctfed == 2)
-			ncl_add_token(&cmdbuf, Tretrctfrv_str, NCL_comma);
-	}
-//added Tignore type back Yurong
-	if (Tignore) ncl_add_token(&cmdbuf,"OMIT,IN",NCL_comma);
-
 	ncl_set_cmdmode(UU_TRUE);
 	ncl_add_cmdbuf(&cmdbuf);
 /*
@@ -2203,16 +1785,10 @@ static UD_FSTAT S_storvals()
 .....Store values to check for changes  temp for PMILL
 */
 	Smenu_ch[1] = Sstarttyp;
-//	Smenu_ch[2] = Sdir;
 	Smenu_ch[5] = Stoltyp;
 	Smenu_ch[6] = Smethod;
 	Smenu_ch[7] = SLraptotyp;
 	Smenu_ch[8] = SLraptofed;;
-	Smenu_ch[9] = Sraptotyp;
-	Smenu_ch[10] = Sraptofed;
-	Smenu_ch[11] = Sretrcttyp;
-	Smenu_ch[12] = Sretrctfed;
-
 	return(UD_FLDOK);
 }
 /*********************************************************************
@@ -2243,34 +1819,26 @@ static void S_init_form()
 		Snsurf = 0;
 
 		Sstarttyp = 0;
-//		Sdir = 0;
 		Stoltyp = 0;
 		Smethod = 0; 
 		SLraptotyp = 0;
 		SLraptofed = 0;
-		Sraptotyp = 0;
-		Sraptofed = 0;
-		Sretrcttyp = 0;
-		Sretrctfed = 0;
-		Sstp = 0.0;
+		Sstp = 0.1;
 		Stoler = 0.0;
 		Scolor = NCLX_BROWN;
-		Sclnclr = NCLX_LT_BLUE;
 		Sstptclr = NCLX_SEA_GREEN;
-		Sretclr = NCLX_PINK;
 		Spassclr = NCLX_PURPLE;
 		Sdirclr = NCLX_GREY;
 		strcpy(Sstp_str, "0.1");
 		strcpy(Srad_str, "0.05");
 		ncl_sprintf(Stoler_str,&Stoler,1);
 	}
+	strcpy(Sstp_str, "0.1");
+	strcpy(Tstp_str, Sstp_str);
 /*
 .....always empty for surfaces per Ken
 */
 	Sptnam[0] = '\0';
-	Sraptoval[0] = '\0';
-	Sretrctval[0] = '\0';
-	strcpy(Tretrctval, Sretrctval);
 	
 	Sdirval2[0] = '\0';
 	Sdirval1[0] = '\0';
@@ -2304,39 +1872,17 @@ static void S_init_form()
 	ncl_sprintf(Srad_str, &Srad,1);
 	ncl_sprintf(Stoler_str,&Stoler,1);
 	Tstarttyp = Sstarttyp;
-//	Tdir = Sdir;
 	Ttoltyp = Stoltyp;
 	Tmethod = Smethod; 
 	TLraptotyp = SLraptotyp;
 	TLraptofed = SLraptofed;
-	Traptotyp = Sraptotyp;
-	Traptofed = Sraptofed;
-	Tretrcttyp = Sretrcttyp;
-	Tretrctfed = Sretrctfed;
 	strcpy(Ttoler_str, Stoler_str);
-	strcpy(Tstp_str, Sstp_str);
-	strcpy(Trad_str, Srad_str);
-
 	NclxMotGetFeedrate(&fedrat);
 	feedrate = fedrat.base_feedrate;
 	strcpy(Sav_valuestr,SLraptofrv_str);
 	strcpy(TLraptofrv_str, SLraptofrv_str);
-
-	if (Traptofed == 1)
-		Traptofrv_str[0] = '\0';
-	else	
-		strcpy(Traptofrv_str, Sraptofrv_str);
-	if (Tretrctfed == 1)
-		Tretrctfrv_str[0] = '\0';
-	else
-		strcpy(Tretrctfrv_str, Sretrctfrv_str);
-	strcpy(Sav_valuestr1,Sraptofrv_str);
-	strcpy(Sav_valuestr2,Sretrctfrv_str);
-
 	Tcolor = Scolor;
-	Tclnclr = Sclnclr;
 	Tstptclr = Sstptclr;
-	Tretclr = Sretclr;
 	Tpassclr = Spassclr;
 	Tdirclr = Sdirclr;
 	Tgeotog = UN_unused_geo_flag;
@@ -2405,21 +1951,10 @@ char *display,*traverse;
 	else
 		traverse[MOTIONTRG6] = 1;
 		
-//	traverse[MOTIONTRG7] = 0; //plane always
 	traverse[MOTIONTRG8] = 1;
 	traverse[MOTIONTRG9] = 1;
-	/*
-	if (Tdir == 1)
-	{
-		traverse[MOTIONTRG10] = 0;
-		traverse[MOTIONTRG11] = 0;
-	}
-	else
-  */
-	{			
-		traverse[MOTIONTRG10] = 1;
-		traverse[MOTIONTRG11] = 1;
-	}
+	traverse[MOTIONTRG10] = 1;
+	traverse[MOTIONTRG11] = 1;
 	traverse[CLRRG3] = 1;
 /*
 .....Entry/Exit
@@ -2434,61 +1969,6 @@ char *display,*traverse;
 	{
 		traverse[ENEXTRG2] = 1;
 		traverse[ENEXTRG3] = 1;
-	}
-	traverse[ENEXTRG4] = 1;
-	if (Traptotyp == 0)
-	{
-		traverse[ENEXTRG5] = 0;
-		traverse[ENEXTRG6] = 0;
-		traverse[ENEXTRG7] = 0;
-		traverse[ENEXTRG8] = 0;
-	}
-	else 
-	{
-		traverse[ENEXTRG5] = 1;
-		traverse[ENEXTRG7] = 1;
-		if (Traptotyp == 1)
-		{
-			traverse[ENEXTRG6] = 0; 
-			traverse[CLRRG4] = 0;
-		}
-		else
-		{
-			traverse[ENEXTRG6] = 1; 
-			traverse[CLRRG4] = 1;
-		}
-		if (Traptofed==2)
-			traverse[ENEXTRG8] = 1;
-		else
-			traverse[ENEXTRG8] = 0;
-	}
-
-	traverse[ENEXTRG9] = 1;
-	if (Tretrcttyp == 0)
-	{
-		traverse[ENEXTRG10] = 0;
-		traverse[ENEXTRG11] = 0;
-		traverse[ENEXTRG12] = 0;
-		traverse[ENEXTRG13] = 0;
-	}
-	else 
-	{
-		traverse[ENEXTRG10] = 1;
-		traverse[ENEXTRG12] = 1;
-		if (Tretrcttyp == 1)
-		{
-			traverse[ENEXTRG11] = 0; 
-			traverse[CLRRG5] = 0;
-		}
-		else
-		{
-			traverse[ENEXTRG11] = 1; 
-			traverse[CLRRG5] = 1;
-		}
-		if (Tretrctfed==2)
-			traverse[ENEXTRG8] = 1;
-		else
-			traverse[ENEXTRG8] = 0;
 	}
 /*
 .....Action item fields
@@ -2537,27 +2017,19 @@ void nclu_pmill()
 		OnMChcPick, OnMText, OnMChcPick,
 		OnMText, 
 		OnMChcPick, OnMText,
-		/*OnMChcPick,*/ OnMText, OnMButton, 
-					OnMText, OnMButton,
+		OnMText, OnMButton, 
+		OnMText, OnMButton,
 		OnMChcPick, OnMText, OnMButton, 
 		OnMChcPick, OnMText, 
-/*
-.....Boundaries
-*/
-		OnBChcPick, OnBChkPick, 
 /*
 .....Entry / Exit
 */
 		OnEChcPick, OnEText, OnEButton, 
-		OnEChcPick, OnEText, OnEButton, 
-		OnEChcPick, OnEText,
-		OnEChcPick, OnEText, OnEButton, 
-		OnEChcPick, OnEText,
 /*
 .....Colors
 */
-		OnColors, OnColors, OnColors, OnColors, 
-		OnColors, OnColors, OnColors, 
+		OnColors, OnColors, OnColors,
+		OnColors, OnColors, 
 		OnColors, 
 		OnAction,OnAction,OnAction,
 		OnAction,OnAction,OnAction,OnAction,OnVideo
@@ -2568,25 +2040,22 @@ void nclu_pmill()
 		1,1,1,
 		1,1,1,1,1,1,1,1,1, 
 		1,1,1,1,1,1,
-		1,1,
-		1,1,1,1,1,1,1,1,1,1,1,1,1,
-		1,1,1,1,1,1,1,1,
+		1,1,1,
+		1,1,1,1,1,1,
 		1,1,1,1,1,1,1,1};
 	static char called[]  = {
 		6,6,6,
 		6,6,6,6,6,6,6,6,6,
 		6,6,6,6,6,6,
-		6,6,
-		6,6,6,6,6,6,6,6,6,6,6,6,6,
-		6,6,6,6,6,6,6,6,
+		6,6,6,
+		6,6,6,6,6,6,
 		6,6,6,6,6,6,6,6};
 	static char display[] = {
 		1,1,1,
 		1,1,1,1,1,1,1,1,1, 
 		1,1,1,1,1,1,
-		1,1,
-		1,1,1,1,1,1,1,1,1,1,1,1,1,
-		1,1,1,1,1,1,1,1,
+		1,1,1,
+		1,1,1,1,1,1,
 		1,1,1,1,1,1,1,1};
 /*
 .....Initialize routine
@@ -2819,7 +2288,6 @@ unsigned int *mask;
 UU_LOGICAL multi;
 int prmno,color,fieldno,frm;
 char *label;
-//UU_REAL* uval;
 {
 
 	int numint,iret,nc;
@@ -2927,20 +2395,9 @@ repeat:;
 */
 		sfpt->key = e.key;
 		sfpt->relnum = e.rel_num;
-		/*if (mask == UD_allcurves)
-		{
-			if (sfpt->key != 0)
-			{
-				sprintf(paracoord,"%.2f",pick.ploc.cord[1]);
-				*uval = pick.ploc.cord[1];
-			}
-		}
-		else*/
-		{
 
 			if (sfpt->key != 0) ncl_get_label(&e,sfpt->label);
 			else strcpy(sfpt->label,label);
-		}
 /*
 ........Highlight the selected entity
 */
@@ -2950,16 +2407,7 @@ repeat:;
 */
 		if (fieldno != -1)
 		{
-			/*if (mask == UD_allcurves)
-			{
-				if (sfpt->key != 0)
-				{
-					sprintf(paracoord,"%.2f",pick.ploc.cord[1]);
-					*uval = pick.ploc.cord[1];
-				}
-			}
-			else*/
-				strcpy(label,sfpt->label);
+			strcpy(label,sfpt->label);
 			if (frm == 0) ud_update_answer(fieldno,(int *)label);
 			else ud_dispfrm_update_answer(frm,fieldno,(int *)label);
 		}
@@ -3086,8 +2534,6 @@ UU_REAL coord;
 	int status;
 	char paracoord[50];
 
-	nclu_cv_from_srf(name);
-
 		ncl_init_cmdbuf(&cmdbuf);
 		
 		status = ncl_add_token(&cmdbuf, name, NCL_nocomma);
@@ -3109,7 +2555,6 @@ UU_REAL coord;
 		status = ncl_add_token(&cmdbuf, "=", NCL_nocomma);
 		status = ncl_add_token(&cmdbuf, NCL_spline, NCL_nocomma);
 		status = ncl_add_token(&cmdbuf, "OFFSET", NCL_comma);
-		/*status = ncl_add_token(&cmdbuf, "CV3", NCL_comma);*/
 		status = ncl_add_token(&cmdbuf, name, NCL_comma);
 		status = ncl_add_token(&cmdbuf, "ZS", NCL_comma);
 		sprintf(paracoord,"%f",1.0);
@@ -3276,7 +2721,6 @@ char* curve_name;
 	NCL_cmdbuf cmdbuf;
 	int status;
 		ncl_init_cmdbuf(&cmdbuf);
-		nclu_pt_from_crv(point_name);
 		status = ncl_add_token(&cmdbuf,point_name, NCL_nocomma);
 		status = ncl_add_token(&cmdbuf, "=", NCL_nocomma);
 		status = ncl_add_token(&cmdbuf, "POINT/YSMALL", NCL_comma);

@@ -1,5 +1,5 @@
 #HEADER#
-/TITLE/ Port Surface Machining
+/TITLE/ 2Port Surface Machining
 /POSITION/ 0,0
 /SIZE/ 440,180
 
@@ -162,34 +162,7 @@
 /SIZE/ 125,125
 
 #SECTION#
-/NAME/ Boundaries
-/COLOR/ DEFAULT
-
-#CHOICEBOX#
-/LABEL/ Edge:
-/POSITION/ 10,17,38,17
-/SIZE/ 65,40
-/TYPE/ UD_DASSTRING
-/CHOICES/ "To", "Past", "On", "Contact"
-/PICTURE/Boundaries,"To",7,23,24,29,0
-/PICTURE/Boundaries,"Past",7,30,24,36,1
-/PICTURE/Boundaries,"On",7,37,24,43,2
-/PICTURE/Boundaries,"Contact",7,44,24,60,3
-
-#CHECKBOX#
-/LABEL/ Ignore Inner Boundaries
-/POSITION/ 85,17
-/SIZE/90,15
-/TYPE/UD_DASSTRING
-
-#PICTUREBOX#
-/FILE/ Pmill_Boundaries.jpg
-/NAME/ Boundaries
-/POSITION/ 220,10
-/SIZE/ 150,125
-
-#SECTION#
-/NAME/ Entry / Exit
+/NAME/ Entry 
 /COLOR/ DEFAULT
 
 #CHOICEBOX#
@@ -215,83 +188,11 @@
 /SIZE/ 40,14
 /TYPE/ UD_DASSTRING
 
-#CHOICEBOX#
-/LABEL/ Rapto:
-/POSITION/ 10,29,40,29
-/SIZE/ 70,40
-/TYPE/ UD_DASSTRING
-/CHOICES/ "None", "Dist", "Entity"
-
-#EDIT#
-/LABEL/
-/POSITION/85,29
-/SIZE/ 40,14
-/TYPE/ UD_DASSTRING
-/PREC/ 8
-/LEN/ 8
-
-#PUSHBUTTON#
-/LABEL/ Select
-/POSITION/ 130,29
-/SIZE/ 40,14
-/TYPE/ UD_DASSTRING
-
-#CHOICEBOX#
-/LABEL/ Fedrat:
-/POSITION/ 40,46,70,46
-/SIZE/ 70,40
-/TYPE/ UD_DASSTRING
-/CHOICES/ "Current", "Rapid", "Value"
-
-#EDIT#
-/LABEL/
-/POSITION/ 115,46
-/SIZE/ 50,14
-/TYPE/ UD_SCAUNITLESS
-/PREC/ 8
-/LEN/ 8
-
-#CHOICEBOX#
-/LABEL/ Retract:
-/POSITION/ 10,63,40,63
-/SIZE/ 70,40
-/TYPE/ UD_DASSTRING
-/CHOICES/ "None", "Dist", "Entity"
-
-#EDIT#
-/LABEL/
-/POSITION/ 85,63
-/SIZE/ 40,14
-/TYPE/ UD_DASSTRING
-/PREC/ 8
-/LEN/ 8
-
-#PUSHBUTTON#
-/LABEL/ Select
-/POSITION/ 130,63
-/SIZE/ 40,14
-/TYPE/ UD_DASSTRING
-
-#CHOICEBOX#
-/LABEL/ Fedrat:
-/POSITION/ 40,80,70,80
-/SIZE/ 70,40
-/TYPE/ UD_DASSTRING
-/CHOICES/ "Current", "Rapid", "Value"
-
-#EDIT#
-/LABEL/
-/POSITION/ 115,80
-/SIZE/ 50,14
-/TYPE/ UD_SCAUNITLESS
-/PREC/ 8
-/LEN/ 8
-
 #PICTUREBOX#
-/FILE/ Smill_EntryExit.jpg
+/FILE/ Pmill_EntryExit.jpg
 /NAME/ EntryExit
 /POSITION/ 220,10
-/SIZE/ 150,125
+/SIZE/ 150,60
 
 #SECTION#
 /NAME/ Colors
@@ -319,36 +220,22 @@
 /CHOICES/ Auto
 
 #COLOR#      
-/LABEL/ Clearance Plane:
-/POSITION/ 10,46, 68, 44
-/SIZE/88,14
-/TYPE/UD_DASSTRING
-/CHOICES/ Auto
-
-#COLOR#      
-/LABEL/ Retract Plane:
-/POSITION/ 110,46,160,44
-/SIZE/80,14
-/TYPE/UD_DASSTRING
-/CHOICES/ Auto
-
-#COLOR#      
 /LABEL/ Pass Retract:
-/POSITION/ 10,63,68,61
+/POSITION/ 10,46,68,44
 /SIZE/88,14
 /TYPE/UD_DASSTRING
 /CHOICES/ Auto
 
 #CHOICEBOX#
 /LABEL/ Unused Geometry:
-/POSITION/ 10,80,70,80
+/POSITION/ 10,63,70,61
 /SIZE/105,40
 /TYPE/ UD_DASSTRING
 /CHOICES/ "Hide","Fade"
 
 #COLOR#
 /LABEL/ Color:
-/POSITION/ 130,80, 160,78
+/POSITION/ 130,63, 160,61
 /SIZE/ 60,14
 /TYPE/UD_DASSTRING
 /CHOICES/ Default
@@ -546,8 +433,8 @@ Value:
 Uses a specified Value as the feed rate for the Retract at Pass End.
 
 <END_SEC>
-<Entry / Exit>
-Entry / Exit
+<Entry >
+Entry 
 ============
 The Entry / Exit section controls the settings used for entering onto and 
 exiting off of the surface.

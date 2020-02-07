@@ -295,7 +295,7 @@
 /LEN/ 8
 
 #PICTUREBOX#
-/FILE/ Smill_EntryExit.jpg
+/FILE/ Pmill_EntryExit.jpg
 /NAME/ EntryExit
 /POSITION/ 220,10
 /SIZE/ 150,125
