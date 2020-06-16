@@ -1,0 +1,135 @@
+// SwUnibase.idl : IDL source for SwUnibase
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (SwUnibase.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(547A6AD7-A7D0-4931-8A28-5CEC5669871D),
+	dual,
+	nonextensible,
+	helpstring("ISwUnibase Interface"),
+	pointer_default(unique)
+]
+interface ISwUnibase : IDispatch{
+	[id(3), helpstring("method ToolbarCallback0")] HRESULT ToolbarCallback0();
+	[id(4), helpstring("method ToolbarEnable0")] HRESULT ToolbarEnable0([out, retval] long* status);
+		[id(7), helpstring("method FlyoutCallback")] HRESULT FlyoutCallback();
+	[id(8), helpstring("method FlyoutCallback0")] HRESULT FlyoutCallback0();
+	[id(9), helpstring("method FlyoutCallback1")] HRESULT FlyoutCallback1();
+	[id(10), helpstring("method FlyoutEnable0")] HRESULT FlyoutEnable0([out, retval] long* status);
+	[id(11), helpstring("method FlyoutEnableCallback0")] HRESULT FlyoutEnableCallback0([out, retval] long* status);
+};
+[
+	object,
+	uuid(DB6A55BA-3107-4D83-9AAE-C870B1676AB6),
+	dual,
+	nonextensible,
+	helpstring("ISwDocument Interface"),
+	pointer_default(unique)
+]
+interface ISwDocument : IDispatch{
+};
+[
+	object,
+	uuid(4A336EFB-40A0-420D-A25F-C84007E3893B),
+	dual,
+	nonextensible,
+	helpstring("IDocView Interface"),
+	pointer_default(unique)
+]
+interface IDocView : IDispatch{
+};
+[
+	object,
+	uuid(DCCD1577-CC64-4459-8E92-8A565B9C3BB4),
+	dual,
+	nonextensible,
+	helpstring("IBitmapHandler Interface"),
+	pointer_default(unique)
+]
+interface IBitmapHandler : IDispatch{
+	[id(1), helpstring("method CreateBitmapFileFromResource")] HRESULT CreateBitmapFileFromResource([in] DWORD resID, [out, retval] BSTR* retval);
+	[id(2), helpstring("method Dispose")] HRESULT Dispose();
+};
+[
+	object,
+	uuid(CEC42F44-A5F2-4633-B4CB-9483C60D30FC),
+	dual,
+	nonextensible,
+	helpstring("IPMPageHandler Interface"),
+	pointer_default(unique)
+]
+interface IPMPageHandler : IDispatch{
+};
+[
+	object,
+	uuid(287C3DC8-5A30-499A-9465-A4462FB42377),
+	dual,
+	nonextensible,
+	helpstring("IUserPropertyManagerPage Interface"),
+	pointer_default(unique)
+]
+interface IUserPropertyManagerPage : IDispatch{
+};
+[
+	uuid(6FB9D0CD-B720-4EE6-B270-C0C03AD606E5),
+	version(1.0),
+	helpstring("SwUnibase 1.0 Type Library")
+]
+library SwUnibaseLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(3A46B873-BBA2-4787-8489-9FDA19FBE5D6),
+		helpstring("SwUnibase Class")
+	]
+	coclass SwUnibase
+	{
+		[default] interface ISwUnibase;
+	};
+	[
+		uuid(569655C9-D4B8-470A-98AC-CF7BCA983353),
+		helpstring("SwDocument Class")
+	]
+	coclass SwDocument
+	{
+		[default] interface ISwDocument;
+	};
+	[
+		uuid(65866DB4-8A06-4CE9-986F-C386791BF828),
+		helpstring("DocView Class")
+	]
+	coclass DocView
+	{
+		[default] interface IDocView;
+	};
+	[
+		uuid(B3E4297F-E47E-4E20-997B-1C5E5782E645),
+		helpstring("BitmapHandler Class")
+	]
+	coclass BitmapHandler
+	{
+		[default] interface IBitmapHandler;
+	};
+	[
+		uuid(E7393FA7-F505-4622-8057-2B408156CC24),
+		helpstring("PMPageHandler Class")
+	]
+	coclass PMPageHandler
+	{
+		[default] interface IPMPageHandler;
+	};
+	[
+		uuid(B2F593EF-9EEC-4C59-98F9-78930835D8C9),
+		helpstring("UserPropertyManagerPage Class")
+	]
+	coclass UserPropertyManagerPage
+	{
+		[default] interface IUserPropertyManagerPage;
+	};
+};

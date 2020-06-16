@@ -105,6 +105,8 @@ c
          else if (ntype .eq. 4) then
             call nclf_vm_clpath_getspindle (i,speed)
          endif
+         
+         
 c
 c......Output spindle speed
 c

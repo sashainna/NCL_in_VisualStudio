@@ -521,6 +521,7 @@ c...Read from secondary Unibase
 c
       ifl(299) = 1
       i2cpd  = iren
+
       call ubact(2)
       call ubfind (prm,ubname,ubsub,rfname,rfsub,i2fnd,i2erok,i2cpd,
      1             nlay,layer, offset)

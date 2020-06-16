@@ -397,7 +397,7 @@ c
           go to 5499
 c                                  is it a 'prompt' statement?
 4059  if (.not.(ist .eq. 935)) go to 4099
-          call prompt
+          call prompt2
           goto 5499
 c                                  is it a 'termac' statement?
 4099  if (.not.(ist .eq. 807)) go to 4199

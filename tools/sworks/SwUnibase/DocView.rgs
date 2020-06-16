@@ -1,0 +1,27 @@
+HKCR
+{
+	SwUnibase.DocView.1 = s 'DocView Class'
+	{
+		CLSID = s '{65866DB4-8A06-4CE9-986F-C386791BF828}'
+	}
+	SwUnibase.DocView = s 'DocView Class'
+	{
+		CLSID = s '{65866DB4-8A06-4CE9-986F-C386791BF828}'
+		CurVer = s 'SwUnibase.DocView.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {65866DB4-8A06-4CE9-986F-C386791BF828} = s 'DocView Class'
+		{
+			ProgID = s 'SwUnibase.DocView.1'
+			VersionIndependentProgID = s 'SwUnibase.DocView'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Both'
+			}
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{6FB9D0CD-B720-4EE6-B270-C0C03AD606E5}'
+		}
+	}
+}

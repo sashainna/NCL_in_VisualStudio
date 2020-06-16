@@ -1,0 +1,3 @@
+      <AdditionalDependencies>Dwmapi.lib;C:\NCL_from_GitHub\NCL_in_VisualStudio\src\x64\Release\ncl_lib_.lib;UxTheme.lib;siapp.lib;spromeps.lib;"C:\VoluMillSDK_70\Code\common\x64\Release\Common.lib";MasterLicense.lib;
+	  "C:\VoluMillSDK_70\Code\x64\Release-DLL-VS2010\VoluMillEngines.lib";libeay32MDd.lib;Iphlpapi.lib;opengl32.lib;glu32.lib;netapi32.lib;mssample.lib;mwappl.lib;mwgouge.lib;mwinit.lib;mwp5axis.lib;mwpick.lib;mwpixel.lib;
+	  mwrapid.lib;%(AdditionalDependencies)</AdditionalDependencies>

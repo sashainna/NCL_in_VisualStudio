@@ -1,0 +1,60 @@
+	erase ipvstubs.nts
+"*****  MAKING NODEBUG VERSION OF ipvstubs.c  *****"
+	cl /D "NDEBUG" /MD /Od /I C:\ncl2018\src\inc /I C:\mworks73\include /I C:\mworks73\include\intel\win\msoft10 /nologo /EHsc /D "WIN32" /D "_WINDOWS" /D "WINVER=0x601"  /D "_CRT_SECURE_NO_DEPRECATE"  /D "NO_XMLRPC_FUNCTIONS"  /D "VOLUMILL_ENGINE_LINKED" /Fo".\\" /FD /c /D UU_COMP=UU_WIN2K /D UU_DOUBLE /D UU_SEGDATA=DOUBLE /D UU_DEBUGOFF /D UU_IPV /D LI_FLOAT_IS_DOUBLE /D LI_MACROS ipvstubs.c
+ipvstubs.c
+C:\ncl2018\src\inc\mdcpln.h(61) : warning C4005: 'EXT' : macro redefinition
+        C:\ncl2018\src\inc\mdrwsize.h(17) : see previous definition of 'EXT'
+	date /t > ipvstubs.nts
+"***** FINISHED BUILDING ipvstubs.c IN ipv *****"
+""
+	lib /out:C:\ncl2018\nlib\nipv.lib C:\ncl2018\nlib\nipv.lib *.obj
+Microsoft (R) Library Manager Version 10.00.30319.01
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+Replacing ipvstubs.obj
+	erase *.obj
+	erase ipvstubs.ts
+"*****  MAKING DEBUG VERSION OF ipvstubs.c  *****"
+	cl /D "_DEBUG" /MDd /Zi /Fd"ipv" /Od /I C:\ncl2018\src\inc /I C:\mworks73\include /I C:\mworks73\include\intel\win\msoft10 /nologo /EHsc /D "WIN32" /D "_WINDOWS" /D "WINVER=0x601"  /D "_CRT_SECURE_NO_DEPRECATE"  /D "NO_XMLRPC_FUNCTIONS"  /D "VOLUMILL_ENGINE_LINKED" /Fo".\\" /FD /c /D UU_COMP=UU_WIN2K /D UU_DOUBLE /D UU_SEGDATA=DOUBLE /D UU_DEBUGOFF /D UU_IPV /D LI_FLOAT_IS_DOUBLE /D LI_MACROS ipvstubs.c
+ipvstubs.c
+C:\ncl2018\src\inc\mdcpln.h(61) : warning C4005: 'EXT' : macro redefinition
+        C:\ncl2018\src\inc\mdrwsize.h(17) : see previous definition of 'EXT'
+	date /t > ipvstubs.ts
+"***** FINISHED BUILDING ipvstubs.c IN ipv *****"
+""
+	lib /out:C:\ncl2018\lib\ipv.lib C:\ncl2018\lib\ipv.lib *.obj
+Microsoft (R) Library Manager Version 10.00.30319.01
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+Replacing ipvstubs.obj
+	erase *.obj
+	erase ipvstubs.t32
+"*****  MAKING DEBUG VERSION OF ipvstubs.c  *****"
+	cl /D "_DEBUG" /MDd /Zi /Fd"ipv" /Od /I C:\ncl2018\src\inc /I C:\mworks73\include /I C:\mworks73\include\intel\win\msoft10 /nologo /EHsc /D "WIN32" /D "_WINDOWS" /D "WINVER=0x601"  /D "_CRT_SECURE_NO_DEPRECATE"  /D "NO_XMLRPC_FUNCTIONS"  /D "VOLUMILL_ENGINE_LINKED" /Fo".\\" /FD /c /D UU_COMP=UU_WIN2K /D UU_DOUBLE /D UU_SEGDATA=DOUBLE /D UU_DEBUGOFF /D UU_IPV /D LI_FLOAT_IS_DOUBLE /D LI_MACROS /D "BUILD_32" ipvstubs.c
+ipvstubs.c
+C:\ncl2018\src\inc\mdcpln.h(61) : warning C4005: 'EXT' : macro redefinition
+        C:\ncl2018\src\inc\mdrwsize.h(17) : see previous definition of 'EXT'
+	date /t > ipvstubs.t32
+"***** FINISHED BUILDING ipvstubs.c IN ipv *****"
+""
+	lib /OUT:C:\ncl2018\lib32\ipv.lib C:\ncl2018\lib32\ipv.lib *.obj
+Microsoft (R) Library Manager Version 10.00.30319.01
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+Replacing ipvstubs.obj
+	erase *.obj
+	erase ipvstubs.nt32
+"*****  MAKING NODEBUG VERSION OF ipvstubs.c  *****"
+	cl /D "NDEBUG" /MD /Od /I C:\ncl2018\src\inc /I C:\mworks73\include /I C:\mworks73\include\intel\win\msoft10 /nologo /EHsc /D "WIN32" /D "_WINDOWS" /D "WINVER=0x601"  /D "_CRT_SECURE_NO_DEPRECATE"  /D "NO_XMLRPC_FUNCTIONS"  /D "VOLUMILL_ENGINE_LINKED" /Fo".\\" /FD /c /D UU_COMP=UU_WIN2K /D UU_DOUBLE /D UU_SEGDATA=DOUBLE /D UU_DEBUGOFF /D UU_IPV /D LI_FLOAT_IS_DOUBLE /D LI_MACROS /D "BUILD_32" ipvstubs.c
+ipvstubs.c
+C:\ncl2018\src\inc\mdcpln.h(61) : warning C4005: 'EXT' : macro redefinition
+        C:\ncl2018\src\inc\mdrwsize.h(17) : see previous definition of 'EXT'
+	date /t > ipvstubs.nt32
+"***** FINISHED BUILDING ipvstubs.c IN ipv *****"
+""
+	lib /OUT:C:\ncl2018\nlib32\nipv.lib C:\ncl2018\nlib32\nipv.lib *.obj
+Microsoft (R) Library Manager Version 10.00.30319.01
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+Replacing ipvstubs.obj
+	erase *.obj

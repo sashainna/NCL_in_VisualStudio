@@ -1,0 +1,37 @@
+/*********************************************************************
+**    E_FUNCTION :  uig_put_unistat(unistat)
+**       Stores the Unibase Statistics record in the Unibase.
+**    PARAMETERS
+**       INPUT  :
+**          unistat - Unibase Statistics record.
+**       OUTPUT :
+**          none
+**    RETURNS      : none
+**    SIDE EFFECTS : none
+**    WARNINGS     : none
+*********************************************************************/
+int uig_put_unistat(unistat)
+struct UR_unistat_rec *unistat;
+{
+	int status;
+/*
+.....Store fixed portion of record
+*/
+	if (unistat->key == 0) return(UU_FAILURE);
+	status = ur_update_data(unistat);
+/*
+.....Update notes if any
+*/
+/*
+	if (unistat->no_notes != 0)
+	{
+		status = ur_update_data_varlist(unistat->key,1,unistat->notes,1,
+			unistat->no_notes);
+		uu_free(unistat->notes);
+	}
+*/
+/*
+.....End of routine
+*/
+	return(status);
+}

@@ -2382,16 +2382,16 @@ UM_real8 *npas,*nstp,*atrad;
 			um_identtf (srot);
 			um_cross(dpl1->nvec,dpl2->nvec,plcross); 
 			um_unitvc(plcross,plcross);
-			//vctovc(plcross,plcross1);
+			vctovc(plcross,plcross1);
 			ncl_define_rotmx (mm,plcross,srot,&mcsflg);
 			ncl_get_rotmx (&s_irot,srotinv);
 			//vctovc(dpl2->nvec,c_pl1.n);
 
 
 			ind11 = ind12 = ind21 = ind22 = -1;
-			plcross1[0] = 1.0;
+			/*plcross1[0] = 1.0;
 			plcross1[1] = 0.0;
-			plcross1[2] = 0.0;
+			plcross1[2] = 0.0;*/
 			/*um_vcplvc(dpl1->nvec,dpl2->nvec,plcross1);
 			um_unitvc(plcross1,plcross1);*/
 			tnpts = ncl_pmill_check_planes(dpl1,dpl2,points,pts,plcross1,sfkey,&ind11,&ind12,&ind21,&ind22,&ipt11,&ipt12,&ipt21,&ipt22);

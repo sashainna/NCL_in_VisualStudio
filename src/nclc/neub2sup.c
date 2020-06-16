@@ -709,6 +709,10 @@ char      ubptr[], rfptr[];
 				if (prm < 0)
 				{
 					nl = strlen (e.label);
+					/*if (strncmp(e.label,ubptr,3)==0)
+					{
+						strncpy(tmpstr, ubptr, 3);;
+					}*/
 /*
 .....Make sure the label isn't too long. JLS 11/23/99
 */

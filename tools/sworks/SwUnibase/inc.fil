@@ -1,0 +1,93 @@
+/*********************************************************************
+**    I_FUNCTION     :  AddMenus()
+**       Defines the NCL/Solid menu structure.
+**    PARAMETERS
+**       INPUT  : none
+**       OUTPUT : none
+**    RETURNS      : none
+**    SIDE EFFECTS : none
+**    WARNINGS     : none
+*********************************************************************/
+void CSwUnibaseObj::AddMenus()
+{
+	long retval = 0;
+	VARIANT_BOOL ok;
+	long type;
+	long position;
+	CComBSTR menu;
+	CComBSTR method;
+	CComBSTR update;
+	CComBSTR hint;
+
+	// Add menu for main frame
+//	type = swDocNONE;
+//	position = 3;
+//	menu.LoadString(IDS_SWUNIBASE_MENU);
+//	m_iSldWorks->AddMenu(type, menu, position, &retval);
+
+//	position = -1;
+//	menu.LoadString(IDS_SWUNIBASE_CREATE_UNIBASE_ITEM);
+//	method.LoadString(IDS_SWUNIBASE_CREATE_UNIBASE_METHOD);
+//	hint.LoadString(IDS_SWUNIBASE_CREATE_UNIBASE_HINT);
+//	m_iSldWorks->AddMenuItem2(type, m_swCookie, menu, position, method, update, hint, &ok);
+
+//	position = -1;
+//	menu.LoadString(IDS_SWUNIBASE_PMP_ITEM);
+//	method.LoadString(IDS_SWUNIBASE_PMP_METHOD);
+//	hint.LoadString(IDS_SWUNIBASE_PMP_HINT);
+//	m_iSldWorks->AddMenuItem2(type, m_swCookie, menu, position, method, update, hint, &ok);
+
+	// Add menu for part frame
+	type = swDocPART;
+	position = 5;
+	menu.LoadString(IDS_SWUNIBASE_MENU);
+	m_iSldWorks->AddMenu(type, menu, position, &retval);
+
+	position = -1;
+	menu.LoadString(IDS_SWUNIBASE_CREATE_UNIBASE_ITEM);
+	method.LoadString(IDS_SWUNIBASE_CREATE_UNIBASE_METHOD);
+	hint.LoadString(IDS_SWUNIBASE_CREATE_UNIBASE_HINT);
+	m_iSldWorks->AddMenuItem2(type, m_swCookie, menu, position, method, update, hint, &ok);
+
+//	position = -1;
+//	menu.LoadString(IDS_SWUNIBASE_PMP_ITEM);
+//	method.LoadString(IDS_SWUNIBASE_PMP_METHOD);
+//	hint.LoadString(IDS_SWUNIBASE_PMP_HINT);
+//	m_iSldWorks->AddMenuItem2(type, m_swCookie, menu, position, method, update, hint, &ok);
+
+	// Add menu for assembly frame
+	type = swDocASSEMBLY;
+	position = 5;
+	menu.LoadString(IDS_SWUNIBASE_MENU);
+	m_iSldWorks->AddMenu(type, menu, position, &retval);
+
+	position = -1;
+	menu.LoadString(IDS_SWUNIBASE_CREATE_UNIBASE_ITEM);
+	method.LoadString(IDS_SWUNIBASE_CREATE_UNIBASE_METHOD);
+	hint.LoadString(IDS_SWUNIBASE_CREATE_UNIBASE_HINT);
+	m_iSldWorks->AddMenuItem2(type, m_swCookie, menu, position, method, update, hint, &ok);
+
+//	position = -1;
+//	menu.LoadString(IDS_SWUNIBASE_PMP_ITEM);
+//	method.LoadString(IDS_SWUNIBASE_PMP_METHOD);
+//	hint.LoadString(IDS_SWUNIBASE_PMP_HINT);
+//	m_iSldWorks->AddMenuItem2(type, m_swCookie, menu, position, method, update, hint, &ok);
+
+	// Add menu for drawing frame
+//	type = swDocDRAWING;
+//	position = 5;
+//	menu.LoadString(IDS_SWUNIBASE_MENU);
+//	m_iSldWorks->AddMenu(type, menu, position, &retval);
+//	position = -1;
+//	menu.LoadString(IDS_SWUNIBASE_CREATE_UNIBASE_ITEM);
+//	method.LoadString(IDS_SWUNIBASE_CREATE_UNIBASE_METHOD);
+//	hint.LoadString(IDS_SWUNIBASE_CREATE_UNIBASE_HINT);
+//	m_iSldWorks->AddMenuItem2(type, m_swCookie, menu, position, method, update, hint, &ok);
+
+//	position = -1;
+//	menu.LoadString(IDS_SWUNIBASE_PMP_ITEM);
+//	method.LoadString(IDS_SWUNIBASE_PMP_METHOD);
+//	hint.LoadString(IDS_SWUNIBASE_PMP_HINT);
+//	m_iSldWorks->AddMenuItem2(type, m_swCookie, menu, position, method, update, hint, &ok);
+
+}

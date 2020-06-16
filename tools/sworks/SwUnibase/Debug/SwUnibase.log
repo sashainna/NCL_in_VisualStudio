@@ -1,0 +1,13 @@
+﻿Build started 10/29/2014 2:50:49 PM.
+     1>Project "C:\ncl101\tools\sworks\SwUnibase\SwUnibase.vcxproj" on node 2 (ClCompile target(s)).
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppBuild.targets(298,5): warning MSB8004: Intermediate Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Intermediate Directory.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppBuild.targets(299,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /I"C:\Program Files\SolidWorks Corp\Solidworks" /I"C:\Program Files\SolidWorks Corp\SolidWorks\samples\appcomm" /Ic:\ncl101\src\inc /Zi /nologo /W1 /WX- /Od /D WIN32 /D _WINDOWS /D _DEBUG /D _USRDLL /D WINVER=0x502 /D _WIN32_WINNT=0x502 /D _WINDLL /D _UNICODE /D UNICODE /D _ATL_DLL /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t- /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /errorReport:prompt SwNclUnibase.cpp
+         Skipping... (no relevant changes detected)
+         SwNclUnibase.cpp
+     1>Done Building Project "C:\ncl101\tools\sworks\SwUnibase\SwUnibase.vcxproj" (ClCompile target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.15

@@ -57,6 +57,16 @@ extern "C" void ncl_nvmill_reset_calls(){}
 #include "gobas.h"
 #include "ulist.h"
 #include "mgeom.h"
+
+//#include  "usysdef.h"
+//#include  "umath.h"
+//#include	 "udebug.h"
+//#include  "mdcoord.h"
+//#include  "modef.h"
+//#include  "calcom.h"
+//#include  "cdef.h"
+//#include  "uhep.h"
+//#include	 "tlangtool.h"
 /*
 .....VoluMill headers
 */
@@ -364,6 +374,8 @@ void nclf_vmill_pocket(UM_int2 *nbound4, UM_real8 *kbound8, char token[120][64],
 */
 	pRecords = new exchange::ToolpathRecords;
 	int numRecords = exchange::getToolpathRecords (jobId, pRecords);
+	// if (numRecords <=0)	numRecords = 1;
+	//unsigned long numRecords = exchange::getToolpathRecords (jobId, pRecords);
 /*
 .....Make sure at least one Pre-drilled hole is used
 */
@@ -528,6 +540,7 @@ void nclf_vm_clpath_getnpaths(UM_int4 *npaths)
 		*npaths = 0;
 	else
 		*npaths = (UM_int4)pRecords->size();
+	//if (*npaths==0) *npaths=1;
 }
 
 /*********************************************************************
@@ -1026,7 +1039,7 @@ int S_getBoundaryChains (UM_int2 *nbound4, UM_real8 *kbound8,
 	UU_REAL asw,buf[14],tol,radius,dang,length;
 	UM_int4 nclkey,keyout;
 	UM_int2 nwds,nw,ietype,i2,irev,ix,ierr,pntype,itype,i0=0,jnext,lcirc;
-	UM_real8 ver,tend[6];
+	UM_real8 ver,tend[6], ttol;
 	UM_coord spt,ept,center;
 	UM_vector nvec;
 	UU_LIST openlst;
@@ -1385,6 +1398,12 @@ int S_getBoundaryChains (UM_int2 *nbound4, UM_real8 *kbound8,
 					}
 #endif
 					stat = S_makeline(&curves,ept,buf,dtol,-1);
+					if (stat!=UU_SUCCESS)
+					{
+						ttol = sqrt((ept[0]-buf[0])*(ept[0]-buf[0])+(ept[1]-buf[1])*(ept[1]-buf[1])+(ept[2]-buf[2])*(ept[2]-buf[2]));
+						dtol=ttol/2.0;
+						stat = S_makeline(&curves,ept,buf,dtol,-1);
+					}
 					if (stat == UU_SUCCESS) uu_list_push(&openlst,(char *)&open);
 				}
 			}

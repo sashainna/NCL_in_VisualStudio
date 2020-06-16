@@ -76,6 +76,7 @@ c temp storage for ifl flag
      z             0.0, 0.0, 1.0, 0.0/
       data trflg /.false./
 c
+c    
       if (.not.(ityp.eq.1)) go to 900
 
 c                                                     **** redef

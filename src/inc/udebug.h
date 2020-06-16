@@ -14,7 +14,7 @@
 */
 #include "usysdef.h"
 
-
+#define UU_DEBUGOFF
 #ifdef UU_DEBUGOFF 
 #include "udeboff.h"
 #else

@@ -1210,6 +1210,16 @@ UD_FSTAT stat;
 		j = 6; j1 = 5;
 		status = S_select_geo(&Sgbrap,UU_NULL,mask,0,pr,Tbrapcol,0,namfld,namp);
 	}
+	//else if (*fieldno == MOTIONTRG17)
+	//{
+	//	mask = (int *)UD_ncl_lnpl;
+	//	pr = 659;
+	//	pr = 663;
+	//	namp = Tdirval1;
+	//	namfld = MOTIONTRG17;
+	//	status = S_select_geo(&SgLrap,UU_NULL,mask,0,pr,Spassclr,0,namfld,namp/*,&uval*/);
+	//}
+	
 	else
 		goto done;
 	if (status!=-1)

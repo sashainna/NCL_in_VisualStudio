@@ -3216,6 +3216,7 @@ int num_sfs,*nopts,flag;
 		if (n1 > npts)
 		{
 			npts = n1;
+
 			ncl_cv_deloop0 (&pt_list,&tan_list,nzvec,minrad,tol,tolsq,&npts);
 		}
 	}

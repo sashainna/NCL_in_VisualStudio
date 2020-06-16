@@ -1,0 +1,15 @@
+#Descriptor#
+/Name/ Cutter Move Modes
+/Rows/ 1
+/Cols/ 5
+/Type/ Icon
+/Position/ 0.582031,0.879883
+/Area/ Top
+/FORMAT/ BOTH
+
+#Menus#
+/Back/ CAM_STEP_BACKWARD
+/Fwd/ CAM_STEP_FORWARD
+/Pick/ CAM_STEP_PICK
+/Begin/ CAM_STEP_BEGIN
+/End/ CAM_STEP_END

@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{8525bee0-3600-4e49-98d7-7e58c3a8c86e}</UniqueIdentifier>
+      <Extensions>*.*</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{3a756828-333f-4be6-bf0a-874a241519cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{6fa9065e-ea58-4cb1-b35b-e4328fc3a92b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{0acb2fba-e5cd-4aac-8669-be1baca79b68}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SwUnibase_i.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SwUnibase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SwDocument.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="swresource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nclx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nclxunib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SwNclUnibase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SwUniSketch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SwUniAttr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SwBitmapHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SwDocView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="SwUnibase_i.c">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SwUnibase_module.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SwUnibase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SwDocument.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SwNclUnibase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SwNclUnibase1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SwUniAttr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SwUniOpt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SwUniSketch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SwUniStat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SwModals.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SwStdAfx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SwBitmapHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SwDocView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SwUnibase.def">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="BitmapHandler.rgs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="DocView.rgs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="MainIconLarge.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="MainIconSmall.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="SwUnibase.rgs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="SwDocument.rgs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="toolbar_large.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="toolbar_small.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Midl Include="SwUnibase.idl">
+      <Filter>Source Files</Filter>
+    </Midl>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SwUnibase.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

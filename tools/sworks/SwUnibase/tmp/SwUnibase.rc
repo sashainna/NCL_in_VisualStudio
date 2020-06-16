@@ -1,0 +1,236 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// REGISTRY
+//
+
+
+IDR_SWDOCUMENT          REGISTRY                "SwDocument.rgs"
+IDR_DOCVIEW             REGISTRY                "DocView.rgs"
+IDR_BITMAPHANDLER       REGISTRY                "BitmapHandler.rgs"
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_ICON_LARGE          BITMAP                  "MainIconLarge.bmp"
+IDB_ICON_SMALL          BITMAP                  "MainIconSmall.bmp"
+IDB_TOOLBAR_LARGE       BITMAP                  "toolbar_large.bmp"
+IDB_TOOLBAR_SMALL       BITMAP                  "toolbar_small.bmp"
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.K.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENG)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_UK
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "1 TYPELIB ""SwUnibase.tlb""\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904e4"
+        BEGIN
+            VALUE "CompanyName", "TODO: <Company name>"
+            VALUE "FileDescription", "TODO: <File description>"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "LegalCopyright", "TODO: (c) <Company name>.  All rights reserved."
+            VALUE "InternalName", "SwUnibase.dll"
+            VALUE "OriginalFilename", "SwUnibase.dll"
+            VALUE "ProductName", "TODO: <Product name>"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1252
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// REGISTRY
+//
+
+IDR_SwUnibase        REGISTRY                "SwUnibase.rgs"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_CSwUnibaseDialog DIALOGEX 0, 0, 186, 95
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,71,62,50,16
+    CTEXT           "MFC Dialog Box",IDC_STATIC,31,23,128,26,SS_CENTERIMAGE
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_CSwUnibaseDialog, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 88
+        HORZGUIDE, 7
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_PROJNAME            "SwUnibase"
+    IDS_TOOLBAR_TITLE       "SwUnibase"
+    IDS_TOOLBAR_CALLBACK0   "ToolbarCallback0"
+    IDS_TOOLBAR_ENABLE0     "ToolbarEnable0"
+    IDS_TOOLBAR_TIP0        "Show Dialog"
+    IDS_TOOLBAR_HINT0       "Shows Dialog"
+    IDS_TOOLBAR_PMPCALLBACK "ShowPMP"
+    IDS_TOOLBAR_PMPHINT     "Display the Property Manager Page"
+    IDS_MENU_HINT           "This example menu starts notepad"
+    IDS_TOOLBAR_PMPENABLE   "EnablePMP"
+    IDS_TOOLBAR_PMPTIP      "Show PMP"
+    IDS_PMP_TITLE           "New Property Page"
+	IDS_FLYOUT_CALLBACK		"FlyoutCallback"
+	IDS_FLYOUT_CALLBACK0	"FlyoutCallback0"
+	IDS_FLYOUT_CALLBACK1	"FlyoutCallback1"
+	IDS_FLYOUT_ENABLE0		"FlyoutEnable0"
+	IDS_FLYOUT_HINT0		"Opens notepad.exe"
+	IDS_FLYOUT_HINT1		"Shows a flyout dialog box"
+	IDS_FLYOUT_TIP0			"Open notepad.exe"
+	IDS_FLYOUT_TIP1			"Show a flyout dialog"
+	IDS_FLYOUT_ENABLE_CALLBACK0 "FlyoutEnableCallback0"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_PMP_GROUP1_TITLE    "Group1"
+    IDS_PMP_LABEL1_CAPTION  "This is a sample Label"
+    IDS_PMP_GROUP2_TITLE    "Group2"
+    IDS_PMP_OPTION2_CAPTION "Option 2"
+    IDS_PMP_OPTION3_CAPTION "Option 3"
+    IDS_PMP_TEXT1_CAPTION   "Sample Textbox"
+    IDS_PMP_LIST1_CAPTION   "EMPTY"
+    IDS_PMP_SELECTION1_CAPTION "EMPTY"
+    IDS_PMP_NUM1_CAPTION    "EMPTY"
+    IDS_PMP_COMBO1_CAPTION  "EMPTY"
+    IDS_PMP_CHECK1_TIP      "This is a sample checkbox"
+    IDS_PMP_OPTION1_TIP     "This is a sample option"
+    IDS_PMP_OPTION2_TIP     "This is a sample option"
+    IDS_PMP_OPTION3_TIP     "This is a sample option"
+    IDS_PMP_TEXT1_TIP       "You can enter text information into this control"
+    IDS_PMP_LIST1_TIP       "You can select one of these items"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_PMP_SELECTION1_TIP  "This control displays the current selection"
+    IDS_PMP_NUM1_TIP        "This control allows you to enter numbers"
+    IDS_PMP_CHECK1_CAPTION  "Sample Checkbox"
+    IDS_PMP_OPTION1_CAPTION "Option 1"
+    IDS_PMP_COMBO1_TIP      "EMPTY"
+END
+
+#endif    // English (U.K.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+//1 TYPELIB "SwUnibase.tlb"
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

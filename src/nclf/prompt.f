@@ -17,7 +17,7 @@ c*    fill up the appropriate places in the macro definition table if it
 c*    is necesury.
 c*
 c***********************************************************************
-      subroutine prompt
+      subroutine prompt2
 
       include 'com8a.com'
 

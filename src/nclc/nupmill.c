@@ -67,41 +67,44 @@
 #define MOTIONTRG4		6 //step text input
 #define MOTIONTRG5		7 //Tolerance choice
 #define MOTIONTRG6		8 //Tolerance text input
+
 #define MOTIONTRG8		9 //sf1 text input
-#define MOTIONTRG9		10 //sf1 select button
-#define MOTIONTRG10		11 //sf2 text input
-#define MOTIONTRG11		12 //sf2 select button
-#define MOTIONTRG12		13 // Retract choice
-#define MOTIONTRG13		14 // Retract
-#define MOTIONTRG14		15 // Retract
-#define MOTIONTRG15		16 // Fedrat choice
-#define MOTIONTRG16		17 // Fedrat
+#define MOTIONTRG9		10 //Start button
+#define MOTIONTRG10		12 //sf2 text input
+#define MOTIONTRG11		13 //End button
+#define MOTIONTRG12		15 // Retract choice
+#define MOTIONTRG13		16 // Retract
+#define MOTIONTRG14		17 // Retract
+#define MOTIONTRG15		18 // Fedrat choice
+#define MOTIONTRG16		19 // Fedrat
+#define MOTIONTRG17		11 //sf1 select button
+#define MOTIONTRG18		14 //sf2 select button
 /*
 .....Entry /Exit
 */
-#define ENEXTRG1	18
-#define ENEXTRG2	19
-#define ENEXTRG3	20
+#define ENEXTRG1	20
+#define ENEXTRG2	21
+#define ENEXTRG3	22
 /*
 .....Colors
 */
-#define CLRRG1	21
-#define CLRRG2	22
-#define CLRRG3	23
-#define CLRRG6	24
-#define CLRRG7	25
-#define CLRRG8	26
+#define CLRRG1	23
+#define CLRRG2	24
+#define CLRRG3	25
+#define CLRRG6	26
+#define CLRRG7	27
+#define CLRRG8	28
 /*
 .....Action Buttons
 */
-#define FAPV	27
-#define FAPY	28
-#define FARS	29
-#define FAPB	30
-#define FAVE	31
-#define FAGE	32
-#define FAVW	33
-#define FVIDEO	34
+#define FAPV	29
+#define FAPY	30
+#define FARS	31
+#define FAPB	32
+#define FAVE	33
+#define FAGE	34
+#define FAVW	35
+#define FVIDEO	36
 
 
 #define HIDE_KEY 0
@@ -130,6 +133,8 @@ static UU_LOGICAL Sactive = UU_FALSE;
 
 static UU_LIST Ssurf;
 static int Snsurf = 0;
+static UU_LIST Sbnd;
+static int Snbnd = 0;
 static int Scolor;
 static int Tcolor;
 static int Tstptclr, Tdirclr,Tpassclr,
@@ -139,7 +144,7 @@ static int Tgeotog, Tgeocol, Sgeotog, Sgeocol;
 static UU_LOGICAL Sgeo_init;
 static UU_LOGICAL Sgeo_redraw;
 
-static UM_sgeo Sgsf,Sgspt, Sgrap, Sgret, SgLrap, Sgdrv1, Sgdrv2;
+static UM_sgeo Sgsf,Sgspt, Sgrap, Sgret, SgLrap, Sgdrv1, Sgdrv2, SgBpl1,SgBpl2;
 
 static UU_LOGICAL Spmfrm_init = UU_FALSE;
 
@@ -176,11 +181,17 @@ static char Tstp_str[65]="0.0", Trad_str[65]="0.0",
 		Ttoler_str[65]="0.0",
 		TLraptofrv_str[65]="0.0", Tcmd_str[8][65];
 
-static char Sdirval1[65]="0.0";
-static char Tdirval1[65]="0.0 ";
+//static char Sdirval1[65]="-1.0";
+//static char Tdirval1[65]="-1.0";
+//
+//static char Sdirval2[65]="-1.0";
+//static char Tdirval2[65]="-1.0";
 
-static char Sdirval2[65]="0.0";
-static char Tdirval2[65]="0.0";
+//char Sdirval1[65]="-1.0";
+//char Tdirval1[65]="-1.0";
+//
+//char Sdirval2[65]="-1.0";
+//char Tdirval2[65]="-1.0";
 
 static int SfrmPlay=0;
 static int Serrflg,Spreviewflg,Schgmade,Smenu_ch[14];
@@ -194,6 +205,10 @@ static void S_unhilite_all(), S_hilite_entity(), S_hilite_entities(),
 		S_form_invis(), S_update_answers(), S_unhilite_entities();
 static int S_build_command();
 static char Sselsrf[NCL_MAX_LABEL_AND_SUBSCRIPT] = "", Tselsrf[NCL_MAX_LABEL_AND_SUBSCRIPT] = ""; 
+static char Sdirval1[NCL_MAX_LABEL_AND_SUBSCRIPT] = "-1.0", Tdirval1[NCL_MAX_LABEL_AND_SUBSCRIPT] = "-1.0"; 
+static char Sdirval2[NCL_MAX_LABEL_AND_SUBSCRIPT] = "-1.0", Tdirval2[NCL_MAX_LABEL_AND_SUBSCRIPT] = "-1.0"; 
+
+
 
 int point_coordinates();
 int nclu_pl_from_crv(char*);
@@ -208,6 +223,9 @@ static	unsigned UU_LONG key_max, key_min,key_select;
 
 static	UM_coord ndc_min, ndc_max;
 
+UU_REAL uval1 = 0;
+UU_REAL uval2 = 0;
+
 static int *Sanswers[] = {
 /*
 .....PMill  3
@@ -218,9 +236,13 @@ static int *Sanswers[] = {
 */
 		&Tmethod, &Trad, &Torient, (int *)&Tstp_str, 
 		&Ttoltyp,(int *)&Ttoler_str,
-		(int *)&Tdirval1,  UU_NULL,
-		(int *)&Tdirval2,  UU_NULL, 
+		/*(int *)&Tdirval1,  UU_NULL, UU_NULL, 
+		(int *)&Tdirval2,  UU_NULL, UU_NULL, */
+		&Tdirval1,  UU_NULL, UU_NULL, 
+		&Tdirval2,  UU_NULL, UU_NULL, 
 		&TLraptotyp, (int *)&TLraptoval,  UU_NULL,
+		/*&Tdirval1,  UU_NULL, UU_NULL, 
+		&Tdirval2,  UU_NULL, UU_NULL, */
 		&TLraptofed, (int *)&TLraptofrv_str,
 /*
 .....Entry/Exit
@@ -359,14 +381,21 @@ static UU_LOGICAL S_enable_buttons()
 	{
 		ud_dispfrm_set_attribs(0,MOTIONTRG8,UM_WHITE,UM_WHITE);
 		ud_dispfrm_set_attribs(0,MOTIONTRG9,UM_WHITE,UM_GREEN);
+		ud_dispfrm_set_attribs(0,MOTIONTRG17,UM_WHITE,UM_RED);
 		sect23 = UU_FALSE;
 	}
 	else
 	{
 		ud_dispfrm_set_attribs(0, MOTIONTRG8, UM_BLACK, UM_WHITE);
 		ud_dispfrm_set_attribs(0,MOTIONTRG9, UM_BLACK, UM_GREEN);
+		ud_dispfrm_set_attribs(0,MOTIONTRG17,UM_WHITE,UM_RED);
 		sect23 = UU_TRUE;
 	}
+	/*strcpy(label, Tdirval1);
+	ul_to_upper(label);
+	if (!strcmp(label,"PL1"))
+		ud_dispfrm_set_attribs(0,MOTIONTRG17,UM_WHITE,UM_RED);*/
+
 	sect24 = UU_TRUE;
 	//if (Tdir==0)
 	{
@@ -376,14 +405,20 @@ static UU_LOGICAL S_enable_buttons()
 		{
 			ud_dispfrm_set_attribs(0,MOTIONTRG10,UM_WHITE,UM_WHITE);
 			ud_dispfrm_set_attribs(0,MOTIONTRG11,UM_WHITE,UM_GREEN);
+			ud_dispfrm_set_attribs(0,MOTIONTRG18,UM_WHITE,UM_RED);
 			sect24 = UU_FALSE;
 		}
 		else
 		{
 			ud_dispfrm_set_attribs(0, MOTIONTRG10, UM_BLACK, UM_WHITE);
 			ud_dispfrm_set_attribs(0,MOTIONTRG11, UM_BLACK, UM_GREEN);
+			ud_dispfrm_set_attribs(0,MOTIONTRG18,UM_WHITE,UM_RED);
 			sect24 = UU_TRUE;
 		}
+		/*strcpy(label, Tdirval2);
+		ul_to_upper(label);
+		if (!strcmp(label,"PL2"))
+		ud_dispfrm_set_attribs(0,MOTIONTRG18,UM_WHITE,UM_RED);*/
 	}
  	sect25 = UU_TRUE;
 	sect26 = UU_TRUE;
@@ -813,12 +848,13 @@ static void S_save_form()
 	Sdirclr = Tdirclr;
 	Spassclr = Tpassclr;
 	strcpy(Sselsrf, Tselsrf);
+	strcpy(Sdirval1, Tdirval1);
+	strcpy(Sdirval2, Tdirval2);
+	SLraptotyp = TLraptotyp;
 	Smethod = Tmethod;
 	strcpy(Srad_str, Trad_str);
 	strcpy(Sstp_str, Tstp_str);
-	strcpy(Sdirval1, Tdirval1);
-		strcpy(Sdirval2, Tdirval2);
-	SLraptotyp = TLraptotyp;
+	
 	strcpy(SLraptoval, TLraptoval);
 	if ((TLraptotyp!=0)&&(TLraptofed==2))
 	{
@@ -910,10 +946,12 @@ static void S_deselect_all()
 	Sgdrv1.color = Sgdrv2.color = -1;
 	Sgspt.label[0] = Sgrap.label[0] = Sgret.label[0] = SgLrap.label[0] = '\0';
 	Sgdrv1.label[0] = Sgdrv2.label[0] = '\0';
-	Tdirval1[0] = '\0';
-	Tdirval2[0] = '\0';
+	/*Tdirval1[0] = '\0';
+	Tdirval2[0] = '\0';*/
 	ud_update_answer(MOTIONTRG8,(int *)Tdirval1);
 	ud_update_answer(MOTIONTRG10,(int *)Tdirval2);
+	/*ud_update_answer(MOTIONTRG8,Tdirval1);
+	ud_update_answer(MOTIONTRG10,Tdirval2);*/
 	if (TLraptotyp==2)
 	{
 		TLraptoval[0] = '\0';			
@@ -941,6 +979,8 @@ static void S_unhilite_all()
 {
 	S_unhilite_entities(&Ssurf);
 	Snsurf = 0; 
+	S_unhilite_entities(&Sbnd);
+	Snbnd = 0; 
 	S_unhilite_entity(&Sgspt);
 	S_unhilite_entity(&Sgrap);
 	S_unhilite_entity(&Sgret);
@@ -997,6 +1037,7 @@ UD_DDATA *val;
 UD_FSTAT stat;
 {
 	int status,i,flag= 0;
+	NCL_cmdbuf cmdbuf;
 
 	switch (*fieldno)
 	{
@@ -1027,6 +1068,19 @@ UD_FSTAT stat;
 			ud_set_traverse_mask(FAPB,1);
 			ud_set_traverse_mask(FAVE,NAUTIPV);
 		}
+		ncl_init_cmdbuf(&cmdbuf);
+		
+		status = ncl_add_token(&cmdbuf,"PT2", NCL_nocomma);
+		status = ncl_add_token(&cmdbuf, "=", NCL_nocomma);
+		status = ncl_add_token(&cmdbuf, "POINT/", NCL_nocomma);
+		status = ncl_add_token(&cmdbuf, "X+0.25", NCL_comma);
+		status = ncl_add_token(&cmdbuf, "Y-0.5", NCL_comma);
+		status = ncl_add_token(&cmdbuf, "Z", NCL_nocomma);
+		
+		ncl_set_cmdmode(UU_TRUE);
+		ncl_add_cmdbuf(&cmdbuf);
+		ncl_call(&cmdbuf);
+		ncl_init_cmdbuf(&cmdbuf);
 		break;
 /*
 .....APPLY
@@ -1049,6 +1103,31 @@ UD_FSTAT stat;
 .....End modification by KC
 */
 		status = S_build_command(UU_TRUE);
+		ncl_init_cmdbuf(&cmdbuf);
+		
+		status = ncl_add_token(&cmdbuf,"PT2", NCL_nocomma);
+		status = ncl_add_token(&cmdbuf, "=", NCL_nocomma);
+		status = ncl_add_token(&cmdbuf, "POINT/", NCL_nocomma);
+		status = ncl_add_token(&cmdbuf, "X+0.25", NCL_comma);
+		status = ncl_add_token(&cmdbuf, "Y-0.5", NCL_comma);
+		status = ncl_add_token(&cmdbuf, "Z", NCL_nocomma);
+		
+		ncl_set_cmdmode(UU_TRUE);
+		ncl_add_cmdbuf(&cmdbuf);
+		ncl_call(&cmdbuf);
+		ncl_init_cmdbuf(&cmdbuf);
+		
+		/*status = ncl_add_token(&cmdbuf,"goto/", NCL_nocomma);
+		status = ncl_add_token(&cmdbuf, "X+3", NCL_comma);
+		status = ncl_add_token(&cmdbuf, "Y-0.5", NCL_comma);
+		status = ncl_add_token(&cmdbuf, "Z", NCL_nocomma);*/
+		
+		status = ncl_add_token(&cmdbuf,"goto/", NCL_nocomma);
+		status = ncl_add_token(&cmdbuf, "PT2", NCL_comma);
+		
+		ncl_set_cmdmode(UU_TRUE);
+		ncl_add_cmdbuf(&cmdbuf);
+		ncl_call(&cmdbuf);
 		Spreviewflg = UU_FALSE;
 		Smptr = UU_NULL;
 		if (status != UU_SUCCESS) 
@@ -1276,11 +1355,11 @@ UD_FSTAT stat;
 	if (loaded)
 	{
 		S_deselect_all();
-		strcpy(Sdirval1, "0.0");
-		strcpy(Sdirval2, "0.0");
+		/*strcpy(Sdirval1, "-1.0");
+		strcpy(Sdirval2, "-1.0");
 
-		strcpy(Tdirval1, "0.0");
-		strcpy(Tdirval2, "0.0");
+		strcpy(Tdirval1, "-1.0");
+		strcpy(Tdirval2, "-1.0");*/
 
 		ncl_hide_geo(-1,-1,-1,-1,UU_TRUE,UU_NULL,0);
 
@@ -1307,13 +1386,19 @@ UD_FSTAT stat;
 
 		status = key_of_label("CV3", status);
 		if (status<=0)
-			status = nclu_cv_on_srf(Sgsf.label, "CV3", 3, 0.45);
+			status = nclu_cv_on_srf(Sgsf.label, "CV3", 3, 0.5, 50);
 		status = key_of_label("PT1", status);
 		if (status<=0)
 			status = nclu_pt_on_crv_start("PT1","CV3");
-		status = key_of_label("PT3", status);
+		/*status = key_of_label("PT3", status);
 		if (status<=0)
 			status = nclu_pt_on_crv_start("PT3","CV4");
+		status = key_of_label("PT4", status);
+		if (status<=0)
+			status = nclu_pt_on_crv_end("PT4","CV4");*/
+		status = key_of_label("PT3", status);
+		if (status<=0)
+			status = nclu_pt_on_crv_end("PT3","CV3");
 		//@@@@@@@@@@@@
 
 		Snsurf = UU_LIST_LENGTH(&Ssurf);
@@ -1497,6 +1582,116 @@ UD_FSTAT stat;
 	return(UD_FLDOK);
 	return(UD_FLDOK);
 }
+static UD_FSTAT OnMSButton(fieldno, val, stat)
+int *fieldno;
+UD_DDATA *val;
+UD_FSTAT stat;
+{
+	int pr, namfld, *mask;
+	char *namp;
+	int status;	
+	char label[3];
+	/*strcpy(label, Tdirval1);
+	ul_to_upper(label);
+	if (!strcmp(label,"PL1"))
+		ud_dispfrm_set_attribs(0,MOTIONTRG17,UM_WHITE,UM_RED);
+	else
+	{
+		uw_ntdispmsg("Value should PL1");
+			return(UD_BADACT);
+	}*/
+	/*strcpy(label, Tdirval2);
+	ul_to_upper(label);
+	if (!strcmp(label,"PL2"))
+		ud_dispfrm_set_attribs(0,MOTIONTRG18,UM_WHITE,UM_RED);
+	else
+	{
+		uw_ntdispmsg("Value should PL2");
+			return(UD_BADACT);
+	}*/
+
+	if (*fieldno == MOTIONTRG17) //for select button1
+	{
+		/*strcpy(label, Tdirval1);
+		ul_to_upper(label);
+		if (!strcmp(label,"PL1"))
+			ud_dispfrm_set_attribs(0,MOTIONTRG17,UM_WHITE,UM_RED);
+		else
+	{
+		uw_ntdispmsg("Value should PL1");
+			return(UD_BADACT);
+	}*/
+		/*mask = (int *)UD_ncl_allsfpl;*/
+		mask = (int *)UD_ncl_pl;
+		//UD_ncl_lnpl
+		
+		//pr = 663;
+		pr = 514;
+		namp = Tdirval1;
+		namfld = MOTIONTRG17;
+		status = S_select_geo(&SgBpl1,&Sbnd,mask,0,pr,Spassclr,0,namfld,Tdirval1);
+		if (!strcmp(SgBpl1.label, "") )
+		{
+			
+			uw_ntdispmsg("No bounding plane selected");
+			return(UD_BADACT);
+		}
+		//status = S_select_geo(&Sgsf,&Ssurf,mask,0,pr,Tcolor,0,MILLRG1,Tselsrf/*, &uvalSgBpl1.label
+		//strcpy(Tdirval1,namp);
+		strcpy(Tdirval1, SgBpl1.label);
+		strcpy(Sdirval1, SgBpl1.label);
+		//status = nclu_pl_selected(Tdirval1);
+		Snbnd = UU_LIST_LENGTH(&Sbnd);
+		if (Snbnd>0)
+			ud_set_traverse_mask(MOTIONTRG17, UU_TRUE);
+		S_save_form();
+		 S_update_answers();
+		//S_enable_buttons();
+		firstSelected = UU_TRUE;
+	}
+	if (*fieldno == MOTIONTRG18) //for select button2
+
+	{
+		/*strcpy(label, Tdirval2
+		namp =
+		ul_to_upper(label);
+		if (!strcmp(label,"PL2"))
+			ud_dispfrm_set_attribs(0,MOTIONTRG18,UM_WHITE,UM_RED);
+		else
+		{
+			uw_ntdispmsg("Value should PL2");
+				return(UD_BADACT);
+		}*/
+		mask = (int *)UD_ncl_pl;
+		//mask = (int *)UD_ncl_allsfpl;
+		pr = 515;
+		namp = Tdirval2;
+		namfld = MOTIONTRG18;
+		status = S_select_geo(&SgBpl2, &Sbnd,mask,0,pr,Spassclr,0,namfld,namp);
+		if (!strcmp(SgBpl2.label, "") )
+		{
+			
+			uw_ntdispmsg("No bounding plane selected");
+			return(UD_BADACT);
+		}
+		strcpy(Tdirval2, SgBpl2.label);
+		strcpy(Sdirval2, SgBpl2.label);
+		Snbnd = UU_LIST_LENGTH(&Sbnd);
+		if (Snbnd>0)
+			ud_set_traverse_mask(MOTIONTRG18, UU_TRUE);
+		S_save_form();
+		S_update_answers();
+	}	
+	if (status==0)
+	{
+		Sacc[MotionT] = 1;
+		S_enable_buttons();	
+		return(UD_FLDOK);
+	}
+	return(UD_BADACT);
+
+}
+ 
 static UD_FSTAT OnMButton(fieldno, val, stat)
 int *fieldno;
 UD_DDATA *val;
@@ -1505,21 +1700,36 @@ UD_FSTAT stat;
 	
 	UM_coord ndc;
 	int pr, namfld, *mask;
-	UU_REAL uval = 0;
+	/*UU_REAL uval1 = 0;
+	UU_REAL uval2 = 0;*/
 	char *namp;
+	char label[65];
 	int status;	//=-1;
 	if (loaded==UU_FALSE)
 	{
 			uw_ntdispmsg("No port surface exists or selected");
 			return(UD_BADACT);
 	}
+	strcpy(label, "0");
 
 	if (*fieldno == MOTIONTRG9)
 	{
-		uval=atof(Tdirval1);
-		if ((uval<=0.0)|| (uval >=1))
+		//strcpy(label, Tdirval1);
+		/*ul_to_upper(Tdirval1);
+		if (!strcmp("PL1",Tdirval1))
 		{
-			uw_ntdispmsg("Value should be input 0 < u < 1");
+			uw_ntdispmsg("Value should be input 0 <= u <= 1");
+			return(UD_BADACT);
+		}*/
+		/*if (Tdirval1[0]=='.')
+		{
+			strcat(label,Tdirval1);
+			strcpy(Tdirval1,label);
+		}*/
+		uval1=atof(Tdirval1);
+		if ((uval1<0.0)|| (uval1 >1))
+		{
+			uw_ntdispmsg("Value should be input 0 <= u <= 1");
 			return(UD_BADACT);
 		}
 		status = key_of_label("PT1", status);
@@ -1534,7 +1744,8 @@ UD_FSTAT stat;
 			uw_ntdispmsg("No port surface exists");
 			return(UD_BADACT);
 		}
-		status = nclu_pl_on_crv("PL1", "CV4", uval);
+		/*status = nclu_pl_on_crv("PL1", "CV4", uval1);*/
+		status = nclu_pl_on_crv("PL1", "CV3", uval1);
 
 		strcpy(Ttoler_str, Stoler_str);
 
@@ -1548,14 +1759,23 @@ UD_FSTAT stat;
 			uw_ntdispmsg("First plane not created");
 			return(UD_BADACT);
 		}
-		uval=atof(Tdirval2);
-		if ((uval<=0.0)|| (uval >=1))
+		uval2=atof(Tdirval2);
+		if ((uval2<0.0)|| (uval2 >1))
 		{
-			uw_ntdispmsg("Value should be put 0 < u < 1");
+			uw_ntdispmsg("Value should be put 0 <= u <= 1");
 			return(UD_BADACT);
 		}
-		status = nclu_pl_on_crv("PL2", "CV4", uval);
-		go_to_start("PT3");
+		/*status = nclu_pl_on_crv("PL2", "CV4", uval2);*/
+		status = nclu_pl_on_crv("PL2", "CV3", uval2);
+		/*if (uval1<uval2)
+			go_to_start("PT3");
+		else
+			go_to_start("PT4");*/
+
+		if (uval1<uval2)
+			go_to_start("PT1");
+		else
+			go_to_start("PT3");
 	}
 	else if (*fieldno == MOTIONTRG14)
 	{
@@ -1640,7 +1860,7 @@ UD_FSTAT stat;
 	int status=-1;
 	if (*fieldno == ENEXTRG3)
 	{
-		mask = (int *)UD_ncl_ptcv;
+		mask = (int *)UD_ncl_pt;
 		pr = 516;
 		namp = Tptnam;
 		namfld = ENEXTRG2;
@@ -1675,6 +1895,12 @@ UU_LOGICAL flg;
 	int i;
 	NCL_cmdbuf cmdbuf;
 	char buf[64];
+	char a[64];
+	char ab[64];
+	//a[0] = '\0';
+	a[0]='0';
+	//b[0] = '\0';
+	ab[0]='0';
 
 	if (flg)
 		NCL_preview_mot = 0;
@@ -1695,9 +1921,39 @@ UU_LOGICAL flg;
 			ncl_add_token(&cmdbuf, geo[i].label, NCL_comma);
 		}
 	}
-		if (Tdirval1[0])
+
+	if (Tdirval1[0]=='.')
+		{
+			strcat(a,Tdirval1);
+			strcpy(Tdirval1,a);
+			//memset(abel, '0', 64);
+			//strcpy(abel, "");
+			//abel[0] = '\0';
+			//abel[0] = '0';
+		}
+		if ((Tdirval1[0]!='0')&&(Tdirval1[0]!='1')/*&&(Tdirval1[0]!='-')*/)
+		{
+			strcpy(Tdirval1,SgBpl1.label);
+			//ncl_add_token(&cmdbuf, "PL1", NCL_comma);
+			ncl_add_token(&cmdbuf, SgBpl1.label, NCL_comma);
+		}
+		else
 			ncl_add_token(&cmdbuf, "PL1", NCL_comma);
-		if (Tdirval2[0])	
+
+		if (Tdirval2[0]=='.')
+		{
+			strcat(ab,Tdirval2);
+			strcpy(Tdirval2,ab);
+			//abel[0] = '\0';
+			//abel[0] = '0';
+		}
+		if ((Tdirval2[0]!='0')&&(Tdirval2[0]!='1'))
+		{
+			strcpy(Tdirval2,SgBpl2.label);
+			//ncl_add_token(&cmdbuf, "PL1", NCL_comma);
+			ncl_add_token(&cmdbuf, SgBpl2.label, NCL_comma);
+		}
+		else
 			ncl_add_token(&cmdbuf, "PL2", NCL_comma);
 	ncl_add_token(&cmdbuf, NCL_run_step, NCL_comma);
 	strcpy(buf, Tstp_str);
@@ -2003,6 +2259,9 @@ void nclu_pmill()
 	int flag,ifl,val;
 	UU_LOGICAL cmdreject;
 	UD_METHOD save_entry;
+
+	NCL_cmdbuf cmdbuf;
+	int status;
 /*
 .....Set up form fields
 */
@@ -2017,8 +2276,8 @@ void nclu_pmill()
 		OnMChcPick, OnMText, OnMChcPick,
 		OnMText, 
 		OnMChcPick, OnMText,
-		OnMText, OnMButton, 
-		OnMText, OnMButton,
+		OnMText, OnMButton, OnMSButton, 
+		OnMText, OnMButton, OnMSButton, 
 		OnMChcPick, OnMText, OnMButton, 
 		OnMChcPick, OnMText, 
 /*
@@ -2038,21 +2297,21 @@ void nclu_pmill()
 
 	static char traverse[]= {
 		1,1,1,
-		1,1,1,1,1,1,1,1,1, 
+		1,1,1,1,1,1,1,1,1, 1,1,
 		1,1,1,1,1,1,
 		1,1,1,
 		1,1,1,1,1,1,
 		1,1,1,1,1,1,1,1};
 	static char called[]  = {
 		6,6,6,
-		6,6,6,6,6,6,6,6,6,
+		6,6,6,6,6,6,6,6,6,6,6,
 		6,6,6,6,6,6,
 		6,6,6,
 		6,6,6,6,6,6,
 		6,6,6,6,6,6,6,6};
 	static char display[] = {
 		1,1,1,
-		1,1,1,1,1,1,1,1,1, 
+		1,1,1,1,1,1,1,1,1, 1,1,
 		1,1,1,1,1,1,
 		1,1,1,
 		1,1,1,1,1,1,
@@ -2087,6 +2346,8 @@ void nclu_pmill()
 */
 	uu_list_init(&Ssurf,sizeof(UM_sgeo),50,50);
 	Tselsrf[0] = '\0';
+	/*Tdirval1[0]= '\0';
+	Tdirval2[0]= '\0';*/
 	S_init_traverse(display,traverse);
 /*
 .....Display the Form
@@ -2121,6 +2382,35 @@ repeat:
 .....Output the command
 */
 	S_build_command(UU_TRUE);
+	ncl_init_cmdbuf(&cmdbuf);
+		
+		status = ncl_add_token(&cmdbuf,"PT2", NCL_nocomma);
+		status = ncl_add_token(&cmdbuf, "=", NCL_nocomma);
+		status = ncl_add_token(&cmdbuf, "POINT/", NCL_nocomma);
+		status = ncl_add_token(&cmdbuf, "X+0.25", NCL_comma);
+		status = ncl_add_token(&cmdbuf, "Y-0.5", NCL_comma);
+		status = ncl_add_token(&cmdbuf, "Z", NCL_nocomma);
+		
+		ncl_set_cmdmode(UU_TRUE);
+		ncl_add_cmdbuf(&cmdbuf);
+		ncl_call(&cmdbuf);
+		//ncl_init_cmdbuf(&cmdbuf);
+		ncl_init_cmdbuf(&cmdbuf);
+		
+		/*status = ncl_add_token(&cmdbuf,"goto/", NCL_nocomma);
+		status = ncl_add_token(&cmdbuf, "X+3", NCL_comma);
+		status = ncl_add_token(&cmdbuf, "Y-0.5", NCL_comma);
+		status = ncl_add_token(&cmdbuf, "Z", NCL_nocomma);*/
+		
+		status = ncl_add_token(&cmdbuf,"goto/", NCL_nocomma);
+		status = ncl_add_token(&cmdbuf, "PT2", NCL_comma);
+		//status = ncl_add_token(&cmdbuf, "Y-0.5", NCL_comma);
+		//status = ncl_add_token(&cmdbuf, "Z", NCL_nocomma);
+		ncl_set_cmdmode(UU_TRUE);
+		ncl_add_cmdbuf(&cmdbuf);
+		ncl_call(&cmdbuf);
+
+
 done:;
 	if (Sgeo_redraw)
 		ncl_hide_geo(-1,-1,-1,-1,UU_TRUE,UU_NULL,0);
@@ -2549,7 +2839,9 @@ UU_REAL coord;
 			ncl_add_cmdbuf(&cmdbuf);
 			ncl_call(&cmdbuf);
 
-		ncl_init_cmdbuf(&cmdbuf);
+			//D5=DIST(PT6,PL1)
+
+		/*ncl_init_cmdbuf(&cmdbuf);
 		
 		status = ncl_add_token(&cmdbuf, "CV4", NCL_nocomma);
 		status = ncl_add_token(&cmdbuf, "=", NCL_nocomma);
@@ -2562,7 +2854,7 @@ UU_REAL coord;
 
 		ncl_set_cmdmode(UU_TRUE);
 			ncl_add_cmdbuf(&cmdbuf);
-			ncl_call(&cmdbuf);
+			ncl_call(&cmdbuf);*/
 			
 
 done:;
@@ -2637,16 +2929,16 @@ UU_REAL coord;
 	int status;
 	char paracoord[50];
 
-	if ((coord<=0.0) || (coord>=1.0))
+	if ((coord<0.0) || (coord>1.0))
 	{
 
-		uw_ntdispmsg("Value should be selected 0 < u < 1");
+		uw_ntdispmsg("Value should be selected 0 <= u <= 1");
 		return(UD_BADACT);
 	}
-	if (coord<=0.01)
+	/*if (coord<=0.01)
 		coord = 0.02;
 	if (coord>=0.9)
-		coord = 0.85;
+		coord = 0.85;*/
 	
 		ncl_init_cmdbuf(&cmdbuf);
 		
@@ -2656,6 +2948,59 @@ UU_REAL coord;
 		status = ncl_add_token(&cmdbuf, name, NCL_comma);
 		sprintf(paracoord,"%0.2f",coord);
 		status = ncl_add_token(&cmdbuf, paracoord, NCL_nocomma);
+		status = ncl_add_token(&cmdbuf, ")", NCL_nocomma);
+
+		ncl_set_cmdmode(UU_TRUE);
+		ncl_add_cmdbuf(&cmdbuf);
+		ncl_call(&cmdbuf);
+
+done:;
+	return (0);
+}
+
+/*********************************************************************
+**    E_FUNCTION     : nclu_pl_selected(plname)
+**       creates a plane orthogonal to curve
+**       at given point
+**    PARAMETERS   
+**       INPUT  : 
+**          plname of plane
+**			
+**       OUTPUT :  
+**          none
+**    RETURNS      : none
+**    SIDE EFFECTS : none
+**    WARNINGS     : none
+*********************************************************************/
+int nclu_pl_selected(plname)
+char* plname;
+//char* name;
+//UU_REAL coord;
+{
+	
+	NCL_cmdbuf cmdbuf;
+	int status;
+	//char paracoord[50];
+
+	/*if (strcmp(plname,"PL1") && strcmp(plname,"PL2"))
+	{
+
+		uw_ntdispmsg("Bounding plane name should be either PL1 or PL2");
+		return(UD_BADACT);
+	}*/
+	/*if (coord<=0.01)
+		coord = 0.02;
+	if (coord>=0.9)
+		coord = 0.85;*/
+	
+		ncl_init_cmdbuf(&cmdbuf);
+		
+		status = ncl_add_token(&cmdbuf, plname, NCL_nocomma);
+		status = ncl_add_token(&cmdbuf, "=", NCL_nocomma);
+		status = ncl_add_token(&cmdbuf, "PL/(PV/ON", NCL_nocomma);
+		//status = ncl_add_token(&cmdbuf, name, NCL_comma);
+		//sprintf(paracoord,"%0.2f",coord);
+		//status = ncl_add_token(&cmdbuf, paracoord, NCL_nocomma);
 		status = ncl_add_token(&cmdbuf, ")", NCL_nocomma);
 
 		ncl_set_cmdmode(UU_TRUE);
@@ -2779,12 +3124,23 @@ char* curve_name;
 		ncl_add_cmdbuf(&cmdbuf);
 		ncl_call(&cmdbuf);
 
-		ncl_init_cmdbuf(&cmdbuf);
+		/*ncl_init_cmdbuf(&cmdbuf);
 		
 		status = ncl_add_token(&cmdbuf,"goto/", NCL_nocomma);
 		status = ncl_add_token(&cmdbuf, "X+3", NCL_comma);
 		status = ncl_add_token(&cmdbuf, "Y-0.5", NCL_comma);
 		status = ncl_add_token(&cmdbuf, "Z", NCL_nocomma);
+		
+		ncl_set_cmdmode(UU_TRUE);
+		ncl_add_cmdbuf(&cmdbuf);
+		ncl_call(&cmdbuf);*/
+
+		ncl_init_cmdbuf(&cmdbuf);
+		
+		status = ncl_add_token(&cmdbuf,"goto/", NCL_nocomma);
+		status = ncl_add_token(&cmdbuf, "PT2", NCL_comma);
+		/*status = ncl_add_token(&cmdbuf, "Y-0.5", NCL_comma);
+		status = ncl_add_token(&cmdbuf, "Z", NCL_nocomma);*/
 		
 		ncl_set_cmdmode(UU_TRUE);
 		ncl_add_cmdbuf(&cmdbuf);
