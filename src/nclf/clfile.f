@@ -310,7 +310,7 @@ c
       integer*2 ipt,icnt,iflg,iflg1
       integer*4 irec,inc,icpt(2),i,j,k,n,iclw(6),jclbuf(72),nc,strlen1
 c
-      real*8 rdata(420),dclbuf(36)
+      real*8 rdata(640),dclbuf(36)
 c
       character*8 lclt,lclnm,lclrv
       character*11 lcld
@@ -626,7 +626,7 @@ c
       integer*2 ibuf(144),nc
       integer*4 krec,kpt,ipt,i,iclpt(2),iclw(6),jisn,jbuf(72)
 c
-      real*8 rbuf(36),rclw(420)
+      real*8 rbuf(36),rclw(640)
 c
       character*20 lclw
 c
@@ -675,7 +675,7 @@ c
       iclw(3) = ibuf(ipt+1)
       iclw(4) = ibuf(ipt+2)
       iclw(5) = ibuf(ipt) - 1
-      if (iclw(5) .gt. 420 .or. iclw(5) .lt. 0) go to 9000
+      if (iclw(5) .gt. 640 .or. iclw(5) .lt. 0) go to 9000
       if (iclw(3) .ne. 1000) jisn    = 0
 c
 c...Store real values
@@ -769,7 +769,7 @@ c
 c
  
 c
-      real*8 rdata(420),tmpdat(420)
+      real*8 rdata(640),tmpdat(640)
 c
       character*20 lclw
 c

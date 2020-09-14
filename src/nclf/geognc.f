@@ -402,7 +402,7 @@ c
 c*******************************************************  plane
 c
 400   ktv(3)=4
-      if(isub-2)410,420,429
+      if(isub-2)410,640,429
 c     **********************  pl/a,b,c,d          ( ax+by+cz=d )  -- 1 --
 410   do 412 i=1,4
 412   w(i)=sc(i+10)
@@ -410,7 +410,7 @@ c          goto plchk area
       goto 490
 c     **********************  pl/pt1,pt2,pt3                      -- 2 --
 c          get 3 pts
-420   do 422 i=1,3
+640   do 422 i=1,3
          j=3*i+1
          call gtentt(sc(i+10), trflg, nclkey, ietype, w(j))
 422   continue

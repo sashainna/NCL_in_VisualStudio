@@ -341,7 +341,7 @@ UN_sim_machine *mach;
 	UM_int2 iclf,*pi;
 	UM_int4 iclw[6],ciclw[6];
 	UU_LOGICAL ihed,iscirc;
-	UU_REAL rdata[420],crdata[20],fsav,fabs(),rnum[10],*rp;
+	UU_REAL rdata[640],crdata[20],fsav,fabs(),rnum[10],*rp;
 	FILE *fptr;
 	UN_sim_header header;
 	UN_sim_status stat;

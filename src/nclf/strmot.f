@@ -157,7 +157,7 @@ c
       integer*2 icnt,it1,iclf,iflg
       integer*4 irec(2),irecsv(2),irecpt(2),iclw(6)
 c
-      real*8 tpt(9),ept(6),av(3),fv(3),dclbuf(420),tcinv(12),dsept(6)
+      real*8 tpt(9),ept(6),av(3),fv(3),dclbuf(640),tcinv(12),dsept(6)
       real*8 d1,d2,ndist
 c
 c...Initialize routine
@@ -553,7 +553,7 @@ c
       integer*2 icnt,it1,iclf,iflg
       integer*4 irec(2),nirec(2),iclw(6)
 c
-      real*8 tpt(9),ept(3),av(3),fv(3),nv(3),dclbuf(420),tcinv(12)
+      real*8 tpt(9),ept(3),av(3),fv(3),nv(3),dclbuf(640),tcinv(12)
       real*8 ept1(3),ept2(3),ept3(3),fv1(3),fv2(3),fv3(3)
       real*8 av1(3),av2(3),av3(3),nv1(3),nv2(3),nv3(3)
       real*8 d1,d2,ndist,ndot

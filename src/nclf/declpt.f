@@ -482,7 +482,7 @@ C
            call error(12)
            go to 99999
 300    if (ityp.ne.1.or.ist.lt.638.or.ist.gt.643)
-     1     go to 420
+     1     go to 640
 c                                   **** mod
        sc(11)=ist
        call parsit
@@ -536,7 +536,7 @@ c
 c
 c...PT/ON,cv|sf,u (,v)
 c
- 420   if (ityp.eq.1.and.ist.eq.71) then
+ 640   if (ityp.eq.1.and.ist.eq.71) then
            W0 = -.0001
            W1 = 1.0001
            isc10(3) = 0

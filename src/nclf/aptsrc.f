@@ -54,7 +54,7 @@ c
       integer*4 irec(2),ir,iclw(6),isn,inum,icnt,nw,nc,ioerr,
      1          nclf_getsrc
 c
-      real*8 dclbuf(420),stpt(6)
+      real*8 dclbuf(640),stpt(6)
 c
       character*1 cbuf(80),ibuf(80),abuf(77)
       character*6 lbuf

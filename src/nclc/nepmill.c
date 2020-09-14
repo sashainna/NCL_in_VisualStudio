@@ -2233,15 +2233,19 @@ UM_real8 *npas,*nstp,*atrad;
 	UU_REAL len1,len2,toler,fmm,zmin,zmax,trad,frad;
 	UU_REAL xmm[2],ymm[2];
 	UM_coord spt,spt1,spt2,slpt,slpt1,spt1s,spt2s,*pts1,*pts2;
-	UM_2box bbox0;
+	UU_REAL bucketSize,erad;
+	UM_2box bbox,bbox0;
 	int mcsflg, irot, s_irot;
 
 	//UM_int2 *ier=NULL;
 
 	UM_real8 ptx[12];
 
-	UU_LIST *points = UU_NULL;
+	
+	UU_LIST bndpts;
+    UU_LIST *points = UU_NULL;
 	UU_LIST *ptsbnd = UU_NULL;
+	UU_LIST *points3d = UU_NULL;
 
 	struct NCL_fixed_databag e1,e2;
 	struct NCL_nclpl_rec pl,*dpl1,*dpl2;
@@ -2354,6 +2358,8 @@ UM_real8 *npas,*nstp,*atrad;
 	isub = 2; gettool (&isub ,&toolpar);
 	trad = (toolpar + thk);
 	frad = 0.5*diam - toolpar;
+	if (frad<UM_FUZZ)
+		frad = 0.0;
 /*
 .....Drive plane
 */
@@ -2599,6 +2605,23 @@ UM_real8 *npas,*nstp,*atrad;
 		sfs_xmmx,sfs_ymmx);	
 	if (status != UU_SUCCESS) goto Err3;
 	zmin -= toler + trad;
+/*
+.....Create surfaces tesselation buckets
+*/
+	bucketSize = diam;
+	ncl_create_2box(sfs_xmmx,sfs_ymmx,0.5*diam,&bbox);
+	ncl_sfbucket_create(sfnum,sff,bbox,bucketSize);
+/*
+.....Create 3d contour boundary for CONTCT
+*/
+	if (*nend == 3)
+	{
+		ncl_create_contour_boundary3d(points,toler,&points3d);
+/*
+.....Create 3d boundary bukcet
+*/
+		ncl_sgbucket_create(points3d,0.5*diam);
+	}
 /*
 .....Initialize clpath
 */

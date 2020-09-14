@@ -2235,7 +2235,7 @@ c
                     call gtdesc (tv,nclkey,nwds,ietype)
                     call ncl_get_sf_primtyp(nclkey,ietype)
                     if (ietype .ne. 3) then
-                        call error (19)
+                        call error (19) 
                         goto 99999
                     endif
                 endif

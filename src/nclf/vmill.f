@@ -35,7 +35,7 @@ c
       integer*4 i,j,npts,npas,ntype
 c
       real*8 cnv,frate,fdprev,buf(14),tmp8,dx,dy,dz,zdpt,pte(6),ptl(9),
-     1       pts(9),ptt(9),tdat(420),cir(7),speed,sprev,pt1(9),pt2(9),
+     1       pts(9),ptt(9),tdat(640),cir(7),speed,sprev,pt1(9),pt2(9),
      2       ci1(7)
 c
       equivalence(ntk,ifl(79))

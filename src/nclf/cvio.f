@@ -120,6 +120,7 @@ c
 c... move to point on both surfaces
 c
       maxp = ifl(91)*3
+      !maxp = ifl(91)*12
       if (maxp.gt.3000) maxp = 3000
       call uvmove (1,maxp,pts,px,vx,0)
 c

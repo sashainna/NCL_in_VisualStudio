@@ -50,7 +50,7 @@ c
       logical idone,iq,ibeg,jdone,lsterr,imbeg,ismrec,lrap
       integer*4 ifnd
 c
-      real*8 dcltmp(420),pbuf(6),sptt(21),sc123,spttra(6)
+      real*8 dcltmp(640),pbuf(6),sptt(21),sc123,spttra(6)
 c
       integer*4 DEBUGX
       parameter (DEBUGX=0)
@@ -631,7 +631,7 @@ c
  
       real*8 wrkpts(6,4),vec(3,3),tl,RADS /57.29577 95d0/,angl(2),
      -       dist2,dist3,dist4,spoint(6),fpoint(6),r,f_dot,mintol,
-     -       tangs,tangf,tflr,filsav(420),wk1(6),wk2(6),wkt(6),
+     -       tangs,tangf,tflr,filsav(640),wk1(6),wk2(6),wkt(6),
      -       svec(2),fvec(2),cirsto(7),ratio(2),alph1,
      -       alph3,bet1,ddl,fi,thet,tvmp(4),iclpt(12),
      x       dclall(441), pbuf(6),
@@ -731,7 +731,7 @@ C
 6        call clread (iclf,kold,iclwtp,dcltmp,jerr)
          if (jerr.eq.1) goto 9000
          if (ismrec(iclwtp) .and. iclwtp(4) .eq. 6) then
-            do 7, i=1,420
+            do 7, i=1,640
 7              dclbuf(i) = dcltmp(i)
             do 8, i=1,5
 8              iclw(i) = iclwtp(i)
@@ -1581,7 +1581,7 @@ C
          if (iclwtp(4).eq.6) then
            do 1381 i=1,5
 1381          iclw6(i) = iclwtp(i)
-           do 1382 i = 1,420
+           do 1382 i = 1,640
 1382          dcll6(i) = dcltmp(i)
            call setnpt(iclw6,npts3)
            call ncl_setptr(irectp, ken)

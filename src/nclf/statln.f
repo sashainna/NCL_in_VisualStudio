@@ -133,11 +133,11 @@ c         -----------------------------
 c         Set FEDRAT field.
 c         -----------------------------
       frstat = 'FR/'
-      if (sc(123) .gt. 0.0001) then
-c                call putcl (2000,1009,2,sc(223))
-                sc(223)=sc(123)
-      endif
-      call fmtnum (sc(223), frnum)
+!      if (sc(123) .gt. 0.0001) then
+!c                call putcl (2000,1009,2,sc(223))
+!                sc(223)=sc(123)
+!      endif
+      call fmtnum (sc(123), frnum)
  
 c         Put an asterisk after the feedrate if a secondary feedrate
 c         is in effect.
@@ -376,10 +376,11 @@ c         -----------------------------
 c         -----------------------------
 c         Set FEDRAT field.
 c         -----------------------------
-      if (sc(123) .gt. 0.0001) then
-                sc(223)=sc(123)
-      endif
-      call fmtnum (sc(223), frnum)
+      !if (sc(123) .gt. 0.0001) then
+      !          sc(223)=sc(123)
+      !endif
+      call fmtnum (sc(123), frnum)
+      !call fmtnum (sc(123), frnum)
           nc1 = 6
           nc2 = strlen1 (frnum)
           call wrtstat("FEDRAT", nc1, frnum, nc2)

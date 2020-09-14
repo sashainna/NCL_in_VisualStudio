@@ -449,7 +449,7 @@ c
           if (ist.eq.7 .or. ist .eq. 8 .or. ist .eq. 9) then
             goto 7900
           else
-            ie = 420
+            ie = 640
           endif
 c
 c...Get name of var to store if curve/surface is planar

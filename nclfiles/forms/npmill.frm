@@ -31,11 +31,17 @@
 /FILE/ pmill.jpg
 /NAME/ pmill
 /POSITION/ 220,10
-/SIZE/ 125,125
+/SIZE/ 125,102
 
 #SECTION#
 /NAME/ Motion Type
 /COLOR/ DEFAULT
+
+#PICTUREBOX#
+/FILE/ Pmill_MType.jpg
+/NAME/ MotionType
+/POSITION/ 220,10
+/SIZE/ 125,125
 
 #CHOICEBOX#
 /LABEL/ Motion Type:
@@ -43,9 +49,9 @@
 /SIZE/90,40
 /TYPE/UD_DASSTRING
 /CHOICES/ "Linear","Helix","Arc"
-/PICTURE/MotionType,"Linear",1,1,99,50,0
-/PICTURE/MotionType,"Helix",1,51,50,99,1
-/PICTURE/MotionType,"Arc",51,51,99,99,2
+/PICTURE/MotionType,"Linear",1,1,50,50,0
+/PICTURE/MotionType,"Helix",55,1,99,51,1
+/PICTURE/MotionType,"Arc",1,55,50,95,2
 
 #EDIT#
 /LABEL/ Radius:
@@ -62,9 +68,16 @@
 /TYPE/ UD_DASSTRING
 /CHOICES/ "CLW", "CCLW"
 
+#CHOICEBOX#
+/LABEL/Step:
+/POSITION/ 10,29,55,29
+/SIZE/ 90,40
+/TYPE/ UD_DASSTRING
+/CHOICES/ "Step","Scallop"
+
 #EDIT#
-/LABEL/ Step
-/POSITION/ 10,29
+/LABEL/
+/POSITION/ 105,29
 /SIZE/ 40,14
 /TYPE/ UD_SCAVAL
 /PREC/ 8
@@ -75,7 +88,7 @@
 /POSITION/ 10,46,55,46
 /SIZE/ 90,40
 /TYPE/ UD_DASSTRING
-/CHOICES/ "Curr Toler","Tolerance"
+/CHOICES/ "Curr Tol","Tolerance"
 
 #EDIT#
 /LABEL/
@@ -167,15 +180,15 @@
 /PREC/ 8
 /LEN/ 8
 
-#PICTUREBOX#
-/FILE/ Pmill_MType.jpg
-/NAME/ MotionType
-/POSITION/ 220,10
-/SIZE/ 125,125
-
 #SECTION#
 /NAME/ Entry 
 /COLOR/ DEFAULT
+
+#PICTUREBOX#
+/FILE/ Pmill_EntryExit.jpg
+/NAME/ EntryExit
+/POSITION/ 220,10
+/SIZE/ 150,60
 
 #CHOICEBOX#
 /LABEL/ Start:
@@ -183,8 +196,8 @@
 /SIZE/ 70,40
 /TYPE/ UD_DASSTRING
 /CHOICES/ "Default", "Point"
-/PICTURE/EntryExit,"Default",70,5,96,20,0
-/PICTURE/EntryExit,"Point",5,20,25,40,1
+/PICTURE/EntryExit,"Default",65,5,95,45,0
+/PICTURE/EntryExit,"Point",3,39,27,77,1
 
 #EDIT#
 /LABEL/
@@ -199,12 +212,6 @@
 /POSITION/ 130,12
 /SIZE/ 40,14
 /TYPE/ UD_DASSTRING
-
-#PICTUREBOX#
-/FILE/ Pmill_EntryExit.jpg
-/NAME/ EntryExit
-/POSITION/ 220,10
-/SIZE/ 150,60
 
 #SECTION#
 /NAME/ Colors
@@ -256,7 +263,7 @@
 /FILE/ highlight.jpg
 /NAME/ highlight
 /POSITION/ 220,10
-/SIZE/ 150,125
+/SIZE/ 150,120
 
 #SECTION#
 /NAME/ All

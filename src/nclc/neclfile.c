@@ -1114,7 +1114,7 @@ UN_clstruc **icpt,**ocpt,**ncpt;
 {
 	UM_int2 iclf0,iclf2,jerr;
 	UM_int4 iclw[6];
-	UM_real8 rclw[420];
+	UM_real8 rclw[640];
 	UN_clstruc *irec;
 /*
 .....Initialize routine

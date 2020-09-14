@@ -61,7 +61,7 @@ C****************************************************************
       integer*2 kst,mxcl,npts
       integer*4 iclw(5)
  
-      real*8 clbuf(420),filsav(420)
+      real*8 clbuf(640),filsav(640)
  
       integer*4 is
       integer*2 i
@@ -600,7 +600,7 @@ c
 c
       logical ismrec
 c
-      real*8 dbuf(420)
+      real*8 dbuf(640)
 c
 c...Increment pointer
 c

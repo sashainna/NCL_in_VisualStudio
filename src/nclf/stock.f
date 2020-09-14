@@ -58,7 +58,7 @@ c
 c
       logical trflg
 c
-      real*8 param(12),pbuf(12),wid,len,hgt,tol,rcldat(420),ufct,cnv
+      real*8 param(12),pbuf(12),wid,len,hgt,tol,rcldat(640),ufct,cnv
 c
       character*(MAX_LEN) temp,fnam
       character*64 stok
@@ -756,7 +756,7 @@ cc              rcldat(i+1) = param(i)
 cc  410     continue
 cc          lcldat(105:112) = TOKEN2(1:8)
 cc          inc = 28
-cc          do 420 i=1,nidns,1
+cc          do 640 i=1,nidns,1
 cc              inc = inc + 1
 cc              jcldat(inc) = idns(i)
 cc              if (inc .eq. 100) then
@@ -765,7 +765,7 @@ cc                  nc2 = (inc+1) / 2 + 1
 cc                  call putcl (icltyp,MOVEV,nc2,rcldat)
 cc                  inc = 28
 cc              endif
-cc  420     continue
+cc  640     continue
 cc          if (inc .gt. 28) then
 cc              jcldat(1) = inc - 28
 cc              nc2 = (inc+1) / 2 + 1
@@ -1410,7 +1410,7 @@ c
       integer*2 icldat(320)
       integer*4 inc,nc,nc4,jcldat(160)
 c
-      real*8 rcldat(420)
+      real*8 rcldat(640)
 c
       character*66 ltxt
       character*640 lcldat

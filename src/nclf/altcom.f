@@ -863,9 +863,9 @@ c
                 err  = .false.
                 temp = cimage(1:nccimg)
                 ipos = index (temp, '/')
-420             ipos = ipos+1
+640             ipos = ipos+1
                 if (ipos.lt.nccimg.and.temp(ipos:ipos).eq.' ') 
-     x                 goto 420
+     x                 goto 640
                 temp = cimage(ipos:nccimg)
               endif
               call fparse (temp,temp,' ','.u')

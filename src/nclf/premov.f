@@ -526,7 +526,7 @@ c
         hds = 0.
       endif
       call uvcplvc4 (t(1,3),t(4,3),srf(8,2),hds)
-c     call uvcplvc4 (t(1,3),t(4,3),srf(8,2),tool(5))
+      !call uvcplvc4 (t(1,3),t(4,3),srf(8,2),tool(5))
       u = dsu
       v = dsv
       call sfinit (sc(145), isrf, u, v)

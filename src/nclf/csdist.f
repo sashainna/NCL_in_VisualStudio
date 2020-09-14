@@ -37,7 +37,7 @@ c
       integer*4 maxpt
 
       integer*2 numitm,modsl,modac,svac,lfeed,nu,inc,is,k,isub,isb
-      real*8 gtp(420),gfed(21),gfac(21),tout(420),FEEDR
+      real*8 gtp(640),gfed(21),gfac(21),tout(640),FEEDR
       real*8 s1,s2
       equivalence (lfeed,ifl(315))
       equivalence (FEEDR,MOTMAP(24))
@@ -45,7 +45,7 @@ c
 c...Initialize
 c
       if (iclass .eq. 5200) then
-        maxpt = 420
+        maxpt = 640
         mu = 20
         nu = 21
       else
@@ -265,7 +265,7 @@ c
 c
       integer*2 iclass
       integer*4 kfl,ksu,knum,kdir 
-      real*8 gtp(420),gfed(21),gndis
+      real*8 gtp(640),gfed(21),gndis
 c
       real*8 dis,mdist,rnum,s
       real*8 tdis,pbuf(462)
@@ -278,7 +278,7 @@ c
 c...Initialize
 c
       if (iclass .eq. 5200) then
-        maxpt = 420
+        maxpt = 640
         mu = 20
         nu = 21
       else

@@ -33,8 +33,8 @@ C
       real*8 appsf1(max_appsf)
 
       real*8 apsw,tol,ufct
-c      real*8 pte(6),ptl(9),tdat(420),buf(9)
-      real*8 pte(24),ptl(24),tdat(420),buf(9)
+c      real*8 pte(6),ptl(9),tdat(640),buf(9)
+      real*8 pte(24),ptl(24),tdat(640),buf(9)
       integer*4 i,j,npts,nclkey,ksf,iflag,npas
       integer*2 lnk,iret,irapt,inewfr,ibndr,iclass,isubcl,jptk
       integer*2 ntk,nwds,numitm

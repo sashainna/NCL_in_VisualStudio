@@ -530,18 +530,18 @@ c         The block commented out below by Sasha on May 03, 2019, was not necess
 c         in multisurface tool movements, but caused wrong tool movements in Ken M. test files.
 
 c             take previous tool pos/dir if tool axis flipped, Sasha Sep.05, 2018    
-!              if(f_dot(hldctp(4),sc(220)) .lt. 0.0) then 
+              if(f_dot(hldctp(4),sc(220)) .lt. 0.0) then 
 !c                  call mnvc(hldctp(4))
-!                  call vctovc(sc(217), hldctp(1))
-!                  call vctovc(sc(220), hldctp(4))
-!                  call vctovc(sc(217), sc(1))
-!                  call vctovc(sc(220), sc(4))
+                  call vctovc(sc(217), hldctp(1))
+                  call vctovc(sc(220), hldctp(4))
+                  call vctovc(sc(217), sc(1))
+                  call vctovc(sc(220), sc(4))
 !c                  goto 99999
-!              endif
-              !if (sc(223) .eq. -10000) then
-              !    call vctovc(sc(217), hldctp(1))
-              !    call vctovc(sc(220), hldctp(4))
-              !endif
+              endif
+                if (sc(223) .eq. -10000) then
+                  call vctovc(sc(217), hldctp(1))
+                  call vctovc(sc(220), hldctp(4))
+              endif
               call putcl (iclass,isubcl,numitm,hldctp)
             endif
           endif

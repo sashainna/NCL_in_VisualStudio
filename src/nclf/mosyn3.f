@@ -341,11 +341,11 @@ c
 c.....from label 500        
       else
 c...........Output recent fedrat          
-c            rpfron = .false.
-            
+            rpfron = .false.
+             sc(123)=tv
             !if ((tv .eq. tv) .and. (tv .gt. 0.000001)) then
             if (tv .gt. 0.0001) then
-                sc(123)=tv
+                !sc(123)=tv
                 call putcl (2000,1009,2,sc(123))
                 sc(223)=sc(123)
             endif

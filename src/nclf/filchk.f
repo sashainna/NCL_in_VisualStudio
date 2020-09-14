@@ -28,7 +28,7 @@ C*******************************************************
 C
 C...filsave is the array that has the point's coordinates.
 C
-      real*8 wrkpts(6,4),filsav(420),tmp1,cirsto(7)
+      real*8 wrkpts(6,4),filsav(640),tmp1,cirsto(7)
       real*8 sectol,distsq,pl(4)
       parameter (sectol=1.d-12)
  

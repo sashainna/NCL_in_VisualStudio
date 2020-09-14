@@ -1175,7 +1175,7 @@ c
       integer*2 lnk,jptk,iclass,isubcl
       integer*4 i,inc,npt,n,is,ncirc,icst,icen,is1
 c
-      real*8 pt(6),buf(420),spt(3),mpt(3),ang,vc1(3),vc2(3),f_dist,
+      real*8 pt(6),buf(640),spt(3),mpt(3),ang,vc1(3),vc2(3),f_dist,
      1       cir(7)
 c
       integer*2 ntk
@@ -1360,7 +1360,7 @@ c
       integer*2 kclass,ksubcl
       integer*4 kmxc
 c
-      real*8 gbuf(420)
+      real*8 gbuf(640)
 c
       integer*2 numitm
 c

@@ -63,7 +63,7 @@ C
 
       integer*2 ietype, ipg, isub, ixv, ipv, ivf, srfnum, ierr, nen
       integer*2 i2v1 /1/
-      integer*2 srfhed(mxsfhd*4),isc(420),ipatwd(2)
+      integer*2 srfhed(mxsfhd*4),isc(640),ipatwd(2)
       integer*2 inv(maxptx),kentj(4),ksn(4),ktv(4),iap(8)
       integer*4 ibnum,ienum,idir,key,nclkey,numpck,nup,nupt,nvp,nvpt
       integer*2 ifl72, itrans

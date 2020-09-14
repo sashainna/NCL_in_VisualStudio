@@ -3,9 +3,9 @@ C*    NAME         :  motgxx.f
 C*       CONTAINS:
 C*    COPYRIGHT 1984 (c) MILLS DATA SYSTEM Inc.  All Rights Reserved.
 C*    MODULE NAME AND RELEASE LEVEL
-C*       motgxx.f , 26.1
+C*       motgxx.f , 26.4
 C*    DATE AND TIME OF LAST  MODIFICATION
-C*       04/06/18 , 13:49:18
+C*       04/12/19 , 14:17:10
 C**********************************************************************
 C**********************************************************************
 C**  PROGRAM NAME: MOTGXX
@@ -27,6 +27,7 @@ C**********************************************************************
 
       common/avdcom/avflgs
       logical avflgs(5)
+      
 c
 c...  Local variables for Auto Gofwd.
 c
@@ -363,7 +364,9 @@ c
             if (lcomb) then
                call mocomb
             else
-               call domove
+                call vctovc(sc(1),sc(217))
+                call vctovc(sc(4),sc(220))
+                call domove
             end if
             if (lavoided) lavoided = lavdd
             if (ifl(2).gt.0) then
@@ -588,6 +591,8 @@ C
             call mocomb
          else
             if (i .gt. 1) csmult=.true.
+            call vctovc(sc(1),sc(217))
+            call vctovc(sc(4),sc(220))
             call domove
          end if
          if (ifl(2) .gt. 0) then
@@ -643,7 +648,7 @@ C
       endif
       kuv(1) = kps
       kuv(2) = kds
-      call gtdesc (sc(13),kcs(ichksv),nwds,ietype)
+       call gtdesc (sc(13),kcs(ichksv),nwds,ietype)
       kcsv = kcs(ichksv)
       kuv(3) = kcs(ichksv)
       hu(1)  = t(13,ic)
@@ -1431,6 +1436,8 @@ c
       if (lcomb) then
          call mocomb
       else
+         call vctovc(sc(1),sc(217))
+         call vctovc(sc(4),sc(220)) 
          call domove
       end if
 

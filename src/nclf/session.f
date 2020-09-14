@@ -773,7 +773,7 @@ c
       integer*4 jrec,inc,jbuf(128),iclw(6)
 c
       real*4 rbuf(128)
-      real*8 qbuf(64),dcltmp(420)
+      real*8 qbuf(64),dcltmp(640)
 c
       character*512 sbuf
       character*(MAX_PATH) sfil

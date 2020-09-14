@@ -125,15 +125,16 @@ c                                                        ********** tlaxis
 c                                                        ********** tlaxis
 c...we should not initial to false, but the current value, initial here will reset value we set before
 c...Yurong
-      lgide  = .false.
-      lchk   = .false.
+c      lgide  = .false.
+c      lchk   = .false.
       !ltsec  = .false.
       !prpfl  = .false.
-      !lgide = lcvgid
-      !lchk = ldschk
+      lgide = lcvgid
+      lchk = ldschk
 !c...for secondary-ps, need reset to false. Yurong
 !c...ltsec = lsecps
-      ltsec  = .false.
+      ltsec = lsecps
+      !ltsec  = .false.
       prpfl = prplst
 c...flag value should not initial here, initial here will reset value we set before
 c...yurong

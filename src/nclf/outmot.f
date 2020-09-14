@@ -32,7 +32,7 @@ c      implicit undefined (a-z)
 c      include 'com.com'
       include 'com8a.com'
 
-      real*8 tdat(420), tb(24),ds(3)
+      real*8 tdat(640), tb(24),ds(3)
       integer*2 lnk, jptk, iclass, isubcl
 
       integer*2 i, n, numitm, ntk1
@@ -45,7 +45,7 @@ c
       ntk1 = ntk+1
       if (iclass.eq.5200) then
         n = 6
-        max = 420
+        max = 640
       else
         n = 3+ifl(82)*3
         max = 120

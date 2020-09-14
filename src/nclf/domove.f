@@ -77,7 +77,7 @@ c     init pars for flip check Sasha Aug. 2018
       !sc(221) = 0.0
       !sc(222) = 0.0
       !sc(223) = 0.0
-
+      !
       if (.not.csuv .and. .not.csmult) call getsuv(sc(13),3,csu,csv)
 
 10    CONTINUE
@@ -89,18 +89,21 @@ c     init pars for flip check Sasha Aug. 2018
         endif
         GOTO 999
       endif
+      !psmult = 0
       if (.not.lv93 .and. .not. psmult .and. .not.mocom .and.
      x    ifl(42).eq.0 .and. ifl(23).eq.4 .and. kcps.eq.0) lfncmb = -1
       
 c     save to check flip later in psrel, Sasha Aug. 2018           
-c      call vctovc(sc(1),sc(217))
-      call vctovc(sc(4),sc(220))
+      !call vctovc(sc(1),sc(217))
+      !call vctovc(sc(4),sc(220))
       CALL MOVER
       
-      !if(f_dot(sc(4),sc(220)) .lt. 0.0) then 
-      !    call vctovc(sc(217), sc(1))
-      !    call vctovc(sc(220), sc(4))
-      !endif
+      !IF (IFL(2).EQ.-255) IFL(2) = 255
+      
+      if(f_dot(sc(4),sc(220)) .lt. 0.0) then 
+          call vctovc(sc(217), sc(1))
+          call vctovc(sc(220), sc(4))
+      endif
 
       IF (IFL(2).EQ.9596) then
         ifl(2) = 0
@@ -118,6 +121,7 @@ c      call vctovc(sc(1),sc(217))
       IF (IFL(2).EQ.141 .and. .not.lv91) GOTO 20
       IF (IFL(2).EQ.163) GOTO 20
       IF (IFL(2).EQ.255) GOTO 20
+      !IF (IFL(2).EQ.-255) GOTO 20
       IF (IFL(2).EQ.256) GOTO 20
       IF (IFL(2).EQ.9595) GOTO 20
 C...                             ADD MORE ERRORS HERE IF NEEDED

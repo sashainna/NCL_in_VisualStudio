@@ -26,7 +26,7 @@ int UN_gtrec, UN_gtlen, ptlen, cptr;
 double *pd;
 typedef struct 
    {
-    UU_REAL gtpt[420];
+    UU_REAL gtpt[640];
    } GOTO_dat; 
 
 GOTO_dat *UN_gtfirst, *UN_gtptr;

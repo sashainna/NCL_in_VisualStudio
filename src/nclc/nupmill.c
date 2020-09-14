@@ -4,7 +4,7 @@
 **
 **       nclu_pmill()
 **
-**    COPYRIGHT 2019 (c) NCCS Inc.  All Rights Reserved.
+**    COPYRIGHT 2020 (c) NCCS Inc.  All Rights Reserved.
 **    MODULE NAME AND RELEASE LEVEL
 **       
 **    DATE AND TIME OF LAST MODIFICATION
@@ -64,47 +64,48 @@
 #define MOTIONTRG1		3 //type choice
 #define MOTIONTRG2		4 //rad text input
 #define MOTIONTRG3		5 //orientation choice
-#define MOTIONTRG4		6 //step text input
-#define MOTIONTRG5		7 //Tolerance choice
-#define MOTIONTRG6		8 //Tolerance text input
+#define MOTIONTRGTY		6 //step choice
+#define MOTIONTRG4		7 //step text input
+#define MOTIONTRG5		8 //Tolerance choice
+#define MOTIONTRG6		9 //Tolerance text input
 
-#define MOTIONTRG8		9 //sf1 text input
-#define MOTIONTRG9		10 //Start button
-#define MOTIONTRG10		12 //sf2 text input
-#define MOTIONTRG11		13 //End button
-#define MOTIONTRG12		15 // Retract choice
-#define MOTIONTRG13		16 // Retract
-#define MOTIONTRG14		17 // Retract
-#define MOTIONTRG15		18 // Fedrat choice
-#define MOTIONTRG16		19 // Fedrat
-#define MOTIONTRG17		11 //sf1 select button
-#define MOTIONTRG18		14 //sf2 select button
+#define MOTIONTRG8		10 //sf1 text input
+#define MOTIONTRG9		11 //Start button
+#define MOTIONTRG10		13 //sf2 text input
+#define MOTIONTRG11		14 //End button
+#define MOTIONTRG12		16 // Retract choice
+#define MOTIONTRG13		17 // Retract
+#define MOTIONTRG14		18 // Retract
+#define MOTIONTRG15		19 // Fedrat choice
+#define MOTIONTRG16		20 // Fedrat
+#define MOTIONTRG17		12 //sf1 select button
+#define MOTIONTRG18		15 //sf2 select button
 /*
 .....Entry /Exit
 */
-#define ENEXTRG1	20
-#define ENEXTRG2	21
-#define ENEXTRG3	22
+#define ENEXTRG1	21
+#define ENEXTRG2	22
+#define ENEXTRG3	23
 /*
 .....Colors
 */
-#define CLRRG1	23
-#define CLRRG2	24
-#define CLRRG3	25
-#define CLRRG6	26
-#define CLRRG7	27
-#define CLRRG8	28
+#define CLRRG1	24
+#define CLRRG2	25
+#define CLRRG3	26
+#define CLRRG6	27
+#define CLRRG7	28
+#define CLRRG8	29
 /*
 .....Action Buttons
 */
-#define FAPV	29
-#define FAPY	30
-#define FARS	31
-#define FAPB	32
-#define FAVE	33
-#define FAGE	34
-#define FAVW	35
-#define FVIDEO	36
+#define FAPV	30
+#define FAPY	31
+#define FARS	32
+#define FAPB	33
+#define FAVE	34
+#define FAGE	35
+#define FAVW	36
+#define FVIDEO	37
 
 
 #define HIDE_KEY 0
@@ -161,10 +162,12 @@ static char Tmethod_str[MXLAB];
 static char Torient_str[MXLAB];
 
 static int Sstarttyp=0, Stoltyp=0;
+static int Ssteptyp = 0;
 static int Smethod=0, SLraptotyp=0, SLraptofed=0;
 static UU_REAL Sstp=0.0, Stoler=0.0;
 static UU_REAL Trad=0.0, Srad=0.0;
 static int Tstarttyp=0, Ttoltyp=0;
+static int Tsteptyp = 0;
 static int Tmethod=0, Torient=0,    TLraptotyp=0, TLraptofed=0;
 
 static UN_motseg *Smptr=0,Smotatt;
@@ -181,8 +184,8 @@ static char Tstp_str[65]="0.0", Trad_str[65]="0.0",
 		Ttoler_str[65]="0.0",
 		TLraptofrv_str[65]="0.0", Tcmd_str[8][65];
 
-//static char Sdirval1[65]="-1.0";
-//static char Tdirval1[65]="-1.0";
+//static char Sscal_str[65]="0.1";
+//static char Tscal_str[65]="0.1";
 //
 //static char Sdirval2[65]="-1.0";
 //static char Tdirval2[65]="-1.0";
@@ -208,7 +211,9 @@ static char Sselsrf[NCL_MAX_LABEL_AND_SUBSCRIPT] = "", Tselsrf[NCL_MAX_LABEL_AND
 static char Sdirval1[NCL_MAX_LABEL_AND_SUBSCRIPT] = "-1.0", Tdirval1[NCL_MAX_LABEL_AND_SUBSCRIPT] = "-1.0"; 
 static char Sdirval2[NCL_MAX_LABEL_AND_SUBSCRIPT] = "-1.0", Tdirval2[NCL_MAX_LABEL_AND_SUBSCRIPT] = "-1.0"; 
 
+static char Sscal_str[NCL_MAX_LABEL_AND_SUBSCRIPT] = "0.1",Tscal_str[NCL_MAX_LABEL_AND_SUBSCRIPT] = "0.1"; 
 
+static char Pl1_str[NCL_MAX_LABEL_AND_SUBSCRIPT] = "",Pl2_str[NCL_MAX_LABEL_AND_SUBSCRIPT]= "" ; 
 
 int point_coordinates();
 int nclu_pl_from_crv(char*);
@@ -234,7 +239,7 @@ static int *Sanswers[] = {
 /*
 ......Motion Type 16
 */
-		&Tmethod, &Trad, &Torient, (int *)&Tstp_str, 
+		&Tmethod, &Trad, &Torient, &Tsteptyp, (int *)&Tstp_str,
 		&Ttoltyp,(int *)&Ttoler_str,
 		/*(int *)&Tdirval1,  UU_NULL, UU_NULL, 
 		(int *)&Tdirval2,  UU_NULL, UU_NULL, */
@@ -336,6 +341,10 @@ static UU_LOGICAL S_enable_buttons()
 		}
 	}
 	sect21 = UU_TRUE;
+	/*if(MOTIONTRGTY)
+	{
+		;
+	}*/
 	nc = (int)strlen(Tstp_str);
 	ul_strip_blanks(Tstp_str, &nc);
 	if (nc<0)
@@ -847,6 +856,8 @@ static void S_save_form()
 	Sstptclr = Tstptclr;
 	Sdirclr = Tdirclr;
 	Spassclr = Tpassclr;
+	Ssteptyp = Tsteptyp;
+	//strcpy(Sstp_str, Tstp_str);
 	strcpy(Sselsrf, Tselsrf);
 	strcpy(Sdirval1, Tdirval1);
 	strcpy(Sdirval2, Tdirval2);
@@ -1480,6 +1491,17 @@ UD_FSTAT stat;
 		}
 		Smenu_ch[6] = *(val->frmint);
 		break;
+	case MOTIONTRGTY: //Doing nothing now, if needed, can add
+		/*uval1=atof(Tstp_str);
+		uval1*=100;
+		sprintf(Tstp_str,"%0.2f",uval1);
+		strcpy(Sscal_str, Tstp_str);
+		strcpy(Tscal_str, Tstp_str);
+		strcpy( Sstp_str, Tstp_str);*/
+		if (Tsteptyp==1)
+			strcpy( Sstp_str, Tstp_str);
+		break;
+
 	case MOTIONTRG5:
 		if (*(val->frmint)==0)
 		{
@@ -1744,8 +1766,8 @@ UD_FSTAT stat;
 			uw_ntdispmsg("No port surface exists");
 			return(UD_BADACT);
 		}
-		/*status = nclu_pl_on_crv("PL1", "CV4", uval1);*/
 		status = nclu_pl_on_crv("PL1", "CV3", uval1);
+		//status = nclu_pl_on_crv(Pl1_str, "CV3", uval1);
 
 		strcpy(Ttoler_str, Stoler_str);
 
@@ -1765,8 +1787,8 @@ UD_FSTAT stat;
 			uw_ntdispmsg("Value should be put 0 <= u <= 1");
 			return(UD_BADACT);
 		}
-		/*status = nclu_pl_on_crv("PL2", "CV4", uval2);*/
 		status = nclu_pl_on_crv("PL2", "CV3", uval2);
+		/*status = nclu_pl_on_crv(Pl2_str, "CV3", uval2);*/
 		/*if (uval1<uval2)
 			go_to_start("PT3");
 		else
@@ -1893,6 +1915,7 @@ static int S_build_command(flg)
 UU_LOGICAL flg;
 {
 	int i;
+	UU_REAL rval;
 	NCL_cmdbuf cmdbuf;
 	char buf[64];
 	char a[64];
@@ -1901,6 +1924,9 @@ UU_LOGICAL flg;
 	a[0]='0';
 	//b[0] = '\0';
 	ab[0]='0';
+	
+
+	//strcpy( Sstp_str, Tscal_str);
 
 	if (flg)
 		NCL_preview_mot = 0;
@@ -1939,6 +1965,7 @@ UU_LOGICAL flg;
 		}
 		else
 			ncl_add_token(&cmdbuf, "PL1", NCL_comma);
+			//ncl_add_token(&cmdbuf, Pl1_str, NCL_comma);
 
 		if (Tdirval2[0]=='.')
 		{
@@ -1955,8 +1982,24 @@ UU_LOGICAL flg;
 		}
 		else
 			ncl_add_token(&cmdbuf, "PL2", NCL_comma);
-	ncl_add_token(&cmdbuf, NCL_run_step, NCL_comma);
-	strcpy(buf, Tstp_str);
+			//ncl_add_token(&cmdbuf, Pl2_str, NCL_comma);
+
+	/*ncl_add_token(&cmdbuf, NCL_run_step, NCL_comma);*/
+	if (Tsteptyp==1)
+	{
+		ncl_add_token(&cmdbuf, NCL_height, NCL_comma);
+		//rval = atof(Trad_str);
+		uval1=atof(Tstp_str);
+		/*if (uval1<0.001)
+			uval1 = 0.001;*/
+		sprintf(Tstp_str,"%0.5f",uval1);
+		//strcpy(Sscal_str, Tstp_str);
+		//strcpy(Tscal_str, Tstp_str);
+		strcpy( Sstp_str, Tstp_str);
+	}
+	else
+		ncl_add_token(&cmdbuf, NCL_run_step, NCL_comma);
+	strcpy(buf, Sstp_str);
 	ncl_add_token(&cmdbuf, buf, NCL_comma);
 
 	if (Tstarttyp)
@@ -2076,6 +2119,7 @@ static void S_init_form()
 
 		Sstarttyp = 0;
 		Stoltyp = 0;
+		Ssteptyp = 0;
 		Smethod = 0; 
 		SLraptotyp = 0;
 		SLraptofed = 0;
@@ -2089,6 +2133,7 @@ static void S_init_form()
 		strcpy(Srad_str, "0.05");
 		ncl_sprintf(Stoler_str,&Stoler,1);
 	}
+	Tsteptyp = Ssteptyp;
 	strcpy(Sstp_str, "0.1");
 	strcpy(Tstp_str, Sstp_str);
 /*
@@ -2129,6 +2174,7 @@ static void S_init_form()
 	ncl_sprintf(Stoler_str,&Stoler,1);
 	Tstarttyp = Sstarttyp;
 	Ttoltyp = Stoltyp;
+	Tsteptyp = Ssteptyp;
 	Tmethod = Smethod; 
 	TLraptotyp = SLraptotyp;
 	TLraptofed = SLraptofed;
@@ -2274,7 +2320,7 @@ void nclu_pmill()
 ......Motion Type
 */
 		OnMChcPick, OnMText, OnMChcPick,
-		OnMText, 
+		OnMChcPick, OnMText, 
 		OnMChcPick, OnMText,
 		OnMText, OnMButton, OnMSButton, 
 		OnMText, OnMButton, OnMSButton, 
@@ -2297,21 +2343,21 @@ void nclu_pmill()
 
 	static char traverse[]= {
 		1,1,1,
-		1,1,1,1,1,1,1,1,1, 1,1,
+		1,1,1,1,1,1,1,1,1, 1,1,1,
 		1,1,1,1,1,1,
 		1,1,1,
 		1,1,1,1,1,1,
 		1,1,1,1,1,1,1,1};
 	static char called[]  = {
 		6,6,6,
-		6,6,6,6,6,6,6,6,6,6,6,
+		6,6,6,6,6,6,6,6,6,6,6,6,
 		6,6,6,6,6,6,
 		6,6,6,
 		6,6,6,6,6,6,
 		6,6,6,6,6,6,6,6};
 	static char display[] = {
 		1,1,1,
-		1,1,1,1,1,1,1,1,1, 1,1,
+		1,1,1,1,1,1,1,1,1, 1,1,1,
 		1,1,1,1,1,1,
 		1,1,1,
 		1,1,1,1,1,1,
@@ -2384,7 +2430,7 @@ repeat:
 	S_build_command(UU_TRUE);
 	ncl_init_cmdbuf(&cmdbuf);
 		
-		status = ncl_add_token(&cmdbuf,"PT2", NCL_nocomma);
+		status = ncl_add_token(&cmdbuf,"PT5", NCL_nocomma);
 		status = ncl_add_token(&cmdbuf, "=", NCL_nocomma);
 		status = ncl_add_token(&cmdbuf, "POINT/", NCL_nocomma);
 		status = ncl_add_token(&cmdbuf, "X+0.25", NCL_comma);
@@ -2403,7 +2449,7 @@ repeat:
 		status = ncl_add_token(&cmdbuf, "Z", NCL_nocomma);*/
 		
 		status = ncl_add_token(&cmdbuf,"goto/", NCL_nocomma);
-		status = ncl_add_token(&cmdbuf, "PT2", NCL_comma);
+		status = ncl_add_token(&cmdbuf, "PT5", NCL_comma);
 		//status = ncl_add_token(&cmdbuf, "Y-0.5", NCL_comma);
 		//status = ncl_add_token(&cmdbuf, "Z", NCL_nocomma);
 		ncl_set_cmdmode(UU_TRUE);
@@ -2939,6 +2985,29 @@ UU_REAL coord;
 		coord = 0.02;
 	if (coord>=0.9)
 		coord = 0.85;*/
+	/*if (strcmp(Pl1_str, ""))
+		strcpy(Pl1_str, "");
+		nclu_pl_on_crv
+	strcat(Pl1_str,"PL/(PV/ON, ");
+	strcat(Pl1_str,name);
+	strcat(Pl1_str,",");
+	sprintf(paracoord,"%0.2f",coord);
+	strcat(Pl1_str,paracoord);
+	strcat(Pl1_str,")");*/
+
+	////if (strcmp(plname, ""))
+	////	strcpy(plname, "");
+
+	//strcat(plname,"PLANE");
+	//strcat(plname,"=");
+	////strcat(plname,"PL/(PV/ON, ");
+	//strcat(plname,"(PV/ON, ");
+	////strcat(plname,name);
+	////strcat(plname,",");
+	////sprintf(paracoord,"%0.2f",coord);
+	////strcat(plname,paracoord);
+	////strcat(plname,"),");
+	//PLANE1 = plname;
 	
 		ncl_init_cmdbuf(&cmdbuf);
 		
@@ -2953,10 +3022,16 @@ UU_REAL coord;
 		ncl_set_cmdmode(UU_TRUE);
 		ncl_add_cmdbuf(&cmdbuf);
 		ncl_call(&cmdbuf);
+	/*ncl_init_cmdbuf(&cmdbuf);
+	status = ncl_add_token(&cmdbuf, plname, NCL_nocomma);
+	ncl_set_cmdmode(UU_TRUE);
+		ncl_add_cmdbuf(&cmdbuf);
+		ncl_call(&cmdbuf);*/
 
 done:;
 	return (0);
 }
+
 
 /*********************************************************************
 **    E_FUNCTION     : nclu_pl_selected(plname)
@@ -3076,7 +3151,7 @@ char* curve_name;
 		ncl_add_cmdbuf(&cmdbuf);
 		ncl_call(&cmdbuf);
 
-		ncl_init_cmdbuf(&cmdbuf);
+		/*ncl_init_cmdbuf(&cmdbuf);
 		
 		status = ncl_add_token(&cmdbuf,"CU/", NCL_nocomma);
 		status = ncl_add_token(&cmdbuf, "0.2", NCL_comma);
@@ -3086,7 +3161,7 @@ char* curve_name;
 		
 		ncl_set_cmdmode(UU_TRUE);
 		ncl_add_cmdbuf(&cmdbuf);
-		ncl_call(&cmdbuf);
+		ncl_call(&cmdbuf);*/
 
 		ncl_init_cmdbuf(&cmdbuf);
 		

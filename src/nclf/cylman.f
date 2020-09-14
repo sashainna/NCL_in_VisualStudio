@@ -340,7 +340,7 @@ c
 c
 c......Position along tool angle
 c
-  420     rmch(is2) = gclr(is2)
+  640     rmch(is2) = gclr(is2)
           rmch(is3) = gclr(is3)
           if (gcyc(5) .ne. 0. .and. fdep .ne. 0.) then
               rmch(is1) = gclr(is1) + rprm(5) * tvec(1)
@@ -426,7 +426,7 @@ c
           call pshcyc (gout,knout,gcyc(7),gclr)
           if (iflg .eq. 0) go to 400
           rcnt   = rcnt   + 1
-          if (rcnt .lt. kcyc(5)) go to 420
+          if (rcnt .lt. kcyc(5)) go to 640
 c
 c...THREAD/lead
 c

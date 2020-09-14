@@ -9,8 +9,8 @@ $$ PL2   =PL/(PV/ON,CV4,0.652)
 $$ PL2   =PL/(PV/ON,CV4,0.5)
 $$ PT1   =POINT/YSMALL,ENDPT,CV4
 $$ PL3   =PL/(PV/ON,CV4,0.9)
-$$ TH/0.1
-$$ CU    /0.35,0.175,0.35,-89
+TH/0.1
+CU    /0.35,0.175,0.35,-89
 $$ CV7=cv/intof,PSF1,pl2
 $$ OB    /PT1,X,Y,Z
 $$ PT2   =PT/X+0.25,Y-0.5,Z

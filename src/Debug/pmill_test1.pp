@@ -1,11 +1,12 @@
 LOADU/port.u
 $$ invis/sf1,sf4,sf5,psf1,sf58,sf57,sf7,sf8,sf6, sf39
 invis/sf1,sf4,sf5,sf7,sf8,sf6, sf39
+ca/on
 CV3   =SPLINE/PSF1,3,0.45
 CV4   =SPLINE/OFFSET,CV3,ZS,1.0
 $$ PL1   =PL/(PV/ON,CV4,0.025)
 PL1   =PL/(PV/ON,CV4,0.1)
-PL2   =PL/(PV/ON,CV4,0.8)
+PL2   =PL/(PV/ON,CV4,0.5)
 PT1   =POINT/YSMALL,ENDPT,CV4
 $$ PL3   =PL/(PV/ON,CV4,0.9)
 CU    /0.35,0.175,0.35,-89

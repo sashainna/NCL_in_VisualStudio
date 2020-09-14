@@ -593,9 +593,14 @@ c                  sc(15-18) in tool(12-14). calc ijk in t-sys
 c                  tool(15-17)
       ifl(104)=0
       ifl(293)=0
-      lmdnow = .false.
+c      lmdnow = .false.
       if(nw.eq.0)goto 802
+      
       if (nw.gt.1) then
+          if ((sc(20).eq.0.0).and.(sc(21).eq.0.0)) then
+              lmdnow = .false.
+              goto 802
+          endif
         cosa=dcos(sc(20)/RADIAN)
         sina=dsin(sc(20)/RADIAN)
         cosb=dcos(sc(21)/RADIAN)
@@ -614,25 +619,31 @@ c                  tool(15-17)
         lmdnow = .true.
         goto 802
       endif
-      ifl(104)=1
-      call conv8_4(sc(15),tool(12),3)
-      cosa=dcos(sc(18)/RADIAN)
-      sina=dsin(sc(18)/RADIAN)
-      cosb=dcos(sc(19)/RADIAN)
-      sinb=dsin(sc(19)/RADIAN)
-      dcx=sina*cosb
-      dcy=sinb*cosa
-      dcz=cosb*cosa
-      sec=dsqrt(dcx**2+dcy**2+dcz**2)
-      if(sec.gt.1.d-6)goto 801
+      
+      if((sc(15).eq.0.0).and.(sc(16).eq.0.0).and.(sc(17).eq.0.0)
+     x         .and.(sc(18).eq.0.0).and.(sc(19).eq.0.0)) then
+              ifl(104) = 0
+      else
+          ifl(104)=1
+          call conv8_4(sc(15),tool(12),3)
+          cosa=dcos(sc(18)/RADIAN)
+          sina=dsin(sc(18)/RADIAN)
+          cosb=dcos(sc(19)/RADIAN)
+          sinb=dsin(sc(19)/RADIAN)
+          dcx=sina*cosb
+          dcy=sinb*cosa
+          dcz=cosb*cosa
+          sec=dsqrt(dcx**2+dcy**2+dcz**2)
+          if(sec.gt.1.d-6)goto 801
 c          error. degen case.   (rpl-fpl do not intersect)
 c              turn modfy off, error on and exit.
-      ifl(2)=121
-      goto 15
+          ifl(2)=121
+          goto 15
 
-801   tool(15)=dcx/sec
-      tool(16)=dcy/sec
-      tool(17)=dcz/sec
+801       tool(15)=dcx/sec
+          tool(16)=dcy/sec
+          tool(17)=dcz/sec
+      endif
 
 802   if (msub.eq.1) goto 810
       if (msub.eq.2) goto 820

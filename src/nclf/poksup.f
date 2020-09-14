@@ -924,7 +924,7 @@ c
       integer*2 istep, npts, ilast, icirc
       real*8 buf (120), cdat(19), ptlast(3)
 
-      real*8 bufl(420)
+      real*8 bufl(640)
       real*8 fx,fy,fz, sec
       integer*4 kptr, ncp, mupt, maxpt
       integer*2 i, j, k, ii, iclass, isubcl
@@ -944,7 +944,7 @@ cc      if (lexpcl) then
       if (.not. lv92) then
         iclass = 5200
         isubcl = 5
-        maxpt = 420
+        maxpt = 640
         mupt = 21
       else
         iclass = 5000

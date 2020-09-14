@@ -53,7 +53,7 @@ c
       integer*2 mxcl,isiz,jerr,iflg,irot
       integer*4 irec(2),isav(2),iciprm(5),iclw(6),isn
 c
-      real*8 rclw(420),rciprm(16),sec,cirbuf(7),rivmx(12),romx(12),
+      real*8 rclw(640),rciprm(16),sec,cirbuf(7),rivmx(12),romx(12),
      1       romxi(12),xvec(3)
 c
 c...Apply APTSRC matrix
@@ -218,7 +218,7 @@ c
       integer*2 npt,mxcl,kerr
       integer*4 kprm(8)
 c
-      real*8 gbuf(7),gprm(16),clpt(420),spt(6)
+      real*8 gbuf(7),gprm(16),clpt(640),spt(6)
 c
       integer*4 i,inc,inum,inx(4),iacy,iax,iacy5
 c
@@ -476,7 +476,7 @@ c
       integer*4 kprm(8)
       integer*2 mxcl,npt,kerr
 c
-      real*8 gprm(12),clpt(420),spt(6)
+      real*8 gprm(12),clpt(640),spt(6)
 c
       integer*4 i,inc,iend,kinc,iacy,iacy5
 c
