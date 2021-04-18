@@ -123,6 +123,10 @@ int progress;
 	{
 		if (NCL_waterline)
 		{
+			/*if (progress==90)
+			{
+				progress= 90;
+			}*/
 			ncl_waterline_progress(progress);
 		}
 /*

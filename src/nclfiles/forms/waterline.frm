@@ -969,6 +969,7 @@ choices are as follows:
  - Advanced Pocket (POCKET)
  - VoluMill 2-Axis (VMPOCK)
  - VoluMill 3-Axis (VMP3AX)
+ - VoluMill 5-Axis (VMP5AX)
 
 The VoluMill fields are only displayed when VoluMill is licensed.
 

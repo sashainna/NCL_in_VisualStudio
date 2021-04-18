@@ -598,7 +598,13 @@ int iprog;
 	UM_int2 ifl35,ifl86;
 /*
 .....Update progress field
+
 */
+	/*if (iprog==90)
+	{
+		iprog = 90;
+		
+	}*/
 	if (Sfrm != -1)
 	{
 		istat = iprog;
@@ -1500,9 +1506,14 @@ UU_REAL mxtol2;
 			ncl_create_boxgeo (&bxbox,&stkbox);
 		}
 	}
- 	if (wpar->method > 1)
+ 	if (wpar->method > 1)	// Sasha, Feb.02, 2021
+	/*if (wpar->method == 2)*/
 		status = ncl_waterline3D (wset,wpar,&bxbox,wbase,nvec,pl,rot,ntimes,
 			wset->offdis,mxtol2);
+	/*else if (wpar->method == 3)
+	{
+		;
+	}*/
  	else
 		status = ncl_waterline4 (wset,wpar,&bxbox,wbase,nvec,pl,rot,ntimes,
 			wset->offdis,mxtol2);

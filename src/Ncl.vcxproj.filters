@@ -4191,6 +4191,10 @@
     <ClCompile Include="nclc\PWMessageBox.cpp">
       <Filter>nclc</Filter>
     </ClCompile>
+    <ClCompile Include="nclc\TestFlank-nintof-2.cpp">
+      <Filter>nclc</Filter>
+    </ClCompile>
+    <ClCompile Include="nclc\print_cl.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="inc\wsntncl.rc" />
@@ -4198,5 +4202,6 @@
   <ItemGroup>
     <ClInclude Include="inc\wsntres.h" />
     <ClInclude Include="inc\MachineWorks.h" />
+    <ClInclude Include="..\..\..\volumillsdk_70\thirdparty\boost\boost\ratio\detail\mpl\abs.hpp" />
   </ItemGroup>
 </Project>

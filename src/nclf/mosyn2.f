@@ -95,6 +95,8 @@ c      include 'com8a.com'
       parameter (VMPOCK = 765)
       integer*2 VMP3AX
       parameter (VMP3AX = 962)
+      integer*2 VMP5AX
+      parameter (VMP5AX = 1022)
       integer*2 VCS
       parameter (VCS = 753)
       integer*2 ADJUST
@@ -670,7 +672,11 @@ c
            else if (vocab .and. voc .eq. VMP3AX) then
                wmeth = 2
                call parsit
-           endif
+			else if (vocab .and. voc .eq. VMP5AX) then
+               wmeth = 3
+               call parsit
+           endif												 
+c           endif
 c
 c..... bottom
 c

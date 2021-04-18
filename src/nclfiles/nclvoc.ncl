@@ -642,6 +642,7 @@ VECTOR                   604S LAST UPDATED 11-JAN-83  18:04:26
 VIEW                     923S
 VISIBL                  1095S LAST UPDATED 22-NOV-88  11:08:23     
 VMP3AX                   962S
+VMP5AX                  1022S
 VMPMOD                   764S LAST UPDATED 24-OCT-11  17:12:15     
 VMPOCK                   765S LAST UPDATED 24-OCT-11  17:12:15     
 VOCABF                   549S LAST UPDATED 20-FEB-01  11:08:23     

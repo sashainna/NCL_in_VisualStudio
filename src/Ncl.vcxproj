@@ -44,6 +44,7 @@
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\Debug\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\Debug\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\VoluMillSDK\Code\Common\Geom;C:\VoluMillSDK\ThirdParty\boost\boost\smart_ptr;C:\VoluMillSDK\ThirdParty\boost\boost\serialization;C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Midl>
@@ -56,8 +57,8 @@
     </Midl>
     <ClCompile>
       <Optimization>MinSpace</Optimization>
-      <AdditionalIncludeDirectories>C:\VoluMillSDK_70\Code\Common\Mesh;C:\VoluMillSDK_70\Code\Common\Geom;C:\VoluMillSDK_70\Code\Common\Exchange;C:\VoluMillSDK_70\Code\Common\License;C:\VoluMillSDK_70\Code\Common\Util;C:\NCL_from_GitHub\NCL_in_VisualStudio\src;C:\NCL_from_GitHub\NCL_in_VisualStudio\src\inc;C:\NCL_from_GitHub\NCL_in_VisualStudio\postworks\pwinc;c:\mworks73\include\amd\winxp64\msoft10;c:\mworks73\include;c:\mworks73\include\li;C:\NCL_from_GitHub\NCL_in_VisualStudio\postworks\pwkeys;C:\VoluMillSDK_70\Code\Common;C:\VoluMillSDK_70\Code\VoluMillResources;C:\VoluMillSDK_70\ThirdParty\boost;C:\VoluMillSDK_70\ThirdParty;C:\VoluMillSDK_70\ThirdParty\Loki\include;C:\VoluMillSDK_70\ThirdParty\threadpool\include;C:\VoluMillSDK_70\ThirdParty\boost\boost\detail;C:\Program Files (x86)\3Dconnexion\3DxWare SDK\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;UU_COMP=UU_WIN2K;UU_DOUBLE;UU_IPV;LI_FLOAT_IS_DOUBLE;LI_MACROS;UU_SEGDATA=DOUBLE;UU_DEBUGOFF;WNT;WINVER=0x601;NO_XMLRPC_FUNCTIONS;VOLUMILL_ENGINE_LINKED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\VoluMillSDK_Apr12\Code\Common\Mesh;C:\VoluMillSDK_Apr12\Code\Common\Geom;C:\VoluMillSDK_Apr12\Code\Common\Exchange;C:\VoluMillSDK_Apr12\Code\Common\License;C:\VoluMillSDK_Apr12\Code\Common\Util;C:\NCL_from_GitHub\NCL_in_VisualStudio\src;C:\NCL_from_GitHub\NCL_in_VisualStudio\src\inc;C:\NCL_from_GitHub\NCL_in_VisualStudio\postworks\pwinc;c:\mworks73\include\amd\winxp64\msoft10;c:\mworks73\include;c:\mworks73\include\li;C:\NCL_from_GitHub\NCL_in_VisualStudio\postworks\pwkeys;C:\VoluMillSDK_Apr12\Code\Common;C:\VoluMillSDK_Apr12\Code\VoluMillResources;C:\VoluMillSDK_Apr12\ThirdParty\boost;C:\VoluMillSDK_Apr12\ThirdParty;C:\VoluMillSDK_Apr12\ThirdParty\Loki\include;C:\VoluMillSDK_Apr12\ThirdParty\threadpool\include;C:\VoluMillSDK_Apr12\ThirdParty\boost\boost\detail;C:\Program Files (x86)\3Dconnexion\3DxWare SDK\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;WIN64;_WINDOWS;UU_COMP=UU_WIN2K;UU_DOUBLE;UU_IPV;LI_FLOAT_IS_DOUBLE;LI_MACROS;UU_SEGDATA=DOUBLE;UU_DEBUGOFF;WNT;WINVER=0x601;NO_XMLRPC_FUNCTIONS;VOLUMILL_DYNAMICALLY_LINKED;BOOST_SERIALIZATION_DYN_LINK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PrecompiledHeaderOutputFile>.\Release/Ncl.pch</PrecompiledHeaderOutputFile>
       <AssemblerListingLocation>.\Release/</AssemblerListingLocation>
@@ -71,8 +72,8 @@
       <AdditionalIncludeDirectories>C:\NCL_from_GitHub\NCL_in_VisualStudio\src\inc;C:\NCL_from_GitHub\NCL_in_VisualStudio\nlib\obj;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalLibraryDirectories>C:\VoluMillSDK_70\Code\Release-DLL-VS2010;C:\VoluMillSDK_70\Code\x64\Release-DLL-VS2010;C:\NCL_from_GitHub\NCL_in_VisualStudio\nlib;C:\NCL_from_GitHub\NCL_in_VisualStudio\src\x64\release;C:\NCL_from_GitHub\NCL_in_VisualStudio\nlib\obj;c:\mworks73\lib\amd\winxp64\msoft10\dod_;C:\VoluMillSDK_70\ThirdParty\boost\lib\x64;C:\VoluMillSDK_70\ThirdParty\openssl\lib\static\x64;C:\Program Files (x86)\3Dconnexion\3DxWare SDK\lib\x64;C:\Program Files (x86)\Intel\Composer XE\compiler\lib\intel64;C:\VoluMillSDK_70\ThirdParty\boost\lib\x64</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Dwmapi.lib;C:\NCL_from_GitHub\NCL_in_VisualStudio\src\x64\Release\ncl_lib_.lib;UxTheme.lib;siapp.lib;spromeps.lib;"C:\VoluMillSDK_70\Code\common\x64\Release\Common.lib";MasterLicense.lib;"C:\VoluMillSDK_70\Code\x64\Release-DLL-VS2010\VoluMillEngines.lib";libeay32MDd.lib;Iphlpapi.lib;opengl32.lib;glu32.lib;netapi32.lib;mssample.lib;mwappl.lib;mwgouge.lib;mwinit.lib;mwp5axis.lib;mwpick.lib;mwpixel.lib;mwrapid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\VoluMillSDK_70\Code\Release-DLL-VS2010;C:\VoluMillSDK_70\Code\x64\Release-DLL-VS2010;C:\NCL_from_GitHub\NCL_in_VisualStudio\nlib;C:\NCL_from_GitHub\NCL_in_VisualStudio\src\x64\release;C:\NCL_from_GitHub\NCL_in_VisualStudio\nlib\obj;c:\mworks73\lib\amd\winxp64\msoft10\dod_;C:\VoluMillSDK_70\ThirdParty\boost\lib\x64;C:\VoluMillSDK_70\ThirdParty\openssl\lib\static\x64;C:\Program Files (x86)\3Dconnexion\3DxWare SDK\lib\x64;C:\Program Files (x86)\Intel\Composer XE\compiler\lib\intel64</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Dwmapi.lib;C:\NCL_from_GitHub\NCL_in_VisualStudio\src\x64\Release\ncl_lib_.lib;UxTheme.lib;siapp.lib;spromeps.lib;"C:\VoluMillSDK_Apr12\Code\Common\x64\Release-DLL-VMUC\Common.lib";"C:\VoluMillSDK_Apr12\Code\x64\Release-DLL-VS2010\VoluMillEngines.lib";libeay32MDd.lib;Iphlpapi.lib;opengl32.lib;glu32.lib;netapi32.lib;mssample.lib;mwappl.lib;mwgouge.lib;mwinit.lib;mwp5axis.lib;mwpick.lib;mwpixel.lib;mwrapid.lib;"C:\VoluMillSDK_Apr12\ThirdParty\XmlRpc\x64\Release2010\XmlRpc.lib";"C:\VoluMillSDK_Apr12\ThirdParty\boost\lib\x64\boost_serialization-vc100-mt-1_55.lib";"C:\VoluMillSDK_70\Code\x64\Release-DLL-VS2010\MasterLicense.lib";"C:\VoluMillSDK_Apr12\Code\x64\Release-DLL-VS2010\VoluMillResources.lib";%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\Release/Ncl.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <IgnoreSpecificDefaultLibraries>boost_serialization-vc100-mt-1_55.lib;libc.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
@@ -97,8 +98,8 @@
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>C:\VoluMillSDK_70\Code\Common\Mesh;C:\VoluMillSDK_70\Code\Common\Geom;C:\VoluMillSDK_70\Code\Common\Exchange;C:\VoluMillSDK_70\Code\Common\License;C:\VoluMillSDK_70\Code\Common\Util;C:\NCL_from_GitHub\NCL_in_VisualStudio\src;C:\NCL_from_GitHub\NCL_in_VisualStudio\src\inc;C:\NCL_from_GitHub\NCL_in_VisualStudio\postworks\pwinc;c:\mworks73\include\amd\winxp64\msoft10;c:\mworks73\include;c:\mworks73\include\li;C:\NCL_from_GitHub\NCL_in_VisualStudio\postworks\pwkeys;C:\VoluMillSDK_70\Code\Common;C:\VoluMillSDK_70\Code\VoluMillResources;C:\VoluMillSDK_70\ThirdParty\boost;C:\VoluMillSDK_70\ThirdParty;C:\VoluMillSDK_70\ThirdParty\Loki\include;C:\VoluMillSDK_70\ThirdParty\threadpool\include;C:\VoluMillSDK_70\ThirdParty\boost\boost\detail;C:\Program Files (x86)\3Dconnexion\3DxWare SDK\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DEBUG;WIN64;_WINDOWS;UU_COMP=UU_WIN2K;UU_DOUBLE;UU_IPV;LI_FLOAT_IS_DOUBLE;LI_MACROS;UU_SEGDATA=DOUBLE;UU_DEBUGOFF;WNT;WINVER=0x601;NO_XMLRPC_FUNCTIONS;VOLUMILL_ENGINE_LINKED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\VoluMillSDK_Apr12\Code\Common\Mesh;C:\VoluMillSDK_Apr12\Code\Common\Geom;C:\VoluMillSDK_Apr12\Code\Common\Exchange;C:\VoluMillSDK_70\Code\Common\License;C:\VoluMillSDK_Apr12\Code\Common\Util;C:\NCL_from_GitHub\NCL_in_VisualStudio\src;C:\NCL_from_GitHub\NCL_in_VisualStudio\src\inc;C:\NCL_from_GitHub\NCL_in_VisualStudio\postworks\pwinc;c:\mworks73\include\amd\winxp64\msoft10;c:\mworks73\include;c:\mworks73\include\li;C:\NCL_from_GitHub\NCL_in_VisualStudio\postworks\pwkeys;C:\VoluMillSDK_Apr12\Code\Common;C:\VoluMillSDK_Apr12\Code\VoluMillResources;C:\VoluMillSDK_Apr12\ThirdParty\boost;C:\VoluMillSDK_Apr12\ThirdParty;C:\VoluMillSDK_Apr12\ThirdParty\Loki\include;C:\VoluMillSDK_Apr12\ThirdParty\threadpool\include;C:\VoluMillSDK_Apr12\ThirdParty\boost\boost\detail;C:\Program Files (x86)\3Dconnexion\3DxWare SDK\inc;C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\atlmfc\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEBUG;WIN64;_WINDOWS;UU_COMP=UU_WIN2K;UU_DOUBLE;UU_IPV;LI_FLOAT_IS_DOUBLE;LI_MACROS;UU_SEGDATA=DOUBLE;UU_DEBUGOFF;WNT;WINVER=0x601;NO_XMLRPC_FUNCTIONS;BOOST_SERIALIZATION_DYN_LINK;VOLUMILL_DYNAMICALLY_LINKED;VOLUMILL_ENGINE_LINKED;XMLRPC_FUNCTIONS;OPENSSL_FUNCTIONS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <PrecompiledHeaderOutputFile>.\Debug/Ncl.pch</PrecompiledHeaderOutputFile>
       <AssemblerListingLocation>.\Debug/</AssemblerListingLocation>
@@ -115,11 +116,11 @@
       <AdditionalIncludeDirectories>C:\NCL_from_GitHub\NCL_in_VisualStudio\src\inc;C:\NCL_from_GitHub\NCL_in_VisualStudio\src\picts;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalLibraryDirectories>C:\VoluMillSDK_70\Code\Release-DLL-VS2010-MDd;C:\VoluMillSDK_70\Code\x64\Release-DLL-VS2010-MDd;C:\NCL_from_GitHub\NCL_in_VisualStudio\lib;C:\NCL_from_GitHub\NCL_in_VisualStudio\src\x64\debug;C:\NCL_from_GitHub\NCL_in_VisualStudio\nlib\obj;c:\mworks73\lib\amd\winxp64\msoft10\ddd_;C:\VoluMillSDK_70\ThirdParty\openssl\lib\static;C:\Program Files (x86)\3Dconnexion\3DxWare SDK\lib\x64;C:\Program Files (x86)\Intel\Composer XE\compiler\lib\intel64;C:\VoluMillSDK_70\ThirdParty\boost\lib\x64</AdditionalLibraryDirectories>
-      <AdditionalDependencies>C:\NCL_from_GitHub\NCL_in_VisualStudio\src\x64\Debug\ncl_lib_.lib;"C:\VoluMillSDK_70\Code\x64\Release-DLL-VS2010-MDd\MasterLicense.lib";Dwmapi.lib;propsys.lib;shlwapi.lib;comctl32.lib;UxTheme.lib;siapp.lib;spwmath.lib;Gdiplus.lib;spromeps.lib;"C:\VoluMillSDK_70\Code\Common\x64\Release-DLL-MDd\Common.lib";"C:\VoluMillSDK_70\ThirdParty\openssl\lib\static\x64\libeay32MDd.lib";"C:\VoluMillSDK_70\Code\x64\Release-DLL-VS2010-MDd\VoluMillEngines.lib";Iphlpapi.lib;opengl32.lib;glu32.lib;netapi32.lib;sk32w.lib;msmulti.lib;lcslte.lib;lidriver.lib;lidrvbmp.lib;lidrvjpg.lib;lidrvlwi.lib;lidrvpng.lib;lidrvtga.lib;lidrvtif.lib;lidrvwin.lib;ligeom.lib;liinterp.lib;lilicnse.lib;limemman.lib;lishader.lib;lisystem.lib;liview.lib;lixform.lib;mcworks.lib;msp5axis.lib;mspixel.lib;mss5axis.lib;mssample.lib;mwappl.lib;mwbase.lib;mwbrep.lib;mwclash.lib;mwclose.lib;mwfmsim.lib;mwgouge.lib;mwinit.lib;mwp5axis.lib;mwpick.lib;mwpixel.lib;mwprofl.lib;mwr5axis.lib;mwrapid.lib;mwrender.lib;mwrendx.lib;mwrenogl.lib;mws5axis.lib;mwsample.lib;mwsldops.lib;mwsmbase.lib;mwufms.lib;mwutil.lib;mwv5axis.lib;mwvisi.lib;mwvkinem.lib;mwvturn.lib;mwvwire.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\VoluMillSDK\Code\Release-DLL-VS2010-MDd;C:\VoluMillSDK\Code\x64\Release-DLL-VS2010-MDd;C:\NCL_from_GitHub\NCL_in_VisualStudio\lib;C:\NCL_from_GitHub\NCL_in_VisualStudio\src\x64\debug;C:\NCL_from_GitHub\NCL_in_VisualStudio\nlib\obj;c:\mworks73\lib\amd\winxp64\msoft10\ddd_;C:\VoluMillSDK\ThirdParty\openssl\lib\static;C:\Program Files (x86)\3Dconnexion\3DxWare SDK\lib\x64;C:\Program Files (x86)\Intel\Composer XE\compiler\lib\intel64;C:\VoluMillSDK\ThirdParty\boost\lib\x64</AdditionalLibraryDirectories>
+      <AdditionalDependencies>C:\NCL_from_GitHub\NCL_in_VisualStudio\src\x64\Debug\ncl_lib_.lib;"C:\VoluMillSDK_70\Code\x64\Release-DLL-VS2010-MDd\MasterLicense.lib";Dwmapi.lib;propsys.lib;shlwapi.lib;comctl32.lib;UxTheme.lib;siapp.lib;spwmath.lib;Gdiplus.lib;spromeps.lib;"C:\VoluMillSDK_Apr12\ThirdParty\openssl\lib\static\x64\libeay32MDd.lib";"C:\VoluMillSDK_Apr12\Code\x64\Release-DLL-VS2010-MDd\VoluMillEngines.lib";Iphlpapi.lib;opengl32.lib;glu32.lib;netapi32.lib;sk32w.lib;msmulti.lib;lcslte.lib;lidriver.lib;lidrvbmp.lib;lidrvjpg.lib;lidrvlwi.lib;lidrvpng.lib;lidrvtga.lib;lidrvtif.lib;lidrvwin.lib;ligeom.lib;liinterp.lib;lilicnse.lib;limemman.lib;lishader.lib;lisystem.lib;liview.lib;lixform.lib;mcworks.lib;msp5axis.lib;mspixel.lib;mss5axis.lib;mssample.lib;mwappl.lib;mwbase.lib;mwbrep.lib;mwclash.lib;mwclose.lib;mwfmsim.lib;mwgouge.lib;mwinit.lib;mwp5axis.lib;mwpick.lib;mwpixel.lib;mwprofl.lib;mwr5axis.lib;mwrapid.lib;mwrender.lib;mwrendx.lib;mwrenogl.lib;mws5axis.lib;mwsample.lib;mwsldops.lib;mwsmbase.lib;mwufms.lib;mwutil.lib;mwv5axis.lib;mwvisi.lib;mwvkinem.lib;mwvturn.lib;mwvwire.lib;"C:\VoluMillSDK_Apr12\ThirdParty\XmlRpc\x64\Debug2010\XmlRpc.lib";"C:\VoluMillSDK_Apr12\Code\Common\x64\Debug-DLL-VMUC\common.lib";"C:\VoluMillSDK_Apr12\ThirdParty\boost\lib\x64\boost_serialization-vc100-mt-gd-1_55.lib";"C:\VoluMillSDK_Apr12\Code\x64\Release-DLL-VS2010\VoluMillResources.lib";%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\Debug/Ncl.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <IgnoreSpecificDefaultLibraries>msvcrt.lib;LIBC.lib;boost_serialization-vc100-mt-gd-1_55.lib;</IgnoreSpecificDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>msvcrt.lib;LIBC.lib</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>.\Debug/Ncl.pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
@@ -4481,8 +4482,10 @@
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <ClCompile Include="nclc\print_cl.cpp" />
     <ClCompile Include="nclc\pwcfunc.cpp" />
     <ClCompile Include="nclc\PWMessageBox.cpp" />
+    <ClCompile Include="nclc\TestFlank-nintof-2.cpp" />
     <ClCompile Include="nclc\trimsup.c">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -6936,6 +6939,7 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\volumillsdk_70\thirdparty\boost\boost\ratio\detail\mpl\abs.hpp" />
     <ClInclude Include="inc\MachineWorks.h" />
     <ClInclude Include="inc\wsntres.h" />
   </ItemGroup>

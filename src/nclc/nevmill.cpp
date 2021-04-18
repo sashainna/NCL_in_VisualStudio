@@ -26,7 +26,7 @@
 */
 #define DEBUGL 0
 #define DEBUGX 0
-#define DEBUG_XML 0
+// #define DEBUG_XML 1
 //#define DUMMY 1
 #define WIN32
 
@@ -58,6 +58,10 @@ extern "C" void ncl_nvmill_reset_calls(){}
 #include "ulist.h"
 #include "mgeom.h"
 
+//#include <ostream>
+
+//#include <stdlib.h>
+
 //#include  "usysdef.h"
 //#include  "umath.h"
 //#include	 "udebug.h"
@@ -70,10 +74,13 @@ extern "C" void ncl_nvmill_reset_calls(){}
 /*
 .....VoluMill headers
 */
-//#include <Util/IncludeEverywhere.h>
-#include "IncludeEverywhere.h"
+//#include "C:\VoluMillSDK_70\Code\Common\Util/IncludeEverywhere.h"
+#include "C:\VoluMillSDK_Apr12\Code\Common\Util/IncludeEverywhere.h"
+#include "C:\VoluMillSDK_Apr12\Code\Common\Util/ParamIds.h"
+#include "C:\VoluMillSDK_Apr12\Code\Common\Util/Params.h"
+#include "C:\VoluMillSDK_Apr12\Code\Common\Exchange\ProgressData.h"
 #include "Version.h"
-#include "LicenseAPI.h"
+#include "C:\VoluMillSDK_Apr12\Code\Common\License\LicenseAPI.h"
 #include "ToolpathRecords.h"
 #include "VoluMillExchange.h"
 #include "CurveAlg.h"
@@ -84,7 +91,30 @@ extern "C" void ncl_nvmill_reset_calls(){}
 #include "TriMeshFacets.h"
 #include "TriMesh3d.h"
 #include "TriMeshExchange.h"
+#include "C:\VoluMillSDK_Apr12\Code\VoluMillUniversalClient\VoluMillUniversalClient\VMUDef.h"
+#include "C:\VoluMillSDK_Apr12\Code\VoluMillUniversalClient\Graphics\GNode.h"
 
+#include "C:\VoluMillSDK_Apr12\Code\VoluMillUniversalClient\Component/TriMeshComponent.h"
+#include "C:\VoluMillSDK_Apr12\Code\VoluMillUniversalClient\Component/FaceComponent.h"
+//#include "C:\VoluMillSDK\Code\VoluMillUniversalClient\Component/OperationSetupComponent.h"
+#include "C:\VoluMillSDK_Apr12\Code\VoluMillUniversalClient\Component/InitParams.h"
+
+#include "C:\VoluMillSDK_Apr12\Code\VoluMillUniversalClient\Component\Project.h"
+#include "C:\VoluMillSDK_Apr12\Code\VoluMillUniversalClient\Component\ComponentParamIds.h"
+#include "C:\VoluMillSDK_Apr12\Code\VoluMillUniversalClient\Component\ComponentId.h"
+#include "C:\VoluMillSDK_Apr12\Code\VoluMillResources\VoluMillResources.h"
+
+#include "C:\VoluMillSDK_Apr12\Code\VoluMillResources\MultiProgressDialog.h"
+
+//#include "C:\VoluMillSDK\Code\VoluMillUniversalClient\VoluMill3x\VoluMill5xOperation.h"
+
+//#include <TriMeshComponent.h>
+//#include <Project.h>
+//#include "FaceComponent.h"
+//#include "PluginAPI.h"
+//#include "ModelingKernelInterface.h"
+
+// typedef _W64 int INT_PTR
 
 #ifdef DEBUG_XML 
 //#if DEBUG_XML == 1
@@ -93,6 +123,14 @@ extern "C" void ncl_nvmill_reset_calls(){}
 #include <boost/serialization/map.hpp>
 #include <boost/serialization/variant.hpp>
 #include <boost/serialization/shared_ptr.hpp>
+#include <boost\smart_ptr\shared_ptr.hpp>
+
+//#include <boost/serialization/map.hpp>
+//#include <boost/serialization/vector.hpp>
+//#include <boost/serialization/deque.hpp>
+//#include <boost/serialization/shared_ptr.hpp>
+//#include <boost/serialization/variant.hpp>
+//#include <boost/serialization/export.hpp>
 
 inline void fromVoluMill2dInputToXml (std::ostream& os, const exchange::VoluMill2dInput& input)
 {
@@ -104,7 +142,111 @@ inline void fromVoluMill3dInputToXml (std::ostream& os, const exchange::VoluMill
 	boost::archive::xml_oarchive oa(os);
 	oa << BOOST_SERIALIZATION_NVP(input);
 }
+
+inline void fromVoluMill5xInputToXml (std::ostream& os, const exchange::VoluMill5xInput& input)
+   {
+      boost::archive::xml_oarchive oa(os);
+      oa << BOOST_SERIALIZATION_NVP(input);
+   }
 #endif
+
+//inline boost::shared_ptr<topo::mesh::TriMeshFacets3d>& getMeshForWrite() { component::preTouch(); return m_pMesh; }
+
+//struct ShellIdToShellData
+//   {
+//      component::ComponentId m_shellId;
+//      boost::shared_ptr<void> m_shellPtr;
+//   };
+//
+//   struct FaceIdsToFacesData
+//   {
+//      component::ComponentIdVec m_faceIds;
+//      std::vector<boost::shared_ptr<void> > m_facePtrs;
+//   };
+
+//namespace
+//{
+//   template<class MeshPtr>
+//   void transformMesh (MeshPtr& pMesh, const geom::Transform& trf)
+//   {
+//      typename MeshPtr::element_type::Vertex v, vEnd;
+//      for (boost::tie (v, vEnd) = topo::mesh::getVertices (*pMesh); v != vEnd; ++v)
+//      {
+//         topo::mesh::setVertexLocation (v, trf.transformPoint (topo::mesh::getVertexLocation (v)));
+//      }
+//   }
+//   void addTriMeshFacets (const topo::mesh::TriMeshFacets3d& facetsMesh, topo::mesh::TriMeshFacets3dPtr* ppMesh, bool resetMesh)
+//   {
+//      using namespace topo::mesh;
+//      int baseVertices = 0;
+//      if (resetMesh)
+//         ppMesh->reset (new TriMeshFacets3d);
+//      else
+//         baseVertices = (int) (*ppMesh)->m_vertices.size();
+//
+//      // Copy over the vertices first, then the faces, adding in the vertex offset for each face
+//      std::copy (facetsMesh.m_vertices.begin(), facetsMesh.m_vertices.end(), std::back_inserter ((*ppMesh)->m_vertices));
+//      for (TriMeshFacets3d::Faces::const_iterator it = facetsMesh.m_faces.begin(); it != facetsMesh.m_faces.end(); ++it)
+//      {
+//         const TriMeshFacet& facet = *it;
+//         (*ppMesh)->m_faces.push_back (TriMeshFacet (facet.m_idx[0] + baseVertices, facet.m_idx[1] + baseVertices, facet.m_idx[2] + baseVertices));
+//      }
+//   }
+//}
+
+//namespace
+//{
+//   void triangulateAndAddMeshes (
+//      const boost::shared_ptr<exchange::ModelingKernelInterface>& pMKI,
+//      const component::ProjectPtr& pProject,
+//      const geom::Transform& trfInverse,
+//      const component::ComponentIdVec& ids,
+//      double tol,
+//      const topo::mesh::TriMeshFacets3dPtr& pMesh)
+//   {
+//      component::ComponentId shellId;
+//      boost::shared_ptr<void> pShell;
+//      boost::shared_ptr<ShellIdToShellData> pShellData (new ShellIdToShellData);
+//      boost::shared_ptr<FaceIdsToFacesData> pData (new FaceIdsToFacesData);
+//      for (int ii=0; ii < (int) ids.size(); ++ii)
+//      {
+//         component::TriMeshComponentPtr pComp = boost::shared_dynamic_cast<component::TriMeshComponent> (pProject->getComponent (ids[ii]));
+//         if (pComp)
+//         {
+//            if (pComp->getOwningFaceId().isValid())
+//               pData->m_faceIds.push_back (pComp->getOwningFaceId());
+//            else
+//            {
+//               // Take the mesh "as-is" and transform it
+//               topo::mesh::TriMeshFacets3dPtr pMeshCopy (new topo::mesh::TriMeshFacets3d (*pComp->getMesh()));
+//               transformMesh (pMeshCopy, trfInverse);
+//               topo::mesh::unionWithOtherTriMeshFacets (*pMesh, *pMeshCopy);
+//            }
+//         }
+//      }
+//      plugin::callPluginFunction2 ("OCCBridge.dll", "faceIdsToFaces", pProject, pData);
+//      for (int ii=0; ii < (int) pData->m_faceIds.size(); ++ii)
+//      {
+//         component::FaceComponentPtr pFace = boost::shared_dynamic_cast<component::FaceComponent> (pProject->getComponent (pData->m_faceIds[ii]));
+//         if (pFace && pFace->getShellId().isValid())
+//         {
+//            if (shellId != pFace->getShellId())
+//            {
+//               pShellData->m_shellId = pFace->getShellId();
+//               plugin::callPluginFunction2 ("OCCBridge.dll", "shellIdToShell", pProject, pShellData);
+//               pShell = pShellData->m_shellPtr;
+//            }
+//            topo::mesh::TriMeshFacets3dPtr pFacets;
+//            std::vector<geom::Point2d> uvs;
+//            pMKI->triangulateFace (pShell, pData->m_facePtrs[ii], tol, 5.0 * util::pi / 180.0, &pFacets, &uvs, 0);
+//            if (pFacets)
+//               topo::mesh::unionWithOtherTriMeshFacets (*pMesh, *pFacets);
+//            else
+//               WARN (0)("Failed to create mesh on face id")(pFace->getId().getId());
+//         }
+//      }
+//   }
+//}
 
 /*
 .....external C/Fortran function prototype 
@@ -114,6 +256,7 @@ extern "C"
 	void nclf_vmill_pocket(UM_int2 *, UM_real8 *, char [120][64], UM_int4 *,
 		UM_int2 *);
 	void nclf_vmill_pocket3(UM_int2 *);
+	void nclf_vmill_pocket5(UM_int2 *);
 	void nclf_vm_push_entry(UM_real8 *);
 	void gtdesc(UM_real8 &, UM_int4 &, UM_int2 &, UM_int2 &);
 	int vxchk(char *, UM_int4 *, UM_int4 *, UM_int4 *, UM_int4 *, UM_int2 *,
@@ -198,6 +341,7 @@ static void S_init_params (util::Parameterized*, UU_REAL *, int);
 static int S_getBoundaryChains (UM_int2 *, UM_real8 *, char [120][64],
 	UM_int4 *, UU_REAL, exchange::VoluMill2dBoundaries *);
 static int S_getBoundaryChains3D (exchange::VoluMill3dBoundaries *, UU_REAL);
+static int S_getBoundaryChains5x (exchange::VoluMill5xBoundaries *, UU_REAL);
 static int S_getPredrilledHoles(exchange::VoluMillDrillHoles *);
 static void S_freePredrilledHoles();
 static int S_makeline(std::vector<geom::CurvePtr2d>*, UM_coord, UM_coord,
@@ -216,6 +360,7 @@ static void S_printMakeCWArc(UU_REAL *, UU_REAL *, UU_REAL *);
 static void S_printCurves();
 static void S_printHole(exchange::VoluMillDrillHole *);
 static UM_int2 S_get_error(int);
+static int S_getBoundaryChains5x(exchange::VoluMill5xBoundaries *pBoundaries, UU_REAL dtol);
 
 /*
 .....Internal variables
@@ -228,7 +373,14 @@ static UU_LIST Sentry_list;
 /*
 .....VoluMill toolpath records
 */
+
+//boost::shared_ptr<exchange::ToolpathRecords> ppRecords;
 exchange::ToolpathRecords *pRecords;
+exchange::ToolpathRecords *ppRecords;
+static int pnumRecords = 0;
+static int snumRecords = 0;
+
+static int fiveaxis = 0;
 /*
 .....VoluMill License
 */
@@ -395,7 +547,7 @@ void nclf_vmill_pocket(UM_int2 *nbound4, UM_real8 *kbound8, char token[120][64],
 
 /*********************************************************************
 **    E_FUNCTION     : nclf_vmill_pocket3(ier)
-**       Interface to call VoluMill SDK from NCL (3-Axis)
+**       Interface to call VoluMill SDK from NCL (5-Axis)
 **       INPUT  : none
 **       OUTPUT  :
 **          ier        - Non-zero if an error occurred.
@@ -434,7 +586,7 @@ void nclf_vmill_pocket3(UM_int2 *ier)
 /*
 ....Initilize VoluMill parameters
 */
-	exchange::VoluMill3dInput input;
+	exchange::VoluMill3dInput input;	// VoluMill5xInput also available
 	S_init_params(&input.m_parameters,&dtol,3);
 /*
 ....Get boundary curves
@@ -443,7 +595,7 @@ void nclf_vmill_pocket3(UM_int2 *ier)
 #if DEBUG_XML
 	{
 		std::ostream *fos;
-		fos = new std::ofstream("nccs.xml");
+		fos = new std::ofstream("nccs3.xml");
 		::fromVoluMill3dInputToXml(*fos,input);
 	}
 #endif
@@ -454,7 +606,7 @@ void nclf_vmill_pocket3(UM_int2 *ier)
 /*
 .....Run the VoluMill 3d toolpath engine
 */
-	int jobId = exchange::submitVoluMill3dJob (input, licenseKey);
+	int jobId = exchange::submitVoluMill3dJob (input, licenseKey);	//5xJob also available, Sasha 02/02/2021
 /*
 .....Update Progress window while job is running
 */
@@ -462,7 +614,8 @@ void nclf_vmill_pocket3(UM_int2 *ier)
 	{
 		uu_delay(100);
 		prog = exchange::getProgress(jobId);
-		if (prog < 0.) break;
+		if (prog < 0.) 
+			break;
 		if (interrupt)
 		{
 			exchange::cancelJob(jobId);
@@ -480,11 +633,172 @@ void nclf_vmill_pocket3(UM_int2 *ier)
 .....Get the Toolpath Records
 */
 	pRecords = new exchange::ToolpathRecords;
-	int numRecords = exchange::getToolpathRecords (jobId, pRecords);
+	/*int */snumRecords = exchange::getToolpathRecords (jobId, pRecords);
 /*
 .....Make sure at least one Pre-drilled hole is used
 */
-	if (Snentry > 0 && numRecords > 0 && *ier == 0)
+	if (Snentry > 0 && snumRecords > 0 && *ier == 0)
+	{
+		exchange::VoluMillDrillHoles pPreDrilledHoles;
+		exchange::VoluMillHelixes pHelixes;
+		getPreDrilledHoles (jobId, &pPreDrilledHoles, &pHelixes);
+		if (pPreDrilledHoles.size() == 0) *ier = -547;
+	}
+/*
+.....Close log file
+*/
+	S_freePredrilledHoles();
+	S_closeLog();
+}
+
+void nclf_vmill_pocket5(UM_int2 *ier)	//@@@@@@@@@@@@@  Sasha. Feb04, 2021
+{
+	int iprog,tprog;
+	UU_LOGICAL interrupt,use;
+	UU_REAL prog,dtol,offset;
+
+	fiveaxis = 1;
+
+
+/*
+.....Run debug routine
+*/
+#if DEBUGX == 2
+	ncl_test_vmill(&pRecords);
+	return;
+#endif
+
+	//const component::ProjectPtr& pProject = NULL;
+	//const component::ProjectPtr pProject(new component::ProjectPtr);
+	//component::
+	//component::GeomGroupComponentPtr pGGroup (new component::GeomGroupComponent);
+	
+/*
+.....Open Progress window
+*/
+	interrupt = UU_FALSE;
+	nclu_vmill_open_progress(&interrupt);
+/*
+.....Open log file
+*/
+	S_openLog();
+/*
+
+
+.....Get the VoluMill license
+*/
+	license::LicenseKey licenseKey;
+	//iprog=license::generateLicenseFromMasterLicense (&licenseKey);
+	int errorCode = license::loadLicenseKey (&licenseKey, getVoluMillVersionMastercam3x(), license::VOLUMILL_5X_ROUGH_PRODUCT_LEVEL);
+	
+/*
+....Initilize VoluMill parameters
+*/
+	exchange::VoluMill5xInput input;	// VoluMill5xInput 
+	
+	S_init_params(&input.m_parameters,&dtol,5);
+
+
+/*
+....Get boundary curves
+*/
+	S_getBoundaryChains5x (&input.m_boundaries,dtol);
+
+	
+	geom::Point3d ll, ur;
+    topo::mesh::getBoundingBox (*input.m_boundaries.m_pPartMesh, &ll, &ur);
+    topo::mesh::rectangleToMesh (ll, ur, &input.m_boundaries.m_pMaterialMesh);
+	
+	
+	input.m_boundaries.m_containmentBoundaries.m_materialBoundaries.clear();	// This and above after Chain5x Evans suggestion, Mar.23, 2021
+	
+		
+
+/*
+.....Get predrilled holes
+*/
+	S_getPredrilledHoles(&input.m_preDrilledHoles);
+/*
+.....Run the VoluMill 3d toolpath engine
+*/
+
+/*
+	#if DEBUG_XML
+	{
+		std::ostream *fos;
+		fos = new std::ofstream("nccs5_2019_Apr09.xml");
+		::fromVoluMill5xInputToXml(*fos,input);
+	}
+#endif
+*/
+	/*
+	boost::shared_ptr<exchange::ProgressData> ppd (exchange::createLocallyLinkedProgressData());
+	int jobId = exchange::submitVoluMill5xJob (input, licenseKey);	// Sasha 02/02/2021
+	////boost::shared_ptr<exchange::ToolpathRecords> pRecords (new exchange::ToolpathRecords);
+
+	ppd->setJobId (jobId);
+         INT_PTR result = VoluMillResources::displayMultiProgressDialog (ppd);
+         boost::shared_ptr<exchange::ToolpathRecords> ppRecords (new exchange::ToolpathRecords);
+		 //ppRecords = new exchange::ToolpathRecords;
+		 //pRecords.get();
+         int numRecords = exchange::getToolpathRecords (ppd->getJobId(), ppRecords.get());
+*/		 
+		 //*pRecords = ppRecords;
+
+	
+/*
+.....Update Progress window while job is running
+*/
+
+	int jobId = exchange::submitVoluMill5xJob (input, licenseKey);	// Sasha 02/02/2021
+		 
+	for (;;)
+	{
+		uu_delay(100);
+		//assert(exchange::getProgress(jobId)<100.0);
+		//prog = min(100,exchange::getProgress(jobId));
+		prog = exchange::getProgress(jobId);
+		if (prog < 0.) 
+			break;
+		////if (prog < 0.) continue;
+		if (interrupt)
+		{
+			exchange::cancelJob(jobId);
+			break;
+		}
+		
+
+		iprog = prog;
+		//if (iprog==90)
+		//{
+		//	prog = iprog;
+			
+		//}
+		if (iprog > 100) iprog = 100;
+		nclu_vmill_update_progress(iprog);
+
+		//_sleep(100);
+	}
+	tprog = -prog;
+	*ier = S_get_error(tprog);
+	if (!interrupt) iprog = 100;
+	nclu_vmill_close_progress();
+
+	
+
+	//(new exchange::ToolpathRecords);
+	////boost::shared_ptr<exchange::ToolpathRecords> ppRecords (new exchange::ToolpathRecords);
+	ppRecords = new exchange::ToolpathRecords;
+
+	
+	/*int */pnumRecords = exchange::getToolpathRecords (jobId, ppRecords);
+	pnumRecords = ppRecords->size();
+
+	
+/*
+.....Make sure at least one Pre-drilled hole is used
+*/
+	if (Snentry > 0 && pnumRecords > 0 && *ier == 0)
 	{
 		exchange::VoluMillDrillHoles pPreDrilledHoles;
 		exchange::VoluMillHelixes pHelixes;
@@ -536,11 +850,29 @@ void nclf_vm_push_entry(UM_real8 *pt)
 *********************************************************************/
 void nclf_vm_clpath_getnpaths(UM_int4 *npaths)
 {
-	if (pRecords == UU_NULL)
+	
+	//if (ppRecords.get()->size()==0)	// == UU_NULL)
+	
+	if (fiveaxis==0)
+	{
+	if (snumRecords==0)	// == UU_NULL)
 		*npaths = 0;
 	else
-		*npaths = (UM_int4)pRecords->size();
-	//if (*npaths==0) *npaths=1;
+		//*npaths = (UM_int4)pRecords->size();
+	
+	*npaths = (UM_int4)snumRecords;
+	}
+	else
+	{
+		if (pnumRecords==0)	// == UU_NULL)
+		*npaths = 0;
+	else
+		//*npaths = (UM_int4)pRecords->size();
+	
+	*npaths = (UM_int4)pnumRecords;
+	}
+	/*ppRecords.get()->size();*/
+	//if (*npaths==0) *npaths=1;	//??
 }
 
 /*********************************************************************
@@ -559,7 +891,10 @@ void nclf_vm_clpath_gettype(UM_int4 *ix, UM_int4 *ntype)
 {
 	int itype;
 	int idx(*ix-1);
-	itype = exchange::getType (*pRecords, idx);
+	if (fiveaxis==0)
+		itype = exchange::getType (*pRecords, idx);
+	else
+		itype = exchange::getType (*ppRecords, idx);
 
 	*ntype = itype;
 }
@@ -580,7 +915,10 @@ void nclf_vm_clpath_getfeed(UM_int4 *ix, UM_real8 *feedrate, UM_real8 *cnv)
 {
 	double dFeedrate;
 	int idx(*ix-1);
-	exchange::getFeedRate (*pRecords, idx, &dFeedrate);
+	if (fiveaxis==0)
+		exchange::getFeedRate (*pRecords, idx, &dFeedrate);
+	else
+		exchange::getFeedRate (*ppRecords, idx, &dFeedrate);
 
 	*feedrate = dFeedrate * *cnv;
 }
@@ -602,7 +940,11 @@ void nclf_vm_clpath_getspindle(UM_int4 *ix, UM_real8 *spindle)
 {
 	double dSpindle;
 	int idx(*ix-1);
-	dSpindle = exchange::getSpindle (*pRecords, idx);
+	if (fiveaxis==0)
+		dSpindle = exchange::getSpindle (*pRecords, idx);
+	else
+		dSpindle = exchange::getSpindle (*ppRecords, idx);
+	//dSpindle = exchange::getSpindle (*pRecords, idx);
 
 	*spindle = dSpindle;
 }
@@ -622,7 +964,12 @@ void nclf_vm_clpath_getspindle(UM_int4 *ix, UM_real8 *spindle)
 void nclf_vm_clpath_getstartpt(UM_real8 pte[6], UM_real8 *cnv)
 {
 	geom::Point3d pt;
-	exchange::getStartPoint (*pRecords,  &pt);
+	if (fiveaxis==0)
+		exchange::getStartPoint (*pRecords,  &pt);
+	else
+		exchange::getStartPoint (*ppRecords,  &pt);
+
+	//exchange::getStartPoint (*pRecords,  &pt);
 
 	for (int k = 0; k < 3; k++)
 	{
@@ -651,7 +998,11 @@ void nclf_vm_clpath_getpt(UM_int4 *ix, UM_real8 pte[6], UM_real8 *cnv)
 	geom::Point3d pt;
 	
 	int idx(*ix-1);
-	exchange::getEndPoint (*pRecords, idx, &pt);
+	if (fiveaxis==0)
+		exchange::getEndPoint (*pRecords, idx, &pt);
+	else
+		exchange::getEndPoint (*ppRecords, idx, &pt);
+	
 
 	for (int k = 0; k < 3; k++)
 	{
@@ -686,15 +1037,28 @@ void nclf_vm_clpath_getarc(UM_int4 *ntype, UM_int4 *ix,
 /*
 ....Get Arc end point
 */
+	double radius;
+
 	int idx(*ix-1);
+	if (fiveaxis==0)
+		exchange::getEndPoint (*pRecords, idx, &endPt);
+	else
+		exchange::getEndPoint (*ppRecords, idx, &endPt);
 	exchange::getEndPoint (*pRecords, idx, &endPt);
 	endPt[0] = endPt[0] * *cnv;
 	endPt[1] = endPt[1] * *cnv;
 	endPt[2] = endPt[2] * *cnv;
 /*
 ....Get arc radius
+
 */
-	double radius = exchange::getRadius (*pRecords, idx) * *cnv;
+	if (fiveaxis==0)
+		radius = exchange::getRadius (*pRecords, idx) * *cnv;
+	else
+		radius = exchange::getRadius (*ppRecords, idx) * *cnv;
+	
+
+	
 /*
 ....Arc center
 */
@@ -779,6 +1143,11 @@ void nclf_vm_clpath_getarc(UM_int4 *ntype, UM_int4 *ix,
 void nclf_vm_finish()
 {
 	delete pRecords;
+	//delete ppRecords;
+	//ppRecords->clear();
+	//ppRecords->empty();
+	//ppRecords->erase();
+	delete ppRecords;
 	return;
 }
 
@@ -807,6 +1176,11 @@ static void S_init_params (util::Parameterized* pParams, UU_REAL* dtol,int mode)
 */
 	vmpprm(kparm,gparm,gpos);
 	Stranfl = kparm[7] == 1;
+	/*if (mode == 5)
+		Stranfl = 1;*/
+	//@@@@@@@@@@@ Sasha 02/02/2021
+	// Stranfl = 1;	// it should be only in nclf_vmill_pocket5 or(?) if mode == 5
+	//@@@@@@@@@@@@
 	Slevel = gpos[1] - gpos[0];
 	Soffpart = kparm[12];
 	Sgpl = gpos[1];
@@ -943,6 +1317,7 @@ static void S_init_params (util::Parameterized* pParams, UU_REAL* dtol,int mode)
 	S_printSetGParam ("PARAM_STEPOVER", gparm[2]);
 	params.setParam (util::PARAM_XY_STOCK_TO_LEAVE, gparm[8]);
 	S_printSetGParam ("PARAM_XY_STOCK_TO_LEAVE", gparm[8]);
+	//params.setParam (util::PARAM_Z_STOCK_TO_LEAVE, 0.01);	// added Sasha 02/25/2021
 	params.setParam (util::PARAM_SMOOTHING_RADIUS, gparm[5]);
 	S_printSetGParam ("PARAM_SMOOTHING_RADIUS", gparm[5]);
 	if (gparm[4] > 0.)
@@ -972,8 +1347,86 @@ static void S_init_params (util::Parameterized* pParams, UU_REAL* dtol,int mode)
 /*
 .....3-axis Options only
 */
-	if (mode == 3)
+	if ((mode == 3)/*||(mode == 5)*/)
 	{
+		//@@@@@@@@@@@@@@@@@@@@@@@@@
+		//if (gparm[0]<0.0)
+		//{
+		//	params.setParam (util::PARAM_DEPTH_OF_CUT, -gparm[0]);
+		//	S_printSetGParam ("PARAM_DEPTH_OF_CUT", -gparm[0]);
+		//}
+
+		//params.setParam (util::PARAM_BOTTOM_MATERIAL_Z, 0.05);
+
+		//ncl_vmill_get_expand(&use_stkoff,&stkoff);
+		//if (use_stkoff) stp = gparm[27] + stkoff;
+		//else stp = gparm[27];
+		//params.setParam (util::PARAM_BOTTOM_MATERIAL_Z, gpos[6]);
+		//params.setParam (util::PARAM_MATERIAL_CLEARANCE, stp);
+	 //  params.setParam (util::PARAM_CHECK_CLEARANCE, 0.0);
+	 //  params.setParam (util::PARAM_CAVITY_MILLING_ONLY, i);
+	 //  params.setParam (util::PARAM_HOLDER_CLEARANCE, 0.0);
+	 //  params.setParam (util::PARAM_SHANK_CLEARANCE, 0.0);
+	 //  params.setParam (util::PARAM_HOLDER_DXF_PATH, "");
+	 //  params.setParam (util::PARAM_FINAL_STEP_HEIGHT, 0.0);
+	 //  params.setParam (util::PARAM_STOCK_TO_LEAVE,  0.01);	//Evans recommendation, Mar.23, 2021
+
+	 //   params.setParam (util::PARAM_Z_STOCK_TO_LEAVE, 0.01);
+	 // 
+	 //  params.setParam (util::PARAM_DRILL_DIAMETER, 0.0);
+	 //  params.setParam (util::PARAM_DRILL_ANGLE, 140.0);
+	 //  params.setParam (util::PARAM_DRILL_POINT_RANGE, 500.0);
+	 //  params.setParam (util::PARAM_DETECT_OPTIMAL_PREDRILL_POINTS, 1);
+
+	 //  params.setParam (util::PARAM_ADJUST_FEEDRATE_HELIX, 1);
+	 //  params.setParam (util::PARAM_ADJUST_FEEDRATE_RAMP, 1);
+	 //  params.setParam (util::PARAM_USE_FREEWAY_LINKING, 1);
+	 //  params.setParam (util::PARAM_CONTOUR_RAMPING, 0);
+	 //  params.setParam (util::PARAM_ALLOW_INITIAL_SPIRAL, 1);
+	 //  params.setParam (util::PARAM_ZAG_FEEDRATE_PERCENT, 0.0);
+	 //  params.setParam (util::PARAM_RACETRACK_FEEDRATE, 0.0);
+	 //  params.setParam (util::PARAM_HIGH_FEEDRATE_Z_NEGATIVE, 0.0);
+	 //  params.setParam (util::PARAM_LINEARIZATION_TOLERANCE, 0.0);
+	 //  params.setParam (util::PARAM_MAXIMUM_SEGMENT_LENGTH, 0.0);
+	 //  params.setParam (util::PARAM_SIDE_MILL_SLOT_MILL_RATIO, 1.0);
+
+	 //  params.setParam (util::PARAM_REPOSITIONING_RADIUS, 0.1);
+	 //  params.setParam (util::PARAM_REPOSITIONING_ANGLE, 6.0);
+	 //  params.setParam (util::PARAM_REPOSITIONING_TESSELLATION_ANGLE, 20.0);
+	 //  params.setParam (util::PARAM_MIN_REPOSITIONING_RADIUS, 0.001);
+	 //  params.setParam (util::PARAM_REPOSITIONING_KEEP_RAPID, 0);
+	 //  params.setParam (util::PARAM_REPOSITIONING_2D_ONLY, 0);
+
+	 //  params.setParam (util::PARAM_TOOLPATH_EVENTS, 1);
+
+	 //  if (gpos[7] > UM_FUZZ)
+		//{
+		//	params.setParam(util::PARAM_FINAL_STEP_HEIGHT,gpos[7]);
+		//}
+
+	 //  params.setParam (util::PARAM_BOTTOM_MATERIAL_Z, gpos[6]);
+		//S_printSetGParam ("PARAM_BOTTOM_MATERIAL_Z", gpos[6]);
+		//params.setParam (util::PARAM_STOCK_TO_LEAVE, gparm[7]);
+		//S_printSetGParam ("PARAM_STOCK_TO_LEAVE", gparm[7]);
+		//i = (kparm[13] == 0)? 1 : 0;
+		//params.setParam (util::PARAM_CAVITY_MILLING_ONLY, i);
+		//S_printSetKParam ("PARAM_CAVITY_MILLING_ONLY", i);
+		//ncl_vmill_get_expand(&use_stkoff,&stkoff);
+		//if (use_stkoff) stp = gparm[27] + stkoff;
+		//else stp = gparm[27];
+		//params.setParam (util::PARAM_MATERIAL_CLEARANCE, stp);
+		//S_printSetKParam ("PARAM_MATERIAL_CLEARANCE", stp);
+		//params.setParam (util::PARAM_CHECK_CLEARANCE, 0.);//gparm[27]);
+		//S_printSetKParam ("PARAM_CHECK_CLEARANCE", 0.);//gparm[27]);
+		//params.setParam (util::PARAM_HIT_FLATS, kparm[14]);
+		//S_printSetKParam ("PARAM_HIT_FLATS", kparm[14]);
+		//if (gpos[7] > UM_FUZZ)
+		//{
+		//	params.setParam(util::PARAM_FINAL_STEP_HEIGHT,gpos[7]);
+		//	S_printSetGParam("PARAM_FINAL_STEP_HEIGHT",gpos[7]);
+		//}
+
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 		params.setParam (util::PARAM_BOTTOM_MATERIAL_Z, gpos[6]);
 		S_printSetGParam ("PARAM_BOTTOM_MATERIAL_Z", gpos[6]);
 		params.setParam (util::PARAM_STOCK_TO_LEAVE, gparm[7]);
@@ -999,7 +1452,7 @@ static void S_init_params (util::Parameterized* pParams, UU_REAL* dtol,int mode)
 /*
 .....2-axis Options only
 */
-	else
+	else if (mode == 2)
 	{
 		params.setParam (util::PARAM_PROCESS_REGIONS_SEPARATELY, 1);
 		S_printSetKParam ("PARAM_PROCESS_REGIONS_SEPARATELY", 1);
@@ -1013,6 +1466,146 @@ static void S_init_params (util::Parameterized* pParams, UU_REAL* dtol,int mode)
 		S_printSetKParam ("PARAM_SMOOTH_PART_BOUNDARIES", kparm[1]);
 		params.setParam (util::PARAM_SMOOTH_PART_BOUNDARIES_ANGLE, gparm[6]);
 		S_printSetGParam ("PARAM_SMOOTH_PART_BOUNDARIES_ANGLE", gparm[6]);
+	}
+	
+	else if (mode == 5)
+	{
+
+
+		
+
+		
+		if (gparm[0]<0.0)
+		{
+			params.setParam (util::PARAM_DEPTH_OF_CUT, -gparm[0]);
+			S_printSetGParam ("PARAM_DEPTH_OF_CUT", -gparm[0]);
+		}
+		
+		////params.setParam (util::PARAM_BOTTOM_MATERIAL_Z, -1.0);
+		params.setParam (util::PARAM_BOTTOM_MATERIAL_Z, -0.05);
+
+		ncl_vmill_get_expand(&use_stkoff,&stkoff);
+		if (use_stkoff) stp = gparm[27] + stkoff;
+		else stp = gparm[27];
+		
+
+		params.setParam (util::PARAM_MATERIAL_CLEARANCE, stp);
+	   params.setParam (util::PARAM_CHECK_CLEARANCE, 0.0);
+	   ////params.setParam (util::PARAM_CAVITY_MILLING_ONLY, i);	// not clear why not below, Sasha Apr15, 2021
+	   params.setParam (util::PARAM_CAVITY_MILLING_ONLY, 0);
+	   params.setParam (util::PARAM_HOLDER_CLEARANCE, 0.0);
+	   params.setParam (util::PARAM_SHANK_CLEARANCE, 0.0);
+	   params.setParam (util::PARAM_HOLDER_DXF_PATH, "");
+
+	 
+	   params.setParam (util::PARAM_FINAL_STEP_HEIGHT, 0.0);
+	  
+	   params.setParam (util::PARAM_STOCK_TO_LEAVE,  0.05);	//Evans recommendation, Mar.23, 2021. No difference seen compared to line 1482
+	  
+	   params.setParam (util::PARAM_Z_STOCK_TO_LEAVE, 0.05);
+	  
+	   params.setParam (util::PARAM_DRILL_DIAMETER, 0.1);
+	   params.setParam (util::PARAM_DRILL_ANGLE, 140.0);
+	   params.setParam (util::PARAM_DRILL_POINT_RANGE, 500.0);
+	   params.setParam (util::PARAM_DETECT_OPTIMAL_PREDRILL_POINTS, 1);
+
+
+	   params.setParam (util::PARAM_ADJUST_FEEDRATE_HELIX, 1);
+	   params.setParam (util::PARAM_ADJUST_FEEDRATE_RAMP, 1);
+	   params.setParam (util::PARAM_USE_FREEWAY_LINKING, 1);
+	  
+	   params.setParam (util::PARAM_CONTOUR_RAMPING, 0);
+	   params.setParam (util::PARAM_ALLOW_INITIAL_SPIRAL, 1);
+	   
+	   params.setParam (util::PARAM_ZAG_FEEDRATE_PERCENT, 0.0);
+	   params.setParam (util::PARAM_RACETRACK_FEEDRATE, 0.0);
+	   params.setParam (util::PARAM_HIGH_FEEDRATE_Z_NEGATIVE, 0.0);
+	 
+	   params.setParam (util::PARAM_LINEARIZATION_TOLERANCE, 0.0);
+	   params.setParam (util::PARAM_MAXIMUM_SEGMENT_LENGTH, 0.0);
+	   params.setParam (util::PARAM_SIDE_MILL_SLOT_MILL_RATIO, 1.0);
+
+	   params.setParam (util::PARAM_REPOSITIONING_RADIUS, 0.1);
+	   params.setParam (util::PARAM_REPOSITIONING_ANGLE, 6.0);
+	   params.setParam (util::PARAM_REPOSITIONING_TESSELLATION_ANGLE, 20.0);
+	   params.setParam (util::PARAM_MIN_REPOSITIONING_RADIUS, 0.001);
+	   params.setParam (util::PARAM_REPOSITIONING_KEEP_RAPID, 0);
+	   params.setParam (util::PARAM_REPOSITIONING_2D_ONLY, 0);
+
+	   params.setParam (util::PARAM_TOOLPATH_EVENTS, 1);
+	   //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+	   params.setParam (util::PARAM_TOOL_NUMBER, 1);
+      params.setParam (util::PARAM_TOOL_LENGTH_OFFSET, 1);
+      params.setParam (util::PARAM_TOOL_WORK_OFFSET, "54");
+      params.setParam (util::PARAM_TOOL_NUM_FLUTES, 4);
+      params.setParam (util::PARAM_COOLANT, 1);
+      params.setParam (util::PARAM_TOOL_DIAMETER, 0.5);
+      params.setParam (util::PARAM_TOOL_CORNER_RADIUS, 0.0);
+      params.setParam (util::PARAM_TOOL_LENGTH_OF_CUT, 1.25);
+      params.setParam (util::PARAM_TOOL_OVERALL_LENGTH, 1.5);
+      params.setParam (util::PARAM_SPINDLE_SPEED, 10000.0);
+      params.setParam (util::PARAM_FEEDRATE, 100.0);
+      params.setParam (util::PARAM_HIGH_FEEDRATE, 500.0);
+      params.setParam (util::PARAM_RAMP_FEEDRATE, 50.0);
+      params.setParam (util::PARAM_TOOLPATH_CCW, 1);
+
+      params.setParam (util::PARAM_RAPID_PLANE_Z, 1.0);
+      params.setParam (util::PARAM_INITIAL_RAPID_PLANE_Z, 1.0);
+      params.setParam (util::PARAM_FINAL_RAPID_PLANE_Z, 1.0);
+      params.setParam (util::PARAM_TOP_MATERIAL_Z, 0.0);
+      params.setParam (util::PARAM_PLUNGE_CLEARANCE, 0.1);
+      params.setParam (util::PARAM_REPOSITION_CLEARANCE, 0.01);
+      params.setParam (util::PARAM_HOLDER_CLEARANCE, 0.0);
+      params.setParam (util::PARAM_SHANK_CLEARANCE, 0.0);
+      params.setParam (util::PARAM_HOLDER_DXF_PATH, "");
+
+      params.setParam (util::PARAM_STEPOVER, 0.15);
+      params.setParam (util::PARAM_FINAL_STEP_HEIGHT, 0.0);
+      params.setParam (util::PARAM_RAMP_ANGLE, 3.0);
+      params.setParam (util::PARAM_XY_STOCK_TO_LEAVE, 0.01);
+      params.setParam (util::PARAM_CUT_TOLERANCE, 0.01);
+      params.setParam (util::PARAM_SMOOTHING_RADIUS, 0.225);
+
+      params.setParam (util::PARAM_SIDE_MILL_STEPOVER, 0.15);
+      params.setParam (util::PARAM_SLOT_DEPTH_OF_CUT, 0.25);
+      params.setParam (util::PARAM_SLOT_FEEDRATE, 50.0);
+
+      params.setParam (util::PARAM_PLUNGE_TYPE, 0);
+      params.setParam (util::PARAM_DRILL_ANGLE, 140.0);
+      params.setParam (util::PARAM_DRILL_POINT_RANGE, 500.0);
+      params.setParam (util::PARAM_DETECT_OPTIMAL_PREDRILL_POINTS, 1);
+
+      params.setParam (util::PARAM_RAMP_SPINDLE_SPEED, 10000.0);
+      params.setParam (util::PARAM_DWELL_AFTER_PLUNGE, 0.0);
+      params.setParam (util::PARAM_DEPTH_FIRST, 1);
+
+      params.setParam (util::PARAM_ADJUST_FEEDRATE_HELIX, 1);
+      params.setParam (util::PARAM_ADJUST_FEEDRATE_RAMP, 1);
+      params.setParam (util::PARAM_USE_FREEWAY_LINKING, 1);
+      params.setParam (util::PARAM_XY_RAPID_FEEDRATE, 1000.0);
+      params.setParam (util::PARAM_Z_RAPID_FEEDRATE, 1000.0);
+      params.setParam (util::PARAM_CONTOUR_RAMPING, 0);
+      params.setParam (util::PARAM_ALLOW_INITIAL_SPIRAL, 1);
+      params.setParam (util::PARAM_MINIMUM_FEEDRATE, 0.0);
+      params.setParam (util::PARAM_ZAG_FEEDRATE_PERCENT, 0.0);
+      params.setParam (util::PARAM_RACETRACK_FEEDRATE, 0.0);
+      params.setParam (util::PARAM_HIGH_FEEDRATE_Z_NEGATIVE, 0.0);
+      params.setParam (util::PARAM_START_POINT_SORT_ANGLE, 0.0);
+      params.setParam (util::PARAM_MINIMUM_POCKET_RADIUS, 0.225); // equals to smoothing radius
+      params.setParam (util::PARAM_LINEARIZATION_TOLERANCE, 0.0);
+      params.setParam (util::PARAM_MAXIMUM_SEGMENT_LENGTH, 0.0);
+      params.setParam (util::PARAM_SIDE_MILL_SLOT_MILL_RATIO, 1.0);
+
+      params.setParam (util::PARAM_REPOSITIONING_RADIUS, 0.1);
+      params.setParam (util::PARAM_REPOSITIONING_ANGLE, 6.0);
+      params.setParam (util::PARAM_REPOSITIONING_TESSELLATION_ANGLE, 20.0);
+      params.setParam (util::PARAM_MIN_REPOSITIONING_RADIUS, 0.001);
+      params.setParam (util::PARAM_REPOSITIONING_KEEP_RAPID, 0);
+      params.setParam (util::PARAM_REPOSITIONING_2D_ONLY, 0);
+
+      params.setParam (util::PARAM_TOOLPATH_EVENTS, 1);
+      params.setParam (util::PARAM_CUTTING_TECHNIQUE, 0);
+
 	}
 }
 
@@ -1569,7 +2162,7 @@ done:;
 	return(status);
 }
 /*********************************************************************
-**    E_FUNCTION     : S_getBoundaryChains3D (pBoundaries,dtol)
+**    E_FUNCTION     : S_getBoundaryChains3D (pBoundaries,dtol)	// Need to write S_getBoundaryChains5D with Strafl = 1
 **       Convert NCL pocket boundary to VoluMill boundary input. 
 **       INPUT  :
 **          dtol       - Tolerance.
@@ -1579,9 +2172,10 @@ done:;
 **    SIDE EFFECTS : none
 **    WARNINGS     : none
 *********************************************************************/
-int S_getBoundaryChains3D (exchange::VoluMill3dBoundaries *pBoundaries,
+int S_getBoundaryChains3D (exchange::VoluMill3dBoundaries *pBoundaries,	/* VoluMill5dBoundaries also available*/
 	UU_REAL dtol)
 {
+		//
 	int i,npts,status,numa,numb,numc;
 	UM_int2 itype;
 	UM_tessellation *tess;
@@ -1778,6 +2372,242 @@ failed:;
 done:;
 	return(status);
 }
+
+int S_getBoundaryChains5x (exchange::VoluMill5xBoundaries *pBoundaries,	/* VoluMill5dBoundaries also available*/
+	UU_REAL dtol)
+{
+		//
+	int i,npts,status,numa,numb,numc;
+	UM_int2 itype;
+	UM_tessellation *tess;
+	UM_coord *verts, *mverts;
+	UM_tript *tript, *mtript;
+	UU_REAL box[6];
+	UU_LIST *stock;
+	int boxfl;
+	UM_coord spt,ept;
+	UM_2Dcoord *pts;
+	geom::Point3d pt1,pt2;
+	char sbuf[80];
+
+	status = UU_SUCCESS;
+	Stranfl = 1;
+	ncl_vmill_get_box(box);
+
+	/*pt1[0] = box[0]; pt1[1] = box[1]; pt1[2] = box[2];
+	pt2[0] = box[3]; pt2[1] = box[4]; pt2[2] = box[5];
+	pBoundaries->m_pMaterialMesh->m_vertices.push_back(pt1);
+	pBoundaries->m_pMaterialMesh->m_vertices.push_back(pt2);
+	topo::mesh::TriMeshFacet m_tr1 (pt1[0],pt1[1],pt1[2]);
+	pBoundaries->m_pMaterialMesh->m_faces.push_back(m_tr1);
+	topo::mesh::TriMeshFacet m_tr2 (pt2[0],pt2[1],pt2[2]);
+	pBoundaries->m_pMaterialMesh->m_faces.push_back(m_tr2);*/
+
+	if (Stranfl)
+	{
+		itype = 3;
+		vmptrn(box,&itype);
+		vmptrn(&box[3],&itype);
+	}
+/*
+.....Build box for stock.
+*/
+	ncl_vmill_get_boxfl(&boxfl);
+	if (boxfl == 1)
+	{
+		pt1[0] = box[0]; pt1[1] = box[1]; pt1[2] = box[2];
+		pt2[0] = box[3]; pt2[1] = box[4]; pt2[2] = box[5];
+		boost::shared_ptr<topo::mesh::TriMesh3d> pMesh;
+		rectangleToMesh (pt1,pt2,&pMesh);
+		topo::mesh::triMeshToTriMeshFacets3d (pMesh, 
+			&pBoundaries->m_pMaterialMesh);
+	}
+/*
+.....Use contour to define stock.
+*/
+	else if (boxfl == 0)
+	{
+
+		pt1[0] = box[0]; pt1[1] = box[1]; pt1[2] = box[2];
+		pt2[0] = box[3]; pt2[1] = box[4]; pt2[2] = box[5];
+		boost::shared_ptr<topo::mesh::TriMesh3d> pMesh;
+		rectangleToMesh (pt1,pt2,&pMesh);
+		topo::mesh::triMeshToTriMeshFacets3d (pMesh, 
+			&pBoundaries->m_pMaterialMesh);
+
+		ncl_get_stklst(&stock);
+		pts = (UM_2Dcoord *)UU_LIST_ARRAY(stock);
+		npts = stock->cur_cnt;
+		spt[2] = ept[2] = box[2];
+		std::vector<geom::CurvePtr2d> curves;
+		spt[0] = pts[0][0]; spt[1] = pts[0][1];
+		UM_cc_exttoint(spt,spt);
+		if (Stranfl)
+		{
+			itype = 3;
+			vmptrn(spt,&itype);
+		}
+		for (i=0;i<npts-1;i++)
+		{
+			ept[0] = pts[i+1][0]; ept[1] = pts[i+1][1]; ept[2] = box[2];
+			UM_cc_exttoint(ept,ept);
+			if (Stranfl)
+			{
+				itype = 3;
+				vmptrn(ept,&itype);
+			}
+			S_makeline(&curves,spt,ept,dtol,0);
+		}
+		ept[0] = pts[0][0]; ept[1] = pts[0][1]; ept[2] = box[2];
+		UM_cc_exttoint(ept,ept);
+		if (Stranfl)
+		{
+			itype = 3;
+			vmptrn(ept,&itype);
+		}
+		S_makeline(&curves,spt,ept,dtol,0);
+		for (i=0;i<npts-1;i++) 
+		{
+			
+			pBoundaries->m_containmentBoundaries.m_materialBoundaries.push_back (curves[i]);
+			
+			pBoundaries->m_containmentBoundaries.m_materialBoundaries.back()->setParam
+				(util::PARAM_LOOP_ID, 0);
+			pBoundaries->m_containmentBoundaries.m_materialBoundaries.back()->deleteParam
+				(util::PARAM_Z_MAX);
+
+			
+		}
+
+	}
+/*
+.....Use stock mesh.
+*/
+	else if (boxfl == 2)
+	{
+		ncl_vmill_get_tess(&tess,1);
+		boost::shared_ptr<topo::mesh::TriMeshFacets3d> *tpMesh;
+		tpMesh = &pBoundaries->m_pMaterialMesh;
+		tpMesh->reset (new topo::mesh::TriMeshFacets3d());
+		tript = (UM_tript *)UU_LIST_ARRAY(&tess->tri);
+		verts = (UM_coord *)UU_LIST_ARRAY(&tess->vertices);
+/*
+.....Store tessellation points.
+*/
+		for (i=0;i<tess->np;i++)
+		{
+			if (Stranfl)
+			{
+				itype = 3;
+				vmptrn(verts[i],&itype);
+			}
+			pt1[0] = verts[i][0]; pt1[1] = verts[i][1]; pt1[2] = verts[i][2];
+			pBoundaries->m_pMaterialMesh->m_vertices.push_back(pt1);
+		}
+/*
+.....Store tessellation facets.
+*/
+		for (i=0;i<tess->ntri;i++)
+		{
+			topo::mesh::TriMeshFacet tr (tript[i].n1,tript[i].n2,tript[i].n3);
+			pBoundaries->m_pMaterialMesh->m_faces.push_back(tr);
+		}
+	}
+/*
+.....Store part surface tesselation.
+*/
+	ncl_vmill_get_tess(&tess,0);
+	//topo::mesh::
+	boost::shared_ptr<topo::mesh::TriMeshFacets3d> *ppMesh;
+	ppMesh = &pBoundaries->m_pPartMesh;
+	ppMesh->reset (new topo::mesh::TriMeshFacets3d());
+	tript = (UM_tript *)UU_LIST_ARRAY(&tess->tri);
+	verts = (UM_coord *)UU_LIST_ARRAY(&tess->vertices);
+
+	/*boost::shared_ptr<topo::mesh::TriMeshFacets3d> *pmMesh;
+	pmMesh = &pBoundaries->m_pMaterialMesh;
+	pmMesh->reset (new topo::mesh::TriMeshFacets3d());
+	mtript = (UM_tript *)UU_LIST_ARRAY(&tess->tri);
+	mverts = (UM_coord *)UU_LIST_ARRAY(&tess->vertices);*/
+/*
+.....Store tessellation points.
+*/
+	for (i=0;i<tess->np;i++)
+	{
+		if (Stranfl)
+		{
+			itype = 3;
+			vmptrn(verts[i],&itype);
+		}
+		pt1[0] = verts[i][0]; pt1[1] = verts[i][1]; pt1[2] = verts[i][2];
+		pBoundaries->m_pPartMesh->m_vertices.push_back(pt1);
+		pBoundaries->m_pMaterialMesh->m_vertices.push_back(pt1);
+	}
+/*
+.....Store tessellation facets.
+*/
+	for (i=0;i<tess->ntri;i++)
+	{
+		topo::mesh::TriMeshFacet tr (tript[i].n1,tript[i].n2,tript[i].n3);
+		pBoundaries->m_pPartMesh->m_faces.push_back(tr);
+		pBoundaries->m_pMaterialMesh->m_faces.push_back(tr);
+	}
+/*
+.....Check surfaces
+*/
+	ncl_wat_get_sfnums (&numa,&numb,&numc);
+	if (numc > 0)
+	{
+		ncl_vmill_get_tess(&tess,2);
+		ppMesh = &pBoundaries->m_pCheckMesh;
+		ppMesh->reset (new topo::mesh::TriMeshFacets3d());
+		tript = (UM_tript *)UU_LIST_ARRAY(&tess->tri);
+		verts = (UM_coord *)UU_LIST_ARRAY(&tess->vertices);
+/*
+.....Store tessellation points.
+*/
+		for (i=0;i<tess->np;i++)
+		{
+			if (Stranfl)
+			{
+				itype = 3;
+				vmptrn(verts[i],&itype);
+			}
+			pt1[0] = verts[i][0]; pt1[1] = verts[i][1]; pt1[2] = verts[i][2];
+			pBoundaries->m_pCheckMesh->m_vertices.push_back(pt1);
+		}
+/*
+.....Store tessellation facets.
+*/
+		for (i=0;i<tess->ntri;i++)
+		{
+			topo::mesh::TriMeshFacet tr (tript[i].n1,tript[i].n2,tript[i].n3);
+			pBoundaries->m_pCheckMesh->m_faces.push_back(tr);
+		}
+	}
+/*.....Sample defining drill holes
+	exchange::VoluMillDrillHole drillHole;
+	drillHole.m_center[0] = -1.5;
+	drillHole.m_center[1] = 1.5;
+	drillHole.m_usableDepth = 25.0;
+//means drill cut all the way through the part if TRUE
+	drillHole.m_through = UU_FALSE; 
+	input.m_preDrilledHoles.push_back(drillHole);
+*/
+	goto done;
+/*
+.....Could not get pocket boundary
+*/
+failed:;
+	status = UU_FAILURE;
+/*
+.....End of routine
+*/
+done:;
+	return(status);
+}
+
+
 
 /*********************************************************************
 **    I_FUNCTION     : S_getPredrilledHoles(holes)

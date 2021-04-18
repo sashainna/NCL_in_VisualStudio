@@ -74,6 +74,8 @@ c
           call nclf_vmill_pocket(isc10(3),rsvasw,rsvtok,rsvsub,ier)
       else if (wmeth.eq.2) then
           call nclf_vmill_pocket3(ier)
+      else if (wmeth.eq.3) then
+          call nclf_vmill_pocket5(ier)
       endif
       if (ier .ne. 0) then
           ifl(2) = ier

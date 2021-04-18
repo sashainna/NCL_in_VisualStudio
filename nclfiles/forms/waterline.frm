@@ -19,7 +19,7 @@
 /POSITION/ 10,29,58,29
 /SIZE/ 123,57
 /TYPE/UD_DASSTRING
-/CHOICES/ "Advanced Pocket","VoluMill 2-Axis","VoluMill 3-Axis"
+/CHOICES/ "Advanced Pocket","VoluMill 2-Axis","VoluMill 3-Axis","VoluMill 5-Axis"
 
 #CHOICEBOX#
 /LABEL/ Cutting Levels:
@@ -969,6 +969,7 @@ choices are as follows:
  - Advanced Pocket (POCKET)
  - VoluMill 2-Axis (VMPOCK)
  - VoluMill 3-Axis (VMP3AX)
+ - VoluMill 5-Axis (VMP5AX)
 
 The VoluMill fields are only displayed when VoluMill is licensed.
 

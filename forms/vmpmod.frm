@@ -190,6 +190,12 @@
 /INPUT/FORM_STRING
 /LEN/ 6
 
+#CHECKBOX#
+/LABEL/ Output for 5-axis
+/POSITION/ 10,110
+/SIZE/ 100,15
+/TYPE/UD_DASSTRING
+
 #PICTUREBOX#
 /FILE/ VoluMill_Modals_Options.jpg
 /NAME/ Options

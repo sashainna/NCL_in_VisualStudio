@@ -3636,14 +3636,14 @@ extern "C" int uw_ntform1(UD_FSTRUCT *fstruct, UD_FDATA *fdata, int dflag)
 		MainWin = Pocket_Win[UM_IPV_WINDOW];
 	if (Form_parent == NULL)
 		Form_parent = MainWin;
-/*
-......we will have a problem if the parent window is iconed
-......so we need show this parent window first to create form
+/*                                                                                                                                                                                                                                                                                                                                                                                                                                           
+......we will have a problem if the parent window is iconed                                              
+......so we need show this parent window first to create form                               
 */
-	if (NCL_MainFrame->IsIconic()!=0)
+    if (NCL_MainFrame->IsIconic()!=0)
 	{
 		NCL_MainFrame->ShowWindow(SW_SHOWNORMAL);
-		NCL_MainFrame->UpdateWindow();
+		NCL_MainFrame->UpdateWindow();                                                   
 		if (Pocket_Win[UM_IPV_WINDOW] != NULL)
 		{
 			Pocket_Win[UM_IPV_WINDOW]->ShowWindow(SW_SHOWNORMAL);

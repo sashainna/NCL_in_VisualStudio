@@ -7,9 +7,9 @@
 **
 **    COPYRIGHT 2011 (c) NCCS Inc.  All Rights Reserved.
 **     MODULE NAME AND RELEASE LEVEL
-**       nuvmpmod.c , 25.2
+**       nuvmpmod.c , 26.3
 **     DATE AND TIME OF LAST MODIFICATION
-**       07/06/16 , 10:23:22
+**       07/24/18 , 12:24:44
 **
 *********************************************************************/
 #include <string.h>
@@ -287,8 +287,9 @@ UD_FSTAT stat;
 	switch (*fieldno)
 	{
 	case ENTRG1:
-		ud_setfrm_traverse_mask(Sfrm, ENTRG3,Tetype==HELIX);
-		ud_setfrm_display_mask(Sfrm, UD_INPUTF, ENTRG3+S_nlable, Tetype==HELIX);
+//		ud_setfrm_traverse_mask(Sfrm, ENTRG3,Tetype==HELIX);
+//		ud_setfrm_display_mask(Sfrm, UD_INPUTF, ENTRG3+S_nlable, Tetype==HELIX);
+		ud_setfrm_display_mask(Sfrm, UD_INPUTF, ENTRG3, Tetype==HELIX);
 		break;
 
 	case ENTRG4:
@@ -983,7 +984,7 @@ UU_LOGICAL modal;
 /*
 .....Set traverse masks
 */
-	traverse[ENTRG3] = display[ENTRG3+S_nlable] = (Setype == HELIX);
+	display[ENTRG3+S_nlable] = (Setype == HELIX);
 	traverse[ENTRG6] = (Sctype == PLN);
 	traverse[OPTRG5] = traverse[OPTRG6] = (Smooth == SMOOTH);
 	traverse[OPTRG8] = traverse[OPTRG9] = (Sside == SLOT);

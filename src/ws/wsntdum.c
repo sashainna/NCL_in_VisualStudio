@@ -14,6 +14,8 @@
 #include "usysdef.h"
 #include "view.h"
 UV_view MSL_view[20];
+//UV_view MSL_view[60];
+#include <stdlib.h>
 #if UU_COMP == UU_WIN2K
 #include <string.h>
 #include "nclfc.h"
