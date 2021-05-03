@@ -681,6 +681,12 @@
 /PICTURE/ Options_1,"Offset",4,88,27,97
 /PICTURE/ Options_2,"Offset",0,0,100,100
 
+#CHECKBOX#
+/LABEL/ Outputs for 5-axis
+/POSITION/ 10,76
+/SIZE/180,15
+/TYPE/UD_DASSTRING
+
 #PUSHBUTTON#
 /LABEL/ Predrilled Holes
 /POSITION/ 10,63

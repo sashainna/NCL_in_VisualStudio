@@ -47,7 +47,7 @@ enum
 .....Options
 */
 	FOTAX,FOTTX,FOTSE, FOEND,FOSTR,FOETX,FOESE, FOLAB,FOLTX,FOMAX,FOMTX,
-	FOBOF,FOBTX,FOOFF,FOOTH,
+	FOBOF,FOBTX,FOOFF,FOOTH,FAXIS,
 /*
 .....Color Fields
 */
@@ -93,6 +93,8 @@ typedef struct
 	int *colors;
 	int *lintyp;
 } Sopen_struc;
+
+int taxis5;
 
 /*
 .....Global variables
@@ -150,6 +152,12 @@ static int Sfinthk,Tfinthk,Soffpart,Toffpart;
 static char Ssec_ps[STRL],Tsec_ps[STRL],Spoc_end[STRL],Tpoc_end[STRL];
 static char Spoc_lab[STRL],Tpoc_lab[STRL],Smax_loop[STRL],Tmax_loop[STRL];
 static char Sfin_thk[STRL],Tfin_thk[STRL],Soff_thk[STRL],Toff_thk[STRL];
+
+static int Saxis5;
+static int Taxis5;
+
+static int Sacc[4];
+
 /*
 .....Color variables
 */
@@ -205,7 +213,7 @@ static int *Sanswers[] = {
 
 	&Ttamode,(int *)Tsec_ps,UU_NULL, &Tpockend,&Tpockend,(int *)Tpoc_end,UU_NULL,
 		&Tlabel,(int *)Tpoc_lab,&Tmaxloop,(int *)Tmax_loop,
-		&Tfinthk,(int *)Tfin_thk, &Toffpart,(int *)Toff_thk,
+		&Tfinthk,(int *)Tfin_thk, &Toffpart,(int *)Toff_thk,  &Taxis5,
 
 	&Tcolorp,&Tcolori,&Tcolorop,&Tlintyp,&Tcolorb,&Tcolort,&Tcolors,&Tcolore,
 		&Tgeotog,&Tgeocol,
@@ -237,6 +245,12 @@ void nclu_pocket_advanced()
 	UM_real4 tdis,fthk;
 	UM_real8 thk;
 	UD_METHOD save_entry;
+
+	extern char ffnam[520];
+	char inpf[520];
+	char* exte;
+
+	//char* exte;
 /*
 .....Set up form fields
 */
@@ -246,28 +260,31 @@ void nclu_pocket_advanced()
 		1,1,1, 1,0,1,1, 1,1,1,1, 1,1,1,1,
 		1,1,1,1,1,1,1,1,1,1,
 		1,
-		1,1,1,1,1,1,1,1};
+		1,1,1,1,1,1,1,1,
+		1};
 	static char display[] = {
 		1,1,1, 1,1, 1, 1, 1,1,1, 1,1, 0,
 		1,1, 1, 1,1,1,
 		1,1,1, 1,0,1,1, 1,1,1,1, 1,1,1,1,
 		1,1,1,1,1,1,1,1,1,1,
 		1,
-		1,1,1,1,1,1,1,1};
+		1,1,1,1,1,1,1,1,
+		1};
 	static char called[] = {
 		6,6,6, 6,6, 6, 6, 6,6,6, 6,6, 6,
 		6,6, 6, 6,6,6,
 		6,6,6, 6,6,6,6, 6,6,6,6, 6,6,6,6,
 		6,6,6,6,6,6,6,6,6,6,
 		6,
-		6,6,6,6,6,6,6,6};
+		6,6,6,6,6,6,6,6,
+		6};
 
 	static UD_METHOD methods[] = {
 		OnBnSel,OnBnTog,OnBnTxt, OnBnSel,OnBnSel, OnBnTog, OnBnTog,
 			OnBnSel,OnBnTog,OnBnTxt, OnBnTxt,OnBnTxt, OnBnTog,
 		OnLvSel,OnLvTxt, OnLvTxt, OnLvTog,OnLvTxt,OnLvSel,
 		OnOpTog,OnOpTxt,OnOpSel, OnOpTog,OnOpTog,OnOpTxt,OnOpSel,
-			OnOpTog,OnOpTxt,OnOpTog,OnOpTxt, OnOpTog,OnOpTxt, OnOpTog,OnOpTxt,
+			OnOpTog,OnOpTxt,OnOpTog,OnOpTxt, OnOpTog,OnOpTxt, OnOpTog,OnOpTxt, OnOpTog,OnOpTxt,
 		OnCoTog,OnCoTog,OnCoTog,OnCoTog,OnCoTog,OnCoTog,OnCoTog,OnCoTog,OnCoTog,
 			OnCoTog,
 		OnPokMod,
@@ -342,6 +359,25 @@ repeat:;
 			pokrst();
 		}
 	}
+
+	exte = strstr(inpf,".pp");
+	if (exte!=NULL)
+	{
+		if (Taxis5 == UU_TRUE /*&& allsf*/)
+		{
+			traverse[FAXIS] = UU_TRUE;	//comm out ? Sasha Apr18, 2021
+			
+			taxis5 =  UU_TRUE;
+		}
+		else
+		{
+			traverse[FAXIS] = UU_TRUE;
+			
+		}
+	}
+	else
+		traverse[FAXIS] = UU_TRUE;
+
 	NCL_pockform_active = UU_FALSE;
 	if (Sfrm0 == -1) goto done;
 /*
@@ -785,6 +821,11 @@ UD_DDATA *val;
 UD_FSTAT stat;
 {
 	UU_LOGICAL ifl,chg;
+	int status;
+
+	extern char ffnam[520];
+	char inpf[520];
+	char* exte;
 
 	switch (*fieldno)
 	{
@@ -830,6 +871,40 @@ UD_FSTAT stat;
 	case FOOFF:
 		ud_set_traverse_mask(FOOTH,Toffpart);
 		if (Toffpart != Soffpart) Schgmade = chg = UU_TRUE;
+		break;
+		/*
+	case FAXIS:
+		ud_set_traverse_mask(FAXIS,Taxis5);
+		if (Taxis5 != Saxis5) Schgmade = chg = UU_TRUE;
+		break;
+		*/
+	case FAXIS:
+		exte = strstr(inpf,".pp");
+		if (exte!=NULL)
+		{
+			if (Taxis5 == UU_TRUE /*&& allsf*/)
+			{
+				ud_set_traverse_mask(FAXIS,UU_TRUE);	// comm out Sasha, Apr.18, 2021
+				status = afive_axis_output();
+				taxis5 =  UU_TRUE;
+				S_build_command(UU_FALSE);
+			}
+			else
+			{
+				ud_set_traverse_mask(FAXIS,UU_TRUE);
+			}
+			if (Saxis5 != Taxis5)
+			{
+				if (Spreviewflg) Schgmade = 1;
+				Saxis5 = Taxis5;
+				Sacc[Options] = 1;
+			}
+		}
+		else
+			ud_set_traverse_mask(FAXIS,UU_TRUE);
+
+		break;
+	default:
 		break;
 	}
 	if (chg)
@@ -2767,7 +2842,7 @@ UU_LOGICAL *init;
 static int S_build_command(flag)
 UU_LOGICAL flag;
 {
-	int i,j,dirmodp,dirmodi,nline,slen;
+	int i,j,dirmodp,dirmodi,nline,slen,status;
 	NCL_cmdbuf cmdbuf;
 	UM_sgeo *geop,*geoi;
 	char endbuf[96],tstr[8];
@@ -2780,6 +2855,12 @@ UU_LOGICAL flag;
 		NCL_preview_mot = 0;
 	else
 		NCL_preview_mot = 1;
+
+	if (Taxis5 == UU_TRUE)
+	{
+		status = afive_axis_output();
+		taxis5 = 1;
+	}
 /*
 .....Output POKMOD command
 */
@@ -3252,6 +3333,27 @@ void nclu_pocket_pokmod()
 	{
 		nclu_pokmod_cmd1(&pokmod,UU_TRUE);
 	}
+}
+
+int afive_axis_output()
+//char* name;
+{
+	NCL_cmdbuf cmdbuf;
+	int status;
+	if (Taxis5==1)
+	{
+
+		ncl_init_cmdbuf(&cmdbuf);
+		
+		status = ncl_add_token(&cmdbuf,"multax/on", NCL_nocomma);
+		//status = ncl_add_token(&cmdbuf, name, NCL_nocomma);
+		
+		ncl_set_cmdmode(UU_TRUE);
+		ncl_add_cmdbuf(&cmdbuf);
+		ncl_call(&cmdbuf);
+	}	
+	done:;
+	return (0);
 }
 
 

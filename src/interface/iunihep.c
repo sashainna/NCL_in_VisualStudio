@@ -1622,7 +1622,7 @@ static UTI_ERMSG pemsg[]= {
 {16,0,"'%s' is only available when CAM is enabled.",-1},
 {1,-1,"Enter reference point",-1},
 {2,-1,"Exit Drawing Management?",-1},
-{3,-1,"- NCL - Copyright 1991-2020 Numerical Control Computer Sciences, Windows 64-bit",-1},
+{3,-1,"- NCL - Copyright 1991-2021 Numerical Control Computer Sciences, Windows 64-bit",-1},
 {1,1,"Class initialization failure - class number disparity, row = %d, class = %d",338},
 {1,0,"Can't create %s from given constraints.",-1},
 {2,0,"Only 2D curves may be swept into surface.",-1},

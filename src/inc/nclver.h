@@ -19,7 +19,7 @@
 
 #ifdef NCLVERSION
 
-UM_real8 NCL_version = 2020.00;
+UM_real8 NCL_version = 2021.00;
 UM_real8 NCL_unibase_version = 8.201;	/* VERSION OF NCL502 WHERE UNIBASE CHANGED */
 UM_real8 NCL_infile_version = 0.0;
 char NCL_machine[20];		/* MACHINE TYPE CURRENTLY RUNNING ON */

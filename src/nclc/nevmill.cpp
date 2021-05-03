@@ -26,7 +26,7 @@
 */
 #define DEBUGL 0
 #define DEBUGX 0
-// #define DEBUG_XML 1
+#define DEBUG_XML 1
 //#define DUMMY 1
 #define WIN32
 
@@ -474,7 +474,9 @@ void nclf_vmill_pocket(UM_int2 *nbound4, UM_real8 *kbound8, char token[120][64],
 //	fos = new std::ofstream("key.xml");
 //	license::fromLicenseKeyToXml(*fos,licenseKey);
 #endif
-	//license::loadLicenseKey (&licenseKey, getVoluMillVersionUniversal2x(), license::VOLUMILL_2X_COMPLETE_PRODUCT_LEVEL);
+	////license::loadLicenseKey (&licenseKey, getVoluMillVersionUniversal2x(), license::VOLUMILL_2X_COMPLETE_PRODUCT_LEVEL);
+	////int errorCode = license::loadLicenseKey (&licenseKey, getVoluMillVersionMastercam3x(), license::VOLUMILL_5X_ROUGH_PRODUCT_LEVEL);
+	
 /*
 .....Initilize VoluMill parameters
 */
@@ -486,6 +488,15 @@ void nclf_vmill_pocket(UM_int2 *nbound4, UM_real8 *kbound8, char token[120][64],
 	S_getBoundaryChains (nbound4, kbound8, token, ivxsub, dtol,
 		&input.m_boundaries);
 	Scalls++;
+
+	#if DEBUG_XML
+	{
+		std::ostream *fos;
+		fos = new std::ofstream("nccs_2D.xml");
+		::fromVoluMill2dInputToXml(*fos,input);
+
+	}
+#endif
 /*
 .....Get predrilled holes
 */
@@ -501,7 +512,8 @@ void nclf_vmill_pocket(UM_int2 *nbound4, UM_real8 *kbound8, char token[120][64],
 	{
 		uu_delay(100);
 		prog = exchange::getProgress(jobId);
-		if (prog < 0.) break;
+		if (prog < 0.) 
+			break;
 		if (interrupt)
 		{
 			exchange::cancelJob(jobId);
@@ -514,24 +526,25 @@ void nclf_vmill_pocket(UM_int2 *nbound4, UM_real8 *kbound8, char token[120][64],
 	*ier = S_get_error(-iprog);
 	if (!interrupt) iprog = 100;
 	nclu_vmill_close_progress();
-#if DEBUG_XML
-	{
-		std::ostream *fos;
-		fos = new std::ofstream("nccs.xml");
-		::fromVoluMill2dInputToXml(*fos,input);
-	}
-#endif
+//#if DEBUG_XML
+//	{
+//		std::ostream *fos;
+//		fos = new std::ofstream("nccs.xml");
+//		::fromVoluMill2dInputToXml(*fos,input);
+//
+//	}
+//#endif
 /*
 .....Get the Toolpath Records
 */
 	pRecords = new exchange::ToolpathRecords;
-	int numRecords = exchange::getToolpathRecords (jobId, pRecords);
+	/*int */snumRecords = exchange::getToolpathRecords (jobId, pRecords);
 	// if (numRecords <=0)	numRecords = 1;
 	//unsigned long numRecords = exchange::getToolpathRecords (jobId, pRecords);
 /*
 .....Make sure at least one Pre-drilled hole is used
 */
-	if (Snentry > 0 && numRecords > 0 && *ier == 0)
+	if (Snentry > 0 && snumRecords > 0 && *ier == 0)
 	{
 		exchange::VoluMillDrillHoles pPreDrilledHoles;
 		exchange::VoluMillHelixes pHelixes;
@@ -722,15 +735,15 @@ void nclf_vmill_pocket5(UM_int2 *ier)	//@@@@@@@@@@@@@  Sasha. Feb04, 2021
 .....Run the VoluMill 3d toolpath engine
 */
 
-/*
+
 	#if DEBUG_XML
 	{
 		std::ostream *fos;
-		fos = new std::ofstream("nccs5_2019_Apr09.xml");
+		fos = new std::ofstream("nccs5_2019_Apr19.xml");
 		::fromVoluMill5xInputToXml(*fos,input);
 	}
 #endif
-*/
+
 	/*
 	boost::shared_ptr<exchange::ProgressData> ppd (exchange::createLocallyLinkedProgressData());
 	int jobId = exchange::submitVoluMill5xJob (input, licenseKey);	// Sasha 02/02/2021
@@ -1483,6 +1496,7 @@ static void S_init_params (util::Parameterized* pParams, UU_REAL* dtol,int mode)
 		
 		////params.setParam (util::PARAM_BOTTOM_MATERIAL_Z, -1.0);
 		params.setParam (util::PARAM_BOTTOM_MATERIAL_Z, -0.05);
+		////params.setParam (util::PARAM_BOTTOM_MATERIAL_Z, gpos[6]);
 
 		ncl_vmill_get_expand(&use_stkoff,&stkoff);
 		if (use_stkoff) stp = gparm[27] + stkoff;
@@ -1491,8 +1505,8 @@ static void S_init_params (util::Parameterized* pParams, UU_REAL* dtol,int mode)
 
 		params.setParam (util::PARAM_MATERIAL_CLEARANCE, stp);
 	   params.setParam (util::PARAM_CHECK_CLEARANCE, 0.0);
-	   ////params.setParam (util::PARAM_CAVITY_MILLING_ONLY, i);	// not clear why not below, Sasha Apr15, 2021
-	   params.setParam (util::PARAM_CAVITY_MILLING_ONLY, 0);
+	   params.setParam (util::PARAM_CAVITY_MILLING_ONLY, i);	// not clear why not below, Sasha Apr15, 2021
+	   ////params.setParam (util::PARAM_CAVITY_MILLING_ONLY, 0);
 	   params.setParam (util::PARAM_HOLDER_CLEARANCE, 0.0);
 	   params.setParam (util::PARAM_SHANK_CLEARANCE, 0.0);
 	   params.setParam (util::PARAM_HOLDER_DXF_PATH, "");

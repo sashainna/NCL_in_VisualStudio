@@ -50,6 +50,8 @@
 #include "mdattr.h"			/* temporary */
 
 #define  UM_maxrepetition 1024 
+//#define  UM_maxrepetition 4096
+
 
 /*********************************************************************
 **    E_FUNCTION     : nclu_pt_xy()
