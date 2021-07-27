@@ -176,7 +176,7 @@ c  **********  accept input character
 c          if batch, move it
 c          issue warning that there is a mismatch in tool position
        call putmsg('warning: tool automatically moved from entry locatio
-     x		n to calculated location    ',80,2,0)
+     1n to calculated location    ',80,2,0)
        ifl(34)=ifl(34)+1
        go to 357
 c

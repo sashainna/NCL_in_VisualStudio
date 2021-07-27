@@ -26,8 +26,8 @@ char NCL_machine[20];		/* MACHINE TYPE CURRENTLY RUNNING ON */
 char NCL_machine_type[20];  /* MACHINE UNIBASE WAS BUILT ON */
 char NCL_infile_date[20];  /* MACHINE UNIBASE WAS BUILT ON */
 
-char last_mod[] = "@(#) nclver.h 24.14 09/16/19 08:19:27";
-char last_release[] = "09/16/19 08:19:27";
+char last_mod[] = "@(#) nclver.h 24.14 05/12/14 08:19:27";
+char last_release[] = "05/12/14 08:19:27";
 
 #else
 

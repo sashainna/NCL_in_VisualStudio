@@ -100,7 +100,7 @@ c
 c
 c... local variables
 c
-      real*8 tbn(24),hht(9),tdat(640),tb(24),otb(24),ptb(24),ds(3)
+      real*8 tbn(24),hht(9),tdat(420),tb(24),otb(24),ptb(24),ds(3)
       real*8 tapt(3),vtmp(3),tavst(3),cstapt(3),ocstpt(3)
       real*8 vpsnrm(3),vdsnrm(3),vcsnrm(3),pte(3),hh(10)
       real*8 primdat(16),ccen(3),plx(4),cvec(3)
@@ -140,7 +140,7 @@ c
 c...Debug variables
 c
       integer*4 DEBUGX
-      parameter (DEBUGX=0)
+      parameter (DEBUGX=1)
       character*80 dbuf
       byte dout(80)
 c      if (sc(223) .eq. -10000) goto 1085
@@ -982,13 +982,13 @@ c***********************************  set tool axis vector
 c
       if (mod .eq. 0) goto 500
       if (mod .eq. 1) goto 410
-      if (mod .eq. 2) goto 640
+      if (mod .eq. 2) goto 420
       if (mod .eq. 3) goto 430
       if (mod .eq. 4) goto 440
       if (mod .eq. 5) goto 450
       if (mod .eq. 6) goto 460
       if (mod .eq. 7) goto 410
-      if (mod .ge.10 .and. mod.le.12) goto 640
+      if (mod .ge.10 .and. mod.le.12) goto 420
       if (mod .eq. 13) goto 475
       if (mod .eq. 14) goto 470
       if (mod .eq. 15) goto 480
@@ -2511,9 +2511,7 @@ c
 
       if (ifl(2).eq.0) then
          ifl(2) = 255
-         if ( psmult .and. svmps.ne.ifl(341) ) then
-             ifl(2) = -255
-          endif
+         if ( psmult .and. svmps.ne.ifl(341) ) ifl(2) = -255
          if (ifl(91).lt.0) ifl(2) = -255
          write(errcom,1020) tb(1),tb(2),tb(3)
          if (DEBUGX .eq. 1) then

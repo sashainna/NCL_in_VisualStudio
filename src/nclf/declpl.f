@@ -174,7 +174,7 @@ c
                endif
                goto 88888 
            else
-               call error(640)
+               call error(420)
                go to 99999
            endif
 c**************************************************** if its a point

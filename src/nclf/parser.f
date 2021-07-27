@@ -106,7 +106,6 @@ C********************************************************************
       real*4 tapeq(2),tapnow
       equivalence (tapeq,sc(55)),(tapnow,tapeq(2))
       character*1 atok2(64)
-      !character*6 atok2
       character*6 word6
       real*8 val
       integer*4 nc, strlen1,comment,cut
@@ -146,17 +145,13 @@ c
              if (pgindx .ge. 1 .and. pgmode(pgindx) .eq. 5)
      1           pgindx = pgindx - 1
              ifl(383) = 0
-c     The next else added on Feb.18, 2020 by S. Soiguine            
-         else if (i .eq. 1) then
-             ifl(383) = 1
          endif
       endif
 c
 c...Comment block
 c.....Allow utility commands to be executed - ASF 1/13/14.
 c
-      !if (ifl(383).eq.1.and.(ain(inx).ne.'*'.or.inx.ne.1)) then cc That was modified by S. Soiguine on Feb.18, 2020
-      if (ifl(383).eq.1) then
+      if (ifl(383).eq.1.and.(ain(inx).ne.'*'.or.inx.ne.1)) then
          ityp=7
          nextyp=11
          goto 99999
@@ -248,7 +243,6 @@ c
       endif
       length=1
       atok2(1)=ain(inx)
-      !atok2(1:6)=ain(1:6)
 200   inx=inx+1
 c
 c...for case like "PPRINT***********************************"
@@ -259,16 +253,15 @@ c...so keep with V9.6
 c...yurong
 c
       if (ifl(191) .eq. 0) then
-           if (token2(1:6).eq.'PARTNO' .or.
+          if (token2(1:6).eq.'PARTNO' .or.
      x        token2(1:6).eq.'PPRINT' .or.
      x        token2(1:6).eq.'INSERT' .or.
      x        token2(1:6).eq.'LETTER' .or.
      x        token2(1:6).eq.'REMARK' .or.
      x        token2(1:6).eq.'TITLES' ) then
-          comment = 1
-          goto 250
-      endif
-          
+              comment = 1
+              goto 250
+          endif
       endif
 c
 c...added check for wildcard such as 'x*' or 'x*y' (x could be

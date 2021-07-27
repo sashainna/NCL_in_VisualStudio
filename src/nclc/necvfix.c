@@ -890,13 +890,9 @@ Next:
 				k = jpts - ipts - 1;
 				if (k > 0)
 				{
-					//Below comm out to disable removing, Sasha, May28, 2020
-					/*npts -= k;*/
-					//npts -= npts -k - 1;
-					///*uu_list_delete (cvpoint,ipts+1,k);
-					//uu_list_delete (cvtang,ipts+1,k);*/
-					//uu_list_delete (cvpoint,ipts+1,npts -k - 1);
-					//uu_list_delete (cvtang,ipts+1,npts -k - 1);
+					npts -= k;
+					uu_list_delete (cvpoint,ipts+1,k);
+					uu_list_delete (cvtang,ipts+1,k);
 					*n1 = npts;
 					return;
 				}

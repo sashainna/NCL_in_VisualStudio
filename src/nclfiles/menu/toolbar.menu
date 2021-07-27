@@ -8,38 +8,39 @@
 /FORMAT/ ICON
 
 #Menus#
-/ / NCL_RESTART
 / / NCL_OPEN_FILE
 / / CAM_SAVE_PP
+#Bar#
 / / nclcam.menu
 / / cutrtn.menu
 / / nclipv.menu
+#Bar#
 / / NCL_DYNAMIC_MOUSE
 / / NCL_FIT_VIEW
 / / NCL_WINDOW_ZOOM
 / / NCL_PREVIOUS_VIEW
 #choice# swapview.menu
-#choice# Display_modes.menu
+#choice# shaded.menu
 #choice# run.menu
+#Bar#
 / / CAM_COMMAND
 #choice# insert.menu
 / / CAM_EDIT_PP
+/ / keypad.menu
 / / NCL_CALCULATOR
 #choice# input_modes.menu
+#Bar#
 / / CAM_ERASE_MOTION
 / / CAM_DISPLY_CUTTER
-#choice# cutter_move.menu
 / / NCL_REPAINT_FULL
-#BAR#
-/ / workaxis.menu
-/ / measure.menu
-#BAR#
-/ / NCL_VIEW_X 
-/ / NCL_VIEW_Y
-/ / NCL_VIEW_Z
-/ / NCL_VIEW_NEGX
-/ / NCL_VIEW_NEGY
-/ / NCL_VIEW_NEGZ
 / / KEY_NOOP
-
-
+/ / KEY_NOOP
+/ / KEY_NOOP
+/ / KEY_NOOP
+/ / KEY_NOOP
+/ / KEY_NOOP
+/ / KEY_NOOP
+/ / KEY_NOOP
+/ / KEY_NOOP
+/ / KEY_NOOP
+/ / KEY_NOOP

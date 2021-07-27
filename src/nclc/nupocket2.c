@@ -5200,7 +5200,7 @@ static void S_initpock_form()
 		ud_dispfrm_show_frmpic(Sfrmpic, PIC_INDEX8, 1);
 		ud_dispfrm_show_frmpic(Sfrmpic, PIC_INDEX12, 1);
 		ud_dispfrm_show_frmpic(Sfrmpic, PIC_INDEX16, 1);
-	}
+	}				 
 	ud_update_form(Sfrmpic);
 }
 /*********************************************************************

@@ -141,7 +141,6 @@ enum
 
 extern UD_METHOD UD_initfrm_intry;
 extern UD_METHOD UD_form_secsel;
-static UD_METHOD save_entry, save_sel_fun;
 
 static int S_option_first = 1; 
 UU_LOGICAL S_close_enable=1,Sreentry = 0;
@@ -624,6 +623,7 @@ UU_LOGICAL fixed,modal,reentry;
 {
 	int status,irtn,fieldno,stat;
 	UD_DDATA val;
+	UD_METHOD save_entry, save_sel_fun;
 	char traverse2[50], display2[50];
 
 	static int but_mod = 0;
@@ -949,8 +949,6 @@ again:;
 	}
 	else if (!Sactive1)
 	{
-		UD_initfrm_intry = S_init_form;
-		UD_form_secsel = S_form_secsel;
 		Sfrm1 = ud_form_display1("ntlaxis.frm",ans,ans,methods,called,display,
 			traverse);
 		if (Sfrm1 != 0)
@@ -2042,8 +2040,6 @@ static UD_FSTAT OnClose()
 	Sactive1 = UU_FALSE;
 	Sfrm1 = -1;
 	S_option_first = 1;
-	UD_initfrm_intry = save_entry;
-	UD_form_secsel = save_sel_fun;
 	return(UD_FLDOK);
 }
 

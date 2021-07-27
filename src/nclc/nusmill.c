@@ -6,9 +6,9 @@
 **
 **    COPYRIGHT 2010 (c) NCCS Inc.  All Rights Reserved.
 **    MODULE NAME AND RELEASE LEVEL
-**       nusmill.c , 26.3
+**       nusmill.c , 25.4
 **    DATE AND TIME OF LAST MODIFICATION
-**       08/03/18 , 11:50:14
+**       11/04/16 , 10:40:55
 *********************************************************************/
 
 #include "usysdef.h"
@@ -239,7 +239,7 @@ static int *Sanswers[] = {
 ......Motion Type
 */
 		&Tmethod, 
-		&Tpasstyp, (int *)&Tpass_str,(int *)&Tstpov_str,
+		&Tpasstyp, (int *)&Tpass_str,(int *)&Sstpov_str,
 		&Ttoltyp,(int *)&Ttoler_str,
 		&Tdir,(int *)&Tdirval1,  UU_NULL,
 			(int *)&Tdirval2,  UU_NULL, 
@@ -287,10 +287,12 @@ static UU_LOGICAL S_enable_buttons()
 	UU_LOGICAL sect11, sect12, sect2, sect21, sect22, sect23, sect24, sect25, sect26,
 		sect3, sect41, sect42, sect43;
 	UU_LOGICAL ifl;
+
 	UM_real8 pahismill, stessmill,rptsmill,rtrsmill,dpesmill,fresmill,tolsmill, fdrrptsmill, fdrrtrsmill;   
 	int sc10_3;
 	char buf[10];
 	smillpar(&pahismill, &stessmill,&rptsmill,&rtrsmill,&sc10_3,&dpesmill,&fresmill,&tolsmill, &fdrrptsmill, &fdrrtrsmill );
+
 /*
 ......SMill
 */
@@ -462,6 +464,7 @@ static UU_LOGICAL S_enable_buttons()
 	}
 	else 
 	{
+		
 		nc = (int)strlen(TLraptoval);
 		ul_strip_blanks(TLraptoval, &nc);
 		if (nc<=0)
@@ -1204,6 +1207,7 @@ UD_FSTAT stat;
 *********************************************************************/
 static void S_deselect_all()
 {
+
 	S_unhilite_all();
 /*
 .....Initialize geomtry variables
@@ -1220,7 +1224,8 @@ static void S_deselect_all()
 	ud_update_answer(MOTIONTRG10,(int *)Tdirval2);
 	if (TLraptotyp==2)
 	{
-		TLraptoval[0] = '\0';			
+		TLraptoval[0] = '\0';
+				
 		ud_update_answer(MOTIONTRG13,(int *)TLraptoval);
 	}
 	Tcvnam[0] = '\0';
@@ -2551,10 +2556,12 @@ static void S_init_form()
 	UM_real8 tol, feedrate;
 	NCLX_mot_feedrate fedrat;
 
+	
 	UM_real8 pahismill, stessmill,rptsmill,rtrsmill,dpesmill,fresmill,tolsmill, fdrrptsmill, fdrrtrsmill;   
 	int sc10_3;
 	char buf[10];
 	smillpar(&pahismill, &stessmill,&rptsmill,&rtrsmill,&sc10_3,&dpesmill,&fresmill,&tolsmill, &fdrrptsmill, &fdrrtrsmill );
+	
 /*
 .....Initialize the form settings
 */
@@ -2667,6 +2674,7 @@ static void S_init_form()
 		Sstpov = stessmill;
 	ncl_sprintf(Sstpov_str, &Sstpov,1);
 	ncl_sprintf(Stoler_str,&Stoler,1);
+
 	Tpasstyp = Spasstyp;
 	Tstarttyp = Sstarttyp;
 	Tdir = Sdir;

@@ -199,7 +199,7 @@ c                 bump pointer to point to deltas
 410           ix = 0
 
 c                 transform delta offset values
-640           call conent (rd(nw), rmx, shortv+ix)
+420           call conent (rd(nw), rmx, shortv+ix)
               nw = nw+1+ix
               if (nw .lt. inp(1)) go to 480
               nw = nw+1
@@ -207,7 +207,7 @@ c                 transform delta offset values
               go to 490
 480           if (ix .eq. 1) go to 410
               ix = 1
-              go to 640
+              go to 420
 490       continue
       endif
       go to 99999

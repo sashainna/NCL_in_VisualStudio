@@ -53,7 +53,7 @@ static UM_int4 flags[10],idc[3];
 static UM_f77_str fsym,fgsym;
 static char sym[3][MAXSYMLEN],gsym[MAXSYMLEN];
 static UM_int4 iclw[6]={-1,-1,-1,-1,-1,-1},Siclw[6];
-static UM_real8 rclw[640],Srclw[640];
+static UM_real8 rclw[420],Srclw[420];
 
 #define segfl flags[0]
 #define movfl flags[1]

@@ -55,7 +55,6 @@ static int Sfrm,Scolor;
 static UU_LIST Ssurf,*Skeylist;
 static UU_LOGICAL Sinit = UU_FALSE;
 
-
 /*********************************************************************
 **   E_FUNCTION:int ul_verify_box(which,ifl)
 **      This function defines the NCLIPV stock in the form of a box.
@@ -994,18 +993,14 @@ static UD_FSTAT OnSrfSelect()
 	struct NCL_fixed_databag e;
 	UU_LOGICAL cmdreject;
 	UM_sgeo geo;
-
 /*
 .....Take down form
 */
 	ud_form_invis();
-
 /*
 .....Trap Reject Op
 */
 	UD_MARK (cmdreject, UU_TRUE);
-
-	
 	if (cmdreject != 0) goto done;
 /*
 .....Set the appropriate selection mask
@@ -1015,16 +1010,14 @@ static UD_FSTAT OnSrfSelect()
 .....Get the next geometry selection
 */
 	ud_ldas(UD_DASSELECT,UA_NCL,478,UU_NULL,1,&numint,UD_NODEFAULT);
-	
 	if (numint == 0) goto done;
 /*
-//.....Loop through selections
+.....Loop through selections
 */
 	init = UU_TRUE;
 	color = Scolor;
 	while(ud_gnxt(init,UU_NULL,&e.key,1))
 	{
-		
 		init = UU_FALSE;
 /*
 .....Store this item in the list
@@ -1032,7 +1025,6 @@ static UD_FSTAT OnSrfSelect()
 		if (ncl_retrieve_data_fixed(&e) != 0) continue;
 		geo.key = e.key;
 		geo.relnum = e.rel_num;
-		
 		ncl_get_label(&e,geo.label);
 		ncl_get_geo_color(e.key,&geo.color);
 		nclu_add_list(&Ssurf,&geo,&color);
@@ -1046,10 +1038,10 @@ static UD_FSTAT OnSrfSelect()
 		}
 		color = Scolor;
 	}
-///*
-//.....End of routine
-//.....Redisplay form
-//*/
+/*
+.....End of routine
+.....Redisplay form
+*/
 done:;
 	ud_unlimit();
 	ud_form_vis();

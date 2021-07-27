@@ -37,7 +37,7 @@ c          scrub/sf1,m,n,pt1,pt2,pt3,pt4
      1 vna,vnb,vnc,uold
 
       real*4 sfu,sfv,xsf,ysf,zsf,vna,vnb,vnc,uold
-      real*8 dbuf(9),hbuf(6),e(14),tdat(640)
+      real*8 dbuf(9),hbuf(6),e(14),tdat(420)
       real*4 ad(300),ae(28),qx(4),qy(4),qz(4),dqx(4),dqy(4),dqz(4)
       integer*2 ksc(500),kd(600),stepno
       equivalence (sc,ksc),(d,ad,kd),(e,ae)
@@ -55,7 +55,7 @@ c          scrub/sf1,m,n,pt1,pt2,pt3,pt4
       lv92 = sc(169) .lt. 9.249d0
 cc      if (lexpcl) then
       if (.not. lv92) then
-        max = 640
+        max = 420
         iclass = 5200
       else
         max = 120
@@ -581,7 +581,7 @@ c
       vny=ob
       vnz=oc
       goto 400
-410   if(ihold.eq.0)goto 640
+410   if(ihold.eq.0)goto 420
       ihold=0
       x=hx
       y=hy
@@ -595,7 +595,7 @@ c
       if(jpnd.eq.0)goto 385
       goto 400
 c              sto this sfnrm
-640   oa=vnx
+420   oa=vnx
       ob=vny
       oc=vnz
       jpst=0

@@ -75,8 +75,8 @@ typedef struct
 
 extern int NVMILL;
 
-int taxis5;
 
+int taxis5;		   
 static UU_LOGICAL Sgeo_init[3]; /* for Sperim, Sholes, Sisles */
 static UU_LOGICAL Spocfrm_init = UU_FALSE;
 static UU_LOGICAL SOpenSides = UU_FALSE;
@@ -94,11 +94,12 @@ static int Stoptype, Ttoptype;
 static char Spoc_bot[VSTRL], Sps_thk[65], Spoc_top[VSTRL];
 static char Tpoc_bot[VSTRL], Tps_thk[65], Tpoc_top[VSTRL];
 /*
+/*
 .....Options
 */
 static int Saxis5;
 static int Taxis5;
-/*
+/*				  
 .....Colors
 */
 static int Scolorp,Scolori,Scolorop,Slintyp,Scolorb,Scolort,Scolorh;
@@ -193,7 +194,7 @@ static int *Sanswers[] = {
 /*
 .....ALL
 */
-	UU_NULL,UU_NULL,UU_NULL,UU_NULL,UU_NULL,UU_NULL,UU_NULL,UU_NULL,UU_NULL,UU_NULL
+UU_NULL,UU_NULL,UU_NULL,UU_NULL,UU_NULL,UU_NULL,UU_NULL,UU_NULL,UU_NULL,UU_NULL
 };
 
 /*********************************************************************
@@ -345,7 +346,7 @@ static UU_LOGICAL S_enable_buttons()
 	{
 		ud_set_traverse_mask(OPTRG2,UU_FALSE);
 	}
-	ud_dispfrm_set_attribs(0, OPTRG3, UM_BLACK, Tcolorh);
+	ud_dispfrm_set_attribs(0, OPTRG3, UM_BLACK, Tcolorh);							
 /*
 .....Set Action Buttons
 */
@@ -1467,7 +1468,6 @@ static UD_FSTAT OnCheck(fieldno, val, stat)
 int *fieldno;
 UD_DDATA *val;
 UD_FSTAT stat;
-
 {
 	extern char ffnam[520];
 	char inpf[520];
@@ -1516,14 +1516,14 @@ UD_FSTAT stat;
 			Stog_ch[1] = Tbotperim;
 			Sacc[Boundaries] = 1;
 		}
-		break;
+	   break;
 	case OPTRG3:
 		exte = strstr(inpf,".pp");
 		if (exte!=NULL)
 		{
 			if (Taxis5 == UU_TRUE /*&& allsf*/)
 			{
-				////ud_set_traverse_mask(OPTRG3,UU_FALSE);	// comm out Sasha, Apr.18, 2021
+				ud_set_traverse_mask(OPTRG3,UU_FALSE);
 				status = five_axis_output();
 				taxis5 =  UU_TRUE;
 				S_build_command(UU_FALSE);
@@ -1542,7 +1542,6 @@ UD_FSTAT stat;
 		else
 			ud_set_traverse_mask(OPTRG3,UU_FALSE);
 
-		break;
 	default:
 		break;
 	}
@@ -1878,7 +1877,7 @@ static void S_init_form()
 		Slintyp = 7;
 		Sislperim = Sbotperim = UU_FALSE;
 		Sdirmodp = 0;
-		Saxis5 = UU_FALSE;
+		Saxis5 = UU_FALSE;		 
 	}
 	ncl_set_open_att(Scolorop,Slintyp);
 	strcpy(Spoc_bot,Smodals.botpln);
@@ -1914,7 +1913,7 @@ static void S_init_form()
 	Tdirmodp = Sdirmodp;
 	Tislperim = Sislperim;
 	Tbotperim = Sbotperim;
-	Taxis5 = Saxis5;
+	Taxis5 = Saxis5;			   
 	strcpy(Tds_thk, Sds_thk);
 	strcpy(Topen_thk, Sopen_thk);
 	Ttoptype = Stoptype;
@@ -1937,6 +1936,7 @@ static void S_save_form()
 	Sislperim = Tislperim;
 	Sbotperim = Tbotperim;
 	Saxis5 = Taxis5;
+	strcpy(Sds_thk, Tds_thk);			   
 	strcpy(Sds_thk, Tds_thk);
 	strcpy(Sopen_thk, Topen_thk);
 	Stoptype = Ttoptype;
@@ -1970,12 +1970,9 @@ void nclu_vmill()
 	UU_LOGICAL cmdreject;
 	int status,flag;
 	UD_METHOD save_entry;
-
-	extern char ffnam[520];
+		extern char ffnam[520];
 	char inpf[520];
 	char* exte;
-	
-	
 /*
 .....Set up form fields
 */
@@ -2020,7 +2017,7 @@ void nclu_vmill()
 /*
 .....Options
 */
-		OnButtons, OnButtons, OnCheck,
+		OnButtons, OnButtons,
 /*
 .....Colors
 */
@@ -2030,15 +2027,14 @@ void nclu_vmill()
 .....All
 */
 		OnModals, OnAction, OnAction, OnAction,
-		OnAction, OnAction, OnAction, OnAction,OnVideo
+		OnAction, OnAction, OnAction, OnAction,OnVideo,
 	};
-
 	static char called[] = {
 		6,6,6,6,6,6,6,6,6,6,6,
 		6,6,6,6,6,6,
 		6,6,6,
 		6,6,6,6,6,6,6,6,6,
-		6,6,6,6,6,6,6,6,6,6};
+		6,6,6,6,6,6,6,6,6,6};													  
 /*
 .....Initialize routine
 */
@@ -2047,9 +2043,7 @@ void nclu_vmill()
 		ud_wrerr("You are not authorized to run this product.");
 		return;
 	}
-
-	strcpy(inpf,ffnam);
-
+	strcpy(inpf,ffnam);					
 	Sclick_pokmod = UU_FALSE;
 /*
 .....Trap Reject Op
@@ -2119,7 +2113,7 @@ void nclu_vmill()
 	{
 		if (Taxis5 == UU_TRUE /*&& allsf*/)
 		{
-			//traverse[OPTRG3] = UU_FALSE;	//comm out ? Sasha Apr18, 2021
+			traverse[OPTRG3] = UU_FALSE;
 			
 			taxis5 =  UU_TRUE;
 		}
@@ -2132,14 +2126,11 @@ void nclu_vmill()
 	else
 		traverse[OPTRG3] = UU_FALSE;
 	NCL_preview_mot = 1;
-//repeat:
 /*
 .....Get the Form input
 */
 	UD_initfrm_intry = S_enter_form;
-	//S_update_answers();
 	status = ud_form1("nvmill.frm",Sanswers,Sanswers,methods,called,display,traverse);
-	status = five_axis_output();
 	UD_initfrm_intry = save_entry;
 /*
 .....Erase last previewed motion
@@ -2178,7 +2169,6 @@ void nclu_vmill()
 	S_build_command(UU_TRUE);
 
 done:;
-//done:
 	ncl_pocket_draw_open(UU_TRUE);
 	SOpenSides = UU_FALSE;
 	if (Sgeo_redraw)
@@ -2520,7 +2510,6 @@ UU_LOGICAL flag;
 		status = five_axis_output();
 		taxis5 = 1;
 	}
-
 	geop = (UM_sgeo *) UU_LIST_ARRAY (&Sperim);
 	if (nisles > 0) geoi = (UM_sgeo *) UU_LIST_ARRAY (Sisles);
 	geoh = (UM_sgeo *)UU_LIST_ARRAY(&Sholes);
@@ -2682,3 +2671,4 @@ int five_axis_output()
 done:;
 	return (0);
 }
+													   

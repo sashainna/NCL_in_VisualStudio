@@ -29,7 +29,7 @@ C
 
       integer*2 icl,isubcl,numitm,iclf,itr
 c
-      real*8 rdata(640),sec,cnv,rcldat(640),rval
+      real*8 rdata(420),sec,cnv,rcldat(420),rval
 c
       integer*4 iclw(6),jcldat(240),jval(2),iline,iltyp,inc,nlin
       integer*4 istrt,ien,jinc,k,n,idir,ipx,it,im,id
@@ -269,7 +269,7 @@ C
       include 'com8a.com'
 c
       integer*2 icl,isubcl,numitm
-      real*8 rdata(640)
+      real*8 rdata(420)
 
       integer*4 mupt,ncp,max
 c
@@ -278,7 +278,7 @@ c
       else
          if (icl.eq.5200 .or. icl .eq. 5300) then
            mupt = 21
-           max = 640
+           max = 420
          else if (icl .eq. 5210) then
            mupt = 21
            max = mupt

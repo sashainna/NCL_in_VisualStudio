@@ -1496,7 +1496,7 @@ static void S_init_params (util::Parameterized* pParams, UU_REAL* dtol,int mode)
 		
 		////params.setParam (util::PARAM_BOTTOM_MATERIAL_Z, -1.0);
 		params.setParam (util::PARAM_BOTTOM_MATERIAL_Z, -0.05);
-		////params.setParam (util::PARAM_BOTTOM_MATERIAL_Z, gpos[6]);
+		//params.setParam (util::PARAM_BOTTOM_MATERIAL_Z, gpos[6]);
 
 		ncl_vmill_get_expand(&use_stkoff,&stkoff);
 		if (use_stkoff) stp = gparm[27] + stkoff;

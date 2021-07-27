@@ -181,8 +181,8 @@ c                         build a map
 220   iwst=84
       do 300 i=1,nsf*4
 300   kw(iwst+i)=0
-      do 640 isf=1,nsf
-         do 640 ipx=1,nsf
+      do 420 isf=1,nsf
+         do 420 ipx=1,nsf
             if (ipx.eq.isf) goto 415
             do 410 i=1,4
                k=(ipx-1)*4+i
@@ -199,11 +199,11 @@ c RAH: added call to set intr flag - effective on SGI ONLY
                call ckintr(ifl(86),ifl(35))
                if (ifl(86).eq.1) goto 9320
 410         continue
-            go to 640
+            go to 420
 c RAH: added call to set intr flag - effective on SGI ONLY
 415         call ckintr(ifl(86),ifl(35))
             if (ifl(86).eq.1) go to 9320
-640   continue
+420   continue
 c...
 c      write(19,9020)(kw(k+iwst),k=1,nsf*4)
 c9020  format(4i4)

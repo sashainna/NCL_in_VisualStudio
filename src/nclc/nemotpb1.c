@@ -82,7 +82,7 @@ int trafl,npt;
 	UM_int4 icl[6];
 	UU_LOGICAL first;
 	UU_REAL dis,ang,opt[5][6],tpt[3],tol1,tol2;
-	UM_real8 rcl[640];
+	UM_real8 rcl[420];
 	UM_coord ptx;
 	UM_vector svec,tvec;
 	UM_plane plane;
@@ -1061,7 +1061,7 @@ ncl_count_clrec()
 	UN_clstruc *irec;
 	UM_int2 jerr;
 	UM_int4 iclw[6];
-	UM_real8 rclw[640];
+	UM_real8 rclw[420];
 /*
 .....Loop to read clfile
 */

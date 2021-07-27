@@ -300,11 +300,11 @@ C
 C     if (kesc .eq. 4) then
 C         i      = 1
 C         lc1    = char(kc1)
-C 400     if (lc1 .eq. lesc(i) .and. lc .eq. lesc(i+1)) go to 640
+C 400     if (lc1 .eq. lesc(i) .and. lc .eq. lesc(i+1)) go to 420
 C         i      = i      + 2
 C         if (i .gt. 36) go to 650
 C         go to 400
-C 640     kescfl = (i-1) / 2 + 1 + 4
+C 420     kescfl = (i-1) / 2 + 1 + 4
 C         kesc   = 5
 C         go to 600
 C     endif
@@ -349,11 +349,11 @@ c
 C     if (kesc .eq. 4) then
 C         i      = 1
 C 400     if (lc1 .eq. lesc(i) .and. lc2 .eq. lesc(i+1) .and.
-C    1        lc .eq. lesc(i+2)) go to 640
+C    1        lc .eq. lesc(i+2)) go to 420
 C         i      = i      + 3
 C         if (i .gt. 54) go to 650
 C         go to 400
-C 640     kescfl = (i-1) / 3 + 1 + 4
+C 420     kescfl = (i-1) / 3 + 1 + 4
 C         kesc   = 5
 C         go to 600
 C     endif

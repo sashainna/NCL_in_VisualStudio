@@ -148,6 +148,9 @@
     <None Include="openncl\yfmotsup.f">
       <Filter>openncl</Filter>
     </None>
+    <None Include="pwkeys\passwd.f">
+      <Filter>pwkeys</Filter>
+    </None>
     <None Include="inc\ncltitle.ico">
       <Filter>Resource Files</Filter>
     </None>
@@ -176,6 +179,21 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="inc\nclpic.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\ncl100\nlib\objs\nclpic.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\ncl100\nlib\obj\nclpic.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\ncl100\nlib\obj\nclpic_48.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\ncl100\nlib\obj\toolbar1.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\ncl100\nlib\obj\toolbar.bmp">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="inc\NoPicText.bmp">
@@ -252,21 +270,6 @@
     </None>
     <None Include="inc\slider.bmp">
       <Filter>Resource Files</Filter>
-    </None>
-    <None Include="nlib\obj\nclpic.bmp">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="nlib\obj\nclpic_48.bmp">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="nlib\obj\toolbar.bmp">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="nlib\obj\toolbar1.bmp">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="pwkeys\passwd.f">
-      <Filter>pwkeys</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -1138,6 +1141,9 @@
       <Filter>interface</Filter>
     </ClCompile>
     <ClCompile Include="interface\ipuck4.c">
+      <Filter>interface</Filter>
+    </ClCompile>
+    <ClCompile Include="interface\iunihep.c">
       <Filter>interface</Filter>
     </ClCompile>
     <ClCompile Include="interface\ltermio.c">
@@ -4182,26 +4188,11 @@
     <ClCompile Include="nclc\nupmill.c">
       <Filter>nclc</Filter>
     </ClCompile>
-    <ClCompile Include="interface\iunihep.c">
-      <Filter>interface</Filter>
-    </ClCompile>
-    <ClCompile Include="nclc\pwcfunc.cpp">
-      <Filter>nclc</Filter>
-    </ClCompile>
-    <ClCompile Include="nclc\PWMessageBox.cpp">
-      <Filter>nclc</Filter>
-    </ClCompile>
-    <ClCompile Include="nclc\TestFlank-nintof-2.cpp">
-      <Filter>nclc</Filter>
-    </ClCompile>
-    <ClCompile Include="nclc\print_cl.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="inc\wsntncl.rc" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\wsntres.h" />
-    <ClInclude Include="inc\MachineWorks.h" />
-    <ClInclude Include="..\..\..\volumillsdk_70\thirdparty\boost\boost\ratio\detail\mpl\abs.hpp" />
   </ItemGroup>
 </Project>

@@ -32,10 +32,6 @@ C WNT-START
       subroutine messag (kmsg)
 c
       include 'menu.inc'
-      
-      include "postworks_nt.inc"
-
-      include 'post.inc'
 c
       integer*4 kmsg, ret
 c
@@ -81,9 +77,6 @@ C WNT-START
       subroutine prompt (kpr,kans)
 c
       include 'menu.inc'
-      include "postworks_nt.inc"
-
-      include 'post.inc'
 c
       integer*4 kpr,kans, ans
 c
@@ -103,7 +96,6 @@ c
       endif
       lans = SAPRM(kpr)
       nc = strlen1(lans)
-      if (nc.eq.0) goto 8000
       title = "NCCS_LICENSE Question"
       nc1 = strlen1(title)
       call getyesno(lans, nc, title, nc1, ans)

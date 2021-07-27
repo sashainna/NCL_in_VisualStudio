@@ -1200,7 +1200,7 @@ void CMainFrame::initial_ncl()
 	{
 //we need check out why we add this code, but it will make other software can't use spacemouse while using ncl
 //temp remove 1/10/19 Yurong
-		//SiGrabDevice(m_DevHdl, SPW_TRUE);
+//		SiGrabDevice(m_DevHdl, SPW_TRUE);
 		SiSetUiMode (&m_DevHdl, SI_UI_ALL_CONTROLS);
 	}
 	else

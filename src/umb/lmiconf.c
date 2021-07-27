@@ -10,7 +10,6 @@
 *********************************************************************/
 #include "MachineWorks.h"
 #include "li/mwauthnt.h"
-//#include "mwauthnt.h"
 
 LiInitialiseLocal()
 {

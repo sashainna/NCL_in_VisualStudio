@@ -31,11 +31,17 @@
 /FILE/ pmill.jpg
 /NAME/ pmill
 /POSITION/ 220,10
-/SIZE/ 125,125
+/SIZE/ 125,102
 
 #SECTION#
 /NAME/ Motion Type
 /COLOR/ DEFAULT
+
+#PICTUREBOX#
+/FILE/ Pmill_MType.jpg
+/NAME/ MotionType
+/POSITION/ 220,10
+/SIZE/ 125,125
 
 #CHOICEBOX#
 /LABEL/ Motion Type:
@@ -43,9 +49,9 @@
 /SIZE/90,40
 /TYPE/UD_DASSTRING
 /CHOICES/ "Linear","Helix","Arc"
-/PICTURE/MotionType,"Linear",1,1,99,50,0
-/PICTURE/MotionType,"Helix",1,51,50,99,1
-/PICTURE/MotionType,"Arc",51,51,99,99,2
+/PICTURE/MotionType,"Linear",1,1,50,50,0
+/PICTURE/MotionType,"Helix",55,1,99,51,1
+/PICTURE/MotionType,"Arc",1,55,50,95,2
 
 #EDIT#
 /LABEL/ Radius:
@@ -91,39 +97,44 @@
 /SIZE/100,14
 /TYPE/UD_DASSTRING
 
-#CHOICEBOX#
-/LABEL/ 
-/POSITION/ 55,63
-/SIZE/ 45,40
-/TYPE/ UD_DASSTRING
-/CHOICES/ "Planes", "Vector"
-
 #EDIT#
-/LABEL/
-/POSITION/ 105,63
+/LABEL/Planes:
+/POSITION/ 55,63,85,63
 /SIZE/ 40,14
 /TYPE/ UD_DASSTRING
 /PREC/ 8
 /LEN/ 8
 
 #PUSHBUTTON#
-/LABEL/ Select
-/POSITION/ 150,63
-/SIZE/ 40,14
+/LABEL/ <-  Start
+/POSITION/ 130,63
+/SIZE/ 35,14
+/TYPE/ UD_DASSTRING
+
+#PUSHBUTTON#
+/LABEL/ OR Select
+/POSITION/ 170,63
+/SIZE/ 39,14
 /TYPE/ UD_DASSTRING
 
 #EDIT#
 /LABEL/
-/POSITION/ 105,80
+/POSITION/ 85,80
 /SIZE/ 40,14
 /TYPE/ UD_DASSTRING
 /PREC/ 8
 /LEN/ 8
 
 #PUSHBUTTON#
-/LABEL/ Select
-/POSITION/ 150,80
-/SIZE/ 40,14
+/LABEL/ <-  End
+/POSITION/ 130,80
+/SIZE/ 35,14
+/TYPE/ UD_DASSTRING
+
+#PUSHBUTTON#
+/LABEL/ OR Select
+/POSITION/ 170,80
+/SIZE/ 39,14
 /TYPE/ UD_DASSTRING
 
 #CHOICEBOX#
@@ -162,42 +173,15 @@
 /PREC/ 8
 /LEN/ 8
 
-#PICTUREBOX#
-/FILE/ Pmill_MType.jpg
-/NAME/ MotionType
-/POSITION/ 220,10
-/SIZE/ 125,125
-
 #SECTION#
-/NAME/ Boundaries
+/NAME/ Entry 
 /COLOR/ DEFAULT
 
-#CHOICEBOX#
-/LABEL/ Edge:
-/POSITION/ 10,17,38,17
-/SIZE/ 65,40
-/TYPE/ UD_DASSTRING
-/CHOICES/ "To", "Past", "On", "Contact"
-/PICTURE/Boundaries,"To",7,23,24,29,0
-/PICTURE/Boundaries,"Past",7,30,24,36,1
-/PICTURE/Boundaries,"On",7,37,24,43,2
-/PICTURE/Boundaries,"Contact",7,44,24,60,3
-
-#CHECKBOX#
-/LABEL/ Ignore Inner Boundaries
-/POSITION/ 85,17
-/SIZE/90,15
-/TYPE/UD_DASSTRING
-
 #PICTUREBOX#
-/FILE/ Pmill_Boundaries.jpg
-/NAME/ Boundaries
+/FILE/ Pmill_EntryExit.jpg
+/NAME/ EntryExit
 /POSITION/ 220,10
-/SIZE/ 150,125
-
-#SECTION#
-/NAME/ Entry / Exit
-/COLOR/ DEFAULT
+/SIZE/ 150,60
 
 #CHOICEBOX#
 /LABEL/ Start:
@@ -205,8 +189,8 @@
 /SIZE/ 70,40
 /TYPE/ UD_DASSTRING
 /CHOICES/ "Default", "Point"
-/PICTURE/EntryExit,"Default",70,5,96,20,0
-/PICTURE/EntryExit,"Point",5,20,25,40,1
+/PICTURE/EntryExit,"Default",65,5,95,45,0
+/PICTURE/EntryExit,"Point",3,39,27,77,1
 
 #EDIT#
 /LABEL/
@@ -221,84 +205,6 @@
 /POSITION/ 130,12
 /SIZE/ 40,14
 /TYPE/ UD_DASSTRING
-
-#CHOICEBOX#
-/LABEL/ Rapto:
-/POSITION/ 10,29,40,29
-/SIZE/ 70,40
-/TYPE/ UD_DASSTRING
-/CHOICES/ "None", "Dist", "Entity"
-
-#EDIT#
-/LABEL/
-/POSITION/85,29
-/SIZE/ 40,14
-/TYPE/ UD_DASSTRING
-/PREC/ 8
-/LEN/ 8
-
-#PUSHBUTTON#
-/LABEL/ Select
-/POSITION/ 130,29
-/SIZE/ 40,14
-/TYPE/ UD_DASSTRING
-
-#CHOICEBOX#
-/LABEL/ Fedrat:
-/POSITION/ 40,46,70,46
-/SIZE/ 70,40
-/TYPE/ UD_DASSTRING
-/CHOICES/ "Current", "Rapid", "Value"
-
-#EDIT#
-/LABEL/
-/POSITION/ 115,46
-/SIZE/ 50,14
-/TYPE/ UD_SCAUNITLESS
-/PREC/ 8
-/LEN/ 8
-
-#CHOICEBOX#
-/LABEL/ Retract:
-/POSITION/ 10,63,40,63
-/SIZE/ 70,40
-/TYPE/ UD_DASSTRING
-/CHOICES/ "None", "Dist", "Entity"
-
-#EDIT#
-/LABEL/
-/POSITION/ 85,63
-/SIZE/ 40,14
-/TYPE/ UD_DASSTRING
-/PREC/ 8
-/LEN/ 8
-
-#PUSHBUTTON#
-/LABEL/ Select
-/POSITION/ 130,63
-/SIZE/ 40,14
-/TYPE/ UD_DASSTRING
-
-#CHOICEBOX#
-/LABEL/ Fedrat:
-/POSITION/ 40,80,70,80
-/SIZE/ 70,40
-/TYPE/ UD_DASSTRING
-/CHOICES/ "Current", "Rapid", "Value"
-
-#EDIT#
-/LABEL/
-/POSITION/ 115,80
-/SIZE/ 50,14
-/TYPE/ UD_SCAUNITLESS
-/PREC/ 8
-/LEN/ 8
-
-#PICTUREBOX#
-/FILE/ Smill_EntryExit.jpg
-/NAME/ EntryExit
-/POSITION/ 220,10
-/SIZE/ 150,125
 
 #SECTION#
 /NAME/ Colors
@@ -326,36 +232,22 @@
 /CHOICES/ Auto
 
 #COLOR#      
-/LABEL/ Clearance Plane:
-/POSITION/ 10,46, 68, 44
-/SIZE/88,14
-/TYPE/UD_DASSTRING
-/CHOICES/ Auto
-
-#COLOR#      
-/LABEL/ Retract Plane:
-/POSITION/ 110,46,160,44
-/SIZE/80,14
-/TYPE/UD_DASSTRING
-/CHOICES/ Auto
-
-#COLOR#      
 /LABEL/ Pass Retract:
-/POSITION/ 10,63,68,61
+/POSITION/ 10,46,68,44
 /SIZE/88,14
 /TYPE/UD_DASSTRING
 /CHOICES/ Auto
 
 #CHOICEBOX#
 /LABEL/ Unused Geometry:
-/POSITION/ 10,80,70,80
+/POSITION/ 10,63,70,61
 /SIZE/105,40
 /TYPE/ UD_DASSTRING
 /CHOICES/ "Hide","Fade"
 
 #COLOR#
 /LABEL/ Color:
-/POSITION/ 130,80, 160,78
+/POSITION/ 130,63, 160,61
 /SIZE/ 60,14
 /TYPE/UD_DASSTRING
 /CHOICES/ Default
@@ -364,7 +256,7 @@
 /FILE/ highlight.jpg
 /NAME/ highlight
 /POSITION/ 220,10
-/SIZE/ 150,125
+/SIZE/ 150,120
 
 #SECTION#
 /NAME/ All
@@ -553,8 +445,8 @@ Value:
 Uses a specified Value as the feed rate for the Retract at Pass End.
 
 <END_SEC>
-<Entry / Exit>
-Entry / Exit
+<Entry >
+Entry 
 ============
 The Entry / Exit section controls the settings used for entering onto and 
 exiting off of the surface.

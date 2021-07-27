@@ -76,7 +76,6 @@ c temp storage for ifl flag
      z             0.0, 0.0, 1.0, 0.0/
       data trflg /.false./
 c
-c    
       if (.not.(ityp.eq.1)) go to 900
 
 c                                                     **** redef
@@ -863,9 +862,9 @@ c
                 err  = .false.
                 temp = cimage(1:nccimg)
                 ipos = index (temp, '/')
-640             ipos = ipos+1
+420             ipos = ipos+1
                 if (ipos.lt.nccimg.and.temp(ipos:ipos).eq.' ') 
-     x                 goto 640
+     x                 goto 420
                 temp = cimage(ipos:nccimg)
               endif
               call fparse (temp,temp,' ','.u')

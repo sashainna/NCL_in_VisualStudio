@@ -76,8 +76,8 @@ int flag;				/* if UD_DEFAULT then default exists */
 	char *uu_uprompt0(), msg[100];
 	UU_LOGICAL status;			/* DAS status save cell */
 
-	/*uu_denter(UU_DTRC,(us,"enter ud_ldas, type=%d, subsys=%d, number=%d", 
-							type, subnum, errno1));*/
+	uu_denter(UU_DTRC,(us,"enter ud_ldas, type=%d, subsys=%d, number=%d", 
+							type, subnum, errno1));
 
 	strcpy(msg, uu_uprompt0(subnum, errno1));
 	ud_rpwrcom(msg);

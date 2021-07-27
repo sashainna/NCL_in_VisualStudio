@@ -870,7 +870,6 @@ void ud_dispfrm_show_frmpic(frmid, fieldno, val)
 int frmid, fieldno;
 int val;
 {
-	//char fname[UX_MAX_FILE_LEN];
 	if (frmid==-1 || UD_dispfrm[frmid] == UU_NULL)
 		return;
 	UD_dispfrm[frmid]->picture_flds[fieldno].show_flag = val;

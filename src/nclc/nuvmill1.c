@@ -34,6 +34,7 @@ static UD_FSTAT OnClose();
 
 static int Sprogress,Sfrm=-1;
 static UU_LOGICAL *Sinterrupt;
+//void nclu_vmill_close_progress();
 
 /*********************************************************************
 **   I_FUNCTION: nclu_vmill_open_progress(interrupt)
@@ -123,10 +124,6 @@ int progress;
 	{
 		if (NCL_waterline)
 		{
-			/*if (progress==90)
-			{
-				progress= 90;
-			}*/
 			ncl_waterline_progress(progress);
 		}
 /*

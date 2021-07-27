@@ -3,8 +3,8 @@
 	<Platforms>
 		<Platform Name="x64"/></Platforms>
 	<Configurations>
-		<Configuration Name="Debug|x64" DeleteExtensionsOnClean="*.obj;*.mod;*.pdb;*.asm;*.map;*.dyn;*.dpi;*.tmp;*.log;*.ilk;*.exe;$(TargetPath)" ConfigurationType="typeStaticLibrary">
-				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true" DebugInformationFormat="debugEnabled" ParallelDebugChecks="true" Optimization="optimizeDisabled" GenAlternateCodePaths="codeForSSE3" UseProcessorExtensions="codeExclusivelyHost" AdditionalIncludeDirectories="Debug/;C:\NCL_from_GitHub\NCL_in_VisualStudio\src\incf;C:\NCL_from_GitHub\NCL_in_VisualStudio\postworks\pwinc" EnableEnhancedInstructionSet="codeArchAVX" FPS4General="true" DebugParameter="debugParameterUsed" IntegerKIND="integerKIND2" LocalVariableStorage="localStorageSave" ExternalNameInterpretation="extNameLowerCase" CallingConvention="callConventionCRef" ModulePath="$(INTDIR)/" ObjectFile="$(INTDIR)/" AssemblerListingLocation="$(INTDIR)/" RuntimeLibrary="rtMultiThreadedDLL"/>
+		<Configuration Name="Debug|x64" OutputDirectory="$(ConfigurationName)" IntermediateDirectory="$(ConfigurationName)" DeleteExtensionsOnClean="*.obj;*.mod;*.pdb;*.asm;*.map;*.dyn;*.dpi;*.tmp;*.log;*.ilk;*.exe;$(TargetPath)" ConfigurationType="typeStaticLibrary">
+				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true" DebugInformationFormat="debugEnabled" Optimization="optimizeDisabled" GenAlternateCodePaths="codeForAVX" UseProcessorExtensions="codeExclusivelyHost" AdditionalIncludeDirectories="Debug/;C:\ncl2019_2\src\incf;c:\ncl2019_2\postworks\pwinc;C:\ncl2019_2\nlib\obj" PreprocessorDefinitions="DEBUG" EnableEnhancedInstructionSet="codeArchAVX" IntegerKIND="integerKIND2" LocalVariableStorage="localStorageSave" CommonElementAlignment="alignCommonEightBytes" LocalSavedScalarsZero="true" ExternalNameInterpretation="extNameLowerCase" CallingConvention="callConventionCRef" ModulePath="$(INTDIR)/" ObjectFile="$(INTDIR)/" AssemblerListingLocation="$(INTDIR)/" NullPointerCheck="true" UninitializedVariablesCheck="true" RuntimeLibrary="rtMultiThreadedDLL" UseWindowsLibs="true"/>
 				<Tool Name="VFLibrarianTool" LinkLibraryDependencies="true"/>
 				<Tool Name="VFResourceCompilerTool" PreprocessorDefinitions="_DEBUG,_AFXDLL" Culture="rcEnglishUS" ResourceOutputFileName="$(INTDIR)/$(InputName).res"/>
 				<Tool Name="VFMidlTool" PreprocessorDefinitions="_DEBUG" MkTypLibCompatible="true" SuppressStartupBanner="true" TargetEnvironment="midlTargetAMD64" HeaderFileName="" DLLDataFileName="" TypeLibraryName="$(OUTDIR)/Ncl.tlb"/>
@@ -13,7 +13,7 @@
 				<Tool Name="VFPreBuildEventTool"/>
 				<Tool Name="VFPostBuildEventTool"/></Configuration>
 		<Configuration Name="Release|x64" DeleteExtensionsOnClean="*.obj;*.mod;*.pdb;*.asm;*.map;*.dyn;*.dpi;*.tmp;*.log;*.ilk;*.exe;$(TargetPath)" ConfigurationType="typeStaticLibrary">
-				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true" Optimization="optimizeDisabled" GenAlternateCodePaths="codeForSSE3" UseProcessorExtensions="codeExclusivelyHost" AdditionalIncludeDirectories="Release/;C:\NCL_from_GitHub\NCL_in_VisualStudio\src\incf;C:\NCL_from_GitHub\NCL_in_VisualStudio\postworks\pwinc" EnableEnhancedInstructionSet="codeArchAVX" IntegerKIND="integerKIND2" LocalVariableStorage="localStorageSave" CommonElementAlignment="alignCommonEightBytes" LocalSavedScalarsZero="true" ExternalNameInterpretation="extNameLowerCase" CallingConvention="callConventionCRef" ModulePath="$(INTDIR)/" ObjectFile="$(INTDIR)/" AssemblerListingLocation="$(INTDIR)/" NullPointerCheck="true" UninitializedVariablesCheck="true" RuntimeLibrary="rtMultiThreadedDLL" UseWindowsLibs="true"/>
+				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true" Optimization="optimizeMinSpace" GenAlternateCodePaths="codeForSSE3" UseProcessorExtensions="codeExclusivelyHost" AdditionalIncludeDirectories="Release/;C:\ncl2019_2\src\incf;c:\ncl2019_2\postworks\pwinc" EnableEnhancedInstructionSet="codeArchAVX" IntegerKIND="integerKIND2" LocalVariableStorage="localStorageSave" LocalSavedScalarsZero="true" ExternalNameInterpretation="extNameLowerCase" CallingConvention="callConventionCRef" ModulePath="$(INTDIR)/" ObjectFile="$(INTDIR)/" AssemblerListingLocation="$(INTDIR)/" NullPointerCheck="true" UninitializedVariablesCheck="true" RuntimeLibrary="rtMultiThreadedDLL" UseWindowsLibs="true"/>
 				<Tool Name="VFLibrarianTool" LinkLibraryDependencies="true"/>
 				<Tool Name="VFResourceCompilerTool" PreprocessorDefinitions="NDEBUG,_AFXDLL" Culture="rcEnglishUS" ResourceOutputFileName="$(INTDIR)/$(InputName).res"/>
 				<Tool Name="VFMidlTool" PreprocessorDefinitions="NDEBUG" MkTypLibCompatible="true" SuppressStartupBanner="true" TargetEnvironment="midlTargetAMD64" HeaderFileName="" DLLDataFileName="" TypeLibraryName="$(OUTDIR)/Ncl.tlb"/>
@@ -120,9 +120,7 @@
 		<File RelativePath=".\nclf\cveval.f"/>
 		<File RelativePath=".\nclf\cvgide.f"/>
 		<File RelativePath=".\nclf\cvintx.f"/>
-		<File RelativePath=".\nclf\cvio.f">
-			<FileConfiguration Name="Debug|x64">
-				<Tool Name="VFFortranCompilerTool" ParallelDebugChecks="false" DebugParameter="debugParameterAll"/></FileConfiguration></File>
+		<File RelativePath=".\nclf\cvio.f"/>
 		<File RelativePath=".\nclf\cvofst.f"/>
 		<File RelativePath=".\nclf\cvofwf.f"/>
 		<File RelativePath=".\nclf\cvp.f"/>
@@ -597,7 +595,6 @@
 		<File RelativePath=".\openncl\yfmotrtn.f"/>
 		<File RelativePath=".\openncl\yfmotsup.f"/></Filter>
 		<Filter Name="pwkeys">
-		<File RelativePath=".\pwkeys\licmsg_nt.f"/>
 		<File RelativePath=".\pwkeys\passwd.f">
 			<FileConfiguration Name="Release|x64">
 				<Tool Name="VFFortranCompilerTool" IntegerKIND="integerKIND4"/></FileConfiguration>

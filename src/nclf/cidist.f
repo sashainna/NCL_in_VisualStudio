@@ -253,7 +253,7 @@ c
       integer*2 ksub
       real*8 gra,gpt(3),gast,gdel,gid,gcen(3),gcir(7),gmat(4,3) 
 c
-      real*8 PI,RADIAN,tol,a1,s1,cdt(15),csdt(5),t(640),pt(3),vc(3)
+      real*8 PI,RADIAN,tol,a1,s1,cdt(15),csdt(5),t(420),pt(3),vc(3)
       real*8 d1,md(9)
 c
       integer*4 i, n, max

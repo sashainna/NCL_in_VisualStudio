@@ -68,10 +68,7 @@ extern UX_pathname NCL_load_part;
 extern unsigned int NCL_subprocess;
 extern char NCL_keyinfo[9];
 
-//char* ffnam;
 char ffnam[UX_MAX_FILE_LEN];
-
-//extern int taxis5;
 /**********************************************************************
 **    I_FUNCTION :  uw_ntsignon ()
 **       Processes the WinNT Signon.
@@ -489,7 +486,6 @@ int cam, cad;
 		{
 			UM_init_f77_str(ppn,ppname,UX_MAX_FILE_LEN);
 			strcpy(ppname,fname);
-			strcpy(ffnam,fname);
 			if (pos != UU_NULL)
 			{
 				strcpy(UL_program_suffix,(pos+1));
@@ -500,7 +496,7 @@ int cam, cad;
 			ud_prmerr(buf);
 			i = strlen(ppname);
 /*			for (i=strlen(ppname);i<UX_MAX_FILE_LEN;i++) ppname[i] = ' ';*/
-			loadpp(UM_addr_of_f77_str(ppn),&i,&ierr,&wflg,"");
+			loadpp(UM_addr_of_f77_str(ppn),&i,&ierr,&wflg);
 			uw_ntret_actln();
 			ptppnm(UM_addr_of_f77_str(ppn),&i);
 			ptdfnm(UM_addr_of_f77_str(ppn),&i);
@@ -677,7 +673,6 @@ int *fieldno;
 UD_DDATA *val;
 UD_FSTAT stat;
 {
-	extern int taxis5;
 /*
 .....Enable correct fields
 .....based on toggle field value
@@ -713,7 +708,7 @@ UD_FSTAT stat;
 			}
 			break;
 		case 6:
-			if ((tcl == 1) || (taxis5 == 1))
+			if (tcl == 1)
 			{
 				ud_set_traverse_mask(7,UU_TRUE);
 				ud_set_traverse_mask(8,UU_TRUE);
@@ -727,7 +722,7 @@ UD_FSTAT stat;
 			}
 			break;
 		case 9:
-			if ((tas == 1) || (taxis5 == 1))
+			if (tas == 1)
 			{
 				ud_set_traverse_mask(10,UU_TRUE);
 				ud_set_traverse_mask(11,UU_TRUE);
@@ -783,8 +778,6 @@ UU_LOGICAL restart;
 	UM_f77_str ppn;
 	char *ux_getenv();
 	UM_f77_str ftcls,ftass;
-
-	extern int taxis5;
 /*
 .....Set up form fields
 */
@@ -844,18 +837,8 @@ UU_LOGICAL restart;
 	{
 		traverse[6] = 0;
 		traverse[9] = 0;
-		//tcl = 0;
-		if (taxis5==1)
-		{
-			tas = 1;
-			tcl = 1;
-		}
-	
-		else
-		{
-			tas = 0;
-			tcl = 0;
-		}
+		tcl = 0;
+		tas = 0;
 	}
 	else
 	{
@@ -863,17 +846,6 @@ UU_LOGICAL restart;
 		traverse[9] = 1;
 		tcl = 0;
 		tas = 0;
-		if (taxis5==1)
-		{
-			tas = 1;
-			tcl = 1;
-		}
-	
-		else
-		{
-			tas = 0;
-			tcl = 0;
-		}
 		ifl = 69; getifl(&ifl,&iflx);
 		if (iflx == 1 || UL_create_cl == 1) tcl = 1;
 		ifl = 88; getifl(&ifl,&iflx);
@@ -986,7 +958,7 @@ again:
 /*
 .....Deallocate this user
 */
- 	unauth(&UL_cam,&UL_cad);
+	unauth(&UL_cam,&UL_cad);
 /*
 .....Straight Exit 
 */

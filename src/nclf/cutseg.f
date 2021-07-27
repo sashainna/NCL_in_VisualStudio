@@ -839,7 +839,7 @@ c
       integer*4 isfl,nc,strlen1,itsk,istyp,ictyp,npts,jdata(840),
      1          iary(3),styp,nparms,nc1,nc2
 c
-      real*8 pts(500),vecs(500),rdata(640),params(20)
+      real*8 pts(500),vecs(500),rdata(420),params(20)
 c
       character*80 msym,ldata
       character*256 tstr1, tstr2,txt,fulldir
@@ -998,7 +998,7 @@ c
               inc1   = 0
               if (ictyp .eq. 2) inc1 = 1
               do 800 i=1,npts,1
-                  if (inc .eq. 640) then
+                  if (inc .eq. 420) then
                       call putcl (7120,2,421,rdata)
                       inc    = 0
                   endif

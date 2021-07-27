@@ -548,25 +548,6 @@ c
 	return;
 }
 
-char* ultname(nclwrk1,nc1,nclwrk2,nc2,action)
-UM_f77_str_ptr nclwrk1, nclwrk2,action;        
-UM_int4 *nc1,*nc2;
-{
-	char *ptr,*ux_getenv(),*index();
-	char com[UX_MAX_FILE_LEN+40],com2[UX_MAX_FILE_LEN+40];
-	char buf[UX_MAX_FILE_LEN];
-	char *flnam1,*flnam2;
-	int CURSES;
-    UM_int2 ifl,vtmode;
-
-	//ptr = ux_getenv("UL_NCL_EDIT",UX_NPRTERRS);
-	flnam1 = UM_cstr_of_f77_str(nclwrk1);
-	flnam1[*nc1]='\0';
-	flnam2 = UM_cstr_of_f77_str(nclwrk2);
-	flnam2[*nc2]='\0';
-	return flnam1;
-}
-
 void ulu_edit(flag)
 	int flag;
 {

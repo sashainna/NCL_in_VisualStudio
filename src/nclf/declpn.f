@@ -673,7 +673,7 @@ c                                                ** at
                    fstpt = .false.
                    a1 = a1 - svinc
                endif
-               do 640 i=n,isvtot+1
+               do 420 i=n,isvtot+1
                  a1=a1+svinc
                  rbuff(1)=p1(1)+p1(7)*dcos(a1)
                  rbuff(2)=p1(2)+p1(7)*dsin(a1)
@@ -681,7 +681,7 @@ c                                                ** at
                  numpts=numpts+1
                  call chkzsf(rbuff)
                  call ppnptt(rbuff,ipntyp,ipnkey,numpts,trans)
-640            continue
+420            continue
                call parsit
              else if (ityp.eq.3 .or. ityp.eq.4 .or.
      1                  (ityp.eq.2.and.ist.eq.2)) then

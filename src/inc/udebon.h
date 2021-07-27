@@ -4,7 +4,7 @@
 **    CONTAINS    :  uu_denter(xTRC,(us,"format",v1,v2,..));
 **							uu_denter2(xTRC,(us,"format",v1,v2,..));
 **							uu_dprint(xTRC,(us,"format",v1,v2,..));
-**							//uu_dexit;;
+**							uu_dexit;
 **
 **			Debugging package. Include exp/src/debug.h. Library exp/lib/utllib.a.
 **       Denter must be the first executable statement of a function. It
@@ -56,7 +56,6 @@
 **							characters, do not use denter, but use denter2
 *********************************************************************/
 
-//#define  UDEBONH
 #ifndef UDEBONH
 #include "umasks.h"
 

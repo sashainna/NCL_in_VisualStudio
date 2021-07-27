@@ -16,9 +16,9 @@
 **
 **    COPYRIGHT 2000 (c) NCCS.  All Rights Reserved.
 **    MODULE NAME AND RELEASE LEVEL 
-**			wsntform2.cpp , 26.7
+**			wsntform2.cpp , 26.3
 **    DATE AND TIME OF LAST  MODIFICATION
-**			10/10/19 , 09:09:05
+**			04/16/18 , 15:34:42
 **********************************************************************
 */
 #include "wsntstdafx.h"
@@ -2665,7 +2665,7 @@ done:;
 /*
 .....added for editbox too
 */
-	/*if (m_type[fldno]==3)
+	if (m_type[fldno]==3)
 	{
 		if (m_current_fld!=-1)
 		{
@@ -2677,7 +2677,7 @@ done:;
 			if (stat!=-1)
 				m_current_fld = -1;
 		}
-	}*/
+	}
 	return 0;
 }
 /**********************************************************************

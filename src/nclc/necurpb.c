@@ -526,7 +526,7 @@ UU_LOGICAL playfl,movefl,initfl;
 {
 	static UM_int2 mxcl=0,irapsv,irap;
 	static UM_int4 iclw[6];
-	static UM_real8 rclw[640];
+	static UM_real8 rclw[420];
 
 	int i,j,iret,npt,np,ipt;
 	UU_LOGICAL endloop;
@@ -790,7 +790,7 @@ UN_clstruc *krec;
 	UM_int2 kerr;
 	UM_int4 iclw[6];
 	int iret;
-	UM_real8 rclw[640];
+	UM_real8 rclw[420];
 	UN_clstruc *irec;
 /*
 .....Initialize routine

@@ -39,7 +39,7 @@ c          motion common equivalences
       integer*2 ntk, iptk
       equivalence (ntk,ifl(79)), (iptk,ifl(50))
 
-      real*8 buf(640), pt(21), ve(3), pmod(3), vr(3), ds(3)
+      real*8 buf(420), pt(21), ve(3), pmod(3), vr(3), ds(3)
       real*8 ti,tj,tk, xu,yu,zu, xr,yr,zr, sec, psthk
       real*8 h, hcr, dst, d1, cr, sbe, cbe, tol, fct
       integer*2 i, n, lnk, jptk, iclass, isubcl, mupt

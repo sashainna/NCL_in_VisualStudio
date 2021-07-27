@@ -252,7 +252,7 @@ c     call lnkinf (1)
  
       whr = 0
       if (ili .eq. 1) whr = 2
-      call loadpp (cfnam,ncf,ioerr,whr,'')
+      call loadpp (cfnam,ncf,ioerr,whr)
       IRCTYP = 0
       if (ioerr.ne.0) then
         cout  = ' '

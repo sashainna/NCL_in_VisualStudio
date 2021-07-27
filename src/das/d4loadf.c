@@ -1926,7 +1926,6 @@ UD_FSTRUCT *fstruct;
 			strcpy(tmpstr, cmsg);
 			if (tmpstr[0]!='\"')
 			{
-				/*tok = (char*)strtok(tmpstr, ",\t\n");*/
 				tok = strtok(tmpstr, ",\t\n");
 				if (tok==NULL)
 				{
@@ -1937,7 +1936,6 @@ UD_FSTRUCT *fstruct;
 			}
 			else
 			{
-				/*tok = (char*)strtok(tmpstr+1, "\"");*/
 				tok = strtok(tmpstr+1, "\"");
 				if (tok==NULL)
 				{
@@ -1981,7 +1979,6 @@ UD_FSTRUCT *fstruct;
 			strcpy(tmpstr, &(tmpstr[k]));
 			if (tmpstr[0]!='\"')
 			{
-				//tok = (char*)strtok(tmpstr, ",\t\n");
 				tok = strtok(tmpstr, ",\t\n");
 				if (tok==NULL)
 				{
@@ -1991,7 +1988,6 @@ UD_FSTRUCT *fstruct;
 			}
 			else
 			{
-				/*tok = (char*)strtok(tmpstr+1, "\"");*/
 				tok = strtok(tmpstr+1, "\"");
 				if (tok==NULL)
 				{

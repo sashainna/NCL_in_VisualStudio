@@ -308,7 +308,7 @@ c          if (ist0 .eq. SURF) isc10(3) = 1
           if (ityp.eq.2) then
             if (ist.ne.SURF .and. (ist0.ne.SURF.or.ist.ne.PLANE) .and.
      x          ist.ne.CURVE .and. ist.ne.LINE .and. ist.ne.CIRCLE) then
-              call error(640) ! curve or surface expected
+              call error(420) ! curve or surface expected
               goto 99999
             endif
               sc(12) = tv

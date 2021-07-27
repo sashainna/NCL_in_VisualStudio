@@ -35,7 +35,7 @@ c
       integer*4 i,j,npts,npas,ntype
 c
       real*8 cnv,frate,fdprev,buf(14),tmp8,dx,dy,dz,zdpt,pte(6),ptl(9),
-     1       pts(9),ptt(9),tdat(640),cir(7),speed,sprev,pt1(9),pt2(9),
+     1       pts(9),ptt(9),tdat(420),cir(7),speed,sprev,pt1(9),pt2(9),
      2       ci1(7)
 c
       equivalence(ntk,ifl(79))
@@ -75,7 +75,7 @@ c
       else if (wmeth.eq.2) then
           call nclf_vmill_pocket3(ier)
       else if (wmeth.eq.3) then
-          call nclf_vmill_pocket5(ier)
+          call nclf_vmill_pocket5(ier)    
       endif
       if (ier .ne. 0) then
           ifl(2) = ier
@@ -107,8 +107,6 @@ c
          else if (ntype .eq. 4) then
             call nclf_vm_clpath_getspindle (i,speed)
          endif
-         
-         
 c
 c......Output spindle speed
 c

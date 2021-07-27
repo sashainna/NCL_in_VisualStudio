@@ -343,7 +343,7 @@ c
   640 call pwdsid (clprog,lid,ncid,kflag,kerr)
       if (kerr .ne. 0) go to 9200
 
-       if (LICDAT(8) .ne. '*') then
+      if (LICDAT(8) .ne. '*') then
           LICDAT(8) = lid
           LICNC(8) = ncid
       endif
@@ -357,8 +357,6 @@ c
       if (kerr .ne. 0) go to 9100
       call pwddcv (LICDAT(6),LICNC(6),lbuf2,nc2,inum2,kerr)
       if (kerr .ne. 0 .or. inum1 .gt. inum2) go to 9100
-      
-c      call pwdlic (cpgm,copt,cdat,kopt,cmsg,kerr)
 c
       call pwdbtc (clver,lbuf1,nc1)
       call pwddcv (lbuf1,nc1,lbuf2,nc2,inum3,kerr)
@@ -539,7 +537,6 @@ c
       subroutine pwdchk (cbuf,knc,cout,knco,kst,ken,kfl,kerr)
 c
       integer*4 knc(9),knco(9),kst,ken,kfl,kerr
-      integer*2 tken
 c
       character*(*) cbuf(9),cout(9)
 c
@@ -547,8 +544,6 @@ c
 c
       character*8 lopt(8),one(10),ten(6)
       character*80 ldat,sbuf
-      
-c      equivalence (ken,tken)
 c
       data one /'ZERO','ONE','TWO','THREE','FOUR','FIVE','SIX','SEVEN',
      1          'EIGHT','NINE'/
@@ -557,10 +552,7 @@ c
 c...Go to appropriate field logic
 c
       kerr   = 0
-      tken = ken
       go to (100,200,300,400,500,600,700,800,900), kst
-      
-      
 c
 c...Company
 c
@@ -574,7 +566,7 @@ c
           cout(1) = ldat
           knco(1) = nc
       endif
-      if (tken .eq. 1) go to 8000
+      if (ken .eq. 1) go to 8000
 c
 c...Hardware
 c
@@ -588,7 +580,7 @@ c
           cout(2) = ldat
           knco(2) = nc
       endif
-      if (tken .eq. 2) go to 8000
+      if (ken .eq. 2) go to 8000
 c
 c...Software
 c
@@ -602,7 +594,7 @@ c
           cout(3) = ldat
           knco(3) = nc
       endif
-      if (tken .eq. 3) go to 8000
+      if (ken .eq. 3) go to 8000
 c
 c...Options
 c
@@ -668,7 +660,7 @@ c
               call pwdfil (cout(4),knco(4))
           endif
       endif
-      if (tken .eq. 4) go to 8000
+      if (ken .eq. 4) go to 8000
 c
 c...Number of users
 c
@@ -698,7 +690,7 @@ c
           cout(5) = ldat(1:nc) // one(inum+1)
           knco(5) = pwdlen(cout)
       endif
-      if (tken .eq. 5) go to 8000
+      if (ken .eq. 5) go to 8000
 c
 c...Termination date
 c
@@ -713,7 +705,7 @@ c
           cout(6) = ldat
           knco(6) = nc
       endif
-      if (tken .eq. 6) go to 8000
+      if (ken .eq. 6) go to 8000
 c
 c...Version date
 c
@@ -728,7 +720,7 @@ c
           cout(7) = ldat
           knco(7) = nc
       endif
-      if (tken .eq. 7) go to 8000
+      if (ken .eq. 7) go to 8000
 c
 c...Hardware ID
 c
@@ -750,7 +742,7 @@ c
           cout(8) = ldat
           knco(8) = nc
       endif
-      if (tken .eq. 8) go to 8000
+      if (ken .eq. 8) go to 8000
 c
 c...Password
 c

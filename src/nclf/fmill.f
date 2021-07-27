@@ -39,7 +39,7 @@ C
 
       real*8 apsw,hscal,tol,ftol,ust,vst,d1,co,totco,crad,ufct,hmin
       real*8 pte(24),ptl(9),pl(4),vfw(3),uv1(3),s0(10),s1(10),s00(10),
-     x       s10(10),uv(3),vn(3),buf(12),tdat(640),avpl1(4),avpl2(4)
+     x       s10(10),uv(3),vn(3),buf(12),tdat(420),avpl1(4),avpl2(4)
       real*8 f_dot,avcsf1(40),avthk1(40)
       real*4 u4,v4,usec,vsec,du,dv,delu,dir,ss(10)
       integer*4 j,nclkey,kcv,ksf,ksf11,ksec,nppp,npas,npts,kerr,npts1

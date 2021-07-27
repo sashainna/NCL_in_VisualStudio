@@ -267,7 +267,7 @@ c
 c
       logical done,lrsav,ldid,first,rpsav,isav,lsttr
 c
-      real*8 tpt(6),dclbuf(640),spt(9),opt(9),tmx(12),vmx(12),fed
+      real*8 tpt(6),dclbuf(420),spt(9),opt(9),tmx(12),vmx(12),fed
 c
       equivalence (dclbuf,jclbuf)
 c

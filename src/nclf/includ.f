@@ -89,11 +89,11 @@ c...Bobby - 9/19/05
 c
       if (ifl(35) .eq. 1 .and. ist .ne. READV .and. cin(1:1) .ne. '*')
      1       then
-          if (IRCTYP .eq. 2) go to 640
+          if (IRCTYP .eq. 2) go to 420
           if (IRCTYP .eq. 5) go to 99999
       endif
 
-  640 ldtext = .true.
+  420 ldtext = .true.
       call parsit
       ldtext = .false.
       err = .false.

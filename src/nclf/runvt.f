@@ -116,7 +116,7 @@ c... Open PP file
 c
       errflg = 0
       nci = strlen1(ppfnam)
-      call loadpp(ppfnam,nci,errflg,0,'')
+      call loadpp(ppfnam,nci,errflg,0)
  
 c
 c... Get info about creating "CL" and "AS" files

@@ -502,7 +502,7 @@ C
 
       include 'com8a.com'
 
-      integer*2 isc(640), ietype,ierr
+      integer*2 isc(420), ietype,ierr
       integer*4 npt, nclkey,key,numpck,ibnum,ienum,idir,ncl_ssonsf1
       real*8 asf,bsf
       integer*2 ksn(4), isub

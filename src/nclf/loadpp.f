@@ -25,18 +25,16 @@ C*    SIDE EFFECTS : none
 C*    WARNINGS     : none
 C********************************************************************/
 C
-      subroutine loadpp (inname, knc, errflg, whr,tt)
+      subroutine loadpp (inname, knc, errflg, whr)
  
       include 'com4a.com'
  
       character*(MAX_PATH) inname
       character*(MAX_PATH) fbuf
       character*(MAX_LEN) buf
-      character*(MAX_LEN) tt
-      character*(MAX_LEN) ttt
       character*1  buf1(MAX_LEN),fbuf1(MAX_PATH)
       equivalence(buf,buf1), (fbuf,fbuf1)
-      
+ 
       integer*2 errflg,itxt
       integer*4 lunno,irec,ncf,knc,nc,strlen1,i4err,ip,nindex,nci,
      1          lstrec,nct
@@ -63,11 +61,6 @@ c
       incld=.false.
       lread=.false.
       lunno=scrlun
-      ttt=""
-      if (tt(1:1).ne.'') then
-          ttt = tt
-      endif
-c      if (LEN(tt).gt.0) ttt = tt
 cc      call ifinit
 c
 c...Get name of file to load
@@ -152,10 +145,6 @@ c
 c...Get the next record
 c 
 20    read (lunno, 30, end = 150, err = 8889) buf
-c      if (strlen1(buf) .eq. 0 .and. strlen1(ttt) .gt. 0) then
-c          buf = ttt
-c          ttt = ' '
-c      endif
 30    format (a)
       nc = strlen1(buf)
       if (incld .and. .not. lread) then
@@ -362,19 +351,7 @@ c
           call wrtpp (buf,nc,lstrec,irctyp,0)
       endif
  
-!150   buf=ttt
-      
-c      ttt=trim(ttt)
-150      nc=strlen1(buf)
-c      if (nc .gt. 0) then
-!      if (ttt(1:1) .ne. '') then    
-!c          buf = ttt
-!          
-!          call nclf_putmerge (ttt,nc,irctyp,1)
-!          ttt = ' '
-!c          goto 30
-!      endif
-      if (.not. incld) goto 152
+150   if (.not. incld) goto 152
       close(luntmp(lunix))
       lunix = lunix - 1
       if (lunix .eq. 0) then

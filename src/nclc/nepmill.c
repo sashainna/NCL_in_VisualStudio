@@ -94,7 +94,6 @@ static UU_LOGICAL Suse_thrupt;
 static UM_coord Sthrupt;
 
 extern int writeFile1 (char* value);
-extern void urest(char*, int, int, char*);
 
 /*********************************************************************
 **    E_FUNCTION     : ncl_pmill_getfl(flag)
@@ -2170,7 +2169,8 @@ UM_coord *pts;
 				}
 				nint = um_iSegPlane(pts[i+1],pts[i],pln1,ipt);
 				if (nint > 0 && *ind12 < 0 && um_dcccc(ipt,ipt11) > 0.1*UM_FUZZ/* && i==388*/)
-				{
+
+                {
 					um_vctovc(ipt,*ipt12);
 					*ind12 = i;
 				}
@@ -2190,7 +2190,6 @@ UM_coord *pts;
 			}
 			if (*ind11 < 0 || *ind12 < 0 || *ind21 < 0 || *ind22 < 0 || *ind11==*ind12 ||*ind11==*ind21 ||*ind11==*ind22 ||*ind12==*ind21 ||*ind12==*ind22 ||*ind21==*ind22 ||
 				fabs(*ind11-*ind12) < 0.1*fabs(*ind21-*ind22))
-			/*if (*ind11 < 0 || *ind12 < 0 || *ind21 < 0 || *ind22 < 0 || *ind11==*ind12 ||*ind11==*ind21 ||*ind11==*ind22 ||*ind12==*ind21 ||*ind12==*ind22 ||*ind21==*ind22 )*/
 			{
 				uu_list_free(points);
 				//vctovc(c_pl1.n,&dpl2->nvec);
@@ -2281,6 +2280,8 @@ UM_real8 *npas,*nstp,*atrad;
 	um_identtf (rot);
 	key0 = NULLKEY;
 
+																		 
+  
 
 	//if (fp = fopen( "..\\contourPoints.txt", "a" )) // Open file for writing
 	//{
